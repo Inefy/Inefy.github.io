@@ -3,142 +3,206 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Zac Batten's personal corner of the web for Inefy projects, stream tools, experiments, and build notes.">
-    <title>Zac Batten | Inefy Projects</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f4bc5f'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='800' fill='%23131514'%3EZB%3C/text%3E%3C/svg%3E">
+    <meta name="description" content="Zac Batten's Inefy workbench: stream tools, movie-night bots, useful automations, and personal build notes.">
+    <title>Zac Batten / Inefy Workbench</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Zac Batten home">
-        <span class="brand-mark">ZB</span>
-        <span>Zac Batten</span>
+        <span class="brand-mark" aria-hidden="true">ZB</span>
+        <span class="brand-copy">
+          <span>Zac Batten</span>
+          <small>Inefy workbench</small>
+        </span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="#projects">Projects</a>
+        <a href="#systems">Systems</a>
         <a href="#lab">Lab</a>
-        <a href="#now">Now</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-media" aria-hidden="true">
+          <img src="assets/inefy-workbench.png" alt="">
+        </div>
+        <div class="hero-shade" aria-hidden="true"></div>
+
         <div class="hero-copy">
-          <p class="eyebrow">Zac Batten / Inefy</p>
-          <h1 id="hero-title">I make small tools for streams, friends, and late-night ideas.</h1>
+          <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span>Online from Zac's desk</p>
+          <h1 id="hero-title">Zac Batten / Inefy</h1>
           <p class="hero-text">
-            This is my public workbench: MovieBot, GitHub Pages experiments, rough utility ideas, and the notes I wish I had before I started building them.
+            I build small internet machines: Twitch tools, movie-night bots, GitHub Pages experiments, and helper scripts that turn recurring annoyances into buttons.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#projects">See the workbench</a>
+            <a class="button primary" href="#projects">Open the workbench</a>
             <button class="button secondary" type="button" id="shuffle-vibe">Shuffle vibe</button>
             <a class="button ghost" href="https://github.com/Inefy" rel="noreferrer">GitHub</a>
           </div>
+          <div class="command-strip" aria-label="Current focus">
+            <span class="prompt">$ now</span>
+            <span id="focus-output">tuning MovieBot, polishing the site, and catching the next tiny automation idea</span>
+          </div>
         </div>
 
-        <div class="signal-board" aria-label="Current project highlights">
-          <div class="orbital">
-            <span class="ring ring-one"></span>
-            <span class="ring ring-two"></span>
-            <span class="spark spark-one"></span>
-            <span class="spark spark-two"></span>
-            <span class="spark spark-three"></span>
-            <span class="core">Inefy</span>
+        <aside class="hero-dock" aria-label="Workbench status">
+          <div>
+            <span class="dock-label">Current build</span>
+            <strong>MovieBot</strong>
+            <p>Chat-powered movie nights with fewer manual stream chores.</p>
           </div>
-          <div class="signal-list">
-            <article>
-              <span>01</span>
-              <strong>MovieBot</strong>
-              <p>Built for community movie nights when chat should run the show.</p>
-            </article>
-            <article>
-              <span>02</span>
-              <strong>zacbatten.me</strong>
-              <p>The home base I can keep rewriting as the projects get sharper.</p>
-            </article>
-            <article>
-              <span>03</span>
-              <strong>Next itch</strong>
-              <p>Usually a tiny automation that starts as "this should be easier."</p>
-            </article>
+          <div>
+            <span class="dock-label">Local signal</span>
+            <strong id="local-time">--:--</strong>
+            <p>Newfoundland time, usually late enough for another experiment.</p>
           </div>
-        </div>
+          <div>
+            <span class="dock-label">House rule</span>
+            <strong>Useful first</strong>
+            <p>Make the tiny version work, then give it some character.</p>
+          </div>
+        </aside>
       </section>
 
-      <section class="metric-band" aria-label="Site themes">
+      <section class="metric-band" aria-label="Workbench signals">
         <div>
-          <strong data-count="3">0</strong>
-          <span>things on the bench</span>
-        </div>
-        <div>
-          <strong>Inefy</strong>
-          <span>where the projects live</span>
+          <strong data-count="4">0</strong>
+          <span>active project lanes</span>
         </div>
         <div>
           <strong>OBS</strong>
-          <span>stream tools in the mix</span>
+          <span>stream tools in orbit</span>
         </div>
         <div>
-          <strong id="local-time">--:--</strong>
-          <span>current tinkering time</span>
+          <strong>Pages</strong>
+          <span>static, fast, easy to remix</span>
+        </div>
+        <div>
+          <strong>Inefy</strong>
+          <span>the handle on the toolbox</span>
+        </div>
+      </section>
+
+      <section class="ticker" aria-label="Project pulse">
+        <div class="ticker-track">
+          <span>MovieBot</span>
+          <span>OBS handoffs</span>
+          <span>GitHub Pages</span>
+          <span>Twitch chat tools</span>
+          <span>Automation scraps</span>
+          <span>Build notes</span>
+          <span>MovieBot</span>
+          <span>OBS handoffs</span>
+          <span>GitHub Pages</span>
+          <span>Twitch chat tools</span>
+          <span>Automation scraps</span>
+          <span>Build notes</span>
         </div>
       </section>
 
       <section class="section" id="projects">
         <div class="section-heading">
           <p class="eyebrow">Workbench</p>
-          <h2>Stuff I am actually making</h2>
+          <h2>Tools with fingerprints on them.</h2>
           <p>
-            Not a polished trophy case. More like the shelf where finished tools, half-formed ideas, and useful experiments sit next to each other.
+            This is not a polished trophy case. It is the bench: finished pieces, useful half-ideas, and the little experiments that make streams and projects less repetitive.
           </p>
         </div>
 
         <div class="filter-bar" aria-label="Filter projects">
           <button class="filter-button active" type="button" data-filter="all">All</button>
           <button class="filter-button" type="button" data-filter="automation">Automation</button>
+          <button class="filter-button" type="button" data-filter="stream">Stream</button>
           <button class="filter-button" type="button" data-filter="web">Web</button>
           <button class="filter-button" type="button" data-filter="ideas">Ideas</button>
         </div>
 
         <div class="project-grid">
-          <article class="project-card featured" data-tags="automation">
+          <article class="project-card featured" data-tags="automation stream">
             <div class="project-meta">
-              <span>Featured</span>
+              <span><i aria-hidden="true"></i> Featured</span>
               <span>Python / Twitch / OBS</span>
             </div>
             <h3>MovieBot</h3>
             <p>
-              A Twitch chat bot for movie nights. Chat votes, the bot counts, and OBS gets nudged along so the stream does not need constant babysitting.
+              A Twitch chat bot for movie nights. Chat votes, the bot counts, and OBS gets nudged along so the stream can feel more like a show than a checklist.
             </p>
             <a href="https://github.com/Inefy/MovieBot" rel="noreferrer">View repository</a>
           </article>
 
           <article class="project-card" data-tags="web">
             <div class="project-meta">
-              <span>Website</span>
+              <span><i aria-hidden="true"></i> Live site</span>
               <span>HTML / CSS / JS</span>
             </div>
-            <h3>This website</h3>
+            <h3>zacbatten.me</h3>
             <p>
-              A lightweight GitHub Pages site I can keep changing as my projects change. It is part homepage, part build log, part playground.
+              The public workbench itself: a tiny static site with enough motion, attitude, and room to keep changing as the projects get sharper.
             </p>
             <a href="https://github.com/Inefy/Inefy.github.io" rel="noreferrer">View source</a>
           </article>
 
-          <article class="project-card muted-card" data-tags="ideas">
+          <article class="project-card" data-tags="automation ideas">
             <div class="project-meta">
-              <span>Open slot</span>
-              <span>Next</span>
+              <span><i aria-hidden="true"></i> Prototype lane</span>
+              <span>Scripts / Helpers</span>
             </div>
-            <h3>The next "why is this manual?" idea</h3>
+            <h3>Manual task detector</h3>
             <p>
-              Reserved for the next thing that starts annoying me enough to automate: a helper script, stream widget, tiny game, or setup note.
+              A parking spot for the next tiny tool that starts as "why am I doing this by hand again?" and ends as a command, checklist, or widget.
             </p>
-            <a href="#contact">Suggest an idea</a>
+            <a href="#lab">Generate a seed</a>
+          </article>
+
+          <article class="project-card muted-card" data-tags="stream ideas">
+            <div class="project-meta">
+              <span><i aria-hidden="true"></i> Open slot</span>
+              <span>Next stream toy</span>
+            </div>
+            <h3>Chat-powered side quest</h3>
+            <p>
+              A small future build for overlays, polls, scene cues, or anything that lets the audience poke the edges of the stream without derailing it.
+            </p>
+            <a href="#contact">Pitch an idea</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="systems-section" id="systems">
+        <div class="section-heading">
+          <p class="eyebrow">Systems</p>
+          <h2>The build loop.</h2>
+          <p>
+            The fun part is not making giant platforms. It is spotting a repeated friction point, making the smallest useful thing, and turning it into something with a little personality.
+          </p>
+        </div>
+        <div class="system-grid">
+          <article>
+            <span>01</span>
+            <h3>Catch the itch</h3>
+            <p>Movie nights, stream setup, repo chores, notes that keep getting rewritten.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Ship the tiny version</h3>
+            <p>One button, one command, one page, one bot behavior. Small enough to finish.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Make it feel alive</h3>
+            <p>Clear labels, bright feedback, useful defaults, and just enough visual spark.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Leave breadcrumbs</h3>
+            <p>Write down the setup details before future-Zac has to reverse engineer them.</p>
           </article>
         </div>
       </section>
@@ -149,54 +213,67 @@
           <p>Make the useful version first. Make it pretty after it survives real use.</p>
         </article>
         <article>
-          <span class="note-kicker">Favorite kind of project</span>
-          <p>Something small enough to finish, but annoying enough that finishing it feels great.</p>
+          <span class="note-kicker">Favorite scale</span>
+          <p>Small enough to finish, annoying enough that finishing it feels great.</p>
         </article>
         <article>
           <span class="note-kicker">Why Inefy</span>
-          <p>A short handle for the experiments, repos, and tools I want to keep shipping under one roof.</p>
+          <p>A short handle for the experiments, repos, and tools I want under one roof.</p>
         </article>
       </section>
 
       <section class="lab-section" id="lab">
         <div class="section-heading">
           <p class="eyebrow">Tiny Lab</p>
-          <h2>The "what should I build next?" button</h2>
+          <h2>A project seed generator for my kind of weird.</h2>
           <p>
-            A tiny prompt machine tuned for the kind of projects I actually like: stream helpers, automation, and practical weird little tools.
+            Tuned for stream helpers, practical automation, web experiments, and tools that sound small until they save a night.
           </p>
         </div>
-        <div class="lab-console" aria-live="polite">
-          <div class="console-top">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="lab-layout">
+          <div class="lab-modes" aria-label="Idea modes">
+            <button class="mode-button active" type="button" data-idea-mode="mixed">Mixed</button>
+            <button class="mode-button" type="button" data-idea-mode="stream">Stream</button>
+            <button class="mode-button" type="button" data-idea-mode="automation">Automation</button>
+            <button class="mode-button" type="button" data-idea-mode="web">Web</button>
           </div>
-          <p class="console-line"><span>&gt;</span> <span id="idea-output">Generate a project seed when you need a next build.</span></p>
-          <button class="button primary" type="button" id="idea-button">Generate idea</button>
+          <div class="lab-console" aria-live="polite">
+            <div class="console-top" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <p class="console-line"><span>&gt;</span> <span id="idea-output">Generate a project seed when the bench needs a new spark.</span></p>
+            <div class="console-actions">
+              <button class="button primary" type="button" id="idea-button">Generate idea</button>
+              <span class="seed-meter" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i><i></i>
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
       <section class="now-section" id="now">
         <div class="section-heading">
           <p class="eyebrow">Now</p>
-          <h2>What has my attention</h2>
+          <h2>What has my attention.</h2>
         </div>
         <div class="now-grid">
           <article>
             <span class="chip">MovieBot</span>
             <h3>Smoother movie nights</h3>
-            <p>Making Twitch voting and OBS handoffs feel less like a checklist and more like part of the show.</p>
+            <p>Making Twitch voting and OBS handoffs feel less like production chores and more like part of the room.</p>
           </article>
           <article>
             <span class="chip">Site</span>
             <h3>A homepage that sounds like me</h3>
-            <p>Keeping this page honest: fewer generic portfolio lines, more notes about what I am actually building.</p>
+            <p>Keeping this page honest: fewer generic portfolio lines, more notes about the projects I actually touch.</p>
           </article>
           <article>
             <span class="chip">Notes</span>
-            <h3>Leaving breadcrumbs</h3>
-            <p>Writing down setup details and tradeoffs before I forget why the project works the way it does.</p>
+            <h3>Leaving setup trails</h3>
+            <p>Writing down tradeoffs and tiny setup details before I forget why the build works the way it does.</p>
           </article>
         </div>
       </section>
@@ -205,7 +282,7 @@
         <div>
           <p class="eyebrow">Contact</p>
           <h2>Want to poke around?</h2>
-          <p>Most of the interesting stuff lands on GitHub first. This site is where I make it easier to find.</p>
+          <p>Most of the interesting stuff lands on GitHub first. This site is the map, the notebook, and the occasional shiny button.</p>
         </div>
         <div class="contact-actions">
           <a class="button primary" href="https://github.com/Inefy" rel="noreferrer">GitHub</a>
