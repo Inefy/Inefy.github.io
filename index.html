@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Zac Batten's personal website for projects, experiments, and current work.">
+    <title>Zac Batten | Projects and Work</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f4bc5f'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='800' fill='%23131514'%3EZB%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Zac Batten home">
+        <span class="brand-mark">ZB</span>
+        <span>Zac Batten</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#projects">Projects</a>
+        <a href="#now">Now</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Personal projects, systems, and experiments</p>
+          <h1 id="hero-title">I build useful software with a little atmosphere.</h1>
+          <p class="hero-text">
+            This is the home base for what I am making: stream automation, small tools, learning projects, and the technical notes that happen along the way.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">Explore projects</a>
+            <a class="button secondary" href="https://github.com/Inefy" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+
+        <div class="signal-board" aria-label="Current project highlights">
+          <div class="orbital">
+            <span class="ring ring-one"></span>
+            <span class="ring ring-two"></span>
+            <span class="core">Inefy</span>
+          </div>
+          <div class="signal-list">
+            <article>
+              <span>01</span>
+              <strong>MovieBot</strong>
+              <p>Twitch voting and OBS playback automation.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <strong>Personal site</strong>
+              <p>A public index for projects, experiments, and updates.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <strong>Next build</strong>
+              <p>Room for the next useful thing worth shipping.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="metric-band" aria-label="Site themes">
+        <div>
+          <strong data-count="3">0</strong>
+          <span>active lanes</span>
+        </div>
+        <div>
+          <strong>GitHub</strong>
+          <span>source-first projects</span>
+        </div>
+        <div>
+          <strong>Live</strong>
+          <span>tools made for real workflows</span>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Projects</p>
+          <h2>Selected work</h2>
+          <p>
+            A compact collection of things I am building, maintaining, or shaping into something worth sharing.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card featured">
+            <div class="project-meta">
+              <span>Featured</span>
+              <span>Python / Twitch / OBS</span>
+            </div>
+            <h3>MovieBot</h3>
+            <p>
+              A Twitch chat bot for community movie nights. Viewers vote in chat, the bot tracks results, and OBS is updated automatically when it is time for the next movie.
+            </p>
+            <a href="https://github.com/Inefy/MovieBot" rel="noreferrer">View repository</a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta">
+              <span>Website</span>
+              <span>HTML / CSS / JS</span>
+            </div>
+            <h3>Personal Project Hub</h3>
+            <p>
+              This site: a lightweight GitHub Pages home for current projects, experiments, and future writeups.
+            </p>
+            <a href="https://github.com/Inefy/Inefy.github.io" rel="noreferrer">View source</a>
+          </article>
+
+          <article class="project-card muted-card">
+            <div class="project-meta">
+              <span>Open slot</span>
+              <span>Next</span>
+            </div>
+            <h3>Coming next</h3>
+            <p>
+              A reserved space for the next project: a utility, automation idea, game experiment, or longer technical writeup.
+            </p>
+            <a href="#contact">Suggest an idea</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="now-section" id="now">
+        <div class="section-heading">
+          <p class="eyebrow">Now</p>
+          <h2>What I am focused on</h2>
+        </div>
+        <div class="now-grid">
+          <article>
+            <span class="chip">Build</span>
+            <h3>Practical automation</h3>
+            <p>Making repetitive stream and desktop workflows easier to run without babysitting them.</p>
+          </article>
+          <article>
+            <span class="chip">Learn</span>
+            <h3>Sharper shipping habits</h3>
+            <p>Keeping projects small enough to finish, document, and put in front of real users.</p>
+          </article>
+          <article>
+            <span class="chip">Share</span>
+            <h3>Clear project notes</h3>
+            <p>Turning setup details, tradeoffs, and lessons learned into useful references.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Want to see what I am building?</h2>
+          <p>Follow the repositories, send a note, or check back here as new projects land.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="button primary" href="https://github.com/Inefy" rel="noreferrer">GitHub</a>
+          <a class="button secondary" href="mailto:hello@zacbatten.me">Email</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>&copy; <span id="year">2026</span> Zac Batten</span>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
