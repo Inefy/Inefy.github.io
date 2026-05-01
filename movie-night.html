@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body class="stream-body">
+    <a class="skip-link" href="#watch">Skip to stream</a>
     <header class="site-header">
       <a class="brand" href="index.html#top" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
@@ -22,7 +23,7 @@
       </a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
-        <a href="#watch">Watch</a>
+        <a class="nav-cta" href="#watch" aria-current="page">Watch</a>
         <a href="#movies">Movies</a>
         <a href="#bot">Bot</a>
         <a href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">GitHub</a>
@@ -37,6 +38,11 @@
           <p class="stream-hero-text">
             A Twitch stream for public domain movies where chat can help choose what plays next. The bot watches the local movie folder, tracks votes in chat, and hands the next pick to OBS.
           </p>
+          <div class="hero-badges" aria-label="Movie night details">
+            <span>Public domain movies</span>
+            <span>Chat voting</span>
+            <span>OBS handoff</span>
+          </div>
           <div class="hero-actions">
             <a class="button primary" href="#watch">Watch the stream</a>
             <a class="button secondary" href="https://www.imdb.com/list/ls544522770/" rel="noreferrer">Open movie list</a>
@@ -88,12 +94,19 @@
             </div>
           </aside>
         </div>
+
+        <div class="embed-action-bar" aria-label="External stream links">
+          <span>Embed having trouble?</span>
+          <a href="https://www.twitch.tv/zurra3" rel="noreferrer">Open stream on Twitch</a>
+          <a href="https://www.twitch.tv/popout/zurra3/chat?popout=" rel="noreferrer">Open chat</a>
+          <a href="https://www.imdb.com/list/ls544522770/" rel="noreferrer">Open movie list</a>
+        </div>
       </section>
 
       <section class="movie-list-section" id="movies" aria-labelledby="movies-title">
         <div class="movie-list-copy">
           <p class="eyebrow">Movie list</p>
-          <h2 id="movies-title">The shared IMDb list.</h2>
+          <h2 id="movies-title">Public domain movie list.</h2>
           <p>
             This is the public domain movie list the stream can point viewers toward. The bot can use the same URL for the <code>!movies</code> command, so chat has one public place to browse options before voting.
           </p>

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <a class="skip-link" href="#projects">Skip to projects</a>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
@@ -22,7 +23,7 @@
       </a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="#projects">Projects</a>
-        <a href="movie-night.html">Movie Night</a>
+        <a class="nav-cta" href="movie-night.html">Movie Night</a>
         <a href="#systems">Systems</a>
         <a href="#lab">Lab</a>
         <a href="#contact">Contact</a>
@@ -42,6 +43,11 @@
           <p class="hero-text">
             I build small internet machines: Twitch tools, movie-night bots, GitHub Pages experiments, and helper scripts that turn recurring annoyances into buttons.
           </p>
+          <div class="hero-badges" aria-label="Site focus areas">
+            <span>Stream tools</span>
+            <span>Static web</span>
+            <span>Small automations</span>
+          </div>
           <div class="hero-actions">
             <a class="button primary" href="#projects">Open the workbench</a>
             <button class="button secondary" type="button" id="shuffle-vibe">Shuffle vibe</button>
@@ -133,9 +139,12 @@
             </div>
             <h3>MovieBot</h3>
             <p>
-              A Twitch chat bot for movie nights. Chat votes, the bot counts, and OBS gets nudged along so the stream can feel more like a show than a checklist.
+              A Twitch chat bot for public domain movie nights. Chat votes, the bot counts, and OBS gets nudged along so the stream can feel more like a show than a checklist.
             </p>
-            <a href="movie-night.html">Open movie-night page</a>
+            <div class="card-actions">
+              <a href="movie-night.html">Open page</a>
+              <a href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">View repo</a>
+            </div>
           </article>
 
           <article class="project-card" data-tags="web">
@@ -147,7 +156,9 @@
             <p>
               The public workbench itself: a tiny static site with enough motion, attitude, and room to keep changing as the projects get sharper.
             </p>
-            <a href="https://github.com/Inefy/Inefy.github.io" rel="noreferrer">View source</a>
+            <div class="card-actions">
+              <a href="https://github.com/Inefy/Inefy.github.io" rel="noreferrer">View source</a>
+            </div>
           </article>
 
           <article class="project-card" data-tags="automation ideas">
@@ -159,7 +170,9 @@
             <p>
               A parking spot for the next tiny tool that starts as "why am I doing this by hand again?" and ends as a command, checklist, or widget.
             </p>
-            <a href="#lab">Generate a seed</a>
+            <div class="card-actions">
+              <a href="#lab">Generate a seed</a>
+            </div>
           </article>
 
           <article class="project-card muted-card" data-tags="stream ideas">
@@ -171,7 +184,9 @@
             <p>
               A small future build for overlays, polls, scene cues, or anything that lets the audience poke the edges of the stream without derailing it.
             </p>
-            <a href="#contact">Pitch an idea</a>
+            <div class="card-actions">
+              <a href="#contact">Pitch an idea</a>
+            </div>
           </article>
         </div>
       </section>

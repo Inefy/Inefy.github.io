@@ -73,6 +73,12 @@ const ideas = {
 let activeIdeaMode = "mixed";
 let focusIndex = 0;
 
+function syncPressedState(buttons) {
+  buttons.forEach((button) => {
+    button.setAttribute("aria-pressed", button.classList.contains("active") ? "true" : "false");
+  });
+}
+
 function updateLocalTime() {
   if (!localTime) return;
   localTime.textContent = new Intl.DateTimeFormat([], {
@@ -156,6 +162,8 @@ function pickDifferent(items, current) {
 updateLocalTime();
 window.setInterval(updateLocalTime, 15000);
 mountTwitchEmbeds();
+syncPressedState(filterButtons);
+syncPressedState(modeButtons);
 
 if (vibeButton) {
   vibeButton.addEventListener("click", () => {
@@ -182,6 +190,7 @@ modeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     activeIdeaMode = button.dataset.ideaMode;
     modeButtons.forEach((item) => item.classList.toggle("active", item === button));
+    syncPressedState(modeButtons);
     if (ideaOutput) {
       ideaOutput.textContent = pickDifferent(ideas[activeIdeaMode], ideaOutput.textContent);
     }
@@ -193,6 +202,7 @@ filterButtons.forEach((button) => {
     const filter = button.dataset.filter;
 
     filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+    syncPressedState(filterButtons);
     projectCards.forEach((card) => {
       const tags = card.dataset.tags.split(" ");
       card.classList.toggle("hidden", filter !== "all" && !tags.includes(filter));
