@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Browse Zurra3's public domain movie-night library with posters, years, runtimes, IMDb ratings, and search.">
+    <title>Public Domain Movie Library / Zurra3 Movie Night</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="stream-body">
+    <a class="skip-link" href="#movies">Skip to movies</a>
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+        <span class="brand-mark" aria-hidden="true">ZB</span>
+        <span class="brand-copy">
+          <span>Zac Batten</span>
+          <small>Inefy workbench</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="movie-night.html#watch">Watch</a>
+        <a class="nav-cta" href="#movies" aria-current="page">Movies</a>
+        <a href="movie-night.html#bot">Bot</a>
+        <a href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top" class="stream-page movie-library-page">
+      <section class="movie-list-section movie-library-full" id="movies" aria-labelledby="movies-title">
+        <div class="movie-list-copy">
+          <p class="eyebrow">Movie library</p>
+          <h1 id="movies-title">Public domain movie picks.</h1>
+          <p>
+            A searchable poster wall for the movie-night queue. Use it to find a title before dropping <code>!vote movie name</code> in chat.
+          </p>
+          <div class="movie-list-stats" aria-label="Movie library stats">
+            <div>
+              <strong data-movie-count>110</strong>
+              <span>movies</span>
+            </div>
+            <div>
+              <strong>1902-1968</strong>
+              <span>release years</span>
+            </div>
+          </div>
+          <label class="movie-search-label" for="movie-search">Search movies</label>
+          <input class="movie-search" id="movie-search" type="search" placeholder="Title, year, runtime, or rating" autocomplete="off">
+          <div class="hero-actions">
+            <a class="button primary" href="movie-night.html#watch">Back to stream</a>
+            <a class="button secondary" href="https://www.imdb.com/list/ls544522770/" rel="noreferrer">Source IMDb list</a>
+          </div>
+        </div>
+
+        <div class="movie-library-shell">
+          <div class="movie-library-toolbar">
+            <span data-movie-results>Showing all 110 movies</span>
+            <button class="filter-button" type="button" data-movie-clear>Clear</button>
+          </div>
+          <div class="movie-grid" id="movie-grid" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>&copy; <span id="year">2026</span> Zac Batten</span>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

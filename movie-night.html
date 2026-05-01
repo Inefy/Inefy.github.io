@@ -24,7 +24,7 @@
       <nav class="nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a class="nav-cta" href="#watch" aria-current="page">Watch</a>
-        <a href="#movies">Movies</a>
+        <a href="movie-library.html">Movies</a>
         <a href="#bot">Bot</a>
         <a href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">GitHub</a>
       </nav>
@@ -45,7 +45,7 @@
           </div>
           <div class="hero-actions">
             <a class="button primary" href="#watch">Watch the stream</a>
-            <a class="button secondary" href="#movies">Browse movies</a>
+            <a class="button secondary" href="movie-library.html">Browse movies</a>
             <a class="button ghost" href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">Bot source</a>
           </div>
         </div>
@@ -99,16 +99,16 @@
           <span>Embed having trouble?</span>
           <a href="https://www.twitch.tv/zurra3" rel="noreferrer">Open stream on Twitch</a>
           <a href="https://www.twitch.tv/popout/zurra3/chat?popout=" rel="noreferrer">Open chat</a>
-          <a href="#movies">Browse movies</a>
+          <a href="movie-library.html">Browse movies</a>
         </div>
       </section>
 
-      <section class="movie-list-section" id="movies" aria-labelledby="movies-title">
+      <section class="movie-list-section movie-list-preview" id="movies" aria-labelledby="movies-title">
         <div class="movie-list-copy">
           <p class="eyebrow">Movie list</p>
           <h2 id="movies-title">Public domain movie library.</h2>
           <p>
-            This is the movie-night list on the site itself, built from the public IMDb list and poster data. Chat can browse the options here before voting for what plays next.
+            The full list now has its own page so this stream page stays focused. Browse posters, search titles, and pick something before voting in chat.
           </p>
           <div class="movie-list-stats" aria-label="Movie library stats">
             <div>
@@ -120,24 +120,29 @@
               <span>release years</span>
             </div>
           </div>
-          <label class="movie-search-label" for="movie-search">Search movies</label>
-          <input class="movie-search" id="movie-search" type="search" placeholder="Title, year, runtime, or rating" autocomplete="off">
           <div class="command-list" aria-label="Common chat commands">
             <span>!movies</span>
             <span>!vote movie name</span>
             <span>!results</span>
             <span>!time</span>
           </div>
+          <a class="button primary" href="movie-library.html">Open movie library</a>
           <a class="button secondary" href="https://www.imdb.com/list/ls544522770/" rel="noreferrer">Source IMDb list</a>
         </div>
 
-        <div class="movie-library-shell">
-          <div class="movie-library-toolbar">
-            <span data-movie-results>Showing all 110 movies</span>
-            <button class="filter-button" type="button" data-movie-clear>Clear</button>
+        <a class="movie-preview-panel" href="movie-library.html" aria-label="Open the full movie library">
+          <div class="movie-preview-copy">
+            <span class="provider-badge">110 titles</span>
+            <strong>Open the full poster wall</strong>
+            <p>Search the complete public domain queue without crowding the live stream page.</p>
           </div>
-          <div class="movie-grid" id="movie-grid" aria-live="polite"></div>
-        </div>
+          <div class="movie-preview-posters" aria-hidden="true">
+            <img src="https://m.media-amazon.com/images/M/MV5BNzdiNDRlZDItZGUxNy00YmRiLWFjMzItMDlkYzJkODM0NGYxXkEyXkFqcGc@._V1_QL75_UX180_CR0,11,180,266_.jpg" alt="">
+            <img src="https://m.media-amazon.com/images/M/MV5BZGMyZTA0MWEtZjczMS00ZDE5LTk1OTQtNmIxNGYzNDA2NDVhXkEyXkFqcGc@._V1_QL75_UY133_CR1,0,90,133_.jpg" alt="">
+            <img src="https://m.media-amazon.com/images/M/MV5BNmU0YjQ5OTUtZGJiYS00MWY0LTkxYjYtODEyZGJmYjhkNWIxXkEyXkFqcGc@._V1_QL75_UX90_CR0,1,90,133_.jpg" alt="">
+            <img src="https://m.media-amazon.com/images/M/MV5BMjhjMGYyMjAtMzJkYy00NzhlLWIwY2MtMWQ2ODIxZDUyOGYyXkEyXkFqcGc@._V1_QL75_UY133_CR0,0,90,133_.jpg" alt="">
+          </div>
+        </a>
       </section>
 
       <section class="bot-section" id="bot" aria-labelledby="bot-title">
