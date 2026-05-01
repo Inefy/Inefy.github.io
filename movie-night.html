@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Watch Zurra3's Twitch movie stream, open the shared IMDb movie list, and see how the StreamCinema Vote Bot lets chat pick what plays next.">
+    <title>Zurra3 Movie Night / Inefy Workbench</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="stream-body">
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+        <span class="brand-mark" aria-hidden="true">ZB</span>
+        <span class="brand-copy">
+          <span>Zac Batten</span>
+          <small>Inefy workbench</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="#watch">Watch</a>
+        <a href="#movies">Movies</a>
+        <a href="#bot">Bot</a>
+        <a href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top" class="stream-page">
+      <section class="stream-hero" aria-labelledby="stream-title">
+        <div class="stream-hero-copy">
+          <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span>Live when Zurra3 is online</p>
+          <h1 id="stream-title">Zurra3 Movie Night</h1>
+          <p class="stream-hero-text">
+            A Twitch movie stream where chat can help choose what plays next. The bot watches the local movie folder, tracks votes in chat, and hands the next pick to OBS.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#watch">Watch the stream</a>
+            <a class="button secondary" href="https://www.imdb.com/list/ls544522770/" rel="noreferrer">Open movie list</a>
+            <a class="button ghost" href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">Bot source</a>
+          </div>
+        </div>
+
+        <div class="stream-signal-board" aria-label="Stream signals">
+          <div>
+            <span class="dock-label">Channel</span>
+            <strong>twitch.tv/zurra3</strong>
+            <p>Embedded player and chat are loaded below.</p>
+          </div>
+          <div>
+            <span class="dock-label">Voting</span>
+            <strong>!vote title</strong>
+            <p>Chat votes for the next movie while the current one plays.</p>
+          </div>
+          <div>
+            <span class="dock-label">Playback</span>
+            <strong>OBS WebSocket</strong>
+            <p>The bot swaps the media source when the next pick is ready.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="stream-embed-section" id="watch" aria-labelledby="watch-title">
+        <div class="section-heading">
+          <p class="eyebrow">Stream</p>
+          <h2 id="watch-title">The room, the chat, and the next vote.</h2>
+          <p>
+            The player shows the live Zurra3 channel. Chat stays beside it on wide screens so viewers can watch the movie-night flow and vote without leaving the page.
+          </p>
+        </div>
+
+        <div class="stream-layout">
+          <div class="stream-player-panel">
+            <div class="embed-shell twitch-shell" data-twitch-player data-channel="zurra3">
+              <noscript>
+                <a href="https://www.twitch.tv/zurra3" rel="noreferrer">Open Zurra3 on Twitch</a>
+              </noscript>
+            </div>
+          </div>
+          <aside class="stream-chat-panel" aria-label="Twitch chat">
+            <div class="embed-shell chat-shell" data-twitch-chat data-channel="zurra3">
+              <noscript>
+                <a href="https://www.twitch.tv/zurra3/chat" rel="noreferrer">Open Twitch chat</a>
+              </noscript>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="movie-list-section" id="movies" aria-labelledby="movies-title">
+        <div class="movie-list-copy">
+          <p class="eyebrow">Movie list</p>
+          <h2 id="movies-title">The shared IMDb list.</h2>
+          <p>
+            This is the movie list the stream can point viewers toward. The bot can use the same URL for the <code>!movies</code> command, so chat has one public place to browse options before voting.
+          </p>
+          <div class="command-list" aria-label="Common chat commands">
+            <span>!movies</span>
+            <span>!vote movie name</span>
+            <span>!results</span>
+            <span>!time</span>
+          </div>
+          <a class="button primary" href="https://www.imdb.com/list/ls544522770/" rel="noreferrer">Open the IMDb list</a>
+        </div>
+
+        <div class="movie-list-frame-wrap">
+          <iframe
+            class="movie-list-frame"
+            src="https://www.imdb.com/list/ls544522770/"
+            title="IMDb movie list for Zurra3 movie night"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <p>
+            IMDb controls whether its pages can render inside another site. If the panel is blocked, use the button above to open the list directly.
+          </p>
+        </div>
+      </section>
+
+      <section class="bot-section" id="bot" aria-labelledby="bot-title">
+        <div class="section-heading">
+          <p class="eyebrow">Bot at work</p>
+          <h2 id="bot-title">How StreamCinema Vote Bot runs the night.</h2>
+          <p>
+            The bot is a simple remote control for a Twitch movie stream. It keeps a list of local video files, listens to chat, counts votes, and tells OBS which file to play next.
+          </p>
+        </div>
+
+        <div class="bot-flow">
+          <article>
+            <span>01</span>
+            <h3>Movies are scanned</h3>
+            <p>The bot reads the configured movie folder and remembers the playable files it can offer to chat.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Chat votes</h3>
+            <p>Viewers use commands like <code>!vote</code>, <code>!results</code>, <code>!currentmovie</code>, and <code>!time</code> while the stream is running.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>The winner is picked</h3>
+            <p>When it is time for the next movie, the bot uses the vote totals, handles ties, and can fall back to a random pick.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>OBS plays it</h3>
+            <p>OBS WebSocket updates the media source, switches to the configured scene, and starts the selected movie.</p>
+          </article>
+        </div>
+
+        <div class="bot-note">
+          <div>
+            <span class="note-kicker">Long stream details</span>
+            <p>
+              The bot is built for long sessions: it refreshes Twitch OAuth tokens, watches the Twitch chat connection, and reconnects to OBS when needed.
+            </p>
+          </div>
+          <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">Read the repo</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>&copy; <span id="year">2026</span> Zac Batten</span>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

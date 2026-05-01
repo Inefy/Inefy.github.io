@@ -14,6 +14,8 @@ const projectCards = document.querySelectorAll("[data-tags]");
 const counters = document.querySelectorAll("[data-count]");
 const modeButtons = document.querySelectorAll("[data-idea-mode]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const twitchPlayers = document.querySelectorAll("[data-twitch-player]");
+const twitchChats = document.querySelectorAll("[data-twitch-chat]");
 
 const palettes = [
   {
@@ -85,6 +87,37 @@ function setCounterFinals() {
   });
 }
 
+function getTwitchParents() {
+  const knownParents = ["zacbatten.me", "www.zacbatten.me", "inefy.github.io", "localhost", "127.0.0.1"];
+  const host = window.location.hostname;
+  const parents = host ? [host, ...knownParents] : knownParents;
+  return [...new Set(parents)].map((parent) => `parent=${encodeURIComponent(parent)}`).join("&");
+}
+
+function mountTwitchEmbeds() {
+  const parentQuery = getTwitchParents();
+
+  twitchPlayers.forEach((container) => {
+    const channel = container.dataset.channel || "zurra3";
+    const iframe = document.createElement("iframe");
+    iframe.title = `${channel} Twitch stream`;
+    iframe.src = `https://player.twitch.tv/?channel=${encodeURIComponent(channel)}&autoplay=false&muted=false&${parentQuery}`;
+    iframe.allow = "autoplay; picture-in-picture";
+    iframe.allowFullscreen = true;
+    iframe.loading = "lazy";
+    container.appendChild(iframe);
+  });
+
+  twitchChats.forEach((container) => {
+    const channel = container.dataset.channel || "zurra3";
+    const iframe = document.createElement("iframe");
+    iframe.title = `${channel} Twitch chat`;
+    iframe.src = `https://www.twitch.tv/embed/${encodeURIComponent(channel)}/chat?darkpopout&${parentQuery}`;
+    iframe.loading = "lazy";
+    container.appendChild(iframe);
+  });
+}
+
 function pickDifferent(items, current) {
   const pool = items.filter((item) => item !== current);
   return pool[Math.floor(Math.random() * pool.length)] || items[0];
@@ -92,6 +125,7 @@ function pickDifferent(items, current) {
 
 updateLocalTime();
 window.setInterval(updateLocalTime, 15000);
+mountTwitchEmbeds();
 
 if (vibeButton) {
   vibeButton.addEventListener("click", () => {

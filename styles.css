@@ -842,6 +842,288 @@ h3 {
   font-weight: 800;
 }
 
+.stream-page code {
+  color: inherit;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.92em;
+  font-weight: 700;
+}
+
+.stream-body {
+  background:
+    radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 111, 79, 0.16), transparent 23rem),
+    linear-gradient(135deg, rgba(109, 225, 166, 0.12), transparent 34rem),
+    linear-gradient(225deg, rgba(104, 183, 255, 0.14), transparent 32rem),
+    var(--paper);
+}
+
+.stream-page {
+  overflow: hidden;
+}
+
+.stream-hero,
+.stream-embed-section,
+.movie-list-section,
+.bot-section {
+  padding: clamp(58px, 8vw, 116px) clamp(18px, 5vw, 76px);
+}
+
+.stream-hero {
+  position: relative;
+  display: grid;
+  min-height: min(720px, calc(100svh - 76px));
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: end;
+  border-bottom: 1px solid var(--line);
+}
+
+.stream-hero::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background:
+    linear-gradient(rgba(248, 244, 232, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(248, 244, 232, 0.035) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(90deg, black, transparent 84%);
+}
+
+.stream-hero-copy {
+  max-width: 900px;
+  padding-bottom: clamp(8px, 3vw, 26px);
+}
+
+.stream-hero h1 {
+  max-width: 860px;
+}
+
+.stream-hero-text {
+  max-width: 760px;
+  margin: 0;
+  color: var(--soft);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+}
+
+.stream-signal-board {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  background: rgba(248, 244, 232, 0.14);
+  border: 1px solid rgba(248, 244, 232, 0.18);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.stream-signal-board div {
+  padding: 20px;
+  background:
+    linear-gradient(135deg, rgba(255, 111, 79, 0.12), transparent 44%),
+    rgba(8, 11, 12, 0.76);
+  backdrop-filter: blur(18px);
+}
+
+.stream-signal-board strong {
+  display: block;
+  margin-bottom: 6px;
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-size: 1.28rem;
+}
+
+.stream-signal-board p,
+.movie-list-copy p,
+.movie-list-frame-wrap p,
+.bot-flow p,
+.bot-note p {
+  color: var(--muted);
+}
+
+.stream-embed-section {
+  background:
+    linear-gradient(120deg, rgba(104, 183, 255, 0.13), transparent 42%),
+    #101314;
+  border-bottom: 1px solid var(--line);
+}
+
+.stream-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(310px, 390px);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.stream-player-panel,
+.stream-chat-panel,
+.movie-list-frame-wrap {
+  overflow: hidden;
+  background: rgba(5, 8, 8, 0.78);
+  border: 1px solid rgba(248, 244, 232, 0.18);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.embed-shell {
+  position: relative;
+  display: grid;
+  min-height: 300px;
+  place-items: center;
+  background:
+    linear-gradient(145deg, rgba(109, 225, 166, 0.1), transparent 48%),
+    rgba(3, 6, 7, 0.92);
+}
+
+.embed-shell::before {
+  position: absolute;
+  z-index: 0;
+  color: var(--muted);
+  content: "Loading embed...";
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.embed-shell iframe,
+.movie-list-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: #050708;
+  border: 0;
+}
+
+.twitch-shell {
+  aspect-ratio: 16 / 9;
+  min-height: 420px;
+}
+
+.chat-shell {
+  height: 100%;
+  min-height: 420px;
+}
+
+.movie-list-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.55fr) minmax(0, 1fr);
+  gap: clamp(24px, 5vw, 58px);
+  align-items: stretch;
+}
+
+.movie-list-copy {
+  align-self: center;
+  max-width: 620px;
+}
+
+.movie-list-copy .button {
+  display: inline-flex;
+  margin-top: 28px;
+}
+
+.command-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.command-list span {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  padding: 0 11px;
+  color: #07100d;
+  background: var(--mint);
+  border-radius: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.movie-list-frame-wrap {
+  position: relative;
+  min-height: 680px;
+}
+
+.movie-list-frame-wrap p {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+  z-index: 2;
+  margin: 0;
+  padding: 12px 14px;
+  background: rgba(5, 8, 8, 0.84);
+  border: 1px solid rgba(248, 244, 232, 0.16);
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+
+.bot-section {
+  background: #f8f4e8;
+  color: #171918;
+}
+
+.bot-section .eyebrow {
+  color: #c44d38;
+}
+
+.bot-section .section-heading p,
+.bot-flow p,
+.bot-note p {
+  color: #5f625b;
+}
+
+.bot-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.bot-flow article {
+  min-height: 286px;
+  padding: 28px;
+  background:
+    linear-gradient(145deg, rgba(109, 225, 166, 0.18), transparent 52%),
+    #ffffff;
+  border: 1px solid #ded7c7;
+  border-radius: 8px;
+}
+
+.bot-flow span {
+  display: block;
+  margin-bottom: 34px;
+  color: #c44d38;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+}
+
+.bot-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 18px;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #ded7c7;
+  border-radius: 8px;
+}
+
+.bot-note > div {
+  max-width: 760px;
+}
+
+.bot-note .note-kicker {
+  color: #c44d38;
+}
+
+.bot-note p {
+  margin-bottom: 0;
+}
+
 @media (max-width: 1120px) {
   .hero {
     grid-template-columns: 1fr;
@@ -859,6 +1141,24 @@ h3 {
 
   .project-card.featured {
     grid-column: span 2;
+  }
+
+  .stream-hero,
+  .movie-list-section {
+    grid-template-columns: 1fr;
+  }
+
+  .stream-signal-board {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .stream-layout,
+  .bot-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stream-player-panel {
+    grid-column: 1 / -1;
   }
 }
 
@@ -912,6 +1212,30 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .stream-signal-board,
+  .stream-layout,
+  .bot-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .stream-hero {
+    min-height: auto;
+  }
+
+  .twitch-shell,
+  .chat-shell {
+    min-height: 360px;
+  }
+
+  .movie-list-frame-wrap {
+    min-height: 560px;
+  }
+
+  .bot-note {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .project-card.featured {
     grid-column: auto;
   }
@@ -961,6 +1285,10 @@ h3 {
 
   .button {
     width: 100%;
+  }
+
+  .movie-list-copy .button {
+    display: flex;
   }
 }
 
