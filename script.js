@@ -6,13 +6,10 @@ if (year) {
 const body = document.body;
 const localTime = document.querySelector("#local-time");
 const vibeButton = document.querySelector("#shuffle-vibe");
-const ideaButton = document.querySelector("#idea-button");
-const ideaOutput = document.querySelector("#idea-output");
 const focusOutput = document.querySelector("#focus-output");
 const filterButtons = document.querySelectorAll("[data-filter]");
 const projectCards = document.querySelectorAll("[data-tags]");
 const counters = document.querySelectorAll("[data-count]");
-const modeButtons = document.querySelectorAll("[data-idea-mode]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const twitchPlayers = document.querySelectorAll("[data-twitch-player]");
 const twitchChats = document.querySelectorAll("[data-twitch-chat]");
@@ -47,33 +44,6 @@ const focusLines = [
   "keeping the projects small enough to finish and weird enough to remember",
   "writing down the setup details before they disappear"
 ];
-
-const ideas = {
-  mixed: [
-    "Build a desk-status page that turns GitHub activity, stream setup, and notes into one tiny cockpit.",
-    "Make a browser widget that pulls a random project note and asks: ship, archive, or automate?",
-    "Create a one-click pre-stream checklist that leaves a timestamped log when everything is ready.",
-    "Prototype a tiny game where power-ups are named after the last five commits."
-  ],
-  stream: [
-    "Build a Twitch overlay that makes chat votes feel like part of movie night instead of a side panel.",
-    "Make an OBS scene cue helper with a big status light for the next transition.",
-    "Create a chat-triggered intermission board with movie-night stats and inside jokes.",
-    "Prototype a stream deck page that groups buttons by what can go wrong."
-  ],
-  automation: [
-    "Make a tiny desktop command palette for the setup steps you always hunt for.",
-    "Create a helper that turns messy project notes into setup cards future-you can use.",
-    "Build a script that notices repeated file chores and offers a reusable command.",
-    "Make a weekly repo sweep that lists stale branches, missing READMEs, and easy cleanup wins."
-  ],
-  web: [
-    "Create a GitHub Pages build log that turns repo updates into short public notes.",
-    "Build a personal status badge generator for project cards, readmes, and stream panels.",
-    "Prototype a tiny interactive timeline of tools, experiments, and the problem that started each one.",
-    "Make a web toy that shuffles project ideas by energy level: 20 minutes, one night, weekend."
-  ]
-};
 
 const movieNightRows = [
   [1, "tt0017463", "3 Bad Men", "1926", "1h 32m", "7.5", "https://m.media-amazon.com/images/M/MV5BNzdiNDRlZDItZGUxNy00YmRiLWFjMzItMDlkYzJkODM0NGYxXkEyXkFqcGc@._V1_QL75_UX180_CR0,11,180,266_.jpg"],
@@ -199,7 +169,6 @@ const movieNightMovies = movieNightRows.map(([position, id, title, year, runtime
   imdb: `https://www.imdb.com/title/${id}/`
 }));
 
-let activeIdeaMode = "mixed";
 let focusIndex = 0;
 
 function syncPressedState(buttons) {
@@ -344,17 +313,11 @@ function filterMovieList() {
   renderMovieList(filteredMovies);
 }
 
-function pickDifferent(items, current) {
-  const pool = items.filter((item) => item !== current);
-  return pool[Math.floor(Math.random() * pool.length)] || items[0];
-}
-
 updateLocalTime();
 window.setInterval(updateLocalTime, 15000);
 mountTwitchEmbeds();
 renderMovieList(movieNightMovies);
 syncPressedState(filterButtons);
-syncPressedState(modeButtons);
 
 if (movieSearch) {
   movieSearch.addEventListener("input", filterMovieList);
@@ -381,24 +344,6 @@ if (vibeButton) {
     vibeButton.textContent = palette.name;
   });
 }
-
-if (ideaButton && ideaOutput) {
-  ideaButton.addEventListener("click", () => {
-    const current = ideaOutput.textContent;
-    ideaOutput.textContent = pickDifferent(ideas[activeIdeaMode], current);
-  });
-}
-
-modeButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    activeIdeaMode = button.dataset.ideaMode;
-    modeButtons.forEach((item) => item.classList.toggle("active", item === button));
-    syncPressedState(modeButtons);
-    if (ideaOutput) {
-      ideaOutput.textContent = pickDifferent(ideas[activeIdeaMode], ideaOutput.textContent);
-    }
-  });
-});
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
