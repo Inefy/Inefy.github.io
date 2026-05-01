@@ -995,6 +995,39 @@ h3 {
   border: 0;
 }
 
+.embed-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background:
+    linear-gradient(145deg, rgba(255, 111, 79, 0.12), transparent 48%),
+    rgba(3, 6, 7, 0.96);
+}
+
+.embed-fallback-inner {
+  max-width: 38rem;
+}
+
+.embed-fallback strong {
+  display: block;
+  margin-bottom: 10px;
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-size: clamp(1.35rem, 3vw, 2.1rem);
+  line-height: 1;
+}
+
+.embed-fallback p {
+  margin-bottom: 18px;
+  color: var(--muted);
+}
+
+.embed-fallback .button {
+  display: inline-flex;
+}
+
 .twitch-shell {
   aspect-ratio: 16 / 9;
   min-height: 420px;
@@ -1044,21 +1077,66 @@ h3 {
 
 .movie-list-frame-wrap {
   position: relative;
-  min-height: 680px;
+  display: grid;
+  min-height: 560px;
+  place-items: stretch;
 }
 
-.movie-list-frame-wrap p {
-  position: absolute;
-  right: 14px;
-  bottom: 14px;
-  left: 14px;
-  z-index: 2;
-  margin: 0;
-  padding: 12px 14px;
-  background: rgba(5, 8, 8, 0.84);
-  border: 1px solid rgba(248, 244, 232, 0.16);
+.movie-list-card {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(24px, 5vw, 44px);
+  background:
+    linear-gradient(145deg, rgba(245, 196, 91, 0.22), transparent 52%),
+    radial-gradient(circle at 74% 18%, rgba(255, 111, 79, 0.2), transparent 22rem),
+    rgba(3, 6, 7, 0.94);
+  border: 1px solid rgba(248, 244, 232, 0.18);
   border-radius: 8px;
-  font-size: 0.88rem;
+}
+
+.movie-list-card:hover {
+  border-color: rgba(245, 196, 91, 0.54);
+}
+
+.provider-badge,
+.movie-list-id {
+  align-self: flex-start;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.provider-badge {
+  margin-bottom: auto;
+  padding: 8px 10px;
+  color: #111413;
+  background: var(--gold);
+  border-radius: 8px;
+  font-size: 0.78rem;
+}
+
+.movie-list-card strong {
+  display: block;
+  max-width: 12ch;
+  margin-top: clamp(80px, 18vw, 170px);
+  margin-bottom: 18px;
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-size: clamp(2.2rem, 6vw, 5.8rem);
+  line-height: 0.9;
+  text-wrap: balance;
+}
+
+.movie-list-card p {
+  max-width: 58ch;
+  margin-bottom: 24px;
+  color: var(--soft);
+}
+
+.movie-list-id {
+  color: var(--mint);
+  font-size: 0.8rem;
 }
 
 .bot-section {
@@ -1228,7 +1306,7 @@ h3 {
   }
 
   .movie-list-frame-wrap {
-    min-height: 560px;
+    min-height: 420px;
   }
 
   .bot-note {

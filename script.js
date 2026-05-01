@@ -94,11 +94,35 @@ function getTwitchParents() {
   return [...new Set(parents)].map((parent) => `parent=${encodeURIComponent(parent)}`).join("&");
 }
 
+function isLocalHost() {
+  return ["localhost", "127.0.0.1", ""].includes(window.location.hostname);
+}
+
+function renderTwitchFallback(container, channel) {
+  const fallback = document.createElement("div");
+  fallback.className = "embed-fallback";
+  fallback.innerHTML = `
+    <div class="embed-fallback-inner">
+      <strong>Twitch embeds need HTTPS here.</strong>
+      <p>Open the stream directly for now. Once GitHub Pages has a valid HTTPS certificate for zacbatten.me and Enforce HTTPS is enabled, this embed can load on the custom domain.</p>
+      <a class="button primary" href="https://www.twitch.tv/${encodeURIComponent(channel)}" rel="noreferrer">Open on Twitch</a>
+    </div>
+  `;
+  container.appendChild(fallback);
+}
+
 function mountTwitchEmbeds() {
+  const isPlainPublicHttp = window.location.protocol !== "https:" && !isLocalHost();
   const parentQuery = getTwitchParents();
 
   twitchPlayers.forEach((container) => {
     const channel = container.dataset.channel || "zurra3";
+
+    if (isPlainPublicHttp) {
+      renderTwitchFallback(container, channel);
+      return;
+    }
+
     const iframe = document.createElement("iframe");
     iframe.title = `${channel} Twitch stream`;
     iframe.src = `https://player.twitch.tv/?channel=${encodeURIComponent(channel)}&autoplay=false&muted=false&${parentQuery}`;
@@ -110,6 +134,12 @@ function mountTwitchEmbeds() {
 
   twitchChats.forEach((container) => {
     const channel = container.dataset.channel || "zurra3";
+
+    if (isPlainPublicHttp) {
+      renderTwitchFallback(container, channel);
+      return;
+    }
+
     const iframe = document.createElement("iframe");
     iframe.title = `${channel} Twitch chat`;
     iframe.src = `https://www.twitch.tv/embed/${encodeURIComponent(channel)}/chat?darkpopout&${parentQuery}`;
