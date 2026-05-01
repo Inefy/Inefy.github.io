@@ -1,0 +1,2 @@
+[    7524ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://traverseops.app/#assets:0
+[    7633ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://koaxcshgcsxssfucwxvh.supabase.co/rest/v1/records?select=doc_id%2Cpayload%2Ccreated_at%2Cupdated_at&order=updated_at.desc:0

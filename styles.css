@@ -1020,7 +1020,7 @@ h3 {
 
 .stream-signal-board p,
 .movie-list-copy p,
-.movie-list-frame-wrap p,
+.movie-library-shell p,
 .bot-flow p,
 .bot-note p {
   color: var(--muted);
@@ -1083,7 +1083,7 @@ h3 {
 
 .stream-player-panel,
 .stream-chat-panel,
-.movie-list-frame-wrap {
+.movie-library-shell {
   overflow: hidden;
   background: rgba(5, 8, 8, 0.78);
   border: 1px solid rgba(248, 244, 232, 0.18);
@@ -1183,6 +1183,71 @@ h3 {
   margin-top: 28px;
 }
 
+.movie-list-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.movie-list-stats div {
+  padding: 16px;
+  background: rgba(248, 244, 232, 0.06);
+  border: 1px solid rgba(248, 244, 232, 0.14);
+  border-radius: 8px;
+}
+
+.movie-list-stats strong,
+.movie-list-stats span,
+.movie-library-toolbar span,
+.movie-position,
+.movie-meta,
+.movie-source {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.movie-list-stats strong {
+  display: block;
+  color: var(--gold);
+  font-size: clamp(1.45rem, 4vw, 2.4rem);
+  line-height: 1;
+}
+
+.movie-list-stats span,
+.movie-search-label {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.movie-search-label {
+  display: block;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.movie-search {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  color: var(--ink);
+  background: rgba(248, 244, 232, 0.08);
+  border: 1px solid rgba(248, 244, 232, 0.18);
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 800;
+}
+
+.movie-search::placeholder {
+  color: rgba(248, 244, 232, 0.52);
+}
+
+.movie-search:focus {
+  outline: 3px solid rgba(109, 225, 166, 0.6);
+  outline-offset: 3px;
+}
+
 .command-list {
   display: flex;
   flex-wrap: wrap;
@@ -1203,68 +1268,139 @@ h3 {
   font-weight: 700;
 }
 
-.movie-list-frame-wrap {
+.movie-library-shell {
   position: relative;
-  display: grid;
   min-height: 560px;
-  place-items: stretch;
-}
-
-.movie-list-card {
-  display: flex;
-  min-height: 100%;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: clamp(24px, 5vw, 44px);
+  padding: clamp(14px, 2vw, 18px);
   background:
-    linear-gradient(145deg, rgba(245, 196, 91, 0.22), transparent 52%),
-    radial-gradient(circle at 74% 18%, rgba(255, 111, 79, 0.2), transparent 22rem),
+    linear-gradient(145deg, rgba(245, 196, 91, 0.1), transparent 46%),
+    radial-gradient(circle at 88% 12%, rgba(255, 111, 79, 0.16), transparent 22rem),
     rgba(3, 6, 7, 0.94);
-  border: 1px solid rgba(248, 244, 232, 0.18);
-  border-radius: 8px;
 }
 
-.movie-list-card:hover {
-  border-color: rgba(245, 196, 91, 0.54);
+.movie-library-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
 }
 
-.provider-badge,
-.movie-list-id {
-  align-self: flex-start;
-  font-family: "JetBrains Mono", monospace;
+.movie-library-toolbar span {
+  color: var(--gold);
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.provider-badge {
-  margin-bottom: auto;
-  padding: 8px 10px;
-  color: #111413;
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
+  gap: 12px;
+}
+
+.movie-card {
+  position: relative;
+  display: grid;
+  min-height: 330px;
+  overflow: hidden;
+  background: rgba(248, 244, 232, 0.07);
+  border: 1px solid rgba(248, 244, 232, 0.14);
+  border-radius: 8px;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245, 196, 91, 0.54);
+  background: rgba(248, 244, 232, 0.1);
+}
+
+.movie-poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background:
+    linear-gradient(145deg, rgba(109, 225, 166, 0.12), transparent 52%),
+    rgba(248, 244, 232, 0.06);
+}
+
+.movie-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-card-body {
+  display: flex;
+  min-height: 132px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+}
+
+.movie-position {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 1;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
+  color: #07100d;
   background: var(--gold);
   border-radius: 8px;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
+  font-weight: 700;
 }
 
-.movie-list-card strong {
-  display: block;
-  max-width: 12ch;
-  margin-top: clamp(80px, 18vw, 170px);
-  margin-bottom: 18px;
-  font-family: "Space Grotesk", Inter, sans-serif;
-  font-size: clamp(2.2rem, 6vw, 5.8rem);
-  line-height: 0.9;
-  text-wrap: balance;
+.movie-card h3 {
+  display: -webkit-box;
+  min-height: 2.65em;
+  margin: 0;
+  overflow: hidden;
+  font-size: 1.02rem;
+  line-height: 1.18;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
-.movie-list-card p {
-  max-width: 58ch;
-  margin-bottom: 24px;
-  color: var(--soft);
+.movie-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
 }
 
-.movie-list-id {
+.movie-meta span {
+  min-height: 26px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 7px;
+  background: rgba(248, 244, 232, 0.07);
+  border: 1px solid rgba(248, 244, 232, 0.12);
+  border-radius: 8px;
+}
+
+.movie-source {
   color: var(--mint);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.movie-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 28px;
+  color: var(--soft);
+  background: rgba(248, 244, 232, 0.06);
+  border: 1px solid rgba(248, 244, 232, 0.14);
+  border-radius: 8px;
 }
 
 .bot-section {
@@ -1444,8 +1580,17 @@ h3 {
     min-height: 360px;
   }
 
-  .movie-list-frame-wrap {
+  .movie-library-shell {
     min-height: 420px;
+  }
+
+  .movie-library-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(138px, 1fr));
   }
 
   .bot-note {
@@ -1530,6 +1675,14 @@ h3 {
 
   .movie-list-copy .button {
     display: flex;
+  }
+
+  .movie-list-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
