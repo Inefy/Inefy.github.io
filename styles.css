@@ -128,6 +128,7 @@ h3 {
 .brand-copy,
 .nav,
 .hero-actions,
+.traverse-actions,
 .contact-actions,
 .site-footer,
 .project-meta,
@@ -319,6 +320,8 @@ h3 {
 
 .hero-text,
 .section-heading p,
+.traverse-lede,
+.traverse-detail-grid p,
 .contact-section p,
 .now-grid p,
 .project-card p,
@@ -357,6 +360,7 @@ h3 {
 }
 
 .hero-actions,
+.traverse-actions,
 .contact-actions {
   flex-wrap: wrap;
   gap: 12px;
@@ -539,6 +543,7 @@ h3 {
 
 .section,
 .systems-section,
+.traverse-section,
 .now-section,
 .contact-section,
 .note-strip,
@@ -701,6 +706,147 @@ h3 {
   color: var(--soft);
   background: rgba(248, 244, 232, 0.06);
   border-color: rgba(248, 244, 232, 0.14);
+}
+
+.traverse-section {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.72fr) minmax(360px, 1fr);
+  gap: clamp(24px, 5vw, 64px);
+  overflow: hidden;
+  align-items: center;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(104, 183, 255, 0.18), transparent 24rem),
+    linear-gradient(130deg, rgba(109, 225, 166, 0.12), transparent 48%),
+    #0a0e0f;
+  border-block: 1px solid var(--line);
+}
+
+.traverse-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background:
+    linear-gradient(rgba(248, 244, 232, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(248, 244, 232, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(90deg, black, transparent 84%);
+}
+
+.traverse-copy {
+  max-width: 680px;
+}
+
+.traverse-lede {
+  margin-bottom: 0;
+  color: var(--soft);
+  font-size: clamp(1.02rem, 1.7vw, 1.22rem);
+}
+
+.traverse-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.traverse-tags span {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: 0 10px;
+  color: var(--soft);
+  background: rgba(248, 244, 232, 0.08);
+  border: 1px solid rgba(248, 244, 232, 0.14);
+  border-radius: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.traverse-visual {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  background: rgba(5, 8, 8, 0.82);
+  border: 1px solid rgba(248, 244, 232, 0.18);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.traverse-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 14px;
+  background: rgba(248, 244, 232, 0.08);
+  border-bottom: 1px solid rgba(248, 244, 232, 0.14);
+}
+
+.traverse-window-bar span {
+  width: 11px;
+  aspect-ratio: 1;
+  background: var(--ember);
+  border-radius: 50%;
+}
+
+.traverse-window-bar span:nth-child(2) {
+  background: var(--gold);
+}
+
+.traverse-window-bar span:nth-child(3) {
+  background: var(--mint);
+}
+
+.traverse-window-bar strong {
+  margin-left: 8px;
+  color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+}
+
+.traverse-visual img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.traverse-detail-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.traverse-detail-grid article {
+  min-height: 236px;
+  padding: 26px;
+  background:
+    linear-gradient(145deg, rgba(104, 183, 255, 0.1), transparent 52%),
+    rgba(21, 26, 27, 0.9);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.traverse-detail-grid span {
+  display: block;
+  margin-bottom: 26px;
+  color: var(--gold);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.traverse-detail-grid p {
+  margin-bottom: 0;
 }
 
 .systems-section {
@@ -1591,6 +1737,14 @@ h3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .traverse-section {
+    grid-template-columns: 1fr;
+  }
+
+  .traverse-detail-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .project-card.featured {
     grid-column: span 2;
   }
@@ -1671,6 +1825,7 @@ h3 {
   .now-grid,
   .note-strip,
   .system-grid,
+  .traverse-detail-grid,
   .lab-layout {
     grid-template-columns: 1fr;
   }
@@ -1771,7 +1926,8 @@ h3 {
 
   .project-card,
   .now-grid article,
-  .system-grid article {
+  .system-grid article,
+  .traverse-detail-grid article {
     min-height: auto;
     padding: 22px;
   }

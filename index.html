@@ -23,6 +23,7 @@
       </a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="#projects">Projects</a>
+        <a href="#traverseops">TraverseOps</a>
         <a class="nav-cta" href="movie-night.html">Movie Night</a>
         <a href="#systems">Systems</a>
         <a href="#lab">Lab</a>
@@ -45,6 +46,7 @@
           </p>
           <div class="hero-badges" aria-label="Site focus areas">
             <span>Stream tools</span>
+            <span>Field ops</span>
             <span>Static web</span>
             <span>Small automations</span>
           </div>
@@ -80,7 +82,7 @@
 
       <section class="metric-band" aria-label="Workbench signals">
         <div>
-          <strong data-count="4">0</strong>
+          <strong data-count="5">0</strong>
           <span>active project lanes</span>
         </div>
         <div>
@@ -99,12 +101,16 @@
 
       <section class="ticker" aria-label="Project pulse">
         <div class="ticker-track">
+          <span>TraverseOps</span>
+          <span>Municipal field maps</span>
           <span>MovieBot</span>
           <span>OBS handoffs</span>
           <span>GitHub Pages</span>
           <span>Twitch chat tools</span>
           <span>Automation scraps</span>
           <span>Build notes</span>
+          <span>TraverseOps</span>
+          <span>Municipal field maps</span>
           <span>MovieBot</span>
           <span>OBS handoffs</span>
           <span>GitHub Pages</span>
@@ -161,6 +167,21 @@
             </div>
           </article>
 
+          <article class="project-card" data-tags="automation web">
+            <div class="project-meta">
+              <span><i aria-hidden="true"></i> Field ops</span>
+              <span>Maps / Supabase / Capacitor</span>
+            </div>
+            <h3>TraverseOps</h3>
+            <p>
+              A municipal field workspace for finding infrastructure on a map, logging inspections, creating work orders, and keeping asset records synced.
+            </p>
+            <div class="card-actions">
+              <a href="#traverseops">Read spotlight</a>
+              <a href="https://traverseops.app" rel="noreferrer">Open app</a>
+            </div>
+          </article>
+
           <article class="project-card" data-tags="automation ideas">
             <div class="project-meta">
               <span><i aria-hidden="true"></i> Prototype lane</span>
@@ -187,6 +208,59 @@
             <div class="card-actions">
               <a href="#contact">Pitch an idea</a>
             </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="traverse-section" id="traverseops" aria-labelledby="traverse-title">
+        <div class="traverse-copy">
+          <p class="eyebrow">Project Spotlight</p>
+          <h2 id="traverse-title">TraverseOps turns field work into a shared map.</h2>
+          <p class="traverse-lede">
+            I built TraverseOps as a focused municipal operations app for crews who need to find assets, record what happened on site, and turn problems into trackable work without bouncing between paper notes, spreadsheets, and separate map tools.
+          </p>
+          <div class="traverse-actions">
+            <a class="button primary" href="https://traverseops.app" rel="noreferrer">Open TraverseOps</a>
+            <a class="button secondary" href="#contact">Ask about the build</a>
+          </div>
+          <div class="traverse-tags" aria-label="TraverseOps build stack">
+            <span>MapLibre</span>
+            <span>Supabase</span>
+            <span>Offline-aware sync</span>
+            <span>Capacitor shell</span>
+          </div>
+        </div>
+
+        <figure class="traverse-visual">
+          <div class="traverse-window-bar" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <strong>traverseops.app</strong>
+          </div>
+          <img src="assets/traverseops-workspace.png" alt="TraverseOps field workspace showing a municipal asset map and selected asset panel" loading="lazy" decoding="async">
+        </figure>
+
+        <div class="traverse-detail-grid" aria-label="TraverseOps project details">
+          <article>
+            <span>What I Made</span>
+            <h3>One operations workspace</h3>
+            <p>A browser-first app that brings the asset map, registry, inspections, work orders, and reports into one field-friendly interface.</p>
+          </article>
+          <article>
+            <span>How It Is Used</span>
+            <h3>Tap, update, assign</h3>
+            <p>Crews search for an asset, open it from the map or list, update status, attach notes or photos, and create work orders for follow-up.</p>
+          </article>
+          <article>
+            <span>Why It Exists</span>
+            <h3>Less record chasing</h3>
+            <p>The goal is to keep office and field teams looking at the same operational picture instead of reconciling scattered notes later.</p>
+          </article>
+          <article>
+            <span>Build Notes</span>
+            <h3>Static app, real backend</h3>
+            <p>The front end is static HTML, CSS, and JavaScript, with MapLibre for mapping, Supabase for shared data, and Capacitor for native packaging.</p>
           </article>
         </div>
       </section>
