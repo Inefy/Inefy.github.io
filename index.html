@@ -4,6 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Zac Batten's Inefy workbench: stream tools, movie-night bots, useful automations, and personal build notes.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="Zac Batten / Inefy Workbench">
+    <meta property="og:description" content="Featured builds from Zac Batten: MovieBot, TraverseOps, static web tools, and build notes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zacbatten.me/">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image:alt" content="Inefy workbench homepage preview with featured project cards.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zac Batten / Inefy Workbench">
+    <meta name="twitter:description" content="MovieBot, TraverseOps, static web tools, and build notes from Zac Batten.">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <title>Zac Batten / Inefy Workbench</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +25,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#projects">Skip to projects</a>
+    <a class="skip-link" href="#featured-builds">Skip to featured builds</a>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
@@ -22,9 +35,10 @@
         </span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#projects">Projects</a>
+        <a href="#featured-builds">Featured builds</a>
         <a href="#traverseops">TraverseOps</a>
         <a class="nav-cta" href="movie-night.html">Movie Night</a>
+        <a href="notes.html">Notes</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -44,7 +58,7 @@
             <span>Small automations</span>
           </div>
           <div class="hero-actions">
-            <a class="button primary" href="#projects">Open the workbench</a>
+            <a class="button primary" href="#featured-builds">View featured builds</a>
             <button class="button secondary" type="button" id="shuffle-vibe">Shuffle vibe</button>
             <a class="button ghost" href="https://github.com/Inefy" rel="noreferrer">GitHub</a>
           </div>
@@ -62,8 +76,8 @@
           </div>
           <div>
             <span class="dock-label">Local signal</span>
-            <strong id="local-time">--:--</strong>
-            <p>Newfoundland time, usually late enough for another experiment.</p>
+            <strong id="local-time">Newfoundland</strong>
+            <p>Clock uses America/St. John's, not visitor-local time.</p>
           </div>
           <div>
             <span class="dock-label">House rule</span>
@@ -75,7 +89,7 @@
 
       <section class="metric-band" aria-label="Workbench signals">
         <div>
-          <strong data-count="5">0</strong>
+          <strong>5</strong>
           <span>active project lanes</span>
         </div>
         <div>
@@ -113,90 +127,120 @@
         </div>
       </section>
 
-      <section class="section" id="projects">
+      <section class="section" id="featured-builds">
         <div class="section-heading">
-          <p class="eyebrow">Workbench</p>
-          <h2>Tools with fingerprints on them.</h2>
+          <p class="eyebrow">Featured builds</p>
+          <h2>Proof, not just project names.</h2>
           <p>
-            This is not a polished trophy case. It is the bench: finished pieces, useful half-ideas, and the little experiments that make streams and projects less repetitive.
+            Each build here shows the state it is in, the stack behind it, the problem it solves, and the part I personally built.
           </p>
         </div>
 
-        <div class="filter-bar" aria-label="Filter projects">
+        <div class="filter-bar" aria-label="Filter featured builds">
           <button class="filter-button active" type="button" data-filter="all">All</button>
           <button class="filter-button" type="button" data-filter="automation">Automation</button>
           <button class="filter-button" type="button" data-filter="stream">Stream</button>
+          <button class="filter-button" type="button" data-filter="field">Field ops</button>
           <button class="filter-button" type="button" data-filter="web">Web</button>
-          <button class="filter-button" type="button" data-filter="ideas">Ideas</button>
         </div>
 
         <div class="project-grid">
           <article class="project-card featured" data-tags="automation stream">
             <div class="project-meta">
-              <span><i aria-hidden="true"></i> Featured</span>
+              <span><i aria-hidden="true"></i> Public repo</span>
               <span>Python / Twitch / OBS</span>
             </div>
             <h3>MovieBot</h3>
             <p>
               A Twitch chat bot for public domain movie nights. Chat votes, the bot counts, and OBS gets nudged along so the stream can feel more like a show than a checklist.
             </p>
+            <dl class="proof-list">
+              <div>
+                <dt>Status</dt>
+                <dd>Live showcase page and public GitHub repo.</dd>
+              </div>
+              <div>
+                <dt>Stack</dt>
+                <dd>Python, TwitchIO, OBS WebSocket, static HTML/CSS/JS.</dd>
+              </div>
+              <div>
+                <dt>Problem</dt>
+                <dd>Movie-night voting, queue checks, and media-source swaps were too manual.</dd>
+              </div>
+              <div>
+                <dt>Built</dt>
+                <dd>Vote commands, result handling, token refresh, OBS handoff, and the public movie pages.</dd>
+              </div>
+            </dl>
             <div class="card-actions">
               <a href="movie-night.html">Open page</a>
               <a href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">View repo</a>
             </div>
           </article>
 
-          <article class="project-card" data-tags="web">
+          <article class="project-card" data-tags="automation field web">
             <div class="project-meta">
-              <span><i aria-hidden="true"></i> Live site</span>
-              <span>HTML / CSS / JS</span>
-            </div>
-            <h3>zacbatten.me</h3>
-            <p>
-              The public workbench itself: a tiny static site with enough motion, attitude, and room to keep changing as the projects get sharper.
-            </p>
-            <div class="card-actions">
-              <a href="https://github.com/Inefy/Inefy.github.io" rel="noreferrer">View source</a>
-            </div>
-          </article>
-
-          <article class="project-card" data-tags="automation web">
-            <div class="project-meta">
-              <span><i aria-hidden="true"></i> Field ops</span>
-              <span>Maps / Supabase / Capacitor</span>
+              <span><i aria-hidden="true"></i> Public demo</span>
+              <span>MapLibre / Supabase / Capacitor</span>
             </div>
             <h3>TraverseOps</h3>
             <p>
               A municipal field workspace for finding infrastructure on a map, logging inspections, creating work orders, and keeping asset records synced.
             </p>
+            <dl class="proof-list">
+              <div>
+                <dt>Status</dt>
+                <dd>Demo workspace and case-study page; sample data, not a live deployment.</dd>
+              </div>
+              <div>
+                <dt>Stack</dt>
+                <dd>MapLibre, Supabase, Capacitor, offline-aware browser UI.</dd>
+              </div>
+              <div>
+                <dt>Problem</dt>
+                <dd>Field crews need one place for maps, inspections, work orders, and records.</dd>
+              </div>
+              <div>
+                <dt>Built</dt>
+                <dd>Asset map flows, detail panels, inspection/work-order screens, and sync-oriented app structure.</dd>
+              </div>
+            </dl>
             <div class="card-actions">
               <a href="#traverseops">Read spotlight</a>
-              <a href="https://traverseops.app" rel="noreferrer">Open app</a>
+              <a href="https://traverseops.app" rel="noreferrer">Open demo</a>
             </div>
           </article>
 
-          <article class="project-card" data-tags="automation ideas">
+          <article class="project-card" data-tags="web">
             <div class="project-meta">
-              <span><i aria-hidden="true"></i> Prototype lane</span>
-              <span>Scripts / Helpers</span>
+              <span><i aria-hidden="true"></i> Live site</span>
+              <span>GitHub Pages / HTML / CSS / JS</span>
             </div>
-            <h3>Manual task detector</h3>
+            <h3>zacbatten.me</h3>
             <p>
-              A parking spot for the next tiny tool that starts as "why am I doing this by hand again?" and ends as a command, checklist, or widget.
+              The public workbench itself: a static site for featured builds, notes, link previews, and the project trail behind the work.
             </p>
-          </article>
-
-          <article class="project-card muted-card" data-tags="stream ideas">
-            <div class="project-meta">
-              <span><i aria-hidden="true"></i> Open slot</span>
-              <span>Next stream toy</span>
-            </div>
-            <h3>Chat-powered side quest</h3>
-            <p>
-              A small future build for overlays, polls, scene cues, or anything that lets the audience poke the edges of the stream without derailing it.
-            </p>
+            <dl class="proof-list">
+              <div>
+                <dt>Status</dt>
+                <dd>Live on GitHub Pages with the custom domain wired in.</dd>
+              </div>
+              <div>
+                <dt>Stack</dt>
+                <dd>Static HTML, CSS, JavaScript, Open Graph metadata, no-JS fallbacks.</dd>
+              </div>
+              <div>
+                <dt>Problem</dt>
+                <dd>Project links needed a clearer home with proof and context.</dd>
+              </div>
+              <div>
+                <dt>Built</dt>
+                <dd>Responsive visual system, featured cards, movie library, metadata, and build-log archive.</dd>
+              </div>
+            </dl>
             <div class="card-actions">
-              <a href="#contact">Pitch an idea</a>
+              <a href="notes.html">Read notes</a>
+              <a href="https://github.com/Inefy/Inefy.github.io" rel="noreferrer">View source</a>
             </div>
           </article>
         </div>
@@ -205,15 +249,17 @@
       <section class="traverse-section" id="traverseops" aria-labelledby="traverse-title">
         <div class="traverse-copy">
           <p class="eyebrow">Project Spotlight</p>
+          <span class="status-badge">Public demo / case study</span>
           <h2 id="traverse-title">TraverseOps turns field work into a shared map.</h2>
           <p class="traverse-lede">
-            I built TraverseOps as a focused municipal operations app for crews who need to find assets, record what happened on site, and turn problems into trackable work without bouncing between paper notes, spreadsheets, and separate map tools.
+            I built TraverseOps as a focused municipal operations app for crews who need to find assets, record what happened on site, and turn problems into trackable work. The public app is a demo workspace with sample data, not an active municipal deployment.
           </p>
           <div class="traverse-actions">
-            <a class="button primary" href="https://traverseops.app" rel="noreferrer">Open TraverseOps</a>
+            <a class="button primary" href="https://traverseops.app" rel="noreferrer">Open TraverseOps demo</a>
             <a class="button secondary" href="#contact">Ask about the build</a>
           </div>
           <div class="traverse-tags" aria-label="TraverseOps build stack">
+            <span>Demo workspace</span>
             <span>MapLibre</span>
             <span>Supabase</span>
             <span>Offline-aware sync</span>
@@ -235,7 +281,7 @@
           <article>
             <span>What I Made</span>
             <h3>One operations workspace</h3>
-            <p>A browser-first app that brings the asset map, registry, inspections, work orders, and reports into one field-friendly interface.</p>
+            <p>A browser-first demo app that brings the asset map, registry, inspections, work orders, and reports into one field-friendly interface.</p>
           </article>
           <article>
             <span>How It Is Used</span>
@@ -249,8 +295,8 @@
           </article>
           <article>
             <span>Build Notes</span>
-            <h3>Static app, real backend</h3>
-            <p>The front end is static HTML, CSS, and JavaScript, with MapLibre for mapping, Supabase for shared data, and Capacitor for native packaging.</p>
+            <h3>Demo data, real app shape</h3>
+            <p>The public demo uses sample records to show the workflow. The front end is static HTML, CSS, and JavaScript, with MapLibre for mapping, Supabase for data, and Capacitor for packaging.</p>
           </article>
         </div>
       </section>
@@ -268,6 +314,34 @@
           <span class="note-kicker">Why Inefy</span>
           <p>A short handle for the experiments, repos, and tools I want under one roof.</p>
         </article>
+      </section>
+
+      <section class="section notes-preview" id="notes" aria-labelledby="notes-title">
+        <div class="section-heading">
+          <p class="eyebrow">Notes / Build logs</p>
+          <h2 id="notes-title">The setup trails now have a home.</h2>
+          <p>
+            Short notes for what changed, why it changed, and what I would want to remember before touching the project again.
+          </p>
+          <a class="button primary" href="notes.html">Open build logs</a>
+        </div>
+        <div class="build-log-grid">
+          <article>
+            <span>2026-05-01</span>
+            <h3>Portfolio cleanup pass</h3>
+            <p>Made the homepage truthful without JavaScript, added social metadata, and gave the featured builds proof points.</p>
+          </article>
+          <article>
+            <span>2026-04-30</span>
+            <h3>Movie-night pages</h3>
+            <p>Split the stream page from the movie library so the live room stays focused and the poster wall has room to breathe.</p>
+          </article>
+          <article>
+            <span>2026-04-29</span>
+            <h3>TraverseOps framing</h3>
+            <p>Marked the public app as a demo workspace and moved the explanation toward a case-study style spotlight.</p>
+          </article>
+        </div>
       </section>
 
       <section class="now-section" id="now">
@@ -289,7 +363,7 @@
           <article>
             <span class="chip">Notes</span>
             <h3>Leaving setup trails</h3>
-            <p>Writing down tradeoffs and tiny setup details before I forget why the build works the way it does.</p>
+            <p>Writing down tradeoffs and tiny setup details in the <a class="text-link" href="notes.html">build logs</a> before I forget why the build works the way it does.</p>
           </article>
         </div>
       </section>

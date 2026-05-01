@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Build logs from Zac Batten's Inefy workbench: short notes on MovieBot, TraverseOps, the personal site, and small automation work.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/notes.html">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="Notes / Build Logs / Inefy Workbench">
+    <meta property="og:description" content="Short build logs for MovieBot, TraverseOps, the personal site, and small automation work.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zacbatten.me/notes.html">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image:alt" content="Inefy workbench notes and build logs page preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Notes / Build Logs / Inefy Workbench">
+    <meta name="twitter:description" content="Short build logs for MovieBot, TraverseOps, the personal site, and small automation work.">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <title>Notes / Build Logs / Inefy Workbench</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#build-logs">Skip to build logs</a>
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+        <span class="brand-mark" aria-hidden="true">ZB</span>
+        <span class="brand-copy">
+          <span>Zac Batten</span>
+          <small>Inefy workbench</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#featured-builds">Featured builds</a>
+        <a href="index.html#traverseops">TraverseOps</a>
+        <a href="movie-night.html">Movie Night</a>
+        <a class="nav-cta" href="#build-logs" aria-current="page">Notes</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top" class="notes-page">
+      <section class="section notes-hero" aria-labelledby="notes-title">
+        <div class="section-heading">
+          <p class="eyebrow">Notes / Build logs</p>
+          <h1 id="notes-title">Setup trails for the workbench.</h1>
+          <p>
+            Short entries on what changed, what problem the change solved, and the next useful edge to check.
+          </p>
+        </div>
+      </section>
+
+      <section class="section build-log-section" id="build-logs" aria-labelledby="build-log-title">
+        <div class="section-heading">
+          <p class="eyebrow">Archive</p>
+          <h2 id="build-log-title">Recent build logs.</h2>
+        </div>
+
+        <div class="build-log-list">
+          <article>
+            <div class="build-log-meta">
+              <time datetime="2026-05-01">2026-05-01</time>
+              <span>Site</span>
+            </div>
+            <h3>Portfolio cleanup pass</h3>
+            <p>
+              Tightened the homepage around featured builds, changed the primary CTA to "View featured builds," added Open Graph/Twitter/canonical metadata, made the active-lane metric truthful in HTML, and switched the clock to actual Newfoundland time.
+            </p>
+            <dl class="proof-list">
+              <div>
+                <dt>Status</dt>
+                <dd>Shipped locally for the next GitHub Pages publish.</dd>
+              </div>
+              <div>
+                <dt>Next check</dt>
+                <dd>Confirm social previews after deployment because preview scrapers cache aggressively.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article>
+            <div class="build-log-meta">
+              <time datetime="2026-04-30">2026-04-30</time>
+              <span>MovieBot</span>
+            </div>
+            <h3>Stream page and movie library split</h3>
+            <p>
+              Kept the live Twitch room focused on watching and voting, then moved the full public-domain queue into its own searchable movie-library page.
+            </p>
+            <dl class="proof-list">
+              <div>
+                <dt>Status</dt>
+                <dd>Live page structure with a no-JavaScript static list fallback.</dd>
+              </div>
+              <div>
+                <dt>Next check</dt>
+                <dd>Keep the movie data source and the static fallback list in sync when titles change.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article>
+            <div class="build-log-meta">
+              <time datetime="2026-04-29">2026-04-29</time>
+              <span>TraverseOps</span>
+            </div>
+            <h3>Demo state made explicit</h3>
+            <p>
+              Reframed TraverseOps as a public demo and case-study project so visitors can understand the app shape without mistaking the demo workspace for a live municipal deployment.
+            </p>
+            <dl class="proof-list">
+              <div>
+                <dt>Status</dt>
+                <dd>Demo badge and sample-data language are now visible on the homepage spotlight.</dd>
+              </div>
+              <div>
+                <dt>Next check</dt>
+                <dd>Add a fuller case-study page if the app needs screenshots, user flows, and implementation notes in one place.</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>&copy; <span id="year">2026</span> Zac Batten</span>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -9,7 +9,6 @@ const vibeButton = document.querySelector("#shuffle-vibe");
 const focusOutput = document.querySelector("#focus-output");
 const filterButtons = document.querySelectorAll("[data-filter]");
 const projectCards = document.querySelectorAll("[data-tags]");
-const counters = document.querySelectorAll("[data-count]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const twitchPlayers = document.querySelectorAll("[data-twitch-player]");
 const twitchChats = document.querySelectorAll("[data-twitch-chat]");
@@ -179,16 +178,12 @@ function syncPressedState(buttons) {
 
 function updateLocalTime() {
   if (!localTime) return;
-  localTime.textContent = new Intl.DateTimeFormat([], {
+  localTime.textContent = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/St_Johns",
     hour: "2-digit",
-    minute: "2-digit"
+    minute: "2-digit",
+    timeZoneName: "short"
   }).format(new Date());
-}
-
-function setCounterFinals() {
-  counters.forEach((counter) => {
-    counter.textContent = counter.dataset.count;
-  });
 }
 
 function getTwitchParents() {
@@ -358,9 +353,7 @@ filterButtons.forEach((button) => {
   });
 });
 
-if (prefersReducedMotion) {
-  setCounterFinals();
-} else {
+if (!prefersReducedMotion) {
   window.addEventListener("pointermove", (event) => {
     body.style.setProperty("--mouse-x", `${event.clientX}px`);
     body.style.setProperty("--mouse-y", `${event.clientY}px`);
@@ -371,29 +364,5 @@ if (prefersReducedMotion) {
       focusIndex = (focusIndex + 1) % focusLines.length;
       focusOutput.textContent = focusLines[focusIndex];
     }, 5000);
-  }
-
-  if (counters.length > 0) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-
-        const target = entry.target;
-        const end = Number(target.dataset.count);
-        let current = 0;
-        const step = () => {
-          current += 1;
-          target.textContent = String(current);
-          if (current < end) {
-            window.requestAnimationFrame(step);
-          }
-        };
-
-        step();
-        observer.unobserve(target);
-      });
-    }, { threshold: 0.5 });
-
-    counters.forEach((counter) => observer.observe(counter));
   }
 }
