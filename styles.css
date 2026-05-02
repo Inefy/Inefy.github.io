@@ -298,7 +298,6 @@ h3 {
 .traverse-lede,
 .traverse-detail-grid p,
 .contact-section p,
-.now-grid p,
 .project-card p,
 .hero-dock p {
   color: var(--muted);
@@ -433,8 +432,7 @@ h3 {
 
 .dock-label,
 .project-meta,
-.note-kicker,
-.chip {
+.note-kicker {
   font-family: "JetBrains Mono", monospace;
   font-size: 0.76rem;
   font-weight: 700;
@@ -524,7 +522,6 @@ h3 {
 
 .section,
 .traverse-section,
-.now-section,
 .contact-section,
 .note-strip {
   padding: clamp(58px, 8vw, 116px) clamp(18px, 5vw, 76px);
@@ -563,15 +560,13 @@ h3 {
   border-color: var(--mint);
 }
 
-.project-grid,
-.now-grid {
+.project-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
-.project-card,
-.now-grid article {
+.project-card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -601,8 +596,7 @@ h3 {
   transform: translate(24px, -24px);
 }
 
-.project-card:hover,
-.now-grid article:hover {
+.project-card:hover {
   transform: translateY(-4px);
   border-color: rgba(245, 196, 91, 0.5);
 }
@@ -980,42 +974,6 @@ h3 {
   text-decoration: underline;
   text-decoration-color: currentColor;
   text-underline-offset: 3px;
-}
-
-.now-section {
-  background: #f8f4e8;
-  color: #171918;
-}
-
-.now-section .eyebrow {
-  color: #c44d38;
-}
-
-.now-section .section-heading p,
-.now-grid p {
-  color: #5f625b;
-}
-
-.now-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.now-grid article {
-  min-height: 268px;
-  background:
-    linear-gradient(145deg, rgba(109, 225, 166, 0.18), transparent 52%),
-    #ffffff;
-  border-color: #ded7c7;
-}
-
-.chip {
-  display: inline-flex;
-  margin-bottom: 28px;
-  padding: 6px 10px;
-  color: #171918;
-  background: #e7f6dc;
-  border: 1px solid #cbdfbd;
-  border-radius: 8px;
 }
 
 .contact-section {
@@ -1870,7 +1828,6 @@ h3 {
   .hero-dock,
   .metric-band,
   .project-grid,
-  .now-grid,
   .build-log-grid,
   .note-strip,
   .traverse-detail-grid {
@@ -1972,7 +1929,6 @@ h3 {
   }
 
   .project-card,
-  .now-grid article,
   .traverse-detail-grid article {
     min-height: auto;
     padding: 22px;
