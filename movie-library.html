@@ -11,12 +11,14 @@
     <meta property="og:description" content="Browse the public domain movie-night queue with titles, years, runtimes, ratings, and a no-JavaScript fallback.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/movie-library.html">
-    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image" content="https://zacbatten.me/assets/movie-library-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Public domain movie library preview with poster wall.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Public Domain Movie Library / Zurra3 Movie Night">
     <meta name="twitter:description" content="Public domain movie-night queue with search and a static fallback list.">
-    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta name="twitter:image" content="https://zacbatten.me/assets/movie-library-preview.png">
     <title>Public Domain Movie Library / Zurra3 Movie Night</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,7 +74,7 @@
 
         <div class="movie-library-shell">
           <div class="movie-library-toolbar">
-            <span data-movie-results>Showing all 110 movies</span>
+            <span data-movie-results aria-live="polite" aria-atomic="true">Showing all 110 movies</span>
             <button class="filter-button" type="button" data-movie-clear>Clear</button>
           </div>
           <noscript>

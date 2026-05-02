@@ -259,6 +259,32 @@ function posterUrl(url) {
   return url.replace(/\._V1_.*\.jpg$/, "._V1_QL75_UX260_.jpg");
 }
 
+function voteCommand(title) {
+  return `!vote ${title}`;
+}
+
+async function copyTextToClipboard(value) {
+  if (navigator.clipboard && window.isSecureContext) {
+    await navigator.clipboard.writeText(value);
+    return;
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = value;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.top = "-9999px";
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  const didCopy = document.execCommand("copy");
+  textarea.remove();
+
+  if (!didCopy) {
+    throw new Error("Copy command failed");
+  }
+}
+
 function renderMovieList(movies) {
   if (!movieGrid) return;
 
@@ -278,21 +304,26 @@ function renderMovieList(movies) {
   }
 
   movieGrid.innerHTML = movies.map((movie) => `
-    <a class="movie-card" href="${movie.imdb}" rel="noreferrer" aria-label="${escapeHtml(movie.title)} on IMDb">
+    <article class="movie-card">
       <span class="movie-position">#${String(movie.position).padStart(2, "0")}</span>
-      <div class="movie-poster">
-        <img src="${posterUrl(movie.poster)}" alt="${escapeHtml(movie.title)} poster" loading="lazy" decoding="async">
-      </div>
-      <div class="movie-card-body">
-        <h3>${escapeHtml(movie.title)}</h3>
-        <div class="movie-meta" aria-label="${escapeHtml(movie.title)} details">
-          <span>${movie.year}</span>
-          <span>${movie.runtime}</span>
-          <span>IMDb ${movie.rating}</span>
+      <a class="movie-card-link" href="${movie.imdb}" rel="noreferrer" aria-label="${escapeHtml(movie.title)} on IMDb">
+        <div class="movie-poster">
+          <img src="${posterUrl(movie.poster)}" alt="${escapeHtml(movie.title)} poster" loading="lazy" decoding="async" width="260" height="390">
         </div>
-        <span class="movie-source">Open IMDb</span>
+        <div class="movie-card-body">
+          <h3>${escapeHtml(movie.title)}</h3>
+          <div class="movie-meta" aria-label="${escapeHtml(movie.title)} details">
+            <span>${movie.year}</span>
+            <span>${movie.runtime}</span>
+            <span>IMDb ${movie.rating}</span>
+          </div>
+          <span class="movie-source">Open IMDb</span>
+        </div>
+      </a>
+      <div class="movie-card-actions">
+        <button class="movie-copy" type="button" data-vote="${escapeHtml(voteCommand(movie.title))}" aria-label="${escapeHtml(`Copy vote command for ${movie.title}`)}">Copy !vote</button>
       </div>
-    </a>
+    </article>
   `).join("");
 }
 
@@ -325,6 +356,31 @@ if (movieClearButton && movieSearch) {
     renderMovieList(movieNightMovies);
   });
 }
+
+document.addEventListener("click", async (event) => {
+  const button = event.target instanceof Element
+    ? event.target.closest("[data-vote]")
+    : null;
+
+  if (!button) return;
+
+  const originalText = button.dataset.originalText || button.textContent;
+  button.dataset.originalText = originalText;
+  button.disabled = true;
+
+  try {
+    await copyTextToClipboard(button.dataset.vote);
+    button.textContent = "Copied";
+  } catch {
+    button.textContent = "Copy failed";
+  }
+
+  window.clearTimeout(Number(button.dataset.resetTimer));
+  button.dataset.resetTimer = String(window.setTimeout(() => {
+    button.textContent = button.dataset.originalText || "Copy !vote";
+    button.disabled = false;
+  }, 1800));
+});
 
 if (vibeButton) {
   vibeButton.addEventListener("click", () => {

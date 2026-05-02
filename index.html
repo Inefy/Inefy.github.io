@@ -17,6 +17,35 @@
     <meta name="twitter:title" content="Zac Batten / Inefy Workbench">
     <meta name="twitter:description" content="MovieBot, TraverseOps, static web tools, and build notes from Zac Batten.">
     <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "name": "Zac Batten",
+            "url": "https://zacbatten.me/",
+            "sameAs": ["https://github.com/Inefy"],
+            "knowsAbout": [
+              "Twitch tools",
+              "OBS automation",
+              "static websites",
+              "field operations apps",
+              "helper scripts"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "name": "Inefy Workbench",
+            "url": "https://zacbatten.me/",
+            "author": {
+              "@type": "Person",
+              "name": "Zac Batten"
+            }
+          }
+        ]
+      }
+    </script>
     <title>Zac Batten / Inefy Workbench</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,6 +80,9 @@
           <p class="hero-text">
             I build small internet machines: Twitch tools, movie-night bots, GitHub Pages experiments, and helper scripts that turn recurring annoyances into buttons.
           </p>
+          <p class="hero-proof">
+            I turn repeated manual workflows into small, reliable web tools people can actually use.
+          </p>
           <div class="hero-badges" aria-label="Site focus areas">
             <span>Stream tools</span>
             <span>Field ops</span>
@@ -59,12 +91,13 @@
           </div>
           <div class="hero-actions">
             <a class="button primary" href="#featured-builds">View featured builds</a>
-            <button class="button secondary" type="button" id="shuffle-vibe">Shuffle vibe</button>
+            <a class="button secondary" href="mailto:hello@zacbatten.me?subject=Build%20question">Ask about a build</a>
             <a class="button ghost" href="https://github.com/Inefy" rel="noreferrer">GitHub</a>
+            <button class="button ghost" type="button" id="shuffle-vibe">Shuffle vibe</button>
           </div>
           <div class="command-strip" aria-label="Current focus">
             <span class="prompt">$ now</span>
-            <span id="focus-output">tuning MovieBot, polishing the site, and catching the next tiny automation idea</span>
+            <span id="focus-output" aria-live="polite">tuning MovieBot, polishing the site, and catching the next tiny automation idea</span>
           </div>
         </div>
 
@@ -168,6 +201,10 @@
                 <dd>Movie-night voting, queue checks, and media-source swaps were too manual.</dd>
               </div>
               <div>
+                <dt>Result</dt>
+                <dd>Turns chat votes into a watch-party queue without manual tallying.</dd>
+              </div>
+              <div>
                 <dt>Built</dt>
                 <dd>Vote commands, result handling, token refresh, OBS handoff, and the public movie pages.</dd>
               </div>
@@ -201,6 +238,10 @@
                 <dd>Field crews need one place for maps, inspections, work orders, and records.</dd>
               </div>
               <div>
+                <dt>Result</dt>
+                <dd>Condenses daily field ops into one glanceable command view.</dd>
+              </div>
+              <div>
                 <dt>Built</dt>
                 <dd>Asset map flows, detail panels, inspection/work-order screens, and sync-oriented app structure.</dd>
               </div>
@@ -232,6 +273,10 @@
               <div>
                 <dt>Problem</dt>
                 <dd>Project links needed a clearer home with proof and context.</dd>
+              </div>
+              <div>
+                <dt>Result</dt>
+                <dd>Shows live project proof without needing a framework or CMS.</dd>
               </div>
               <div>
                 <dt>Built</dt>
@@ -274,7 +319,10 @@
             <span></span>
             <strong>traverseops.app</strong>
           </div>
-          <img src="assets/traverseops-workspace.png" alt="TraverseOps field workspace showing a municipal asset map and selected asset panel" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="assets/traverseops-workspace.webp" type="image/webp">
+            <img src="assets/traverseops-workspace.png" alt="TraverseOps field workspace showing a municipal asset map and selected asset panel" loading="lazy" decoding="async" width="1440" height="1100">
+          </picture>
         </figure>
 
         <div class="traverse-detail-grid" aria-label="TraverseOps project details">
