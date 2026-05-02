@@ -256,7 +256,18 @@ function escapeHtml(value) {
 }
 
 function posterUrl(url) {
-  return url.replace(/\._V1_.*\.jpg$/, "._V1_QL75_UX260_.jpg");
+  const cropMatch = url.match(/\._V1_QL75_U([XY])(\d+)_CR(\d+),(\d+),(\d+),(\d+)_\.jpg$/);
+  if (!cropMatch) return url;
+
+  const [, axis, size, cropX, cropY, cropWidth, cropHeight] = cropMatch;
+  const scale = 260 / Number(size);
+  const scaledCrop = [cropX, cropY, cropWidth, cropHeight]
+    .map((value) => Math.round(Number(value) * scale));
+
+  return url.replace(
+    /\._V1_QL75_U[XY]\d+_CR\d+,\d+,\d+,\d+_\.jpg$/,
+    `._V1_QL75_U${axis}260_CR${scaledCrop.join(",")}_.jpg`
+  );
 }
 
 function voteCommand(title) {
