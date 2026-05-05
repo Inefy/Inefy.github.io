@@ -294,6 +294,45 @@
         gap: 6px;
       }
 
+      .canvas-size-stack {
+        display: grid;
+        grid-template-columns: repeat(2, 84px) repeat(2, 64px);
+        align-items: end;
+        gap: 8px;
+      }
+
+      .size-label {
+        display: grid;
+        gap: 5px;
+        color: #44546a;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .size-label input {
+        width: 84px;
+        height: 34px;
+        padding: 0 8px;
+        color: var(--text);
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+      }
+
+      .size-action-button {
+        height: 34px;
+        color: #22324a;
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: var(--radius-sm);
+        font-weight: 700;
+      }
+
+      .size-action-button:hover {
+        background: #f2f7ff;
+        border-color: #cfe0f8;
+      }
+
       .mini-command-button {
         min-width: 82px;
         height: 28px;
@@ -819,6 +858,24 @@
             </div>
             <div class="ribbon-group-label">Canvas</div>
           </section>
+
+          <section class="ribbon-group view-only" aria-label="Canvas size">
+            <div class="ribbon-group-body">
+              <div class="canvas-size-stack">
+                <label class="size-label">
+                  Width
+                  <input id="canvasWidthInput" type="number" min="64" max="4096" step="1" value="1024">
+                </label>
+                <label class="size-label">
+                  Height
+                  <input id="canvasHeightInput" type="number" min="64" max="4096" step="1" value="768">
+                </label>
+                <button class="size-action-button" id="applyCanvasSizeButton" type="button">Apply</button>
+                <button class="size-action-button" id="resetCanvasSizeButton" type="button">Reset</button>
+              </div>
+            </div>
+            <div class="ribbon-group-label">Canvas Size</div>
+          </section>
         </div>
       </section>
 
@@ -858,7 +915,7 @@
           <span class="status-divider"></span>
           <span class="status-item" id="cursorStatus">✣ 0, 0px</span>
           <span class="status-divider"></span>
-          <span class="status-item">▣ 1024 × 768px</span>
+          <span class="status-item" id="canvasSizeStatus">▣ 1024 × 768px</span>
           <span class="status-divider"></span>
           <span class="status-item">▰ Layer 1</span>
         </div>
@@ -883,6 +940,7 @@
       const selectionBox = document.querySelector("#selectionBox");
       const toolStatus = document.querySelector("#toolStatus");
       const cursorStatus = document.querySelector("#cursorStatus");
+      const canvasSizeStatus = document.querySelector("#canvasSizeStatus");
       const zoomStatus = document.querySelector("#zoomStatus");
       const primaryColorPreview = document.querySelector("#primaryColorPreview");
       const zoomInput = document.querySelector("#zoomInput");
@@ -909,6 +967,10 @@
       const viewFitButton = document.querySelector("#viewFitButton");
       const resetViewButton = document.querySelector("#resetViewButton");
       const fullscreenRibbonButton = document.querySelector("#fullscreenRibbonButton");
+      const canvasWidthInput = document.querySelector("#canvasWidthInput");
+      const canvasHeightInput = document.querySelector("#canvasHeightInput");
+      const applyCanvasSizeButton = document.querySelector("#applyCanvasSizeButton");
+      const resetCanvasSizeButton = document.querySelector("#resetCanvasSizeButton");
       const tabButtons = Array.from(document.querySelectorAll("[data-tab]"));
       const toolButtons = Array.from(document.querySelectorAll("[data-tool]"));
       const shapeButtons = Array.from(document.querySelectorAll("[data-shape]"));
@@ -958,7 +1020,14 @@
       function initializeCanvas() {
         context.fillStyle = "#ffffff";
         context.fillRect(0, 0, canvas.width, canvas.height);
+        syncCanvasSizeUi();
         saveHistory();
+      }
+
+      function syncCanvasSizeUi() {
+        canvasWidthInput.value = canvas.width;
+        canvasHeightInput.value = canvas.height;
+        canvasSizeStatus.textContent = `▣ ${canvas.width} × ${canvas.height}px`;
       }
 
       function showCloudStatus(label) {
@@ -1343,6 +1412,35 @@
         });
       }
 
+      function clampedCanvasSize(value) {
+        const number = Number.parseInt(value, 10);
+        if (!Number.isFinite(number)) return 1024;
+        return Math.max(64, Math.min(4096, number));
+      }
+
+      function resizeCanvas(width, height) {
+        const nextWidth = clampedCanvasSize(width);
+        const nextHeight = clampedCanvasSize(height);
+        const snapshot = document.createElement("canvas");
+        snapshot.width = canvas.width;
+        snapshot.height = canvas.height;
+        snapshot.getContext("2d").drawImage(canvas, 0, 0);
+
+        clearSelection();
+        canvas.width = nextWidth;
+        canvas.height = nextHeight;
+        context.fillStyle = "#ffffff";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        const preservedWidth = Math.min(snapshot.width, canvas.width);
+        const preservedHeight = Math.min(snapshot.height, canvas.height);
+        context.drawImage(snapshot, 0, 0, preservedWidth, preservedHeight, 0, 0, preservedWidth, preservedHeight);
+        state.history = [];
+        state.historyIndex = -1;
+        state.canvasRect = null;
+        syncCanvasSizeUi();
+        saveHistory();
+      }
+
       function normalizedRect(fromPoint, toPoint) {
         const x = Math.max(0, Math.min(fromPoint.x, toPoint.x));
         const y = Math.max(0, Math.min(fromPoint.y, toPoint.y));
@@ -1579,6 +1677,18 @@
       viewZoomInButton.addEventListener("click", () => setZoom(state.zoom + 10));
       viewFitButton.addEventListener("click", () => setZoom(100));
       resetViewButton.addEventListener("click", () => setZoom(100));
+      applyCanvasSizeButton.addEventListener("click", () => {
+        resizeCanvas(canvasWidthInput.value, canvasHeightInput.value);
+      });
+      resetCanvasSizeButton.addEventListener("click", () => {
+        resizeCanvas(1024, 768);
+      });
+      canvasWidthInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") resizeCanvas(canvasWidthInput.value, canvasHeightInput.value);
+      });
+      canvasHeightInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") resizeCanvas(canvasWidthInput.value, canvasHeightInput.value);
+      });
       fullscreenRibbonButton.addEventListener("click", async () => {
         try {
           await toggleFullscreen();
