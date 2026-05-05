@@ -534,6 +534,14 @@
         content: "";
       }
 
+      .selection-box {
+        position: absolute;
+        border: 2px dashed #2f80ed;
+        border-radius: 3px;
+        background: rgba(47, 128, 237, 0.08);
+        pointer-events: none;
+      }
+
       #paintCanvas {
         display: block;
         width: 100%;
@@ -838,6 +846,7 @@
         <div class="canvas-scroll">
           <div class="canvas-stage" id="canvasStage">
             <canvas id="paintCanvas" width="1024" height="768" aria-label="Drawing canvas"></canvas>
+            <div class="selection-box" id="selectionBox" hidden></div>
           </div>
           <input class="visually-hidden" id="imageOpenInput" type="file" accept="image/*">
         </div>
@@ -871,6 +880,7 @@
       const canvas = document.querySelector("#paintCanvas");
       const context = canvas.getContext("2d", { willReadFrequently: true });
       const canvasStage = document.querySelector("#canvasStage");
+      const selectionBox = document.querySelector("#selectionBox");
       const toolStatus = document.querySelector("#toolStatus");
       const cursorStatus = document.querySelector("#cursorStatus");
       const zoomStatus = document.querySelector("#zoomStatus");
@@ -921,6 +931,9 @@
         lastPoint: null,
         startPoint: null,
         draft: null,
+        selectionRect: null,
+        selectionStart: null,
+        isSelecting: false,
         zoom: 100,
         canvasRect: null,
         pendingPoint: null,
@@ -966,6 +979,7 @@
         context.fillStyle = "#ffffff";
         context.fillRect(0, 0, canvas.width, canvas.height);
         context.drawImage(image, x, y, width, height);
+        clearSelection();
         saveHistory();
       }
 
@@ -983,12 +997,24 @@
         image.src = url;
       }
 
-      function canvasToBlob() {
-        return new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+      function canvasToBlob(source = canvas) {
+        return new Promise((resolve) => source.toBlob(resolve, "image/png"));
+      }
+
+      function selectedCanvas() {
+        if (!state.selectionRect) return canvas;
+
+        const { x, y, width, height } = state.selectionRect;
+        const output = document.createElement("canvas");
+        output.width = Math.max(1, width);
+        output.height = Math.max(1, height);
+        output.getContext("2d").drawImage(canvas, x, y, width, height, 0, 0, width, height);
+        return output;
       }
 
       async function copyCanvasToClipboard() {
-        const blob = await canvasToBlob();
+        const source = selectedCanvas();
+        const blob = await canvasToBlob(source);
         if (!blob) return false;
 
         if (navigator.clipboard && window.ClipboardItem) {
@@ -996,7 +1022,7 @@
           return true;
         }
 
-        downloadCanvas();
+        downloadCanvas(source, state.selectionRect ? "web-paint-selection.png" : "web-paint.png");
         return false;
       }
 
@@ -1018,6 +1044,7 @@
         if (navigator.clipboard.readText) {
           const text = await navigator.clipboard.readText();
           if (text) {
+            clearSelection();
             configureBrush();
             context.font = `${Math.max(18, state.brushSize * 4)}px Inter, sans-serif`;
             context.fillText(text, 80, 110);
@@ -1239,6 +1266,7 @@
       }
 
       function setTool(tool) {
+        if (tool !== "select") clearSelection();
         state.activeTool = tool;
         state.activeShape = "";
         toolStatus.textContent = titleCase(tool);
@@ -1246,6 +1274,7 @@
       }
 
       function setShape(shape) {
+        clearSelection();
         state.activeTool = "shape";
         state.activeShape = shape;
         toolStatus.textContent = titleCase(shape);
@@ -1268,15 +1297,16 @@
       }
 
       function clearCanvas() {
+        clearSelection();
         context.fillStyle = "#ffffff";
         context.fillRect(0, 0, canvas.width, canvas.height);
         saveHistory();
       }
 
-      function downloadCanvas() {
+      function downloadCanvas(source = canvas, filename = "web-paint.png") {
         const link = document.createElement("a");
-        link.download = "web-paint.png";
-        link.href = canvas.toDataURL("image/png");
+        link.download = filename;
+        link.href = source.toDataURL("image/png");
         link.click();
       }
 
@@ -1313,6 +1343,39 @@
         });
       }
 
+      function normalizedRect(fromPoint, toPoint) {
+        const x = Math.max(0, Math.min(fromPoint.x, toPoint.x));
+        const y = Math.max(0, Math.min(fromPoint.y, toPoint.y));
+        const right = Math.min(canvas.width, Math.max(fromPoint.x, toPoint.x));
+        const bottom = Math.min(canvas.height, Math.max(fromPoint.y, toPoint.y));
+        return {
+          x,
+          y,
+          width: Math.max(0, right - x),
+          height: Math.max(0, bottom - y)
+        };
+      }
+
+      function updateSelectionBox(rect) {
+        if (!rect || rect.width < 2 || rect.height < 2) {
+          selectionBox.hidden = true;
+          return;
+        }
+
+        selectionBox.hidden = false;
+        selectionBox.style.left = `${(rect.x / canvas.width) * 100}%`;
+        selectionBox.style.top = `${(rect.y / canvas.height) * 100}%`;
+        selectionBox.style.width = `${(rect.width / canvas.width) * 100}%`;
+        selectionBox.style.height = `${(rect.height / canvas.height) * 100}%`;
+      }
+
+      function clearSelection() {
+        state.selectionRect = null;
+        state.selectionStart = null;
+        state.isSelecting = false;
+        selectionBox.hidden = true;
+      }
+
       function startDrawing(event) {
         event.preventDefault();
         canvas.setPointerCapture(event.pointerId);
@@ -1339,7 +1402,13 @@
           return;
         }
 
-        if (state.activeTool === "select") return;
+        if (state.activeTool === "select") {
+          state.isSelecting = true;
+          state.selectionStart = point;
+          state.selectionRect = null;
+          updateSelectionBox(null);
+          return;
+        }
 
         if (!["pencil", "brush", "eraser", "shape"].includes(state.activeTool)) return;
         state.isDrawing = true;
@@ -1352,6 +1421,11 @@
       function continueDrawing(event) {
         const point = getCanvasPoint(event);
         cursorStatus.textContent = `✣ ${point.x}, ${point.y}px`;
+        if (state.isSelecting && state.selectionStart) {
+          state.selectionRect = normalizedRect(state.selectionStart, point);
+          updateSelectionBox(state.selectionRect);
+          return;
+        }
         if (!state.isDrawing || !state.lastPoint) return;
         state.pendingPoint = point;
 
@@ -1378,6 +1452,13 @@
       }
 
       function stopDrawing() {
+        if (state.isSelecting) {
+          state.isSelecting = false;
+          if (!state.selectionRect || state.selectionRect.width < 2 || state.selectionRect.height < 2) {
+            clearSelection();
+          }
+          return;
+        }
         if (!state.isDrawing) return;
         if (state.frameRequest) {
           window.cancelAnimationFrame(state.frameRequest);
@@ -1440,7 +1521,7 @@
           imageOpenInput.click();
         }
       });
-      saveButton.addEventListener("click", downloadCanvas);
+      saveButton.addEventListener("click", () => downloadCanvas());
       copyButton.addEventListener("click", async () => {
         try {
           await copyCanvasToClipboard();
@@ -1452,7 +1533,15 @@
       cutButton.addEventListener("click", async () => {
         try {
           await copyCanvasToClipboard();
-          clearCanvas();
+          if (state.selectionRect) {
+            const { x, y, width, height } = state.selectionRect;
+            context.fillStyle = "#ffffff";
+            context.fillRect(x, y, width, height);
+            clearSelection();
+            saveHistory();
+          } else {
+            clearCanvas();
+          }
           showCloudStatus("✓");
         } catch {
           showCloudStatus("!");
