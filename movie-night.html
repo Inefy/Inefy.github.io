@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Watch Zurra3's public domain movie stream, browse the public domain movie library, and see how the StreamCinema Vote Bot lets chat pick what plays next.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/movie-night.html">
@@ -42,7 +44,7 @@
         <a href="movie-library.html">Movies</a>
         <a href="#bot">Bot</a>
         <a href="notes.html">Notes</a>
-        <a href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">GitHub</a>
+        <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a>
       </nav>
     </header>
 
@@ -62,7 +64,7 @@
           <div class="hero-actions">
             <a class="button primary" href="#watch">Watch the stream</a>
             <a class="button secondary" href="movie-library.html">Browse movies</a>
-            <a class="button ghost" href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">Bot source</a>
+            <a class="button ghost" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Bot source</a>
           </div>
         </div>
 
@@ -98,14 +100,14 @@
           <div class="stream-player-panel">
             <div class="embed-shell twitch-shell" data-twitch-player data-channel="zurra3">
               <noscript>
-                <a href="https://www.twitch.tv/zurra3" rel="noreferrer">Open Zurra3 on Twitch</a>
+                <a href="https://www.twitch.tv/zurra3" rel="noopener noreferrer">Open Zurra3 on Twitch</a>
               </noscript>
             </div>
           </div>
           <aside class="stream-chat-panel" aria-label="Twitch chat">
             <div class="embed-shell chat-shell" data-twitch-chat data-channel="zurra3">
               <noscript>
-                <a href="https://www.twitch.tv/zurra3/chat" rel="noreferrer">Open Twitch chat</a>
+                <a href="https://www.twitch.tv/zurra3/chat" rel="noopener noreferrer">Open Twitch chat</a>
               </noscript>
             </div>
           </aside>
@@ -113,8 +115,8 @@
 
         <div class="embed-action-bar" aria-label="External stream links">
           <span>Embed having trouble?</span>
-          <a href="https://www.twitch.tv/zurra3" rel="noreferrer">Open stream on Twitch</a>
-          <a href="https://www.twitch.tv/popout/zurra3/chat?popout=" rel="noreferrer">Open chat</a>
+          <a href="https://www.twitch.tv/zurra3" rel="noopener noreferrer">Open stream on Twitch</a>
+          <a href="https://www.twitch.tv/popout/zurra3/chat?popout=" rel="noopener noreferrer">Open chat</a>
           <a href="movie-library.html">Browse movies</a>
         </div>
       </section>
@@ -143,7 +145,7 @@
             <span>!time</span>
           </div>
           <a class="button primary" href="movie-library.html">Open movie library</a>
-          <a class="button secondary" href="https://www.imdb.com/list/ls544522770/" rel="noreferrer">Source IMDb list</a>
+          <a class="button secondary" href="https://www.imdb.com/list/ls544522770/" rel="noopener noreferrer">Source IMDb list</a>
         </div>
 
         <a class="movie-preview-panel" href="movie-library.html" aria-label="Open the full movie library">
@@ -208,7 +210,7 @@
               The bot is built for long sessions: it refreshes Twitch OAuth tokens, watches the Twitch chat connection, and reconnects to OBS when needed.
             </p>
           </div>
-          <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">Read the repo</a>
+          <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Read the repo</a>
         </div>
       </section>
     </main>

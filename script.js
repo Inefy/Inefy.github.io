@@ -197,16 +197,56 @@ function isLocalHost() {
   return ["localhost", "127.0.0.1", ""].includes(window.location.hostname);
 }
 
+const allowedMovieLinkOrigins = new Set(["https://www.imdb.com"]);
+const allowedPosterOrigins = new Set(["https://m.media-amazon.com"]);
+
+function safeExternalUrl(value, allowedOrigins) {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:" || !allowedOrigins.has(url.origin)) {
+      return "";
+    }
+    return url.href;
+  } catch {
+    return "";
+  }
+}
+
+function safeTwitchChannel(value) {
+  return /^[a-zA-Z0-9_]{1,25}$/.test(value) ? value : "zurra3";
+}
+
+function setExternalLink(anchor, href, allowedOrigins) {
+  const safeHref = safeExternalUrl(href, allowedOrigins);
+  if (safeHref) {
+    anchor.href = safeHref;
+  } else {
+    anchor.removeAttribute("href");
+  }
+  anchor.rel = "noopener noreferrer";
+}
+
 function renderTwitchFallback(container, channel) {
   const fallback = document.createElement("div");
   fallback.className = "embed-fallback";
-  fallback.innerHTML = `
-    <div class="embed-fallback-inner">
-      <strong>Twitch embeds need HTTPS here.</strong>
-      <p>Open the stream directly for now. Once GitHub Pages has a valid HTTPS certificate for zacbatten.me and Enforce HTTPS is enabled, this embed can load on the custom domain.</p>
-      <a class="button primary" href="https://www.twitch.tv/${encodeURIComponent(channel)}" rel="noreferrer">Open on Twitch</a>
-    </div>
-  `;
+
+  const inner = document.createElement("div");
+  inner.className = "embed-fallback-inner";
+
+  const title = document.createElement("strong");
+  title.textContent = "Twitch embeds need HTTPS here.";
+
+  const detail = document.createElement("p");
+  detail.textContent = "Open the stream directly for now. Once GitHub Pages has a valid HTTPS certificate for zacbatten.me and Enforce HTTPS is enabled, this embed can load on the custom domain.";
+
+  const link = document.createElement("a");
+  link.className = "button primary";
+  link.href = `https://www.twitch.tv/${encodeURIComponent(channel)}`;
+  link.rel = "noopener noreferrer";
+  link.textContent = "Open on Twitch";
+
+  inner.append(title, detail, link);
+  fallback.appendChild(inner);
   container.appendChild(fallback);
 }
 
@@ -215,7 +255,7 @@ function mountTwitchEmbeds() {
   const parentQuery = getTwitchParents();
 
   twitchPlayers.forEach((container) => {
-    const channel = container.dataset.channel || "zurra3";
+    const channel = safeTwitchChannel(container.dataset.channel || "zurra3");
 
     if (isPlainPublicHttp) {
       renderTwitchFallback(container, channel);
@@ -225,14 +265,15 @@ function mountTwitchEmbeds() {
     const iframe = document.createElement("iframe");
     iframe.title = `${channel} Twitch stream`;
     iframe.src = `https://player.twitch.tv/?channel=${encodeURIComponent(channel)}&autoplay=false&muted=false&${parentQuery}`;
-    iframe.allow = "autoplay; picture-in-picture";
-    iframe.allowFullscreen = true;
+    iframe.allow = "autoplay; fullscreen; picture-in-picture";
     iframe.loading = "lazy";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.sandbox = "allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms";
     container.appendChild(iframe);
   });
 
   twitchChats.forEach((container) => {
-    const channel = container.dataset.channel || "zurra3";
+    const channel = safeTwitchChannel(container.dataset.channel || "zurra3");
 
     if (isPlainPublicHttp) {
       renderTwitchFallback(container, channel);
@@ -243,16 +284,10 @@ function mountTwitchEmbeds() {
     iframe.title = `${channel} Twitch chat`;
     iframe.src = `https://www.twitch.tv/embed/${encodeURIComponent(channel)}/chat?darkpopout&${parentQuery}`;
     iframe.loading = "lazy";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.sandbox = "allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms";
     container.appendChild(iframe);
   });
-}
-
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
 }
 
 function posterUrl(url) {
@@ -272,6 +307,72 @@ function posterUrl(url) {
 
 function voteCommand(title) {
   return `!vote ${title}`;
+}
+
+function createMovieCard(movie) {
+  const article = document.createElement("article");
+  article.className = "movie-card";
+
+  const position = document.createElement("span");
+  position.className = "movie-position";
+  position.textContent = `#${String(movie.position).padStart(2, "0")}`;
+
+  const cardLink = document.createElement("a");
+  cardLink.className = "movie-card-link";
+  cardLink.setAttribute("aria-label", `${movie.title} on IMDb`);
+  setExternalLink(cardLink, movie.imdb, allowedMovieLinkOrigins);
+
+  const poster = document.createElement("div");
+  poster.className = "movie-poster";
+
+  const posterImage = document.createElement("img");
+  const safePoster = safeExternalUrl(posterUrl(movie.poster), allowedPosterOrigins);
+  if (safePoster) {
+    posterImage.src = safePoster;
+  }
+  posterImage.alt = `${movie.title} poster`;
+  posterImage.loading = "lazy";
+  posterImage.decoding = "async";
+  posterImage.width = 260;
+  posterImage.height = 390;
+
+  const cardBody = document.createElement("div");
+  cardBody.className = "movie-card-body";
+
+  const title = document.createElement("h3");
+  title.textContent = movie.title;
+
+  const meta = document.createElement("div");
+  meta.className = "movie-meta";
+  meta.setAttribute("aria-label", `${movie.title} details`);
+
+  [movie.year, movie.runtime, `IMDb ${movie.rating}`].forEach((value) => {
+    const item = document.createElement("span");
+    item.textContent = value;
+    meta.appendChild(item);
+  });
+
+  const source = document.createElement("span");
+  source.className = "movie-source";
+  source.textContent = "Open IMDb";
+
+  const actions = document.createElement("div");
+  actions.className = "movie-card-actions";
+
+  const copyButton = document.createElement("button");
+  copyButton.className = "movie-copy";
+  copyButton.type = "button";
+  copyButton.dataset.vote = voteCommand(movie.title);
+  copyButton.setAttribute("aria-label", `Copy vote command for ${movie.title}`);
+  copyButton.textContent = "Copy !vote";
+
+  poster.appendChild(posterImage);
+  cardBody.append(title, meta, source);
+  cardLink.append(poster, cardBody);
+  actions.appendChild(copyButton);
+  article.append(position, cardLink, actions);
+
+  return article;
 }
 
 async function copyTextToClipboard(value) {
@@ -310,32 +411,18 @@ function renderMovieList(movies) {
   }
 
   if (movies.length === 0) {
-    movieGrid.innerHTML = '<p class="movie-empty">No movies match that search.</p>';
+    const empty = document.createElement("p");
+    empty.className = "movie-empty";
+    empty.textContent = "No movies match that search.";
+    movieGrid.replaceChildren(empty);
     return;
   }
 
-  movieGrid.innerHTML = movies.map((movie) => `
-    <article class="movie-card">
-      <span class="movie-position">#${String(movie.position).padStart(2, "0")}</span>
-      <a class="movie-card-link" href="${movie.imdb}" rel="noreferrer" aria-label="${escapeHtml(movie.title)} on IMDb">
-        <div class="movie-poster">
-          <img src="${posterUrl(movie.poster)}" alt="${escapeHtml(movie.title)} poster" loading="lazy" decoding="async" width="260" height="390">
-        </div>
-        <div class="movie-card-body">
-          <h3>${escapeHtml(movie.title)}</h3>
-          <div class="movie-meta" aria-label="${escapeHtml(movie.title)} details">
-            <span>${movie.year}</span>
-            <span>${movie.runtime}</span>
-            <span>IMDb ${movie.rating}</span>
-          </div>
-          <span class="movie-source">Open IMDb</span>
-        </div>
-      </a>
-      <div class="movie-card-actions">
-        <button class="movie-copy" type="button" data-vote="${escapeHtml(voteCommand(movie.title))}" aria-label="${escapeHtml(`Copy vote command for ${movie.title}`)}">Copy !vote</button>
-      </div>
-    </article>
-  `).join("");
+  const fragment = document.createDocumentFragment();
+  movies.forEach((movie) => {
+    fragment.appendChild(createMovieCard(movie));
+  });
+  movieGrid.replaceChildren(fragment);
 }
 
 function filterMovieList() {

@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Zac Batten's Inefy workbench: stream tools, movie-night bots, useful automations, and personal build notes.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/">
@@ -93,7 +95,7 @@
           <div class="hero-actions">
             <a class="button primary" href="#featured-builds">View featured builds</a>
             <a class="button secondary" href="mailto:hello@zacbatten.me?subject=Build%20question">Ask about a build</a>
-            <a class="button ghost" href="https://github.com/Inefy" rel="noreferrer">GitHub</a>
+            <a class="button ghost" href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
             <button class="button ghost" type="button" id="shuffle-vibe">Shuffle vibe</button>
           </div>
           <div class="command-strip" aria-label="Current focus">
@@ -212,7 +214,7 @@
             </dl>
             <div class="card-actions">
               <a href="movie-night.html">Open page</a>
-              <a href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">View repo</a>
+              <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">View repo</a>
             </div>
           </article>
 
@@ -249,7 +251,7 @@
             </dl>
             <div class="card-actions">
               <a href="#traverseops">Read spotlight</a>
-              <a href="https://traverseops.app" rel="noreferrer">Open demo</a>
+              <a href="https://traverseops.app" rel="noopener noreferrer">Open demo</a>
             </div>
           </article>
 
@@ -286,7 +288,7 @@
             </dl>
             <div class="card-actions">
               <a href="notes.html">Read notes</a>
-              <a href="https://github.com/Inefy/Inefy.github.io" rel="noreferrer">View source</a>
+              <a href="https://github.com/Inefy/Inefy.github.io" rel="noopener noreferrer">View source</a>
             </div>
           </article>
         </div>
@@ -301,7 +303,7 @@
             I built TraverseOps as a focused municipal operations app for crews who need to find assets, record what happened on site, and turn problems into trackable work. The public app is a demo workspace with sample data, not an active municipal deployment.
           </p>
           <div class="traverse-actions">
-            <a class="button primary" href="https://traverseops.app" rel="noreferrer">Open TraverseOps demo</a>
+            <a class="button primary" href="https://traverseops.app" rel="noopener noreferrer">Open TraverseOps demo</a>
             <a class="button secondary" href="#contact">Ask about the build</a>
           </div>
           <div class="traverse-tags" aria-label="TraverseOps build stack">
@@ -419,7 +421,7 @@
           <p>Most of the interesting stuff lands on GitHub first. This site is the map, the notebook, and the occasional shiny button.</p>
         </div>
         <div class="contact-actions">
-          <a class="button primary" href="https://github.com/Inefy" rel="noreferrer">GitHub</a>
+          <a class="button primary" href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
           <a class="button secondary" href="mailto:hello@zacbatten.me">Email</a>
         </div>
       </section>

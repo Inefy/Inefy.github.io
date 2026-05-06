@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Browse Zurra3's public domain movie-night library with posters, years, runtimes, IMDb ratings, and search.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/movie-library.html">
@@ -42,7 +44,7 @@
         <a class="nav-cta" href="#movies" aria-current="page">Movies</a>
         <a href="movie-night.html#bot">Bot</a>
         <a href="notes.html">Notes</a>
-        <a href="https://github.com/Inefy/twitch-movie-bot" rel="noreferrer">GitHub</a>
+        <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a>
       </nav>
     </header>
 
@@ -68,7 +70,7 @@
           <input class="movie-search" id="movie-search" type="search" placeholder="Title, year, runtime, or rating" autocomplete="off">
           <div class="hero-actions">
             <a class="button primary" href="movie-night.html#watch">Back to stream</a>
-            <a class="button secondary" href="https://www.imdb.com/list/ls544522770/" rel="noreferrer">Source IMDb list</a>
+            <a class="button secondary" href="https://www.imdb.com/list/ls544522770/" rel="noopener noreferrer">Source IMDb list</a>
           </div>
         </div>
 
@@ -82,116 +84,116 @@
               <strong>Static movie list</strong>
               <p>JavaScript search is off, so the full queue is listed below without poster filtering.</p>
               <ol class="movie-fallback-list">
-                <li><a href="https://www.imdb.com/title/tt0017463/" rel="noreferrer">3 Bad Men <span>1926 / 1h 32m / IMDb 7.5</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0018379/" rel="noreferrer">7th Heaven <span>1927 / 1h 50m / IMDb 7.5</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0020620/" rel="noreferrer">Abraham Lincoln <span>1930 / 1h 36m / IMDb 5.7</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0015532/" rel="noreferrer">The Adventures of Prince Achmed <span>1926 / 1h 20m / IMDb 7.8</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0040829/" rel="noreferrer">The Amazing Mr. X <span>1948 / 1h 18m / IMDb 6.4</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0039152/" rel="noreferrer">Angel and the Badman <span>1947 / 1h 40m / IMDb 6.8</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0052602/" rel="noreferrer">The Bat <span>1959 / 1h 20m / IMDb 6.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0015648/" rel="noreferrer">Battleship Potemkin <span>1925 / 1h 15m / IMDb 7.9</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0046414/" rel="noreferrer">Beat the Devil <span>1953 / 1h 29m / IMDb 6.4</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0016641/" rel="noreferrer">Ben-Hur: A Tale of the Christ <span>1925 / 2h 23m / IMDb 7.8</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0047878/" rel="noreferrer">The Big Combo <span>1955 / 1h 27m / IMDb 7.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0015624/" rel="noreferrer">The Big Parade <span>1925 / 2h 31m / IMDb 7.9</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0052646/" rel="noreferrer">The Brain That Wouldn't Die <span>1962 / 1h 22m / IMDb 4.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0009968/" rel="noreferrer">Broken Blossoms <span>1919 / 1h 30m / IMDb 7.2</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0052655/" rel="noreferrer">A Bucket of Blood <span>1959 / 1h 6m / IMDb 6.7</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0010323/" rel="noreferrer">The Cabinet of Dr. Caligari <span>1920 / 58m / IMDb 8.0</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0018742/" rel="noreferrer">The Cameraman <span>1928 / 1h 16m / IMDb 8.0</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0055830/" rel="noreferrer">Carnival of Souls <span>1962 / 1h 18m / IMDb 7.0</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0056923/" rel="noreferrer">Charade <span>1963 / 1h 53m / IMDb 7.8</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0012349/" rel="noreferrer">The Kid <span>1921 / 58m / IMDb 8.2</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0018773/" rel="noreferrer">The Circus <span>1928 / 1h 12m / IMDb 8.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0018806/" rel="noreferrer">The Crowd <span>1928 / 1h 38m / IMDb 8.0</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0007832/" rel="noreferrer">The Cure <span>1917 / 24m / IMDb 7.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0042369/" rel="noreferrer">D.O.A. <span>1949 / 1h 23m / IMDb 7.2</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0012494/" rel="noreferrer">Destiny <span>1921 / 1h 37m / IMDb 7.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0037638/" rel="noreferrer">Detour <span>1945 / 1h 6m / IMDb 7.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0018839/" rel="noreferrer">The Docks of New York <span>1928 / 1h 16m / IMDb 7.5</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0038494/" rel="noreferrer">Dressed to Kill <span>1946 / 1h 11m / IMDb 6.8</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0016847/" rel="noreferrer">Faust <span>1926 / 1h 47m / IMDb 8.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0045758/" rel="noreferrer">Fear and Desire <span>1952 / 1h 2m / IMDb 5.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0016884/" rel="noreferrer">Flesh and the Devil <span>1926 / 1h 12m / IMDb 7.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0006689/" rel="noreferrer">The Floorwalker <span>1916 / 22m / IMDb 6.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0015841/" rel="noreferrer">The Freshman <span>1925 / 1h 17m / IMDb 7.5</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0017925/" rel="noreferrer">The General <span>1926 / 1h 18m / IMDb 8.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0045826/" rel="noreferrer">Glen or Glenda <span>1953 / 1h 5m / IMDb 4.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0015864/" rel="noreferrer">The Gold Rush <span>1925 / 1h 35m / IMDb 8.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0011237/" rel="noreferrer">The Golem <span>1920 / 1h 16m / IMDb 7.2</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0015881/" rel="noreferrer">Greed <span>1924 / 2h 20m / IMDb 8.0</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0031397/" rel="noreferrer">Gulliver's Travels <span>1939 / 1h 16m / IMDb 6.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0013257/" rel="noreferrer">Häxan: Witchcraft Through the Ages <span>1922 / 1h 31m / IMDb 7.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0032599/" rel="noreferrer">His Girl Friday <span>1940 / 1h 32m / IMDb 7.8</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0045877/" rel="noreferrer">The Hitch-Hiker <span>1953 / 1h 11m / IMDb 6.9</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0051744/" rel="noreferrer">House on Haunted Hill <span>1959 / 1h 15m / IMDb 6.7</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0008133/" rel="noreferrer">The Immigrant <span>1917 / 30m / IMDb 7.5</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0006864/" rel="noreferrer">Intolerance: Love's Struggle Throughout the Ages <span>1916 / 2h 43m / IMDb 7.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0038650/" rel="noreferrer">It's a Wonderful Life <span>1946 / 2h 10m / IMDb 8.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0018037/" rel="noreferrer">The Jazz Singer <span>1927 / 1h 28m / IMDb 6.4</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0034928/" rel="noreferrer">The Jungle Book <span>1942 / 1h 48m / IMDb 6.7</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0044789/" rel="noreferrer">Kansas City Confidential <span>1952 / 1h 39m / IMDb 7.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0018051/" rel="noreferrer">The Kid Brother <span>1927 / 1h 22m / IMDb 7.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0030341/" rel="noreferrer">The Lady Vanishes <span>1938 / 1h 36m / IMDb 7.7</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0048287/" rel="noreferrer">The Last Command <span>1955 / 1h 45m / IMDb 6.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0015064/" rel="noreferrer">The Last Laugh <span>1924 / 1h 28m / IMDb 8.0</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0058700/" rel="noreferrer">The Last Man on Earth <span>1964 / 1h 26m / IMDb 6.7</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0054033/" rel="noreferrer">The Little Shop of Horrors <span>1960 / 1h 13m / IMDb 6.2</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0017075/" rel="noreferrer">The Lodger <span>1927 / 1h 32m / IMDb 7.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0016039/" rel="noreferrer">The Lost World <span>1925 / 1h 50m / IMDb 7.0</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0019130/" rel="noreferrer">The Man Who Laughs <span>1928 / 1h 50m / IMDb 7.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0057298/" rel="noreferrer">McLintock! <span>1963 / 2h 6m / IMDb 7.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0033891/" rel="noreferrer">Meet John Doe <span>1941 / 2h 15m / IMDb 7.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0017136/" rel="noreferrer">Metropolis <span>1927 / 2h 33m / IMDb 8.2</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0023238/" rel="noreferrer">The Most Dangerous Game <span>1932 / 1h 3m / IMDb 7.0</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0039645/" rel="noreferrer">My Favorite Brunette <span>1947 / 1h 27m / IMDb 6.7</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0028010/" rel="noreferrer">My Man Godfrey <span>1936 / 1h 34m / IMDb 7.9</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0013427/" rel="noreferrer">Nanook of the North <span>1922 / 1h 18m / IMDb 7.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0018192/" rel="noreferrer">Napoleon <span>1927 / 5h 30m / IMDb 8.2</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0015163/" rel="noreferrer">The Navigator <span>1924 / 59m / IMDb 7.5</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0015174/" rel="noreferrer">Die Nibelungen: Kriemhild's Revenge <span>1924 / 2h 9m / IMDb 7.9</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0015175/" rel="noreferrer">Die Nibelungen: Siegfried <span>1924 / 2h 38m / IMDb 8.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0063350/" rel="noreferrer">Night of the Living Dead <span>1968 / 1h 36m / IMDb 7.8</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0013442/" rel="noreferrer">Nosferatu <span>1922 / 1h 34m / IMDb 7.8</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0055257/" rel="noreferrer">One-Eyed Jacks <span>1961 / 2h 21m / IMDb 7.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0011541/" rel="noreferrer">One Week <span>1920 / 25m / IMDb 8.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0014341/" rel="noreferrer">Our Hospitality <span>1923 / 1h 10m / IMDb 7.7</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0017048/" rel="noreferrer">A Page of Madness <span>1926 / 1h 10m / IMDb 7.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0019254/" rel="noreferrer">The Passion of Joan of Arc <span>1928 / 1h 50m / IMDb 8.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0007162/" rel="noreferrer">The Pawnshop <span>1916 / 25m / IMDb 7.0</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0012364/" rel="noreferrer">The Phantom Carriage <span>1921 / 1h 47m / IMDb 8.0</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0016220/" rel="noreferrer">The Phantom of the Opera <span>1925 / 1h 41m / IMDb 7.5</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0052077/" rel="noreferrer">Plan 9 from Outer Space <span>1958 / 1h 19m / IMDb 3.9</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0039757/" rel="noreferrer">The Red House <span>1947 / 1h 40m / IMDb 6.7</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0007264/" rel="noreferrer">The Rink <span>1916 / 30m / IMDb 7.0</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0014417/" rel="noreferrer">The Wheel <span>1923 / 6h 57m / IMDb 7.5</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0058536/" rel="noreferrer">Rudolph the Red-Nosed Reindeer <span>1964 / 47m / IMDb 8.0</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0028212/" rel="noreferrer">Sabotage <span>1936 / 1h 16m / IMDb 7.0</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0014429/" rel="noreferrer">Safety Last! <span>1923 / 1h 14m / IMDb 8.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0047443/" rel="noreferrer">Salt of the Earth <span>1954 / 1h 34m / IMDb 7.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0038057/" rel="noreferrer">Scarlet Street <span>1945 / 1h 42m / IMDb 7.7</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0016332/" rel="noreferrer">Seven Chances <span>1925 / 56m / IMDb 7.8</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0015324/" rel="noreferrer">Sherlock Jr. <span>1924 / 45m / IMDb 8.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0019412/" rel="noreferrer">Speedy <span>1928 / 1h 25m / IMDb 7.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0019415/" rel="noreferrer">Spies (Spione) <span>1928 / 2h 30m / IMDb 7.5</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0189219/" rel="noreferrer">Spring in a Small Town <span>1948 / 1h 38m / IMDb 7.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0029606/" rel="noreferrer">A Star Is Born <span>1937 / 1h 51m / IMDb 7.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0019421/" rel="noreferrer">Steamboat Bill, Jr. <span>1928 / 1h 10m / IMDb 7.8</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0019422/" rel="noreferrer">Steamboat Willie <span>1928 / 8m / IMDb 7.4</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0038991/" rel="noreferrer">The Stranger <span>1946 / 1h 35m / IMDb 7.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0015361/" rel="noreferrer">Stachka <span>1925 / 1h 35m / IMDb 7.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0047542/" rel="noreferrer">Suddenly <span>1954 / 1h 17m / IMDb 6.8</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0018455/" rel="noreferrer">Sunrise: A Song of Two Humans <span>1927 / 1h 34m / IMDb 8.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0033152/" rel="noreferrer">The Thief of Bagdad <span>1940 / 1h 46m / IMDb 7.4</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0028358/" rel="noreferrer">Things to Come <span>1936 / 1h 57m / IMDb 6.6</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0000417/" rel="noreferrer">A Trip to the Moon <span>1902 / 13m / IMDb 8.1</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0018526/" rel="noreferrer">Underworld <span>1927 / 1h 20m / IMDb 7.5</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0018528/" rel="noreferrer">The Unknown <span>1927 / 1h 8m / IMDb 7.7</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0007507/" rel="noreferrer">The Vagabond <span>1916 / 21m / IMDb 6.8</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0006206/" rel="noreferrer">Les Vampires <span>1915 / 7h 1m / IMDb 7.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0011841/" rel="noreferrer">Way Down East <span>1920 / 2h 25m / IMDb 7.3</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0023694/" rel="noreferrer">White Zombie <span>1932 / 1h 9m / IMDb 6.2</span></a></li>
-                <li><a href="https://www.imdb.com/title/tt0018578/" rel="noreferrer">Wings <span>1927 / 2h 24m / IMDb 7.5</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0017463/" rel="noopener noreferrer">3 Bad Men <span>1926 / 1h 32m / IMDb 7.5</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0018379/" rel="noopener noreferrer">7th Heaven <span>1927 / 1h 50m / IMDb 7.5</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0020620/" rel="noopener noreferrer">Abraham Lincoln <span>1930 / 1h 36m / IMDb 5.7</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0015532/" rel="noopener noreferrer">The Adventures of Prince Achmed <span>1926 / 1h 20m / IMDb 7.8</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0040829/" rel="noopener noreferrer">The Amazing Mr. X <span>1948 / 1h 18m / IMDb 6.4</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0039152/" rel="noopener noreferrer">Angel and the Badman <span>1947 / 1h 40m / IMDb 6.8</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0052602/" rel="noopener noreferrer">The Bat <span>1959 / 1h 20m / IMDb 6.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0015648/" rel="noopener noreferrer">Battleship Potemkin <span>1925 / 1h 15m / IMDb 7.9</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0046414/" rel="noopener noreferrer">Beat the Devil <span>1953 / 1h 29m / IMDb 6.4</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0016641/" rel="noopener noreferrer">Ben-Hur: A Tale of the Christ <span>1925 / 2h 23m / IMDb 7.8</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0047878/" rel="noopener noreferrer">The Big Combo <span>1955 / 1h 27m / IMDb 7.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0015624/" rel="noopener noreferrer">The Big Parade <span>1925 / 2h 31m / IMDb 7.9</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0052646/" rel="noopener noreferrer">The Brain That Wouldn't Die <span>1962 / 1h 22m / IMDb 4.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0009968/" rel="noopener noreferrer">Broken Blossoms <span>1919 / 1h 30m / IMDb 7.2</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0052655/" rel="noopener noreferrer">A Bucket of Blood <span>1959 / 1h 6m / IMDb 6.7</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0010323/" rel="noopener noreferrer">The Cabinet of Dr. Caligari <span>1920 / 58m / IMDb 8.0</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0018742/" rel="noopener noreferrer">The Cameraman <span>1928 / 1h 16m / IMDb 8.0</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0055830/" rel="noopener noreferrer">Carnival of Souls <span>1962 / 1h 18m / IMDb 7.0</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0056923/" rel="noopener noreferrer">Charade <span>1963 / 1h 53m / IMDb 7.8</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0012349/" rel="noopener noreferrer">The Kid <span>1921 / 58m / IMDb 8.2</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0018773/" rel="noopener noreferrer">The Circus <span>1928 / 1h 12m / IMDb 8.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0018806/" rel="noopener noreferrer">The Crowd <span>1928 / 1h 38m / IMDb 8.0</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0007832/" rel="noopener noreferrer">The Cure <span>1917 / 24m / IMDb 7.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0042369/" rel="noopener noreferrer">D.O.A. <span>1949 / 1h 23m / IMDb 7.2</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0012494/" rel="noopener noreferrer">Destiny <span>1921 / 1h 37m / IMDb 7.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0037638/" rel="noopener noreferrer">Detour <span>1945 / 1h 6m / IMDb 7.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0018839/" rel="noopener noreferrer">The Docks of New York <span>1928 / 1h 16m / IMDb 7.5</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0038494/" rel="noopener noreferrer">Dressed to Kill <span>1946 / 1h 11m / IMDb 6.8</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0016847/" rel="noopener noreferrer">Faust <span>1926 / 1h 47m / IMDb 8.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0045758/" rel="noopener noreferrer">Fear and Desire <span>1952 / 1h 2m / IMDb 5.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0016884/" rel="noopener noreferrer">Flesh and the Devil <span>1926 / 1h 12m / IMDb 7.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0006689/" rel="noopener noreferrer">The Floorwalker <span>1916 / 22m / IMDb 6.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0015841/" rel="noopener noreferrer">The Freshman <span>1925 / 1h 17m / IMDb 7.5</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0017925/" rel="noopener noreferrer">The General <span>1926 / 1h 18m / IMDb 8.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0045826/" rel="noopener noreferrer">Glen or Glenda <span>1953 / 1h 5m / IMDb 4.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0015864/" rel="noopener noreferrer">The Gold Rush <span>1925 / 1h 35m / IMDb 8.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0011237/" rel="noopener noreferrer">The Golem <span>1920 / 1h 16m / IMDb 7.2</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0015881/" rel="noopener noreferrer">Greed <span>1924 / 2h 20m / IMDb 8.0</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0031397/" rel="noopener noreferrer">Gulliver's Travels <span>1939 / 1h 16m / IMDb 6.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0013257/" rel="noopener noreferrer">Häxan: Witchcraft Through the Ages <span>1922 / 1h 31m / IMDb 7.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0032599/" rel="noopener noreferrer">His Girl Friday <span>1940 / 1h 32m / IMDb 7.8</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0045877/" rel="noopener noreferrer">The Hitch-Hiker <span>1953 / 1h 11m / IMDb 6.9</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0051744/" rel="noopener noreferrer">House on Haunted Hill <span>1959 / 1h 15m / IMDb 6.7</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0008133/" rel="noopener noreferrer">The Immigrant <span>1917 / 30m / IMDb 7.5</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0006864/" rel="noopener noreferrer">Intolerance: Love's Struggle Throughout the Ages <span>1916 / 2h 43m / IMDb 7.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0038650/" rel="noopener noreferrer">It's a Wonderful Life <span>1946 / 2h 10m / IMDb 8.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0018037/" rel="noopener noreferrer">The Jazz Singer <span>1927 / 1h 28m / IMDb 6.4</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0034928/" rel="noopener noreferrer">The Jungle Book <span>1942 / 1h 48m / IMDb 6.7</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0044789/" rel="noopener noreferrer">Kansas City Confidential <span>1952 / 1h 39m / IMDb 7.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0018051/" rel="noopener noreferrer">The Kid Brother <span>1927 / 1h 22m / IMDb 7.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0030341/" rel="noopener noreferrer">The Lady Vanishes <span>1938 / 1h 36m / IMDb 7.7</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0048287/" rel="noopener noreferrer">The Last Command <span>1955 / 1h 45m / IMDb 6.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0015064/" rel="noopener noreferrer">The Last Laugh <span>1924 / 1h 28m / IMDb 8.0</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0058700/" rel="noopener noreferrer">The Last Man on Earth <span>1964 / 1h 26m / IMDb 6.7</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0054033/" rel="noopener noreferrer">The Little Shop of Horrors <span>1960 / 1h 13m / IMDb 6.2</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0017075/" rel="noopener noreferrer">The Lodger <span>1927 / 1h 32m / IMDb 7.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0016039/" rel="noopener noreferrer">The Lost World <span>1925 / 1h 50m / IMDb 7.0</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0019130/" rel="noopener noreferrer">The Man Who Laughs <span>1928 / 1h 50m / IMDb 7.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0057298/" rel="noopener noreferrer">McLintock! <span>1963 / 2h 6m / IMDb 7.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0033891/" rel="noopener noreferrer">Meet John Doe <span>1941 / 2h 15m / IMDb 7.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0017136/" rel="noopener noreferrer">Metropolis <span>1927 / 2h 33m / IMDb 8.2</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0023238/" rel="noopener noreferrer">The Most Dangerous Game <span>1932 / 1h 3m / IMDb 7.0</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0039645/" rel="noopener noreferrer">My Favorite Brunette <span>1947 / 1h 27m / IMDb 6.7</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0028010/" rel="noopener noreferrer">My Man Godfrey <span>1936 / 1h 34m / IMDb 7.9</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0013427/" rel="noopener noreferrer">Nanook of the North <span>1922 / 1h 18m / IMDb 7.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0018192/" rel="noopener noreferrer">Napoleon <span>1927 / 5h 30m / IMDb 8.2</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0015163/" rel="noopener noreferrer">The Navigator <span>1924 / 59m / IMDb 7.5</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0015174/" rel="noopener noreferrer">Die Nibelungen: Kriemhild's Revenge <span>1924 / 2h 9m / IMDb 7.9</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0015175/" rel="noopener noreferrer">Die Nibelungen: Siegfried <span>1924 / 2h 38m / IMDb 8.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0063350/" rel="noopener noreferrer">Night of the Living Dead <span>1968 / 1h 36m / IMDb 7.8</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0013442/" rel="noopener noreferrer">Nosferatu <span>1922 / 1h 34m / IMDb 7.8</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0055257/" rel="noopener noreferrer">One-Eyed Jacks <span>1961 / 2h 21m / IMDb 7.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0011541/" rel="noopener noreferrer">One Week <span>1920 / 25m / IMDb 8.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0014341/" rel="noopener noreferrer">Our Hospitality <span>1923 / 1h 10m / IMDb 7.7</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0017048/" rel="noopener noreferrer">A Page of Madness <span>1926 / 1h 10m / IMDb 7.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0019254/" rel="noopener noreferrer">The Passion of Joan of Arc <span>1928 / 1h 50m / IMDb 8.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0007162/" rel="noopener noreferrer">The Pawnshop <span>1916 / 25m / IMDb 7.0</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0012364/" rel="noopener noreferrer">The Phantom Carriage <span>1921 / 1h 47m / IMDb 8.0</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0016220/" rel="noopener noreferrer">The Phantom of the Opera <span>1925 / 1h 41m / IMDb 7.5</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0052077/" rel="noopener noreferrer">Plan 9 from Outer Space <span>1958 / 1h 19m / IMDb 3.9</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0039757/" rel="noopener noreferrer">The Red House <span>1947 / 1h 40m / IMDb 6.7</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0007264/" rel="noopener noreferrer">The Rink <span>1916 / 30m / IMDb 7.0</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0014417/" rel="noopener noreferrer">The Wheel <span>1923 / 6h 57m / IMDb 7.5</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0058536/" rel="noopener noreferrer">Rudolph the Red-Nosed Reindeer <span>1964 / 47m / IMDb 8.0</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0028212/" rel="noopener noreferrer">Sabotage <span>1936 / 1h 16m / IMDb 7.0</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0014429/" rel="noopener noreferrer">Safety Last! <span>1923 / 1h 14m / IMDb 8.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0047443/" rel="noopener noreferrer">Salt of the Earth <span>1954 / 1h 34m / IMDb 7.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0038057/" rel="noopener noreferrer">Scarlet Street <span>1945 / 1h 42m / IMDb 7.7</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0016332/" rel="noopener noreferrer">Seven Chances <span>1925 / 56m / IMDb 7.8</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0015324/" rel="noopener noreferrer">Sherlock Jr. <span>1924 / 45m / IMDb 8.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0019412/" rel="noopener noreferrer">Speedy <span>1928 / 1h 25m / IMDb 7.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0019415/" rel="noopener noreferrer">Spies (Spione) <span>1928 / 2h 30m / IMDb 7.5</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0189219/" rel="noopener noreferrer">Spring in a Small Town <span>1948 / 1h 38m / IMDb 7.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0029606/" rel="noopener noreferrer">A Star Is Born <span>1937 / 1h 51m / IMDb 7.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0019421/" rel="noopener noreferrer">Steamboat Bill, Jr. <span>1928 / 1h 10m / IMDb 7.8</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0019422/" rel="noopener noreferrer">Steamboat Willie <span>1928 / 8m / IMDb 7.4</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0038991/" rel="noopener noreferrer">The Stranger <span>1946 / 1h 35m / IMDb 7.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0015361/" rel="noopener noreferrer">Stachka <span>1925 / 1h 35m / IMDb 7.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0047542/" rel="noopener noreferrer">Suddenly <span>1954 / 1h 17m / IMDb 6.8</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0018455/" rel="noopener noreferrer">Sunrise: A Song of Two Humans <span>1927 / 1h 34m / IMDb 8.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0033152/" rel="noopener noreferrer">The Thief of Bagdad <span>1940 / 1h 46m / IMDb 7.4</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0028358/" rel="noopener noreferrer">Things to Come <span>1936 / 1h 57m / IMDb 6.6</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0000417/" rel="noopener noreferrer">A Trip to the Moon <span>1902 / 13m / IMDb 8.1</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0018526/" rel="noopener noreferrer">Underworld <span>1927 / 1h 20m / IMDb 7.5</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0018528/" rel="noopener noreferrer">The Unknown <span>1927 / 1h 8m / IMDb 7.7</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0007507/" rel="noopener noreferrer">The Vagabond <span>1916 / 21m / IMDb 6.8</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0006206/" rel="noopener noreferrer">Les Vampires <span>1915 / 7h 1m / IMDb 7.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0011841/" rel="noopener noreferrer">Way Down East <span>1920 / 2h 25m / IMDb 7.3</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0023694/" rel="noopener noreferrer">White Zombie <span>1932 / 1h 9m / IMDb 6.2</span></a></li>
+                <li><a href="https://www.imdb.com/title/tt0018578/" rel="noopener noreferrer">Wings <span>1927 / 2h 24m / IMDb 7.5</span></a></li>
               </ol>
             </div>
           </noscript>
