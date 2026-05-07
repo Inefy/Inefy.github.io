@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="A Flappy-style browser mini game from the Inefy fun corner.">
+    <title>Flappy Workbench / Inefy Fun Corner</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236de1a6'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%230c0f10'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="flappy-workbench.css">
+  </head>
+  <body>
+    <main class="game-app" aria-label="Flappy Workbench game">
+      <header class="titlebar">
+        <a class="brand-link" href="index.html#fun-corner" aria-label="Back to fun corner">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">ZB</span>
+            <span class="brand-title">
+              <strong>Zac Batten</strong>
+              <span class="document-name">Inefy fun corner / Flappy Workbench</span>
+            </span>
+          </div>
+        </a>
+
+        <nav class="game-nav" aria-label="Game page navigation">
+          <a href="index.html#fun-corner">Fun corner</a>
+          <button type="button" id="restartButton">Restart</button>
+          <button type="button" id="pauseButton">Pause</button>
+          <button class="nav-cta" type="button" id="fullscreenButton">Fullscreen</button>
+        </nav>
+      </header>
+
+      <section class="game-hud" aria-label="Game status">
+        <div class="score-chip current">
+          <span>Score</span>
+          <strong id="scoreValue">0</strong>
+        </div>
+        <div class="score-chip">
+          <span>Best</span>
+          <strong id="bestValue">0</strong>
+        </div>
+        <p class="round-status" id="roundStatus" aria-live="polite">Ready</p>
+      </section>
+
+      <section class="game-stage-wrap" aria-label="Playfield">
+        <div class="game-stage" id="gameStage">
+          <canvas id="gameCanvas" aria-label="Flappy Workbench playfield"></canvas>
+          <div class="game-menu" id="gameMenu">
+            <strong id="menuTitle">Flappy Workbench</strong>
+            <span class="menu-meta" id="menuMeta">Best 0</span>
+            <button class="menu-button" type="button" id="startButton">Start Run</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="flappy-workbench.js"></script>
+  </body>
+</html>
