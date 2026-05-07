@@ -945,13 +945,16 @@ h3 {
 
 .fun-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
+  max-width: 1180px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 4vw, 36px);
+  align-items: stretch;
 }
 
 .fun-card {
   display: grid;
-  max-width: 520px;
+  min-height: 100%;
+  grid-template-rows: auto auto 1fr auto;
   gap: 12px;
   padding: 28px;
   background:
@@ -976,7 +979,15 @@ h3 {
 }
 
 .fun-card .button {
+  align-self: end;
   justify-self: start;
+}
+
+@media (max-width: 760px) {
+  .fun-grid {
+    max-width: none;
+    grid-template-columns: 1fr;
+  }
 }
 
 .notes-page .notes-hero {

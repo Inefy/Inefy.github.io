@@ -19,13 +19,13 @@ const PLAYER_X = 238;
 const PLAYER_RADIUS = 22;
 const PIPE_WIDTH = 86;
 const PIPE_GAP_START = 226;
-const PIPE_GAP_MIN = 162;
+const PIPE_GAP_MIN = PLAYER_RADIUS * 2 + 8;
 const PIPE_INTERVAL_START = 1.78;
-const PIPE_INTERVAL_MIN = 1.34;
+const PIPE_INTERVAL_MIN = 1.08;
 const GRAVITY = 1020;
 const FLAP_VELOCITY = -340;
 const PIPE_SPEED_START = 160;
-const PIPE_SPEED_MAX = 245;
+const PIPE_SPEED_GAIN = 14.8;
 const BEST_KEY = "flappy-workbench-best";
 const PIPE_WARNING_DISTANCE = 235;
 
@@ -82,15 +82,16 @@ function clamp(value, min, max) {
 }
 
 function difficultyForScore(value) {
-  const pace = 1 - Math.exp(-value / 10);
+  const pace = 1 - Math.exp(-value / 12);
+  const speed = PIPE_SPEED_START + value * PIPE_SPEED_GAIN + Math.log1p(value) * 36;
 
   return {
     pace,
-    speed: lerp(PIPE_SPEED_START, PIPE_SPEED_MAX, pace),
+    speed,
     gap: Math.round(lerp(PIPE_GAP_START, PIPE_GAP_MIN, pace)),
     interval: lerp(PIPE_INTERVAL_START, PIPE_INTERVAL_MIN, pace),
-    centerSwing: lerp(36, 68, pace),
-    centerNoise: lerp(42, 68, pace)
+    centerSwing: lerp(36, 78, pace),
+    centerNoise: lerp(42, 82, pace)
   };
 }
 
@@ -183,9 +184,11 @@ function spawnPipe() {
   const random = (Math.random() - 0.5) * difficulty.centerNoise;
   const center = clamp(255 + wave + random, minCenter, maxCenter);
   const top = center - difficulty.gap / 2;
+  const x = spawnX();
 
   pipes.push({
-    x: spawnX(),
+    x,
+    previousX: x,
     top,
     gap: difficulty.gap,
     width: PIPE_WIDTH,
@@ -242,6 +245,7 @@ function updatePlaying(dt) {
   }
 
   pipes.forEach((pipe) => {
+    pipe.previousX = pipe.x;
     pipe.x -= speed * dt;
 
     if (!pipe.scored && pipe.x + pipe.width < player.x - PLAYER_RADIUS) {
@@ -284,12 +288,13 @@ function updatePlaying(dt) {
 }
 
 function hitPipe(pipe) {
-  const birdLeft = player.x - PLAYER_RADIUS + 10;
-  const birdRight = player.x + PLAYER_RADIUS - 10;
-  const birdTop = player.y - PLAYER_RADIUS + 10;
-  const birdBottom = player.y + PLAYER_RADIUS - 10;
-  const pipeLeft = pipe.x;
-  const pipeRight = pipe.x + pipe.width;
+  const birdLeft = player.x - PLAYER_RADIUS + 4;
+  const birdRight = player.x + PLAYER_RADIUS - 4;
+  const birdTop = player.y - PLAYER_RADIUS + 4;
+  const birdBottom = player.y + PLAYER_RADIUS - 4;
+  const previousX = pipe.previousX ?? pipe.x;
+  const pipeLeft = Math.min(previousX, pipe.x);
+  const pipeRight = Math.max(previousX + pipe.width, pipe.x + pipe.width);
   const gapTop = pipe.top;
   const gapBottom = pipe.top + pipe.gap;
 
