@@ -510,10 +510,28 @@ body[data-game-state="won"] .round-status {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
   .game-nav a,
   .game-nav button,
   .menu-button {
     transition: none;
+  }
+
+  .game-nav a:hover,
+  .game-nav button:hover,
+  .menu-button:hover {
+    transform: none;
+    filter: none;
   }
 }
 

@@ -1,27 +1,79 @@
-# Zac Batten personal website
+# Zac Batten Portfolio / Inefy Workbench
 
-Static GitHub Pages site for `zacbatten.me`, built as a personal project hub for current work, featured projects, and contact links.
+Static GitHub Pages portfolio for [zacbatten.me](https://zacbatten.me). The site presents Zac Batten as a software developer through selected project work, case studies, practical web tools, build notes, and contact/resume paths.
 
-The movie-night showcase lives at `movie-night.html` and embeds the Zurra3 Twitch stream, the shared IMDb movie list, and a short explanation of the StreamCinema Vote Bot. Build logs live at `notes.html`. The fun corner includes Web Paint, Flappy Workbench, Snake Lab, Brick Breaker, 2048, Minefield Sweep, Mini Golf, and Asteroid Drift.
+![Homepage preview](inefy-desktop-final.png)
 
-## GitHub About fields
+## Live Links
 
-Suggested repository metadata for GitHub:
+- Portfolio: [zacbatten.me](https://zacbatten.me)
+- MovieBot case study: [zacbatten.me/#moviebot](https://zacbatten.me/#moviebot)
+- Movie Night demo page: [zacbatten.me/movie-night.html](https://zacbatten.me/movie-night.html)
+- Build notes: [zacbatten.me/notes.html](https://zacbatten.me/notes.html)
 
-- Description: `Personal workbench for Zac Batten's featured builds, MovieBot, TraverseOps, and build notes.`
+## What Zac Built
+
+- Homepage positioning for software development hiring.
+- Project sections for MovieBot, TraverseOps, practical web tools, and browser experiments.
+- Movie Night showcase with Twitch embeds, public-domain movie library pages, and MovieBot proof links.
+- Interactive lab pages for Web Paint, Flappy Workbench, Snake Lab, Brick Breaker, 2048, Minefield Sweep, Mini Golf, and Asteroid Drift.
+- Static resume/contact paths and SEO basics for GitHub Pages.
+- Responsive CSS, reduced-motion support, keyboard focus states, and no-build deployment.
+
+## Repository Metadata
+
+Suggested GitHub About fields:
+
+- Description: `Software developer portfolio for Zac Batten, featuring practical web tools, MovieBot, TraverseOps, build notes, and browser experiments.`
 - Website: `https://zacbatten.me`
-- Topics: `portfolio`, `github-pages`, `static-site`, `moviebot`, `traverseops`
+- Topics: `portfolio`, `github-pages`, `static-site`, `frontend`, `javascript`, `case-studies`, `moviebot`, `traverseops`, `browser-games`
 
-## Local preview
+## Project Structure
 
-Open `index.html` directly in a browser, or serve the folder with any static server:
+- `index.html` - homepage, selected work, case studies, contact section, and interactive lab links.
+- `styles.css` - shared site styles, responsive layout, accessibility states, and reduced-motion rules.
+- `script.js` - homepage interactions, local time, filtering, palette shuffle, and Twitch embed helpers.
+- `movie-night.html` - MovieBot/Movie Night showcase.
+- `movie-library.html` and `movie-library.js` - searchable public-domain movie list.
+- `notes.html` - build notes.
+- `resume.html` - recruiter-friendly resume placeholder page.
+- `paint.*`, `snake-lab.*`, `brick-breaker.*`, `2048.*`, `minefield-sweep.*`, `mini-golf.*`, `asteroid-drift.*`, `flappy-workbench.*` - standalone interactive tools and games.
+- `assets/` - project preview imagery.
+- `CNAME`, `robots.txt`, `sitemap.xml` - GitHub Pages domain and indexing metadata.
+
+## Local Preview
+
+This is a static site with no package install step.
+
+Clone the repo:
+
+```bash
+git clone https://github.com/Inefy/Inefy.github.io.git
+cd Inefy.github.io
+```
+
+Start a local static server:
 
 ```bash
 python -m http.server 8000
 ```
 
-Then visit `http://localhost:8000`.
+Then visit:
 
-## Deploy
+```text
+http://localhost:8000
+```
 
-This repository is ready for GitHub Pages. The custom domain is configured in `CNAME`.
+Opening `index.html` directly also works for most pages, but a local static server is better for testing links, media, and browser security behavior.
+
+## QA Checklist
+
+- Run a local link check before publishing meaningful navigation changes.
+- Verify `script.js` with `node --check script.js`.
+- Check desktop and mobile layouts around the homepage hero, project cards, resume/contact sections, and game/tool pages.
+- Test with `prefers-reduced-motion: reduce` enabled.
+- Confirm public links to GitHub, resume, contact, and case studies remain valid.
+
+## Deployment
+
+The site deploys through GitHub Pages from the repository root. The custom domain is configured in `CNAME`.

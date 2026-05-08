@@ -21,6 +21,7 @@ const BEST_KEY = "snake-lab-best";
 const STEP_START = 138;
 const STEP_MIN = 58;
 const STEP_GAIN = 3.6;
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let viewport = {
   dpr: 1,
@@ -47,6 +48,22 @@ let flashTime = 0;
 let audioContext = null;
 let touchStart = null;
 let particles = [];
+let prefersReducedMotion = reducedMotionQuery.matches;
+
+function syncMotionPreference(event = reducedMotionQuery) {
+  prefersReducedMotion = event.matches;
+
+  if (prefersReducedMotion) {
+    particles = [];
+    flashTime = 0;
+  }
+}
+
+if (reducedMotionQuery.addEventListener) {
+  reducedMotionQuery.addEventListener("change", syncMotionPreference);
+} else {
+  reducedMotionQuery.addListener(syncMotionPreference);
+}
 
 function readBest() {
   try {
@@ -242,9 +259,14 @@ function resize() {
 function loop(time) {
   const dt = Math.min(0.08, (time - lastTime) / 1000 || 0);
   lastTime = time;
-  pulseTime += dt;
-  flashTime = Math.max(0, flashTime - dt);
-  updateParticles(dt);
+  if (!prefersReducedMotion) {
+    pulseTime += dt;
+    flashTime = Math.max(0, flashTime - dt);
+    updateParticles(dt);
+  } else {
+    flashTime = 0;
+    particles = [];
+  }
 
   if (state === "playing") {
     accumulator += dt * 1000;
@@ -265,8 +287,10 @@ function draw() {
   drawBoard();
   drawFood();
   drawSnake();
-  drawParticles();
-  if (flashTime > 0) drawFlash();
+  if (!prefersReducedMotion) {
+    drawParticles();
+    if (flashTime > 0) drawFlash();
+  }
 }
 
 function drawBackdrop() {
@@ -351,7 +375,7 @@ function drawFood() {
   const { offsetX, offsetY, cell } = viewport;
   const cx = offsetX + food.x * cell + cell / 2;
   const cy = offsetY + food.y * cell + cell / 2;
-  const pulse = 0.82 + Math.sin(pulseTime * 7) * 0.12;
+  const pulse = prefersReducedMotion ? 1 : 0.82 + Math.sin(pulseTime * 7) * 0.12;
   const radius = cell * 0.28 * pulse;
 
   ctx.save();
@@ -430,6 +454,8 @@ function drawHead() {
 }
 
 function spawnEatBurst(gridX, gridY) {
+  if (prefersReducedMotion) return;
+
   const { offsetX, offsetY, cell } = viewport;
   const x = offsetX + gridX * cell + cell / 2;
   const y = offsetY + gridY * cell + cell / 2;
@@ -449,6 +475,7 @@ function spawnEatBurst(gridX, gridY) {
 }
 
 function spawnCrashBurst(head) {
+  if (prefersReducedMotion) return;
   if (!head) return;
   const { offsetX, offsetY, cell } = viewport;
   const x = offsetX + head.x * cell + cell / 2;

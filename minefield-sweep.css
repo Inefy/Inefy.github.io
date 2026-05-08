@@ -945,11 +945,23 @@ body[data-flag-mode="true"] .mine-board {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
-    animation-duration: 1ms !important;
-    scroll-behavior: auto !important;
-    transition-duration: 1ms !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .game-nav a:hover,
+  .game-nav button:hover:not(:disabled),
+  .difficulty-bar button:hover,
+  .cell:hover:not(:disabled),
+  .menu-button:hover {
+    transform: none;
+    filter: none;
   }
 }

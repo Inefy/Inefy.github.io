@@ -25,6 +25,7 @@ const MAX_LEVEL = 5;
 const BALL_RADIUS = 9;
 const PADDLE_Y = 560;
 const POWER_DROP_CHANCE = 0.24;
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 const POWER_TYPES = {
   wide: { label: "Wide", color: "#68b7ff", duration: 13 },
@@ -66,6 +67,24 @@ let activePowers = {
   slow: 0,
   shield: 0
 };
+let prefersReducedMotion = reducedMotionQuery.matches;
+
+function syncMotionPreference(event = reducedMotionQuery) {
+  prefersReducedMotion = event.matches;
+
+  if (prefersReducedMotion) {
+    particles = [];
+    ball.trail = [];
+    flashTime = 0;
+    screenShake = 0;
+  }
+}
+
+if (reducedMotionQuery.addEventListener) {
+  reducedMotionQuery.addEventListener("change", syncMotionPreference);
+} else {
+  reducedMotionQuery.addListener(syncMotionPreference);
+}
 
 const keys = {
   left: false,
@@ -301,10 +320,17 @@ function handleAction() {
 }
 
 function updateGame(dt) {
-  pulseTime += dt;
-  flashTime = Math.max(0, flashTime - dt);
-  screenShake = Math.max(0, screenShake - dt * 28);
-  updateParticles(dt);
+  if (!prefersReducedMotion) {
+    pulseTime += dt;
+    flashTime = Math.max(0, flashTime - dt);
+    screenShake = Math.max(0, screenShake - dt * 28);
+    updateParticles(dt);
+  } else {
+    flashTime = 0;
+    screenShake = 0;
+    particles = [];
+    ball.trail = [];
+  }
   if (state === "playing") {
     updatePowerTimers(dt);
     updatePowerUps(dt);
@@ -607,6 +633,8 @@ function normalizeBallSpeed(targetSpeed) {
 }
 
 function spawnPowerCollect(powerUp) {
+  if (prefersReducedMotion) return;
+
   const color = POWER_TYPES[powerUp.type]?.color || "#fff7e8";
   for (let i = 0; i < 16; i += 1) {
     const angle = (i / 16) * Math.PI * 2;
@@ -624,6 +652,8 @@ function spawnPowerCollect(powerUp) {
 }
 
 function spawnBrickBurst(brick) {
+  if (prefersReducedMotion) return;
+
   const x = brick.x + brick.width / 2;
   const y = brick.y + brick.height / 2;
   const count = brick.hits <= 1 ? 18 : 9;
@@ -643,6 +673,8 @@ function spawnBrickBurst(brick) {
 }
 
 function spawnPaddleSpark(x, y) {
+  if (prefersReducedMotion) return;
+
   for (let i = 0; i < 10; i += 1) {
     const angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.3;
     const speed = 52 + Math.random() * 120;
@@ -659,6 +691,8 @@ function spawnPaddleSpark(x, y) {
 }
 
 function spawnBallDrop() {
+  if (prefersReducedMotion) return;
+
   for (let i = 0; i < 20; i += 1) {
     const angle = Math.random() * Math.PI * 2;
     const speed = 45 + Math.random() * 160;
@@ -714,8 +748,8 @@ function draw() {
   ctx.clearRect(0, 0, viewport.width, viewport.height);
   drawBackdrop();
 
-  const shakeX = screenShake > 0 ? (Math.random() - 0.5) * screenShake : 0;
-  const shakeY = screenShake > 0 ? (Math.random() - 0.5) * screenShake : 0;
+  const shakeX = !prefersReducedMotion && screenShake > 0 ? (Math.random() - 0.5) * screenShake : 0;
+  const shakeY = !prefersReducedMotion && screenShake > 0 ? (Math.random() - 0.5) * screenShake : 0;
   ctx.save();
   ctx.translate(viewport.offsetX + shakeX, viewport.offsetY + shakeY);
   ctx.scale(viewport.scale, viewport.scale);
@@ -725,9 +759,9 @@ function draw() {
   drawPowerUps();
   drawPaddle();
   drawBall();
-  drawParticles();
+  if (!prefersReducedMotion) drawParticles();
   if (state === "serve") drawServePreview();
-  if (flashTime > 0) drawFlash();
+  if (!prefersReducedMotion && flashTime > 0) drawFlash();
   ctx.restore();
 }
 
@@ -826,7 +860,7 @@ function drawBricks() {
 function drawShield() {
   if (activePowers.shield <= 0) return;
   const y = WORLD_HEIGHT - 28;
-  const alpha = 0.54 + Math.sin(pulseTime * 7) * 0.16;
+  const alpha = prefersReducedMotion ? 0.64 : 0.54 + Math.sin(pulseTime * 7) * 0.16;
   ctx.save();
   ctx.globalAlpha = alpha;
   ctx.shadowColor = "rgba(245, 196, 91, 0.65)";
@@ -908,16 +942,18 @@ function drawPaddle() {
 }
 
 function drawBall() {
-  for (let i = ball.trail.length - 1; i >= 0; i -= 1) {
-    const t = i / Math.max(1, ball.trail.length - 1);
-    const point = ball.trail[i];
-    ctx.globalAlpha = 0.12 + (1 - t) * 0.22;
-    ctx.fillStyle = "#68b7ff";
-    ctx.beginPath();
-    ctx.arc(point.x, point.y, ball.radius * (0.5 + (1 - t) * 0.28), 0, Math.PI * 2);
-    ctx.fill();
+  if (!prefersReducedMotion) {
+    for (let i = ball.trail.length - 1; i >= 0; i -= 1) {
+      const t = i / Math.max(1, ball.trail.length - 1);
+      const point = ball.trail[i];
+      ctx.globalAlpha = 0.12 + (1 - t) * 0.22;
+      ctx.fillStyle = "#68b7ff";
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, ball.radius * (0.5 + (1 - t) * 0.28), 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
   }
-  ctx.globalAlpha = 1;
 
   ctx.save();
   ctx.shadowColor = "rgba(245, 196, 91, 0.62)";
@@ -946,7 +982,7 @@ function drawParticles() {
 }
 
 function drawServePreview() {
-  const alpha = 0.55 + Math.sin(pulseTime * 5) * 0.18;
+  const alpha = prefersReducedMotion ? 0.68 : 0.55 + Math.sin(pulseTime * 5) * 0.18;
   const offset = (paddle.targetX - WORLD_WIDTH / 2) / WORLD_WIDTH;
   const angle = clamp(offset * 0.8, -0.56, 0.56);
   const endX = ball.x + Math.sin(angle) * 96;
@@ -965,7 +1001,7 @@ function drawServePreview() {
   ctx.strokeStyle = "#68b7ff";
   ctx.lineWidth = 2;
   ctx.beginPath();
-  ctx.arc(ball.x, ball.y, ball.radius + 10 + Math.sin(pulseTime * 6) * 3, 0, Math.PI * 2);
+  ctx.arc(ball.x, ball.y, ball.radius + 10 + (prefersReducedMotion ? 0 : Math.sin(pulseTime * 6) * 3), 0, Math.PI * 2);
   ctx.stroke();
   ctx.restore();
 }

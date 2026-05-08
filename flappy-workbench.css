@@ -358,3 +358,22 @@ a:focus-visible {
     min-height: 0;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .game-nav a:hover,
+  .game-nav button:hover,
+  .menu-button:hover {
+    transform: none;
+  }
+}

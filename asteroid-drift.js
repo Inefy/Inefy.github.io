@@ -15,6 +15,7 @@
   const SHIELD_DRAIN = 42;
   const SHIELD_RECHARGE = 18;
   const START_LIVES = 3;
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const canvas = document.getElementById("gameCanvas");
   const ctx = canvas.getContext("2d");
@@ -67,6 +68,22 @@
   let particles = [];
   let stars = [];
   let backgroundPhase = 0;
+  let prefersReducedMotion = reducedMotionQuery.matches;
+
+  function syncMotionPreference(event = reducedMotionQuery) {
+    prefersReducedMotion = event.matches;
+
+    if (prefersReducedMotion) {
+      particles = [];
+      backgroundPhase = 0;
+    }
+  }
+
+  if (reducedMotionQuery.addEventListener) {
+    reducedMotionQuery.addEventListener("change", syncMotionPreference);
+  } else {
+    reducedMotionQuery.addListener(syncMotionPreference);
+  }
 
   function createShip() {
     return {
@@ -373,6 +390,10 @@
   }
 
   function spawnParticles(x, y, color, count = 14, force = 150) {
+    if (prefersReducedMotion) {
+      return;
+    }
+
     for (let i = 0; i < count; i += 1) {
       const angle = Math.random() * Math.PI * 2;
       const speed = force * (0.2 + Math.random() * 0.9);
@@ -582,16 +603,25 @@
   }
 
   function update(dt) {
-    backgroundPhase += dt;
+    if (!prefersReducedMotion) {
+      backgroundPhase += dt;
+    } else {
+      particles = [];
+      backgroundPhase = 0;
+    }
     if (state !== "playing") {
-      updateParticles(dt);
+      if (!prefersReducedMotion) {
+        updateParticles(dt);
+      }
       return;
     }
 
     updateShip(dt);
     updateBullets(dt);
     updateAsteroids(dt);
-    updateParticles(dt);
+    if (!prefersReducedMotion) {
+      updateParticles(dt);
+    }
     handleCollisions();
     if (state !== "playing") {
       updateBest();
@@ -618,15 +648,15 @@
     beltGradient.addColorStop(0.56, "rgba(255, 143, 198, 0.13)");
     beltGradient.addColorStop(1, "rgba(245, 196, 91, 0)");
     ctx.fillStyle = beltGradient;
-    ctx.translate(0, Math.sin(backgroundPhase * 0.35) * 10);
+    ctx.translate(0, prefersReducedMotion ? 0 : Math.sin(backgroundPhase * 0.35) * 10);
     ctx.rotate(-0.12);
     ctx.fillRect(-120, WORLD_HEIGHT * 0.38, WORLD_WIDTH + 240, 96);
     ctx.restore();
 
     ctx.save();
     stars.forEach((star) => {
-      const x = (star.x + backgroundPhase * star.drift * 18) % WORLD_WIDTH;
-      const y = (star.y + backgroundPhase * star.drift * 5) % WORLD_HEIGHT;
+      const x = prefersReducedMotion ? star.x : (star.x + backgroundPhase * star.drift * 18) % WORLD_WIDTH;
+      const y = prefersReducedMotion ? star.y : (star.y + backgroundPhase * star.drift * 5) % WORLD_HEIGHT;
       ctx.globalAlpha = star.alpha;
       ctx.beginPath();
       ctx.arc(x, y, star.size, 0, Math.PI * 2);

@@ -1023,11 +1023,25 @@ body[data-game-state="over"] .status-dot {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
-    animation-duration: 1ms !important;
-    scroll-behavior: auto !important;
-    transition-duration: 1ms !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .menu-scanline {
+    display: none;
+  }
+
+  .game-nav a:hover,
+  .game-nav button:hover:not(:disabled),
+  .touch-controls button:hover:not(:disabled),
+  .menu-button:hover {
+    transform: none;
   }
 }

@@ -28,6 +28,7 @@ const PIPE_SPEED_START = 160;
 const PIPE_SPEED_GAIN = 14.8;
 const BEST_KEY = "flappy-workbench-best";
 const PIPE_WARNING_DISTANCE = 235;
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let viewport = {
   dpr: 1,
@@ -55,6 +56,25 @@ let shakeTime;
 let shakePower;
 let flashTime;
 let audioContext;
+let prefersReducedMotion = reducedMotionQuery.matches;
+
+function syncMotionPreference(event = reducedMotionQuery) {
+  prefersReducedMotion = event.matches;
+
+  if (prefersReducedMotion) {
+    particles = [];
+    floaters = [];
+    shakeTime = 0;
+    shakePower = 0;
+    flashTime = 0;
+  }
+}
+
+if (reducedMotionQuery.addEventListener) {
+  reducedMotionQuery.addEventListener("change", syncMotionPreference);
+} else {
+  reducedMotionQuery.addListener(syncMotionPreference);
+}
 
 function readBest() {
   try {
@@ -202,6 +222,8 @@ function spawnX() {
 }
 
 function spawnWingBurst() {
+  if (prefersReducedMotion) return;
+
   for (let i = 0; i < 7; i += 1) {
     particles.push({
       x: player.x - 12,
@@ -216,6 +238,8 @@ function spawnWingBurst() {
 }
 
 function spawnScoreBurst() {
+  if (prefersReducedMotion) return;
+
   for (let i = 0; i < 16; i += 1) {
     const angle = Math.random() * Math.PI * 2;
     const speed = 40 + Math.random() * 150;
@@ -307,15 +331,17 @@ function hitPipe(pipe) {
 function endRun() {
   if (state === "over") return;
   state = "over";
-  shakeTime = 0.28;
-  shakePower = 12;
-  flashTime = 0.18;
+  shakeTime = prefersReducedMotion ? 0 : 0.28;
+  shakePower = prefersReducedMotion ? 0 : 12;
+  flashTime = prefersReducedMotion ? 0 : 0.18;
   playTone(170, 0.12, "sawtooth", 0.06);
   playTone(86, 0.18, "triangle", 0.045);
   updateHud(score > 0 ? "Run over" : "Try again");
   setMenu(true, score > 0 ? `Score ${score}` : "Try again", "Restart", score >= best && score > 0 ? "Best run" : `Best ${best}`);
 
   for (let i = 0; i < 22; i += 1) {
+    if (prefersReducedMotion) break;
+
     particles.push({
       x: player.x,
       y: player.y,
@@ -339,6 +365,8 @@ function updateParticles(dt) {
 }
 
 function addFloater(text, x, y, color, size) {
+  if (prefersReducedMotion) return;
+
   floaters.push({
     text,
     x,
@@ -421,7 +449,7 @@ function draw() {
   ctx.fillStyle = "#0f1314";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  const shake = shakeTime > 0 ? Math.sin(shakeTime * 95) * shakePower : 0;
+  const shake = !prefersReducedMotion && shakeTime > 0 ? Math.sin(shakeTime * 95) * shakePower : 0;
   ctx.setTransform(
     viewport.dpr * viewport.scale,
     0,
@@ -434,10 +462,12 @@ function draw() {
   drawSky();
   pipes.forEach(drawPipe);
   drawGround();
-  drawParticles();
+  if (!prefersReducedMotion) drawParticles();
   drawPlayer();
-  drawFloaters();
-  drawFlash();
+  if (!prefersReducedMotion) {
+    drawFloaters();
+    drawFlash();
+  }
 }
 
 function drawSky() {
@@ -557,7 +587,7 @@ function drawParticles() {
 }
 
 function drawPlayer() {
-  const bob = state === "idle" || state === "paused" ? Math.sin(idleTime * 3.4) * 7 : 0;
+  const bob = !prefersReducedMotion && (state === "idle" || state === "paused") ? Math.sin(idleTime * 3.4) * 7 : 0;
   ctx.save();
   ctx.translate(player.x, player.y + bob);
   ctx.rotate(player.rotation);
@@ -634,19 +664,28 @@ function tick(time) {
     updatePlaying(dt);
   }
 
-  idleTime += dt;
-  if (state === "idle" || state === "paused") {
+  if (!prefersReducedMotion) {
+    idleTime += dt;
+  }
+  if (!prefersReducedMotion && (state === "idle" || state === "paused")) {
     groundOffset = (groundOffset + 24 * dt) % 56;
   }
-  if (shakeTime > 0) {
+  if (!prefersReducedMotion && shakeTime > 0) {
     shakeTime = Math.max(0, shakeTime - dt);
     shakePower *= 0.9;
   }
-  if (flashTime > 0) {
+  if (!prefersReducedMotion && flashTime > 0) {
     flashTime = Math.max(0, flashTime - dt);
   }
-  updateParticles(dt);
-  updateFloaters(dt);
+  if (!prefersReducedMotion) {
+    updateParticles(dt);
+    updateFloaters(dt);
+  } else {
+    particles = [];
+    floaters = [];
+    shakeTime = 0;
+    flashTime = 0;
+  }
   draw();
 }
 

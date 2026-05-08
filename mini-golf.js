@@ -12,6 +12,7 @@
   const BOUNCE = 0.76;
   const SPINNER_BOUNCE = 0.86;
   const BEST_KEY = "inefy-mini-golf-best-total";
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const LEVELS = [
     {
@@ -203,6 +204,22 @@
   let worldTime = 0;
   let particles = [];
   let trail = [];
+  let prefersReducedMotion = reducedMotionQuery.matches;
+
+  function syncMotionPreference(event = reducedMotionQuery) {
+    prefersReducedMotion = event.matches;
+
+    if (prefersReducedMotion) {
+      particles = [];
+      trail = [{ x: ball.x, y: ball.y }];
+    }
+  }
+
+  if (reducedMotionQuery.addEventListener) {
+    reducedMotionQuery.addEventListener("change", syncMotionPreference);
+  } else {
+    reducedMotionQuery.addListener(syncMotionPreference);
+  }
 
   function createBall(point) {
     return {
@@ -767,6 +784,10 @@
   }
 
   function spawnParticles(x, y, color, count = 12, force = 100) {
+    if (prefersReducedMotion) {
+      return;
+    }
+
     for (let i = 0; i < count; i += 1) {
       const angle = Math.random() * Math.PI * 2;
       const speedValue = force * (0.35 + Math.random() * 0.75);
@@ -795,6 +816,11 @@
   }
 
   function recordTrail() {
+    if (prefersReducedMotion) {
+      trail = [{ x: ball.x, y: ball.y }];
+      return;
+    }
+
     const lastPoint = trail[trail.length - 1];
     if (!lastPoint || distance(lastPoint, ball) > 10) {
       trail.push({ x: ball.x, y: ball.y });
@@ -1071,7 +1097,7 @@
   }
 
   function drawTrail() {
-    if (trail.length < 2) {
+    if (prefersReducedMotion || trail.length < 2) {
       return;
     }
 
@@ -1087,7 +1113,7 @@
   }
 
   function drawParticles() {
-    if (particles.length === 0) {
+    if (prefersReducedMotion || particles.length === 0) {
       return;
     }
 
@@ -1158,7 +1184,11 @@
     lastTime = timestamp;
     worldTime += dt;
     updatePhysics(dt);
-    updateParticles(dt);
+    if (!prefersReducedMotion) {
+      updateParticles(dt);
+    } else {
+      particles = [];
+    }
     render();
     animationFrame = window.requestAnimationFrame(loop);
   }

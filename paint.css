@@ -750,3 +750,28 @@ input:focus-visible {
     width: 96px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .swatch:hover,
+  .command-button:hover,
+  .tool-button:hover,
+  .shape-button:hover,
+  .brush-size-button:hover,
+  .mini-command-button:hover,
+  .rail-button:hover,
+  .zoom-button:hover,
+  .size-action-button:hover {
+    transform: none;
+  }
+}
