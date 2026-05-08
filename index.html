@@ -181,12 +181,12 @@
           <article class="strength-card">
             <h3>Python automation</h3>
             <p>Building scripts and bots that handle repeated workflow steps, long-running auth, chat commands, and service handoffs.</p>
-            <a href="#moviebot">MovieBot case study</a>
+            <a href="moviebot-case-study.html">MovieBot case study</a>
           </article>
           <article class="strength-card">
             <h3>Frontend UI / vanilla JavaScript</h3>
             <p>Creating focused browser interfaces with clear state, direct interactions, and no unnecessary framework overhead.</p>
-            <a href="#web-paint">Web Paint case study</a>
+            <a href="web-paint-case-study.html">Web Paint case study</a>
           </article>
           <article class="strength-card">
             <h3>Static web architecture</h3>
@@ -196,7 +196,7 @@
           <article class="strength-card">
             <h3>Mapping/workflow interfaces</h3>
             <p>Designing map-first workflows where records, inspections, work orders, and field context stay connected.</p>
-            <a href="#traverseops">TraverseOps case study</a>
+            <a href="traverseops-case-study.html">TraverseOps case study</a>
           </article>
           <article class="strength-card">
             <h3>Canvas tools/games</h3>
@@ -229,7 +229,7 @@
             <li>Responsive, Capacitor-ready UI structure for desktop review and mobile field use.</li>
           </ul>
           <div class="flagship-actions">
-            <a class="button primary" href="#traverseops">Read Case Study</a>
+            <a class="button primary" href="traverseops-case-study.html">Read Case Study</a>
             <a class="button secondary" href="https://traverseops.app" rel="noopener noreferrer">Open Live Demo</a>
           </div>
           <p class="flagship-note">
@@ -274,23 +274,25 @@
                 <span><i aria-hidden="true"></i> Public demo</span>
                 <span>Field ops UI</span>
               </div>
-              <h3>TraverseOps</h3>
+              <h3>TraverseOps &mdash; Field Operations Map &amp; Work-Order Demo</h3>
               <p class="project-problem">
-                Field crews lose time when maps, asset records, inspections, and work orders live in separate tools.
+                Field crews and supervisors lose time when asset maps, inspection records, imports, reports, and work orders live in separate tools.
               </p>
               <ul class="project-bullets">
-                <li>Map-first asset lookup with detail panels for field context.</li>
-                <li>Inspection and work-order flows designed for crews on site.</li>
-                <li>Demo-safe sample data with offline-aware app structure.</li>
+                <li>MapLibre-style asset map with status filtering and selected-asset workflows.</li>
+                <li>Inspection and work-order screens for field crew/supervisor-style roles.</li>
+                <li>Import/reporting flow designed to model municipal asset operations.</li>
               </ul>
               <div class="tech-stack" aria-label="TraverseOps tech stack">
                 <span>MapLibre</span>
                 <span>Supabase</span>
-                <span>Capacitor</span>
+                <span>Work orders</span>
+                <span>Imports</span>
+                <span>Reports</span>
                 <span>Responsive UI</span>
               </div>
               <div class="card-actions">
-                <a href="#traverseops">Case Study</a>
+                <a href="traverseops-case-study.html">Case Study</a>
                 <a href="https://traverseops.app" rel="noopener noreferrer">Live Demo</a>
               </div>
             </div>
@@ -305,24 +307,26 @@
                 <span><i aria-hidden="true"></i> Public repo</span>
                 <span>Twitch / OBS</span>
               </div>
-              <h3>MovieBot / StreamCinema Vote Bot</h3>
+              <h3>StreamCinema Vote Bot &mdash; Twitch Chat Voting + OBS Automation</h3>
               <p class="project-problem">
-                Hosted movie nights need chat voting, queue handling, and OBS playback without manual tallying.
+                Manually running stream movie nights is repetitive and hard to coordinate; Twitch chat votes determine playback while the bot controls OBS.
               </p>
               <ul class="project-bullets">
-                <li>Twitch chat commands for voting, results, help, and current movie status.</li>
-                <li>OAuth refresh and IRC health checks for long-running streams.</li>
-                <li>OBS WebSocket handoff to update the active media source.</li>
+                <li>Python/TwitchIO command handling for vote collection.</li>
+                <li>OBS WebSocket integration for playback automation.</li>
+                <li>Token refresh, reconnect handling, vote changes, and tie resolution.</li>
               </ul>
               <div class="tech-stack" aria-label="MovieBot tech stack">
                 <span>Python</span>
                 <span>TwitchIO</span>
                 <span>OBS WebSocket</span>
-                <span>OAuth</span>
+                <span>OAuth refresh</span>
+                <span>Vote state</span>
               </div>
               <div class="card-actions">
-                <a href="#moviebot">Case Study</a>
-                <a href="movie-night.html">Live Demo</a>
+                <a href="moviebot-case-study.html">Case Study</a>
+                <a href="movie-night.html">Movie Night</a>
+                <a href="movie-library.html">Movie Library</a>
                 <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a>
               </div>
             </div>
@@ -363,9 +367,9 @@
                 <span>LocalStorage</span>
               </div>
               <div class="card-actions">
-                <a href="#web-paint">Case Study</a>
+                <a href="web-paint-case-study.html">Case Study</a>
                 <a href="paint.html">Live Demo</a>
-                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.html" rel="noopener noreferrer">GitHub</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">GitHub</a>
               </div>
             </div>
           </article>
@@ -397,8 +401,9 @@
             MovieBot is a Python Twitch bot that turns chat commands into a watch-party queue. It tracks votes, handles stream-room commands, refreshes tokens, and hands the winning local media file to OBS.
           </p>
           <div class="case-actions">
-            <a class="button primary" href="movie-night.html">Open Movie Night</a>
-            <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">View source</a>
+          <a class="button primary" href="movie-night.html">Open Movie Night</a>
+          <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">View source</a>
+          <a class="button ghost" href="moviebot-case-study.html">Full case study</a>
           </div>
           <div class="case-tags" aria-label="MovieBot stack">
             <span>Python</span>
@@ -511,7 +516,8 @@
           </p>
           <div class="case-actions">
             <a class="button primary" href="paint.html">Open Web Paint</a>
-            <a class="button secondary" href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.html" rel="noopener noreferrer">View source</a>
+            <a class="button secondary" href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">View source</a>
+            <a class="button ghost" href="web-paint-case-study.html">Full case study</a>
           </div>
           <div class="case-tags" aria-label="Web Paint stack">
             <span>Canvas API</span>

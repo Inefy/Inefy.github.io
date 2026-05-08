@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="Web Paint case study by Zac Batten: a browser-based canvas drawing editor built with vanilla JavaScript, pointer events, canvas state, undo/redo, import/export, and responsive tool UI.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/web-paint-case-study.html">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="Web Paint Case Study / Zac Batten">
+    <meta property="og:description" content="A vanilla JavaScript canvas drawing editor with tools, shapes, state management, undo/redo, import/export, touch-aware input, and performance constraints.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zacbatten.me/web-paint-case-study.html">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image:alt" content="Inefy workbench portfolio preview with selected work and browser tools.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Web Paint Case Study / Zac Batten">
+    <meta name="twitter:description" content="Browser-based canvas drawing editor built with vanilla JavaScript.">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <title>Web Paint Case Study / Zac Batten</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#case-study-content">Skip to Web Paint case study</a>
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+        <span class="brand-mark" aria-hidden="true">ZB</span>
+        <span class="brand-copy">
+          <span>Zac Batten</span>
+          <small>Inefy workbench</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html">Work</a>
+        <a href="case-studies.html" aria-current="page">Case Studies</a>
+        <a href="index.html#about">About</a>
+        <a href="notes.html">Notes</a>
+        <a href="resume.html">Resume</a>
+        <a class="nav-cta" href="index.html#contact">Contact</a>
+        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top" class="case-template-page">
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="case-studies.html">Case Studies</a>
+        <span aria-hidden="true">/</span>
+        <span>Web Paint</span>
+      </nav>
+
+      <section class="case-template-hero" aria-labelledby="case-title">
+        <div class="case-template-hero-copy">
+          <p class="eyebrow">Frontend tooling case study</p>
+          <h1 id="case-title">Web Paint</h1>
+          <p class="case-template-summary">
+            Web Paint is a browser-based canvas drawing editor built with vanilla JavaScript. It recreates a familiar Paint-style workflow with pointer-based drawing tools, shape previews, flood fill, selection copy/cut, undo/redo history, image import, PNG export, zoom, fullscreen, local save, and responsive tool panels.
+          </p>
+          <dl class="case-template-meta" aria-label="Project metadata">
+            <div>
+              <dt>Project type</dt>
+              <dd>Canvas drawing editor</dd>
+            </div>
+            <div>
+              <dt>Status</dt>
+              <dd>Live static browser tool</dd>
+            </div>
+            <div>
+              <dt>Stack</dt>
+              <dd>HTML Canvas, vanilla JavaScript, CSS Grid</dd>
+            </div>
+            <div>
+              <dt>Role</dt>
+              <dd>Solo builder: UI, drawing engine, state, import/export</dd>
+            </div>
+          </dl>
+        </div>
+
+        <figure class="case-template-image-placeholder" role="img" aria-label="Stylized Web Paint editor preview with toolbar, color palette, canvas, brush stroke, shape, zoom controls, and export action">
+          <div>
+            <strong>Canvas editor in the browser</strong>
+          </div>
+          <figcaption>Placeholder preview for the live Web Paint tool: ribbon controls, drawing canvas, tool state, import/export, and responsive workspace.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-template-links" aria-labelledby="project-links-title">
+        <div>
+          <p class="eyebrow">Project links</p>
+          <h2 id="project-links-title">Open the tool and implementation.</h2>
+          <p>The live page runs as a static HTML/CSS/JavaScript app. Source links point to the canvas logic and UI files inside the portfolio repository.</p>
+        </div>
+        <div class="work-links">
+          <a href="paint.html">Live tool</a>
+          <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">JavaScript source</a>
+          <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.css" rel="noopener noreferrer">CSS source</a>
+          <a href="work.html#flagship-case-studies">Work index</a>
+        </div>
+      </section>
+
+      <div class="case-template-layout" id="case-study-content">
+        <article class="case-template-main">
+          <section class="case-template-section" aria-labelledby="summary-title">
+            <p class="eyebrow">01 / Project summary</p>
+            <h2 id="summary-title">A real canvas tool, not only a visual mockup.</h2>
+            <p>
+              Web Paint is a single-page drawing editor that uses the Canvas 2D API directly. The project focuses on the parts that make a browser tool feel usable: fast pointer input, predictable tool switching, image history, import validation, selection export, canvas resizing, zoom, and a desktop-inspired toolbar that still works at narrow widths.
+            </p>
+            <div class="case-study-callout">
+              <strong>Hiring signal:</strong>
+              <span>The implementation shows frontend fundamentals without leaning on a framework: DOM wiring, event handling, state modeling, Canvas APIs, browser storage, clipboard APIs, file validation, responsive layout, and honest accessibility tradeoffs.</span>
+            </div>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="role-title">
+            <p class="eyebrow">02 / What Zac built</p>
+            <h2 id="role-title">The full editor surface and interaction model.</h2>
+            <ul class="case-template-list">
+              <li>Built the Paint-style shell: titlebar, ribbon tabs, tool groups, quick tool rail, canvas workspace, resize handle, and status bar.</li>
+              <li>Implemented Canvas 2D drawing for pencil, brush, eraser, text, flood fill, and multiple shapes.</li>
+              <li>Modeled active tool, selected shape, color, brush size, zoom, selection rectangles, drawing drafts, resize drags, and history in JavaScript state.</li>
+              <li>Added import, paste, copy, cut, PNG download, local save, fullscreen, zoom, canvas-size controls, and responsive layout behavior.</li>
+              <li>Included guardrails for image types, file size, pixel count, bounded canvas dimensions, pointer capture, and requestAnimationFrame-based drawing updates.</li>
+            </ul>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="tool-list-title">
+            <p class="eyebrow">03 / Tool list</p>
+            <h2 id="tool-list-title">Editor features are grouped by workflow.</h2>
+            <div class="case-study-table-wrapper">
+              <table class="case-study-table">
+                <caption>Primary Web Paint controls and implementation responsibilities.</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Area</th>
+                    <th scope="col">Tools</th>
+                    <th scope="col">Implementation detail</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Drawing</th>
+                    <td>Pencil, brush, eraser, text, fill bucket.</td>
+                    <td>Pointer events convert screen coordinates into canvas coordinates; brush settings map to stroke style, line width, caps, joins, and fill color.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Shapes</th>
+                    <td>Line, rectangle, rounded rectangle, circle, triangle, right triangle, star, polygon.</td>
+                    <td>Shape drawing uses a saved draft image so dragging previews the current geometry without permanently painting every intermediate frame.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Color and size</th>
+                    <td>Palette swatches, active color preview, 2px, 6px, 12px, and 20px brush controls.</td>
+                    <td>UI buttons update shared state and active button classes so toolbar and drawing engine stay in sync.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Canvas operations</th>
+                    <td>New, clear, canvas width/height controls, drag resize handle, zoom, fullscreen.</td>
+                    <td>Canvas dimensions are clamped from 64 to 4096 pixels; resize preserves overlapping pixels and resets history after the new canvas is committed.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">File and clipboard</th>
+                    <td>Open image, paste image/text, copy selection, cut selection, save PNG, local save.</td>
+                    <td>File APIs, ClipboardItem, object URLs, canvas blobs, LocalStorage, and PNG data URLs support practical standalone workflows.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="rendering-title">
+            <p class="eyebrow">04 / Canvas rendering model</p>
+            <h2 id="rendering-title">Pointer input is converted into canvas-space drawing.</h2>
+            <ol class="case-study-flow">
+              <li>
+                <strong>Capture pointer</strong>
+                <span><code>pointerdown</code> sets pointer capture, stores the current canvas rectangle, and calculates the starting canvas-space coordinate.</span>
+              </li>
+              <li>
+                <strong>Pick behavior by tool</strong>
+                <span>Fill, text, selection, freehand drawing, and shape drawing take different paths instead of trying to force all tools through one handler.</span>
+              </li>
+              <li>
+                <strong>Render freehand strokes</strong>
+                <span>Pencil, brush, and eraser draw line segments from the previous point to the latest point, using the current brush configuration.</span>
+              </li>
+              <li>
+                <strong>Preview shapes from a draft</strong>
+                <span>Shape drawing stores an ImageData draft at pointer start, restores it during drag, then renders the current geometry on top.</span>
+              </li>
+              <li>
+                <strong>Commit a history snapshot</strong>
+                <span>On pointer release, the final canvas pixels are saved into bounded undo history so future edits can restore a known image state.</span>
+              </li>
+            </ol>
+            <p>
+              Continuous pointer movement is throttled through <code>requestAnimationFrame</code> with a pending point, which keeps drawing responsive while avoiding unnecessary repeated work during high-frequency pointer events.
+            </p>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="state-title">
+            <p class="eyebrow">05 / Tool state management</p>
+            <h2 id="state-title">A small state object coordinates the editor.</h2>
+            <div class="case-template-feature-list">
+              <article>
+                <h3>Active mode</h3>
+                <p><code>activeTool</code> and <code>activeShape</code> decide whether the next pointer action draws freehand, fills an area, places text, creates a selection, or previews a shape.</p>
+              </article>
+              <article>
+                <h3>Drawing session</h3>
+                <p><code>isDrawing</code>, <code>lastPoint</code>, <code>startPoint</code>, <code>draft</code>, <code>pendingPoint</code>, and <code>frameRequest</code> separate the live drag from committed canvas state.</p>
+              </article>
+              <article>
+                <h3>Selection and view</h3>
+                <p><code>selectionRect</code>, <code>selectionStart</code>, <code>zoom</code>, and cached canvas rectangles support selection overlays, clipboard operations, and scaled coordinate conversion.</p>
+              </article>
+            </div>
+            <p>
+              The important choice is that the canvas pixels remain the source of truth for the image, while JavaScript state describes the current interaction. That keeps the implementation understandable for a static tool, even without a component framework.
+            </p>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="history-title">
+            <p class="eyebrow">06 / Undo and redo strategy</p>
+            <h2 id="history-title">History stores bounded ImageData snapshots.</h2>
+            <p>
+              Undo and redo are implemented with an array of <code>ImageData</code> snapshots and a history index. Before saving a new edit, the app slices away any redo states after the current index, pushes the latest pixels, and caps the stack at 24 snapshots. Restoring a state uses <code>putImageData</code>.
+            </p>
+            <p>
+              This is simple, reliable, and appropriate for a demo-sized editor because every tool produces a final pixel state. The tradeoff is memory: large canvases make each snapshot expensive. A production version would likely move toward command history, dirty-region snapshots, compression, or worker-backed persistence for bigger documents.
+            </p>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="import-export-title">
+            <p class="eyebrow">07 / Import and export flow</p>
+            <h2 id="import-export-title">Browser APIs make the tool useful without a backend.</h2>
+            <ol class="case-study-flow">
+              <li>
+                <strong>Open image</strong>
+                <span>The hidden file input accepts common image types. JavaScript validates MIME type and file size before loading the image through an object URL.</span>
+              </li>
+              <li>
+                <strong>Validate dimensions</strong>
+                <span>Imported images with no dimensions or more than 48 million pixels are rejected before they are drawn onto the canvas.</span>
+              </li>
+              <li>
+                <strong>Fit to canvas</strong>
+                <span>The image is scaled to fit the current canvas while preserving aspect ratio, centered on a white background, then committed to history.</span>
+              </li>
+              <li>
+                <strong>Clipboard flow</strong>
+                <span>Copy and cut export either the full canvas or the current selection with <code>toBlob</code> and <code>ClipboardItem</code>, with download fallback when clipboard writing is unavailable.</span>
+              </li>
+              <li>
+                <strong>Export and local save</strong>
+                <span>Save downloads a PNG. Local save stores a PNG data URL in <code>localStorage</code>, which is useful for a static demo but not a full document system.</span>
+              </li>
+            </ol>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="input-title">
+            <p class="eyebrow">08 / Keyboard, mouse, and touch</p>
+            <h2 id="input-title">Pointer events keep the drawing model device-agnostic.</h2>
+            <div class="production-hardening-grid">
+              <article>
+                <h3>Mouse and pen</h3>
+                <p>Canvas drawing and resizing use pointer events, pointer capture, and canvas-space coordinate mapping so drag behavior remains stable while the user is interacting with the canvas.</p>
+              </article>
+              <article>
+                <h3>Touch devices</h3>
+                <p>The canvas sets <code>touch-action: none</code>, allowing touch drawing without the browser treating the gesture as page scroll or zoom inside the drawing surface.</p>
+              </article>
+              <article>
+                <h3>Keyboard access</h3>
+                <p>Toolbar controls are native buttons and numeric inputs. Width and height fields commit on Enter, but richer shortcuts such as Ctrl+Z, Ctrl+Y, tool hotkeys, and selection movement are still future work.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="accessibility-title">
+            <p class="eyebrow">09 / Accessibility limitations and improvements</p>
+            <h2 id="accessibility-title">The shell is accessible, but canvas content needs a deeper strategy.</h2>
+            <p>
+              The interface uses semantic buttons, labels, visible focus states, ARIA labels for icon-only controls, and descriptive toolbar group labels. The canvas itself has an accessible label, but the drawing content is still visual pixel data with no equivalent structured representation.
+            </p>
+            <div class="production-hardening-grid">
+              <article>
+                <h3>Current support</h3>
+                <p>Native buttons and inputs support keyboard focus, tool groups are labeled, color swatches announce their color value, and selection/resize controls have accessible names.</p>
+              </article>
+              <article>
+                <h3>Known limitations</h3>
+                <p>The app does not yet expose the drawn image as semantic content, lacks full keyboard drawing commands, and uses a prompt for text placement rather than an inline accessible text tool.</p>
+              </article>
+              <article>
+                <h3>Next improvements</h3>
+                <p>Add keyboard shortcuts, an accessible command palette, clearer status announcements, optional high-contrast toolbar mode, and an exportable text description field for drawings.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="performance-title">
+            <p class="eyebrow">10 / Performance considerations</p>
+            <h2 id="performance-title">Large canvases make memory and pixel work the main constraints.</h2>
+            <p>
+              Web Paint already includes a few practical guardrails: canvases are clamped to 4096 by 4096 pixels, imports are capped by file size and pixel count, flood fill uses typed arrays, resize preview work is scheduled through <code>requestAnimationFrame</code>, and history is capped at 24 snapshots.
+            </p>
+            <p>
+              The biggest limitation is that undo/redo stores full ImageData snapshots. At large dimensions, every snapshot can consume significant memory, and operations such as flood fill or full-canvas history save can become expensive. A production version would add memory-aware history limits, offscreen canvas or worker processing, region-based invalidation, progressive import feedback, and stronger handling for low-memory mobile devices.
+            </p>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="screenshots-title">
+            <p class="eyebrow">11 / Screenshots and demo placeholders</p>
+            <h2 id="screenshots-title">Visual proof to add as the project matures.</h2>
+            <div class="case-template-screenshot-grid">
+              <figure class="case-template-image-placeholder" role="img" aria-label="Placeholder screenshot for the Web Paint ribbon toolbar and color palette">
+                <div>
+                  <strong>Toolbar and palette</strong>
+                </div>
+                <figcaption>Show the Paint-style ribbon, active tool state, brush sizes, shapes, and swatches.</figcaption>
+              </figure>
+              <figure class="case-template-image-placeholder" role="img" aria-label="Placeholder screenshot for the Web Paint canvas drawing workspace">
+                <div>
+                  <strong>Canvas workspace</strong>
+                </div>
+                <figcaption>Show freehand strokes, shape previews, selection handles, zoom, and status bar feedback.</figcaption>
+              </figure>
+              <figure class="case-template-image-placeholder" role="img" aria-label="Placeholder GIF for Web Paint importing an image and exporting a PNG">
+                <div>
+                  <strong>Import / export GIF</strong>
+                </div>
+                <figcaption>Demonstrate opening an image, fitting it to the canvas, copying a selection, and saving a PNG.</figcaption>
+              </figure>
+              <figure class="case-template-image-placeholder" role="img" aria-label="Placeholder GIF for Web Paint undo redo and shape drawing behavior">
+                <div>
+                  <strong>Undo / redo GIF</strong>
+                </div>
+                <figcaption>Demonstrate shape preview, final commit, undo, redo, and canvas resize behavior.</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="next-title">
+            <p class="eyebrow">12 / What I would improve next</p>
+            <h2 id="next-title">The next pass would make it more editor-like.</h2>
+            <ul class="case-template-list">
+              <li>Add real keyboard shortcuts for undo, redo, save, tool selection, zoom, and canvas movement.</li>
+              <li>Support moving and resizing a selected region after it is created, rather than only copy/cut/export behavior.</li>
+              <li>Replace prompt-based text placement with an inline text box and editable text commit flow.</li>
+              <li>Add a better autosave/reopen story, including restored local drawings and explicit document naming.</li>
+              <li>Improve memory behavior for large canvases with region-based history or a command-style undo stack.</li>
+              <li>Capture real screenshots or short GIFs for the case study once the editor UI is finalized.</li>
+            </ul>
+          </section>
+        </article>
+
+        <aside class="case-template-sidebar" aria-label="Web Paint quick facts">
+          <h2>Quick facts</h2>
+          <ul>
+            <li><strong>Live:</strong> <a href="paint.html">paint.html</a></li>
+            <li><strong>Source:</strong> <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">paint.js</a></li>
+            <li><strong>UI:</strong> <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.css" rel="noopener noreferrer">paint.css</a></li>
+            <li><strong>Frontend:</strong> HTML Canvas, DOM APIs, pointer events, CSS Grid</li>
+            <li><strong>Browser APIs:</strong> Clipboard, File input, LocalStorage, Fullscreen, object URLs</li>
+            <li><strong>Core risk:</strong> full-canvas ImageData history on large canvases</li>
+          </ul>
+        </aside>
+      </div>
+
+      <section class="next-step-panel" aria-labelledby="web-paint-next-title">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2 id="web-paint-next-title">Try the tool, then compare it with the rest of the work.</h2>
+          <p>Web Paint shows browser UI and canvas mechanics. TraverseOps and MovieBot show workflow modeling and Python automation depth.</p>
+        </div>
+        <div class="next-step-actions">
+          <a class="button primary" href="paint.html">Open Web Paint</a>
+          <a class="button secondary" href="work.html">View more work</a>
+          <a class="button ghost" href="index.html#contact">Contact Zac</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-identity">
+        <strong>Zac Batten</strong>
+        <span>Software developer building practical web tools, automation, and frontend interfaces.</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="resume.html">Resume</a>
+        <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
+        <a href="work.html">Work</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="notes.html">Notes</a>
+        <a href="interactive-lab.html">Interactive Lab</a>
+        <a href="sitemap.xml">Sitemap</a>
+      </nav>
+      <p class="footer-note">Static site, practical demos, and build notes. <span id="year">2026</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

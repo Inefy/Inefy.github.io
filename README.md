@@ -7,7 +7,8 @@ Static GitHub Pages portfolio for [zacbatten.me](https://zacbatten.me). The site
 ## Live Links
 
 - Portfolio: [zacbatten.me](https://zacbatten.me)
-- MovieBot case study: [zacbatten.me/#moviebot](https://zacbatten.me/#moviebot)
+- MovieBot case study: [zacbatten.me/moviebot-case-study.html](https://zacbatten.me/moviebot-case-study.html)
+- Web Paint case study: [zacbatten.me/web-paint-case-study.html](https://zacbatten.me/web-paint-case-study.html)
 - Movie Night demo page: [zacbatten.me/movie-night.html](https://zacbatten.me/movie-night.html)
 - Build notes: [zacbatten.me/notes.html](https://zacbatten.me/notes.html)
 
@@ -16,6 +17,7 @@ Static GitHub Pages portfolio for [zacbatten.me](https://zacbatten.me). The site
 - Homepage positioning for software development hiring.
 - Project sections for MovieBot, TraverseOps, practical web tools, and browser experiments.
 - Movie Night showcase with Twitch embeds, public-domain movie library pages, and MovieBot proof links.
+- Full Web Paint case study covering canvas rendering, tool state, undo/redo, import/export, and accessibility tradeoffs.
 - Interactive lab pages for Web Paint, Flappy Workbench, Snake Lab, Brick Breaker, 2048, Minefield Sweep, Mini Golf, and Asteroid Drift.
 - Static resume/contact paths and SEO basics for GitHub Pages.
 - Responsive CSS, reduced-motion support, keyboard focus states, and no-build deployment.
@@ -34,6 +36,8 @@ Suggested GitHub About fields:
 - `styles.css` - shared site styles, responsive layout, accessibility states, and reduced-motion rules.
 - `script.js` - homepage interactions, local time, filtering, palette shuffle, and Twitch embed helpers.
 - `movie-night.html` - MovieBot/Movie Night showcase.
+- `moviebot-case-study.html` - MovieBot technical case study.
+- `web-paint-case-study.html` - Web Paint technical case study.
 - `movie-library.html` and `movie-library.js` - searchable public-domain movie list.
 - `notes.html` - build notes.
 - `resume.html` - recruiter-friendly resume placeholder page.
