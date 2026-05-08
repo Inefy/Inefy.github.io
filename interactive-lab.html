@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="Interactive browser tools and game experiments from Zac Batten, including canvas apps, puzzle games, arcade loops, and frontend UI demos.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/interactive-lab.html">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="Interactive Lab / Zac Batten">
+    <meta property="og:description" content="Browser experiments from Zac Batten: canvas tools, arcade loops, puzzle games, and frontend UI demos.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zacbatten.me/interactive-lab.html">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image:alt" content="Inefy workbench interactive lab preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Interactive Lab / Zac Batten">
+    <meta name="twitter:description" content="Canvas tools, arcade loops, puzzle games, and frontend UI experiments from Zac Batten.">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <title>Interactive Lab / Zac Batten</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2368b7ff'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#lab-archive">Skip to lab archive</a>
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+        <span class="brand-mark" aria-hidden="true">ZB</span>
+        <span class="brand-copy">
+          <span>Zac Batten</span>
+          <small>Inefy workbench</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html#featured-builds" aria-current="page">Work</a>
+        <a href="index.html#case-studies">Case Studies</a>
+        <a href="index.html#about">About</a>
+        <a href="notes.html">Notes</a>
+        <a href="resume.html">Resume</a>
+        <a href="index.html#contact">Contact</a>
+        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top" class="lab-page">
+      <section class="section lab-hero" aria-labelledby="lab-page-title">
+        <div class="section-heading">
+          <p class="eyebrow">Interactive lab</p>
+          <h1 id="lab-page-title">Browser experiments and playable UI studies.</h1>
+          <p>
+            This archive keeps the playful demos separate from the main case studies while still showing frontend mechanics: canvas state, keyboard and touch input, collision checks, score persistence, and compact no-backend interfaces.
+          </p>
+        </div>
+      </section>
+
+      <section class="section interactive-lab lab-archive-section" id="lab-archive" aria-labelledby="lab-archive-title">
+        <div class="section-heading">
+          <p class="eyebrow">Archive</p>
+          <h2 id="lab-archive-title">Tools, games, and browser experiments.</h2>
+        </div>
+
+        <div class="lab-grid archive-lab-grid">
+          <article class="lab-card">
+            <span class="lab-card-kicker">Canvas tool</span>
+            <h3>Web Paint</h3>
+            <p>Paint-style browser drawing app with tools, color controls, undo/redo, zoom, local save/load, and PNG export.</p>
+            <dl class="lab-detail-list">
+              <div>
+                <dt>Demonstrates</dt>
+                <dd>Canvas state, pointer events, responsive toolbar UI, and client-side export.</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>Mouse, touch, swatches, sliders, toolbar buttons, and file actions.</dd>
+              </div>
+            </dl>
+            <div class="lab-actions">
+              <a class="button secondary" href="paint.html">Open tool</a>
+              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source</a>
+            </div>
+          </article>
+
+          <article class="lab-card">
+            <span class="lab-card-kicker">Physics game</span>
+            <h3>Mini Golf</h3>
+            <p>Five-hole browser golf game with aiming, shot power, collisions, hazards, sand traps, and saved best scores.</p>
+            <dl class="lab-detail-list">
+              <div>
+                <dt>Demonstrates</dt>
+                <dd>Canvas physics, level state, collision handling, and local persistence.</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>Drag to aim and set power, release to shoot, then advance hole-by-hole.</dd>
+              </div>
+            </dl>
+            <div class="lab-actions">
+              <a class="button secondary" href="mini-golf.html">Play demo</a>
+              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/mini-golf.js" rel="noopener noreferrer">Source</a>
+            </div>
+          </article>
+
+          <article class="lab-card">
+            <span class="lab-card-kicker">Arcade loop</span>
+            <h3>Asteroid Drift</h3>
+            <p>Asteroids-style canvas game with thrust movement, drifting rocks, shields, scoring, and escalating waves.</p>
+            <dl class="lab-detail-list">
+              <div>
+                <dt>Demonstrates</dt>
+                <dd>Real-time game loop, entity spawning, collision response, and HUD updates.</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>Keyboard or on-screen controls for thrust, turn, fire, pause, and fullscreen.</dd>
+              </div>
+            </dl>
+            <div class="lab-actions">
+              <a class="button secondary" href="asteroid-drift.html">Play demo</a>
+              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/asteroid-drift.js" rel="noopener noreferrer">Source</a>
+            </div>
+          </article>
+
+          <article class="lab-card">
+            <span class="lab-card-kicker">Grid game</span>
+            <h3>Snake Lab</h3>
+            <p>Snake-style grid game with score streaks, saved best score, increasing pace, and keyboard/touch controls.</p>
+            <dl class="lab-detail-list">
+              <div>
+                <dt>Demonstrates</dt>
+                <dd>Grid state, timed movement, collision rules, and input buffering.</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>Arrow keys, WASD, swipe-style touch controls, pause, restart, and fullscreen.</dd>
+              </div>
+            </dl>
+            <div class="lab-actions">
+              <a class="button secondary" href="snake-lab.html">Play demo</a>
+              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/snake-lab.js" rel="noopener noreferrer">Source</a>
+            </div>
+          </article>
+
+          <article class="lab-card">
+            <span class="lab-card-kicker">Arcade game</span>
+            <h3>Brick Breaker</h3>
+            <p>Paddle-and-ball game with layered bricks, level clears, score tracking, and responsive playfield sizing.</p>
+            <dl class="lab-detail-list">
+              <div>
+                <dt>Demonstrates</dt>
+                <dd>Collision checks, level reset logic, paddle input, and canvas redraw loops.</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>Keyboard, pointer movement, touch controls, restart, pause, and fullscreen.</dd>
+              </div>
+            </dl>
+            <div class="lab-actions">
+              <a class="button secondary" href="brick-breaker.html">Play demo</a>
+              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/brick-breaker.js" rel="noopener noreferrer">Source</a>
+            </div>
+          </article>
+
+          <article class="lab-card">
+            <span class="lab-card-kicker">Puzzle game</span>
+            <h3>2048</h3>
+            <p>Tile-merge puzzle with undo, saved best score, touch direction controls, and keyboard/swipe input.</p>
+            <dl class="lab-detail-list">
+              <div>
+                <dt>Demonstrates</dt>
+                <dd>Board transforms, merge rules, undo snapshots, and persistent score state.</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>Arrow keys, swipe, on-screen direction buttons, undo, restart, and fullscreen.</dd>
+              </div>
+            </dl>
+            <div class="lab-actions">
+              <a class="button secondary" href="2048.html">Play demo</a>
+              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/2048.js" rel="noopener noreferrer">Source</a>
+            </div>
+          </article>
+
+          <article class="lab-card">
+            <span class="lab-card-kicker">Logic game</span>
+            <h3>Minefield Sweep</h3>
+            <p>Minesweeper-style puzzle with flags, safe first click, timer, clean reveal feedback, and win/loss state.</p>
+            <dl class="lab-detail-list">
+              <div>
+                <dt>Demonstrates</dt>
+                <dd>Recursive reveal logic, board generation, flag state, and accessible grid feedback.</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>Click or tap to reveal, right-click or flag mode to mark mines, plus restart controls.</dd>
+              </div>
+            </dl>
+            <div class="lab-actions">
+              <a class="button secondary" href="minefield-sweep.html">Play demo</a>
+              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/minefield-sweep.js" rel="noopener noreferrer">Source</a>
+            </div>
+          </article>
+
+          <article class="lab-card">
+            <span class="lab-card-kicker">Timing game</span>
+            <h3>Flappy Workbench</h3>
+            <p>Flappy-style timing game with obstacle gaps, score tracking, restart flow, and lightweight canvas animation.</p>
+            <dl class="lab-detail-list">
+              <div>
+                <dt>Demonstrates</dt>
+                <dd>Simple physics, obstacle generation, collision checks, and game-state transitions.</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>Click, tap, or keyboard input to flap, with restart and fullscreen controls.</dd>
+              </div>
+            </dl>
+            <div class="lab-actions">
+              <a class="button secondary" href="flappy-workbench.html">Play demo</a>
+              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/flappy-workbench.js" rel="noopener noreferrer">Source</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-identity">
+        <strong>Zac Batten</strong>
+        <span>Software developer building practical web tools, automation, and frontend interfaces.</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="resume.html">Resume</a>
+        <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
+        <a href="index.html#featured-builds">Selected Work</a>
+        <a href="notes.html">Notes</a>
+        <a href="interactive-lab.html" aria-current="page">Interactive Lab</a>
+        <a href="sitemap.xml">Sitemap</a>
+      </nav>
+      <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
