@@ -10,14 +10,14 @@
     <link rel="canonical" href="https://zacbatten.me/">
     <meta property="og:site_name" content="Inefy Workbench">
     <meta property="og:title" content="Zac Batten / Inefy Workbench">
-    <meta property="og:description" content="Featured builds from Zac Batten: MovieBot, TraverseOps, static web tools, and build notes.">
+    <meta property="og:description" content="Selected work from Zac Batten: TraverseOps, MovieBot, Web Paint, and practical developer build notes.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/">
     <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
-    <meta property="og:image:alt" content="Inefy workbench homepage preview with featured project cards.">
+    <meta property="og:image:alt" content="Inefy workbench homepage preview with selected project cards.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Zac Batten / Inefy Workbench">
-    <meta name="twitter:description" content="MovieBot, TraverseOps, static web tools, and build notes from Zac Batten.">
+    <meta name="twitter:description" content="TraverseOps, MovieBot, Web Paint, and practical developer build notes from Zac Batten.">
     <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <script type="application/ld+json">
       {
@@ -56,7 +56,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#featured-builds">Skip to featured builds</a>
+    <a class="skip-link" href="#featured-builds">Skip to selected work</a>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
@@ -88,14 +88,14 @@
           <p class="hero-proof">
             The work here focuses on usable static sites, chat-driven stream tooling, map-based operations UI, and small browser projects that replace repeated manual steps.
           </p>
-          <div class="hero-badges" aria-label="Site focus areas">
-            <span>Practical web tools</span>
-            <span>Python automation</span>
-            <span>Frontend interfaces</span>
-            <span>Maps / field ops</span>
-            <span>Twitch / OBS automation</span>
-            <span>Browser experiments</span>
-          </div>
+          <ul class="hero-proof-chips" aria-label="Proof of work types">
+            <li>Python Twitch/OBS bot</li>
+            <li>MapLibre field ops</li>
+            <li>Canvas app</li>
+            <li>GitHub Pages</li>
+            <li>Browser games/tools</li>
+            <li>Accessible UI</li>
+          </ul>
           <div class="hero-actions">
             <a class="button primary" href="#featured-builds">View selected work</a>
             <a class="button primary" href="#moviebot">View case studies</a>
@@ -133,7 +133,7 @@
       <section class="credibility-strip" aria-label="Portfolio proof">
         <div>
           <strong>3</strong>
-          <span>featured builds with proof</span>
+          <span>selected projects with proof</span>
         </div>
         <div>
           <strong>2</strong>
@@ -149,135 +149,137 @@
         </div>
       </section>
 
-      <section class="section" id="featured-builds">
+      <section class="section selected-work-section" id="featured-builds" aria-labelledby="selected-work-title">
         <div class="section-heading">
-          <p class="eyebrow">Featured builds</p>
-          <h2>Proof, not just project names.</h2>
+          <p class="eyebrow">Selected work</p>
+          <h2 id="selected-work-title">Professional projects with working proof.</h2>
           <p>
-            Each build shows current status, stack, the workflow problem, and the part I personally built.
+            The strongest projects are first: map-heavy field operations, Twitch/OBS automation, and a browser-based creative tool.
           </p>
         </div>
 
-        <div class="filter-bar" aria-label="Filter featured builds">
-          <button class="filter-button active" type="button" data-filter="all">All</button>
-          <button class="filter-button" type="button" data-filter="automation">Automation</button>
-          <button class="filter-button" type="button" data-filter="stream">Stream</button>
-          <button class="filter-button" type="button" data-filter="field">Field ops</button>
-          <button class="filter-button" type="button" data-filter="web">Web</button>
+        <div class="selected-work-grid">
+          <article class="project-card selected-work-card" data-tags="automation field web">
+            <figure class="project-visual">
+              <picture>
+                <source srcset="assets/traverseops-workspace.webp" type="image/webp">
+                <img src="assets/traverseops-workspace.png" alt="TraverseOps map workspace with municipal asset details" loading="lazy" decoding="async" width="1440" height="1100">
+              </picture>
+            </figure>
+            <div class="project-card-body">
+              <div class="project-meta">
+                <span><i aria-hidden="true"></i> Public demo</span>
+                <span>Field ops UI</span>
+              </div>
+              <h3>TraverseOps</h3>
+              <p class="project-problem">
+                Field crews lose time when maps, asset records, inspections, and work orders live in separate tools.
+              </p>
+              <ul class="project-bullets">
+                <li>Map-first asset lookup with detail panels for field context.</li>
+                <li>Inspection and work-order flows designed for crews on site.</li>
+                <li>Demo-safe sample data with offline-aware app structure.</li>
+              </ul>
+              <div class="tech-stack" aria-label="TraverseOps tech stack">
+                <span>MapLibre</span>
+                <span>Supabase</span>
+                <span>Capacitor</span>
+                <span>Responsive UI</span>
+              </div>
+              <div class="card-actions">
+                <a href="#traverseops">Case Study</a>
+                <a href="https://traverseops.app" rel="noopener noreferrer">Live Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card selected-work-card" data-tags="automation stream">
+            <figure class="project-visual">
+              <img src="assets/movie-night-preview.png" alt="Movie Night page preview with MovieBot and Twitch stream details" loading="lazy" decoding="async" width="1200" height="630">
+            </figure>
+            <div class="project-card-body">
+              <div class="project-meta">
+                <span><i aria-hidden="true"></i> Public repo</span>
+                <span>Twitch / OBS</span>
+              </div>
+              <h3>MovieBot / StreamCinema Vote Bot</h3>
+              <p class="project-problem">
+                Hosted movie nights need chat voting, queue handling, and OBS playback without manual tallying.
+              </p>
+              <ul class="project-bullets">
+                <li>Twitch chat commands for voting, results, help, and current movie status.</li>
+                <li>OAuth refresh and IRC health checks for long-running streams.</li>
+                <li>OBS WebSocket handoff to update the active media source.</li>
+              </ul>
+              <div class="tech-stack" aria-label="MovieBot tech stack">
+                <span>Python</span>
+                <span>TwitchIO</span>
+                <span>OBS WebSocket</span>
+                <span>OAuth</span>
+              </div>
+              <div class="card-actions">
+                <a href="#moviebot">Case Study</a>
+                <a href="movie-night.html">Live Demo</a>
+                <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card selected-work-card" data-tags="web">
+            <figure class="project-visual paint-preview" role="img" aria-label="Visual placeholder for the Web Paint browser interface">
+              <div class="paint-preview-toolbar" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="paint-preview-canvas" aria-hidden="true">
+                <span class="paint-preview-stroke"></span>
+                <span class="paint-preview-shape"></span>
+                <span class="paint-preview-swatch"></span>
+              </div>
+            </figure>
+            <div class="project-card-body">
+              <div class="project-meta">
+                <span><i aria-hidden="true"></i> Browser tool</span>
+                <span>Canvas app</span>
+              </div>
+              <h3>Web Paint</h3>
+              <p class="project-problem">
+                A drawing tool needs familiar controls, reliable canvas state, and export behavior without a heavy app framework.
+              </p>
+              <ul class="project-bullets">
+                <li>Canvas drawing with brush, shape, eraser, fill, undo, and redo tools.</li>
+                <li>Responsive ribbon UI with color swatches, zoom, and canvas resizing.</li>
+                <li>Local save/load and PNG export for useful standalone workflows.</li>
+              </ul>
+              <div class="tech-stack" aria-label="Web Paint tech stack">
+                <span>HTML Canvas</span>
+                <span>JavaScript</span>
+                <span>CSS Grid</span>
+                <span>LocalStorage</span>
+              </div>
+              <div class="card-actions">
+                <a href="#web-paint">Case Study</a>
+                <a href="paint.html">Live Demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.html" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
         </div>
+      </section>
 
-        <div class="project-grid">
-          <article class="project-card featured" data-tags="automation stream">
-            <div class="project-meta">
-              <span><i aria-hidden="true"></i> Public repo</span>
-              <span>Python / Twitch / OBS</span>
-            </div>
-            <h3>MovieBot</h3>
-            <p>
-              A Twitch chat bot for public domain movie nights. Chat votes, the bot counts, and OBS gets nudged along so the stream can feel more like a show than a checklist.
-            </p>
-            <dl class="proof-list">
-              <div>
-                <dt>Status</dt>
-                <dd>Live showcase page and public GitHub repo.</dd>
-              </div>
-              <div>
-                <dt>Stack</dt>
-                <dd>Python, TwitchIO, OBS WebSocket, static HTML/CSS/JS.</dd>
-              </div>
-              <div>
-                <dt>Problem</dt>
-                <dd>Movie-night voting, queue checks, and media-source swaps were too manual.</dd>
-              </div>
-              <div>
-                <dt>Result</dt>
-                <dd>Turns chat votes into a watch-party queue without manual tallying.</dd>
-              </div>
-              <div>
-                <dt>Built</dt>
-                <dd>Vote commands, result handling, token refresh, OBS handoff, and the public movie pages.</dd>
-              </div>
-            </dl>
-            <div class="card-actions">
-              <a href="#moviebot">Read case study</a>
-              <a href="movie-night.html">Open page</a>
-              <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">View repo</a>
-            </div>
-          </article>
-
-          <article class="project-card" data-tags="automation field web">
-            <div class="project-meta">
-              <span><i aria-hidden="true"></i> Public demo</span>
-              <span>MapLibre / Supabase / Capacitor</span>
-            </div>
-            <h3>TraverseOps</h3>
-            <p>
-              A municipal field workspace for finding infrastructure on a map, logging inspections, creating work orders, and keeping asset records synced.
-            </p>
-            <dl class="proof-list">
-              <div>
-                <dt>Status</dt>
-                <dd>Demo workspace and case-study page; sample data, not a live deployment.</dd>
-              </div>
-              <div>
-                <dt>Stack</dt>
-                <dd>MapLibre, Supabase, Capacitor, offline-aware browser UI.</dd>
-              </div>
-              <div>
-                <dt>Problem</dt>
-                <dd>Field crews need one place for maps, inspections, work orders, and records.</dd>
-              </div>
-              <div>
-                <dt>Result</dt>
-                <dd>Condenses daily field ops into one glanceable command view.</dd>
-              </div>
-              <div>
-                <dt>Built</dt>
-                <dd>Asset map flows, detail panels, inspection/work-order screens, and sync-oriented app structure.</dd>
-              </div>
-            </dl>
-            <div class="card-actions">
-              <a href="#traverseops">Read spotlight</a>
-              <a href="https://traverseops.app" rel="noopener noreferrer">Open demo</a>
-            </div>
-          </article>
-
-          <article class="project-card" data-tags="web">
-            <div class="project-meta">
-              <span><i aria-hidden="true"></i> Live site</span>
-              <span>GitHub Pages / HTML / CSS / JS</span>
-            </div>
-            <h3>zacbatten.me</h3>
-            <p>
-              The public workbench itself: a static site for featured builds, notes, link previews, and the project trail behind the work.
-            </p>
-            <dl class="proof-list">
-              <div>
-                <dt>Status</dt>
-                <dd>Live on GitHub Pages with the custom domain wired in.</dd>
-              </div>
-              <div>
-                <dt>Stack</dt>
-                <dd>Static HTML, CSS, JavaScript, Open Graph metadata, no-JS fallbacks.</dd>
-              </div>
-              <div>
-                <dt>Problem</dt>
-                <dd>Project links needed a clearer home with proof and context.</dd>
-              </div>
-              <div>
-                <dt>Result</dt>
-                <dd>Shows live project proof without needing a framework or CMS.</dd>
-              </div>
-              <div>
-                <dt>Built</dt>
-                <dd>Responsive visual system, featured cards, movie library, metadata, and build-log archive.</dd>
-              </div>
-            </dl>
-            <div class="card-actions">
-              <a href="notes.html">Read notes</a>
-              <a href="https://github.com/Inefy/Inefy.github.io" rel="noopener noreferrer">View source</a>
-            </div>
-          </article>
+      <section class="site-build-notes" aria-labelledby="site-build-title">
+        <div>
+          <p class="eyebrow">Site build notes</p>
+          <h2 id="site-build-title">This portfolio is also a small static build.</h2>
+        </div>
+        <p>
+          The site itself stays intentionally smaller than the project cards: GitHub Pages, responsive CSS, metadata, reduced-motion support, and build notes for future maintenance.
+        </p>
+        <div class="site-build-actions">
+          <a href="notes.html">Read notes</a>
+          <a href="https://github.com/Inefy/Inefy.github.io" rel="noopener noreferrer">View source</a>
         </div>
       </section>
 
@@ -394,6 +396,74 @@
         </div>
       </section>
 
+      <section class="case-study-section web-paint-section" id="web-paint" aria-labelledby="web-paint-title">
+        <div class="case-copy">
+          <p class="eyebrow">Case study</p>
+          <span class="status-badge">Live browser tool</span>
+          <h2 id="web-paint-title">Web Paint turns a familiar desktop workflow into a browser tool.</h2>
+          <p class="case-lede">
+            Web Paint is a no-build canvas app with drawing tools, shape controls, undo/redo, zoom, local save/load, and PNG export in a responsive Paint-style interface.
+          </p>
+          <div class="case-actions">
+            <a class="button primary" href="paint.html">Open Web Paint</a>
+            <a class="button secondary" href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.html" rel="noopener noreferrer">View source</a>
+          </div>
+          <div class="case-tags" aria-label="Web Paint stack">
+            <span>Canvas API</span>
+            <span>Pointer events</span>
+            <span>LocalStorage</span>
+            <span>PNG export</span>
+            <span>Responsive UI</span>
+          </div>
+        </div>
+
+        <figure class="case-visual paint-case-visual" role="img" aria-label="Web Paint interface preview placeholder">
+          <div class="case-window-bar" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <strong>paint.html</strong>
+          </div>
+          <div class="paint-case-preview" aria-hidden="true">
+            <div class="paint-case-ribbon">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="paint-case-board">
+              <span class="paint-case-line"></span>
+              <span class="paint-case-box"></span>
+              <span class="paint-case-dot"></span>
+            </div>
+          </div>
+        </figure>
+
+        <div class="case-detail-grid" aria-label="Web Paint project details">
+          <article>
+            <span>Problem</span>
+            <h3>Useful drawing needs predictable controls</h3>
+            <p>A browser sketch tool has to preserve familiar Paint affordances while keeping the canvas state reliable across undo, redo, resizing, and export.</p>
+          </article>
+          <article>
+            <span>Constraints</span>
+            <h3>No framework, still tool-like</h3>
+            <p>The UI uses static HTML, CSS, and JavaScript, so the tool state, pointer handling, responsive ribbon, and file export all live in focused browser code.</p>
+          </article>
+          <article>
+            <span>Role</span>
+            <h3>Built the full interaction model</h3>
+            <p>I built the drawing engine, tool switching, brush and shape controls, local save/load, zoom behavior, canvas resizing, and PNG export path.</p>
+          </article>
+          <article>
+            <span>Next</span>
+            <h3>More precision tools</h3>
+            <p>The next useful pass would add selection movement, richer keyboard shortcuts, and cleaner layer-like workflows without making the app heavy.</p>
+          </article>
+        </div>
+      </section>
+
       <section class="note-strip" aria-label="Personal notes">
         <article>
           <span class="note-kicker">Current rule</span>
@@ -422,7 +492,7 @@
           <article>
             <span>2026-05-01</span>
             <h3>Portfolio cleanup pass</h3>
-            <p>Made the homepage truthful without JavaScript, added social metadata, and gave the featured builds proof points.</p>
+            <p>Made the homepage truthful without JavaScript, added social metadata, and gave the selected work proof points.</p>
           </article>
           <article>
             <span>2026-04-30</span>
