@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="A polished minesweeper-style browser puzzle game from the Inefy fun corner.">
+    <title>Minefield Sweep / Inefy Fun Corner</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2346d6ca'/%3E%3Cpath d='M19 17h26v30H19z' fill='%23070f13'/%3E%3Cpath d='M24 22h16v5H24zm0 10h16v5H24zm0 10h10v5H24z' fill='%23f5c45b'/%3E%3Ccircle cx='46' cy='18' r='7' fill='%23ff6f61'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="minefield-sweep.css">
+  </head>
+  <body>
+    <main class="sweep-app" aria-label="Minefield Sweep game">
+      <div class="ambient-grid" aria-hidden="true"></div>
+
+      <header class="titlebar">
+        <a class="brand-link" href="index.html#fun-corner" aria-label="Back to fun corner">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">MS</span>
+            <span class="brand-title">
+              <strong>Minefield</strong>
+              <span class="document-name">Inefy fun corner / Sweep</span>
+            </span>
+          </div>
+        </a>
+
+        <nav class="game-nav" aria-label="Game page navigation">
+          <a href="index.html#fun-corner">Fun corner</a>
+          <button type="button" id="newGameButton">New Field</button>
+          <button type="button" id="flagModeButton" aria-pressed="false">Flag Mode</button>
+          <button class="nav-cta" type="button" id="fullscreenButton">Fullscreen</button>
+        </nav>
+      </header>
+
+      <section class="game-hud" aria-label="Game status">
+        <div class="hud-cluster">
+          <div class="stat-chip current">
+            <span>Mines Left</span>
+            <strong id="minesLeftValue">10</strong>
+          </div>
+          <div class="stat-chip">
+            <span>Time</span>
+            <strong id="timeValue">0</strong>
+          </div>
+          <div class="stat-chip">
+            <span>Best</span>
+            <strong id="bestValue">--</strong>
+          </div>
+          <div class="stat-chip">
+            <span>Cleared</span>
+            <strong id="clearedValue">0%</strong>
+          </div>
+        </div>
+        <div class="hud-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <p class="round-status" id="roundStatus" aria-live="polite">Ready</p>
+        </div>
+      </section>
+
+      <section class="game-stage-wrap" aria-label="Playfield">
+        <div class="difficulty-bar" aria-label="Difficulty">
+          <button type="button" data-difficulty="scout" class="active">Scout</button>
+          <button type="button" data-difficulty="ranger">Ranger</button>
+          <button type="button" data-difficulty="warden">Warden</button>
+        </div>
+
+        <section class="board-shell" aria-label="Minefield board">
+          <div class="board-scroll">
+            <div class="mine-board" id="mineBoard" role="grid" tabindex="0" aria-label="Minefield board"></div>
+          </div>
+
+          <div class="game-menu" id="gameMenu">
+            <div class="menu-card">
+              <span class="menu-kicker" id="menuKicker">Logic field</span>
+              <div class="menu-signal" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <strong id="menuTitle">Minefield Sweep</strong>
+              <span class="menu-meta" id="menuMeta">Scout field / 10 mines</span>
+              <button class="menu-button" type="button" id="startButton">Start Field</button>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="minefield-sweep.js"></script>
+  </body>
+</html>

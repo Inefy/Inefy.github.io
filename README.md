@@ -2,7 +2,7 @@
 
 Static GitHub Pages site for `zacbatten.me`, built as a personal project hub for current work, featured projects, and contact links.
 
-The movie-night showcase lives at `movie-night.html` and embeds the Zurra3 Twitch stream, the shared IMDb movie list, and a short explanation of the StreamCinema Vote Bot. Build logs live at `notes.html`. The fun corner includes Web Paint, Flappy Workbench, Snake Lab, Brick Breaker, and 2048.
+The movie-night showcase lives at `movie-night.html` and embeds the Zurra3 Twitch stream, the shared IMDb movie list, and a short explanation of the StreamCinema Vote Bot. Build logs live at `notes.html`. The fun corner includes Web Paint, Flappy Workbench, Snake Lab, Brick Breaker, 2048, and Minefield Sweep.
 
 ## GitHub About fields
 
