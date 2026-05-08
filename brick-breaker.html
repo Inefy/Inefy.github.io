@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="A polished Brick Breaker-style browser arcade game from the Inefy fun corner.">
+    <title>Brick Breaker / Inefy Fun Corner</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2368b7ff'/%3E%3Cpath d='M14 16h13v10H14zM30 16h20v10H30zM14 29h20v10H14zM37 29h13v10H37zM19 45h26v6H19z' fill='%23070c10'/%3E%3Ccircle cx='48' cy='47' r='5' fill='%23f5c45b'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="brick-breaker.css">
+  </head>
+  <body>
+    <main class="breaker-app" aria-label="Brick Breaker game">
+      <div class="ambient-grid" aria-hidden="true"></div>
+      <header class="titlebar">
+        <a class="brand-link" href="index.html#fun-corner" aria-label="Back to fun corner">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">BB</span>
+            <span class="brand-title">
+              <strong>Brick Breaker</strong>
+              <span class="document-name">Inefy fun corner / Paddle run</span>
+            </span>
+          </div>
+        </a>
+
+        <nav class="game-nav" aria-label="Game page navigation">
+          <a href="index.html#fun-corner">Fun corner</a>
+          <button type="button" id="restartButton">Restart</button>
+          <button type="button" id="pauseButton">Pause</button>
+          <button class="nav-cta" type="button" id="fullscreenButton">Fullscreen</button>
+        </nav>
+      </header>
+
+      <section class="game-hud" aria-label="Game status">
+        <div class="hud-cluster">
+          <div class="score-chip current">
+            <span>Score</span>
+            <strong id="scoreValue">0</strong>
+          </div>
+          <div class="score-chip">
+            <span>Best</span>
+            <strong id="bestValue">0</strong>
+          </div>
+          <div class="score-chip">
+            <span>Lives</span>
+            <strong id="livesValue">3</strong>
+          </div>
+          <div class="score-chip level">
+            <span>Level</span>
+            <strong id="levelValue">1</strong>
+          </div>
+        </div>
+        <div class="hud-status">
+          <div class="status-row">
+            <span class="status-dot" aria-hidden="true"></span>
+            <p class="round-status" id="roundStatus" aria-live="polite">Ready</p>
+          </div>
+          <div class="break-progress" role="progressbar" aria-label="Level clear progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span id="brickProgressFill"></span>
+          </div>
+          <div class="power-readout">
+            <span>Power</span>
+            <strong id="powerValue">None</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="game-stage-wrap" aria-label="Playfield">
+        <div class="game-stage" id="gameStage">
+          <canvas id="gameCanvas" aria-label="Brick Breaker playfield"></canvas>
+          <div class="game-menu" id="gameMenu">
+            <div class="menu-card">
+              <span class="menu-kicker">Paddle arcade</span>
+              <div class="menu-brick-stack" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <strong id="menuTitle">Brick Breaker</strong>
+              <span class="menu-meta" id="menuMeta">Best 0</span>
+              <button class="menu-button" type="button" id="startButton">Start Game</button>
+            </div>
+          </div>
+          <div class="touch-bar" aria-label="Touch controls">
+            <button type="button" data-control="left" aria-label="Move left">&larr;</button>
+            <button type="button" data-control="launch" aria-label="Launch ball">Launch</button>
+            <button type="button" data-control="right" aria-label="Move right">&rarr;</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="brick-breaker.js"></script>
+  </body>
+</html>
