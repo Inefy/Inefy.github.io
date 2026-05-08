@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="A polished Asteroids-style browser arcade game from the Inefy fun corner.">
+    <title>Asteroid Drift / Inefy Fun Corner</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2368b7ff'/%3E%3Cpath d='M32 9l10 34-10-6-10 6z' fill='%23070f13'/%3E%3Ccircle cx='14' cy='18' r='5' fill='%23f5c45b'/%3E%3Ccircle cx='49' cy='45' r='8' fill='%23ff8fc6'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="asteroid-drift.css">
+  </head>
+  <body>
+    <main class="drift-app" aria-label="Asteroid Drift game">
+      <div class="ambient-stars" aria-hidden="true"></div>
+
+      <header class="titlebar">
+        <a class="brand-link" href="index.html#fun-corner" aria-label="Back to fun corner">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">AD</span>
+            <span class="brand-title">
+              <strong>Asteroid Drift</strong>
+              <span class="document-name">Inefy fun corner / Vector run</span>
+            </span>
+          </div>
+        </a>
+
+        <nav class="game-nav" aria-label="Game page navigation">
+          <a href="index.html#fun-corner">Fun corner</a>
+          <button type="button" id="restartButton">Restart</button>
+          <button type="button" id="pauseButton">Pause</button>
+          <button class="nav-cta" type="button" id="fullscreenButton">Fullscreen</button>
+        </nav>
+      </header>
+
+      <section class="game-hud" aria-label="Game status">
+        <div class="hud-cluster">
+          <div class="stat-chip current score-chip">
+            <span>Score</span>
+            <strong id="scoreValue">0</strong>
+          </div>
+          <div class="stat-chip best-chip">
+            <span>Best</span>
+            <strong id="bestValue">0</strong>
+          </div>
+          <div class="stat-chip wave-chip">
+            <span>Wave</span>
+            <strong id="waveValue">1</strong>
+          </div>
+          <div class="stat-chip lives-chip">
+            <span>Lives</span>
+            <strong id="livesValue">3</strong>
+          </div>
+          <div class="stat-chip shield shield-chip">
+            <span>Shield</span>
+            <strong id="shieldValue">100%</strong>
+          </div>
+        </div>
+        <div class="hud-status">
+          <div class="status-line">
+            <span class="status-dot" aria-hidden="true"></span>
+            <p class="round-status" id="roundStatus" aria-live="polite">Ready</p>
+          </div>
+          <div class="field-readout">
+            <span id="fieldName">Outer belt</span>
+            <div class="wave-progress" role="progressbar" aria-label="Wave clear progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="waveProgressFill"></span>
+            </div>
+          </div>
+          <div class="weapon-row">
+            <span>Blaster</span>
+            <div class="charge-meter" role="meter" aria-label="Blaster charge" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+              <span id="chargeFill"></span>
+            </div>
+            <strong id="chargeValue">Ready</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="game-stage-wrap" aria-label="Playfield">
+        <div class="game-stage" id="gameStage">
+          <canvas id="gameCanvas" aria-label="Asteroid Drift playfield"></canvas>
+          <div class="stage-corners" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="game-menu" id="gameMenu">
+            <div class="menu-card">
+              <span class="menu-scanline" aria-hidden="true"></span>
+              <span class="menu-kicker" id="menuKicker">Vector arcade</span>
+              <div class="menu-ship-mark" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <strong id="menuTitle">Asteroid Drift</strong>
+              <span class="menu-meta" id="menuMeta">Outer belt signal locked.</span>
+              <button class="menu-button" type="button" id="startButton">Launch Ship</button>
+            </div>
+          </div>
+
+          <div class="touch-controls" aria-label="Touch controls">
+            <button type="button" data-control="left" aria-label="Rotate left">&larr;</button>
+            <button type="button" data-control="thrust" aria-label="Thrust">Thrust</button>
+            <button type="button" data-control="right" aria-label="Rotate right">&rarr;</button>
+            <button type="button" data-control="shield" aria-label="Shield">Shield</button>
+            <button type="button" data-control="fire" aria-label="Fire">Fire</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="asteroid-drift.js"></script>
+  </body>
+</html>
