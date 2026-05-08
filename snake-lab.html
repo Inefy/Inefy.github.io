@@ -9,6 +9,7 @@
     <title>Snake Lab / Interactive Lab</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236de1a6'/%3E%3Cpath d='M16 18h19a13 13 0 0 1 0 26H24v-9h11a4 4 0 0 0 0-8H16z' fill='%230c0f10'/%3E%3Ccircle cx='45' cy='23' r='3' fill='%23f5c45b'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="snake-lab.css">
+    <link rel="stylesheet" href="demo-navigation.css">
   </head>
   <body>
     <main class="game-app" aria-label="Snake Lab game">
@@ -31,6 +32,12 @@
           <button class="nav-cta" type="button" id="fullscreenButton">Fullscreen</button>
         </nav>
       </header>
+
+      <nav class="game-breadcrumb" aria-label="Breadcrumb">
+        <a href="interactive-lab.html">Back to Interactive Lab</a>
+        <span aria-hidden="true">/</span>
+        <span>Snake Lab</span>
+      </nav>
 
       <section class="game-hud" aria-label="Game status">
         <div class="hud-cluster">
@@ -74,6 +81,18 @@
             <button type="button" data-dir="down" aria-label="Move down">&darr;</button>
             <button type="button" data-dir="right" aria-label="Move right">&rarr;</button>
           </div>
+        </div>
+      </section>
+
+      <section class="game-next-step" aria-labelledby="snake-next-title">
+        <div>
+          <span class="next-step-kicker">Keep exploring</span>
+          <h2 id="snake-next-title">More grid-state experiments</h2>
+          <p>Snake Lab is part of the Interactive Lab archive for keyboard input, touch controls, timed movement, and compact browser game UI.</p>
+        </div>
+        <div class="next-step-actions">
+          <a href="interactive-lab.html">Open Interactive Lab</a>
+          <a href="work.html">Back to Work</a>
         </div>
       </section>
     </main>

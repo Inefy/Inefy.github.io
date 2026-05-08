@@ -38,18 +38,29 @@
           <small>Inefy workbench</small>
         </span>
       </a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="index.html#featured-builds">Work</a>
-        <a href="index.html#case-studies" aria-current="page">Case Studies</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html">Work</a>
+        <a href="case-studies.html" aria-current="page">Case Studies</a>
         <a href="index.html#about">About</a>
         <a href="notes.html">Notes</a>
         <a href="resume.html">Resume</a>
-        <a href="index.html#contact">Contact</a>
+        <a class="nav-cta" href="index.html#contact">Contact</a>
         <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
       </nav>
     </header>
 
     <main id="top" class="stream-page movie-library-page">
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="work.html">Back to Work</a>
+        <span aria-hidden="true">/</span>
+        <a href="movie-night.html">Movie Night</a>
+        <span aria-hidden="true">/</span>
+        <span>Movie Library</span>
+      </nav>
+
       <section class="movie-list-section movie-library-full" id="movies" aria-labelledby="movies-title">
         <div class="movie-list-copy">
           <p class="eyebrow">Movie library</p>
@@ -201,6 +212,19 @@
           <div class="movie-grid" id="movie-grid" aria-live="polite"></div>
         </div>
       </section>
+
+      <section class="next-step-panel" aria-labelledby="movie-library-next-title">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2 id="movie-library-next-title">Return to the live room or the bot case study.</h2>
+          <p>The library supports the MovieBot workflow: browse titles here, then go back to the stream page or project write-up to see how chat voting drives OBS.</p>
+        </div>
+        <div class="next-step-actions">
+          <a class="button primary" href="movie-night.html#watch">Back to stream</a>
+          <a class="button secondary" href="case-studies.html#moviebot">MovieBot case study</a>
+          <a class="button ghost" href="work.html">Selected work</a>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -212,7 +236,8 @@
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
         <a href="resume.html">Resume</a>
         <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
-        <a href="index.html#featured-builds">Selected Work</a>
+        <a href="work.html">Work</a>
+        <a href="case-studies.html" aria-current="page">Case Studies</a>
         <a href="notes.html">Notes</a>
         <a href="interactive-lab.html">Interactive Lab</a>
         <a href="sitemap.xml">Sitemap</a>

@@ -9,6 +9,7 @@
     <title>Mini Golf / Interactive Lab</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236de1a6'/%3E%3Ccircle cx='22' cy='45' r='8' fill='%23fff8e6'/%3E%3Cpath d='M40 13v35' stroke='%23070f13' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M42 15h15l-4 8 4 8H42z' fill='%23f5c45b'/%3E%3Ccircle cx='45' cy='47' r='8' fill='%23070f13'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="mini-golf.css">
+    <link rel="stylesheet" href="demo-navigation.css">
   </head>
   <body>
     <main class="golf-app" aria-label="Mini Golf game">
@@ -32,6 +33,12 @@
           <button class="nav-cta" type="button" id="fullscreenButton">Fullscreen</button>
         </nav>
       </header>
+
+      <nav class="game-breadcrumb" aria-label="Breadcrumb">
+        <a href="interactive-lab.html">Back to Interactive Lab</a>
+        <span aria-hidden="true">/</span>
+        <span>Mini Golf</span>
+      </nav>
 
       <section class="game-hud" aria-label="Game status">
         <div class="hud-cluster">
@@ -104,6 +111,18 @@
             <button type="button" id="nextHoleButton">Next</button>
             <button type="button" id="restartTouchButton">Restart</button>
           </div>
+        </div>
+      </section>
+
+      <section class="game-next-step" aria-labelledby="golf-next-title">
+        <div>
+          <span class="next-step-kicker">Keep exploring</span>
+          <h2 id="golf-next-title">More physics-style demos</h2>
+          <p>Mini Golf is part of the Interactive Lab archive for canvas physics, collision handling, level state, and responsive playfield controls.</p>
+        </div>
+        <div class="next-step-actions">
+          <a href="interactive-lab.html">Open Interactive Lab</a>
+          <a href="work.html">Back to Work</a>
         </div>
       </section>
     </main>

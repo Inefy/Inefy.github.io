@@ -36,18 +36,27 @@
           <small>Inefy workbench</small>
         </span>
       </a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="index.html#featured-builds" aria-current="page">Work</a>
-        <a href="index.html#case-studies">Case Studies</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html">Work</a>
+        <a href="case-studies.html">Case Studies</a>
         <a href="index.html#about">About</a>
         <a href="notes.html">Notes</a>
         <a href="resume.html">Resume</a>
-        <a href="index.html#contact">Contact</a>
+        <a class="nav-cta" href="index.html#contact">Contact</a>
         <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
       </nav>
     </header>
 
     <main id="top" class="lab-page">
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="work.html">Back to Work</a>
+        <span aria-hidden="true">/</span>
+        <span>Interactive Lab</span>
+      </nav>
+
       <section class="section lab-hero" aria-labelledby="lab-page-title">
         <div class="section-heading">
           <p class="eyebrow">Interactive lab</p>
@@ -226,6 +235,19 @@
           </article>
         </div>
       </section>
+
+      <section class="next-step-panel" aria-labelledby="lab-next-title">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2 id="lab-next-title">Connect the experiments to the case studies.</h2>
+          <p>The lab keeps the playful demos in one place. For hiring context, jump back to selected work or read the Web Paint case study.</p>
+        </div>
+        <div class="next-step-actions">
+          <a class="button primary" href="work.html">Back to selected work</a>
+          <a class="button secondary" href="case-studies.html#web-paint">Web Paint case study</a>
+          <a class="button ghost" href="notes.html">Read build notes</a>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -237,7 +259,8 @@
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
         <a href="resume.html">Resume</a>
         <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
-        <a href="index.html#featured-builds">Selected Work</a>
+        <a href="work.html">Work</a>
+        <a href="case-studies.html">Case Studies</a>
         <a href="notes.html">Notes</a>
         <a href="interactive-lab.html" aria-current="page">Interactive Lab</a>
         <a href="sitemap.xml">Sitemap</a>

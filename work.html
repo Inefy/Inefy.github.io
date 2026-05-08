@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="All professional projects from Zac Batten: TraverseOps, MovieBot, Web Paint, supporting static pages, browser experiments, and build notes.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/work.html">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="Work / Zac Batten">
+    <meta property="og:description" content="Structured portfolio work from Zac Batten: flagship case studies, supporting projects, interactive experiments, and build notes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zacbatten.me/work.html">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image:alt" content="Inefy workbench selected work and project cards preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Work / Zac Batten">
+    <meta name="twitter:description" content="Flagship case studies, supporting projects, browser experiments, and build notes from Zac Batten.">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <title>Work / Zac Batten</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#flagship-case-studies">Skip to flagship case studies</a>
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+        <span class="brand-mark" aria-hidden="true">ZB</span>
+        <span class="brand-copy">
+          <span>Zac Batten</span>
+          <small>Inefy workbench</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html" aria-current="page">Work</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="index.html#about">About</a>
+        <a href="notes.html">Notes</a>
+        <a href="resume.html">Resume</a>
+        <a class="nav-cta" href="index.html#contact">Contact</a>
+        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top" class="work-page">
+      <section class="section work-hero" aria-labelledby="work-title">
+        <div class="section-heading">
+          <p class="eyebrow">Work</p>
+          <h1 id="work-title">Professional projects, working demos, and build notes.</h1>
+          <p>
+            A complete project index for hiring review: flagship case studies first, then supporting pages, browser experiments, and notes that explain the implementation decisions.
+          </p>
+          <div class="work-jump-nav" aria-label="Work page sections">
+            <a href="#flagship-case-studies">Flagship case studies</a>
+            <a href="#supporting-projects">Supporting projects</a>
+            <a href="#interactive-experiments">Interactive experiments</a>
+            <a href="#site-build-notes">Site/build notes</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section work-section" id="flagship-case-studies" aria-labelledby="flagship-title">
+        <div class="section-heading">
+          <p class="eyebrow">01 / Flagship case studies</p>
+          <h2 id="flagship-title">The strongest professional work.</h2>
+          <p>Projects with the clearest hiring signal: practical product shape, working proof, and technical implementation detail.</p>
+        </div>
+
+        <div class="work-grid flagship-work-grid">
+          <article class="work-card work-card-featured">
+            <figure class="work-thumb">
+              <picture>
+                <source srcset="assets/traverseops-workspace.webp" type="image/webp">
+                <img src="assets/traverseops-workspace.png" alt="TraverseOps map workspace showing municipal assets and selected asset details" loading="lazy" decoding="async" width="1440" height="1100">
+              </picture>
+            </figure>
+            <div class="work-card-body">
+              <div class="work-card-header">
+                <span class="work-status">Public demo / case study</span>
+                <h3>TraverseOps</h3>
+              </div>
+              <p>Map-first field operations demo for finding assets, recording inspections, and turning site issues into trackable work.</p>
+              <dl class="work-facts">
+                <div>
+                  <dt>Stack</dt>
+                  <dd>MapLibre, Supabase, Capacitor-ready UI, responsive frontend</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>Public sample-data demo; not an active municipal deployment</dd>
+                </div>
+              </dl>
+              <div class="work-links">
+                <a href="case-studies.html#traverseops">Case Study</a>
+                <a href="https://traverseops.app" rel="noopener noreferrer">Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <figure class="work-thumb">
+              <img src="assets/movie-night-preview.png" alt="Movie Night page preview with stream, chat, and MovieBot details" loading="lazy" decoding="async" width="1200" height="630">
+            </figure>
+            <div class="work-card-body">
+              <div class="work-card-header">
+                <span class="work-status">Public repo / live showcase</span>
+                <h3>MovieBot / StreamCinema Vote Bot</h3>
+              </div>
+              <p>Python Twitch/OBS automation that lets chat vote on public-domain movies and hands the winning media file to OBS.</p>
+              <dl class="work-facts">
+                <div>
+                  <dt>Stack</dt>
+                  <dd>Python, TwitchIO, OBS WebSocket, OAuth, static showcase pages</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>Public repo with live portfolio showcase and movie library</dd>
+                </div>
+              </dl>
+              <div class="work-links">
+                <a href="case-studies.html#moviebot">Case Study</a>
+                <a href="movie-night.html">Demo</a>
+                <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <figure class="work-thumb work-thumb-paint" role="img" aria-label="Stylized thumbnail of the Web Paint canvas toolbar and drawing area">
+              <span class="thumb-toolbar" aria-hidden="true"></span>
+              <span class="thumb-canvas" aria-hidden="true"></span>
+            </figure>
+            <div class="work-card-body">
+              <div class="work-card-header">
+                <span class="work-status">Live browser tool</span>
+                <h3>Web Paint</h3>
+              </div>
+              <p>Paint-style browser drawing app with canvas tools, shapes, undo/redo, zoom, local save/load, and PNG export.</p>
+              <dl class="work-facts">
+                <div>
+                  <dt>Stack</dt>
+                  <dd>HTML Canvas, vanilla JavaScript, CSS Grid, LocalStorage</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>Live static tool in the Interactive Lab</dd>
+                </div>
+              </dl>
+              <div class="work-links">
+                <a href="case-studies.html#web-paint">Case Study</a>
+                <a href="paint.html">Demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.html" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section work-section" id="supporting-projects" aria-labelledby="supporting-title">
+        <div class="section-heading">
+          <p class="eyebrow">02 / Supporting projects</p>
+          <h2 id="supporting-title">Smaller project surfaces that support the main work.</h2>
+          <p>Pages and utilities that round out the portfolio: search, static architecture, metadata, and recruiter paths.</p>
+        </div>
+
+        <div class="work-grid compact-work-grid">
+          <article class="work-card">
+            <figure class="work-thumb">
+              <img src="assets/movie-library-preview.png" alt="Public domain movie library preview with poster wall" loading="lazy" decoding="async" width="1200" height="630">
+            </figure>
+            <div class="work-card-body">
+              <div class="work-card-header">
+                <span class="work-status">Supporting live page</span>
+                <h3>Public Domain Movie Library</h3>
+              </div>
+              <p>Searchable static poster wall for the MovieBot queue, with a no-JavaScript fallback list.</p>
+              <dl class="work-facts">
+                <div>
+                  <dt>Stack</dt>
+                  <dd>HTML, CSS, vanilla JavaScript, static data rendering</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>Live supporting page for Movie Night</dd>
+                </div>
+              </dl>
+              <div class="work-links">
+                <a href="case-studies.html#movie-library">Case Study</a>
+                <a href="movie-library.html">Demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/movie-library.html" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <figure class="work-thumb">
+              <img src="inefy-desktop-final.png" alt="Inefy workbench homepage preview with selected project sections" loading="lazy" decoding="async" width="1920" height="1080">
+            </figure>
+            <div class="work-card-body">
+              <div class="work-card-header">
+                <span class="work-status">Static GitHub Pages site</span>
+                <h3>Inefy Portfolio Site</h3>
+              </div>
+              <p>Static portfolio with case-study sections, accessible navigation, metadata, responsive pages, and build notes.</p>
+              <dl class="work-facts">
+                <div>
+                  <dt>Stack</dt>
+                  <dd>HTML, CSS, vanilla JavaScript, GitHub Pages, SEO metadata</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>Live and actively being polished</dd>
+                </div>
+              </dl>
+              <div class="work-links">
+                <a href="notes.html#portfolio-cleanup">Case Study</a>
+                <a href="index.html">Demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section work-section" id="interactive-experiments" aria-labelledby="experiments-title">
+        <div class="section-heading">
+          <p class="eyebrow">03 / Interactive experiments</p>
+          <h2 id="experiments-title">Browser demos that show frontend mechanics.</h2>
+          <p>Playable demos kept separate from the main case studies, useful for showing input handling, canvas rendering, local state, and responsive controls.</p>
+        </div>
+
+        <div class="work-grid experiment-work-grid">
+          <article class="work-card work-card-mini">
+            <figure class="work-thumb work-thumb-golf" aria-hidden="true"><span></span></figure>
+            <div class="work-card-body">
+              <span class="work-status">Physics game</span>
+              <h3>Mini Golf</h3>
+              <p>Five-hole canvas golf game with aiming, shot power, collisions, hazards, and saved best scores.</p>
+              <dl class="work-facts">
+                <div><dt>Stack</dt><dd>Canvas, JavaScript, local persistence</dd></div>
+                <div><dt>Status</dt><dd>Live demo</dd></div>
+              </dl>
+              <div class="work-links">
+                <a href="mini-golf.html">Demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/mini-golf.js" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card work-card-mini">
+            <figure class="work-thumb work-thumb-space" aria-hidden="true"><span></span></figure>
+            <div class="work-card-body">
+              <span class="work-status">Arcade loop</span>
+              <h3>Asteroid Drift</h3>
+              <p>Asteroids-style canvas game with thrust, shields, waves, scoring, and keyboard/touch controls.</p>
+              <dl class="work-facts">
+                <div><dt>Stack</dt><dd>Canvas, JavaScript, real-time loop</dd></div>
+                <div><dt>Status</dt><dd>Live demo</dd></div>
+              </dl>
+              <div class="work-links">
+                <a href="asteroid-drift.html">Demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/asteroid-drift.js" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card work-card-mini">
+            <figure class="work-thumb work-thumb-grid" aria-hidden="true"><span></span></figure>
+            <div class="work-card-body">
+              <span class="work-status">Grid game</span>
+              <h3>Snake Lab</h3>
+              <p>Snake-style grid game with timed movement, input buffering, score state, and touch controls.</p>
+              <dl class="work-facts">
+                <div><dt>Stack</dt><dd>Canvas, JavaScript, keyboard/touch input</dd></div>
+                <div><dt>Status</dt><dd>Live demo</dd></div>
+              </dl>
+              <div class="work-links">
+                <a href="snake-lab.html">Demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/snake-lab.js" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card work-card-mini">
+            <figure class="work-thumb work-thumb-breaker" aria-hidden="true"><span></span></figure>
+            <div class="work-card-body">
+              <span class="work-status">Arcade game</span>
+              <h3>Brick Breaker</h3>
+              <p>Paddle-and-ball game with brick collision, level clears, score tracking, and responsive sizing.</p>
+              <dl class="work-facts">
+                <div><dt>Stack</dt><dd>Canvas, JavaScript, collision checks</dd></div>
+                <div><dt>Status</dt><dd>Live demo</dd></div>
+              </dl>
+              <div class="work-links">
+                <a href="brick-breaker.html">Demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/brick-breaker.js" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card work-card-mini">
+            <figure class="work-thumb work-thumb-tiles" aria-hidden="true"><span></span></figure>
+            <div class="work-card-body">
+              <span class="work-status">Puzzle game</span>
+              <h3>2048</h3>
+              <p>Tile-merge puzzle with board transforms, undo snapshots, saved best score, and swipe input.</p>
+              <dl class="work-facts">
+                <div><dt>Stack</dt><dd>HTML grid, JavaScript, LocalStorage</dd></div>
+                <div><dt>Status</dt><dd>Live demo</dd></div>
+              </dl>
+              <div class="work-links">
+                <a href="2048.html">Demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/2048.js" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card work-card-mini">
+            <figure class="work-thumb work-thumb-sweep" aria-hidden="true"><span></span></figure>
+            <div class="work-card-body">
+              <span class="work-status">Logic game</span>
+              <h3>Minefield Sweep</h3>
+              <p>Minesweeper-style puzzle with safe first click, recursive reveal, flag mode, and timer state.</p>
+              <dl class="work-facts">
+                <div><dt>Stack</dt><dd>JavaScript grid state, DOM UI</dd></div>
+                <div><dt>Status</dt><dd>Live demo</dd></div>
+              </dl>
+              <div class="work-links">
+                <a href="minefield-sweep.html">Demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/minefield-sweep.js" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card work-card-mini">
+            <figure class="work-thumb work-thumb-flappy" aria-hidden="true"><span></span></figure>
+            <div class="work-card-body">
+              <span class="work-status">Timing game</span>
+              <h3>Flappy Workbench</h3>
+              <p>Flappy-style timing game with obstacle gaps, collision checks, scoring, and restart flow.</p>
+              <dl class="work-facts">
+                <div><dt>Stack</dt><dd>Canvas, JavaScript, lightweight state machine</dd></div>
+                <div><dt>Status</dt><dd>Live demo</dd></div>
+              </dl>
+              <div class="work-links">
+                <a href="flappy-workbench.html">Demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/flappy-workbench.js" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section work-section" id="site-build-notes" aria-labelledby="build-notes-title">
+        <div class="section-heading">
+          <p class="eyebrow">04 / Site and build notes</p>
+          <h2 id="build-notes-title">Implementation notes behind the portfolio.</h2>
+          <p>Short build logs that connect the visible pages to implementation decisions, QA checks, and next improvements.</p>
+        </div>
+
+        <div class="work-grid compact-work-grid">
+          <article class="work-card work-card-note">
+            <figure class="work-thumb work-thumb-notes" aria-hidden="true"><span></span></figure>
+            <div class="work-card-body">
+              <span class="work-status">Build log</span>
+              <h3>Portfolio cleanup pass</h3>
+              <p>Homepage positioning, CTA hierarchy, metadata, recruiter paths, and selected-work framing.</p>
+              <dl class="work-facts">
+                <div><dt>Stack</dt><dd>HTML, CSS, metadata, GitHub Pages</dd></div>
+                <div><dt>Status</dt><dd>Documented build note</dd></div>
+              </dl>
+              <div class="work-links">
+                <a href="notes.html#portfolio-cleanup">Read Note</a>
+                <a href="index.html">Demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card work-card-note">
+            <figure class="work-thumb work-thumb-notes" aria-hidden="true"><span></span></figure>
+            <div class="work-card-body">
+              <span class="work-status">Build log</span>
+              <h3>MovieBot stream surface split</h3>
+              <p>Separated the live stream page from the searchable library so voting and browsing stay clear.</p>
+              <dl class="work-facts">
+                <div><dt>Stack</dt><dd>Static pages, movie data, no-JavaScript fallback</dd></div>
+                <div><dt>Status</dt><dd>Documented build note</dd></div>
+              </dl>
+              <div class="work-links">
+                <a href="notes.html#moviebot-page-split">Read Note</a>
+                <a href="movie-night.html">Demo</a>
+                <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card work-card-note">
+            <figure class="work-thumb work-thumb-notes" aria-hidden="true"><span></span></figure>
+            <div class="work-card-body">
+              <span class="work-status">Build log</span>
+              <h3>TraverseOps public-demo framing</h3>
+              <p>Clarified sample-data status and foregrounded the map-first field workflow for portfolio review.</p>
+              <dl class="work-facts">
+                <div><dt>Stack</dt><dd>Product framing, case-study copy, responsive preview</dd></div>
+                <div><dt>Status</dt><dd>Documented build note</dd></div>
+              </dl>
+              <div class="work-links">
+                <a href="notes.html#traverseops-demo-framing">Read Note</a>
+                <a href="https://traverseops.app" rel="noopener noreferrer">Demo</a>
+                <a href="case-studies.html#traverseops">Case Study</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="next-step-panel" aria-labelledby="work-next-title">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2 id="work-next-title">Need the shorter path?</h2>
+          <p>For a hiring scan, start with TraverseOps, MovieBot, and Web Paint. For availability and contact details, use the resume or email links.</p>
+        </div>
+        <div class="next-step-actions">
+          <a class="button primary" href="resume.html">View resume</a>
+          <a class="button secondary" href="mailto:hello@zacbatten.me">Email Zac</a>
+          <a class="button ghost" href="case-studies.html">Case studies</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-identity">
+        <strong>Zac Batten</strong>
+        <span>Software developer building practical web tools, automation, and frontend interfaces.</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="resume.html">Resume</a>
+        <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
+        <a href="work.html" aria-current="page">Work</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="notes.html">Notes</a>
+        <a href="interactive-lab.html">Interactive Lab</a>
+        <a href="sitemap.xml">Sitemap</a>
+      </nav>
+      <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

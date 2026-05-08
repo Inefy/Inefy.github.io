@@ -9,6 +9,7 @@
     <title>Web Paint / Interactive Lab</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2360a5fa'/%3E%3Cpath d='M16 18h32v8H26v8h18v8H26v4H16z' fill='%23172033'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="paint.css">
+    <link rel="stylesheet" href="demo-navigation.css">
   </head>
   <body>
     <main class="paint-app" aria-label="Paint application" data-active-tab="home">
@@ -31,6 +32,12 @@
           <button type="button" id="closeButton">Close</button>
         </nav>
       </header>
+
+      <nav class="game-breadcrumb" aria-label="Breadcrumb">
+        <a href="interactive-lab.html">Back to Interactive Lab</a>
+        <span aria-hidden="true">/</span>
+        <span>Web Paint</span>
+      </nav>
 
       <section class="ribbon" aria-label="Paint toolbar">
         <nav class="tabs" aria-label="Toolbar sections">
@@ -255,6 +262,18 @@
           </div>
         </div>
       </footer>
+
+      <section class="game-next-step" aria-labelledby="paint-next-title">
+        <div>
+          <span class="next-step-kicker">Keep exploring</span>
+          <h2 id="paint-next-title">Read the Web Paint case study</h2>
+          <p>See how this tool demonstrates canvas state, pointer input, toolbar UI, local save/load, and export workflows.</p>
+        </div>
+        <div class="next-step-actions">
+          <a href="case-studies.html#web-paint">View case study</a>
+          <a href="interactive-lab.html">Open Interactive Lab</a>
+        </div>
+      </section>
     </main>
 
     <script src="paint.js"></script>

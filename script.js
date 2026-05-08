@@ -9,9 +9,13 @@ const vibeButton = document.querySelector("#shuffle-vibe");
 const filterButtons = document.querySelectorAll("[data-filter]");
 const projectCards = document.querySelectorAll("[data-tags]");
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const mobileNavQuery = window.matchMedia("(max-width: 760px)");
 let prefersReducedMotion = reducedMotionQuery.matches;
 const twitchPlayers = document.querySelectorAll("[data-twitch-player]");
 const twitchChats = document.querySelectorAll("[data-twitch-chat]");
+const siteHeader = document.querySelector(".site-header");
+const navToggle = document.querySelector("[data-nav-toggle]");
+const primaryNav = document.querySelector("#primary-nav");
 
 const palettes = [
   {
@@ -69,6 +73,97 @@ function syncMotionPreference(event = reducedMotionQuery) {
   if (prefersReducedMotion) {
     body.style.removeProperty("--mouse-x");
     body.style.removeProperty("--mouse-y");
+  }
+}
+
+function isMobileNavOpen() {
+  return navToggle?.getAttribute("aria-expanded") === "true";
+}
+
+function setNavToggleLabel(isOpen) {
+  if (!navToggle) return;
+
+  const label = isOpen ? "Close" : "Menu";
+  const accessibleLabel = isOpen ? "Close navigation menu" : "Open navigation menu";
+  navToggle.setAttribute("aria-expanded", String(isOpen));
+  navToggle.setAttribute("aria-label", accessibleLabel);
+  navToggle.querySelector(".nav-toggle-text").textContent = label;
+}
+
+function openMobileNav() {
+  if (!siteHeader || !navToggle || !primaryNav) return;
+
+  primaryNav.hidden = false;
+  siteHeader.classList.add("nav-open");
+  setNavToggleLabel(true);
+}
+
+function closeMobileNav({ returnFocus = false } = {}) {
+  if (!siteHeader || !navToggle || !primaryNav) return;
+
+  siteHeader.classList.remove("nav-open");
+  setNavToggleLabel(false);
+
+  if (mobileNavQuery.matches) {
+    primaryNav.hidden = true;
+  }
+
+  if (returnFocus) {
+    navToggle.focus();
+  }
+}
+
+function syncMobileNav(event = mobileNavQuery) {
+  if (!siteHeader || !navToggle || !primaryNav) return;
+
+  siteHeader.classList.add("nav-enhanced");
+
+  if (event.matches) {
+    if (!isMobileNavOpen()) {
+      primaryNav.hidden = true;
+    }
+  } else {
+    primaryNav.hidden = false;
+    siteHeader.classList.remove("nav-open");
+    setNavToggleLabel(false);
+  }
+}
+
+function initMobileNavigation() {
+  if (!siteHeader || !navToggle || !primaryNav) return;
+
+  setNavToggleLabel(false);
+  syncMobileNav();
+
+  navToggle.addEventListener("click", () => {
+    if (isMobileNavOpen()) {
+      closeMobileNav();
+    } else {
+      openMobileNav();
+    }
+  });
+
+  primaryNav.addEventListener("click", (event) => {
+    if (mobileNavQuery.matches && event.target.closest("a")) {
+      closeMobileNav();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!mobileNavQuery.matches || !isMobileNavOpen() || siteHeader.contains(event.target)) return;
+    closeMobileNav();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && isMobileNavOpen()) {
+      closeMobileNav({ returnFocus: true });
+    }
+  });
+
+  if (mobileNavQuery.addEventListener) {
+    mobileNavQuery.addEventListener("change", syncMobileNav);
+  } else {
+    mobileNavQuery.addListener(syncMobileNav);
   }
 }
 
@@ -178,6 +273,7 @@ function mountTwitchEmbeds() {
   });
 }
 
+initMobileNavigation();
 updateLocalTime();
 window.setInterval(updateLocalTime, 15000);
 mountTwitchEmbeds();

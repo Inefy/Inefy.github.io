@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="Technical case-study index for Zac Batten's serious portfolio projects: TraverseOps, MovieBot, Web Paint, and the Movie Library companion app.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/case-studies.html">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="Case Studies / Zac Batten">
+    <meta property="og:description" content="Detailed technical proof for Zac Batten's portfolio projects: problems, builds, stacks, challenges, and links.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zacbatten.me/case-studies.html">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image:alt" content="Inefy workbench case studies and selected project cards preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Case Studies / Zac Batten">
+    <meta name="twitter:description" content="Technical case studies for TraverseOps, MovieBot, Web Paint, and Movie Library.">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <title>Case Studies / Zac Batten</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#case-study-list">Skip to case studies</a>
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+        <span class="brand-mark" aria-hidden="true">ZB</span>
+        <span class="brand-copy">
+          <span>Zac Batten</span>
+          <small>Inefy workbench</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html">Work</a>
+        <a href="case-studies.html" aria-current="page">Case Studies</a>
+        <a href="index.html#about">About</a>
+        <a href="notes.html">Notes</a>
+        <a href="resume.html">Resume</a>
+        <a class="nav-cta" href="index.html#contact">Contact</a>
+        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top" class="case-studies-page">
+      <section class="section case-studies-hero" aria-labelledby="case-studies-title">
+        <div class="section-heading">
+          <p class="eyebrow">Case studies</p>
+          <h1 id="case-studies-title">Technical proof for the serious portfolio projects.</h1>
+          <p>
+            A focused case-study index for hiring managers: what problem each project solves, what I built, the stack behind it, and the main technical challenge.
+          </p>
+          <div class="work-jump-nav" aria-label="Case study shortcuts">
+            <a href="#traverseops">TraverseOps</a>
+            <a href="#moviebot">MovieBot</a>
+            <a href="#web-paint">Web Paint</a>
+            <a href="#movie-library">Movie Library</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section case-study-index" id="case-study-list" aria-labelledby="case-study-list-title">
+        <div class="section-heading">
+          <p class="eyebrow">Project writeups</p>
+          <h2 id="case-study-list-title">The quickest route to technical depth.</h2>
+          <p>These are the projects with enough implementation detail to evaluate product thinking, frontend structure, automation work, and practical constraints.</p>
+        </div>
+
+        <div class="case-study-list">
+          <article class="case-study-listing" id="traverseops">
+            <figure class="case-study-thumb">
+              <picture>
+                <source srcset="assets/traverseops-workspace.webp" type="image/webp">
+                <img src="assets/traverseops-workspace.png" alt="TraverseOps map workspace showing municipal assets and selected asset details" loading="lazy" decoding="async" width="1440" height="1100">
+              </picture>
+            </figure>
+            <div class="case-study-listing-body">
+              <div class="case-study-listing-header">
+                <span class="work-status">Flagship / public demo</span>
+                <h3>TraverseOps</h3>
+              </div>
+              <dl class="case-study-proof">
+                <div>
+                  <dt>Problem</dt>
+                  <dd>Field crews lose time when maps, asset records, inspections, and work orders live in separate tools.</dd>
+                </div>
+                <div>
+                  <dt>What Zac built</dt>
+                  <dd>A map-first field operations demo with asset lookup, selected-asset context, inspection notes, and work-order flow.</dd>
+                </div>
+                <div>
+                  <dt>Tech stack</dt>
+                  <dd>MapLibre, Supabase-backed sample data, responsive frontend, Capacitor-ready app structure.</dd>
+                </div>
+                <div>
+                  <dt>Main technical challenge</dt>
+                  <dd>Keeping dense map, record, and workflow UI understandable on both desktop review screens and mobile field contexts.</dd>
+                </div>
+              </dl>
+              <div class="work-links">
+                <a href="index.html#traverseops">Case study link</a>
+                <a href="https://traverseops.app" rel="noopener noreferrer">Live demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-study-listing" id="moviebot">
+            <figure class="case-study-thumb">
+              <img src="assets/movie-night-preview.png" alt="Movie Night page preview with Twitch stream, chat, and MovieBot details" loading="lazy" decoding="async" width="1200" height="630">
+            </figure>
+            <div class="case-study-listing-body">
+              <div class="case-study-listing-header">
+                <span class="work-status">Automation / public repo</span>
+                <h3>MovieBot / StreamCinema Vote Bot</h3>
+              </div>
+              <dl class="case-study-proof">
+                <div>
+                  <dt>Problem</dt>
+                  <dd>Hosted Twitch movie nights need voting, result tallying, queue state, and OBS playback without constant manual control.</dd>
+                </div>
+                <div>
+                  <dt>What Zac built</dt>
+                  <dd>A Python Twitch bot that listens to chat commands, tracks votes, refreshes OAuth tokens, and hands the selected local media file to OBS.</dd>
+                </div>
+                <div>
+                  <dt>Tech stack</dt>
+                  <dd>Python, TwitchIO, Twitch IRC/chat commands, OAuth refresh, OBS WebSocket, static showcase pages.</dd>
+                </div>
+                <div>
+                  <dt>Main technical challenge</dt>
+                  <dd>Making a long-running stream tool resilient across Twitch auth, chat connection health, local file state, and OBS handoff timing.</dd>
+                </div>
+              </dl>
+              <div class="work-links">
+                <a href="index.html#moviebot">Case study link</a>
+                <a href="movie-night.html">Live showcase</a>
+                <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-study-listing" id="web-paint">
+            <figure class="case-study-thumb work-thumb-paint" role="img" aria-label="Stylized Web Paint toolbar and drawing canvas thumbnail">
+              <span class="thumb-toolbar" aria-hidden="true"></span>
+              <span class="thumb-canvas" aria-hidden="true"></span>
+            </figure>
+            <div class="case-study-listing-body">
+              <div class="case-study-listing-header">
+                <span class="work-status">Canvas tool / live demo</span>
+                <h3>Web Paint</h3>
+              </div>
+              <dl class="case-study-proof">
+                <div>
+                  <dt>Problem</dt>
+                  <dd>A useful browser drawing tool needs familiar controls, reliable canvas state, and export behavior without a heavy framework.</dd>
+                </div>
+                <div>
+                  <dt>What Zac built</dt>
+                  <dd>A Paint-style app with drawing tools, shapes, eraser, fill, undo/redo, zoom, local save/load, canvas resizing, and PNG export.</dd>
+                </div>
+                <div>
+                  <dt>Tech stack</dt>
+                  <dd>HTML Canvas, vanilla JavaScript, pointer events, CSS Grid, LocalStorage, File APIs.</dd>
+                </div>
+                <div>
+                  <dt>Main technical challenge</dt>
+                  <dd>Keeping tool state, canvas history, resizing, zoom, and export predictable while the UI stays responsive.</dd>
+                </div>
+              </dl>
+              <div class="work-links">
+                <a href="index.html#web-paint">Case study link</a>
+                <a href="paint.html">Live demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.html" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-study-listing" id="movie-library">
+            <figure class="case-study-thumb">
+              <img src="assets/movie-library-preview.png" alt="Public domain movie library preview with a poster grid" loading="lazy" decoding="async" width="1200" height="630">
+            </figure>
+            <div class="case-study-listing-body">
+              <div class="case-study-listing-header">
+                <span class="work-status">Companion app / static UI</span>
+                <h3>Public Domain Movie Library</h3>
+              </div>
+              <dl class="case-study-proof">
+                <div>
+                  <dt>Problem</dt>
+                  <dd>The live Movie Night page should stay focused on watching and voting, while viewers still need a fast way to browse the full queue.</dd>
+                </div>
+                <div>
+                  <dt>What Zac built</dt>
+                  <dd>A companion library page with poster cards, search/filter behavior, queue metadata, copyable vote actions, and a no-JavaScript fallback list.</dd>
+                </div>
+                <div>
+                  <dt>Tech stack</dt>
+                  <dd>Static HTML, CSS Grid, vanilla JavaScript search, movie metadata, external poster images, no-JavaScript fallback markup.</dd>
+                </div>
+                <div>
+                  <dt>Main technical challenge</dt>
+                  <dd>Keeping a large static movie list usable and indexable while preserving a clean fallback when JavaScript or external posters are unavailable.</dd>
+                </div>
+              </dl>
+              <div class="work-links">
+                <a href="movie-night.html#movies">Case study link</a>
+                <a href="movie-library.html">Live demo</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/movie-library.html" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="next-step-panel" aria-labelledby="case-studies-next-title">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2 id="case-studies-next-title">Want the full project index?</h2>
+          <p>The Work page includes these case studies plus supporting pages, browser experiments, and build notes.</p>
+        </div>
+        <div class="next-step-actions">
+          <a class="button primary" href="work.html">View all work</a>
+          <a class="button secondary" href="resume.html">View resume</a>
+          <a class="button ghost" href="mailto:hello@zacbatten.me">Contact Zac</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-identity">
+        <strong>Zac Batten</strong>
+        <span>Software developer building practical web tools, automation, and frontend interfaces.</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="resume.html">Resume</a>
+        <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
+        <a href="work.html">Work</a>
+        <a href="case-studies.html" aria-current="page">Case Studies</a>
+        <a href="notes.html">Notes</a>
+        <a href="interactive-lab.html">Interactive Lab</a>
+        <a href="sitemap.xml">Sitemap</a>
+      </nav>
+      <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

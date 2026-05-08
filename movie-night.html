@@ -38,18 +38,29 @@
           <small>Inefy workbench</small>
         </span>
       </a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="index.html#featured-builds">Work</a>
-        <a href="index.html#case-studies" aria-current="page">Case Studies</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html">Work</a>
+        <a href="case-studies.html" aria-current="page">Case Studies</a>
         <a href="index.html#about">About</a>
         <a href="notes.html">Notes</a>
         <a href="resume.html">Resume</a>
-        <a href="index.html#contact">Contact</a>
+        <a class="nav-cta" href="index.html#contact">Contact</a>
         <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
       </nav>
     </header>
 
     <main id="top" class="stream-page">
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="work.html">Back to Work</a>
+        <span aria-hidden="true">/</span>
+        <a href="case-studies.html#moviebot">MovieBot case study</a>
+        <span aria-hidden="true">/</span>
+        <span>Movie Night</span>
+      </nav>
+
       <section class="stream-hero" aria-labelledby="stream-title">
         <div class="stream-hero-copy">
           <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span>Live when Zurra3 is online</p>
@@ -214,6 +225,19 @@
           <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Read the repo</a>
         </div>
       </section>
+
+      <section class="next-step-panel" aria-labelledby="movie-night-next-title">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2 id="movie-night-next-title">Browse the queue or read the implementation.</h2>
+          <p>Continue into the searchable movie library, the MovieBot source, or the selected-work section that frames this as a software project.</p>
+        </div>
+        <div class="next-step-actions">
+          <a class="button primary" href="movie-library.html">Open movie library</a>
+          <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Read the repo</a>
+          <a class="button ghost" href="case-studies.html#moviebot">Back to case study</a>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -225,7 +249,8 @@
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
         <a href="resume.html">Resume</a>
         <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
-        <a href="index.html#featured-builds">Selected Work</a>
+        <a href="work.html">Work</a>
+        <a href="case-studies.html" aria-current="page">Case Studies</a>
         <a href="notes.html">Notes</a>
         <a href="interactive-lab.html">Interactive Lab</a>
         <a href="sitemap.xml">Sitemap</a>

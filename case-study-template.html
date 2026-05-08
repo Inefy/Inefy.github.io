@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="Reusable static case-study page template for Zac Batten's portfolio projects.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/case-study-template.html">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="Case Study Template / Zac Batten">
+    <meta property="og:description" content="Reusable case-study layout for TraverseOps, MovieBot, Web Paint, and future portfolio writeups.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zacbatten.me/case-study-template.html">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image:alt" content="Inefy workbench case-study page template preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Case Study Template / Zac Batten">
+    <meta name="twitter:description" content="Reusable static case-study page template for Zac Batten's portfolio projects.">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <title>Case Study Template / Zac Batten</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#case-template-content">Skip to case study content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+        <span class="brand-mark" aria-hidden="true">ZB</span>
+        <span class="brand-copy">
+          <span>Zac Batten</span>
+          <small>Inefy workbench</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html">Work</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="index.html#about">About</a>
+        <a href="notes.html">Notes</a>
+        <a href="resume.html">Resume</a>
+        <a class="nav-cta" href="index.html#contact">Contact</a>
+        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top" class="case-template-page">
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="case-studies.html">Case Studies</a>
+        <span aria-hidden="true">/</span>
+        <span>Case Study Template</span>
+      </nav>
+
+      <section class="case-template-hero" aria-labelledby="case-title">
+        <div class="case-template-hero-copy">
+          <p class="eyebrow">Hero summary</p>
+          <h1 id="case-title">[Project Name]</h1>
+          <p class="case-template-summary">
+            Replace this with a two-sentence summary: what the project is, who it helps, and the technical proof a hiring manager should notice first.
+          </p>
+          <dl class="case-template-meta" aria-label="Project metadata">
+            <div>
+              <dt>Project type</dt>
+              <dd>[Web app / automation / browser tool]</dd>
+            </div>
+            <div>
+              <dt>Status</dt>
+              <dd>[Live demo / public repo / prototype]</dd>
+            </div>
+            <div>
+              <dt>Timeline</dt>
+              <dd>[Month Year - Month Year]</dd>
+            </div>
+            <div>
+              <dt>Role</dt>
+              <dd>[Solo builder / frontend / automation / product design]</dd>
+            </div>
+          </dl>
+        </div>
+
+        <figure class="case-template-image-placeholder" role="img" aria-label="Replace with a primary screenshot showing the project interface">
+          <span class="placeholder-kicker">Primary screenshot</span>
+          <strong>[Project UI preview]</strong>
+          <figcaption>Replace this placeholder with the clearest interface screenshot or demo still.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-template-links" aria-labelledby="project-links-title">
+        <div>
+          <p class="eyebrow">Project links</p>
+          <h2 id="project-links-title">Project links</h2>
+          <p>Open the live demo, source, and related portfolio context.</p>
+        </div>
+        <div class="work-links">
+          <a href="work.html">Work index</a>
+          <a href="case-studies.html">Case study index</a>
+          <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub profile</a>
+        </div>
+      </section>
+
+      <div class="case-template-layout" id="case-template-content">
+        <article class="case-template-main">
+          <section class="case-template-section" aria-labelledby="role-title">
+            <p class="eyebrow">01</p>
+            <h2 id="role-title">My role</h2>
+            <p>Describe Zac's direct responsibility. Be specific about product decisions, implementation areas, data work, deployment work, and what was built end to end.</p>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="problem-title">
+            <p class="eyebrow">02</p>
+            <h2 id="problem-title">Problem</h2>
+            <p>Explain the practical problem. Keep this grounded in the workflow, user pain, manual process, missing interface, or operational risk the project addresses.</p>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="users-title">
+            <p class="eyebrow">03</p>
+            <h2 id="users-title">Users</h2>
+            <p>Name the intended users and their context. For example: field crews, stream hosts, viewers, recruiters, or someone using a browser tool on desktop and mobile.</p>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="constraints-title">
+            <p class="eyebrow">04</p>
+            <h2 id="constraints-title">Constraints</h2>
+            <ul class="case-template-list">
+              <li>[Constraint one: static hosting, sample data, browser-only runtime, stream reliability, etc.]</li>
+              <li>[Constraint two: mobile usability, no backend, public-safe data, long-running session, etc.]</li>
+              <li>[Constraint three: accessibility, fallback behavior, performance, or deployment limits.]</li>
+            </ul>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="stack-title">
+            <p class="eyebrow">05</p>
+            <h2 id="stack-title">Tech stack</h2>
+            <ul class="case-template-stack" aria-label="Technology stack">
+              <li>[HTML/CSS]</li>
+              <li>[JavaScript]</li>
+              <li>[Python]</li>
+              <li>[MapLibre]</li>
+              <li>[Supabase]</li>
+              <li>[OBS WebSocket]</li>
+            </ul>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="architecture-title">
+            <p class="eyebrow">06</p>
+            <h2 id="architecture-title">Architecture</h2>
+            <div class="case-template-architecture" role="img" aria-label="Replace with an architecture diagram for data flow, UI modules, or integration points">
+              <div>
+                <strong>Input</strong>
+                <span>[User action / API / file data]</span>
+              </div>
+              <div>
+                <strong>App logic</strong>
+                <span>[State, validation, rendering, automation]</span>
+              </div>
+              <div>
+                <strong>Output</strong>
+                <span>[UI update / OBS action / export / saved record]</span>
+              </div>
+            </div>
+            <p>Explain the important modules, data flow, integration boundaries, and why this structure fits the project.</p>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="features-title">
+            <p class="eyebrow">07</p>
+            <h2 id="features-title">Key features</h2>
+            <div class="case-template-feature-list">
+              <article>
+                <h3>[Feature one]</h3>
+                <p>Explain what it does and why it matters technically or operationally.</p>
+              </article>
+              <article>
+                <h3>[Feature two]</h3>
+                <p>Explain the interaction, data handling, or automation behavior.</p>
+              </article>
+              <article>
+                <h3>[Feature three]</h3>
+                <p>Explain the user-facing result and implementation detail.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="challenge-title">
+            <p class="eyebrow">08</p>
+            <h2 id="challenge-title">Hardest technical challenge</h2>
+            <p>Describe the most difficult engineering problem, the tradeoffs considered, and the final approach. Include a short note about what made the solution resilient.</p>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="testing-title">
+            <p class="eyebrow">09</p>
+            <h2 id="testing-title">Testing / QA</h2>
+            <ul class="case-template-list">
+              <li>[Manual workflow tested: happy path, edge cases, empty states, failure states.]</li>
+              <li>[Browser/device coverage: desktop, mobile, keyboard, reduced motion, no-JavaScript fallback.]</li>
+              <li>[Project-specific checks: OAuth refresh, OBS reconnect, export behavior, map interactions, etc.]</li>
+            </ul>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="deployment-title">
+            <p class="eyebrow">10</p>
+            <h2 id="deployment-title">Deployment / operations</h2>
+            <p>Explain where the project runs, how it is configured, what needs to be monitored, and what operational risks are handled.</p>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="results-title">
+            <p class="eyebrow">11</p>
+            <h2 id="results-title">Results</h2>
+            <p>Summarize the practical outcome. Use concrete proof when available: working demo, reduced manual work, clearer workflow, public repo, or improved hiring signal.</p>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="screenshots-title">
+            <p class="eyebrow">12</p>
+            <h2 id="screenshots-title">Screenshots/demo</h2>
+            <div class="case-template-screenshot-grid">
+              <figure class="case-template-image-placeholder" role="img" aria-label="Replace with screenshot of the primary workflow">
+                <span class="placeholder-kicker">Screenshot 01</span>
+                <strong>[Primary workflow]</strong>
+                <figcaption>Describe what the screenshot proves.</figcaption>
+              </figure>
+              <figure class="case-template-image-placeholder" role="img" aria-label="Replace with screenshot of a secondary state or detail view">
+                <span class="placeholder-kicker">Screenshot 02</span>
+                <strong>[Detail state]</strong>
+                <figcaption>Describe the state, interaction, or technical detail shown.</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="next-title">
+            <p class="eyebrow">13</p>
+            <h2 id="next-title">What I would improve next</h2>
+            <p>List the next practical improvements, ordered by user value and technical risk. Keep this honest and specific.</p>
+          </section>
+        </article>
+
+        <aside class="case-template-sidebar" aria-labelledby="sidebar-title">
+          <h2 id="sidebar-title">Reusable checklist</h2>
+          <ul>
+            <li>Replace bracketed placeholder copy.</li>
+            <li>Update title, canonical URL, social metadata, and description.</li>
+            <li>Swap placeholders for real screenshots with useful alt text.</li>
+            <li>Set project links to case study, demo, and GitHub sources.</li>
+            <li>Remove <code>noindex</code> before publishing a real case study.</li>
+          </ul>
+        </aside>
+      </div>
+
+      <section class="next-step-panel" aria-labelledby="template-next-title">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2 id="template-next-title">Turn this into a real project writeup.</h2>
+          <p>Copy the template for TraverseOps, MovieBot, or Web Paint, then replace placeholders with project-specific evidence and screenshots.</p>
+        </div>
+        <div class="next-step-actions">
+          <a class="button primary" href="mailto:hello@zacbatten.me">Contact Zac</a>
+          <a class="button secondary" href="resume.html">View resume</a>
+          <a class="button ghost" href="work.html">More work</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-identity">
+        <strong>Zac Batten</strong>
+        <span>Software developer building practical web tools, automation, and frontend interfaces.</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="resume.html">Resume</a>
+        <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
+        <a href="work.html">Work</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="notes.html">Notes</a>
+        <a href="interactive-lab.html">Interactive Lab</a>
+        <a href="sitemap.xml">Sitemap</a>
+      </nav>
+      <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

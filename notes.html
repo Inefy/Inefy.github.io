@@ -36,18 +36,27 @@
           <small>Inefy workbench</small>
         </span>
       </a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="index.html#featured-builds">Work</a>
-        <a href="index.html#case-studies">Case Studies</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html">Work</a>
+        <a href="case-studies.html">Case Studies</a>
         <a href="index.html#about">About</a>
         <a href="notes.html" aria-current="page">Notes</a>
         <a href="resume.html">Resume</a>
-        <a href="index.html#contact">Contact</a>
+        <a class="nav-cta" href="index.html#contact">Contact</a>
         <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
       </nav>
     </header>
 
     <main id="top" class="notes-page">
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="work.html">Back to Work</a>
+        <span aria-hidden="true">/</span>
+        <span>Notes</span>
+      </nav>
+
       <section class="section notes-hero" aria-labelledby="notes-title">
         <div class="section-heading">
           <p class="eyebrow">Notes / Build logs</p>
@@ -84,6 +93,11 @@
                 <dd>Confirm social previews after deployment because preview scrapers cache aggressively.</dd>
               </div>
             </dl>
+            <div class="build-log-links" aria-label="Related links for Portfolio cleanup pass">
+              <a href="#build-logs">Back to Notes</a>
+              <a href="work.html">Work</a>
+              <a href="index.html#contact">Contact</a>
+            </div>
           </article>
 
           <article id="moviebot-page-split">
@@ -105,6 +119,12 @@
                 <dd>Keep the movie data source and the static fallback list in sync when titles change.</dd>
               </div>
             </dl>
+            <div class="build-log-links" aria-label="Related links for Stream page and movie library split">
+              <a href="#build-logs">Back to Notes</a>
+              <a href="case-studies.html#moviebot">MovieBot case study</a>
+              <a href="movie-night.html">Movie Night page</a>
+              <a href="movie-library.html">Movie Library</a>
+            </div>
           </article>
 
           <article id="traverseops-demo-framing">
@@ -126,7 +146,25 @@
                 <dd>Add a fuller case-study page if the app needs screenshots, user flows, and implementation notes in one place.</dd>
               </div>
             </dl>
+            <div class="build-log-links" aria-label="Related links for Demo state made explicit">
+              <a href="#build-logs">Back to Notes</a>
+              <a href="case-studies.html#traverseops">TraverseOps case study</a>
+              <a href="index.html#traverseops-feature">TraverseOps feature</a>
+            </div>
           </article>
+        </div>
+      </section>
+
+      <section class="next-step-panel" aria-labelledby="notes-next-title">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2 id="notes-next-title">Connect the build notes to the work.</h2>
+          <p>Use the notes as implementation context, then jump into the project sections that show the finished interfaces and technical decisions.</p>
+        </div>
+        <div class="next-step-actions">
+          <a class="button primary" href="work.html">View selected work</a>
+          <a class="button secondary" href="case-studies.html#moviebot">MovieBot case study</a>
+          <a class="button ghost" href="interactive-lab.html">Interactive Lab</a>
         </div>
       </section>
     </main>
@@ -140,7 +178,8 @@
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
         <a href="resume.html">Resume</a>
         <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
-        <a href="index.html#featured-builds">Selected Work</a>
+        <a href="work.html">Work</a>
+        <a href="case-studies.html">Case Studies</a>
         <a href="notes.html" aria-current="page">Notes</a>
         <a href="interactive-lab.html">Interactive Lab</a>
         <a href="sitemap.xml">Sitemap</a>

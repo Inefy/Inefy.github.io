@@ -9,6 +9,7 @@
     <title>Asteroid Drift / Interactive Lab</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2368b7ff'/%3E%3Cpath d='M32 9l10 34-10-6-10 6z' fill='%23070f13'/%3E%3Ccircle cx='14' cy='18' r='5' fill='%23f5c45b'/%3E%3Ccircle cx='49' cy='45' r='8' fill='%23ff8fc6'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="asteroid-drift.css">
+    <link rel="stylesheet" href="demo-navigation.css">
   </head>
   <body>
     <main class="drift-app" aria-label="Asteroid Drift game">
@@ -32,6 +33,12 @@
           <button class="nav-cta" type="button" id="fullscreenButton">Fullscreen</button>
         </nav>
       </header>
+
+      <nav class="game-breadcrumb" aria-label="Breadcrumb">
+        <a href="interactive-lab.html">Back to Interactive Lab</a>
+        <span aria-hidden="true">/</span>
+        <span>Asteroid Drift</span>
+      </nav>
 
       <section class="game-hud" aria-label="Game status">
         <div class="hud-cluster">
@@ -109,6 +116,18 @@
             <button type="button" data-control="shield" aria-label="Shield">Shield</button>
             <button type="button" data-control="fire" aria-label="Fire">Fire</button>
           </div>
+        </div>
+      </section>
+
+      <section class="game-next-step" aria-labelledby="drift-next-title">
+        <div>
+          <span class="next-step-kicker">Keep exploring</span>
+          <h2 id="drift-next-title">More canvas game loops</h2>
+          <p>Asteroid Drift sits with the Interactive Lab demos that show input handling, collision checks, HUD updates, and lightweight browser game loops.</p>
+        </div>
+        <div class="next-step-actions">
+          <a href="interactive-lab.html">Open Interactive Lab</a>
+          <a href="work.html">Back to Work</a>
         </div>
       </section>
     </main>
