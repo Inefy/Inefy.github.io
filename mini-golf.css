@@ -1,0 +1,930 @@
+:root {
+  color-scheme: dark;
+  --bg: #071013;
+  --panel: rgba(12, 22, 24, 0.78);
+  --panel-strong: rgba(17, 31, 34, 0.94);
+  --line: rgba(255, 255, 255, 0.14);
+  --line-strong: rgba(255, 255, 255, 0.24);
+  --text: #f7fbf7;
+  --muted: #aebdc0;
+  --green: #6de1a6;
+  --green-dark: #183d32;
+  --cyan: #58d7e5;
+  --blue: #68b7ff;
+  --gold: #f5c45b;
+  --pink: #ff8fc6;
+  --danger: #ff766a;
+  --rough: #2f7d54;
+  --sand: #f5c45b;
+  --water: #58d7e5;
+  --shadow: 0 24px 90px rgba(0, 0, 0, 0.44);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(109, 225, 166, 0.2), transparent 25rem),
+    radial-gradient(circle at 92% 10%, rgba(245, 196, 91, 0.18), transparent 24rem),
+    radial-gradient(circle at 58% 110%, rgba(104, 183, 255, 0.16), transparent 30rem),
+    linear-gradient(145deg, #071013 0%, #0a171b 48%, #10150f 100%);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.golf-app {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 12px;
+  width: 100%;
+  min-height: 100svh;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.golf-app::before,
+.golf-app::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.golf-app::before {
+  inset: -18% auto auto -8%;
+  width: 42vw;
+  height: 78vh;
+  background: linear-gradient(110deg, rgba(88, 215, 229, 0.22), rgba(109, 225, 166, 0.08), transparent 68%);
+  clip-path: polygon(0 0, 68% 0, 100% 100%, 22% 100%);
+}
+
+.golf-app::after {
+  right: -10vw;
+  bottom: -14vh;
+  width: 58vw;
+  height: 64vh;
+  background: linear-gradient(135deg, transparent 0 26%, rgba(245, 196, 91, 0.1) 26% 38%, transparent 38% 62%, rgba(255, 143, 198, 0.08) 62% 73%, transparent 73%);
+  transform: rotate(-9deg);
+}
+
+.ambient-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 50% 44%, rgba(0, 0, 0, 0.62), transparent 72%);
+}
+
+.titlebar,
+.game-hud,
+.game-stage {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 16% 0%, rgba(109, 225, 166, 0.12), transparent 38%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)),
+    var(--panel);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(18px);
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 12px;
+}
+
+.brand-link {
+  min-width: 0;
+  border-radius: 8px;
+}
+
+.brand-link:focus-visible,
+.game-nav a:focus-visible,
+.game-nav button:focus-visible,
+.touch-bar button:focus-visible,
+.menu-button:focus-visible {
+  outline: 3px solid rgba(104, 183, 255, 0.68);
+  outline-offset: 3px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brand-mark {
+  position: relative;
+  display: grid;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--green), var(--gold) 64%, var(--blue));
+  box-shadow: 0 12px 30px rgba(109, 225, 166, 0.22);
+  color: #041112;
+  font-weight: 950;
+}
+
+.brand-mark::after {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #041112;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.32);
+  content: "";
+}
+
+.brand-title {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.brand-title strong {
+  overflow: hidden;
+  font-size: 1.22rem;
+  line-height: 1.05;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.document-name {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.game-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.game-nav a,
+.game-nav button,
+.touch-bar button {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.045));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 850;
+  padding: 0 14px;
+}
+
+.game-nav a:hover,
+.game-nav button:hover:not(:disabled),
+.touch-bar button:hover:not(:disabled) {
+  border-color: rgba(109, 225, 166, 0.72);
+  background: rgba(109, 225, 166, 0.12);
+}
+
+.game-nav button:active:not(:disabled),
+.touch-bar button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.game-nav .nav-cta {
+  border-color: rgba(245, 196, 91, 0.55);
+  background: linear-gradient(135deg, var(--gold), var(--green) 58%, var(--blue));
+  color: #041112;
+}
+
+.game-hud {
+  align-items: start;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
+  grid-template-areas:
+    "stats status"
+    "scorecard status";
+  gap: 12px;
+  padding: 10px;
+}
+
+.hud-cluster {
+  align-items: start;
+  display: grid;
+  grid-area: stats;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.score-chip {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  min-height: 58px;
+  align-content: center;
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 11px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.12), transparent 42%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035));
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.score-chip::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent 45%);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.score-chip.current {
+  border-color: rgba(109, 225, 166, 0.42);
+  background:
+    radial-gradient(circle at 18% 15%, rgba(109, 225, 166, 0.2), transparent 52%),
+    linear-gradient(145deg, rgba(109, 225, 166, 0.16), rgba(255, 255, 255, 0.035));
+}
+
+.score-chip.best {
+  border-color: rgba(245, 196, 91, 0.34);
+}
+
+.score-chip span {
+  position: relative;
+  z-index: 1;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 950;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.score-chip strong {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  color: #ffffff;
+  font-size: 1.22rem;
+  font-weight: 950;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.game-hud[data-result="under"] .current strong,
+.game-hud[data-result="under"] .course-readout span {
+  color: var(--green);
+}
+
+.hud-status {
+  display: grid;
+  grid-area: status;
+  align-content: center;
+  gap: 9px;
+  min-width: 0;
+  padding: 4px 6px;
+}
+
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--green);
+  box-shadow: 0 0 0 5px rgba(109, 225, 166, 0.12);
+}
+
+body[data-game-state="moving"] .status-dot {
+  background: var(--blue);
+  box-shadow: 0 0 0 5px rgba(104, 183, 255, 0.12);
+}
+
+body[data-game-state="level-complete"] .status-dot,
+body[data-game-state="run-complete"] .status-dot {
+  background: var(--gold);
+  box-shadow: 0 0 0 5px rgba(245, 196, 91, 0.12);
+}
+
+.round-status {
+  margin: 0;
+  color: var(--text);
+  font-weight: 900;
+}
+
+.course-readout {
+  display: grid;
+  gap: 5px;
+}
+
+.course-readout span {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.course-progress {
+  overflow: hidden;
+  height: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.course-progress span {
+  display: block;
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--green), var(--gold), var(--blue));
+  transition: width 180ms ease;
+}
+
+.scorecard-strip {
+  display: grid;
+  grid-area: scorecard;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scorecard-hole {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  min-height: 38px;
+  align-content: center;
+  justify-items: center;
+  gap: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)),
+    rgba(255, 255, 255, 0.035);
+  color: var(--muted);
+}
+
+.scorecard-hole::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 52%);
+  content: "";
+  opacity: 0.34;
+}
+
+.scorecard-hole-number,
+.scorecard-hole strong {
+  position: relative;
+  z-index: 1;
+}
+
+.scorecard-hole-number {
+  font-size: 0.58rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.scorecard-hole strong {
+  color: #ffffff;
+  font-size: 0.88rem;
+  line-height: 1;
+}
+
+.scorecard-hole.current {
+  border-color: rgba(109, 225, 166, 0.56);
+  background:
+    radial-gradient(circle at 30% 15%, rgba(109, 225, 166, 0.2), transparent 50%),
+    rgba(109, 225, 166, 0.08);
+}
+
+.scorecard-hole.complete {
+  border-color: rgba(245, 196, 91, 0.32);
+}
+
+.scorecard-hole.under strong {
+  color: var(--green);
+}
+
+.scorecard-hole.over strong {
+  color: var(--pink);
+}
+
+.power-readout {
+  display: grid;
+  grid-template-columns: auto minmax(86px, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.lie-readout {
+  display: grid;
+  gap: 1px;
+}
+
+.lie-readout span {
+  color: var(--muted);
+  font-size: 0.62rem;
+}
+
+.lie-readout strong {
+  color: var(--green);
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+body[data-surface="sand"] .lie-readout strong {
+  color: var(--sand);
+}
+
+body[data-surface="rough"] .lie-readout strong {
+  color: #8de0a4;
+}
+
+body[data-surface="water"] .lie-readout strong {
+  color: var(--water);
+}
+
+.power-meter {
+  overflow: hidden;
+  height: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.power-meter span {
+  display: block;
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--green), var(--gold) 62%, var(--pink));
+  box-shadow: 0 0 18px rgba(245, 196, 91, 0.18);
+  transition: width 90ms ease;
+}
+
+.power-readout strong {
+  color: var(--gold);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.game-stage-wrap {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  min-height: 0;
+}
+
+.game-stage {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  height: min(650px, calc(100svh - 238px));
+  min-height: 360px;
+  padding: 12px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    radial-gradient(circle at 22% 18%, rgba(109, 225, 166, 0.16), transparent 36%),
+    radial-gradient(circle at 82% 78%, rgba(245, 196, 91, 0.13), transparent 34%),
+    rgba(7, 14, 16, 0.88);
+}
+
+.game-stage::before,
+.game-stage::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.game-stage::before {
+  inset: 10px;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+
+.game-stage::after {
+  inset: auto 16px 12px;
+  z-index: 1;
+  height: 54px;
+  background: linear-gradient(90deg, transparent, rgba(109, 225, 166, 0.14), rgba(245, 196, 91, 0.13), transparent);
+  filter: blur(20px);
+}
+
+#gameCanvas {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: min(100%, calc((100svh - 280px) * 1.6), 1080px);
+  max-width: 1080px;
+  max-height: 100%;
+  aspect-ratio: 16 / 10;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  background: #133520;
+  box-shadow:
+    0 24px 66px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(109, 225, 166, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  touch-action: none;
+}
+
+.game-menu {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background:
+    radial-gradient(circle at center, rgba(13, 34, 29, 0.24), transparent 34%),
+    rgba(5, 10, 12, 0.58);
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 160ms ease, visibility 160ms ease;
+  visibility: visible;
+}
+
+.game-menu.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.menu-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  width: min(372px, 100%);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(109, 225, 166, 0.22), transparent 44%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04)),
+    rgba(13, 22, 20, 0.95);
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  text-align: center;
+}
+
+.menu-card::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(90deg, transparent, rgba(245, 196, 91, 0.08), transparent),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.09), transparent 42%);
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.menu-card > * {
+  position: relative;
+}
+
+.menu-kicker {
+  color: var(--green);
+  font-size: 0.74rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.menu-course-mark {
+  display: grid;
+  grid-template-columns: repeat(3, 44px);
+  gap: 8px;
+}
+
+.menu-course-mark span {
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34), 0 12px 28px rgba(0, 0, 0, 0.22);
+}
+
+.menu-course-mark span:nth-child(1) {
+  background: linear-gradient(145deg, #b8ffd5, #56d78e);
+}
+
+.menu-course-mark span:nth-child(2) {
+  background: linear-gradient(145deg, #fff0a8, #f5c45b);
+}
+
+.menu-course-mark span:nth-child(3) {
+  background: linear-gradient(145deg, #a9dcff, #68b7ff);
+}
+
+.menu-card strong {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.menu-meta {
+  min-height: 1.2em;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 750;
+}
+
+.menu-button {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--gold), var(--green) 58%, var(--blue));
+  color: #041112;
+  font-weight: 950;
+}
+
+.menu-button:hover {
+  filter: brightness(1.06) saturate(1.05);
+}
+
+.touch-bar {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  z-index: 3;
+  display: none;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: min(360px, calc(100% - 44px));
+}
+
+.touch-bar button {
+  min-height: 38px;
+  padding: 0 10px;
+}
+
+@media (max-width: 900px) {
+  .titlebar {
+    align-items: flex-start;
+  }
+
+  .game-nav {
+    flex-wrap: wrap;
+  }
+
+  .game-hud {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "stats"
+      "scorecard"
+      "status";
+  }
+
+  .hud-status {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .golf-app {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .titlebar {
+    gap: 10px;
+    padding: 8px;
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand-title strong {
+    font-size: 1rem;
+  }
+
+  .document-name {
+    display: none;
+  }
+
+  .game-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    min-width: min(210px, 58vw);
+  }
+
+  .game-nav a,
+  .game-nav button {
+    min-height: 34px;
+    padding: 0 9px;
+    font-size: 0.78rem;
+  }
+
+  .game-hud {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .hud-cluster {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .score-chip {
+    min-height: 48px;
+    padding: 7px 6px;
+  }
+
+  .score-chip span {
+    font-size: 0.56rem;
+  }
+
+  .score-chip strong {
+    font-size: 0.98rem;
+  }
+
+  .hud-status {
+    gap: 6px;
+    padding: 0 4px;
+  }
+
+  .round-status {
+    font-size: 0.86rem;
+  }
+
+  .power-readout {
+    font-size: 0.68rem;
+    grid-template-columns: auto minmax(64px, 1fr) auto;
+  }
+
+  .scorecard-strip {
+    gap: 4px;
+  }
+
+  .scorecard-hole {
+    min-height: 32px;
+    border-radius: 7px;
+  }
+
+  .scorecard-hole strong {
+    font-size: 0.78rem;
+  }
+
+  .game-stage {
+    height: calc(100svh - 334px);
+    min-height: 236px;
+    padding: 8px;
+  }
+
+  #gameCanvas {
+    border-radius: 8px;
+  }
+
+  .touch-bar {
+    display: grid;
+  }
+
+  .menu-card {
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .menu-card strong {
+    font-size: 1.58rem;
+  }
+
+  .menu-course-mark {
+    grid-template-columns: repeat(3, 38px);
+  }
+
+  .menu-course-mark span {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 430px) {
+  .brand-title strong {
+    max-width: 74px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hud-cluster {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .score-chip {
+    padding: 6px 4px;
+  }
+
+  .score-chip span {
+    font-size: 0.5rem;
+  }
+
+  .score-chip strong {
+    font-size: 0.86rem;
+  }
+
+  .scorecard-hole {
+    min-height: 30px;
+  }
+
+  .scorecard-hole-number {
+    font-size: 0.52rem;
+  }
+
+  .scorecard-hole strong {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-height: 650px) {
+  .golf-app {
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .titlebar,
+  .game-hud {
+    padding: 6px;
+  }
+
+  .game-stage {
+    height: calc(100svh - 332px);
+    min-height: 220px;
+    padding: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="A polished five-level mini golf browser game from the Inefy fun corner.">
+    <title>Mini Golf / Inefy Fun Corner</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236de1a6'/%3E%3Ccircle cx='22' cy='45' r='8' fill='%23fff8e6'/%3E%3Cpath d='M40 13v35' stroke='%23070f13' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M42 15h15l-4 8 4 8H42z' fill='%23f5c45b'/%3E%3Ccircle cx='45' cy='47' r='8' fill='%23070f13'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="mini-golf.css">
+  </head>
+  <body>
+    <main class="golf-app" aria-label="Mini Golf game">
+      <div class="ambient-grid" aria-hidden="true"></div>
+
+      <header class="titlebar">
+        <a class="brand-link" href="index.html#fun-corner" aria-label="Back to fun corner">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">MG</span>
+            <span class="brand-title">
+              <strong>Mini Golf</strong>
+              <span class="document-name">Inefy fun corner / Five hole run</span>
+            </span>
+          </div>
+        </a>
+
+        <nav class="game-nav" aria-label="Game page navigation">
+          <a href="index.html#fun-corner">Fun corner</a>
+          <button type="button" id="restartLevelButton">Restart Hole</button>
+          <button type="button" id="resetRunButton">Reset Run</button>
+          <button class="nav-cta" type="button" id="fullscreenButton">Fullscreen</button>
+        </nav>
+      </header>
+
+      <section class="game-hud" aria-label="Game status">
+        <div class="hud-cluster">
+          <div class="score-chip current">
+            <span>Hole</span>
+            <strong id="levelValue">1/5</strong>
+          </div>
+          <div class="score-chip">
+            <span>Strokes</span>
+            <strong id="strokesValue">0</strong>
+          </div>
+          <div class="score-chip">
+            <span>Par</span>
+            <strong id="parValue">2</strong>
+          </div>
+          <div class="score-chip">
+            <span>Total</span>
+            <strong id="totalValue">0</strong>
+          </div>
+          <div class="score-chip best">
+            <span>Best</span>
+            <strong id="bestValue">--</strong>
+          </div>
+        </div>
+        <ol class="scorecard-strip" id="scorecardList" aria-label="Five hole scorecard"></ol>
+        <div class="hud-status">
+          <div class="status-line">
+            <span class="status-dot" aria-hidden="true"></span>
+            <p class="round-status" id="roundStatus" aria-live="polite">Ready</p>
+          </div>
+          <div class="course-readout">
+            <span id="courseName">Meadow Gate</span>
+            <div class="course-progress" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="courseProgressFill"></span>
+            </div>
+          </div>
+          <div class="power-readout">
+            <div class="lie-readout">
+              <span>Lie</span>
+              <strong id="surfaceValue">Fairway</strong>
+            </div>
+            <div class="power-meter" role="meter" aria-label="Shot power" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="powerFill"></span>
+            </div>
+            <strong id="powerValue">0%</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="game-stage-wrap" aria-label="Playfield">
+        <div class="game-stage" id="gameStage">
+          <canvas id="gameCanvas" aria-label="Mini golf course"></canvas>
+
+          <div class="game-menu" id="gameMenu">
+            <div class="menu-card">
+              <span class="menu-kicker" id="menuKicker">Five hole course</span>
+              <div class="menu-course-mark" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <strong id="menuTitle">Mini Golf</strong>
+              <span class="menu-meta" id="menuMeta">Clear five holes with the fewest strokes.</span>
+              <button class="menu-button" type="button" id="startButton">Start Round</button>
+            </div>
+          </div>
+
+          <div class="touch-bar" aria-label="Touch controls">
+            <button type="button" id="previousHoleButton">Prev</button>
+            <button type="button" id="nextHoleButton">Next</button>
+            <button type="button" id="restartTouchButton">Restart</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="mini-golf.js"></script>
+  </body>
+</html>
