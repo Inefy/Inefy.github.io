@@ -8,7 +8,7 @@
   --border: #dbe3ef;
   --border-strong: #b9c7da;
   --text: #172033;
-  --muted: #708198;
+  --muted: #5f6f85;
   --radius-sm: 8px;
   --radius-md: 10px;
   --radius-lg: 14px;
@@ -40,11 +40,15 @@ button {
   cursor: pointer;
 }
 
-button:focus-visible,
-a:focus-visible,
-input:focus-visible {
-  outline: 3px solid rgba(47, 128, 237, 0.42);
-  outline-offset: 2px;
+:is(a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])):focus {
+  outline: 3px solid var(--blue-600);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(47, 128, 237, 0.18);
+}
+
+:is(a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])):focus:not(:focus-visible) {
+  outline-color: rgba(47, 128, 237, 0.72);
+  box-shadow: 0 0 0 6px rgba(47, 128, 237, 0.18);
 }
 
 .paint-app {
@@ -365,12 +369,14 @@ input:focus-visible {
 }
 
 .mini-command-button.is-disabled {
-  color: #a8b3c4;
+  color: var(--muted);
+  background: rgba(95, 111, 133, 0.08);
   pointer-events: none;
 }
 
 .mini-command-button:disabled {
-  color: #a8b3c4;
+  color: var(--muted);
+  background: rgba(95, 111, 133, 0.08);
   pointer-events: none;
 }
 

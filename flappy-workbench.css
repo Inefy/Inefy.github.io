@@ -161,14 +161,17 @@ a:focus-visible {
 }
 
 .game-nav button:disabled {
+  color: var(--muted);
+  background: rgba(255, 247, 232, 0.045);
+  border-color: rgba(255, 247, 232, 0.12);
   cursor: not-allowed;
-  opacity: 0.44;
+  opacity: 1;
 }
 
 .game-nav button:disabled:hover {
-  color: inherit;
-  background: transparent;
-  border-color: transparent;
+  color: var(--muted);
+  background: rgba(255, 247, 232, 0.045);
+  border-color: rgba(255, 247, 232, 0.12);
 }
 
 .game-nav .nav-cta {

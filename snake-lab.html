@@ -5,14 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Snake Lab by Zac Batten: a Canvas/JavaScript grid game with timed movement, buffered keyboard/touch input, food placement, growth, collision checks, pace changes, and local best scores.">
-    <title>Snake Lab / Interactive Lab</title>
+    <meta name="description" content="Snake Lab by Zac Batten: a Canvas/JavaScript grid game with timed movement, buffered keyboard/touch input, food placement, growth, collisions, and best scores.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/snake-lab.html">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="Snake Lab Canvas Game / Zac Batten">
+    <meta property="og:description" content="A Canvas/JavaScript grid game with timed movement, buffered keyboard/touch input, food placement, growth, collisions, and best scores.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zacbatten.me/snake-lab.html">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image:alt" content="Inefy workbench preview with selected projects and browser tools.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Snake Lab Canvas Game / Zac Batten">
+    <meta name="twitter:description" content="Canvas/JavaScript grid game with timed movement, buffered keyboard/touch input, food placement, growth, collisions, and best scores.">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <title>Snake Lab Canvas Game / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236de1a6'/%3E%3Cpath d='M16 18h19a13 13 0 0 1 0 26H24v-9h11a4 4 0 0 0 0-8H16z' fill='%230c0f10'/%3E%3Ccircle cx='45' cy='23' r='3' fill='%23f5c45b'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="snake-lab.css">
     <link rel="stylesheet" href="demo-navigation.css">
   </head>
   <body>
-    <main class="game-app" aria-label="Snake Lab game">
+    <a class="skip-link" href="#top">Skip to main content</a>
+    <main id="top" class="game-app" tabindex="-1" aria-label="Snake Lab game">
       <div class="ambient-grid" aria-hidden="true"></div>
       <header class="titlebar">
         <a class="brand-link" href="interactive-lab.html" aria-label="Back to interactive lab">
@@ -96,7 +110,7 @@
         </div>
       </section>
 
-      <section class="game-stage-wrap" aria-label="Playfield">
+      <section class="game-stage-wrap" id="game-stage" aria-label="Playfield">
         <div class="game-stage" id="gameStage">
           <canvas id="gameCanvas" aria-label="Snake Lab playfield"></canvas>
           <div class="game-menu" id="gameMenu">

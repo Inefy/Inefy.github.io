@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Interactive browser tools and game experiments from Zac Batten, including canvas apps, puzzle games, arcade loops, and frontend UI demos.">
+    <meta name="description" content="Browser tools and game experiments by Zac Batten, a frontend developer using Canvas, vanilla JavaScript, touch controls, local state, and accessible UI.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/interactive-lab.html">
     <meta property="og:site_name" content="Inefy Workbench">
-    <meta property="og:title" content="Interactive Lab / Zac Batten">
-    <meta property="og:description" content="Browser experiments from Zac Batten: canvas tools, arcade loops, puzzle games, and frontend UI demos.">
+    <meta property="og:title" content="Interactive Lab / Zac Batten Frontend Developer">
+    <meta property="og:description" content="Canvas tools, arcade loops, puzzle games, local state, touch controls, and frontend UI experiments from Zac Batten.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/interactive-lab.html">
     <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <meta property="og:image:alt" content="Inefy workbench interactive lab preview.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Interactive Lab / Zac Batten">
-    <meta name="twitter:description" content="Canvas tools, arcade loops, puzzle games, and frontend UI experiments from Zac Batten.">
+    <meta name="twitter:title" content="Interactive Lab / Zac Batten Frontend Developer">
+    <meta name="twitter:description" content="Canvas tools, arcade loops, puzzle games, local state, touch controls, and frontend UI experiments.">
     <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
-    <title>Interactive Lab / Zac Batten</title>
+    <title>Interactive Lab / Zac Batten Frontend Developer</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2368b7ff'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#lab-archive">Skip to lab archive</a>
+    <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
       <a class="brand" href="index.html#top" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
@@ -50,7 +50,7 @@
       </nav>
     </header>
 
-    <main id="top" class="lab-page">
+    <main id="top" class="lab-page" tabindex="-1">
       <nav class="page-breadcrumb" aria-label="Breadcrumb">
         <a href="work.html">Back to Work</a>
         <span aria-hidden="true">/</span>
@@ -104,6 +104,7 @@
             </dl>
             <div class="lab-actions">
               <a class="button secondary" href="paint.html">Open tool</a>
+              <a class="button ghost" href="web-paint-case-study.html">Case study</a>
               <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source</a>
             </div>
           </article>
@@ -235,7 +236,7 @@
               </div>
               <div>
                 <dt>Mobile/touch</dt>
-                <dd>Supported with touch controls for moving and launching, plus viewport-aware canvas sizing for small screens.</dd>
+                <dd>Supported with touch controls for moving and launching, plus viewport-aware canvas sizing for narrow screens.</dd>
               </div>
             </dl>
             <div class="lab-actions">

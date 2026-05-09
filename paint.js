@@ -606,6 +606,21 @@ function finishCanvasResize(event) {
   resizeCanvas(nextWidth, nextHeight);
 }
 
+function handleCanvasResizeKeydown(event) {
+  const step = event.shiftKey ? 128 : 16;
+  const keyAdjustments = {
+    ArrowUp: [0, -step],
+    ArrowRight: [step, 0],
+    ArrowDown: [0, step],
+    ArrowLeft: [-step, 0]
+  };
+  const adjustment = keyAdjustments[event.key];
+  if (!adjustment) return;
+
+  event.preventDefault();
+  resizeCanvas(canvas.width + adjustment[0], canvas.height + adjustment[1]);
+}
+
 function normalizedRect(fromPoint, toPoint) {
   const x = Math.max(0, Math.min(fromPoint.x, toPoint.x));
   const y = Math.max(0, Math.min(fromPoint.y, toPoint.y));
@@ -773,6 +788,7 @@ canvasResizeHandle.addEventListener("pointerdown", startCanvasResize);
 canvasResizeHandle.addEventListener("pointermove", previewCanvasResize);
 canvasResizeHandle.addEventListener("pointerup", finishCanvasResize);
 canvasResizeHandle.addEventListener("pointercancel", finishCanvasResize);
+canvasResizeHandle.addEventListener("keydown", handleCanvasResizeKeydown);
 clearButton.addEventListener("click", clearCanvas);
 newCanvasButton.addEventListener("click", clearCanvas);
 openButton.addEventListener("click", () => imageOpenInput.click());

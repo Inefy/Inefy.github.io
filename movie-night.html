@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0=' 'sha256-6y5eauRP/StQMH+wn4He4Ys24mPA1AU8x65TWtmGbfo='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Watch Zurra3's public domain movie stream, browse the public domain movie library, and see how the StreamCinema Vote Bot lets chat pick what plays next.">
+    <meta name="description" content="Movie Night page for Zac Batten's StreamCinema system, showing public-domain movie voting, Twitch bot workflow, OBS automation notes, and Movie Library links.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/movie-night.html">
     <meta property="og:site_name" content="Inefy Workbench">
-    <meta property="og:title" content="Zurra3 Movie Night / Inefy Workbench">
-    <meta property="og:description" content="A public domain movie-night stream page with Twitch chat voting, OBS handoff notes, and MovieBot source links.">
+    <meta property="og:title" content="Movie Night Twitch Bot Demo / Zac Batten">
+    <meta property="og:description" content="Public-domain movie voting page for Zac Batten's StreamCinema system, with Twitch bot workflow, OBS automation notes, and Movie Library links.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/movie-night.html">
     <meta property="og:image" content="https://zacbatten.me/assets/movie-night-preview.png">
@@ -18,10 +18,54 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Zurra3 Movie Night page preview with stream and movie bot details.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Zurra3 Movie Night / Inefy Workbench">
-    <meta name="twitter:description" content="Public domain movie nights with Twitch chat voting and OBS handoff notes.">
+    <meta name="twitter:title" content="Movie Night Twitch Bot Demo / Zac Batten">
+    <meta name="twitter:description" content="Public-domain movie voting, Twitch bot workflow, OBS automation notes, and Movie Library links.">
     <meta name="twitter:image" content="https://zacbatten.me/assets/movie-night-preview.png">
-    <title>Zurra3 Movie Night / Inefy Workbench</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://zacbatten.me/movie-night.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Work",
+                "item": "https://zacbatten.me/work.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Movie Night",
+                "item": "https://zacbatten.me/movie-night.html"
+              }
+            ]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://zacbatten.me/movie-night.html#movie-night",
+            "name": "Movie Night Twitch Bot Demo",
+            "url": "https://zacbatten.me/movie-night.html",
+            "image": "https://zacbatten.me/assets/movie-night-preview.png",
+            "author": {
+              "@type": "Person",
+              "@id": "https://zacbatten.me/#zac-batten",
+              "name": "Zac Batten",
+              "url": "https://zacbatten.me/"
+            },
+            "about": {
+              "@type": "SoftwareApplication",
+              "@id": "https://zacbatten.me/moviebot-case-study.html#moviebot",
+              "name": "MovieBot / StreamCinema Vote Bot"
+            },
+            "description": "Public-domain movie voting showcase page for the MovieBot Twitch bot, with Twitch chat workflow, OBS automation notes, and Movie Library links."
+          }
+        ]
+      }
+    </script>
+    <title>Movie Night Twitch Bot Demo / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +73,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body class="stream-body">
-    <a class="skip-link" href="#watch">Skip to stream</a>
+    <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
       <a class="brand" href="index.html#top" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
@@ -43,7 +87,7 @@
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
         <a href="work.html">Work</a>
-        <a href="case-studies.html" aria-current="page">Case Studies</a>
+        <a href="case-studies.html" aria-current="location">Case Studies</a>
         <a href="index.html#about">About</a>
         <a href="notes.html">Notes</a>
         <a href="resume.html">Resume</a>
@@ -52,7 +96,7 @@
       </nav>
     </header>
 
-    <main id="top" class="stream-page">
+    <main id="top" class="stream-page" tabindex="-1">
       <nav class="page-breadcrumb" aria-label="Breadcrumb">
         <a href="work.html">Back to Work</a>
         <span aria-hidden="true">/</span>
@@ -264,7 +308,7 @@
         <a href="resume.html">Resume</a>
         <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
         <a href="work.html">Work</a>
-        <a href="case-studies.html" aria-current="page">Case Studies</a>
+        <a href="case-studies.html" aria-current="location">Case Studies</a>
         <a href="notes.html">Notes</a>
         <a href="interactive-lab.html">Interactive Lab</a>
         <a href="sitemap.xml">Sitemap</a>

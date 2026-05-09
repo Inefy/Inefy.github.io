@@ -5,14 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Flappy Workbench by Zac Batten: a Canvas/JavaScript timing game with gravity, jump impulse, obstacle gaps, collision checks, score tracking, pause/restart controls, and mobile flap input.">
-    <title>Flappy Workbench / Interactive Lab</title>
+    <meta name="description" content="Flappy Workbench by Zac Batten: a Canvas/JavaScript timing game with gravity, jump impulse, obstacle gaps, collision checks, score tracking, pause, and mobile input.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/flappy-workbench.html">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="Flappy Workbench Canvas Game / Zac Batten">
+    <meta property="og:description" content="A Canvas/JavaScript timing game with gravity, jump impulse, obstacle gaps, collision checks, score tracking, pause, and mobile input.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zacbatten.me/flappy-workbench.html">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image:alt" content="Inefy workbench preview with selected projects and browser tools.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Flappy Workbench Canvas Game / Zac Batten">
+    <meta name="twitter:description" content="Canvas/JavaScript timing game with gravity, jump impulse, obstacle gaps, collision checks, score tracking, pause, and mobile input.">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <title>Flappy Workbench Canvas Game / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236de1a6'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%230c0f10'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="flappy-workbench.css">
     <link rel="stylesheet" href="demo-navigation.css">
   </head>
   <body>
-    <main class="game-app" aria-label="Flappy Workbench game">
+    <a class="skip-link" href="#top">Skip to main content</a>
+    <main id="top" class="game-app" tabindex="-1" aria-label="Flappy Workbench game">
       <header class="titlebar">
         <a class="brand-link" href="interactive-lab.html" aria-label="Back to interactive lab">
           <div class="brand">
@@ -82,7 +96,7 @@
         <p class="round-status" id="roundStatus" aria-live="polite">Ready</p>
       </section>
 
-      <section class="game-stage-wrap" aria-label="Playfield">
+      <section class="game-stage-wrap" id="game-stage" aria-label="Playfield">
         <div class="game-stage" id="gameStage">
           <canvas id="gameCanvas" aria-label="Flappy Workbench playfield"></canvas>
           <div class="game-menu" id="gameMenu">
@@ -99,9 +113,9 @@
 
       <section class="implementation-notes" aria-labelledby="flappy-implementation-title">
         <span class="next-step-kicker">Implementation notes</span>
-        <h2 id="flappy-implementation-title">Simple physics, obstacle timing, and run state.</h2>
+        <h2 id="flappy-implementation-title">Gravity/jump physics, obstacle timing, and run state.</h2>
         <p>
-          <strong>Main state</strong> tracks bird position and velocity, pipe array, score, best score, gravity, jump impulse, elapsed time, and whether the run is idle, playing, paused, or over. A fixed-tick loop updates physics, spawns and moves pipes, checks collisions, and redraws the canvas. Collision logic compares the bird against floor/ceiling bounds and pipe gaps; scoring increments when a passed pipe is marked complete, then persists the best score locally. Keyboard input uses Space or Arrow Up to flap, P to pause, and R to restart. Touch and pointer input call the same flap action on the stage. The lesson was keeping the state machine small so pause, restart, menu, and scoring behavior stay easy to reason about.
+          <strong>Main state</strong> tracks bird position and velocity, pipe array, score, best score, gravity, jump impulse, elapsed time, and whether the run is idle, playing, paused, or over. A fixed-tick loop updates physics, spawns and moves pipes, checks collisions, and redraws the canvas. Collision logic compares the bird against floor/ceiling bounds and pipe gaps; scoring increments when a passed pipe is marked complete, then persists the best score locally. Keyboard input uses Space or Arrow Up to flap, P to pause, and R to restart. Touch and pointer input call the same flap action on the stage. The lesson was keeping the state machine bounded so pause, restart, menu, and scoring behavior stay easy to reason about.
         </p>
       </section>
 

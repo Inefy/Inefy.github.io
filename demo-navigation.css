@@ -5,6 +5,49 @@
   --demo-nav-panel: rgba(8, 12, 14, 0.84);
   --demo-nav-accent: #6de1a6;
   --demo-nav-cta: #f5c45b;
+  --demo-focus-ring: #f5c45b;
+  --demo-focus-shadow: 0 0 0 6px rgba(245, 196, 91, 0.18);
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+  padding: 10px 12px;
+  color: #07100d;
+  background: var(--demo-nav-cta);
+  border-radius: 8px;
+  font-weight: 900;
+  text-decoration: none;
+  transform: translateY(-180%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  outline: 3px solid var(--demo-focus-ring);
+  outline-offset: 4px;
+  box-shadow: var(--demo-focus-shadow);
+  transform: translateY(0);
+}
+
+.skip-link:focus,
+:is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app)
+  :is(a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])):focus {
+  outline: 3px solid var(--demo-focus-ring);
+  outline-offset: 4px;
+  box-shadow: var(--demo-focus-shadow);
+}
+
+:is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app)
+  :is(a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])):focus:not(:focus-visible) {
+  outline-color: rgba(245, 196, 91, 0.72);
+  box-shadow: var(--demo-focus-shadow);
+}
+
+:is(.demo-overview, .implementation-notes, .demo-built, .game-next-step):focus-within {
+  outline: 2px solid var(--demo-focus-ring);
+  outline-offset: 6px;
 }
 
 .game-app,
@@ -19,6 +62,8 @@
 }
 
 .paint-app {
+  --demo-focus-ring: var(--blue-600, #2f80ed);
+  --demo-focus-shadow: 0 0 0 6px rgba(47, 128, 237, 0.18);
   grid-template-rows: 56px auto auto 220px minmax(0, 1fr) 40px auto auto;
   overflow-x: hidden;
   overflow-y: auto;
@@ -133,8 +178,11 @@
 }
 
 .demo-overview-actions button:disabled {
+  color: var(--demo-nav-muted);
+  background: rgba(248, 244, 232, 0.045);
+  border-color: rgba(248, 244, 232, 0.12);
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .demo-overview-actions [aria-pressed="true"] {
@@ -388,5 +436,14 @@
 
   .demo-overview-actions {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link,
+  .demo-overview-actions a,
+  .demo-overview-actions button,
+  .next-step-actions a {
+    transition: none !important;
   }
 }

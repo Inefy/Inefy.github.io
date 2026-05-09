@@ -47,7 +47,7 @@ button {
 
 button:disabled {
   cursor: not-allowed;
-  opacity: 0.52;
+  opacity: 1;
 }
 
 .sr-only {
@@ -218,7 +218,8 @@ button:disabled {
   border-color: rgba(109, 225, 166, 0.8);
   background: rgba(109, 225, 166, 0.12);
   box-shadow: 0 0 0 3px rgba(109, 225, 166, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  outline: none;
+  outline: 3px solid #f5c45b;
+  outline-offset: 4px;
 }
 
 .game-nav button:active:not(:disabled) {
@@ -730,7 +731,8 @@ button:disabled {
   border-color: rgba(104, 183, 255, 0.74);
   background: rgba(104, 183, 255, 0.14);
   box-shadow: 0 0 0 3px rgba(104, 183, 255, 0.12);
-  outline: none;
+  outline: 3px solid #f5c45b;
+  outline-offset: 4px;
 }
 
 .touch-pad button:active {

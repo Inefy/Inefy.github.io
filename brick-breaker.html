@@ -5,14 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Brick Breaker by Zac Batten: a Canvas/JavaScript paddle game with launch state, wall/paddle/brick collisions, lives, levels, progress tracking, power feedback, and labeled touch controls.">
-    <title>Brick Breaker / Interactive Lab</title>
+    <meta name="description" content="Brick Breaker by Zac Batten: a Canvas/JavaScript paddle game with launch state, wall/paddle/brick collisions, lives, levels, progress tracking, and touch controls.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/brick-breaker.html">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="Brick Breaker Canvas Game / Zac Batten">
+    <meta property="og:description" content="A Canvas/JavaScript paddle game with launch state, wall/paddle/brick collisions, lives, levels, progress tracking, and touch controls.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zacbatten.me/brick-breaker.html">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image:alt" content="Inefy workbench preview with selected projects and browser tools.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Brick Breaker Canvas Game / Zac Batten">
+    <meta name="twitter:description" content="Canvas/JavaScript paddle game with launch state, wall/paddle/brick collisions, lives, levels, progress tracking, and touch controls.">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <title>Brick Breaker Canvas Game / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2368b7ff'/%3E%3Cpath d='M14 16h13v10H14zM30 16h20v10H30zM14 29h20v10H14zM37 29h13v10H37zM19 45h26v6H19z' fill='%23070c10'/%3E%3Ccircle cx='48' cy='47' r='5' fill='%23f5c45b'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="brick-breaker.css">
     <link rel="stylesheet" href="demo-navigation.css">
   </head>
   <body>
-    <main class="breaker-app" aria-label="Brick Breaker game">
+    <a class="skip-link" href="#top">Skip to main content</a>
+    <main id="top" class="breaker-app" tabindex="-1" aria-label="Brick Breaker game">
       <div class="ambient-grid" aria-hidden="true"></div>
       <header class="titlebar">
         <a class="brand-link" href="interactive-lab.html" aria-label="Back to interactive lab">
@@ -105,7 +119,7 @@
         </div>
       </section>
 
-      <section class="game-stage-wrap" aria-label="Playfield">
+      <section class="game-stage-wrap" id="game-stage" aria-label="Playfield">
         <div class="game-stage" id="gameStage">
           <canvas id="gameCanvas" aria-label="Brick Breaker playfield"></canvas>
           <div class="game-menu" id="gameMenu">

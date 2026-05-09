@@ -20,7 +20,7 @@ Static GitHub Pages portfolio for [zacbatten.me](https://zacbatten.me). The site
 - Full Web Paint case study covering canvas rendering, tool state, undo/redo, import/export, and accessibility tradeoffs.
 - Interactive lab pages for Web Paint, Flappy Workbench, Snake Lab, Brick Breaker, 2048, Minefield Sweep, Mini Golf, and Asteroid Drift.
 - Static resume/contact paths and SEO basics for GitHub Pages.
-- Responsive CSS, reduced-motion support, keyboard focus states, and no-build deployment.
+- Mobile-first CSS, reduced-motion support, keyboard focus states, and no-build deployment.
 
 ## Repository Metadata
 
@@ -33,7 +33,7 @@ Suggested GitHub About fields:
 ## Project Structure
 
 - `index.html` - homepage, selected work, case studies, contact section, and interactive lab links.
-- `styles.css` - shared site styles, responsive layout, accessibility states, and reduced-motion rules.
+- `styles.css` - shared site styles, desktop/mobile layout, accessibility states, and reduced-motion rules.
 - `script.js` - homepage interactions, local time, filtering, palette shuffle, and Twitch embed helpers.
 - `movie-night.html` - MovieBot/Movie Night showcase.
 - `moviebot-case-study.html` - MovieBot technical case study.

@@ -3,16 +3,75 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0=' 'sha256-piPPGnlFhMpZOZo+7mlmQFrlTkzx86jHhzSZrLRVWEg='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Web Paint is a vanilla JavaScript Canvas editor with drawing modes, typed-array flood fill, undo/redo snapshots, PNG import/export, local save, zoom, and mobile-friendly tool panels.">
-    <title>Web Paint / Interactive Lab</title>
+    <meta name="description" content="Open Web Paint, Zac Batten's browser canvas tool with Canvas 2D drawing modes, flood fill, undo/redo, PNG export, local save, zoom, and mobile controls.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/paint.html">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="Web Paint Browser Canvas Tool / Zac Batten">
+    <meta property="og:description" content="Open Zac Batten's browser canvas tool with Canvas 2D drawing modes, flood fill, undo/redo, PNG export, local save, zoom, and mobile controls.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zacbatten.me/paint.html">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image:alt" content="Inefy workbench preview with selected projects and browser tools.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Web Paint Browser Canvas Tool / Zac Batten">
+    <meta name="twitter:description" content="Canvas 2D drawing modes, flood fill, undo/redo, PNG export, local save, zoom, and mobile controls.">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://zacbatten.me/paint.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Interactive Lab",
+                "item": "https://zacbatten.me/interactive-lab.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Web Paint",
+                "item": "https://zacbatten.me/paint.html"
+              }
+            ]
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://zacbatten.me/web-paint-case-study.html#web-paint",
+            "name": "Web Paint",
+            "applicationCategory": "DesignApplication",
+            "operatingSystem": "Web browser",
+            "url": "https://zacbatten.me/paint.html",
+            "author": {
+              "@type": "Person",
+              "@id": "https://zacbatten.me/#zac-batten",
+              "name": "Zac Batten",
+              "url": "https://zacbatten.me/"
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://zacbatten.me/paint.html"
+            },
+            "description": "Browser canvas tool built with vanilla JavaScript, Canvas 2D drawing modes, flood fill, undo/redo, PNG export, local save, zoom, and mobile controls.",
+            "keywords": "browser canvas tool, Canvas API, vanilla JavaScript, drawing editor, frontend development"
+          }
+        ]
+      }
+    </script>
+    <title>Web Paint Browser Canvas Tool / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2360a5fa'/%3E%3Cpath d='M16 18h32v8H26v8h18v8H26v4H16z' fill='%23172033'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="paint.css">
     <link rel="stylesheet" href="demo-navigation.css">
   </head>
   <body>
-    <main class="paint-app" aria-label="Paint application" data-active-tab="home">
+    <a class="skip-link" href="#top">Skip to main content</a>
+    <main id="top" class="paint-app" tabindex="-1" aria-label="Paint application" data-active-tab="home">
       <header class="titlebar">
         <a class="brand-link" href="interactive-lab.html" aria-label="Back to interactive lab">
           <div class="brand">
@@ -181,11 +240,11 @@
               <div class="canvas-size-stack compact">
                 <label class="size-label">
                   Width
-                  <input id="homeCanvasWidthInput" type="number" min="64" max="4096" step="1" value="1024">
+                  <input id="homeCanvasWidthInput" type="number" min="64" max="4096" step="1" value="1024" aria-label="Canvas width in pixels">
                 </label>
                 <label class="size-label">
                   Height
-                  <input id="homeCanvasHeightInput" type="number" min="64" max="4096" step="1" value="768">
+                  <input id="homeCanvasHeightInput" type="number" min="64" max="4096" step="1" value="768" aria-label="Canvas height in pixels">
                 </label>
                 <button class="size-action-button" id="homeApplyCanvasSizeButton" type="button">Apply</button>
                 <button class="size-action-button" id="homeResetCanvasSizeButton" type="button">Reset</button>
@@ -231,11 +290,11 @@
               <div class="canvas-size-stack">
                 <label class="size-label">
                   Width
-                  <input id="canvasWidthInput" type="number" min="64" max="4096" step="1" value="1024">
+                  <input id="canvasWidthInput" type="number" min="64" max="4096" step="1" value="1024" aria-label="Canvas width in pixels">
                 </label>
                 <label class="size-label">
                   Height
-                  <input id="canvasHeightInput" type="number" min="64" max="4096" step="1" value="768">
+                  <input id="canvasHeightInput" type="number" min="64" max="4096" step="1" value="768" aria-label="Canvas height in pixels">
                 </label>
                 <button class="size-action-button" id="applyCanvasSizeButton" type="button">Apply</button>
                 <button class="size-action-button" id="resetCanvasSizeButton" type="button">Reset</button>
@@ -246,7 +305,7 @@
         </div>
       </section>
 
-      <section class="workspace">
+      <section class="workspace" id="paint-workspace" aria-label="Canvas workspace">
         <aside class="tool-rail" aria-label="Quick tools">
           <div class="tool-rail-panel">
             <button class="rail-button" type="button" data-tool="select" aria-label="Select">▣</button>
@@ -271,19 +330,19 @@
           <div class="canvas-stage" id="canvasStage">
             <canvas id="paintCanvas" width="1024" height="768" aria-label="Drawing canvas"></canvas>
             <div class="selection-box" id="selectionBox" hidden></div>
-            <button class="resize-handle" id="canvasResizeHandle" type="button" aria-label="Resize canvas"></button>
+            <button class="resize-handle" id="canvasResizeHandle" type="button" aria-label="Resize canvas with pointer drag or arrow keys" aria-keyshortcuts="ArrowUp ArrowRight ArrowDown ArrowLeft Shift+ArrowUp Shift+ArrowRight Shift+ArrowDown Shift+ArrowLeft"></button>
           </div>
-          <input class="visually-hidden" id="imageOpenInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp,image/avif">
+          <input class="visually-hidden" id="imageOpenInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp,image/avif" aria-label="Open image file">
         </div>
       </section>
 
       <footer class="statusbar">
         <div class="status-left">
-          <span class="status-item" id="toolStatus">Pencil</span>
+          <span class="status-item" id="toolStatus" role="status" aria-live="polite" aria-atomic="true">Pencil</span>
           <span class="status-divider"></span>
           <span class="status-item" id="cursorStatus">✣ 0, 0px</span>
           <span class="status-divider"></span>
-          <span class="status-item" id="canvasSizeStatus">▣ 1024 × 768px</span>
+          <span class="status-item" id="canvasSizeStatus" aria-live="polite" aria-atomic="true">▣ 1024 × 768px</span>
           <span class="status-divider"></span>
           <span class="status-item">▰ Layer 1</span>
         </div>

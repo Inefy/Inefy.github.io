@@ -50,7 +50,7 @@ button {
 
 button:disabled {
   cursor: not-allowed;
-  opacity: 0.55;
+  opacity: 1;
 }
 
 .sr-only {
@@ -228,7 +228,8 @@ button:disabled {
   border-color: rgba(70, 214, 202, 0.84);
   background: rgba(70, 214, 202, 0.12);
   box-shadow: 0 0 0 3px rgba(70, 214, 202, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  outline: none;
+  outline: 3px solid #f5c45b;
+  outline-offset: 4px;
 }
 
 .game-nav button:active:not(:disabled),
@@ -497,7 +498,8 @@ button:disabled {
     linear-gradient(145deg, rgba(70, 214, 202, 0.18), rgba(255, 255, 255, 0.03)),
     #17262d;
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28), 0 0 0 3px rgba(70, 214, 202, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  outline: none;
+  outline: 3px solid #f5c45b;
+  outline-offset: 3px;
   transform: translateY(-1px);
 }
 
@@ -735,12 +737,12 @@ button:disabled {
   box-shadow: 0 14px 34px rgba(70, 214, 202, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.42);
 }
 
-.menu-button:hover,
-.menu-button:focus-visible {
+.menu-button:hover {
   filter: brightness(1.05) saturate(1.05);
 }
 
 .menu-button:focus-visible {
+  filter: brightness(1.05) saturate(1.05);
   outline: 3px solid rgba(104, 183, 255, 0.68);
   outline-offset: 3px;
 }

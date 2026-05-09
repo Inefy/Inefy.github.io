@@ -3,23 +3,69 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0=' 'sha256-9798GfW1/uClGRYmNKLkciu1ruJipTB7T/2g2+B1QIU='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="TraverseOps case study by Zac Batten: a MapLibre/Supabase field-operations demo connecting hydrant-style asset maps, inspections, work orders, imports, reports, and team roles.">
+    <meta name="description" content="TraverseOps case study by Zac Batten: a MapLibre field-ops demo for asset maps, inspections, work orders, imports, reports, and role workflows.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/traverseops-case-study.html">
     <meta property="og:site_name" content="Inefy Workbench">
-    <meta property="og:title" content="TraverseOps Case Study / Zac Batten">
-    <meta property="og:description" content="A MapLibre/Supabase field-operations demo connecting hydrant-style asset maps, inspections, work orders, imports, reports, and team roles.">
+    <meta property="og:title" content="TraverseOps MapLibre Case Study / Zac Batten">
+    <meta property="og:description" content="MapLibre field-operations demo for hydrant-style asset maps, inspections, work orders, imports, reports, and role workflows.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://zacbatten.me/traverseops-case-study.html">
     <meta property="og:image" content="https://zacbatten.me/assets/traverseops-workspace.png">
     <meta property="og:image:alt" content="TraverseOps map workspace showing municipal assets and selected asset details.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TraverseOps Case Study / Zac Batten">
-    <meta name="twitter:description" content="MapLibre/Supabase field operations demo with asset tracking, inspections, work orders, imports, reports, and team roles.">
+    <meta name="twitter:title" content="TraverseOps MapLibre Case Study / Zac Batten">
+    <meta name="twitter:description" content="MapLibre field-operations demo with asset tracking, inspections, work orders, imports, reports, and role workflows.">
     <meta name="twitter:image" content="https://zacbatten.me/assets/traverseops-workspace.png">
-    <title>TraverseOps Case Study / Zac Batten</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://zacbatten.me/traverseops-case-study.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Case Studies",
+                "item": "https://zacbatten.me/case-studies.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "TraverseOps",
+                "item": "https://zacbatten.me/traverseops-case-study.html"
+              }
+            ]
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://zacbatten.me/traverseops-case-study.html#traverseops",
+            "name": "TraverseOps",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web browser",
+            "url": "https://traverseops.app",
+            "image": "https://zacbatten.me/assets/traverseops-workspace.png",
+            "author": {
+              "@type": "Person",
+              "@id": "https://zacbatten.me/#zac-batten",
+              "name": "Zac Batten",
+              "url": "https://zacbatten.me/"
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://zacbatten.me/traverseops-case-study.html"
+            },
+            "description": "MapLibre field-operations demo for hydrant-style asset maps, inspections, work orders, imports, reports, and role workflows.",
+            "keywords": "MapLibre, field operations, asset tracking, inspections, work orders, imports, reports"
+          }
+        ]
+      }
+    </script>
+    <title>TraverseOps MapLibre Case Study / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +73,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#case-study-content">Skip to TraverseOps case study</a>
+    <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
       <a class="brand" href="index.html#top" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
@@ -41,7 +87,7 @@
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
         <a href="work.html">Work</a>
-        <a href="case-studies.html" aria-current="page">Case Studies</a>
+        <a href="case-studies.html" aria-current="location">Case Studies</a>
         <a href="index.html#about">About</a>
         <a href="notes.html">Notes</a>
         <a href="resume.html">Resume</a>
@@ -50,7 +96,7 @@
       </nav>
     </header>
 
-    <main id="top" class="case-template-page">
+    <main id="top" class="case-template-page" tabindex="-1">
       <nav class="page-breadcrumb" aria-label="Breadcrumb">
         <a href="case-studies.html">Case Studies</a>
         <span aria-hidden="true">/</span>
@@ -103,6 +149,7 @@
           <a href="https://traverseops.app" rel="noopener noreferrer">Live demo</a>
           <a href="work.html#flagship-case-studies">Work index</a>
           <a href="case-studies.html#traverseops">Case-study index</a>
+          <a href="notes.html#traverseops-demo-framing">Related build note</a>
           <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub profile</a>
         </div>
       </section>
@@ -111,10 +158,32 @@
         <article class="case-template-main">
           <section class="case-template-section" aria-labelledby="summary-title">
             <p class="eyebrow">01 / Summary</p>
-            <h2 id="summary-title">A serious workflow demo, not just map pins.</h2>
+            <h2 id="summary-title">A workflow demo built around records, maps, and follow-up work.</h2>
             <p>
               Field-operations teams lose time when location, records, workflow state, and team permissions are split across disconnected spreadsheets, map viewers, and ticket lists. I built TraverseOps to show how a MapLibre map, Supabase-backed sample data, selected-asset context, inspection flows, work orders, imports, reports, and role-aware screens can fit together in one usable public demo.
             </p>
+            <div class="case-template-feature-list" aria-label="TraverseOps engineering intro">
+              <article>
+                <h3>Technical problem</h3>
+                <p>Asset location, inspection history, work-order state, imports, reports, and team roles need to stay connected around the selected field record.</p>
+              </article>
+              <article>
+                <h3>Constraints</h3>
+                <p>The public demo uses sample data and cannot assume real municipal auth, offline sync, audit trails, or production GIS feeds.</p>
+              </article>
+              <article>
+                <h3>Approach</h3>
+                <p>I modeled the app around a MapLibre workspace, Supabase-style relational data, status filters, selected-asset panels, and direct inspection/work-order paths.</p>
+              </article>
+              <article>
+                <h3>Tradeoff</h3>
+                <p>The demo favors workflow clarity and reviewer access over production infrastructure such as enforced permissions, audit logging, and offline conflict resolution.</p>
+              </article>
+              <article>
+                <h3>Next improvement</h3>
+                <p>Production hardening would add real RBAC, offline sync, import validation, audit logs, field-device testing, and reliable map data sources.</p>
+              </article>
+            </div>
             <div class="case-study-callout">
               <strong>Hiring signal:</strong>
               <span>The project demonstrates product modeling, map UI decisions, multi-entity data thinking, field-device workflow design, and awareness of what would need to change before production use.</span>
@@ -429,7 +498,7 @@
             </p>
             <ul class="case-template-list">
               <li>Models a full operational loop from map lookup to inspection to work order to reporting.</li>
-              <li>Uses realistic domain entities instead of a generic todo-list structure.</li>
+              <li>Uses realistic domain entities instead of a single-entity CRUD structure.</li>
               <li>Documents limitations honestly so the demo does not pretend to be production software.</li>
             </ul>
           </section>
@@ -445,17 +514,17 @@
                 </picture>
                 <figcaption>Map workspace with selected-asset context.</figcaption>
               </figure>
-              <figure class="case-template-image-placeholder" role="img" aria-label="Placeholder for TraverseOps import validation workflow screenshot">
+              <figure class="case-template-image-placeholder" role="img" aria-label="Planned TraverseOps screenshot area for import validation workflow">
                 <span class="placeholder-kicker">Screenshot placeholder</span>
                 <strong>Import validation flow</strong>
                 <figcaption>Intended to show column mapping, validation errors, accepted rows, and rejected records.</figcaption>
               </figure>
-              <figure class="case-template-image-placeholder" role="img" aria-label="Placeholder for TraverseOps inspection and work-order workflow screenshot">
+              <figure class="case-template-image-placeholder" role="img" aria-label="Planned TraverseOps screenshot area for inspection and work-order workflow">
                 <span class="placeholder-kicker">Screenshot placeholder</span>
                 <strong>Inspection to work order</strong>
                 <figcaption>Intended to show an inspection creating a prioritized work order tied to the asset record.</figcaption>
               </figure>
-              <figure class="case-template-image-placeholder" role="img" aria-label="Placeholder for TraverseOps reporting and team roles screenshot">
+              <figure class="case-template-image-placeholder" role="img" aria-label="Planned TraverseOps screenshot area for reporting and team roles">
                 <span class="placeholder-kicker">Screenshot placeholder</span>
                 <strong>Reports and team roles</strong>
                 <figcaption>Intended to show supervisor reporting, team role visibility, and operational status summaries.</figcaption>
@@ -480,6 +549,7 @@
           <ul>
             <li><strong>Demo:</strong> <a href="https://traverseops.app" rel="noopener noreferrer">traverseops.app</a></li>
             <li><strong>Source:</strong> not public from links currently in this repo.</li>
+            <li><strong>Related note:</strong> <a href="notes.html#traverseops-demo-framing">demo framing build log</a></li>
             <li><strong>Primary proof:</strong> map-first asset workflow with sample operational data.</li>
             <li><strong>Best hiring read:</strong> product modeling, data relationships, UI architecture, and production-risk awareness.</li>
           </ul>
@@ -490,7 +560,7 @@
         <div>
           <p class="eyebrow">Next step</p>
           <h2 id="traverseops-next-title">Review the demo, then compare the rest of the work.</h2>
-          <p>Field-operations workflow is the strongest portfolio case study; the Work page also shows Python automation, Canvas tooling, and browser experiments for comparison.</p>
+          <p>TraverseOps is the flagship field-operations case study; the Work page also shows Python automation, Canvas tooling, and browser experiments for comparison.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="https://traverseops.app" rel="noopener noreferrer">Open live demo</a>
@@ -511,7 +581,7 @@
         <a href="resume.html">Resume</a>
         <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
         <a href="work.html">Work</a>
-        <a href="case-studies.html" aria-current="page">Case Studies</a>
+        <a href="case-studies.html" aria-current="location">Case Studies</a>
         <a href="notes.html">Notes</a>
         <a href="interactive-lab.html">Interactive Lab</a>
         <a href="sitemap.xml">Sitemap</a>

@@ -6,21 +6,21 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="robots" content="noindex">
-    <meta name="description" content="Reusable static case-study page template for Zac Batten's portfolio projects.">
+    <meta name="description" content="Reusable noindex case-study template for Zac Batten's developer portfolio, covering role, problem, architecture, QA, deployment, screenshots, and next steps.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/case-study-template.html">
     <meta property="og:site_name" content="Inefy Workbench">
-    <meta property="og:title" content="Case Study Template / Zac Batten">
-    <meta property="og:description" content="Reusable case-study layout for TraverseOps, MovieBot, Web Paint, and future portfolio writeups.">
+    <meta property="og:title" content="Case Study Template / Zac Batten Portfolio">
+    <meta property="og:description" content="Reusable noindex case-study layout for Zac Batten's developer portfolio, including role, architecture, QA, deployment, screenshots, and next steps.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://zacbatten.me/case-study-template.html">
     <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <meta property="og:image:alt" content="Inefy workbench case-study page template preview.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Case Study Template / Zac Batten">
-    <meta name="twitter:description" content="Reusable static case-study page template for Zac Batten's portfolio projects.">
+    <meta name="twitter:title" content="Case Study Template / Zac Batten Portfolio">
+    <meta name="twitter:description" content="Reusable noindex case-study template for Zac Batten's developer portfolio.">
     <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
-    <title>Case Study Template / Zac Batten</title>
+    <title>Case Study Template / Zac Batten Portfolio</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#case-template-content">Skip to case study content</a>
+    <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
       <a class="brand" href="index.html#top" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
@@ -51,7 +51,7 @@
       </nav>
     </header>
 
-    <main id="top" class="case-template-page">
+    <main id="top" class="case-template-page" tabindex="-1">
       <nav class="page-breadcrumb" aria-label="Breadcrumb">
         <a href="case-studies.html">Case Studies</a>
         <span aria-hidden="true">/</span>
@@ -85,7 +85,7 @@
           </dl>
         </div>
 
-        <figure class="case-template-image-placeholder" role="img" aria-label="Replace with a primary screenshot showing the project interface">
+        <figure class="case-template-image-placeholder" role="img" aria-label="Template image area for a primary project interface screenshot">
           <span class="placeholder-kicker">Primary screenshot</span>
           <strong>[Project UI preview]</strong>
           <figcaption>Replace this placeholder with the clearest interface screenshot or demo still.</figcaption>
@@ -156,7 +156,7 @@
           <section class="case-template-section" aria-labelledby="architecture-title">
             <p class="eyebrow">06</p>
             <h2 id="architecture-title">Architecture</h2>
-            <div class="case-template-architecture" role="img" aria-label="Replace with an architecture diagram for data flow, UI modules, or integration points">
+            <div class="case-template-architecture" role="img" aria-label="Template diagram area for project data flow, UI modules, or integration points">
               <div>
                 <strong>Input</strong>
                 <span>[User action / API / file data]</span>
@@ -224,12 +224,12 @@
             <p class="eyebrow">12</p>
             <h2 id="screenshots-title">Screenshots/demo</h2>
             <div class="case-template-screenshot-grid">
-              <figure class="case-template-image-placeholder" role="img" aria-label="Replace with screenshot of the primary workflow">
+              <figure class="case-template-image-placeholder" role="img" aria-label="Template image area for the primary project workflow">
                 <span class="placeholder-kicker">Screenshot 01</span>
                 <strong>[Primary workflow]</strong>
                 <figcaption>Describe what the screenshot proves.</figcaption>
               </figure>
-              <figure class="case-template-image-placeholder" role="img" aria-label="Replace with screenshot of a secondary state or detail view">
+              <figure class="case-template-image-placeholder" role="img" aria-label="Template image area for a secondary project state or detail view">
                 <span class="placeholder-kicker">Screenshot 02</span>
                 <strong>[Detail state]</strong>
                 <figcaption>Describe the state, interaction, or technical detail shown.</figcaption>
@@ -249,7 +249,7 @@
           <ul>
             <li>Replace bracketed placeholder copy.</li>
             <li>Update title, canonical URL, social metadata, and description.</li>
-            <li>Swap placeholders for real screenshots with useful alt text.</li>
+            <li>Swap placeholders for real screenshots with descriptive alt text.</li>
             <li>Set project links to case study, demo, and GitHub sources.</li>
             <li>Remove <code>noindex</code> before publishing a real case study.</li>
           </ul>

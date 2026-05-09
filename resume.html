@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Resume for Zac Batten, a software developer focused on practical web tools, Python automation, frontend interfaces, maps, Twitch/OBS automation, and browser experiments.">
+    <meta name="description" content="Resume for Zac Batten, a software developer focused on frontend tools, Python automation, MapLibre workflows, Twitch/OBS automation, and browser experiments.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/resume.html">
     <meta property="og:site_name" content="Inefy Workbench">
-    <meta property="og:title" content="Resume / Zac Batten">
-    <meta property="og:description" content="Software developer resume for Zac Batten: practical web tools, Python automation, frontend interfaces, maps, Twitch/OBS automation, and browser experiments.">
+    <meta property="og:title" content="Resume / Zac Batten Software Developer">
+    <meta property="og:description" content="Software developer resume for Zac Batten: frontend tools, Python automation, MapLibre workflow interfaces, Twitch/OBS automation, and browser experiments.">
     <meta property="og:type" content="profile">
     <meta property="og:url" content="https://zacbatten.me/resume.html">
     <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <meta property="og:image:alt" content="Inefy workbench homepage preview with featured project cards.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Resume / Zac Batten">
-    <meta name="twitter:description" content="Software developer resume for Zac Batten.">
+    <meta name="twitter:title" content="Resume / Zac Batten Software Developer">
+    <meta name="twitter:description" content="Frontend tools, Python automation, MapLibre workflow interfaces, Twitch/OBS automation, and browser experiments.">
     <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
-    <title>Resume / Zac Batten</title>
+    <title>Resume / Zac Batten Software Developer</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#resume-content">Skip to resume</a>
+    <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
       <a class="brand" href="index.html#top" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
@@ -50,13 +50,13 @@
       </nav>
     </header>
 
-    <main id="top" class="resume-page">
+    <main id="top" class="resume-page" tabindex="-1">
       <section class="section resume-hero" aria-labelledby="resume-title">
         <div class="section-heading">
           <p class="eyebrow">Resume</p>
           <h1 id="resume-title">Zac Batten</h1>
           <p>
-            Software developer building practical web tools, Python automation, frontend interfaces, map-based workflows, Twitch/OBS automation, and browser experiments.
+            Zac Batten is a software developer who builds practical frontend tools, Python automations, and map-based web interfaces. He uses HTML, CSS, JavaScript, Canvas, MapLibre, Supabase, Python, TwitchIO, OBS WebSocket, and GitHub Pages. His work is proven through TraverseOps field-ops mapping, StreamCinema Twitch/OBS automation, Web Paint, Movie Library, and browser tools/games. He is interested in frontend UI, Python automation, maps, workflow tooling, and roles that turn repeated manual work into clear, reliable software.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="mailto:hello@zacbatten.me">Email Zac</a>
@@ -72,7 +72,7 @@
             <p class="resume-kicker">Summary</p>
             <h2 id="summary-title">Practical software for real workflows.</h2>
             <p>
-              I focus on workflow-sized systems: static web tools, Python automations, Twitch chat bots, OBS handoffs, map-first operations interfaces, and browser-based experiments. The work is strongest where a repeated manual task needs a clear interface, reliable state handling, and a public proof link.
+              Zac Batten is a software developer who builds practical frontend tools, Python automations, and map-based web interfaces. He uses HTML, CSS, JavaScript, Canvas, MapLibre, Supabase, Python, TwitchIO, OBS WebSocket, and GitHub Pages. His work is proven through TraverseOps field-ops mapping, StreamCinema Twitch/OBS automation, Web Paint, Movie Library, and browser tools/games. He is interested in frontend UI, Python automation, maps, workflow tooling, and roles that turn repeated manual work into clear, reliable software.
             </p>
           </section>
 
@@ -92,37 +92,75 @@
             <p class="resume-kicker">Projects</p>
             <h2 id="projects-title">Selected work</h2>
             <div class="resume-item">
-              <h3>MovieBot</h3>
-              <p>Streamer-run movie nights need reliable voting and playback handoff; I built a Python/TwitchIO bot that collects chat votes, resolves ties and changed votes, scans local public-domain movies, and controls OBS through WebSocket.</p>
+              <h3>TraverseOps</h3>
+              <p>Field teams need asset maps, inspections, imports, reports, and work orders to stay connected around the selected record.</p>
               <p><strong>What I built:</strong></p>
               <ul class="resume-list">
-                <li>Implemented Twitch chat commands for voting, results, current movie, time remaining, movie lists, and help output.</li>
-                <li>Built vote-state logic for changed votes, duplicate prevention, partial title matching, tie resolution, and fallback selection.</li>
-                <li>Connected OBS WebSocket playback automation with movie-folder scanning, token refresh, reconnect behavior, and setup/security notes.</li>
+                <li>Modeled asset, inspection, work-order, import, report, and team-role workflows for a MapLibre/Supabase field-operations demo.</li>
+                <li>Built map-first asset flows with status filters, selected-record panels, and direct inspection/work-order paths for field and supervisor use.</li>
+                <li>Documented production hardening needs including RBAC, offline sync, audit logs, import validation, security concerns, and mobile field-device testing.</li>
+              </ul>
+              <a class="text-link" href="traverseops-case-study.html">Read case study</a>
+            </div>
+            <div class="resume-item">
+              <h3>MovieBot / StreamCinema Vote Bot</h3>
+              <p>Streamer-run movie nights need reliable chat voting, local movie selection, and OBS playback handoff.</p>
+              <p><strong>What I built:</strong></p>
+              <ul class="resume-list">
+                <li>Implemented TwitchIO chat commands for votes, results, current movie, remaining time, movie lists, and help output.</li>
+                <li>Built vote-state handling for changed votes, duplicate prevention, partial title matching, tie resolution, and fallback selection.</li>
+                <li>Integrated OBS WebSocket playback automation with local movie-folder scanning, OAuth token refresh, reconnect handling, and startup validation.</li>
+                <li>Added setup, security, and testing notes so Twitch credentials, OBS settings, and local media dependencies are explicit.</li>
               </ul>
               <a class="text-link" href="moviebot-case-study.html">Read case study</a>
             </div>
             <div class="resume-item">
-              <h3>TraverseOps</h3>
-              <p>Field teams lose time when maps, inspections, imports, reports, and work orders live in separate tools; I built a MapLibre/Supabase demo that connects asset lookup, selected-record context, and work-order workflows.</p>
+              <h3>Movie Library</h3>
+              <p>MovieBot viewers need a static catalog for finding eligible public-domain titles and copying valid vote commands.</p>
               <p><strong>What I built:</strong></p>
               <ul class="resume-list">
-                <li>Modeled assets, inspections, work orders, imports, reports, and team roles around field-crew and supervisor workflows.</li>
-                <li>Built a map-first asset workflow with status filtering, selected-asset panels, and direct paths into inspection and work-order screens.</li>
-                <li>Documented demo boundaries and production hardening needs, including auth, role permissions, offline sync, audit logs, validation, and mobile field testing.</li>
+                <li>Built a static HTML/CSS/JavaScript catalog for public-domain MovieBot queue data with title, year, runtime, and rating filters.</li>
+                <li>Implemented generated <code>!vote</code> commands with Clipboard API behavior and fallback copy handling to reduce chat input errors.</li>
+                <li>Rendered lazy-loaded poster cards with accessible labels, normalized external poster URLs, and fixed image dimensions.</li>
+                <li>Maintained a full <code>noscript</code> fallback list so the catalog remains readable when JavaScript or poster loading fails.</li>
               </ul>
-              <a class="text-link" href="traverseops-case-study.html">View project</a>
+              <a class="text-link" href="movie-library.html">Open catalog</a>
             </div>
             <div class="resume-item">
-              <h3>zacbatten.me</h3>
-              <p>Recruiters need a fast path from proof to contact; I built a static GitHub Pages portfolio with hiring-focused navigation, reusable project sections, case-study pages, mobile-first CSS, metadata, reduced-motion support, and accessible CTAs.</p>
+              <h3>Web Paint</h3>
+              <p>Browser drawing tools need predictable canvas state, history, imports, exports, and mobile-friendly controls.</p>
+              <p><strong>What I built:</strong></p>
+              <ul class="resume-list">
+                <li>Implemented Canvas 2D drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
+                <li>Built undo/redo with capped ImageData snapshots, import validation, PNG export, localStorage save/load, zoom, and canvas resizing.</li>
+                <li>Managed vanilla JavaScript state for active tools, colors, brush sizes, selection bounds, pointer capture, and status output.</li>
+                <li>Added mobile-friendly control panels and file guardrails for MIME type, file size, pixel count, and bounded canvas dimensions.</li>
+              </ul>
+              <a class="text-link" href="web-paint-case-study.html">Read case study</a>
+            </div>
+            <div class="resume-item">
+              <h3>Portfolio site</h3>
+              <p>Recruiters need a fast proof-to-contact path through selected work, case studies, resume details, and contact links.</p>
               <p><strong>What I built:</strong></p>
               <ul class="resume-list">
                 <li>Reworked homepage positioning, selected-work hierarchy, resume/contact paths, navigation, footer links, metadata, and case-study routing.</li>
                 <li>Built reusable static sections for project cards, technical strengths, notes, interactive demos, and work/case-study indexes.</li>
-                <li>Added mobile-first CSS, visible focus states, reduced-motion handling, sitemap/robots metadata, and browser-verified mobile controls.</li>
+                <li>Added mobile-first CSS, visible focus states, reduced-motion handling, sitemap/robots metadata, and social preview metadata.</li>
+                <li>Verified mobile navigation, demo links, and browser controls across static GitHub Pages pages.</li>
               </ul>
               <a class="text-link" href="work.html">View selected work</a>
+            </div>
+            <div class="resume-item">
+              <h3>Interactive games/tools</h3>
+              <p>Browser demos show input handling, local state, canvas rendering, accessibility passes, and touch-friendly controls.</p>
+              <p><strong>What I built:</strong></p>
+              <ul class="resume-list">
+                <li>Implemented Canvas and DOM game loops for Mini Golf, Asteroid Drift, Snake, Brick Breaker, 2048, Minefield Sweep, and Flappy Workbench.</li>
+                <li>Built keyboard/touch input, pause/restart/fullscreen controls, localStorage best scores, and reduced-motion handling across demos.</li>
+                <li>Modeled game-specific logic including collision checks, board transforms, recursive reveals, input buffering, obstacle spawning, and scoring.</li>
+                <li>Added visible controls, live status text, accessible board/cell labels where applicable, and mobile play instructions.</li>
+              </ul>
+              <a class="text-link" href="interactive-lab.html">Open Interactive Lab</a>
             </div>
           </section>
 

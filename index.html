@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0=' 'sha256-dsY5342bgyYWBQ6UdjJXn0ifYNzvYUECoFeKi4IKRkg='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Zac Batten's Inefy workbench: stream tools, movie-night bots, Python automations, browser tools, and technical build notes.">
+    <meta name="description" content="Software developer portfolio for Zac Batten: frontend tools, Python automation, MapLibre interfaces, Twitch/OBS projects, and browser canvas experiments.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/">
     <meta property="og:site_name" content="Inefy Workbench">
-    <meta property="og:title" content="Zac Batten / Inefy Workbench">
-    <meta property="og:description" content="Selected work from Zac Batten: TraverseOps, MovieBot, Web Paint, and practical developer build notes.">
+    <meta property="og:title" content="Zac Batten / Software Developer Portfolio">
+    <meta property="og:description" content="Selected software developer work from Zac Batten: TraverseOps, MovieBot, Web Paint, Movie Library, and practical build notes.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/">
     <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <meta property="og:image:alt" content="Inefy workbench homepage preview with selected project cards.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Zac Batten / Inefy Workbench">
-    <meta name="twitter:description" content="TraverseOps, MovieBot, Web Paint, and practical developer build notes from Zac Batten.">
+    <meta name="twitter:title" content="Zac Batten / Software Developer Portfolio">
+    <meta name="twitter:description" content="Frontend tools, Python automation, MapLibre workflow interfaces, Twitch/OBS projects, and browser canvas experiments.">
     <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <script type="application/ld+json">
       {
@@ -25,30 +25,140 @@
         "@graph": [
           {
             "@type": "Person",
+            "@id": "https://zacbatten.me/#zac-batten",
             "name": "Zac Batten",
             "url": "https://zacbatten.me/",
+            "jobTitle": "Software Developer",
+            "description": "Software developer building practical frontend tools, Python automation, map-based workflow interfaces, browser canvas tools, and Twitch/OBS automation projects.",
             "sameAs": ["https://github.com/Inefy"],
             "knowsAbout": [
-              "Twitch tools",
+              "software development",
+              "frontend development",
+              "Python automation",
+              "MapLibre",
+              "Canvas API",
+              "Twitch bots",
               "OBS automation",
               "static websites",
-              "field operations apps",
-              "helper scripts"
+              "GitHub Pages",
+              "field operations workflows"
             ]
           },
           {
             "@type": "WebSite",
+            "@id": "https://zacbatten.me/#website",
             "name": "Inefy Workbench",
+            "alternateName": "Zac Batten Developer Portfolio",
             "url": "https://zacbatten.me/",
-            "author": {
-              "@type": "Person",
-              "name": "Zac Batten"
+            "inLanguage": "en",
+            "description": "Developer portfolio for Zac Batten with selected work, case studies, build notes, browser tools, and contact paths.",
+            "author": { "@id": "https://zacbatten.me/#zac-batten" },
+            "publisher": { "@id": "https://zacbatten.me/#zac-batten" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://zacbatten.me/#homepage",
+            "url": "https://zacbatten.me/",
+            "name": "Zac Batten / Software Developer Portfolio",
+            "isPartOf": { "@id": "https://zacbatten.me/#website" },
+            "about": { "@id": "https://zacbatten.me/#zac-batten" },
+            "description": "Portfolio homepage for Zac Batten's software developer work in frontend tools, Python automation, MapLibre interfaces, Twitch/OBS projects, and browser canvas experiments.",
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://zacbatten.me/inefy-desktop-final.png"
             }
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://zacbatten.me/#selected-projects",
+            "name": "Selected software development projects",
+            "itemListOrder": "https://schema.org/ItemListOrderAscending",
+            "numberOfItems": 4,
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "TraverseOps",
+                "url": "https://zacbatten.me/traverseops-case-study.html",
+                "item": { "@id": "https://zacbatten.me/traverseops-case-study.html#traverseops" }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "MovieBot / StreamCinema Vote Bot",
+                "url": "https://zacbatten.me/moviebot-case-study.html",
+                "item": { "@id": "https://zacbatten.me/moviebot-case-study.html#moviebot" }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Web Paint",
+                "url": "https://zacbatten.me/web-paint-case-study.html",
+                "item": { "@id": "https://zacbatten.me/web-paint-case-study.html#web-paint" }
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Movie Library",
+                "url": "https://zacbatten.me/movie-library.html",
+                "item": { "@id": "https://zacbatten.me/movie-library.html#movie-library" }
+              }
+            ]
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://zacbatten.me/traverseops-case-study.html#traverseops",
+            "name": "TraverseOps",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web browser",
+            "url": "https://traverseops.app",
+            "image": "https://zacbatten.me/assets/traverseops-workspace.png",
+            "author": { "@id": "https://zacbatten.me/#zac-batten" },
+            "mainEntityOfPage": "https://zacbatten.me/traverseops-case-study.html",
+            "description": "MapLibre field-operations demo for asset maps, inspections, work orders, imports, reports, and role workflows.",
+            "keywords": "MapLibre, field operations, asset tracking, inspections, work orders, workflow interfaces"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://zacbatten.me/moviebot-case-study.html#moviebot",
+            "name": "MovieBot / StreamCinema Vote Bot",
+            "applicationCategory": "MultimediaApplication",
+            "softwareRequirements": "Python 3.8+, TwitchIO, OBS WebSocket",
+            "url": "https://zacbatten.me/moviebot-case-study.html",
+            "sameAs": ["https://github.com/Inefy/twitch-movie-bot"],
+            "image": "https://zacbatten.me/assets/movie-night-preview.png",
+            "author": { "@id": "https://zacbatten.me/#zac-batten" },
+            "description": "Python automation project that uses TwitchIO commands, Twitch chat voting, token refresh, reconnect behavior, and OBS automation for public-domain movie nights.",
+            "keywords": "Python automation, Twitch bot, TwitchIO, OBS automation, OBS WebSocket, movie voting"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://zacbatten.me/web-paint-case-study.html#web-paint",
+            "name": "Web Paint",
+            "applicationCategory": "DesignApplication",
+            "operatingSystem": "Web browser",
+            "url": "https://zacbatten.me/paint.html",
+            "author": { "@id": "https://zacbatten.me/#zac-batten" },
+            "mainEntityOfPage": "https://zacbatten.me/web-paint-case-study.html",
+            "description": "Browser canvas tool built with vanilla JavaScript, Canvas 2D rendering, drawing modes, undo/redo, import/export, local save, zoom, and mobile controls.",
+            "keywords": "browser canvas tool, Canvas API, vanilla JavaScript, frontend developer, drawing editor"
+          },
+          {
+            "@type": ["SoftwareApplication", "WebApplication"],
+            "@id": "https://zacbatten.me/movie-library.html#movie-library",
+            "name": "Movie Library Voting Catalog",
+            "applicationCategory": "CatalogApplication",
+            "operatingSystem": "Web browser",
+            "url": "https://zacbatten.me/movie-library.html",
+            "image": "https://zacbatten.me/assets/movie-library-preview.png",
+            "author": { "@id": "https://zacbatten.me/#zac-batten" },
+            "description": "Static public-domain movie voting catalog for MovieBot with search filters, copyable vote commands, lazy posters, and a no-JavaScript fallback.",
+            "keywords": "MovieBot, Twitch bot, static catalog, vote commands, frontend JavaScript"
           }
         ]
       }
     </script>
-    <title>Zac Batten / Inefy Workbench</title>
+    <title>Zac Batten / Software Developer Portfolio</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,7 +166,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#featured-builds">Skip to selected work</a>
+    <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
@@ -79,17 +189,14 @@
       </nav>
     </header>
 
-    <main id="top">
+    <main id="top" tabindex="-1">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span>Software developer / Inefy workbench</p>
           <h1 id="hero-title">Zac Batten</h1>
           <p class="hero-role">Software developer building practical web tools and automations.</p>
           <p class="hero-text">
-            I build practical web tools, Python automations, and frontend interfaces for map-heavy field workflows, Twitch/OBS streams, and browser experiments.
-          </p>
-          <p class="hero-proof">
-            The work here focuses on static sites, chat-driven stream tooling, map-based operations UI, and browser projects that replace repeated manual steps.
+            Zac Batten is a software developer who builds practical frontend tools, Python automations, and map-based web interfaces. He uses HTML, CSS, JavaScript, Canvas, MapLibre, Supabase, Python, TwitchIO, OBS WebSocket, and GitHub Pages. His work is proven through TraverseOps field-ops mapping, StreamCinema Twitch/OBS automation, Web Paint, Movie Library, and browser tools/games. He is interested in frontend UI, Python automation, maps, workflow tooling, and roles that turn repeated manual work into clear, reliable software.
           </p>
           <ul class="hero-proof-chips" aria-label="Proof of work types">
             <li>Python Twitch/OBS bot</li>
@@ -159,8 +266,18 @@
         </div>
         <div class="about-copy">
           <p>
-            I am Zac Batten, a software developer who likes building tools that shrink messy workflows: web apps for field work, Python automation for streams, frontend interfaces that explain themselves, maps that help people act, and browser experiments with visible state. Right now I am focused on sharper frontend patterns, resilient JavaScript, Python integrations, and map-based interfaces that can be demonstrated clearly in public. My strongest fit is work where a team needs someone who can turn repeated manual steps into a working demo, then keep improving the interface until it is easier to understand and harder to break. I value clarity, working demos, resilience, and usability, so this portfolio favors live projects, accessible paths, and proof over vague project names.
+            I am Zac Batten, a software developer who builds tools for tangled workflows: web apps for field work, Python automation for streams, frontend interfaces that explain themselves, maps that help people act, and browser experiments with visible state. Right now I am focused on sharper frontend patterns, resilient JavaScript, Python integrations, and map-based interfaces that can be demonstrated clearly in public. I fit best where a team needs someone who can turn repeated manual steps into a working demo, then keep improving the interface until it is easier to understand and harder to break. I value clarity, working demos, resilience, and usability, so this portfolio favors live projects, accessible paths, and working proof over broad labels.
           </p>
+          <aside class="current-focus" aria-labelledby="current-focus-title">
+            <h3 id="current-focus-title">Current focus</h3>
+            <ul>
+              <li>Python automation</li>
+              <li>Frontend/browser tools</li>
+              <li>Mapping/workflow interfaces</li>
+              <li>Portfolio case-study polish</li>
+              <li>Practical software for real workflows</li>
+            </ul>
+          </aside>
           <div class="about-actions" aria-label="About section actions">
             <a class="button secondary" href="resume.html">View resume</a>
             <a class="button secondary" href="#contact">Contact Zac</a>
@@ -257,7 +374,7 @@
           <p class="eyebrow">Selected work</p>
           <h2 id="selected-work-title">Professional projects with working proof.</h2>
           <p>
-            The strongest projects are first: map-heavy field operations, Twitch/OBS automation, and a browser-based creative tool.
+            The flagship projects are first: map-heavy field operations, Twitch/OBS automation, and a browser-based creative tool.
           </p>
         </div>
 
@@ -279,7 +396,7 @@
                 Field teams lose time when maps, inspections, and work orders are split; I built a MapLibre/Supabase demo linking asset filters, selected records, and work-order flows.
               </p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Modeled assets, inspections, work orders, imports, reports, and team roles around field-crew and supervisor workflows.</li>
                   <li>Built a map-first asset workflow with status filtering, selected-asset panels, and direct paths into inspection and work-order screens.</li>
@@ -304,7 +421,7 @@
 
           <article class="project-card selected-work-card" data-tags="automation stream">
             <figure class="project-visual">
-              <img src="assets/movie-night-preview.png" alt="Movie Night page preview with MovieBot and Twitch stream details" loading="lazy" decoding="async" width="1200" height="630">
+              <img src="assets/movie-night-preview.png" alt="Movie Night page with Twitch stream, chat panel, MovieBot commands, and movie library links" loading="lazy" decoding="async" width="1200" height="630">
             </figure>
             <div class="project-card-body">
               <div class="project-meta">
@@ -316,7 +433,7 @@
                 Streamer-run movie nights need reliable voting and playback handoff; I built a Python/TwitchIO bot that tracks chat votes, rescans local movies, resolves ties, and drives OBS WebSocket.
               </p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Implemented Twitch chat commands for voting, results, current movie, time remaining, movie list, and help.</li>
                   <li>Built vote-state logic for changed votes, duplicate prevention, partial title matching, tie resolution, and fallback selection.</li>
@@ -341,7 +458,7 @@
           </article>
 
           <article class="project-card selected-work-card" data-tags="web">
-            <figure class="project-visual paint-preview" role="img" aria-label="Visual placeholder for the Web Paint browser interface">
+            <figure class="project-visual paint-preview" role="img" aria-label="Web Paint browser interface with toolbar, canvas area, and color controls">
               <div class="paint-preview-toolbar" aria-hidden="true">
                 <span></span>
                 <span></span>
@@ -364,7 +481,7 @@
                 Browser drawing needs reliable state; I built a vanilla JavaScript Canvas editor with tool modes, undo/redo snapshots, import/export, zoom, and mobile-friendly panels.
               </p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
                   <li>Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.</li>
@@ -410,7 +527,7 @@
           <span class="status-badge">Public repo / live showcase</span>
           <h2 id="moviebot-title">MovieBot reduces the manual work behind Twitch movie nights.</h2>
           <p class="case-lede">
-            Twitch movie nights are awkward to run manually, so I built a Python/TwitchIO bot that turns chat commands into vote state, handles changed votes and ties, scans local public-domain movies, refreshes tokens, reconnects when needed, and hands the winner to OBS through WebSocket.
+            Twitch movie nights can bog down in manual polling and OBS setup, so I built a Python/TwitchIO bot that turns chat commands into vote state, handles changed votes and ties, scans local public-domain movies, refreshes tokens, reconnects when needed, and hands the winner to OBS through WebSocket.
           </p>
           <div class="case-actions">
           <a class="button primary" href="movie-night.html">Open Movie Night</a>
@@ -433,7 +550,7 @@
             <span></span>
             <strong>movie-night.html</strong>
           </div>
-          <img src="assets/movie-night-preview.png" alt="Movie Night page preview with stream and MovieBot details" loading="lazy" decoding="async" width="1200" height="630">
+            <img src="assets/movie-night-preview.png" alt="Movie Night page with embedded stream, chat panel, MovieBot status, and movie library links" loading="lazy" decoding="async" width="1200" height="630">
         </figure>
 
         <div class="case-detail-grid" aria-label="MovieBot project details">
@@ -540,7 +657,7 @@
           </div>
         </div>
 
-        <figure class="case-visual paint-case-visual" role="img" aria-label="Web Paint interface preview placeholder">
+        <figure class="case-visual paint-case-visual" role="img" aria-label="Web Paint interface with ribbon controls, drawing canvas, color palette, and tool settings">
           <div class="case-window-bar" aria-hidden="true">
             <span></span>
             <span></span>
@@ -566,7 +683,7 @@
         <div class="case-detail-grid" aria-label="Web Paint project details">
           <article>
             <span>Problem</span>
-            <h3>Useful drawing needs predictable controls</h3>
+            <h3>Drawing workflows need predictable controls</h3>
             <p>A browser sketch tool has to preserve familiar Paint affordances while keeping the canvas state reliable across undo, redo, resizing, and export.</p>
           </article>
           <article>
@@ -593,8 +710,8 @@
           <p>Ship the working version first. Refine the interface after it survives real use.</p>
         </article>
         <article>
-          <span class="note-kicker">Favorite scale</span>
-          <p>Scoped tightly enough to finish, annoying enough that the fix proves something.</p>
+          <span class="note-kicker">Project scale</span>
+          <p>Scoped tightly enough to finish, concrete enough to reveal real edge cases.</p>
         </article>
         <article>
           <span class="note-kicker">Why Inefy</span>

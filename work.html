@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="All professional projects from Zac Batten: TraverseOps, MovieBot, Web Paint, supporting static pages, browser experiments, and build notes.">
+    <meta name="description" content="Selected software developer projects by Zac Batten, including MapLibre field-ops UI, Python automation, Web Paint, Movie Library, and browser tools.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/work.html">
     <meta property="og:site_name" content="Inefy Workbench">
-    <meta property="og:title" content="Work / Zac Batten">
-    <meta property="og:description" content="Structured portfolio work from Zac Batten: flagship case studies, supporting projects, interactive experiments, and build notes.">
+    <meta property="og:title" content="Selected Work / Zac Batten Software Developer">
+    <meta property="og:description" content="A structured developer portfolio with flagship case studies, supporting projects, interactive experiments, and build notes from Zac Batten.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/work.html">
     <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <meta property="og:image:alt" content="Inefy workbench selected work and project cards preview.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Work / Zac Batten">
-    <meta name="twitter:description" content="Flagship case studies, supporting projects, browser experiments, and build notes from Zac Batten.">
+    <meta name="twitter:title" content="Selected Work / Zac Batten Software Developer">
+    <meta name="twitter:description" content="MapLibre field-ops UI, Python automation, Web Paint, Movie Library, browser tools, and build notes from Zac Batten.">
     <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
-    <title>Work / Zac Batten</title>
+    <title>Selected Work / Zac Batten Software Developer</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#flagship-case-studies">Skip to flagship case studies</a>
+    <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
       <a class="brand" href="index.html#top" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
@@ -50,7 +50,7 @@
       </nav>
     </header>
 
-    <main id="top" class="work-page">
+    <main id="top" class="work-page" tabindex="-1">
       <section class="section work-hero" aria-labelledby="work-title">
         <div class="section-heading">
           <p class="eyebrow">Work</p>
@@ -70,7 +70,7 @@
       <section class="section work-section" id="flagship-case-studies" aria-labelledby="flagship-title">
         <div class="section-heading">
           <p class="eyebrow">01 / Flagship case studies</p>
-          <h2 id="flagship-title">The strongest professional work.</h2>
+          <h2 id="flagship-title">Flagship professional work.</h2>
           <p>Projects with the clearest hiring signal: practical product shape, working proof, and technical implementation detail.</p>
         </div>
 
@@ -89,7 +89,7 @@
               </div>
               <p>Field teams lose time when maps, inspections, and work orders are split; I built a MapLibre/Supabase demo linking asset filters, selected records, and work-order flows.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Modeled assets, inspections, work orders, imports, reports, and team roles around field-crew and supervisor workflows.</li>
                   <li>Built a map-first asset workflow with status filtering, selected-asset panels, and direct paths into inspection and work-order screens.</li>
@@ -116,7 +116,7 @@
 
           <article class="work-card">
             <figure class="work-thumb">
-              <img src="assets/movie-night-preview.png" alt="Movie Night page preview with stream, chat, and MovieBot details" loading="lazy" decoding="async" width="1200" height="630">
+              <img src="assets/movie-night-preview.png" alt="Movie Night page with Twitch stream, chat panel, MovieBot workflow details, and movie library links" loading="lazy" decoding="async" width="1200" height="630">
             </figure>
             <div class="work-card-body">
               <div class="work-card-header">
@@ -125,7 +125,7 @@
               </div>
               <p>Streamer-run movie nights need reliable voting and playback handoff; I built a Python/TwitchIO bot that tracks chat votes, rescans local movies, resolves ties, and drives OBS WebSocket.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Implemented Twitch chat commands for voting, results, current movie, time remaining, movie list, and help.</li>
                   <li>Built vote-state logic for changed votes, duplicate prevention, partial title matching, tie resolution, and fallback selection.</li>
@@ -152,7 +152,7 @@
           </article>
 
           <article class="work-card">
-            <figure class="work-thumb work-thumb-paint" role="img" aria-label="Stylized thumbnail of the Web Paint canvas toolbar and drawing area">
+            <figure class="work-thumb work-thumb-paint" role="img" aria-label="Web Paint canvas editor with toolbar controls and drawing area">
               <span class="thumb-toolbar" aria-hidden="true"></span>
               <span class="thumb-canvas" aria-hidden="true"></span>
             </figure>
@@ -163,7 +163,7 @@
               </div>
               <p>Browser drawing needs reliable state; I built a vanilla JavaScript Canvas editor with tool modes, undo/redo snapshots, import/export, zoom, and mobile-friendly panels.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
                   <li>Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.</li>
@@ -203,7 +203,7 @@
         <div class="work-grid compact-work-grid">
           <article class="work-card">
             <figure class="work-thumb">
-              <img src="assets/movie-library-preview.png" alt="Public domain movie library preview with poster wall" loading="lazy" decoding="async" width="1200" height="630">
+              <img src="assets/movie-library-preview.png" alt="Movie Library page with public-domain poster wall, search controls, and MovieBot vote-command buttons" loading="lazy" decoding="async" width="1200" height="630">
             </figure>
             <div class="work-card-body">
               <div class="work-card-header">
@@ -212,7 +212,7 @@
               </div>
               <p>Viewers need accurate vote commands; I built a static HTML/CSS/JavaScript MovieBot catalog with filters, lazy posters, copyable <code>!vote</code> commands, and a no-JS fallback.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Built a searchable catalog that filters public-domain MovieBot queue data by title, year, runtime, and rating.</li>
                   <li>Implemented copyable <code>!vote</code> commands with button labels and feedback so viewers can send accurate Twitch votes.</li>
@@ -233,6 +233,8 @@
               <div class="work-links">
                 <a href="case-studies.html#movie-library">Case Study</a>
                 <a href="movie-library.html">Demo</a>
+                <a href="moviebot-case-study.html">MovieBot</a>
+                <a href="movie-night.html">Movie Night</a>
                 <a href="https://github.com/Inefy/Inefy.github.io/blob/main/movie-library.html" rel="noopener noreferrer">GitHub</a>
               </div>
             </div>
@@ -240,7 +242,7 @@
 
           <article class="work-card">
             <figure class="work-thumb">
-              <img src="inefy-desktop-final.png" alt="Inefy workbench homepage preview with selected project sections" loading="lazy" decoding="async" width="1920" height="1080">
+              <img src="inefy-desktop-final.png" alt="Inefy portfolio homepage showing Zac Batten hero copy, selected project cards, and recruiter contact paths" loading="lazy" decoding="async" width="1920" height="1080">
             </figure>
             <div class="work-card-body">
               <div class="work-card-header">
@@ -249,7 +251,7 @@
               </div>
               <p>Recruiters need a fast proof-to-contact path; I built a GitHub Pages portfolio with reusable project sections, case studies, metadata, reduced motion, and accessible CTAs.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Reworked homepage positioning, selected-work hierarchy, resume/contact paths, navigation, footer links, metadata, and case-study routing.</li>
                   <li>Built reusable static sections for project cards, technical strengths, notes, interactive demos, and work/case-study indexes.</li>
@@ -264,7 +266,7 @@
                 </div>
                 <div>
                   <dt>Status</dt>
-                  <dd>Live and actively being polished</dd>
+                  <dd>Live and actively maintained</dd>
                 </div>
               </dl>
               <div class="work-links">
@@ -292,7 +294,7 @@
               <h3>Mini Golf</h3>
               <p>Touch golf needs clear aiming and scoring; I built a Canvas/JavaScript five-hole course with drag power, collision response, hazards, scorecards, and best runs.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Created five course layouts with par values, walls, hazard zones, surface types, cup targets, and hole progression.</li>
                   <li>Implemented drag aiming, shot-power calculation, ball motion, wall/hazard/cup collision checks, and stroke counting.</li>
@@ -318,7 +320,7 @@
               <h3>Asteroid Drift</h3>
               <p>Arcade loops need low-latency input; I built a Canvas/JavaScript Asteroids-style demo with thrust, shooting, shields, randomized spawns, collisions, waves, and touch controls.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Implemented ship thrust, rotation, projectile firing, shield charge, wraparound movement, and lives/scoring state.</li>
                   <li>Built randomized asteroid spawning, split behavior, wave progression, collision checks, and HUD progress updates.</li>
@@ -344,7 +346,7 @@
               <h3>Snake Lab</h3>
               <p>Snake needs fast turns without illegal reversals; I built a Canvas/JavaScript grid game with buffered input, growth, collisions, pace changes, and best scores.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Implemented grid state for snake segments, food placement, growth, wall/body collision detection, score, and length.</li>
                   <li>Built input buffering for Arrow keys, WASD, swipe gestures, and touch buttons while blocking illegal reverse turns.</li>
@@ -370,7 +372,7 @@
               <h3>Brick Breaker</h3>
               <p>Paddle games need precise collisions; I built a Canvas/JavaScript Brick Breaker with launch state, wall/paddle/brick checks, levels, progress, and touch controls.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Implemented paddle movement, ball launch state, wall/paddle/brick collision checks, lives, scoring, and level-clearing logic.</li>
                   <li>Built progress, level, best-score, and power readouts around a viewport-aware Canvas playfield.</li>
@@ -396,7 +398,7 @@
               <h3>2048</h3>
               <p>Tile merging needs deterministic board transforms; I built an HTML/CSS/JavaScript 2048 with single-merge rules, random spawns, undo, best score, and accessible summaries.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Implemented directional board transforms, merge rules, random tile spawning, win/loss checks, score updates, and move counting.</li>
                   <li>Built undo snapshots, local save/best-score persistence, keyboard shortcuts, swipe handling, and on-screen direction controls.</li>
@@ -422,7 +424,7 @@
               <h3>Minefield Sweep</h3>
               <p>Mine puzzles need clear state and safe starts; I built a JavaScript grid game with delayed mines, recursive reveal, flag mode, timers, and accessible labels.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Implemented delayed mine placement, safe first reveal, adjacent counts, recursive empty-cell reveal, flag toggling, and win/loss state.</li>
                   <li>Built difficulty switching, timer/best-time persistence, mines-left tracking, cleared-percent updates, pause/restart controls, and touch flag mode.</li>
@@ -448,7 +450,7 @@
               <h3>Flappy Workbench</h3>
               <p>Timing games need consistent physics; I built a Canvas/JavaScript Flappy-style loop with gravity, obstacle gaps, collision checks, best score, pause, and mobile flap input.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Implemented gravity, jump impulse, pipe spawning, gap sizing, collision checks, score tracking, and restart flow.</li>
                   <li>Built the Canvas render loop for the player, scrolling obstacles, ground movement, menu state, status text, and best-score persistence.</li>
@@ -484,7 +486,7 @@
               <h3>Portfolio cleanup pass</h3>
               <p>Recruiters need a fast path from proof to contact; I rebuilt the static portfolio flow around homepage positioning, CTA hierarchy, metadata, resume paths, and selected-work framing.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Repositioned the hero around software development hiring actions instead of older casual homepage copy.</li>
                   <li>Restructured selected work, technical strengths, notes previews, resume/contact paths, and footer navigation.</li>
@@ -511,7 +513,7 @@
               <h3>MovieBot stream surface split</h3>
               <p>MovieBot viewers need voting and browsing to stay distinct; I split the static stream page from the searchable HTML/CSS/JavaScript catalog and linked both back to the Python bot case study.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Split the live stream room and searchable catalog into separate pages with cross-links back to MovieBot.</li>
                   <li>Built the movie catalog search, vote-command copy flow, poster grid, and static fallback list.</li>
@@ -538,7 +540,7 @@
               <h3>TraverseOps public-demo framing</h3>
               <p>Field-operations demos can look shallow without context; I reframed TraverseOps around MapLibre/Supabase sample data, asset workflows, demo limits, and production-hardening requirements.</p>
               <div class="what-built-card">
-                <h4>What I built</h4>
+                <p class="what-built-label">What I built</p>
                 <ul class="project-bullets">
                   <li>Reframed the project around field assets, inspections, work orders, imports, reports, and role-based review.</li>
                   <li>Added case-study sections for architecture, demo boundaries, screenshots, and production hardening.</li>

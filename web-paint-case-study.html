@@ -3,23 +3,68 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0=' 'sha256-kox+RQlJ+TPhHCGphR/vwFjwpL60MhT3GLtq4K5d4KY='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Web Paint case study by Zac Batten: a vanilla JavaScript Canvas editor with drawing modes, typed-array flood fill, capped undo/redo snapshots, PNG import/export, local save, zoom, and mobile-friendly tool UI.">
+    <meta name="description" content="Web Paint case study by Zac Batten: a browser canvas tool using vanilla JavaScript, Canvas 2D rendering, undo/redo, import/export, and mobile panels.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/web-paint-case-study.html">
     <meta property="og:site_name" content="Inefy Workbench">
-    <meta property="og:title" content="Web Paint Case Study / Zac Batten">
-    <meta property="og:description" content="A vanilla JavaScript Canvas editor with drawing modes, typed-array flood fill, undo/redo snapshots, import/export, local save, zoom, and mobile-friendly tool panels.">
+    <meta property="og:title" content="Web Paint Canvas Case Study / Zac Batten">
+    <meta property="og:description" content="Browser canvas tool built with vanilla JavaScript, Canvas 2D rendering, undo/redo snapshots, import/export, and mobile tool panels.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://zacbatten.me/web-paint-case-study.html">
     <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <meta property="og:image:alt" content="Inefy workbench portfolio preview with selected work and browser tools.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Web Paint Case Study / Zac Batten">
-    <meta name="twitter:description" content="Vanilla JavaScript Canvas editor with drawing modes, undo/redo snapshots, import/export, and mobile-friendly tool panels.">
+    <meta name="twitter:title" content="Web Paint Canvas Case Study / Zac Batten">
+    <meta name="twitter:description" content="Browser canvas tool with vanilla JavaScript, Canvas 2D rendering, undo/redo snapshots, import/export, and mobile panels.">
     <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
-    <title>Web Paint Case Study / Zac Batten</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://zacbatten.me/web-paint-case-study.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Case Studies",
+                "item": "https://zacbatten.me/case-studies.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Web Paint",
+                "item": "https://zacbatten.me/web-paint-case-study.html"
+              }
+            ]
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://zacbatten.me/web-paint-case-study.html#web-paint",
+            "name": "Web Paint",
+            "applicationCategory": "DesignApplication",
+            "operatingSystem": "Web browser",
+            "url": "https://zacbatten.me/paint.html",
+            "author": {
+              "@type": "Person",
+              "@id": "https://zacbatten.me/#zac-batten",
+              "name": "Zac Batten",
+              "url": "https://zacbatten.me/"
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://zacbatten.me/web-paint-case-study.html"
+            },
+            "description": "Browser canvas tool built with vanilla JavaScript, Canvas 2D rendering, drawing modes, undo/redo, import/export, local save, zoom, and mobile controls.",
+            "keywords": "browser canvas tool, Canvas API, vanilla JavaScript, drawing editor, frontend development"
+          }
+        ]
+      }
+    </script>
+    <title>Web Paint Canvas Case Study / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +72,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#case-study-content">Skip to Web Paint case study</a>
+    <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
       <a class="brand" href="index.html#top" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
@@ -41,7 +86,7 @@
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
         <a href="work.html">Work</a>
-        <a href="case-studies.html" aria-current="page">Case Studies</a>
+        <a href="case-studies.html" aria-current="location">Case Studies</a>
         <a href="index.html#about">About</a>
         <a href="notes.html">Notes</a>
         <a href="resume.html">Resume</a>
@@ -50,7 +95,7 @@
       </nav>
     </header>
 
-    <main id="top" class="case-template-page">
+    <main id="top" class="case-template-page" tabindex="-1">
       <nav class="page-breadcrumb" aria-label="Breadcrumb">
         <a href="case-studies.html">Case Studies</a>
         <span aria-hidden="true">/</span>
@@ -84,7 +129,7 @@
           </dl>
         </div>
 
-        <figure class="case-template-image-placeholder" role="img" aria-label="Stylized Web Paint editor preview with toolbar, color palette, canvas, brush stroke, shape, zoom controls, and export action">
+        <figure class="case-template-image-placeholder" role="img" aria-label="Stylized Web Paint editor with toolbar, color palette, canvas, brush stroke, shape, zoom controls, and export action">
           <div>
             <strong>Canvas editor in the browser</strong>
           </div>
@@ -102,6 +147,7 @@
           <a href="paint.html">Live tool</a>
           <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">JavaScript source</a>
           <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.css" rel="noopener noreferrer">CSS source</a>
+          <a href="interactive-lab.html">Interactive Lab</a>
           <a href="work.html#flagship-case-studies">Work index</a>
         </div>
       </section>
@@ -114,6 +160,28 @@
             <p>
               A browser drawing editor needs predictable tool state, durable history, safe imports, and export paths that work without a backend. I built Web Paint with the Canvas 2D API, vanilla JavaScript state, pointer events, typed-array flood fill, capped ImageData history, PNG import/export, localStorage save/load, canvas resizing, zoom, and a desktop-inspired toolbar that still works at narrow widths.
             </p>
+            <div class="case-template-feature-list" aria-label="Web Paint engineering intro">
+              <article>
+                <h3>Technical problem</h3>
+                <p>Canvas tools have to coordinate mutable pixels, active tool state, pointer input, history, imports, exports, zoom, and resize behavior.</p>
+              </article>
+              <article>
+                <h3>Constraints</h3>
+                <p>The editor runs as a static page with no framework or backend, so browser APIs carry file handling, storage, clipboard, and fullscreen behavior.</p>
+              </article>
+              <article>
+                <h3>Approach</h3>
+                <p>I used a focused vanilla JavaScript state model, Canvas 2D drawing paths, pointer capture, typed-array flood fill, and capped ImageData snapshots.</p>
+              </article>
+              <article>
+                <h3>Tradeoff</h3>
+                <p>ImageData history is straightforward and reliable for a demo editor, but it becomes memory-heavy on large canvases.</p>
+              </article>
+              <article>
+                <h3>Next improvement</h3>
+                <p>The next pass would add command or dirty-region history, worker-backed persistence, selection movement, richer shortcuts, and better nonvisual output.</p>
+              </article>
+            </div>
             <div class="case-study-callout">
               <strong>Hiring signal:</strong>
               <span>The implementation shows frontend fundamentals without leaning on a framework: DOM wiring, event handling, state modeling, Canvas APIs, browser storage, clipboard APIs, file validation, mobile layout, and honest accessibility tradeoffs.</span>
@@ -203,7 +271,7 @@
               </li>
             </ol>
             <p>
-              Continuous pointer movement is throttled through <code>requestAnimationFrame</code> with a pending point, which keeps drawing responsive to pen/mouse input while avoiding unnecessary repeated work during high-frequency pointer events.
+              Continuous pointer movement is throttled through <code>requestAnimationFrame</code> with a pending point, which keeps drawing fluid under pen/mouse input while avoiding unnecessary repeated work during high-frequency pointer events.
             </p>
           </section>
 
@@ -323,25 +391,25 @@
             <p class="eyebrow">11 / Screenshots and demo placeholders</p>
             <h2 id="screenshots-title">Visual proof to add as the project matures.</h2>
             <div class="case-template-screenshot-grid">
-              <figure class="case-template-image-placeholder" role="img" aria-label="Placeholder screenshot for the Web Paint ribbon toolbar and color palette">
+              <figure class="case-template-image-placeholder" role="img" aria-label="Planned Web Paint screenshot area for ribbon toolbar and color palette">
                 <div>
                   <strong>Toolbar and palette</strong>
                 </div>
                 <figcaption>Show the Paint-style ribbon, active tool state, brush sizes, shapes, and swatches.</figcaption>
               </figure>
-              <figure class="case-template-image-placeholder" role="img" aria-label="Placeholder screenshot for the Web Paint canvas drawing workspace">
+              <figure class="case-template-image-placeholder" role="img" aria-label="Planned Web Paint screenshot area for the canvas drawing workspace">
                 <div>
                   <strong>Canvas workspace</strong>
                 </div>
                 <figcaption>Show freehand strokes, shape previews, selection handles, zoom, and status bar feedback.</figcaption>
               </figure>
-              <figure class="case-template-image-placeholder" role="img" aria-label="Placeholder GIF for Web Paint importing an image and exporting a PNG">
+              <figure class="case-template-image-placeholder" role="img" aria-label="Planned Web Paint GIF area for importing an image and exporting a PNG">
                 <div>
                   <strong>Import / export GIF</strong>
                 </div>
                 <figcaption>Demonstrate opening an image, fitting it to the canvas, copying a selection, and saving a PNG.</figcaption>
               </figure>
-              <figure class="case-template-image-placeholder" role="img" aria-label="Placeholder GIF for Web Paint undo redo and shape drawing behavior">
+              <figure class="case-template-image-placeholder" role="img" aria-label="Planned Web Paint GIF area for undo, redo, and shape drawing behavior">
                 <div>
                   <strong>Undo / redo GIF</strong>
                 </div>
@@ -370,6 +438,7 @@
             <li><strong>Live:</strong> <a href="paint.html">paint.html</a></li>
             <li><strong>Source:</strong> <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">paint.js</a></li>
             <li><strong>UI:</strong> <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.css" rel="noopener noreferrer">paint.css</a></li>
+            <li><strong>Lab:</strong> <a href="interactive-lab.html">Interactive Lab archive</a></li>
             <li><strong>Frontend:</strong> HTML Canvas, DOM APIs, pointer events, CSS Grid</li>
             <li><strong>Browser APIs:</strong> Clipboard, File input, LocalStorage, Fullscreen, object URLs</li>
             <li><strong>Core risk:</strong> full-canvas ImageData history on large canvases</li>

@@ -5,14 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Minefield Sweep by Zac Batten: a JavaScript grid puzzle with delayed mine placement, recursive reveal, flag mode, difficulty switching, timer/best-time state, and accessible cell labels.">
-    <title>Minefield Sweep / Interactive Lab</title>
+    <meta name="description" content="Minefield Sweep by Zac Batten: a JavaScript grid puzzle with delayed mines, recursive reveal, flag mode, difficulty switching, best times, and accessible cells.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/minefield-sweep.html">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="Minefield Sweep JavaScript Game / Zac Batten">
+    <meta property="og:description" content="A JavaScript grid puzzle with delayed mines, recursive reveal, flag mode, difficulty switching, best times, and accessible cells.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zacbatten.me/minefield-sweep.html">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image:alt" content="Inefy workbench preview with selected projects and browser tools.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Minefield Sweep JavaScript Game / Zac Batten">
+    <meta name="twitter:description" content="JavaScript grid puzzle with delayed mines, recursive reveal, flag mode, difficulty switching, best times, and accessible cells.">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <title>Minefield Sweep JavaScript Game / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2346d6ca'/%3E%3Cpath d='M19 17h26v30H19z' fill='%23070f13'/%3E%3Cpath d='M24 22h16v5H24zm0 10h16v5H24zm0 10h10v5H24z' fill='%23f5c45b'/%3E%3Ccircle cx='46' cy='18' r='7' fill='%23ff6f61'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="minefield-sweep.css">
     <link rel="stylesheet" href="demo-navigation.css">
   </head>
   <body>
-    <main class="sweep-app" aria-label="Minefield Sweep game">
+    <a class="skip-link" href="#top">Skip to main content</a>
+    <main id="top" class="sweep-app" tabindex="-1" aria-label="Minefield Sweep game">
       <div class="ambient-grid" aria-hidden="true"></div>
 
       <header class="titlebar">
@@ -100,7 +114,7 @@
         </div>
       </section>
 
-      <section class="game-stage-wrap" aria-label="Playfield">
+      <section class="game-stage-wrap" id="game-stage" aria-label="Playfield">
         <div class="difficulty-bar" role="radiogroup" aria-label="Difficulty">
           <button type="button" data-difficulty="scout" class="active" role="radio" aria-checked="true">Scout</button>
           <button type="button" data-difficulty="ranger" role="radio" aria-checked="false">Ranger</button>
@@ -132,7 +146,7 @@
         <span class="next-step-kicker">Implementation notes</span>
         <h2 id="sweep-implementation-title">Board generation, reveal flow, and accessible cell state.</h2>
         <p>
-          <strong>Main state</strong> includes difficulty config, mine positions, revealed cells, flags, timer, first-click status, cleared percentage, best time, and game status. The loop is event-driven rather than continuous: clicks, key presses, or difficulty changes update board state and then re-render the grid. Mine placement waits for the first reveal so the first move can stay safe. Reveal logic expands empty regions recursively, counts adjacent mines, toggles flags, and checks win/loss conditions; scoring is represented by clear time and completion percentage. Keyboard users can focus cells, move with Arrow keys, reveal with Enter or Space, and flag with F. Touch uses tap-to-reveal and Flag Mode. The lesson was treating every cell as stateful UI, not just a visual tile.
+          <strong>Main state</strong> includes difficulty config, mine positions, revealed cells, flags, timer, first-click status, cleared percentage, best time, and game status. The loop is event-driven rather than continuous: clicks, key presses, or difficulty changes update board state and then re-render the grid. Mine placement waits for the first reveal so the first move can stay safe. Reveal logic expands empty regions recursively, counts adjacent mines, toggles flags, and checks win/loss conditions; scoring is represented by clear time and completion percentage. Keyboard users can focus cells, move with Arrow keys, reveal with Enter or Space, and flag with F. Touch uses tap-to-reveal and Flag Mode. The lesson was treating every cell as stateful UI with labels, focus, and game state.
         </p>
       </section>
 
