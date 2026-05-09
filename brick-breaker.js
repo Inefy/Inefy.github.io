@@ -14,6 +14,7 @@ const startButton = document.querySelector("#startButton");
 const restartButton = document.querySelector("#restartButton");
 const pauseButton = document.querySelector("#pauseButton");
 const fullscreenButton = document.querySelector("#fullscreenButton");
+const gameAnnouncement = document.querySelector("#gameAnnouncement");
 
 const ctx = canvas.getContext("2d");
 const WORLD_WIDTH = 960;
@@ -69,6 +70,7 @@ let activePowers = {
   shield: 0
 };
 let prefersReducedMotion = reducedMotionQuery.matches;
+let gameAnnouncementTimer = 0;
 
 function syncMotionPreference(event = reducedMotionQuery) {
   prefersReducedMotion = event.matches;
@@ -166,6 +168,16 @@ function updateHud(statusText) {
   }
 }
 
+function announceGame(message) {
+  if (!gameAnnouncement || !message) return;
+
+  window.clearTimeout(gameAnnouncementTimer);
+  gameAnnouncement.textContent = "";
+  gameAnnouncementTimer = window.setTimeout(() => {
+    gameAnnouncement.textContent = message;
+  }, 20);
+}
+
 function ballSpeedForLevel() {
   return 420 + (level - 1) * 34;
 }
@@ -239,6 +251,7 @@ function startGame() {
   resetGame("serve");
   setMenu(false);
   updateHud("Launch");
+  announceGame(`Brick Breaker started. Level ${level}. ${lives} lives.`);
 }
 
 function restartGame() {
@@ -254,6 +267,7 @@ function togglePause() {
     pointerActive = false;
     updateHud("Paused");
     setMenu(true, "Paused", "Resume", `Score ${score}`);
+    announceGame(`Game paused. Score ${score}.`);
     return;
   }
 
@@ -262,6 +276,7 @@ function togglePause() {
     updateHud(state === "serve" ? "Launch" : "Running");
     setMenu(false);
     primeAudio();
+    announceGame(`Game resumed. Score ${score}.`);
   }
 }
 
@@ -307,6 +322,7 @@ function launchBall() {
   ball.vy = -Math.cos(angle) * ball.speed;
   state = "playing";
   updateHud("Running");
+  announceGame(`Ball launched. Score ${score}.`);
   playTone(420, 0.06, "triangle", 0.04);
 }
 
@@ -410,6 +426,7 @@ function moveBall(dt) {
     screenShake = Math.max(screenShake, 4);
     spawnPaddleSpark(ball.x, WORLD_HEIGHT - 30);
     updateHud("Shield save");
+    announceGame("Shield saved the ball.");
     playTone(520, 0.08, "triangle", 0.04);
   }
 
@@ -508,6 +525,7 @@ function clearLevel() {
   state = "serve";
   flashTime = 0.28;
   updateHud(`Level ${level}`);
+  announceGame(`Level ${level} started. Score ${score}.`);
   playTone(650, 0.12, "triangle", 0.045);
 }
 
@@ -516,6 +534,7 @@ function finishGame() {
   clearPowerState();
   updateHud("Board cleared");
   setMenu(true, "Board Cleared", "Run Again", `Score ${score} / Best ${best}`);
+  announceGame(`Board cleared. Final score ${score}. Best ${best}.`);
   playTone(760, 0.2, "triangle", 0.05);
 }
 
@@ -528,6 +547,7 @@ function loseLife() {
     state = "over";
     updateHud("Game over");
     setMenu(true, "Game Over", "Try Again", `Score ${score} / Best ${best}`);
+    announceGame(`Game over. Final score ${score}. Best ${best}.`);
     playTone(120, 0.18, "sawtooth", 0.055);
     return;
   }
@@ -535,6 +555,7 @@ function loseLife() {
   resetBallOnPaddle();
   state = "serve";
   updateHud("Launch");
+  announceGame(`Life lost. ${lives} ${lives === 1 ? "life" : "lives"} remaining.`);
   playTone(170, 0.12, "sawtooth", 0.035);
 }
 
@@ -630,6 +651,7 @@ function activatePowerUp(powerUp) {
   }
   spawnPowerCollect(powerUp);
   updateHud(statusText);
+  announceGame(`${statusText}. Score ${score}.`);
   playTone(type === "life" ? 690 : 560, 0.08, "triangle", 0.04);
 }
 
@@ -1125,9 +1147,11 @@ function bindEvents() {
   window.addEventListener("keyup", handleKeyUp);
 
   canvas.addEventListener("pointermove", (event) => {
+    event.preventDefault();
     setPaddleTargetFromClient(event.clientX, event.clientY);
   });
   canvas.addEventListener("pointerdown", (event) => {
+    event.preventDefault();
     setPaddleTargetFromClient(event.clientX, event.clientY);
     primeAudio();
     if (state === "idle" || state === "over" || state === "won") startGame();

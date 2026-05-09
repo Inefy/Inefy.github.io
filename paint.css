@@ -33,7 +33,7 @@ body {
 body,
 button,
 input {
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 button {
@@ -53,12 +53,19 @@ button {
 
 .paint-app {
   display: grid;
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
+  min-width: 0;
   height: 100vh;
-  grid-template-rows: 56px 220px minmax(0, 1fr) 40px;
+  grid-template-rows: 56px 220px minmax(0, 1fr) 52px;
   overflow: hidden;
   color: var(--text);
   background: #f4f7fb;
+}
+
+.paint-app > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .titlebar {
@@ -148,7 +155,7 @@ button {
 .paint-nav a,
 .paint-nav button {
   display: flex;
-  min-height: 34px;
+  min-height: 44px;
   align-items: center;
   padding: 8px 10px;
   color: inherit;
@@ -195,6 +202,7 @@ button {
 }
 
 .tab {
+  min-width: 56px;
   height: 64px;
   padding: 0 4px;
   color: #526174;
@@ -216,7 +224,9 @@ button {
   align-items: stretch;
   gap: 14px;
   padding: 10px 12px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
   scrollbar-width: none;
 }
 
@@ -241,7 +251,7 @@ button {
 }
 
 .paint-app.is-minimized {
-  grid-template-rows: 56px 0 minmax(0, 1fr) 40px;
+  grid-template-rows: 56px 0 minmax(0, 1fr) 52px;
 }
 
 .paint-app.is-minimized .ribbon {
@@ -338,7 +348,8 @@ button {
 
 .size-label input {
   width: 84px;
-  height: 34px;
+  min-height: 44px;
+  height: 44px;
   padding: 0 8px;
   color: var(--text);
   background: #ffffff;
@@ -347,7 +358,8 @@ button {
 }
 
 .size-action-button {
-  height: 34px;
+  min-height: 44px;
+  height: 44px;
   color: #22324a;
   background: transparent;
   border: 1px solid transparent;
@@ -362,7 +374,8 @@ button {
 
 .mini-command-button {
   min-width: 82px;
-  height: 28px;
+  min-height: 44px;
+  height: 44px;
   padding: 0 8px;
   color: #44546a;
   text-align: left;
@@ -432,23 +445,23 @@ button {
 
 .shape-grid {
   display: grid;
-  grid-template-columns: repeat(4, 42px);
-  grid-auto-rows: 36px;
+  grid-template-columns: repeat(4, 44px);
+  grid-auto-rows: 44px;
   gap: 6px;
 }
 
 .shape-button {
   display: grid;
-  width: 46px;
-  height: 39px;
+  width: 44px;
+  height: 44px;
   place-items: center;
   font-size: 25px;
 }
 
 .colors-group {
-  width: 470px;
-  flex: 0 0 470px;
-  min-width: 470px;
+  width: max-content;
+  flex: 0 0 auto;
+  min-width: max-content;
 }
 
 .colors-group .ribbon-group-body {
@@ -494,17 +507,17 @@ button {
 .swatches {
   display: grid;
   flex: 0 0 auto;
-  grid-template-columns: repeat(10, 26px);
-  grid-auto-rows: 26px;
+  grid-template-columns: repeat(10, 44px);
+  grid-auto-rows: 44px;
   gap: 6px;
 }
 
 .swatch {
-  width: 26px;
-  height: 26px;
+  width: 44px;
+  height: 44px;
   background: var(--swatch);
   border: 1px solid rgba(15, 23, 42, 0.18);
-  border-radius: 6px;
+  border-radius: 8px;
   transition: transform 140ms ease, box-shadow 140ms ease;
 }
 
@@ -597,13 +610,14 @@ button {
 
 .resize-handle {
   position: absolute;
-  right: -7px;
-  bottom: -7px;
-  width: 13px;
-  height: 13px;
+  right: -18px;
+  bottom: -18px;
+  width: 44px;
+  height: 44px;
   background: #ffffff;
-  border: 1px solid #aebbd0;
+  border: 2px solid #aebbd0;
   border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.18);
   cursor: nwse-resize;
   z-index: 3;
   padding: 0;
@@ -629,7 +643,8 @@ button {
 
 .statusbar {
   display: flex;
-  height: 40px;
+  min-height: 52px;
+  height: 52px;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
@@ -662,13 +677,14 @@ button {
 }
 
 .zoom-button {
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
   font-size: 18px;
 }
 
 .zoom-slider {
   width: 170px;
+  min-height: 44px;
   accent-color: var(--blue-600);
 }
 

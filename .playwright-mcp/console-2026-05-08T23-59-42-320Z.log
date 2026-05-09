@@ -1,0 +1,18 @@
+[ 9820264ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://gql.twitch.tv/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.2.405:0
+[ 9820267ms] [ERROR] Failed to load resource: the server responded with a status of 429 (Too Many Requests) @ https://passport.twitch.tv/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.2.405:0
+[ 9820289ms] [ERROR] Failed to load resource: the server responded with a status of 429 (Too Many Requests) @ https://passport.twitch.tv/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.2.405:0
+[ 9820352ms] [LOG] Amazon IVS Player SDK 1.52.0-rc.3 @ https://assets.twitch.tv/assets/amazon-ivs-wasmworker.min-d6040673f8d3054b3ffc.js:0
+[ 9820550ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://gql.twitch.tv/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.2.405:0
+[ 9820822ms] [LOG] MediaCapabilities found [Object] @ https://assets.twitch.tv/assets/amazon-ivs-wasmworker.min-d6040673f8d3054b3ffc.js:0
+[ 9821552ms] [LOG] Error @ :2
+[ 9821657ms] [LOG] Error @ :2
+[ 9821960ms] [LOG] Error @ :2
+[ 9822012ms] [LOG] Error @ :2
+[ 9822190ms] [LOG] Error @ :2
+[ 9822251ms] [LOG] Error @ :2
+[ 9822511ms] [LOG] Error @ :2
+[ 9822576ms] [LOG] Error @ :2
+[ 9822930ms] [LOG] Error @ :2
+[ 9823550ms] [LOG] Error @ :2
+[ 9823877ms] [LOG] Error @ :2
+[ 9823912ms] [LOG] Error @ :2

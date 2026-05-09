@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="Recent portfolio, project, accessibility, performance, design, and content improvements on Zac Batten's software developer portfolio.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/changelog.html">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="Changelog / Zac Batten Developer Portfolio">
+    <meta property="og:description" content="Recent site and project improvements across case studies, demos, accessibility, performance, design, and technical notes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zacbatten.me/changelog.html">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image:alt" content="Inefy workbench portfolio changelog page preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Changelog / Zac Batten Developer Portfolio">
+    <meta name="twitter:description" content="Recent portfolio improvements across case studies, demos, accessibility, performance, design, and technical notes.">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <title>Changelog / Zac Batten Developer Portfolio</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#top">Skip to main content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+        <span class="brand-mark" aria-hidden="true">ZB</span>
+        <span class="brand-copy">
+          <span>Zac Batten</span>
+          <small>Inefy workbench</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html">Work</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="about.html">About</a>
+        <a href="notes.html">Notes</a>
+        <a href="resume.html">Resume</a>
+        <a class="nav-cta" href="contact.html">Contact</a>
+        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top" class="changelog-page" tabindex="-1">
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="work.html">Back to Work</a>
+        <span aria-hidden="true">/</span>
+        <span>Changelog</span>
+      </nav>
+
+      <section class="section changelog-hero" aria-labelledby="changelog-title">
+        <div class="section-heading">
+          <p class="eyebrow">Changelog</p>
+          <h1 id="changelog-title">Recent improvements.</h1>
+          <p>
+            A lightweight record of portfolio updates. For deeper technical decisions, read the build notes and case studies linked from each entry.
+          </p>
+        </div>
+      </section>
+
+      <section class="section changelog-section" aria-labelledby="recent-changes-title">
+        <div class="section-heading">
+          <p class="eyebrow">Recent updates</p>
+          <h2 id="recent-changes-title">What changed recently.</h2>
+        </div>
+
+        <div class="changelog-list">
+          <article>
+            <div class="changelog-entry-head">
+              <time datetime="2026-05-09">May 9, 2026</time>
+              <span class="change-type change-type-content">Content</span>
+            </div>
+            <h3>Added a Web Paint technical note</h3>
+            <p>Documented how the browser canvas editor handles tool state, rendering, undo/redo snapshots, import/export paths, touch constraints, and accessibility limitations.</p>
+            <dl class="changelog-meta">
+              <div>
+                <dt>Related page/project</dt>
+                <dd><a href="notes.html#web-paint-browser-canvas-editor">Web Paint build note</a> / <a href="web-paint-case-study.html">case study</a></dd>
+              </div>
+            </dl>
+          </article>
+
+          <article>
+            <div class="changelog-entry-head">
+              <time datetime="2026-05-09">May 9, 2026</time>
+              <span class="change-type change-type-content">Content</span>
+            </div>
+            <h3>Added TraverseOps field-workflow note</h3>
+            <p>Added a concise note on map-first field workflows, asset state, inspections, work orders, imports, empty states, and production-hardening ideas.</p>
+            <dl class="changelog-meta">
+              <div>
+                <dt>Related page/project</dt>
+                <dd><a href="notes.html#traverseops-field-workflows">TraverseOps build note</a> / <a href="traverseops-case-study.html">case study</a></dd>
+              </div>
+            </dl>
+          </article>
+
+          <article>
+            <div class="changelog-entry-head">
+              <time datetime="2026-05-09">May 9, 2026</time>
+              <span class="change-type change-type-content">Content</span>
+            </div>
+            <h3>Added MovieBot chat-to-OBS note</h3>
+            <p>Explained the Twitch chat command flow, vote state, tie handling, movie folder scanning, OBS WebSocket playback, and reconnect behavior behind MovieBot.</p>
+            <dl class="changelog-meta">
+              <div>
+                <dt>Related page/project</dt>
+                <dd><a href="notes.html#moviebot-chat-to-obs">MovieBot build note</a> / <a href="moviebot-case-study.html">case study</a></dd>
+              </div>
+            </dl>
+          </article>
+
+          <article>
+            <div class="changelog-entry-head">
+              <time datetime="2026-05-08">May 8, 2026</time>
+              <span class="change-type change-type-design">Design</span>
+            </div>
+            <h3>Refocused the homepage around selected work</h3>
+            <p>Reworked the homepage hierarchy so TraverseOps, MovieBot, and Web Paint lead the portfolio, with clearer recruiter CTAs for work, resume, GitHub, and contact.</p>
+            <dl class="changelog-meta">
+              <div>
+                <dt>Related page/project</dt>
+                <dd><a href="index.html#featured-builds">Homepage selected work</a> / <a href="work.html">Work page</a></dd>
+              </div>
+            </dl>
+          </article>
+
+          <article>
+            <div class="changelog-entry-head">
+              <time datetime="2026-05-08">May 8, 2026</time>
+              <span class="change-type change-type-feature">Feature</span>
+            </div>
+            <h3>Added structured work and case-study pages</h3>
+            <p>Created dedicated project indexes and deeper case-study pages so hiring reviewers can scan flagship projects, supporting pages, demos, and technical proof from one path.</p>
+            <dl class="changelog-meta">
+              <div>
+                <dt>Related page/project</dt>
+                <dd><a href="work.html">Work</a> / <a href="case-studies.html">Case Studies</a></dd>
+              </div>
+            </dl>
+          </article>
+
+          <article>
+            <div class="changelog-entry-head">
+              <time datetime="2026-05-08">May 8, 2026</time>
+              <span class="change-type change-type-accessibility">Accessibility</span>
+            </div>
+            <h3>Improved navigation, focus, and reduced-motion support</h3>
+            <p>Added a mobile-friendly menu pattern, clearer skip-link behavior, consistent focus styles, and reduced-motion handling for decorative animation and interactive surfaces.</p>
+            <dl class="changelog-meta">
+              <div>
+                <dt>Related page/project</dt>
+                <dd><a href="index.html#top">Global layout</a> / <a href="interactive-lab.html">Interactive Lab</a></dd>
+              </div>
+            </dl>
+          </article>
+
+          <article>
+            <div class="changelog-entry-head">
+              <time datetime="2026-05-08">May 8, 2026</time>
+              <span class="change-type change-type-performance">Performance</span>
+            </div>
+            <h3>Added project visuals with loading safeguards</h3>
+            <p>Replaced several text-only or CSS-only previews with real project screenshots, WebP sources, explicit dimensions, lazy loading, and descriptive alt text.</p>
+            <dl class="changelog-meta">
+              <div>
+                <dt>Related page/project</dt>
+                <dd><a href="work.html">Work page</a> / <a href="interactive-lab.html">Interactive Lab</a></dd>
+              </div>
+            </dl>
+          </article>
+
+          <article>
+            <div class="changelog-entry-head">
+              <time datetime="2026-05-08">May 8, 2026</time>
+              <span class="change-type change-type-bug">Bug fix</span>
+            </div>
+            <h3>Replaced placeholder demo links with local portfolio pages</h3>
+            <p>Pointed TraverseOps calls to the public static demo page and kept project links inside the portfolio path so reviewers do not hit placeholder or unavailable domains.</p>
+            <dl class="changelog-meta">
+              <div>
+                <dt>Related page/project</dt>
+                <dd><a href="traverseops-demo.html">TraverseOps demo</a> / <a href="traverseops-case-study.html">case study</a></dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section class="next-step-panel" aria-labelledby="changelog-next-title">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2 id="changelog-next-title">Use this as the quick activity log.</h2>
+          <p>The changelog summarizes what changed. The Notes page explains implementation decisions, and the case studies show finished project context.</p>
+        </div>
+        <div class="next-step-actions">
+          <a class="button primary" href="notes.html">Read technical notes</a>
+          <a class="button secondary" href="work.html">View selected work</a>
+          <a class="button ghost" href="case-studies.html">Case studies</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-identity">
+        <strong>Zac Batten</strong>
+        <span>Software developer building practical web tools, automation, and frontend interfaces.</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="contact.html">Contact</a>
+        <a href="resume.html">Resume</a>
+        <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
+        <a href="work.html">Work</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="about.html">About</a>
+        <a href="notes.html">Notes</a>
+        <a href="interactive-lab.html">Interactive Lab</a>
+        <a href="changelog.html" aria-current="page">Changelog</a>
+        <a href="sitemap.xml">Sitemap</a>
+      </nav>
+      <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
+    </footer>
+
+    <script src="shared.js" defer></script>
+  </body>
+</html>

@@ -12,6 +12,7 @@ const startButton = document.querySelector("#startButton");
 const restartButton = document.querySelector("#restartButton");
 const pauseButton = document.querySelector("#pauseButton");
 const fullscreenButton = document.querySelector("#fullscreenButton");
+const gameAnnouncement = document.querySelector("#gameAnnouncement");
 
 const ctx = canvas.getContext("2d");
 const GRID = 24;
@@ -50,6 +51,7 @@ let audioContext = null;
 let touchStart = null;
 let particles = [];
 let prefersReducedMotion = reducedMotionQuery.matches;
+let gameAnnouncementTimer = 0;
 
 function syncMotionPreference(event = reducedMotionQuery) {
   prefersReducedMotion = event.matches;
@@ -109,6 +111,7 @@ function startRun() {
   primeAudio();
   resetRun("playing");
   setMenu(false);
+  announceGame("Snake Lab started. Score 0.");
 }
 
 function restartRun() {
@@ -120,6 +123,7 @@ function togglePause() {
     state = "paused";
     updateHud("Paused");
     setMenu(true, "Paused", "Resume", `Score ${score}`);
+    announceGame(`Game paused. Score ${score}.`);
     return;
   }
 
@@ -128,6 +132,7 @@ function togglePause() {
     updateHud("Running");
     setMenu(false);
     primeAudio();
+    announceGame(`Game resumed. Score ${score}.`);
   }
 }
 
@@ -154,6 +159,16 @@ function updateHud(statusText) {
     pauseButton.disabled = state !== "playing" && state !== "paused";
     pauseButton.setAttribute("aria-pressed", state === "paused" ? "true" : "false");
   }
+}
+
+function announceGame(message) {
+  if (!gameAnnouncement || !message) return;
+
+  window.clearTimeout(gameAnnouncementTimer);
+  gameAnnouncement.textContent = "";
+  gameAnnouncementTimer = window.setTimeout(() => {
+    gameAnnouncement.textContent = message;
+  }, 20);
 }
 
 function stepInterval() {
@@ -193,13 +208,14 @@ function updatePlaying() {
   if (ate) {
     eaten += 1;
     score += 10 + Math.floor(eaten / 5) * 5;
+    let statusText = eaten % 5 === 0 ? "Faster" : "Scored";
     if (score > best) {
       best = score;
       writeBest(best);
-      updateHud("New best");
-    } else {
-      updateHud(eaten % 5 === 0 ? "Faster" : "Scored");
+      statusText = "New best";
     }
+    updateHud(statusText);
+    announceGame(`${statusText}. Score ${score}. Snake length ${snake.length}.`);
     flashTime = 0.18;
     spawnEatBurst(next.x, next.y);
     playTone(560 + eaten * 8, 0.05, "triangle", 0.05);
@@ -220,6 +236,7 @@ function endRun() {
   spawnCrashBurst(snake[0]);
   updateHud("Game over");
   setMenu(true, "Game Over", "Try Again", `Score ${score} / Best ${best}`);
+  announceGame(`Game over. Final score ${score}. Best ${best}.`);
   playTone(110, 0.16, "sawtooth", 0.06);
 }
 
@@ -228,6 +245,7 @@ function finishRun() {
   food = null;
   updateHud("Grid cleared");
   setMenu(true, "Grid Cleared", "Run Again", `Score ${score} / Best ${best}`);
+  announceGame(`Grid cleared. Final score ${score}. Best ${best}.`);
   playTone(720, 0.18, "triangle", 0.05);
 }
 
@@ -613,11 +631,13 @@ function handleKey(event) {
 }
 
 function handleTouchStart(event) {
+  event.preventDefault();
   const touch = event.changedTouches[0];
   touchStart = { x: touch.clientX, y: touch.clientY };
 }
 
 function handleTouchEnd(event) {
+  event.preventDefault();
   if (!touchStart) return;
   const touch = event.changedTouches[0];
   const dx = touch.clientX - touchStart.x;
@@ -638,8 +658,12 @@ function bindEvents() {
   canvas.addEventListener("click", () => {
     if (canStartFromCurrentState()) startRun();
   });
-  canvas.addEventListener("touchstart", handleTouchStart, { passive: true });
-  canvas.addEventListener("touchend", handleTouchEnd, { passive: true });
+  canvas.addEventListener("touchstart", handleTouchStart, { passive: false });
+  canvas.addEventListener("touchend", handleTouchEnd, { passive: false });
+  canvas.addEventListener("touchcancel", (event) => {
+    event.preventDefault();
+    touchStart = null;
+  }, { passive: false });
   startButton?.addEventListener("click", () => {
     state === "paused" ? togglePause() : startRun();
   });

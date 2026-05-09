@@ -10,7 +10,16 @@
     <loc>https://zacbatten.me/case-studies.html</loc>
   </url>
   <url>
+    <loc>https://zacbatten.me/about.html</loc>
+  </url>
+  <url>
+    <loc>https://zacbatten.me/contact.html</loc>
+  </url>
+  <url>
     <loc>https://zacbatten.me/traverseops-case-study.html</loc>
+  </url>
+  <url>
+    <loc>https://zacbatten.me/traverseops-demo.html</loc>
   </url>
   <url>
     <loc>https://zacbatten.me/moviebot-case-study.html</loc>
@@ -29,6 +38,9 @@
   </url>
   <url>
     <loc>https://zacbatten.me/notes.html</loc>
+  </url>
+  <url>
+    <loc>https://zacbatten.me/changelog.html</loc>
   </url>
   <url>
     <loc>https://zacbatten.me/resume.html</loc>

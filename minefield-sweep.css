@@ -35,7 +35,7 @@ body {
     radial-gradient(circle at 52% 108%, rgba(104, 183, 255, 0.13), transparent 26rem),
     linear-gradient(145deg, #070e12 0%, #111a23 52%, #08100f 100%);
   color: var(--ink);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 button,
@@ -201,7 +201,7 @@ button:disabled {
 .game-nav a,
 .game-nav button,
 .difficulty-bar button {
-  min-height: 38px;
+  min-height: 44px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 8px;
   background:
@@ -840,7 +840,7 @@ body[data-flag-mode="true"] .board-shell {
 
   .game-nav a,
   .game-nav button {
-    min-height: 34px;
+    min-height: 44px;
     padding: 0 7px;
     font-size: 0.76rem;
   }
@@ -892,20 +892,20 @@ body[data-flag-mode="true"] .board-shell {
   .difficulty-bar button {
     min-width: 0;
     flex: 1 1 0;
-    min-height: 34px;
+    min-height: 44px;
     padding: 0 8px;
     font-size: 0.78rem;
   }
 
   .board-shell {
-    --cell: clamp(23px, min(calc((100vw - 80px) / var(--cols)), calc((100svh - 330px) / var(--rows))), 38px);
+    --cell: clamp(28px, min(calc((100vw - 42px) / var(--cols)), calc((100svh - 318px) / var(--rows))), 40px);
     height: calc(100svh - 286px);
-    padding: 8px;
+    padding: 6px;
   }
 
   .mine-board {
-    gap: 3px;
-    padding: 7px;
+    gap: 2px;
+    padding: 4px;
   }
 
   .cell {
@@ -964,9 +964,9 @@ body[data-flag-mode="true"] .board-shell {
   }
 
   .board-shell {
-    --cell: clamp(22px, min(calc((100vw - 80px) / var(--cols)), calc((100svh - 330px) / var(--rows))), 36px);
+    --cell: clamp(28px, min(calc((100vw - 42px) / var(--cols)), calc((100svh - 318px) / var(--rows))), 38px);
     height: calc(100svh - 286px);
-    padding: 6px;
+    padding: 5px;
   }
 }
 

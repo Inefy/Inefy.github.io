@@ -11,6 +11,7 @@ const restartButton = document.querySelector("#restartButton");
 const pauseButton = document.querySelector("#pauseButton");
 const fullscreenButton = document.querySelector("#fullscreenButton");
 const flapButton = document.querySelector("#flapButton");
+const gameAnnouncement = document.querySelector("#gameAnnouncement");
 
 const ctx = canvas.getContext("2d");
 const WORLD_WIDTH = 960;
@@ -60,6 +61,7 @@ let flashTime;
 let audioContext;
 let prefersReducedMotion = reducedMotionQuery.matches;
 let flapPointerActivated = false;
+let gameAnnouncementTimer = 0;
 
 function syncMotionPreference(event = reducedMotionQuery) {
   prefersReducedMotion = event.matches;
@@ -147,6 +149,7 @@ function startRun() {
   primeAudio();
   resetRun("playing");
   flap();
+  announceGame("Flappy Workbench started. Score 0.");
 }
 
 function flap() {
@@ -167,6 +170,7 @@ function togglePause() {
     state = "paused";
     updateHud("Paused");
     setMenu(true, "Paused", "Resume", `Score ${score}`);
+    announceGame(`Game paused. Score ${score}.`);
     return;
   }
 
@@ -175,6 +179,7 @@ function togglePause() {
     updateHud("Running");
     setMenu(false);
     primeAudio();
+    announceGame(`Game resumed. Score ${score}.`);
   }
 }
 
@@ -198,6 +203,16 @@ function updateHud(statusText) {
     pauseButton.disabled = state !== "playing" && state !== "paused";
     pauseButton.setAttribute("aria-pressed", state === "paused" ? "true" : "false");
   }
+}
+
+function announceGame(message) {
+  if (!gameAnnouncement || !message) return;
+
+  window.clearTimeout(gameAnnouncementTimer);
+  gameAnnouncement.textContent = "";
+  gameAnnouncementTimer = window.setTimeout(() => {
+    gameAnnouncement.textContent = message;
+  }, 20);
 }
 
 function spawnPipe() {
@@ -295,6 +310,7 @@ function updatePlaying(dt) {
       addFloater("+1", player.x + 34, player.y - 20, "#6de1a6", 32);
       playTone(740 + Math.min(score, 12) * 18, 0.07, "sine", 0.055);
       updateHud(statusText);
+      announceGame(`${statusText}. Score ${score}.`);
     }
   });
 
@@ -343,6 +359,7 @@ function endRun() {
   playTone(86, 0.18, "triangle", 0.045);
   updateHud(score > 0 ? "Run over" : "Try again");
   setMenu(true, score > 0 ? `Score ${score}` : "Try again", "Restart", score >= best && score > 0 ? "Best run" : `Best ${best}`);
+  announceGame(`Game over. Final score ${score}. Best ${best}.`);
 
   for (let i = 0; i < 22; i += 1) {
     if (prefersReducedMotion) break;

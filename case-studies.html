@@ -23,7 +23,7 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -42,10 +42,10 @@
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
         <a href="work.html">Work</a>
         <a href="case-studies.html" aria-current="page">Case Studies</a>
-        <a href="index.html#about">About</a>
+        <a href="about.html">About</a>
         <a href="notes.html">Notes</a>
         <a href="resume.html">Resume</a>
-        <a class="nav-cta" href="index.html#contact">Contact</a>
+        <a class="nav-cta" href="contact.html">Contact</a>
         <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
       </nav>
     </header>
@@ -58,12 +58,12 @@
           <p>
             A focused case-study index for hiring managers: what problem each project solves, what I built, the stack behind it, and the main technical challenge.
           </p>
-          <div class="work-jump-nav" aria-label="Case study shortcuts">
+          <nav class="work-jump-nav" aria-label="Case study shortcuts">
             <a href="#traverseops">TraverseOps</a>
             <a href="#moviebot">MovieBot</a>
             <a href="#web-paint">Web Paint</a>
             <a href="#movie-library">Movie Library</a>
-          </div>
+          </nav>
         </div>
       </section>
 
@@ -111,10 +111,22 @@
                   <dt>Main technical challenge</dt>
                   <dd>Keeping dense map, record, and workflow UI understandable on both desktop review screens and mobile field contexts.</dd>
                 </div>
+                <div>
+                  <dt>Production readiness</dt>
+                  <dd>Workflow modeling and public-safe data are solid; real deployment needs authentication, role permissions, audit logs, offline sync, import validation, field-device QA, and map/source monitoring.</dd>
+                </div>
+                <div>
+                  <dt>Testing / QA</dt>
+                  <dd><strong>Automated tests:</strong> no public automated suite is linked yet. <strong>Known limitations:</strong> real auth, offline sync, GIS feeds, and device-lab testing are not simulated. Manual QA covers sample-data loading, tabs, map filters, selected assets, inspection/work-order paths, import states, reports, mobile widths, keyboard focus, and empty/reset states.</dd>
+                </div>
+                <div>
+                  <dt>Deployment / run</dt>
+                  <dd><strong>Hosted/run location:</strong> static GitHub Pages demo. <strong>Environment/config:</strong> no public environment variables; sample data lives in client-side JavaScript. <strong>External APIs/services:</strong> no live municipal APIs. <strong>Local development:</strong> run <code>python -m http.server 8000</code>; production would keep GIS credentials, Supabase keys, and real records server-side.</dd>
+                </div>
               </dl>
               <div class="work-links">
                 <a href="traverseops-case-study.html">Full case study</a>
-                <a href="https://traverseops.app" rel="noopener noreferrer">Live demo</a>
+                <a href="traverseops-demo.html">Live demo</a>
                 <a href="notes.html#traverseops-demo-framing">Build note</a>
               </div>
             </div>
@@ -122,7 +134,10 @@
 
           <article class="case-study-listing" id="moviebot">
             <figure class="case-study-thumb">
-              <img src="assets/movie-night-preview.png" alt="Movie Night page with Twitch stream, chat panel, MovieBot workflow notes, and movie library links" loading="lazy" decoding="async" width="1200" height="630">
+              <picture>
+                <source srcset="assets/movie-night-preview.webp" type="image/webp">
+                <img src="assets/movie-night-preview.png" alt="Movie Night page with Twitch stream, chat panel, MovieBot workflow notes, and movie library links" loading="lazy" decoding="async" width="1200" height="630">
+              </picture>
             </figure>
             <div class="case-study-listing-body">
               <div class="case-study-listing-header">
@@ -153,6 +168,18 @@
                   <dt>Main technical challenge</dt>
                   <dd>Making a long-running stream tool resilient across Twitch auth, chat connection health, local file state, and OBS handoff timing.</dd>
                 </div>
+                <div>
+                  <dt>Production readiness</dt>
+                  <dd>Voting and OBS automation are solid for a local operator; real stream use needs secret rotation, rate-limit handling, reconnect health checks, structured logs, tests, and an operator dashboard.</dd>
+                </div>
+                <div>
+                  <dt>Testing / QA</dt>
+                  <dd><strong>Automated tests:</strong> pytest coverage exercises scanning, duration fallback, command behavior, OBS calls, token helpers, playback scheduling, fallback paths, and cleanup. <strong>Known limitations:</strong> no live operator dashboard, synthetic Twitch/OBS E2E environment, or production alerting yet. Manual QA verifies real OBS/Twitch configuration and portfolio pages.</dd>
+                </div>
+                <div>
+                  <dt>Deployment / run</dt>
+                  <dd><strong>Hosted/run location:</strong> Python bot runs locally beside OBS; portfolio support pages are static. <strong>Environment/config:</strong> private <code>.env</code> for Twitch tokens, channel, movie directory, and OBS host/scene/source config. <strong>External APIs/services:</strong> Twitch OAuth/chat and OBS WebSocket. <strong>Local development:</strong> install Python requirements, configure <code>.env</code>, run tests, then run the bot against a test channel.</dd>
+                </div>
               </dl>
               <div class="work-links">
                 <a href="moviebot-case-study.html">Full case study</a>
@@ -164,9 +191,11 @@
           </article>
 
           <article class="case-study-listing" id="web-paint">
-            <figure class="case-study-thumb work-thumb-paint" role="img" aria-label="Web Paint canvas editor with toolbar controls and drawing area">
-              <span class="thumb-toolbar" aria-hidden="true"></span>
-              <span class="thumb-canvas" aria-hidden="true"></span>
+            <figure class="case-study-thumb">
+              <picture>
+                <source srcset="assets/web-paint-workspace.webp" type="image/webp">
+                <img src="assets/web-paint-workspace.png" alt="Web Paint browser tool showing toolbar controls, brush settings, touch guidance, and drawing workspace" loading="lazy" decoding="async" width="1280" height="670">
+              </picture>
             </figure>
             <div class="case-study-listing-body">
               <div class="case-study-listing-header">
@@ -197,6 +226,18 @@
                   <dt>Main technical challenge</dt>
                   <dd>Keeping tool state, canvas history, resizing, zoom, and export predictable across desktop and narrow screens.</dd>
                 </div>
+                <div>
+                  <dt>Production readiness</dt>
+                  <dd>The static editor works as a prototype; real creative use would need memory-aware history, autosave recovery, richer keyboard support, accessibility improvements, and broader browser/device testing.</dd>
+                </div>
+                <div>
+                  <dt>Testing / QA</dt>
+                  <dd><strong>Automated tests:</strong> no automated suite exists yet. <strong>Known limitations:</strong> no pixel-regression tests, pointer-event replay, or full nonvisual canvas model yet. Manual QA covers every tool mode, undo/redo, import/export, clipboard fallback, storage limits, touch input, keyboard focus, large-image rejection, and responsive panels.</dd>
+                </div>
+                <div>
+                  <dt>Deployment / run</dt>
+                  <dd><strong>Hosted/run location:</strong> no-build GitHub Pages tool. <strong>Environment/config:</strong> no environment variables. <strong>External APIs/services:</strong> browser Canvas, File, Clipboard, Fullscreen, and LocalStorage APIs. <strong>Local development:</strong> run a static server and open <code>/paint.html</code>; drawings stay local unless exported.</dd>
+                </div>
               </dl>
               <div class="work-links">
                 <a href="paint.html">Live demo</a>
@@ -209,7 +250,10 @@
 
           <article class="case-study-listing" id="movie-library">
             <figure class="case-study-thumb">
-              <img src="assets/movie-library-preview.png" alt="Movie Library page showing public-domain poster cards, search controls, and MovieBot vote-command actions" loading="lazy" decoding="async" width="1200" height="630">
+              <picture>
+                <source srcset="assets/movie-library-preview.webp" type="image/webp">
+                <img src="assets/movie-library-preview.png" alt="Movie Library page showing public-domain poster cards, search controls, and MovieBot vote-command actions" loading="lazy" decoding="async" width="1200" height="630">
+              </picture>
             </figure>
             <div class="case-study-listing-body">
               <div class="case-study-listing-header">
@@ -239,6 +283,18 @@
                 <div>
                   <dt>Main technical challenge</dt>
                   <dd>Keeping a large static movie list searchable and indexable while preserving a readable fallback when JavaScript or external posters are unavailable.</dd>
+                </div>
+                <div>
+                  <dt>Production readiness</dt>
+                  <dd>Static catalog, copy buttons, and fallback content are solid; hardening would generate pages from one trusted data source, validate poster/link health, and keep viewer privacy intact.</dd>
+                </div>
+                <div>
+                  <dt>Testing / QA</dt>
+                  <dd><strong>Automated tests:</strong> no dedicated catalog suite exists yet. <strong>Known limitations:</strong> dynamic cards and fallback markup are still manually kept in sync. Manual QA covers search/filter cases, copy command states, result-count announcements, poster fallbacks, no-JS fallback content, mobile controls, and external link checks.</dd>
+                </div>
+                <div>
+                  <dt>Deployment / run</dt>
+                  <dd><strong>Hosted/run location:</strong> static GitHub Pages catalog. <strong>Environment/config:</strong> no environment variables; movie metadata lives in page/JavaScript source. <strong>External APIs/services:</strong> IMDb links and poster image URLs. <strong>Local development:</strong> run a static server and test search, copy buttons, poster loading, and no-JS fallback.</dd>
                 </div>
               </dl>
               <div class="work-links">
@@ -273,17 +329,20 @@
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="contact.html">Contact</a>
         <a href="resume.html">Resume</a>
         <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
         <a href="work.html">Work</a>
         <a href="case-studies.html" aria-current="page">Case Studies</a>
+        <a href="about.html">About</a>
         <a href="notes.html">Notes</a>
         <a href="interactive-lab.html">Interactive Lab</a>
+        <a href="changelog.html">Changelog</a>
         <a href="sitemap.xml">Sitemap</a>
       </nav>
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="shared.js" defer></script>
   </body>
 </html>

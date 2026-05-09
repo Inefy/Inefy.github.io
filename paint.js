@@ -5,6 +5,7 @@ const canvasStage = document.querySelector("#canvasStage");
 const selectionBox = document.querySelector("#selectionBox");
 const canvasResizeHandle = document.querySelector("#canvasResizeHandle");
 const toolStatus = document.querySelector("#toolStatus");
+const paintAnnouncement = document.querySelector("#paintAnnouncement");
 const cursorStatus = document.querySelector("#cursorStatus");
 const canvasSizeStatus = document.querySelector("#canvasSizeStatus");
 const zoomStatus = document.querySelector("#zoomStatus");
@@ -78,6 +79,17 @@ const maxImagePixels = 48000000;
 let cloudTimer = 0;
 let resizeDrag = null;
 let resizeFrame = 0;
+let paintAnnouncementTimer = 0;
+
+function announcePaint(message) {
+  if (!paintAnnouncement || !message) return;
+
+  window.clearTimeout(paintAnnouncementTimer);
+  paintAnnouncement.textContent = "";
+  paintAnnouncementTimer = window.setTimeout(() => {
+    paintAnnouncement.textContent = message;
+  }, 20);
+}
 
 function saveHistory() {
   state.history = state.history.slice(0, state.historyIndex + 1);
@@ -129,6 +141,7 @@ function drawImageToCanvas(image) {
   context.drawImage(image, x, y, width, height);
   clearSelection();
   saveHistory();
+  announcePaint(`Image opened on canvas. Canvas is ${canvas.width} by ${canvas.height} pixels.`);
 }
 
 function isSafeImageBlob(blob) {
@@ -138,6 +151,7 @@ function isSafeImageBlob(blob) {
 function loadImageBlob(blob) {
   if (!isSafeImageBlob(blob)) {
     showCloudStatus("!");
+    announcePaint("Image could not be opened. Choose a supported image under 16 megabytes.");
     return;
   }
 
@@ -147,6 +161,7 @@ function loadImageBlob(blob) {
     if (!image.width || !image.height || image.width * image.height > maxImagePixels) {
       URL.revokeObjectURL(url);
       showCloudStatus("!");
+      announcePaint("Image could not be opened because it is too large.");
       return;
     }
 
@@ -156,6 +171,7 @@ function loadImageBlob(blob) {
   image.onerror = () => {
     URL.revokeObjectURL(url);
     showCloudStatus("!");
+    announcePaint("Image could not be opened.");
   };
   image.src = url;
 }
@@ -191,6 +207,7 @@ async function copyCanvasToClipboard() {
 
 async function pasteFromClipboard() {
   if (!navigator.clipboard || !navigator.clipboard.read) {
+    announcePaint("Clipboard image paste is unavailable. Choose an image file to open.");
     imageOpenInput.click();
     return;
   }
@@ -212,10 +229,12 @@ async function pasteFromClipboard() {
       context.font = `${Math.max(18, state.brushSize * 4)}px Inter, sans-serif`;
       context.fillText(text, 80, 110);
       saveHistory();
+      announcePaint("Clipboard text pasted onto the canvas.");
       return;
     }
   }
 
+  announcePaint("No image or text was available on the clipboard. Choose an image file to open.");
   imageOpenInput.click();
 }
 
@@ -421,10 +440,14 @@ function titleCase(value) {
 
 function syncActiveControls() {
   toolButtons.forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.tool === state.activeTool && !state.activeShape);
+    const isActive = button.dataset.tool === state.activeTool && !state.activeShape;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
   });
   shapeButtons.forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.shape === state.activeShape);
+    const isActive = button.dataset.shape === state.activeShape;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
   });
 }
 
@@ -432,7 +455,7 @@ function setTool(tool) {
   if (tool !== "select") clearSelection();
   state.activeTool = tool;
   state.activeShape = "";
-  toolStatus.textContent = titleCase(tool);
+  toolStatus.textContent = `Tool: ${titleCase(tool)}`;
   syncActiveControls();
 }
 
@@ -440,7 +463,7 @@ function setShape(shape) {
   clearSelection();
   state.activeTool = "shape";
   state.activeShape = shape;
-  toolStatus.textContent = titleCase(shape);
+  toolStatus.textContent = `Tool: ${titleCase(shape)}`;
   syncActiveControls();
 }
 
@@ -448,14 +471,18 @@ function setColor(color) {
   state.color = color;
   primaryColorPreview.style.background = color;
   swatches.querySelectorAll(".swatch").forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.color === color);
+    const isActive = button.dataset.color === color;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
   });
 }
 
 function setBrushSize(size) {
   state.brushSize = Number(size);
   sizeButtons.forEach((button) => {
-    button.classList.toggle("is-active", Number(button.dataset.size) === state.brushSize);
+    const isActive = Number(button.dataset.size) === state.brushSize;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
   });
 }
 
@@ -464,6 +491,7 @@ function clearCanvas() {
   context.fillStyle = "#ffffff";
   context.fillRect(0, 0, canvas.width, canvas.height);
   saveHistory();
+  announcePaint("Canvas cleared.");
 }
 
 function downloadCanvas(source = canvas, filename = "web-paint.png") {
@@ -485,8 +513,10 @@ function saveToBrowserStorage() {
   try {
     localStorage.setItem("webPaintAutosave", canvas.toDataURL("image/png"));
     showCloudStatus("✓");
+    announcePaint("Canvas saved in this browser.");
   } catch {
     showCloudStatus("!");
+    announcePaint("Canvas could not be saved in this browser.");
   }
 }
 
@@ -502,7 +532,9 @@ async function toggleFullscreen() {
 function setActiveTab(tab) {
   paintApp.dataset.activeTab = tab;
   tabButtons.forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.tab === tab);
+    const isActive = button.dataset.tab === tab;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
   });
 }
 
@@ -537,6 +569,7 @@ function resizeCanvas(width, height) {
   state.canvasRect = null;
   syncCanvasSizeUi();
   saveHistory();
+  announcePaint(`Canvas resized to ${canvas.width} by ${canvas.height} pixels.`);
 }
 
 function startCanvasResize(event) {
@@ -760,6 +793,7 @@ function renderPalette() {
     button.dataset.color = color;
     button.style.setProperty("--swatch", color);
     button.setAttribute("aria-label", `Select color ${color}`);
+    button.setAttribute("aria-pressed", "false");
     button.addEventListener("click", () => setColor(color));
     swatches.appendChild(button);
   });
@@ -804,18 +838,23 @@ pasteButton.addEventListener("click", async () => {
     imageOpenInput.click();
   }
 });
-saveButton.addEventListener("click", () => downloadCanvas());
+saveButton.addEventListener("click", () => {
+  downloadCanvas();
+  announcePaint("Canvas exported as web-paint.png.");
+});
 copyButton.addEventListener("click", async () => {
   try {
-    await copyCanvasToClipboard();
+    const copiedToClipboard = await copyCanvasToClipboard();
     showCloudStatus("✓");
+    announcePaint(copiedToClipboard ? "Canvas copied to clipboard." : "Clipboard unavailable, so the canvas was downloaded as a PNG.");
   } catch {
     showCloudStatus("!");
+    announcePaint("Canvas could not be copied.");
   }
 });
 cutButton.addEventListener("click", async () => {
   try {
-    await copyCanvasToClipboard();
+    const copiedToClipboard = await copyCanvasToClipboard();
     if (state.selectionRect) {
       const { x, y, width, height } = state.selectionRect;
       context.fillStyle = "#ffffff";
@@ -826,14 +865,18 @@ cutButton.addEventListener("click", async () => {
       clearCanvas();
     }
     showCloudStatus("✓");
+    announcePaint(copiedToClipboard ? "Selection cut and copied to clipboard." : "Canvas cut and downloaded as a PNG.");
   } catch {
     showCloudStatus("!");
+    announcePaint("Canvas could not be cut.");
   }
 });
 cloudButton.addEventListener("click", saveToBrowserStorage);
 minimizeButton.addEventListener("click", () => {
   paintApp.classList.toggle("is-minimized");
-  minimizeButton.textContent = paintApp.classList.contains("is-minimized") ? "Show tools" : "Hide tools";
+  const isMinimized = paintApp.classList.contains("is-minimized");
+  minimizeButton.textContent = isMinimized ? "Show tools" : "Hide tools";
+  minimizeButton.setAttribute("aria-expanded", String(!isMinimized));
 });
 fullscreenButton.addEventListener("click", async () => {
   try {
@@ -850,11 +893,13 @@ undoButton.addEventListener("click", () => {
   if (state.historyIndex <= 0) return;
   state.historyIndex -= 1;
   restoreHistory(state.historyIndex);
+  announcePaint("Undo complete.");
 });
 redoButton.addEventListener("click", () => {
   if (state.historyIndex >= state.history.length - 1) return;
   state.historyIndex += 1;
   restoreHistory(state.historyIndex);
+  announcePaint("Redo complete.");
 });
 zoomInput.addEventListener("input", (event) => setZoom(event.target.value));
 zoomOutButton.addEventListener("click", () => setZoom(state.zoom - 10));
@@ -902,5 +947,6 @@ document.addEventListener("fullscreenchange", () => {
 
 renderPalette();
 initializeCanvas();
+setActiveTab(paintApp.dataset.activeTab || "home");
 setBrushSize(state.brushSize);
 syncActiveControls();

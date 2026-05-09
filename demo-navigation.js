@@ -49,9 +49,37 @@
     });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", bindProxies, { once: true });
-  } else {
+  function initSkipLinks() {
+    document.querySelectorAll(".skip-link[href^='#']").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const targetId = link.getAttribute("href").slice(1);
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        event.preventDefault();
+        target.scrollIntoView({ block: "start" });
+
+        try {
+          target.focus({ preventScroll: true });
+        } catch {
+          target.focus();
+        }
+
+        if (window.history?.pushState) {
+          window.history.pushState(null, "", `#${targetId}`);
+        }
+      });
+    });
+  }
+
+  function initDemoNavigation() {
     bindProxies();
+    initSkipLinks();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initDemoNavigation, { once: true });
+  } else {
+    initDemoNavigation();
   }
 })();

@@ -1,0 +1,36 @@
+[ 1326757ms] Identifier 'filterButtons' has already been declared
+[ 1375147ms] Identifier 'filterButtons' has already been declared
+[ 1399309ms] Identifier 'filterButtons' has already been declared
+[ 2100752ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ :11
+[ 2101787ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ :11
+[ 2103163ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ :11
+[ 2105981ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ :11
+[ 2106817ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ :11
+[ 2632072ms] [ERROR] Failed to load resource: the server responded with a status of 429 (Too Many Requests) @ https://passport.twitch.tv/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.2.405:0
+[ 2632081ms] [ERROR] Failed to load resource: the server responded with a status of 429 (Too Many Requests) @ https://passport.twitch.tv/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.2.405:0
+[ 2632112ms] [LOG] Amazon IVS Player SDK 1.52.0-rc.3 @ https://assets.twitch.tv/assets/amazon-ivs-wasmworker.min-d6040673f8d3054b3ffc.js:0
+[ 2632145ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://gql.twitch.tv/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.2.405:0
+[ 2632421ms] [LOG] MediaCapabilities found [Object] @ https://assets.twitch.tv/assets/amazon-ivs-wasmworker.min-d6040673f8d3054b3ffc.js:0
+[ 2632547ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://gql.twitch.tv/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.2.405:0
+[ 2632736ms] [LOG] Error @ :2
+[ 2632778ms] [LOG] Error @ :2
+[ 2633042ms] [LOG] Error @ :2
+[ 2633098ms] [LOG] Error @ :2
+[ 2633303ms] [LOG] Error @ :2
+[ 2633355ms] [LOG] Error @ :2
+[ 2633851ms] [LOG] Error @ :2
+[ 2633899ms] [LOG] Error @ :2
+[ 2634359ms] [LOG] Error @ :2
+[ 2634465ms] [LOG] Error @ :2
+[ 2634476ms] [LOG] Error @ :2
+[ 2635005ms] [LOG] Error @ :2
+[ 2635351ms] [ERROR] [GraphQL] One or more GraphQL errors were detected on request 01KR5E5E6W96DXFXPMC121C10H. DropChannelCampaignsProgress: failed integrity check, PinnedChatSettings: unauthenticated [Object, Object] @ https://assets.twitch.tv/assets/63598-ace4cc630c3ce8892b81.js:0
+[ 2693550ms] [ERROR] Failed to load resource: the server responded with a status of 429 (Too Many Requests) @ https://passport.twitch.tv/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.2.405:0
+[ 2693736ms] [ERROR] Failed to load resource: the server responded with a status of 429 (Too Many Requests) @ https://passport.twitch.tv/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.2.405:0
+[ 2693742ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://gql.twitch.tv/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.2.405:0
+[ 2693853ms] [LOG] Amazon IVS Player SDK 1.52.0-rc.3 @ https://assets.twitch.tv/assets/amazon-ivs-wasmworker.min-d6040673f8d3054b3ffc.js:0
+[ 2693988ms] [LOG] Error @ :2
+[ 2694025ms] [LOG] Error @ :2
+[ 2694139ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://gql.twitch.tv/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.2.405:0
+[ 2694459ms] [LOG] Error @ :2
+[ 2694515ms] [LOG] Error @ :2

@@ -69,7 +69,7 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body class="stream-body">
@@ -88,10 +88,10 @@
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
         <a href="work.html">Work</a>
         <a href="case-studies.html" aria-current="location">Case Studies</a>
-        <a href="index.html#about">About</a>
+        <a href="about.html">About</a>
         <a href="notes.html">Notes</a>
         <a href="resume.html">Resume</a>
-        <a class="nav-cta" href="index.html#contact">Contact</a>
+        <a class="nav-cta" href="contact.html">Contact</a>
         <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
       </nav>
     </header>
@@ -112,7 +112,7 @@
           <p class="stream-hero-text">
             Viewers need a clear stream surface around the voting bot, so I built a static Movie Night page that embeds Twitch, explains chat commands, links the searchable public-domain Movie Library, and shows how the Python bot scans local movies, tracks votes, and hands the next pick to OBS.
           </p>
-          <div class="hero-badges" aria-label="Movie night details">
+          <div class="hero-badges">
             <span>Public domain movies</span>
             <span>Chat voting</span>
             <span>OBS handoff</span>
@@ -122,9 +122,19 @@
             <a class="button secondary" href="movie-library.html">Browse movies</a>
             <a class="button ghost" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Bot source</a>
           </div>
+          <dl class="project-status-list" aria-label="Movie Night project status">
+            <div>
+              <dt>Status</dt>
+              <dd>Live showcase / public repo companion</dd>
+            </div>
+            <div>
+              <dt>Last updated</dt>
+              <dd>May 2026</dd>
+            </div>
+          </dl>
         </div>
 
-        <div class="stream-signal-board" aria-label="Stream signals">
+        <div class="stream-signal-board">
           <div>
             <span class="dock-label">Channel</span>
             <strong>twitch.tv/zurra3</strong>
@@ -169,12 +179,12 @@
           </aside>
         </div>
 
-        <div class="embed-action-bar" aria-label="External stream links">
+        <nav class="embed-action-bar" aria-label="External stream links">
           <span>Embed having trouble?</span>
           <a href="https://www.twitch.tv/zurra3" rel="noopener noreferrer">Open stream on Twitch</a>
           <a href="https://www.twitch.tv/popout/zurra3/chat?popout=" rel="noopener noreferrer">Open chat</a>
           <a href="movie-library.html">Browse movies</a>
-        </div>
+        </nav>
       </section>
 
       <section class="movie-list-section movie-list-preview" id="movies" aria-labelledby="movies-title">
@@ -184,7 +194,7 @@
           <p>
             The full MovieBot catalog lives on its own static page so the stream view stays focused. Viewers can search posters, copy exact vote commands, and return to chat without manually retyping long public-domain titles.
           </p>
-          <div class="movie-list-stats" aria-label="Movie library stats">
+          <div class="movie-list-stats">
             <div>
               <strong data-movie-count>110</strong>
               <span>movies</span>
@@ -194,7 +204,7 @@
               <span>release years</span>
             </div>
           </div>
-          <div class="command-list" aria-label="Common chat commands">
+          <div class="command-list">
             <span>!movies</span>
             <span>!vote movie name</span>
             <span>!results</span>
@@ -247,6 +257,47 @@
               <li>Wrote the bot-flow explanation that connects local folder scanning, chat commands, tie resolution, token refresh/reconnect behavior, and OBS playback handoff.</li>
             </ul>
             <p class="ownership-note">The page depends on Twitch embeds, Twitch chat, OBS WebSocket, and public-domain movie data; the static site structure, copy, and MovieBot presentation are custom portfolio code.</p>
+          </div>
+        </section>
+
+        <section class="bot-note" aria-labelledby="movie-night-readiness-title">
+          <div>
+            <span class="note-kicker">Production readiness</span>
+            <h3 id="movie-night-readiness-title">A useful showcase surface, not the production bot runtime.</h3>
+            <ul class="case-template-list">
+              <li><strong>Already solid:</strong> static stream-room layout, Twitch embed fallbacks, clear Movie Library and source links, and a concise explanation of the bot workflow.</li>
+              <li><strong>Demo-only:</strong> the page shows the voting system and bot story, while actual playback still depends on the local Python bot, OBS setup, and stream operator.</li>
+              <li><strong>Hardening needed:</strong> operator status panels, embed-health messaging, live bot connection state, queue visibility, and stronger checks around Twitch/OBS availability.</li>
+              <li><strong>Security/privacy/ops:</strong> keep OAuth/OBS secrets out of the page, rely on Twitch moderation for chat, and avoid exposing local media paths or private stream configuration.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="bot-note" aria-labelledby="movie-night-qa-title">
+          <div>
+            <span class="note-kicker">Testing and QA notes</span>
+            <h3 id="movie-night-qa-title">The stream page needs both embed checks and bot-flow validation.</h3>
+            <ul class="case-template-list">
+              <li><strong>Automated tests:</strong> the Python bot repo has pytest coverage for core automation paths; this static showcase page is currently validated with manual/browser smoke checks.</li>
+              <li><strong>Manual checklist:</strong> verify Twitch player/chat embeds, blocked-embed fallback links, Movie Library and GitHub links, bot-flow explanation, contact paths, and keyboard focus through the page.</li>
+              <li><strong>Browser/device checks:</strong> test desktop, tablet, and narrow mobile layouts, including whether the stream/chat embed area stays readable and fallback actions remain easy to tap.</li>
+              <li><strong>Edge cases:</strong> Twitch embeds blocked by privacy settings, offline stream state, chat unavailable, slow poster loading in the linked library, and unavailable clipboard permissions for vote commands.</li>
+              <li><strong>Known limitations:</strong> the page does not show live bot health, current queue state, OBS connection status, or real-time operator alerts yet.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="bot-note" aria-labelledby="movie-night-run-title">
+          <div>
+            <span class="note-kicker">Deployment and run notes</span>
+            <h3 id="movie-night-run-title">The showcase is static; the live automation runs in the local bot.</h3>
+            <ul class="case-template-list">
+              <li><strong>Hosted/run location:</strong> this page is served by GitHub Pages at <code>zacbatten.me/movie-night.html</code>; the Python bot runs separately on the stream operator's machine.</li>
+              <li><strong>Environment/config:</strong> the page has no secrets or environment variables. Twitch channel names are constrained in the embed script, and local development is included in the allowed Twitch parent list.</li>
+              <li><strong>External APIs/services:</strong> Twitch player/chat embeds are lazy-loaded on request, while Movie Library, GitHub, and case-study links provide the support paths around the stream.</li>
+              <li><strong>Local development:</strong> run <code>python -m http.server 8000</code> from the portfolio repo root and open <code>/movie-night.html</code>; use the fallback links if Twitch embeds are blocked on localhost or by browser privacy settings.</li>
+              <li><strong>Secrets/security:</strong> Twitch OAuth tokens, OBS passwords, local movie paths, and bot logs belong only in the bot runtime, never in this static page or client-side JavaScript.</li>
+            </ul>
           </div>
         </section>
 
@@ -305,17 +356,21 @@
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="contact.html">Contact</a>
         <a href="resume.html">Resume</a>
         <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
         <a href="work.html">Work</a>
         <a href="case-studies.html" aria-current="location">Case Studies</a>
+        <a href="about.html">About</a>
         <a href="notes.html">Notes</a>
         <a href="interactive-lab.html">Interactive Lab</a>
+        <a href="changelog.html">Changelog</a>
         <a href="sitemap.xml">Sitemap</a>
       </nav>
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="shared.js" defer></script>
+    <script src="movie-night.js" defer></script>
   </body>
 </html>

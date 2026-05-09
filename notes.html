@@ -23,7 +23,7 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -42,10 +42,10 @@
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
         <a href="work.html">Work</a>
         <a href="case-studies.html">Case Studies</a>
-        <a href="index.html#about">About</a>
+        <a href="about.html">About</a>
         <a href="notes.html" aria-current="page">Notes</a>
         <a href="resume.html">Resume</a>
-        <a class="nav-cta" href="index.html#contact">Contact</a>
+        <a class="nav-cta" href="contact.html">Contact</a>
         <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
       </nav>
     </header>
@@ -60,9 +60,9 @@
       <section class="section notes-hero" aria-labelledby="notes-title">
         <div class="section-heading">
           <p class="eyebrow">Notes / Build logs</p>
-          <h1 id="notes-title">Setup trails for the workbench.</h1>
+          <h1 id="notes-title">Technical build logs.</h1>
           <p>
-            Short entries on what changed, what problem the change solved, and the next edge case to check.
+            Short implementation notes that connect project changes to the workflow problem, technical decision, and next useful link.
           </p>
         </div>
       </section>
@@ -74,32 +74,242 @@
         </div>
 
         <div class="build-log-list">
+          <article id="web-paint-browser-canvas-editor">
+            <div class="build-log-meta">
+              <time datetime="2026-05-09">2026-05-09</time>
+              <span>Web Paint</span>
+            </div>
+            <h3>Building a browser canvas editor without a framework</h3>
+            <dl class="proof-list">
+              <div>
+                <dt>Date</dt>
+                <dd><time datetime="2026-05-09">May 9, 2026</time></dd>
+              </div>
+              <div>
+                <dt>Related project</dt>
+                <dd>Web Paint browser canvas drawing tool</dd>
+              </div>
+              <div>
+                <dt>Problem</dt>
+                <dd>A browser drawing editor has to feel immediate while keeping tool settings, pointer input, canvas pixels, history, imports, and export actions predictable in plain JavaScript.</dd>
+              </div>
+              <div>
+                <dt>Tool state</dt>
+                <dd>Web Paint keeps the canvas pixels as the document source of truth and uses JavaScript state for the active tool, brush size, colors, selection bounds, zoom level, drag start, pending preview, and status messages.</dd>
+              </div>
+              <div>
+                <dt>Canvas rendering</dt>
+                <dd>Pointer events are converted from screen coordinates into canvas-space coordinates, then committed through the Canvas 2D API. Shape previews and resize work are scheduled around interaction state so the final pixels are only committed when the action ends.</dd>
+              </div>
+              <div>
+                <dt>Undo/redo</dt>
+                <dd>History uses capped <code>ImageData</code> snapshots after meaningful commits. That model is simple and reliable for a static editor, with the tradeoff that large canvases can make every snapshot expensive.</dd>
+              </div>
+              <div>
+                <dt>Import/export</dt>
+                <dd>The tool validates image type, file size, and pixel count before drawing imports onto the canvas. Export paths use PNG download, clipboard APIs where available, local save/load, and fallbacks when browser permissions are limited.</dd>
+              </div>
+              <div>
+                <dt>Text and shape tools</dt>
+                <dd>Text, rectangle, circle, line, fill, pencil, eraser, and selection modes share the same state loop: capture the starting point, preview the draft interaction, then commit final pixels and save history.</dd>
+              </div>
+              <div>
+                <dt>Mobile/touch constraints</dt>
+                <dd>Touch drawing needs large controls, compact panels, stable canvas sizing, pointer capture, and <code>touch-action: none</code> on the drawing surface so the browser does not treat a stroke as page scrolling.</dd>
+              </div>
+              <div>
+                <dt>Accessibility limitations</dt>
+                <dd>The shell uses labeled controls, visible focus states, status output, and grouped tool controls, but the drawing itself is still pixel data. A stronger version would need keyboard drawing shortcuts, a structured layer/object model, and better nonvisual descriptions of canvas content.</dd>
+              </div>
+              <div>
+                <dt>Technical takeaway</dt>
+                <dd>Without a component framework, the hard part is keeping event handling, UI state, pixel commits, history, and browser API failures small enough to reason about.</dd>
+              </div>
+              <div>
+                <dt>Related link</dt>
+                <dd><a href="web-paint-case-study.html">Read the Web Paint case study</a></dd>
+              </div>
+            </dl>
+            <nav class="build-log-links" aria-label="Related links for Building a browser canvas editor without a framework">
+              <a href="#build-logs">Back to Notes</a>
+              <a href="web-paint-case-study.html">Web Paint case study</a>
+              <a href="paint.html">Live tool</a>
+              <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source</a>
+            </nav>
+          </article>
+
+          <article id="traverseops-field-workflows">
+            <div class="build-log-meta">
+              <time datetime="2026-05-09">2026-05-09</time>
+              <span>TraverseOps</span>
+            </div>
+            <h3>Designing a field-operations demo around maps, inspections, and work orders</h3>
+            <dl class="proof-list">
+              <div>
+                <dt>Date</dt>
+                <dd><time datetime="2026-05-09">May 9, 2026</time></dd>
+              </div>
+              <div>
+                <dt>Related project</dt>
+                <dd>TraverseOps field-operations map and work-order demo</dd>
+              </div>
+              <div>
+                <dt>Problem</dt>
+                <dd>Field operations break down when crews locate assets in one tool, record inspections somewhere else, and turn follow-up work into notes that have to be reconciled later.</dd>
+              </div>
+              <div>
+                <dt>Why maps help</dt>
+                <dd>A map-first interface makes location the organizing layer. Crews can find nearby hydrant-style assets, see condition at a glance, select one record, and move into inspection or work-order tasks without losing spatial context.</dd>
+              </div>
+              <div>
+                <dt>Asset state</dt>
+                <dd>The demo treats each asset as a record with identity, location, status, inspection history, and open-work indicators. Status filters keep the map useful when there are too many points to scan manually.</dd>
+              </div>
+              <div>
+                <dt>Inspections</dt>
+                <dd>Inspection screens model the field workflow: pick an asset, record condition, capture notes, and leave a timestamped trail that can explain why an asset changed from normal to attention-needed.</dd>
+              </div>
+              <div>
+                <dt>Work orders</dt>
+                <dd>Work orders turn inspection findings into assignable follow-up. The important design choice is connecting the task back to the selected asset, current status, and supervisor-style review flow instead of treating it as a disconnected ticket.</dd>
+              </div>
+              <div>
+                <dt>Imports</dt>
+                <dd>The import flow is framed as a sample-data boundary: real systems would need schema checks, duplicate detection, coordinate validation, rollback behavior, and clear feedback before new asset rows are allowed onto the map.</dd>
+              </div>
+              <div>
+                <dt>Empty states</dt>
+                <dd>Empty states matter because field tools often start with no selection, filtered-out results, missing reports, or no work assigned. The demo uses those moments to explain the next valid action instead of leaving a blank panel.</dd>
+              </div>
+              <div>
+                <dt>Production hardening ideas</dt>
+                <dd>A production version would need real authentication, role permissions, offline sync, audit logs, import validation, stronger error handling, security review, mobile field-device testing, and dependable map/data-source operations.</dd>
+              </div>
+              <div>
+                <dt>Technical takeaway</dt>
+                <dd>The useful part of TraverseOps is not only rendering points on a map; it is tying spatial context to state changes, inspection history, follow-up work, and operational guardrails.</dd>
+              </div>
+              <div>
+                <dt>Related link</dt>
+                <dd><a href="traverseops-case-study.html">Read the TraverseOps case study</a></dd>
+              </div>
+            </dl>
+            <nav class="build-log-links" aria-label="Related links for Designing a field-operations demo around maps, inspections, and work orders">
+              <a href="#build-logs">Back to Notes</a>
+              <a href="traverseops-case-study.html">TraverseOps case study</a>
+              <a href="traverseops-demo.html">Live demo</a>
+              <a href="work.html#flagship-case-studies">Work listing</a>
+            </nav>
+          </article>
+
+          <article id="moviebot-chat-to-obs">
+            <div class="build-log-meta">
+              <time datetime="2026-05-09">2026-05-09</time>
+              <span>MovieBot</span>
+            </div>
+            <h3>How the Twitch MovieBot turns chat votes into OBS playback</h3>
+            <dl class="proof-list">
+              <div>
+                <dt>Date</dt>
+                <dd><time datetime="2026-05-09">May 9, 2026</time></dd>
+              </div>
+              <div>
+                <dt>Related project</dt>
+                <dd>StreamCinema Vote Bot / MovieBot</dd>
+              </div>
+              <div>
+                <dt>Problem</dt>
+                <dd>Running a Twitch movie night by hand means reading chat, counting votes, resolving ties, finding the local movie file, and updating OBS while the stream is live.</dd>
+              </div>
+              <div>
+                <dt>Chat command flow</dt>
+                <dd>Viewers send commands such as <code>!vote title</code>, <code>!results</code>, <code>!currentmovie</code>, <code>!time</code>, and <code>!movies</code>. TwitchIO routes each command into Python handlers that validate poll state and command arguments before touching playback state.</dd>
+              </div>
+              <div>
+                <dt>Vote state</dt>
+                <dd>The bot keeps a per-viewer vote map and aggregate movie totals. When a viewer changes their vote, the old title is decremented before the new title is counted, which prevents duplicate votes from inflating results.</dd>
+              </div>
+              <div>
+                <dt>Tie handling</dt>
+                <dd>When a poll closes, the bot sorts by vote count, detects tied leaders, and chooses between tied titles with a fallback random selection. If nobody votes, it can pick a random available movie instead of stalling the stream.</dd>
+              </div>
+              <div>
+                <dt>Movie folder scanning</dt>
+                <dd>The movie scanner walks the configured local folder for supported video extensions, refreshes the in-memory catalog during long sessions, avoids following symlinks, and falls back gracefully when duration tools or files are unavailable.</dd>
+              </div>
+              <div>
+                <dt>OBS WebSocket control</dt>
+                <dd>After a winner is selected, the bot normalizes the local path, updates the configured OBS media source through WebSocket, switches to the movie scene, and restarts playback so the selected public-domain file becomes the stream output.</dd>
+              </div>
+              <div>
+                <dt>Token refresh/reconnect</dt>
+                <dd>Long sessions need recovery paths, so the bot validates and refreshes Twitch OAuth tokens, watches the Twitch IRC connection, wraps OBS calls with connection checks, retries media handoff, and cleans up scheduled tasks during shutdown.</dd>
+              </div>
+              <div>
+                <dt>What changed</dt>
+                <dd>The portfolio now explains the bot as an automation pipeline rather than just a chat command project: chat input, state management, local file discovery, OBS control, and reconnect behavior are shown as one system.</dd>
+              </div>
+              <div>
+                <dt>Technical takeaway</dt>
+                <dd>The interesting work is not the command syntax; it is keeping chat, local media, OAuth, OBS WebSocket calls, and failure recovery coordinated in a long-running Python process.</dd>
+              </div>
+              <div>
+                <dt>What would improve next</dt>
+                <dd>Add an operator dashboard, dry-run mode, structured logs, health indicators for Twitch/OBS, stronger integration tests, and safer queue controls for live stream operations.</dd>
+              </div>
+              <div>
+                <dt>Related link</dt>
+                <dd><a href="moviebot-case-study.html">Read the MovieBot case study</a></dd>
+              </div>
+            </dl>
+            <nav class="build-log-links" aria-label="Related links for How the Twitch MovieBot turns chat votes into OBS playback">
+              <a href="#build-logs">Back to Notes</a>
+              <a href="moviebot-case-study.html">MovieBot case study</a>
+              <a href="movie-night.html">Movie Night</a>
+              <a href="movie-library.html">Movie Library</a>
+              <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a>
+            </nav>
+          </article>
+
           <article id="portfolio-cleanup">
             <div class="build-log-meta">
               <time datetime="2026-05-01">2026-05-01</time>
-              <span>Site</span>
+              <span>Portfolio site</span>
             </div>
-            <h3>Portfolio cleanup pass</h3>
-            <p>
-              Recruiters needed a faster path from proof to contact, so I rebuilt the static HTML/CSS/JavaScript homepage around selected work, resume/contact CTAs, Open Graph/Twitter/canonical metadata, truthful project metrics, and actual Newfoundland time.
-            </p>
+            <h3>Hiring-focused homepage and metadata pass</h3>
             <dl class="proof-list">
               <div>
-                <dt>Status</dt>
-                <dd>Ready for the next GitHub Pages publish.</dd>
+                <dt>Date</dt>
+                <dd><time datetime="2026-05-01">May 1, 2026</time></dd>
               </div>
               <div>
-                <dt>Next check</dt>
-                <dd>Confirm social previews after deployment because preview scrapers cache aggressively.</dd>
+                <dt>Related project</dt>
+                <dd>Portfolio site / GitHub Pages developer portfolio</dd>
+              </div>
+              <div>
+                <dt>Problem</dt>
+                <dd>The homepage was not giving recruiters a fast enough read on Zac's role, strongest projects, resume path, and technical proof.</dd>
+              </div>
+              <div>
+                <dt>What changed</dt>
+                <dd>Reworked the static HTML/CSS/JavaScript homepage around selected work, resume/contact CTAs, stronger project cards, social preview metadata, canonical URLs, and clearer internal links to case studies.</dd>
+              </div>
+              <div>
+                <dt>Technical takeaway</dt>
+                <dd>A static portfolio still needs product-level information architecture: obvious primary actions, stable metadata, indexable project pages, accessible links, and no broken recruiter paths.</dd>
+              </div>
+              <div>
+                <dt>Related link</dt>
+                <dd><a href="work.html">View the structured Work page</a></dd>
               </div>
             </dl>
-            <div class="build-log-links" aria-label="Related links for Portfolio cleanup pass">
+            <nav class="build-log-links" aria-label="Related links for Portfolio cleanup pass">
               <a href="#build-logs">Back to Notes</a>
               <a href="work.html">Work</a>
               <a href="case-studies.html">Case studies</a>
               <a href="https://github.com/Inefy/Inefy.github.io" rel="noopener noreferrer">Portfolio source</a>
-              <a href="index.html#contact">Contact</a>
-            </div>
+              <a href="contact.html">Contact</a>
+            </nav>
           </article>
 
           <article id="moviebot-page-split">
@@ -107,27 +317,40 @@
               <time datetime="2026-04-30">2026-04-30</time>
               <span>MovieBot</span>
             </div>
-            <h3>Stream page and movie library split</h3>
-            <p>
-              MovieBot viewers needed voting and browsing to stay distinct, so I kept the Twitch room focused on watching/chat commands and moved the public-domain queue into a searchable static movie-library page with copyable <code>!vote</code> commands.
-            </p>
+            <h3>Stream room and searchable voting catalog split</h3>
             <dl class="proof-list">
               <div>
-                <dt>Status</dt>
-                <dd>Live page structure with a no-JavaScript static list fallback.</dd>
+                <dt>Date</dt>
+                <dd><time datetime="2026-04-30">April 30, 2026</time></dd>
               </div>
               <div>
-                <dt>Next check</dt>
-                <dd>Keep the movie data source and the static fallback list in sync when titles change.</dd>
+                <dt>Related project</dt>
+                <dd>StreamCinema Vote Bot / MovieBot and Movie Library</dd>
+              </div>
+              <div>
+                <dt>Problem</dt>
+                <dd>The live Twitch room and the movie queue were trying to serve different jobs: watching the stream, reading bot commands, browsing titles, and copying valid vote text.</dd>
+              </div>
+              <div>
+                <dt>What changed</dt>
+                <dd>Kept <code>movie-night.html</code> focused on the stream, chat, bot flow, and fallback links, then moved title discovery into <code>movie-library.html</code> with JavaScript search, result counts, lazy posters, copyable <code>!vote</code> commands, and a complete no-JavaScript list.</dd>
+              </div>
+              <div>
+                <dt>Technical takeaway</dt>
+                <dd>Separating operational views from browsing views keeps static pages simpler, improves mobile usability, and gives the bot system clearer boundaries for QA, fallback content, and future data generation.</dd>
+              </div>
+              <div>
+                <dt>Related link</dt>
+                <dd><a href="moviebot-case-study.html">Read the MovieBot case study</a></dd>
               </div>
             </dl>
-            <div class="build-log-links" aria-label="Related links for Stream page and movie library split">
+            <nav class="build-log-links" aria-label="Related links for Stream page and movie library split">
               <a href="#build-logs">Back to Notes</a>
               <a href="moviebot-case-study.html">MovieBot case study</a>
               <a href="movie-night.html">Movie Night page</a>
               <a href="movie-library.html">Movie Library</a>
               <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Bot source</a>
-            </div>
+            </nav>
           </article>
 
           <article id="traverseops-demo-framing">
@@ -135,26 +358,39 @@
               <time datetime="2026-04-29">2026-04-29</time>
               <span>TraverseOps</span>
             </div>
-            <h3>Demo state made explicit</h3>
-            <p>
-              Field-operations demos can look like map screenshots without workflow context, so I reframed TraverseOps as a MapLibre/Supabase public demo with sample data, asset workflows, production limits, and case-study links.
-            </p>
+            <h3>Sample-data boundaries and field workflow framing</h3>
             <dl class="proof-list">
               <div>
-                <dt>Status</dt>
-                <dd>Demo badge and sample-data language are now visible on the homepage spotlight.</dd>
+                <dt>Date</dt>
+                <dd><time datetime="2026-04-29">April 29, 2026</time></dd>
               </div>
               <div>
-                <dt>Next check</dt>
-                <dd>Keep the case study synced with new screenshots, user flows, and implementation notes as the demo evolves.</dd>
+                <dt>Related project</dt>
+                <dd>TraverseOps field-operations map and work-order demo</dd>
+              </div>
+              <div>
+                <dt>Problem</dt>
+                <dd>A map-heavy demo can look like a UI mockup unless the page explains the operational workflow, sample-data boundary, and production risks around real field records.</dd>
+              </div>
+              <div>
+                <dt>What changed</dt>
+                <dd>Reframed TraverseOps as a public MapLibre/Supabase-style field-operations demo with sample hydrant-style data, asset filters, inspection and work-order flows, import/reporting screens, role context, production-readiness notes, and a deeper case study.</dd>
+              </div>
+              <div>
+                <dt>Technical takeaway</dt>
+                <dd>For workflow software, the demo has to show data ownership, user roles, edge cases, and deployment constraints. That context is what separates a credible product prototype from a visual-only project.</dd>
+              </div>
+              <div>
+                <dt>Related link</dt>
+                <dd><a href="traverseops-case-study.html">Read the TraverseOps case study</a></dd>
               </div>
             </dl>
-            <div class="build-log-links" aria-label="Related links for Demo state made explicit">
+            <nav class="build-log-links" aria-label="Related links for Demo state made explicit">
               <a href="#build-logs">Back to Notes</a>
               <a href="traverseops-case-study.html">TraverseOps case study</a>
-              <a href="https://traverseops.app" rel="noopener noreferrer">Live demo</a>
+              <a href="traverseops-demo.html">Live demo</a>
               <a href="index.html#traverseops-feature">TraverseOps feature</a>
-            </div>
+            </nav>
           </article>
         </div>
       </section>
@@ -180,17 +416,20 @@
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="contact.html">Contact</a>
         <a href="resume.html">Resume</a>
         <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
         <a href="work.html">Work</a>
         <a href="case-studies.html">Case Studies</a>
+        <a href="about.html">About</a>
         <a href="notes.html" aria-current="page">Notes</a>
         <a href="interactive-lab.html">Interactive Lab</a>
+        <a href="changelog.html">Changelog</a>
         <a href="sitemap.xml">Sitemap</a>
       </nav>
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="shared.js" defer></script>
   </body>
 </html>

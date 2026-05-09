@@ -184,6 +184,7 @@
   const totalValue = document.getElementById("totalValue");
   const bestValue = document.getElementById("bestValue");
   const roundStatus = document.getElementById("roundStatus");
+  const gameAnnouncement = document.getElementById("gameAnnouncement");
   const courseName = document.getElementById("courseName");
   const progressFill = document.getElementById("courseProgressFill");
   const progressBar = document.querySelector(".course-progress");
@@ -208,6 +209,7 @@
   let particles = [];
   let trail = [];
   let prefersReducedMotion = reducedMotionQuery.matches;
+  let gameAnnouncementTimer = 0;
 
   function syncMotionPreference(event = reducedMotionQuery) {
     prefersReducedMotion = event.matches;
@@ -384,6 +386,18 @@
     });
   }
 
+  function announceGame(message) {
+    if (!gameAnnouncement || !message) {
+      return;
+    }
+
+    window.clearTimeout(gameAnnouncementTimer);
+    gameAnnouncement.textContent = "";
+    gameAnnouncementTimer = window.setTimeout(() => {
+      gameAnnouncement.textContent = message;
+    }, 20);
+  }
+
   function resetLevel(index = levelIndex, options = {}) {
     levelIndex = Math.max(0, Math.min(LEVELS.length - 1, index));
     scorecard = scorecard.slice(0, levelIndex);
@@ -417,6 +431,7 @@
   function beginRound() {
     if (state === "run-complete") {
       resetRun(false);
+      announceGame(`New Mini Golf round started. Hole ${levelIndex + 1}, par ${activeLevel().par}.`);
     } else if (state === "level-complete") {
       nextLevel();
     } else if (state === "paused") {
@@ -428,6 +443,7 @@
       state = "ready";
       hideMenu();
       updateHud("Line up shot");
+      announceGame(`Mini Golf started. Hole ${levelIndex + 1}, par ${activeLevel().par}.`);
     }
   }
 
@@ -451,6 +467,7 @@
       button: "Resume"
     });
     updateHud("Paused");
+    announceGame(`Game paused. Hole ${levelIndex + 1}, ${levelStrokes} ${levelStrokes === 1 ? "stroke" : "strokes"}.`);
     return true;
   }
 
@@ -462,6 +479,7 @@
     state = pausedFrom === "moving" ? "moving" : "ready";
     hideMenu();
     updateHud(state === "moving" ? "Rolling" : "Line up shot");
+    announceGame(`Game resumed. Hole ${levelIndex + 1}.`);
     return true;
   }
 
@@ -480,6 +498,7 @@
     }
 
     resetLevel(levelIndex + 1);
+    announceGame(`Hole ${levelIndex + 1} ready. Par ${activeLevel().par}.`);
     return true;
   }
 
@@ -561,6 +580,7 @@
     isAiming = false;
     aimPointer = null;
     updateHud("Rolling");
+    announceGame(`Shot ${levelStrokes}. Ball rolling.`);
     return true;
   }
 
@@ -576,6 +596,7 @@
     isAiming = false;
     aimPointer = null;
     updateHud("Water penalty");
+    announceGame(`Water penalty. Stroke ${levelStrokes}. Ball reset to previous safe position.`);
   }
 
   function completeLevel() {
@@ -605,6 +626,7 @@
         button: "Play Again"
       });
       updateHud("Course clear");
+      announceGame(`Course clear. Total ${total} strokes.`);
       return;
     }
 
@@ -617,6 +639,7 @@
       button: "Next Hole"
     });
     updateHud(`${result} on ${activeLevel().name}`);
+    announceGame(`Hole ${levelIndex + 1} complete. ${result}. ${levelStrokes} strokes.`);
   }
 
   function inRoundedRect(point, rect) {
@@ -1251,7 +1274,7 @@
   }
 
   function resizeCanvas() {
-    const ratio = Math.max(1, window.devicePixelRatio || 1);
+    const ratio = Math.min(Math.max(1, window.devicePixelRatio || 1), 2);
     canvas.width = Math.round(WORLD_WIDTH * ratio);
     canvas.height = Math.round(WORLD_HEIGHT * ratio);
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);

@@ -609,7 +609,6 @@
     boardEl.querySelectorAll(".cell").forEach((button) => {
       const selected = Number(button.dataset.index) === focusedCellIndex;
       button.tabIndex = selected ? 0 : -1;
-      button.setAttribute("aria-selected", String(selected));
     });
   }
 
@@ -621,8 +620,6 @@
     boardShell.style.setProperty("--rows", active.rows);
     boardEl.style.setProperty("--cols", active.cols);
     boardEl.style.setProperty("--rows", active.rows);
-    boardEl.setAttribute("aria-rowcount", String(active.rows));
-    boardEl.setAttribute("aria-colcount", String(active.cols));
     boardEl.setAttribute(
       "aria-label",
       flagMode
@@ -637,11 +634,7 @@
       button.type = "button";
       button.className = "cell";
       button.dataset.index = String(index);
-      button.setAttribute("role", "gridcell");
-      button.setAttribute("aria-rowindex", String(rowOf(index) + 1));
-      button.setAttribute("aria-colindex", String(colOf(index) + 1));
       button.setAttribute("aria-label", cellLabel(cell, index));
-      button.setAttribute("aria-selected", String(index === focusedCellIndex));
       button.setAttribute("aria-keyshortcuts", "Enter Space F ArrowUp ArrowRight ArrowDown ArrowLeft");
       button.tabIndex = index === focusedCellIndex ? 0 : -1;
 

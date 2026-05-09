@@ -13,17 +13,17 @@
     <meta property="og:description" content="Canvas tools, arcade loops, puzzle games, local state, touch controls, and frontend UI experiments from Zac Batten.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/interactive-lab.html">
-    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
-    <meta property="og:image:alt" content="Inefy workbench interactive lab preview.">
+    <meta property="og:image" content="https://zacbatten.me/assets/interactive-lab-preview.png">
+    <meta property="og:image:alt" content="Interactive Lab archive with browser tool and game project cards.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Interactive Lab / Zac Batten Frontend Developer">
     <meta name="twitter:description" content="Canvas tools, arcade loops, puzzle games, local state, touch controls, and frontend UI experiments.">
-    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta name="twitter:image" content="https://zacbatten.me/assets/interactive-lab-preview.png">
     <title>Interactive Lab / Zac Batten Frontend Developer</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2368b7ff'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -42,10 +42,10 @@
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
         <a href="work.html">Work</a>
         <a href="case-studies.html">Case Studies</a>
-        <a href="index.html#about">About</a>
+        <a href="about.html">About</a>
         <a href="notes.html">Notes</a>
         <a href="resume.html">Resume</a>
-        <a class="nav-cta" href="index.html#contact">Contact</a>
+        <a class="nav-cta" href="contact.html">Contact</a>
         <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
       </nav>
     </header>
@@ -75,6 +75,12 @@
 
         <div class="lab-grid archive-lab-grid">
           <article class="lab-card">
+            <figure class="lab-card-visual">
+              <picture>
+                <source srcset="assets/web-paint-workspace.webp" type="image/webp">
+                <img src="assets/web-paint-workspace.png" alt="Web Paint browser tool showing toolbar controls, brush settings, and drawing workspace" loading="lazy" decoding="async" width="1280" height="670">
+              </picture>
+            </figure>
             <span class="lab-card-kicker">Canvas tool</span>
             <h3>Web Paint</h3>
             <p>Browser drawing needs reliable state; I built a vanilla JavaScript Canvas editor with tool modes, undo/redo snapshots, import/export, zoom, and mobile-friendly panels.</p>
@@ -101,6 +107,10 @@
                 <dt>Mobile/touch</dt>
                 <dd>Supported for touch drawing and toolbar actions; the dense ribbon works best on tablet or desktop widths.</dd>
               </div>
+              <div>
+                <dt>Production readiness</dt>
+                <dd>Solid static prototype for drawing and export. Before real users, it needs memory-aware history, autosave recovery, richer keyboard shortcuts, and stronger nonvisual drawing support.</dd>
+              </div>
             </dl>
             <div class="lab-actions">
               <a class="button secondary" href="paint.html">Open tool</a>
@@ -110,6 +120,12 @@
           </article>
 
           <article class="lab-card">
+            <figure class="lab-card-visual">
+              <picture>
+                <source srcset="assets/mini-golf-preview.webp" type="image/webp">
+                <img src="assets/mini-golf-preview.png" alt="Mini Golf canvas game start screen with a five-hole course preview and start-round control" loading="lazy" decoding="async" width="1233" height="651">
+              </picture>
+            </figure>
             <span class="lab-card-kicker">Physics game</span>
             <h3>Mini Golf</h3>
             <p>Touch golf needs clear aiming and scoring; I built a Canvas/JavaScript five-hole course with drag power, collision response, hazards, scorecards, and best runs.</p>
@@ -136,6 +152,10 @@
                 <dt>Mobile/touch</dt>
                 <dd>Supported with drag aiming and on-screen course controls; designed to remain playable on narrow screens.</dd>
               </div>
+              <div>
+                <dt>Production readiness</dt>
+                <dd>Archived live experiment with solid input and scoring. A fuller release would need physics edge-case tests, more mobile QA, accessible alternatives, and save-state controls.</dd>
+              </div>
             </dl>
             <div class="lab-actions">
               <a class="button secondary" href="mini-golf.html">Play demo</a>
@@ -144,6 +164,12 @@
           </article>
 
           <article class="lab-card">
+            <figure class="lab-card-visual">
+              <picture>
+                <source srcset="assets/asteroid-drift-preview.webp" type="image/webp">
+                <img src="assets/asteroid-drift-preview.png" alt="Asteroid Drift canvas game start screen with ship controls and asteroid field preview" loading="lazy" decoding="async" width="1233" height="651">
+              </picture>
+            </figure>
             <span class="lab-card-kicker">Arcade loop</span>
             <h3>Asteroid Drift</h3>
             <p>Arcade loops need low-latency input; I built a Canvas/JavaScript Asteroids-style demo with thrust, shooting, shields, randomized spawns, collisions, waves, and touch controls.</p>
@@ -170,6 +196,10 @@
                 <dt>Mobile/touch</dt>
                 <dd>Supported through on-screen thrust, turn, shield, and fire buttons alongside keyboard controls.</dd>
               </div>
+              <div>
+                <dt>Production readiness</dt>
+                <dd>Polished prototype with the strongest game loop in the lab. Hardening would focus on difficulty tuning, performance profiling, device testing, and expanded nonvisual state output.</dd>
+              </div>
             </dl>
             <div class="lab-actions">
               <a class="button secondary" href="asteroid-drift.html">Play demo</a>
@@ -178,6 +208,12 @@
           </article>
 
           <article class="lab-card">
+            <figure class="lab-card-visual">
+              <picture>
+                <source srcset="assets/snake-lab-preview.webp" type="image/webp">
+                <img src="assets/snake-lab-preview.png" alt="Snake Lab canvas playfield with start menu and touch direction controls" loading="lazy" decoding="async" width="1040" height="341">
+              </picture>
+            </figure>
             <span class="lab-card-kicker">Grid game</span>
             <h3>Snake Lab</h3>
             <p>Snake needs fast turns without illegal reversals; I built a Canvas/JavaScript grid game with buffered input, growth, collisions, pace changes, and best scores.</p>
@@ -204,6 +240,10 @@
                 <dt>Mobile/touch</dt>
                 <dd>Supported with large on-screen direction controls and the same buffered movement logic as keyboard play.</dd>
               </div>
+              <div>
+                <dt>Production readiness</dt>
+                <dd>Archived experiment with solid grid state and input buffering. Real-user hardening would add collision/turn tests, save reset controls, and better screen-reader alternatives.</dd>
+              </div>
             </dl>
             <div class="lab-actions">
               <a class="button secondary" href="snake-lab.html">Play demo</a>
@@ -212,6 +252,12 @@
           </article>
 
           <article class="lab-card">
+            <figure class="lab-card-visual">
+              <picture>
+                <source srcset="assets/brick-breaker-preview.webp" type="image/webp">
+                <img src="assets/brick-breaker-preview.png" alt="Brick Breaker canvas playfield with start menu, paddle, ball, and brick layout" loading="lazy" decoding="async" width="1080" height="351">
+              </picture>
+            </figure>
             <span class="lab-card-kicker">Arcade game</span>
             <h3>Brick Breaker</h3>
             <p>Paddle games need precise collisions; I built a Canvas/JavaScript Brick Breaker with launch state, wall/paddle/brick checks, levels, progress, and touch controls.</p>
@@ -238,6 +284,10 @@
                 <dt>Mobile/touch</dt>
                 <dd>Supported with touch controls for moving and launching, plus viewport-aware canvas sizing for narrow screens.</dd>
               </div>
+              <div>
+                <dt>Production readiness</dt>
+                <dd>Archived experiment with a working arcade loop. Hardening would add collision edge tests, performance checks, validated level data, and nonvisual gameplay alternatives.</dd>
+              </div>
             </dl>
             <div class="lab-actions">
               <a class="button secondary" href="brick-breaker.html">Play demo</a>
@@ -246,6 +296,12 @@
           </article>
 
           <article class="lab-card">
+            <figure class="lab-card-visual">
+              <picture>
+                <source srcset="assets/2048-preview.webp" type="image/webp">
+                <img src="assets/2048-preview.png" alt="2048 puzzle game start screen with numbered tiles and keyboard/touch controls" loading="lazy" decoding="async" width="561" height="561">
+              </picture>
+            </figure>
             <span class="lab-card-kicker">Puzzle game</span>
             <h3>2048</h3>
             <p>Tile merging needs deterministic board transforms; I built an HTML/CSS/JavaScript 2048 with single-merge rules, random spawns, undo, best score, and accessible summaries.</p>
@@ -272,6 +328,10 @@
                 <dt>Mobile/touch</dt>
                 <dd>Supported with swipe gestures and on-screen direction buttons for touch-first play.</dd>
               </div>
+              <div>
+                <dt>Production readiness</dt>
+                <dd>Archived experiment with solid board transforms, undo, and accessible summaries. Hardening would add merge-rule tests, state migration, and screen-reader regression checks.</dd>
+              </div>
             </dl>
             <div class="lab-actions">
               <a class="button secondary" href="2048.html">Play demo</a>
@@ -280,6 +340,12 @@
           </article>
 
           <article class="lab-card">
+            <figure class="lab-card-visual">
+              <picture>
+                <source srcset="assets/minefield-sweep-preview.webp" type="image/webp">
+                <img src="assets/minefield-sweep-preview.png" alt="Minefield Sweep board preview with difficulty controls, start menu, and minefield grid" loading="lazy" decoding="async" width="1121" height="621">
+              </picture>
+            </figure>
             <span class="lab-card-kicker">Logic game</span>
             <h3>Minefield Sweep</h3>
             <p>Mine puzzles need clear state and safe starts; I built a JavaScript grid game with delayed mines, recursive reveal, flag mode, timers, and accessible labels.</p>
@@ -306,6 +372,10 @@
                 <dt>Mobile/touch</dt>
                 <dd>Supported with tap-to-reveal, flag mode, difficulty buttons, and a horizontally safe board shell.</dd>
               </div>
+              <div>
+                <dt>Production readiness</dt>
+                <dd>Accessible prototype with keyboard grid state and safe first reveal. Hardening would add reveal/flag tests, focus regression checks, difficulty validation, and clearer saved-state controls.</dd>
+              </div>
             </dl>
             <div class="lab-actions">
               <a class="button secondary" href="minefield-sweep.html">Play demo</a>
@@ -314,6 +384,12 @@
           </article>
 
           <article class="lab-card">
+            <figure class="lab-card-visual">
+              <picture>
+                <source srcset="assets/flappy-workbench-preview.webp" type="image/webp">
+                <img src="assets/flappy-workbench-preview.png" alt="Flappy Workbench canvas playfield with start menu, bird, pipe obstacles, and touch controls" loading="lazy" decoding="async" width="1181" height="321">
+              </picture>
+            </figure>
             <span class="lab-card-kicker">Timing game</span>
             <h3>Flappy Workbench</h3>
             <p>Timing games need consistent physics; I built a Canvas/JavaScript Flappy-style loop with gravity, obstacle gaps, collision checks, best score, pause, and mobile flap input.</p>
@@ -339,6 +415,10 @@
               <div>
                 <dt>Mobile/touch</dt>
                 <dd>Supported with tap input, keyboard input, and viewport-aware canvas scaling.</dd>
+              </div>
+              <div>
+                <dt>Production readiness</dt>
+                <dd>Archived experiment with a working timing loop and mobile flap input. Hardening would add deterministic physics tests, mobile-browser QA, reduced-motion review, and pause/resume validation.</dd>
               </div>
             </dl>
             <div class="lab-actions">
@@ -370,17 +450,20 @@
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="contact.html">Contact</a>
         <a href="resume.html">Resume</a>
         <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
         <a href="work.html">Work</a>
         <a href="case-studies.html">Case Studies</a>
+        <a href="about.html">About</a>
         <a href="notes.html">Notes</a>
         <a href="interactive-lab.html" aria-current="page">Interactive Lab</a>
+        <a href="changelog.html">Changelog</a>
         <a href="sitemap.xml">Sitemap</a>
       </nav>
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="shared.js" defer></script>
   </body>
 </html>

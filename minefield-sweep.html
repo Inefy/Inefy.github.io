@@ -13,12 +13,12 @@
     <meta property="og:description" content="A JavaScript grid puzzle with delayed mines, recursive reveal, flag mode, difficulty switching, best times, and accessible cells.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/minefield-sweep.html">
-    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
-    <meta property="og:image:alt" content="Inefy workbench preview with selected projects and browser tools.">
+    <meta property="og:image" content="https://zacbatten.me/assets/minefield-sweep-preview.png">
+    <meta property="og:image:alt" content="Minefield Sweep board preview with difficulty controls, start menu, and minefield grid.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Minefield Sweep JavaScript Game / Zac Batten">
     <meta name="twitter:description" content="JavaScript grid puzzle with delayed mines, recursive reveal, flag mode, difficulty switching, best times, and accessible cells.">
-    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta name="twitter:image" content="https://zacbatten.me/assets/minefield-sweep-preview.png">
     <title>Minefield Sweep JavaScript Game / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2346d6ca'/%3E%3Cpath d='M19 17h26v30H19z' fill='%23070f13'/%3E%3Cpath d='M24 22h16v5H24zm0 10h16v5H24zm0 10h10v5H24z' fill='%23f5c45b'/%3E%3Ccircle cx='46' cy='18' r='7' fill='%23ff6f61'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="minefield-sweep.css">
@@ -60,7 +60,17 @@
           <span class="next-step-kicker">Game guide</span>
           <h1 id="sweep-overview-title">Minefield Sweep</h1>
           <p>Mine puzzles need clear state and safe first moves; I built a JavaScript grid game with delayed mine placement, recursive reveal, flag mode, difficulty switching, timer/best-time state, and accessible cell labels.</p>
-          <div class="demo-overview-actions" aria-label="Minefield Sweep actions">
+          <dl class="demo-status-list" aria-label="Minefield Sweep project status">
+            <div>
+              <dt>Status</dt>
+              <dd>Accessible prototype / live demo</dd>
+            </div>
+            <div>
+              <dt>Last updated</dt>
+              <dd>May 2026</dd>
+            </div>
+          </dl>
+          <div class="demo-overview-actions" role="group" aria-label="Minefield Sweep actions">
             <a href="interactive-lab.html">Back to Interactive Lab</a>
             <button type="button" data-demo-proxy="startButton">Start Field</button>
             <button type="button" data-demo-proxy="newGameButton">New Field</button>
@@ -83,7 +93,7 @@
           </div>
           <div>
             <dt>Accessibility</dt>
-            <dd>The minefield is a keyboard-focusable grid with live status, mines-left, timer, best-time, and cleared-percentage readouts.</dd>
+            <dd>The minefield is a keyboard-navigable board with live status, mines-left, timer, best-time, and cleared-percentage readouts.</dd>
           </div>
         </dl>
       </section>
@@ -114,6 +124,33 @@
         </div>
       </section>
 
+      <section class="control-reference" aria-labelledby="sweep-controls-title">
+        <div class="control-reference-heading">
+          <span class="next-step-kicker">Control reference</span>
+          <h2 id="sweep-controls-title">Keyboard and touch controls</h2>
+        </div>
+        <div class="control-reference-grid">
+          <div class="control-reference-card">
+            <h3>Keyboard shortcuts</h3>
+            <ul class="shortcut-list" id="sweep-keyboard-shortcuts">
+              <li><kbd>Arrow keys</kbd><span>Move focus between cells on the board.</span></li>
+              <li><kbd>Enter / Space</kbd><span>Reveal the focused cell, or flag it when Flag Mode is on.</span></li>
+              <li><kbd>F</kbd><span>Toggle a flag on the focused cell.</span></li>
+              <li><kbd>P / Esc</kbd><span>Pause or resume the current field.</span></li>
+              <li><kbd>Difficulty arrows</kbd><span>Move between Scout, Ranger, and Warden when difficulty buttons are focused.</span></li>
+            </ul>
+          </div>
+          <div class="control-reference-card">
+            <h3>Touch controls</h3>
+            <ul class="shortcut-list" id="sweep-touch-controls">
+              <li><kbd>Tap cell</kbd><span>Reveal a cell in sweep mode.</span></li>
+              <li><kbd>Flag Mode</kbd><span>Turn it on, then tap cells to place or remove flags.</span></li>
+              <li><kbd>Difficulty buttons</kbd><span>Choose Scout, Ranger, or Warden before or between fields.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section class="game-stage-wrap" id="game-stage" aria-label="Playfield">
         <div class="difficulty-bar" role="radiogroup" aria-label="Difficulty">
           <button type="button" data-difficulty="scout" class="active" role="radio" aria-checked="true">Scout</button>
@@ -123,7 +160,7 @@
 
         <section class="board-shell" aria-label="Minefield board">
           <div class="board-scroll">
-            <div class="mine-board" id="mineBoard" role="grid" tabindex="-1" aria-label="Minefield board"></div>
+            <div class="mine-board" id="mineBoard" role="group" tabindex="-1" aria-label="Minefield board" aria-describedby="sweep-keyboard-shortcuts sweep-touch-controls"></div>
           </div>
 
           <div class="game-menu" id="gameMenu">
@@ -161,6 +198,22 @@
         <p class="ownership-note">Minesweeper-style rules are the reference; this board generation, reveal state, difficulty model, and UI treatment are custom code.</p>
       </section>
 
+      <section class="implementation-notes" aria-labelledby="sweep-readiness-title">
+        <span class="next-step-kicker">Production readiness</span>
+        <h2 id="sweep-readiness-title">Accessible prototype with testable logic still to add.</h2>
+        <p>
+          <strong>Already solid</strong> includes safe first reveal, recursive clearing, flag mode, difficulty state, keyboard navigation, live announcements, and cell labels. <strong>Prototype-only</strong> areas include limited automated tests and simple local best-time persistence. Hardening would add reveal/flag tests, focus regression checks, difficulty validation, reset controls, and assistive-tech QA.
+        </p>
+      </section>
+
+      <section class="implementation-notes" aria-labelledby="sweep-run-title">
+        <span class="next-step-kicker">Deployment and run notes</span>
+        <h2 id="sweep-run-title">Static logic game with difficulty config in source.</h2>
+        <p>
+          <strong>Hosted/run location:</strong> GitHub Pages serves <code>minefield-sweep.html</code>, <code>minefield-sweep.css</code>, and <code>minefield-sweep.js</code>. <strong>Environment/config:</strong> no environment variables are required; difficulty sizes, mine counts, timer behavior, and reveal logic are client-side JavaScript. <strong>External APIs/services:</strong> none beyond DOM events, keyboard/touch input, and LocalStorage for best times. <strong>Local development:</strong> run <code>python -m http.server 8000</code> and open <code>/minefield-sweep.html</code>. <strong>Security:</strong> game state is local and no user data is transmitted.
+        </p>
+      </section>
+
       <section class="game-next-step" aria-labelledby="sweep-next-title">
         <div>
           <span class="next-step-kicker">Keep exploring</span>
@@ -174,7 +227,7 @@
       </section>
     </main>
 
-    <script src="demo-navigation.js"></script>
-    <script src="minefield-sweep.js"></script>
+    <script src="demo-navigation.js" defer></script>
+    <script src="minefield-sweep.js" defer></script>
   </body>
 </html>

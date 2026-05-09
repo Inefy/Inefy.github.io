@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="TraverseOps mobile-friendly demo by Zac Batten: sample field-operations map, inspections, work orders, imports, reports, and role workflow controls.">
+    <meta name="author" content="Zac Batten">
+    <link rel="canonical" href="https://zacbatten.me/traverseops-demo.html">
+    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:title" content="TraverseOps Demo / Zac Batten">
+    <meta property="og:description" content="Mobile-friendly field-operations demo with sample assets, inspections, work orders, imports, reports, and map-first workflows.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zacbatten.me/traverseops-demo.html">
+    <meta property="og:image" content="https://zacbatten.me/assets/traverseops-workspace.png">
+    <meta property="og:image:alt" content="TraverseOps map workspace showing municipal assets and selected asset details.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TraverseOps Demo / Zac Batten">
+    <meta name="twitter:description" content="Sample field-operations demo for map-first asset lookup, inspections, work orders, imports, and reports.">
+    <meta name="twitter:image" content="https://zacbatten.me/assets/traverseops-workspace.png">
+    <title>TraverseOps Field Operations Demo / Zac Batten</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#top">Skip to main content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+        <span class="brand-mark" aria-hidden="true">ZB</span>
+        <span class="brand-copy">
+          <span>Zac Batten</span>
+          <small>Inefy workbench</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html" aria-current="location">Work</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="about.html">About</a>
+        <a href="notes.html">Notes</a>
+        <a href="resume.html">Resume</a>
+        <a class="nav-cta" href="contact.html">Contact</a>
+        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top" class="traverse-demo-page" tabindex="-1">
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="work.html">Back to Work</a>
+        <span aria-hidden="true">/</span>
+        <a href="traverseops-case-study.html">TraverseOps case study</a>
+        <span aria-hidden="true">/</span>
+        <span>Demo</span>
+      </nav>
+
+      <section class="traverse-demo-hero" aria-labelledby="traverse-demo-title">
+        <div class="traverse-demo-hero-copy">
+          <p class="eyebrow">TraverseOps public demo</p>
+          <h1 id="traverse-demo-title">Field operations map and work-order demo.</h1>
+          <p>
+            This static sample-data demo shows the TraverseOps product shape: a map-first asset workspace with inspections, work orders, import validation, reports, and role-aware controls that stay usable on a phone.
+          </p>
+          <div class="traverse-demo-actions">
+            <a class="button primary" href="#traverse-workspace">Open workspace</a>
+            <a class="button secondary" href="traverseops-case-study.html">Read case study</a>
+          </div>
+          <dl class="project-status-list" aria-label="TraverseOps demo status">
+            <div>
+              <dt>Status</dt>
+              <dd>Public sample-data demo / prototype</dd>
+            </div>
+            <div>
+              <dt>Last updated</dt>
+              <dd>May 2026</dd>
+            </div>
+          </dl>
+        </div>
+        <aside class="traverse-demo-note" aria-label="Demo boundaries">
+          <strong>Sample data only</strong>
+          <p>No real municipal records are stored here. The goal is to demonstrate mobile workflow, UI state, and data relationships.</p>
+        </aside>
+      </section>
+
+      <section class="next-step-panel" aria-labelledby="traverse-readiness-title">
+        <div>
+          <p class="eyebrow">Production readiness</p>
+          <h2 id="traverse-readiness-title">Sample workflow demo, not an active field deployment.</h2>
+          <p>
+            The demo is solid for reviewing asset maps, inspection/work-order flows, imports, reports, and role-shaped UI. It remains demo-only because it uses sample data and does not enforce real auth, permissions, offline sync, audit logging, or production map/data reliability. Real users would require tenant-safe data access, import validation, mobile field-device testing, operational logs, backups, and alerts for sync or map-source failures.
+          </p>
+        </div>
+        <div class="next-step-actions">
+          <a class="button primary" href="traverseops-case-study.html#hardening-title">Read hardening plan</a>
+          <a class="button secondary" href="#traverse-workspace">Use sample demo</a>
+        </div>
+      </section>
+
+      <section class="next-step-panel" aria-labelledby="traverse-qa-title">
+        <div>
+          <p class="eyebrow">Testing and QA notes</p>
+          <h2 id="traverse-qa-title">The demo is checked against workflow, device, and data-state risks.</h2>
+          <p>
+            <strong>Automated tests:</strong> no public test suite is linked for this sample-data demo yet. Manual QA covers loading/resetting sample data, tab switching, map-marker selection, filters, inspection and work-order forms, import staging, report summaries, keyboard focus, mobile touch targets, and repeated empty/reset states. Browser checks should include narrow phones, tablets, desktop widths, reduced motion, and long labels or notes that could break layout.
+          </p>
+          <p>
+            <strong>Known limitations:</strong> the demo does not simulate real authentication, offline sync conflicts, production GIS feeds, bulk import security, or actual field-device network loss.
+          </p>
+        </div>
+        <div class="next-step-actions">
+          <a class="button primary" href="traverseops-case-study.html#testing-title">Read QA notes</a>
+          <a class="button secondary" href="#traverse-workspace">Run sample flow</a>
+        </div>
+      </section>
+
+      <section class="next-step-panel" aria-labelledby="traverse-run-title">
+        <div>
+          <p class="eyebrow">Deployment and run notes</p>
+          <h2 id="traverse-run-title">Static sample-data demo with no public secrets.</h2>
+          <p>
+            <strong>Hosted/run location:</strong> GitHub Pages serves <code>traverseops-demo.html</code>, <code>traverseops-demo.js</code>, shared CSS, and local screenshots/assets. <strong>Environment/config:</strong> no environment variables are required; sample assets, inspections, work orders, and import states live in client-side JavaScript. <strong>External APIs/services:</strong> this public demo does not connect to real GIS, Supabase, auth, or municipal APIs.
+          </p>
+          <p>
+            <strong>Local development:</strong> run <code>python -m http.server 8000</code> from the portfolio repo root and open <code>/traverseops-demo.html</code>. <strong>Security:</strong> keep real asset data, service-role keys, GIS credentials, and private imports out of static files; production would move validation and permissions server-side.
+          </p>
+        </div>
+        <div class="next-step-actions">
+          <a class="button primary" href="traverseops-case-study.html#deployment-title">Read run details</a>
+          <a class="button secondary" href="#traverse-workspace">Open workspace</a>
+        </div>
+      </section>
+
+      <section class="traverse-workspace" id="traverse-workspace" aria-labelledby="workspace-title">
+        <div class="traverse-workspace-header">
+          <div>
+            <p class="eyebrow">Workspace</p>
+            <h2 id="workspace-title">North Harbor zone</h2>
+            <p>Tap through the tabs to inspect assets, create field records, validate imports, and review sample reports.</p>
+          </div>
+          <div class="traverse-role-card">
+            <label for="traverse-role">Role</label>
+            <select id="traverse-role" data-traverse-role>
+              <option value="Field crew">Field crew</option>
+              <option value="Supervisor">Supervisor</option>
+              <option value="Admin">Admin</option>
+            </select>
+          </div>
+          <div class="traverse-sample-actions" aria-label="Sample data controls">
+            <button type="button" data-load-sample>Load sample data</button>
+            <button type="button" data-reset-demo>Reset demo</button>
+          </div>
+        </div>
+
+        <div class="traverse-status-bar" role="status" aria-live="polite" aria-atomic="true" data-traverse-status>
+          Sample workspace ready. Select a marker or open a workflow tab.
+        </div>
+
+        <div class="traverse-tabs" role="tablist" aria-label="TraverseOps demo sections">
+          <button type="button" role="tab" aria-selected="true" aria-controls="traverse-panel-map" id="traverse-tab-map" data-traverse-tab="map">Map</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="traverse-panel-assets" id="traverse-tab-assets" data-traverse-tab="assets">Assets</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="traverse-panel-inspections" id="traverse-tab-inspections" data-traverse-tab="inspections">Inspections</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="traverse-panel-work" id="traverse-tab-work" data-traverse-tab="work">Work orders</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="traverse-panel-import" id="traverse-tab-import" data-traverse-tab="import">Import</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="traverse-panel-reports" id="traverse-tab-reports" data-traverse-tab="reports">Reports</button>
+        </div>
+
+        <section class="traverse-demo-panel active" id="traverse-panel-map" role="tabpanel" aria-labelledby="traverse-tab-map" data-traverse-panel="map">
+          <div class="traverse-map-layout">
+            <div class="traverse-map-card">
+              <div class="traverse-panel-heading">
+                <div>
+                  <p class="eyebrow">Map workspace</p>
+                  <h3>Tap an asset marker.</h3>
+                </div>
+                <div class="traverse-map-filters" aria-label="Asset status filters">
+                  <button type="button" class="active" aria-pressed="true" data-map-filter="all">All</button>
+                  <button type="button" aria-pressed="false" data-map-filter="needs-inspection">Needs inspection</button>
+                  <button type="button" aria-pressed="false" data-map-filter="work-open">Open work</button>
+                  <button type="button" aria-pressed="false" data-map-filter="healthy">Healthy</button>
+                </div>
+              </div>
+
+              <div class="traverse-map" role="group" aria-label="Sample asset map with touch-sized markers">
+                <span class="traverse-map-label">North Harbor</span>
+                <button type="button" class="traverse-marker marker-nh-014 active" aria-pressed="true" data-asset-id="NH-014">
+                  <span>NH-014</span>
+                </button>
+                <button type="button" class="traverse-marker marker-nh-022" aria-pressed="false" data-asset-id="NH-022">
+                  <span>NH-022</span>
+                </button>
+                <button type="button" class="traverse-marker marker-nh-031" aria-pressed="false" data-asset-id="NH-031">
+                  <span>NH-031</span>
+                </button>
+                <button type="button" class="traverse-marker marker-nh-044" aria-pressed="false" data-asset-id="NH-044">
+                  <span>NH-044</span>
+                </button>
+                <button type="button" class="traverse-marker marker-nh-058" aria-pressed="false" data-asset-id="NH-058">
+                  <span>NH-058</span>
+                </button>
+                <div class="traverse-empty-state" data-map-empty hidden>
+                  <strong>No assets match this filter.</strong>
+                  <span>Try All or clear the status filter.</span>
+                </div>
+              </div>
+            </div>
+
+            <aside class="traverse-asset-sheet" aria-live="polite" aria-label="Selected asset details">
+              <span class="traverse-status-pill" data-selected-status>Needs inspection</span>
+              <h3 data-selected-name>Hydrant NH-014</h3>
+              <p data-selected-description>Last inspected 91 days ago near Pier Road. Flow test is due and one open work order is attached.</p>
+              <dl class="traverse-asset-facts">
+                <div>
+                  <dt>Zone</dt>
+                  <dd data-selected-zone>North Harbor</dd>
+                </div>
+                <div>
+                  <dt>Priority</dt>
+                  <dd data-selected-priority>High</dd>
+                </div>
+                <div>
+                  <dt>Open work</dt>
+                  <dd data-selected-work>1</dd>
+                </div>
+              </dl>
+              <div class="traverse-sheet-actions">
+                <button type="button" data-start-inspection>Start inspection</button>
+                <button type="button" data-create-work>Create work order</button>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="traverse-demo-panel" id="traverse-panel-assets" role="tabpanel" aria-labelledby="traverse-tab-assets" data-traverse-panel="assets" hidden>
+          <div class="traverse-panel-heading">
+            <div>
+              <p class="eyebrow">Asset registry</p>
+              <h3>Sample assets stay connected to the map.</h3>
+            </div>
+          </div>
+          <div class="traverse-card-list" data-asset-list></div>
+          <div class="traverse-empty-state" data-asset-empty hidden>
+            <strong>No asset records to show.</strong>
+            <span>Load sample data to repopulate the registry.</span>
+          </div>
+        </section>
+
+        <section class="traverse-demo-panel" id="traverse-panel-inspections" role="tabpanel" aria-labelledby="traverse-tab-inspections" data-traverse-panel="inspections" hidden>
+          <div class="traverse-workflow-grid">
+            <form class="traverse-form-card" data-inspection-form>
+              <div class="traverse-panel-heading">
+                <div>
+                  <p class="eyebrow">Inspection screen</p>
+                  <h3>Record a field inspection.</h3>
+                </div>
+              </div>
+              <label>
+                Asset
+                <select data-inspection-asset required></select>
+              </label>
+              <label>
+                Condition
+                <select data-inspection-condition>
+                  <option>Good</option>
+                  <option selected>Needs follow-up</option>
+                  <option>Critical</option>
+                </select>
+              </label>
+              <label>
+                Notes
+                <textarea data-inspection-notes rows="4">Flow cap needs follow-up before next hydrant cycle.</textarea>
+              </label>
+              <fieldset class="traverse-checklist">
+                <legend>Checklist</legend>
+                <label><input type="checkbox" checked> Marker visible</label>
+                <label><input type="checkbox" checked> Access clear</label>
+                <label><input type="checkbox"> Follow-up required</label>
+              </fieldset>
+              <button class="traverse-submit" type="submit">Save inspection</button>
+            </form>
+
+            <div class="traverse-list-panel">
+              <div class="traverse-panel-heading">
+                <div>
+                  <p class="eyebrow">Recent inspections</p>
+                  <h3>Latest sample records</h3>
+                </div>
+              </div>
+              <div class="traverse-card-list" data-inspection-list></div>
+              <div class="traverse-empty-state" data-inspection-empty hidden>
+                <strong>No inspections yet.</strong>
+                <span>Save the form to create the first inspection record.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="traverse-demo-panel" id="traverse-panel-work" role="tabpanel" aria-labelledby="traverse-tab-work" data-traverse-panel="work" hidden>
+          <div class="traverse-workflow-grid">
+            <form class="traverse-form-card" data-work-form>
+              <div class="traverse-panel-heading">
+                <div>
+                  <p class="eyebrow">Work-order screen</p>
+                  <h3>Create assigned work.</h3>
+                </div>
+              </div>
+              <label>
+                Asset
+                <select data-work-asset required></select>
+              </label>
+              <label>
+                Priority
+                <select data-work-priority>
+                  <option>Low</option>
+                  <option>Medium</option>
+                  <option selected>High</option>
+                  <option>Urgent</option>
+                </select>
+              </label>
+              <label>
+                Assignee
+                <input type="text" data-work-assignee value="Field crew A">
+              </label>
+              <label>
+                Summary
+                <textarea data-work-summary rows="4">Inspect cap, confirm flow access, and update asset status.</textarea>
+              </label>
+              <button class="traverse-submit" type="submit">Create work order</button>
+            </form>
+
+            <div class="traverse-list-panel">
+              <div class="traverse-panel-heading">
+                <div>
+                  <p class="eyebrow">Open work</p>
+                  <h3>Assigned tasks</h3>
+                </div>
+              </div>
+              <div class="traverse-card-list" data-work-list></div>
+              <div class="traverse-empty-state" data-work-empty hidden>
+                <strong>No open work orders.</strong>
+                <span>Create one from the form or selected asset sheet.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="traverse-demo-panel" id="traverse-panel-import" role="tabpanel" aria-labelledby="traverse-tab-import" data-traverse-panel="import" hidden>
+          <div class="traverse-import-grid">
+            <div class="traverse-form-card">
+              <div class="traverse-panel-heading">
+                <div>
+                  <p class="eyebrow">Import workflow</p>
+                  <h3>Validate before committing sample records.</h3>
+                </div>
+              </div>
+              <div class="traverse-upload-drop" role="group" aria-label="Sample import file">
+                <strong>north-harbor-assets.csv</strong>
+                <span>5 asset rows, coordinates, status, last inspection, and open-work counts.</span>
+              </div>
+              <div class="traverse-import-actions">
+                <button type="button" data-validate-import>Validate sample import</button>
+                <button type="button" data-load-sample>Reload sample rows</button>
+              </div>
+            </div>
+            <ol class="traverse-import-steps" data-import-steps>
+              <li class="complete"><strong>File selected</strong><span>CSV-like sample data is ready.</span></li>
+              <li class="complete"><strong>Columns mapped</strong><span>ID, type, status, zone, and coordinates match expected fields.</span></li>
+              <li><strong>Validation pending</strong><span>Run validation to check coordinates and duplicate IDs.</span></li>
+              <li><strong>Commit disabled in demo</strong><span>Production would require permissions, audit logs, and rollback support.</span></li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="traverse-demo-panel" id="traverse-panel-reports" role="tabpanel" aria-labelledby="traverse-tab-reports" data-traverse-panel="reports" hidden>
+          <div class="traverse-report-grid" data-report-grid></div>
+          <div class="traverse-empty-state" data-report-empty hidden>
+            <strong>No report data available.</strong>
+            <span>Load sample data to rebuild asset, inspection, and work-order totals.</span>
+          </div>
+        </section>
+      </section>
+
+      <section class="next-step-panel" aria-labelledby="traverse-demo-next">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2 id="traverse-demo-next">Compare the demo with the case study.</h2>
+          <p>The case study explains the architecture, data model, demo limits, and production hardening plan behind this mobile-friendly sample workspace.</p>
+        </div>
+        <div class="next-step-actions">
+          <a class="button primary" href="traverseops-case-study.html">Read case study</a>
+          <a class="button secondary" href="work.html">Back to Work</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-identity">
+        <strong>Zac Batten</strong>
+        <span>Software developer building practical web tools, automation, and frontend interfaces.</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="contact.html">Contact</a>
+        <a href="resume.html">Resume</a>
+        <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
+        <a href="work.html">Work</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="about.html">About</a>
+        <a href="notes.html">Notes</a>
+        <a href="interactive-lab.html">Interactive Lab</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="sitemap.xml">Sitemap</a>
+      </nav>
+      <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
+    </footer>
+
+    <script src="shared.js" defer></script>
+    <script src="traverseops-demo.js" defer></script>
+  </body>
+</html>

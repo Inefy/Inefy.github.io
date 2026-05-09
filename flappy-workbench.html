@@ -13,12 +13,12 @@
     <meta property="og:description" content="A Canvas/JavaScript timing game with gravity, jump impulse, obstacle gaps, collision checks, score tracking, pause, and mobile input.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/flappy-workbench.html">
-    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
-    <meta property="og:image:alt" content="Inefy workbench preview with selected projects and browser tools.">
+    <meta property="og:image" content="https://zacbatten.me/assets/flappy-workbench-preview.png">
+    <meta property="og:image:alt" content="Flappy Workbench canvas playfield with start menu, bird, pipe obstacles, and touch controls.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Flappy Workbench Canvas Game / Zac Batten">
     <meta name="twitter:description" content="Canvas/JavaScript timing game with gravity, jump impulse, obstacle gaps, collision checks, score tracking, pause, and mobile input.">
-    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta name="twitter:image" content="https://zacbatten.me/assets/flappy-workbench-preview.png">
     <title>Flappy Workbench Canvas Game / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236de1a6'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%230c0f10'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="flappy-workbench.css">
@@ -57,7 +57,17 @@
           <span class="next-step-kicker">Game guide</span>
           <h1 id="flappy-overview-title">Flappy Workbench</h1>
           <p>Timing games need consistent physics and fast restart; I built a Canvas/JavaScript Flappy-style loop with gravity, jump impulse, obstacle gaps, collision checks, score/best tracking, pause/restart controls, and a labeled mobile Flap button.</p>
-          <div class="demo-overview-actions" aria-label="Flappy Workbench actions">
+          <dl class="demo-status-list" aria-label="Flappy Workbench project status">
+            <div>
+              <dt>Status</dt>
+              <dd>Archived experiment / live demo</dd>
+            </div>
+            <div>
+              <dt>Last updated</dt>
+              <dd>May 2026</dd>
+            </div>
+          </dl>
+          <div class="demo-overview-actions" role="group" aria-label="Flappy Workbench actions">
             <a href="interactive-lab.html">Back to Interactive Lab</a>
             <button type="button" data-demo-proxy="startButton">Start Run</button>
             <button type="button" data-demo-proxy="restartButton">Restart</button>
@@ -93,12 +103,39 @@
           <span>Best</span>
           <strong id="bestValue">0</strong>
         </div>
-        <p class="round-status" id="roundStatus" aria-live="polite">Ready</p>
+        <p class="round-status" id="roundStatus">Ready</p>
+        <p class="sr-only" id="gameAnnouncement" role="status" aria-live="polite" aria-atomic="true">Flappy Workbench ready.</p>
+      </section>
+
+      <section class="control-reference" aria-labelledby="flappy-controls-title">
+        <div class="control-reference-heading">
+          <span class="next-step-kicker">Control reference</span>
+          <h2 id="flappy-controls-title">Keyboard and touch controls</h2>
+        </div>
+        <div class="control-reference-grid">
+          <div class="control-reference-card">
+            <h3>Keyboard shortcuts</h3>
+            <ul class="shortcut-list" id="flappy-keyboard-shortcuts">
+              <li><kbd>Space</kbd><span>Start the run or flap while playing.</span></li>
+              <li><kbd>Arrow Up</kbd><span>Flap while the run is active.</span></li>
+              <li><kbd>P / Esc</kbd><span>Pause or resume the run.</span></li>
+              <li><kbd>R</kbd><span>Restart the run from the beginning.</span></li>
+            </ul>
+          </div>
+          <div class="control-reference-card">
+            <h3>Touch controls</h3>
+            <ul class="shortcut-list" id="flappy-touch-controls">
+              <li><kbd>Tap canvas</kbd><span>Start or flap from the playfield.</span></li>
+              <li><kbd>Flap button</kbd><span>Use the large button below the canvas for repeated flaps.</span></li>
+              <li><kbd>Pause button</kbd><span>Use the page action button when you need to stop the loop.</span></li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section class="game-stage-wrap" id="game-stage" aria-label="Playfield">
         <div class="game-stage" id="gameStage">
-          <canvas id="gameCanvas" aria-label="Flappy Workbench playfield"></canvas>
+          <canvas id="gameCanvas" width="960" height="540" aria-label="Flappy Workbench playfield" aria-describedby="flappy-keyboard-shortcuts flappy-touch-controls"></canvas>
           <div class="game-menu" id="gameMenu">
             <strong id="menuTitle">Flappy Workbench</strong>
             <span class="menu-meta" id="menuMeta">Best 0</span>
@@ -130,6 +167,22 @@
         <p class="ownership-note">The Flappy-style rule set is an external genre reference; the browser implementation, visuals, controls, and state wiring are custom code.</p>
       </section>
 
+      <section class="implementation-notes" aria-labelledby="flappy-readiness-title">
+        <span class="next-step-kicker">Production readiness</span>
+        <h2 id="flappy-readiness-title">Archived experiment with a working timing loop.</h2>
+        <p>
+          <strong>Already solid</strong> includes gravity, obstacle spawning, scoring, best-score persistence, pause/restart, and touch input. <strong>Demo-only</strong> pieces include informal physics tuning and limited nonvisual gameplay support. Hardening would add deterministic physics tests, mobile-browser QA, reduced-motion review, save reset behavior, and more robust pause/resume validation.
+        </p>
+      </section>
+
+      <section class="implementation-notes" aria-labelledby="flappy-run-title">
+        <span class="next-step-kicker">Deployment and run notes</span>
+        <h2 id="flappy-run-title">Static timing game with no backend.</h2>
+        <p>
+          <strong>Hosted/run location:</strong> GitHub Pages serves <code>flappy-workbench.html</code>, <code>flappy-workbench.css</code>, and <code>flappy-workbench.js</code>. <strong>Environment/config:</strong> no environment variables are required; gravity, pipe timing, scoring, and pause/restart behavior are configured in JavaScript. <strong>External APIs/services:</strong> none beyond Canvas, keyboard/touch/pointer events, Fullscreen, and LocalStorage for best score. <strong>Local development:</strong> run <code>python -m http.server 8000</code> and open <code>/flappy-workbench.html</code>. <strong>Security:</strong> no secrets or remote user data are involved.
+        </p>
+      </section>
+
       <section class="game-next-step" aria-labelledby="flappy-next-title">
         <div>
           <span class="next-step-kicker">Keep exploring</span>
@@ -143,7 +196,7 @@
       </section>
     </main>
 
-    <script src="demo-navigation.js"></script>
-    <script src="flappy-workbench.js"></script>
+    <script src="demo-navigation.js" defer></script>
+    <script src="flappy-workbench.js" defer></script>
   </body>
 </html>

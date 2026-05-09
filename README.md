@@ -33,6 +33,8 @@ Suggested GitHub About fields:
 ## Project Structure
 
 - `index.html` - homepage, selected work, case studies, contact section, and interactive lab links.
+- `about.html` - concise human/professional overview.
+- `contact.html` - recruiter-friendly contact and opportunity fit page.
 - `styles.css` - shared site styles, desktop/mobile layout, accessibility states, and reduced-motion rules.
 - `script.js` - homepage interactions, local time, filtering, palette shuffle, and Twitch embed helpers.
 - `movie-night.html` - MovieBot/Movie Night showcase.
@@ -40,7 +42,7 @@ Suggested GitHub About fields:
 - `web-paint-case-study.html` - Web Paint technical case study.
 - `movie-library.html` and `movie-library.js` - searchable public-domain movie list.
 - `notes.html` - build notes.
-- `resume.html` - recruiter-friendly resume placeholder page.
+- `resume.html` - recruiter-friendly web resume with project bullets and contact links.
 - `paint.*`, `snake-lab.*`, `brick-breaker.*`, `2048.*`, `minefield-sweep.*`, `mini-golf.*`, `asteroid-drift.*`, `flappy-workbench.*` - standalone interactive tools and games.
 - `assets/` - project preview imagery.
 - `CNAME`, `robots.txt`, `sitemap.xml` - GitHub Pages domain and indexing metadata.

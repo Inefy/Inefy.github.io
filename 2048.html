@@ -13,12 +13,12 @@
     <meta property="og:description" content="A JavaScript puzzle with board transforms, merge rules, random tiles, undo snapshots, saved best score, swipe input, and accessibility labels.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/2048.html">
-    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
-    <meta property="og:image:alt" content="Inefy workbench preview with selected projects and browser tools.">
+    <meta property="og:image" content="https://zacbatten.me/assets/2048-preview.png">
+    <meta property="og:image:alt" content="2048 puzzle game start screen with numbered tiles and keyboard/touch controls.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="2048 Puzzle Game / Zac Batten Interactive Lab">
     <meta name="twitter:description" content="JavaScript board transforms, merge rules, random tiles, undo snapshots, saved best score, swipe input, and accessibility labels.">
-    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta name="twitter:image" content="https://zacbatten.me/assets/2048-preview.png">
     <title>2048 Puzzle Game / Zac Batten Interactive Lab</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f5c45b'/%3E%3Crect x='12' y='12' width='18' height='18' rx='4' fill='%23070c10'/%3E%3Crect x='34' y='12' width='18' height='18' rx='4' fill='%2368b7ff'/%3E%3Crect x='12' y='34' width='18' height='18' rx='4' fill='%236de1a6'/%3E%3Crect x='34' y='34' width='18' height='18' rx='4' fill='%23ff7ac3'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="2048.css">
@@ -58,7 +58,17 @@
           <span class="next-step-kicker">Game guide</span>
           <h1 id="merge-overview-title">2048</h1>
           <p>Tile merging needs deterministic board transforms; I built an HTML/CSS/JavaScript 2048 implementation with move compression, single-merge resolution, random tile spawning, undo snapshots, saved best score, swipe input, and accessible board summaries.</p>
-          <div class="demo-overview-actions" aria-label="2048 actions">
+          <dl class="demo-status-list" aria-label="2048 project status">
+            <div>
+              <dt>Status</dt>
+              <dd>Archived experiment / live demo</dd>
+            </div>
+            <div>
+              <dt>Last updated</dt>
+              <dd>May 2026</dd>
+            </div>
+          </dl>
+          <div class="demo-overview-actions" role="group" aria-label="2048 actions">
             <a href="interactive-lab.html">Back to Interactive Lab</a>
             <button type="button" data-demo-proxy="startButton">Start Game</button>
             <button type="button" data-demo-proxy="restartButton">Restart</button>
@@ -111,6 +121,32 @@
         </div>
       </section>
 
+      <section class="control-reference" aria-labelledby="merge-controls-title">
+        <div class="control-reference-heading">
+          <span class="next-step-kicker">Control reference</span>
+          <h2 id="merge-controls-title">Keyboard and touch controls</h2>
+        </div>
+        <div class="control-reference-grid">
+          <div class="control-reference-card">
+            <h3>Keyboard shortcuts</h3>
+            <ul class="shortcut-list" id="merge-keyboard-shortcuts">
+              <li><kbd>Arrow keys</kbd><span>Move tiles up, right, down, or left.</span></li>
+              <li><kbd>W A S D</kbd><span>Alternate movement keys for the same four directions.</span></li>
+              <li><kbd>Enter / Space</kbd><span>Start the game when the start menu is visible.</span></li>
+              <li><kbd>Ctrl/Cmd+Z</kbd><span>Undo the previous move when a move is available.</span></li>
+            </ul>
+          </div>
+          <div class="control-reference-card">
+            <h3>Touch controls</h3>
+            <ul class="shortcut-list" id="merge-touch-controls">
+              <li><kbd>Swipe</kbd><span>Swipe on the board to move tiles in that direction.</span></li>
+              <li><kbd>Direction buttons</kbd><span>Use the four large buttons below the board.</span></li>
+              <li><kbd>Undo button</kbd><span>Use the page action button to revert one move.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section class="game-stage-wrap" id="game-stage" aria-label="Playfield">
         <div class="game-stage">
           <section class="merge-panel" aria-label="2048 board">
@@ -118,7 +154,7 @@
             <p class="sr-only" id="merge-keyboard-instructions">Focus the board, then use Arrow keys or W, A, S, and D to move tiles. Press Control Z or Command Z to undo the last move.</p>
             <p class="sr-only" id="merge-touch-instructions">On touch screens, swipe on the board or use the labeled direction buttons below the board.</p>
             <p class="sr-only" id="merge-board-state">Board not started.</p>
-            <div class="merge-board" id="gameBoard" role="group" aria-label="2048 board" aria-describedby="merge-keyboard-instructions merge-touch-instructions merge-board-state" aria-keyshortcuts="ArrowUp ArrowRight ArrowDown ArrowLeft W A S D Control+Z Meta+Z" tabindex="0">
+            <div class="merge-board" id="gameBoard" role="group" aria-label="2048 board" aria-describedby="merge-keyboard-instructions merge-touch-instructions merge-board-state merge-keyboard-shortcuts merge-touch-controls" aria-keyshortcuts="ArrowUp ArrowRight ArrowDown ArrowLeft W A S D Control+Z Meta+Z" tabindex="0">
               <div class="board-grid" aria-hidden="true" inert>
                 <span></span><span></span><span></span><span></span>
                 <span></span><span></span><span></span><span></span>
@@ -172,6 +208,22 @@
         <p class="ownership-note">The 2048 game rules are external and well established; this no-dependency browser implementation and UI shell are custom code.</p>
       </section>
 
+      <section class="implementation-notes" aria-labelledby="merge-readiness-title">
+        <span class="next-step-kicker">Production readiness</span>
+        <h2 id="merge-readiness-title">Archived experiment with strong board-state fundamentals.</h2>
+        <p>
+          <strong>Already solid</strong> includes merge transforms, undo, local persistence, swipe input, keyboard controls, and accessible board summaries. <strong>Demo-only</strong> areas include limited automated rule coverage and simple localStorage state. Hardening would add unit tests for every merge path, save migration/reset behavior, and screen-reader regression checks.
+        </p>
+      </section>
+
+      <section class="implementation-notes" aria-labelledby="merge-run-title">
+        <span class="next-step-kicker">Deployment and run notes</span>
+        <h2 id="merge-run-title">Static board game with browser-only persistence.</h2>
+        <p>
+          <strong>Hosted/run location:</strong> GitHub Pages serves <code>2048.html</code>, <code>2048.css</code>, and <code>2048.js</code>. <strong>Environment/config:</strong> no environment variables are required; board size, tile rules, keyboard/swipe controls, and scoring live in JavaScript. <strong>External APIs/services:</strong> none beyond DOM events, touch input, and LocalStorage for save/best score state. <strong>Local development:</strong> run <code>python -m http.server 8000</code> and open <code>/2048.html</code>. <strong>Security:</strong> stored board state remains local to the browser.
+        </p>
+      </section>
+
       <section class="game-next-step" aria-labelledby="merge-next-title">
         <div>
           <span class="next-step-kicker">Keep exploring</span>
@@ -185,7 +237,7 @@
       </section>
     </main>
 
-    <script src="demo-navigation.js"></script>
-    <script src="2048.js"></script>
+    <script src="demo-navigation.js" defer></script>
+    <script src="2048.js" defer></script>
   </body>
 </html>

@@ -77,7 +77,7 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body class="stream-body">
@@ -96,10 +96,10 @@
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
         <a href="work.html">Work</a>
         <a href="case-studies.html" aria-current="location">Case Studies</a>
-        <a href="index.html#about">About</a>
+        <a href="about.html">About</a>
         <a href="notes.html">Notes</a>
         <a href="resume.html">Resume</a>
-        <a class="nav-cta" href="index.html#contact">Contact</a>
+        <a class="nav-cta" href="contact.html">Contact</a>
         <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
       </nav>
     </header>
@@ -120,7 +120,11 @@
           <p>
             Viewers need a reliable way to choose vote commands; I built this static HTML/CSS/JavaScript MovieBot catalog so they can search public-domain titles, copy the exact <code>!vote</code> command, and return to Twitch chat with fewer typing mistakes.
           </p>
-          <div class="movie-list-stats" aria-label="Movie library stats">
+          <label class="movie-search-label" for="movie-search">Search movies</label>
+          <input class="movie-search" id="movie-search" type="search" placeholder="Title, year, runtime, or rating" autocomplete="off" inputmode="search" enterkeyhint="search" autocapitalize="none" spellcheck="false" aria-describedby="movie-search-hint movie-library-keyboard-controls movie-library-touch-controls">
+          <p class="movie-search-hint" id="movie-search-hint">Search title, year, runtime, or rating, then tap Copy !vote on a result.</p>
+          <a class="movie-results-jump" href="#movie-grid">Jump to results</a>
+          <div class="movie-list-stats">
             <div>
               <strong data-movie-count>110</strong>
               <span>movies</span>
@@ -130,13 +134,21 @@
               <span>release years</span>
             </div>
           </div>
-          <label class="movie-search-label" for="movie-search">Search movies</label>
-          <input class="movie-search" id="movie-search" type="search" placeholder="Title, year, runtime, or rating" autocomplete="off">
           <div class="hero-actions">
             <a class="button primary" href="movie-night.html#watch">Back to stream</a>
             <a class="button secondary" href="moviebot-case-study.html">MovieBot case study</a>
             <a class="button ghost" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Bot source</a>
           </div>
+          <dl class="project-status-list" aria-label="Movie Library project status">
+            <div>
+              <dt>Status</dt>
+              <dd>Live demo / companion catalog</dd>
+            </div>
+            <div>
+              <dt>Last updated</dt>
+              <dd>May 2026</dd>
+            </div>
+          </dl>
         </div>
 
         <section class="movie-library-system" aria-labelledby="movie-library-system-title">
@@ -148,7 +160,7 @@
             </p>
           </div>
 
-          <div class="movie-library-system-grid" aria-label="Movie Library engineering intro">
+          <div class="movie-library-system-grid">
             <article>
               <h3>Technical problem</h3>
               <p>Viewers need to find eligible public-domain titles and copy valid <code>!vote</code> commands without adding friction to the live chat flow.</p>
@@ -182,7 +194,39 @@
             <p class="ownership-note">External pieces include IMDb links, externally hosted poster images, and public-domain movie metadata; the catalog UI and filtering/copy behavior are custom static-site code.</p>
           </div>
 
-          <div class="movie-library-system-grid" aria-label="How Movie Library supports MovieBot">
+          <div class="what-built-card">
+            <p class="what-built-label">Production readiness</p>
+            <ul class="project-bullets">
+              <li><strong>Already solid:</strong> static fallback content, client-side search, copyable vote commands, fixed poster dimensions, lazy loading, and accessible labels.</li>
+              <li><strong>Demo-only:</strong> movie data is maintained inside the static page and poster availability depends on external image URLs.</li>
+              <li><strong>Hardening needed:</strong> generate dynamic cards and fallback markup from one source, add poster health checks, validate catalog updates, and test clipboard behavior across browsers.</li>
+              <li><strong>Security/privacy/ops:</strong> keep the catalog read-only, avoid tracking viewers, verify public-domain/source links, and guard any future user-submitted movie data before rendering.</li>
+            </ul>
+          </div>
+
+          <div class="what-built-card">
+            <p class="what-built-label">Testing and QA notes</p>
+            <ul class="project-bullets">
+              <li><strong>Automated tests:</strong> no dedicated automated catalog tests are present yet; current QA relies on browser smoke checks and manual validation of the static page.</li>
+              <li><strong>Manual checklist:</strong> search by title/year/runtime/rating, clear filters, copy several vote commands, verify result-count announcements, load more cards, and confirm the <code>noscript</code> list remains complete.</li>
+              <li><strong>Browser/device checks:</strong> review mobile search controls, tap targets, keyboard focus, Clipboard API behavior, textarea fallback copying, lazy poster loading, and no-horizontal-overflow layouts.</li>
+              <li><strong>Edge cases:</strong> empty searches, poster load failures, blocked clipboard access, missing external links, duplicate or ambiguous titles, and JavaScript-disabled browsing.</li>
+              <li><strong>Known limitations:</strong> the dynamic cards and fallback list are not generated from one source yet, so catalog updates still need careful manual comparison.</li>
+            </ul>
+          </div>
+
+          <div class="what-built-card">
+            <p class="what-built-label">Deployment and run notes</p>
+            <ul class="project-bullets">
+              <li><strong>Hosted/run location:</strong> static GitHub Pages page at <code>zacbatten.me/movie-library.html</code>, backed by <code>movie-library.js</code> and in-page fallback markup.</li>
+              <li><strong>Environment/config:</strong> no environment variables are required; movie metadata is currently maintained in the static JavaScript and fallback HTML.</li>
+              <li><strong>External APIs/services:</strong> IMDb links and externally hosted poster images are the external dependencies; search and copy behavior run entirely in the browser.</li>
+              <li><strong>Local development:</strong> run <code>python -m http.server 8000</code> from the portfolio repo root, then open <code>/movie-library.html</code> to test search, copy buttons, poster loading, and no-JS fallback content.</li>
+              <li><strong>Secrets/security:</strong> there are no frontend secrets. Keep the catalog read-only, avoid viewer tracking, validate poster/link sources, and sanitize any future user-submitted movie data before rendering.</li>
+            </ul>
+          </div>
+
+          <div class="movie-library-system-grid">
             <article>
               <h3>Voting workflow</h3>
               <p>Each rendered movie card includes a title-specific copy button so a viewer can send <code>!vote Movie Title</code> to Twitch chat without manually retyping long or ambiguous titles.</p>
@@ -197,7 +241,7 @@
             </article>
             <article>
               <h3>Poster performance</h3>
-              <p>Poster images are rendered with fixed dimensions, async decoding, and lazy loading where appropriate so the large catalog does not block the first view.</p>
+              <p>Poster images are rendered in batches with fixed dimensions, async decoding, lazy loading, and fallback poster styling so the large catalog does not block or jump during first view.</p>
             </article>
           </div>
 
@@ -221,7 +265,7 @@
               </article>
               <article>
                 <h4>Image loading strategy</h4>
-                <p>Poster URLs are normalized for a larger card image, constrained to the expected poster host, and rendered with <code>loading="lazy"</code>, dimensions, and async decoding.</p>
+                <p>Poster URLs are normalized for a larger card image, constrained to the expected poster host, and rendered with <code>loading="lazy"</code>, dimensions, async decoding, and a load-more batch after the first visible set.</p>
               </article>
               <article>
                 <h4>Accessibility labels</h4>
@@ -238,8 +282,35 @@
         </section>
 
         <div class="movie-library-shell">
+          <section class="movie-control-guide" aria-labelledby="movie-library-controls-title">
+            <div class="movie-control-heading">
+              <p class="eyebrow">Catalog controls</p>
+              <h2 id="movie-library-controls-title">Find a title and copy the vote command.</h2>
+            </div>
+            <div class="movie-control-grid">
+              <article>
+                <h3>Keyboard shortcuts</h3>
+                <ul id="movie-library-keyboard-controls">
+                  <li><kbd>Tab / Shift+Tab</kbd><span>Move between search, Clear, movie links, and copy buttons.</span></li>
+                  <li><kbd>Type search</kbd><span>Filter by title, year, runtime, or rating as you type.</span></li>
+                  <li><kbd>Enter / Space</kbd><span>Activate a focused copy button or link.</span></li>
+                  <li><kbd>Clear</kbd><span>Use the Clear button to reset the catalog search.</span></li>
+                </ul>
+              </article>
+              <article>
+                <h3>Touch controls</h3>
+                <ul id="movie-library-touch-controls">
+                  <li><kbd>Tap search</kbd><span>Open the keyboard and filter the catalog.</span></li>
+                  <li><kbd>Scroll cards</kbd><span>Browse the lazy-loaded poster grid vertically.</span></li>
+                  <li><kbd>Copy !vote</kbd><span>Tap a movie card button to copy its chat command.</span></li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
           <div class="movie-library-toolbar">
-            <span data-movie-results aria-live="polite" aria-atomic="true">Showing all 110 movies</span>
+            <span data-movie-results role="status" aria-live="polite" aria-atomic="true">Showing all 110 movies</span>
+            <span class="sr-only" id="movieAnnouncement" role="status" aria-live="polite" aria-atomic="true">Movie Library ready.</span>
             <button class="filter-button" type="button" data-movie-clear>Clear</button>
           </div>
           <noscript>
@@ -360,7 +431,11 @@
               </ol>
             </div>
           </noscript>
-          <div class="movie-grid" id="movie-grid" aria-live="polite"></div>
+          <div class="movie-grid" id="movie-grid" tabindex="-1" aria-describedby="movie-library-keyboard-controls movie-library-touch-controls"></div>
+          <div class="movie-load-more" data-movie-pagination hidden>
+            <button class="button secondary" type="button" data-movie-load-more>Load more movies</button>
+          </div>
+          <script src="movie-library.js"></script>
         </div>
       </section>
 
@@ -385,18 +460,20 @@
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="contact.html">Contact</a>
         <a href="resume.html">Resume</a>
         <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
         <a href="work.html">Work</a>
         <a href="case-studies.html" aria-current="location">Case Studies</a>
+        <a href="about.html">About</a>
         <a href="notes.html">Notes</a>
         <a href="interactive-lab.html">Interactive Lab</a>
+        <a href="changelog.html">Changelog</a>
         <a href="sitemap.xml">Sitemap</a>
       </nav>
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="script.js"></script>
-    <script src="movie-library.js"></script>
+    <script src="shared.js" defer></script>
   </body>
 </html>

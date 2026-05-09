@@ -24,7 +24,8 @@
   transition: transform 160ms ease;
 }
 
-.skip-link:focus {
+.skip-link:focus,
+.skip-link:focus-visible {
   outline: 3px solid var(--demo-focus-ring);
   outline-offset: 4px;
   box-shadow: var(--demo-focus-shadow);
@@ -45,9 +46,32 @@
   box-shadow: var(--demo-focus-shadow);
 }
 
-:is(.demo-overview, .implementation-notes, .demo-built, .game-next-step):focus-within {
+:is(.demo-overview, .control-reference, .implementation-notes, .demo-built, .game-next-step):focus-within {
   outline: 2px solid var(--demo-focus-ring);
   outline-offset: 6px;
+}
+
+.sr-only {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+:is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app)[tabindex="-1"] {
+  scroll-margin-top: 16px;
+}
+
+:is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app)[tabindex="-1"]:focus {
+  outline: 3px solid var(--demo-focus-ring);
+  outline-offset: -6px;
+  box-shadow: inset 0 0 0 3px rgba(245, 196, 91, 0.14);
 }
 
 .game-app,
@@ -56,7 +80,9 @@
 .breaker-app,
 .sweep-app,
 .golf-app {
-  grid-template-rows: auto auto auto auto minmax(0, 1fr) auto auto auto;
+  width: 100%;
+  max-width: 100vw;
+  grid-template-rows: auto auto auto auto auto minmax(0, 1fr) auto auto auto;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -64,17 +90,54 @@
 .paint-app {
   --demo-focus-ring: var(--blue-600, #2f80ed);
   --demo-focus-shadow: 0 0 0 6px rgba(47, 128, 237, 0.18);
-  grid-template-rows: 56px auto auto 220px minmax(0, 1fr) 40px auto auto;
+  width: 100%;
+  max-width: 100vw;
+  grid-template-rows: 56px auto auto 220px auto minmax(0, 1fr) 52px auto auto;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
+:is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app) .titlebar {
+  max-width: 100vw;
+  min-width: 0;
+}
+
+:is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app)
+  :is(.game-nav, .paint-nav) {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+:is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app)
+  :is(.game-nav, .paint-nav)::-webkit-scrollbar {
+  display: none;
+}
+
+:is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app)
+  :is(.game-nav a, .game-nav button, .paint-nav a, .paint-nav button) {
+  min-height: 44px;
+}
+
+:is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app)
+  :is(.game-stage-wrap, .paint-shell, .canvas-shell, .stage-shell) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+:is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app)
+  :is(.game-stage, .paint-stage, .canvas-stage) {
+  max-width: 100%;
+}
+
 .paint-app.is-minimized {
-  grid-template-rows: 56px auto auto 0 minmax(0, 1fr) 40px auto auto;
+  grid-template-rows: 56px auto auto 0 auto minmax(0, 1fr) 52px auto auto;
 }
 
 .game-breadcrumb,
 .demo-overview,
+.control-reference,
 .implementation-notes,
 .game-next-step,
 .demo-built {
@@ -90,13 +153,16 @@
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
-  min-height: 34px;
+  min-height: 44px;
   color: var(--demo-nav-muted);
   font-size: 0.8rem;
   font-weight: 850;
 }
 
 .game-breadcrumb a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   color: var(--demo-nav-ink);
   text-decoration: underline;
   text-decoration-color: rgba(109, 225, 166, 0.58);
@@ -142,6 +208,36 @@
   line-height: 1.45;
 }
 
+.demo-status-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+
+.demo-status-list div {
+  display: grid;
+  gap: 3px;
+  min-height: 68px;
+  padding: 10px;
+  background: rgba(248, 244, 232, 0.055);
+  border: 1px solid rgba(248, 244, 232, 0.13);
+  border-radius: 8px;
+}
+
+.demo-status-list dt {
+  color: var(--demo-nav-cta);
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.66rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.demo-status-list dd {
+  color: var(--demo-nav-ink);
+  font-weight: 850;
+}
+
 .demo-overview-actions {
   display: flex;
   flex-wrap: wrap;
@@ -151,7 +247,7 @@
 .demo-overview-actions a,
 .demo-overview-actions button {
   display: inline-flex;
-  min-height: 40px;
+  min-height: 44px;
   align-items: center;
   justify-content: center;
   padding: 0 12px;
@@ -224,6 +320,92 @@
 
 .demo-accessibility-note strong {
   color: var(--demo-nav-ink);
+}
+
+.control-reference {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.45fr) minmax(0, 1fr);
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  background: rgba(8, 12, 14, 0.72);
+  border: 1px solid var(--demo-nav-line);
+  border-radius: 10px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.18);
+}
+
+.control-reference-heading {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+}
+
+.control-reference h2,
+.control-reference h3 {
+  margin: 0;
+  color: var(--demo-nav-ink);
+  line-height: 1.18;
+}
+
+.control-reference h2 {
+  font-size: 1rem;
+}
+
+.control-reference h3 {
+  font-size: 0.86rem;
+}
+
+.control-reference-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.control-reference-card {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  background: rgba(248, 244, 232, 0.045);
+  border: 1px solid rgba(248, 244, 232, 0.12);
+  border-radius: 8px;
+}
+
+.shortcut-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  color: var(--demo-nav-muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+  list-style: none;
+}
+
+.shortcut-list li {
+  display: grid;
+  grid-template-columns: minmax(120px, max-content) minmax(0, 1fr);
+  gap: 8px;
+  align-items: baseline;
+}
+
+.shortcut-list kbd {
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 7px;
+  color: #07100d;
+  background: var(--demo-nav-cta);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 6px;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.shortcut-list span {
+  min-width: 0;
 }
 
 .game-next-step {
@@ -341,7 +523,7 @@
 
 .next-step-actions a {
   display: inline-flex;
-  min-height: 42px;
+  min-height: 44px;
   align-items: center;
   justify-content: center;
   padding: 0 12px;
@@ -373,17 +555,63 @@
   border-color: rgba(255, 255, 255, 0.16);
 }
 
+.paint-app .control-reference {
+  background: #101827;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+@media (max-width: 900px) {
+  .paint-app > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .paint-app :is(.game-breadcrumb, .demo-overview, .control-reference, .implementation-notes, .game-next-step, .demo-built) {
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+    justify-self: center;
+  }
+
+  .paint-app :is(.ribbon, .workspace, .statusbar) {
+    width: 100%;
+    max-width: 100vw;
+    min-width: 0;
+  }
+
+  .paint-app :is(.ribbon-content, .canvas-scroll) {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
 @media (max-width: 760px) {
+  :is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app) .titlebar {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  :is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app)
+    :is(.game-nav, .paint-nav) {
+    width: 100%;
+  }
+
+  :is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app) .game-stage-wrap {
+    overflow: hidden;
+  }
+
   .paint-app {
-    grid-template-rows: auto auto auto 220px minmax(0, 1fr) 40px auto auto;
+    grid-template-rows: auto auto auto 220px auto minmax(0, 1fr) 52px auto auto;
   }
 
   .paint-app.is-minimized {
-    grid-template-rows: auto auto auto 0 minmax(0, 1fr) 40px auto auto;
+    grid-template-rows: auto auto auto 0 auto minmax(0, 1fr) 52px auto auto;
   }
 
   .game-breadcrumb,
   .demo-overview,
+  .control-reference,
   .implementation-notes,
   .game-next-step,
   .demo-built {
@@ -400,8 +628,23 @@
     grid-template-columns: 1fr 1fr;
   }
 
+  .demo-status-list,
   .demo-control-list {
     grid-template-columns: 1fr;
+  }
+
+  .control-reference {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .control-reference-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shortcut-list li {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 
   .game-next-step {
@@ -422,6 +665,10 @@
 }
 
 @media (max-width: 430px) {
+  :is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app) .game-stage {
+    width: min(100%, calc(100vw - 16px));
+  }
+
   .game-breadcrumb {
     font-size: 0.74rem;
   }

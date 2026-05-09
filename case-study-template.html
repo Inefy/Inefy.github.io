@@ -24,7 +24,7 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -43,10 +43,10 @@
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
         <a href="work.html">Work</a>
         <a href="case-studies.html">Case Studies</a>
-        <a href="index.html#about">About</a>
+        <a href="about.html">About</a>
         <a href="notes.html">Notes</a>
         <a href="resume.html">Resume</a>
-        <a class="nav-cta" href="index.html#contact">Contact</a>
+        <a class="nav-cta" href="contact.html">Contact</a>
         <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
       </nav>
     </header>
@@ -79,6 +79,10 @@
               <dd>[Month Year - Month Year]</dd>
             </div>
             <div>
+              <dt>Last updated</dt>
+              <dd>[Month YYYY]</dd>
+            </div>
+            <div>
               <dt>Role</dt>
               <dd>[Solo builder / frontend / automation / product design]</dd>
             </div>
@@ -107,6 +111,48 @@
 
       <div class="case-template-layout" id="case-template-content">
         <article class="case-template-main">
+          <section class="case-template-section" aria-labelledby="why-matters-title">
+            <p class="eyebrow">Why this matters</p>
+            <h2 id="why-matters-title">Practical workflow value</h2>
+            <div class="case-template-feature-list">
+              <article>
+                <h3>Workflow problem</h3>
+                <p>[What real workflow or pain point this project addresses.]</p>
+              </article>
+              <article>
+                <h3>Useful approach</h3>
+                <p>[Why the technical approach is useful for that workflow.]</p>
+              </article>
+              <article>
+                <h3>Employer signal</h3>
+                <p>[What skill this project demonstrates for software development hiring.]</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="readiness-title">
+            <p class="eyebrow">Production readiness</p>
+            <h2 id="readiness-title">What is solid, what is demo-only, and what needs hardening</h2>
+            <div class="production-hardening-grid">
+              <article>
+                <h3>Already solid</h3>
+                <p>[Parts of the implementation that are reliable enough to demonstrate confidently.]</p>
+              </article>
+              <article>
+                <h3>Prototype/demo-only</h3>
+                <p>[Where the current project intentionally stops short of production behavior.]</p>
+              </article>
+              <article>
+                <h3>Hardening needed</h3>
+                <p>[Testing, validation, scaling, error handling, accessibility, or operational work required before real users.]</p>
+              </article>
+              <article>
+                <h3>Security/privacy/ops</h3>
+                <p>[Relevant concerns around secrets, data handling, monitoring, backups, abuse, permissions, or deployment operations.]</p>
+              </article>
+            </div>
+          </section>
+
           <section class="case-template-section" aria-labelledby="role-title">
             <p class="eyebrow">01 / What I built</p>
             <h2 id="role-title">Specific implementation ownership</h2>
@@ -201,17 +247,55 @@
           <section class="case-template-section" aria-labelledby="testing-title">
             <p class="eyebrow">09</p>
             <h2 id="testing-title">Testing / QA</h2>
-            <ul class="case-template-list">
-              <li>[Manual workflow tested: happy path, edge cases, empty states, failure states.]</li>
-              <li>[Browser/device coverage: desktop, mobile, keyboard, reduced motion, no-JavaScript fallback.]</li>
-              <li>[Project-specific checks: OAuth refresh, OBS reconnect, export behavior, map interactions, etc.]</li>
-            </ul>
+            <div class="production-hardening-grid">
+              <article>
+                <h3>Automated tests</h3>
+                <p>[Name the test runner and what is covered, or state clearly that no automated suite exists yet.]</p>
+              </article>
+              <article>
+                <h3>Manual checklist</h3>
+                <p>[Happy path, empty states, failure states, saved state, reset behavior, import/export, or core workflow checks.]</p>
+              </article>
+              <article>
+                <h3>Browser/device checks</h3>
+                <p>[Desktop, mobile, tablet, keyboard, touch, reduced motion, no-JavaScript fallback, and relevant browser API differences.]</p>
+              </article>
+              <article>
+                <h3>Edge cases</h3>
+                <p>[Project-specific cases such as OAuth refresh, OBS reconnect, invalid imports, map selection, large files, blocked storage, or unavailable APIs.]</p>
+              </article>
+              <article>
+                <h3>Known limitations</h3>
+                <p>[Gaps in automated coverage, device lab testing, live integration testing, accessibility testing, security review, or observability.]</p>
+              </article>
+            </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="deployment-title">
             <p class="eyebrow">10</p>
             <h2 id="deployment-title">Deployment / operations</h2>
-            <p>Explain where the project runs, how it is configured, what needs to be monitored, and what operational risks are handled.</p>
+            <div class="production-hardening-grid">
+              <article>
+                <h3>Hosted/run location</h3>
+                <p>[Where the live demo, static page, bot, app, or tool runs. Include whether it is GitHub Pages, local-only, or backend-hosted.]</p>
+              </article>
+              <article>
+                <h3>Environment/config</h3>
+                <p>[Required environment variables, config files, scene/source names, data files, feature flags, or note that no environment variables are required.]</p>
+              </article>
+              <article>
+                <h3>External APIs/services</h3>
+                <p>[Twitch, OBS WebSocket, MapLibre, Supabase, browser APIs, poster hosts, local filesystem, or other integration boundaries.]</p>
+              </article>
+              <article>
+                <h3>Local development</h3>
+                <p>[How to run locally: clone, install, copy env example, start local server, run tests, open a page, or run the bot/tool.]</p>
+              </article>
+              <article>
+                <h3>Secrets and operations</h3>
+                <p>[How secrets are kept out of source control, what must be rotated, what logs/state need protection, and what would need monitoring before production.]</p>
+              </article>
+            </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="results-title">
@@ -277,17 +361,20 @@
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="contact.html">Contact</a>
         <a href="resume.html">Resume</a>
         <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
         <a href="work.html">Work</a>
         <a href="case-studies.html">Case Studies</a>
+        <a href="about.html">About</a>
         <a href="notes.html">Notes</a>
         <a href="interactive-lab.html">Interactive Lab</a>
+        <a href="changelog.html">Changelog</a>
         <a href="sitemap.xml">Sitemap</a>
       </nav>
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="shared.js" defer></script>
   </body>
 </html>

@@ -33,6 +33,7 @@
   const livesValue = document.getElementById("livesValue");
   const shieldValue = document.getElementById("shieldValue");
   const roundStatus = document.getElementById("roundStatus");
+  const gameAnnouncement = document.getElementById("gameAnnouncement");
   const fieldName = document.getElementById("fieldName");
   const waveProgressFill = document.getElementById("waveProgressFill");
   const waveProgress = document.querySelector(".wave-progress");
@@ -69,6 +70,9 @@
   let stars = [];
   let backgroundPhase = 0;
   let prefersReducedMotion = reducedMotionQuery.matches;
+  let gameAnnouncementTimer = 0;
+  let announcedScoreMilestone = 0;
+  let waveClearAnnounced = false;
 
   function syncMotionPreference(event = reducedMotionQuery) {
     prefersReducedMotion = event.matches;
@@ -200,6 +204,18 @@
     pauseButton.setAttribute("aria-pressed", state === "paused" ? "true" : "false");
   }
 
+  function announceGame(message) {
+    if (!gameAnnouncement || !message) {
+      return;
+    }
+
+    window.clearTimeout(gameAnnouncementTimer);
+    gameAnnouncement.textContent = "";
+    gameAnnouncementTimer = window.setTimeout(() => {
+      gameAnnouncement.textContent = message;
+    }, 20);
+  }
+
   function buildStars() {
     stars = Array.from({ length: 120 }, () => ({
       x: Math.random() * WORLD_WIDTH,
@@ -266,6 +282,7 @@
     particles = [];
     fireTimer = 0;
     waveTimer = 0;
+    waveClearAnnounced = false;
     startingAsteroids = 4 + Math.min(7, wave);
     startingAsteroidWork = 0;
 
@@ -282,6 +299,7 @@
     score = 0;
     wave = 1;
     lives = START_LIVES;
+    announcedScoreMilestone = 0;
     shield = 100;
     shieldActive = false;
     respawnTimer = 0;
@@ -301,6 +319,7 @@
     } else {
       hideMenu();
       updateHud("Drifting");
+      announceGame(`Asteroid Drift started. Wave ${wave}. ${lives} lives.`);
     }
   }
 
@@ -315,6 +334,7 @@
       clearInputState();
       hideMenu();
       updateHud("Drifting");
+      announceGame(`Game resumed. Wave ${wave}. Score ${score}.`);
       return;
     }
 
@@ -324,6 +344,7 @@
     clearInputState();
     hideMenu();
     updateHud("Drifting");
+    announceGame(`Asteroid Drift started. Wave ${wave}. ${lives} lives.`);
   }
 
   function togglePause() {
@@ -336,6 +357,7 @@
       clearInputState();
       hideMenu();
       updateHud("Drifting");
+      announceGame(`Game resumed. Wave ${wave}. Score ${score}.`);
     } else {
       state = "paused";
       clearInputState();
@@ -346,6 +368,7 @@
         button: "Resume"
       });
       updateHud("Paused");
+      announceGame(`Game paused. Wave ${wave}. Score ${score}.`);
     }
   }
 
@@ -415,6 +438,11 @@
   function splitAsteroid(asteroid) {
     const points = asteroid.size === 3 ? 60 : asteroid.size === 2 ? 95 : 150;
     score += points;
+    const scoreMilestone = Math.floor(score / 500) * 500;
+    if (scoreMilestone > announcedScoreMilestone) {
+      announcedScoreMilestone = scoreMilestone;
+      announceGame(`Score ${score}. Wave ${wave}.`);
+    }
     spawnParticles(asteroid.x, asteroid.y, asteroid.size === 1 ? "#f5c45b" : "#68b7ff", 18, 160);
 
     if (asteroid.size > 1) {
@@ -441,12 +469,14 @@
         button: "New Run"
       });
       updateHud("Run over");
+      announceGame(`Run over. Final score ${score}. Reached wave ${wave}.`);
       return;
     }
 
     ship = createShip();
     respawnTimer = 1.5;
     updateHud("Ship restored");
+    announceGame(`Ship hit. ${lives} ${lives === 1 ? "life" : "lives"} remaining.`);
   }
 
   function controlActive(name) {
@@ -591,11 +621,16 @@
     }
 
     if (asteroids.length === 0) {
+      if (!waveClearAnnounced) {
+        waveClearAnnounced = true;
+        announceGame(`Wave ${wave} clear. Score ${score}.`);
+      }
       waveTimer += dt;
       if (waveTimer > 1.2) {
         wave += 1;
         ship.invulnerable = Math.max(ship.invulnerable, 1.2);
         startWave(wave);
+        announceGame(`Wave ${wave} started. Score ${score}.`);
         return `Wave ${wave}`;
       } else {
         return "Wave clear";
@@ -835,7 +870,7 @@
   }
 
   function resizeCanvas() {
-    const ratio = Math.max(1, window.devicePixelRatio || 1);
+    const ratio = Math.min(Math.max(1, window.devicePixelRatio || 1), 2);
     canvas.width = Math.round(WORLD_WIDTH * ratio);
     canvas.height = Math.round(WORLD_HEIGHT * ratio);
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);

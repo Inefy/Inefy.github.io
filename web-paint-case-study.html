@@ -13,12 +13,12 @@
     <meta property="og:description" content="Browser canvas tool built with vanilla JavaScript, Canvas 2D rendering, undo/redo snapshots, import/export, and mobile tool panels.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://zacbatten.me/web-paint-case-study.html">
-    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
-    <meta property="og:image:alt" content="Inefy workbench portfolio preview with selected work and browser tools.">
+    <meta property="og:image" content="https://zacbatten.me/assets/web-paint-workspace.png">
+    <meta property="og:image:alt" content="Web Paint browser tool showing toolbar controls, brush settings, and drawing workspace.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Web Paint Canvas Case Study / Zac Batten">
     <meta name="twitter:description" content="Browser canvas tool with vanilla JavaScript, Canvas 2D rendering, undo/redo snapshots, import/export, and mobile panels.">
-    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta name="twitter:image" content="https://zacbatten.me/assets/web-paint-workspace.png">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -68,7 +68,7 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -87,10 +87,10 @@
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
         <a href="work.html">Work</a>
         <a href="case-studies.html" aria-current="location">Case Studies</a>
-        <a href="index.html#about">About</a>
+        <a href="about.html">About</a>
         <a href="notes.html">Notes</a>
         <a href="resume.html">Resume</a>
-        <a class="nav-cta" href="index.html#contact">Contact</a>
+        <a class="nav-cta" href="contact.html">Contact</a>
         <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
       </nav>
     </header>
@@ -116,7 +116,7 @@
             </div>
             <div>
               <dt>Status</dt>
-              <dd>Live static browser tool</dd>
+              <dd>Live demo / frontend prototype / case study</dd>
             </div>
             <div>
               <dt>Stack</dt>
@@ -126,14 +126,19 @@
               <dt>Role</dt>
               <dd>Solo builder: UI, drawing engine, state, import/export</dd>
             </div>
+            <div>
+              <dt>Last updated</dt>
+              <dd>May 2026</dd>
+            </div>
           </dl>
         </div>
 
-        <figure class="case-template-image-placeholder" role="img" aria-label="Stylized Web Paint editor with toolbar, color palette, canvas, brush stroke, shape, zoom controls, and export action">
-          <div>
-            <strong>Canvas editor in the browser</strong>
-          </div>
-          <figcaption>Placeholder preview for the live Web Paint tool: ribbon controls, drawing canvas, tool state, import/export, and narrow-screen workspace behavior.</figcaption>
+        <figure class="case-study-image-frame">
+          <picture>
+            <source srcset="assets/web-paint-workspace.webp" type="image/webp">
+            <img src="assets/web-paint-workspace.png" alt="Web Paint live page with tool guide, toolbar commands, brush controls, and drawing workspace" width="1280" height="670" loading="eager" fetchpriority="high" decoding="async">
+          </picture>
+          <figcaption>Live Web Paint tool surface: project guide, toolbar controls, brush settings, and drawing workspace.</figcaption>
         </figure>
       </section>
 
@@ -160,7 +165,7 @@
             <p>
               A browser drawing editor needs predictable tool state, durable history, safe imports, and export paths that work without a backend. I built Web Paint with the Canvas 2D API, vanilla JavaScript state, pointer events, typed-array flood fill, capped ImageData history, PNG import/export, localStorage save/load, canvas resizing, zoom, and a desktop-inspired toolbar that still works at narrow widths.
             </p>
-            <div class="case-template-feature-list" aria-label="Web Paint engineering intro">
+            <div class="case-template-feature-list">
               <article>
                 <h3>Technical problem</h3>
                 <p>Canvas tools have to coordinate mutable pixels, active tool state, pointer input, history, imports, exports, zoom, and resize behavior.</p>
@@ -185,6 +190,48 @@
             <div class="case-study-callout">
               <strong>Hiring signal:</strong>
               <span>The implementation shows frontend fundamentals without leaning on a framework: DOM wiring, event handling, state modeling, Canvas APIs, browser storage, clipboard APIs, file validation, mobile layout, and honest accessibility tradeoffs.</span>
+            </div>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="why-matters-title">
+            <p class="eyebrow">Why this matters</p>
+            <h2 id="why-matters-title">It makes a browser-only tool behave like practical software.</h2>
+            <div class="case-template-feature-list">
+              <article>
+                <h3>Workflow problem</h3>
+                <p>Lightweight drawing and markup tasks still need predictable tools, undo/redo, import, export, zoom, and mobile controls without forcing users into installed desktop software.</p>
+              </article>
+              <article>
+                <h3>Useful approach</h3>
+                <p>The Canvas 2D API, pointer events, focused tool state, bounded ImageData history, and browser file/clipboard/storage APIs make the editor usable as a static web app.</p>
+              </article>
+              <article>
+                <h3>Employer signal</h3>
+                <p>The project shows frontend fundamentals: UI state modeling, DOM event handling, browser API integration, performance tradeoffs, mobile layout, and accessible control design.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="readiness-title">
+            <p class="eyebrow">Production readiness</p>
+            <h2 id="readiness-title">The editor works as a static prototype; larger documents need a more robust model.</h2>
+            <div class="production-hardening-grid">
+              <article>
+                <h3>Already solid</h3>
+                <p>The tool has working drawing modes, pointer input, undo/redo snapshots, import/export, local save/load, zoom, resize controls, visible status updates, and responsive tool panels.</p>
+              </article>
+              <article>
+                <h3>Prototype-only</h3>
+                <p>History uses full ImageData snapshots, the canvas content is not semantically represented, text placement is prompt-based, and the editor does not yet include layers, document naming, or full keyboard shortcuts.</p>
+              </article>
+              <article>
+                <h3>Hardening needed</h3>
+                <p>A production editor would need memory-aware history, autosave recovery, better selection movement, richer keyboard commands, worker-backed heavy operations, broader browser testing, and nonvisual drawing descriptions.</p>
+              </article>
+              <article>
+                <h3>Security and privacy</h3>
+                <p>The current tool keeps work local in the browser. If cloud storage or sharing were added, file validation, privacy controls, data retention rules, upload limits, and abuse handling would become required.</p>
+              </article>
             </div>
           </section>
 
@@ -387,39 +434,90 @@
             </p>
           </section>
 
+          <section class="case-template-section" aria-labelledby="testing-title">
+            <p class="eyebrow">11 / Testing and QA notes</p>
+            <h2 id="testing-title">QA focuses on canvas state, browser APIs, and mobile input.</h2>
+            <div class="production-hardening-grid">
+              <article>
+                <h3>Automated tests</h3>
+                <p>No automated test suite is present for Web Paint yet. The current confidence comes from manual browser testing of drawing tools, state transitions, import/export paths, and responsive control layouts.</p>
+              </article>
+              <article>
+                <h3>Manual checklist</h3>
+                <p>Check every tool mode, shape preview/commit, undo/redo, clear/new canvas, resize, zoom, fullscreen, image import, paste, copy/cut selection, PNG export, local save/load, and status messages.</p>
+              </article>
+              <article>
+                <h3>Browser and device checks</h3>
+                <p>Test desktop mouse/keyboard, narrow mobile touch, tablet widths, high-DPI screens, clipboard permission differences, fullscreen availability, focus visibility, and reduced-motion behavior around UI transitions.</p>
+              </article>
+              <article>
+                <h3>Edge cases</h3>
+                <p>Exercise invalid files, very large images, unsupported clipboard writes, unavailable LocalStorage, canvas dimension limits, rapid tool switching mid-drag, selection operations with no selection, and history limits on large canvases.</p>
+              </article>
+              <article>
+                <h3>Known limitations</h3>
+                <p>There are no automated regression tests for pixel output, pointer event sequences, memory pressure, or cross-browser clipboard behavior. Canvas content also needs a stronger nonvisual accessibility strategy.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="case-template-section" aria-labelledby="deployment-title">
+            <p class="eyebrow">12 / Deployment and run notes</p>
+            <h2 id="deployment-title">Web Paint runs as a static browser tool.</h2>
+            <div class="production-hardening-grid">
+              <article>
+                <h3>Hosted/run location</h3>
+                <p>The live tool is hosted on GitHub Pages at <code>zacbatten.me/paint.html</code>. It runs entirely in the browser from static HTML, CSS, and <code>paint.js</code>, with no backend service.</p>
+              </article>
+              <article>
+                <h3>Environment/config</h3>
+                <p>No environment variables are required. User settings and local saves rely on browser state such as <code>localStorage</code>; imported files are handled in the active browser session.</p>
+              </article>
+              <article>
+                <h3>External APIs/services</h3>
+                <p>There are no external APIs for the drawing workflow. The implementation depends on browser APIs: Canvas 2D, Pointer Events, File input, Clipboard, Fullscreen, object URLs, and LocalStorage.</p>
+              </article>
+              <article>
+                <h3>Local development</h3>
+                <p>Clone the portfolio repository, run <code>python -m http.server 8000</code> from the repo root, and open <code>http://localhost:8000/paint.html</code>. A local server is preferred because clipboard, file, and fullscreen behavior can differ from direct <code>file://</code> access.</p>
+              </article>
+              <article>
+                <h3>Secrets and privacy</h3>
+                <p>The current tool does not upload drawings or use secrets. If sharing or cloud save were added, it would need authentication, upload validation, storage quotas, data retention rules, and clear privacy controls.</p>
+              </article>
+            </div>
+          </section>
+
           <section class="case-template-section" aria-labelledby="screenshots-title">
-            <p class="eyebrow">11 / Screenshots and demo placeholders</p>
-            <h2 id="screenshots-title">Visual proof to add as the project matures.</h2>
+            <p class="eyebrow">13 / Screenshots and demo captures</p>
+            <h2 id="screenshots-title">Visual proof from the live browser tool.</h2>
             <div class="case-template-screenshot-grid">
-              <figure class="case-template-image-placeholder" role="img" aria-label="Planned Web Paint screenshot area for ribbon toolbar and color palette">
-                <div>
-                  <strong>Toolbar and palette</strong>
-                </div>
-                <figcaption>Show the Paint-style ribbon, active tool state, brush sizes, shapes, and swatches.</figcaption>
-              </figure>
-              <figure class="case-template-image-placeholder" role="img" aria-label="Planned Web Paint screenshot area for the canvas drawing workspace">
-                <div>
-                  <strong>Canvas workspace</strong>
-                </div>
-                <figcaption>Show freehand strokes, shape previews, selection handles, zoom, and status bar feedback.</figcaption>
+              <figure class="case-study-image-frame">
+                <picture>
+                  <source srcset="assets/web-paint-workspace.webp" type="image/webp">
+                  <img src="assets/web-paint-workspace.png" alt="Web Paint screenshot showing project guide, toolbar ribbon, brush controls, keyboard/touch guidance, and drawing workspace" width="1280" height="670" loading="lazy" decoding="async">
+                </picture>
+                <figcaption>Real screenshot from the static Web Paint tool page.</figcaption>
               </figure>
               <figure class="case-template-image-placeholder" role="img" aria-label="Planned Web Paint GIF area for importing an image and exporting a PNG">
                 <div>
+                  <span class="placeholder-kicker">Capture pending</span>
                   <strong>Import / export GIF</strong>
                 </div>
-                <figcaption>Demonstrate opening an image, fitting it to the canvas, copying a selection, and saving a PNG.</figcaption>
+                <figcaption>Future motion capture for opening an image, fitting it to the canvas, copying a selection, and saving a PNG.</figcaption>
               </figure>
               <figure class="case-template-image-placeholder" role="img" aria-label="Planned Web Paint GIF area for undo, redo, and shape drawing behavior">
                 <div>
+                  <span class="placeholder-kicker">Capture pending</span>
                   <strong>Undo / redo GIF</strong>
                 </div>
-                <figcaption>Demonstrate shape preview, final commit, undo, redo, and canvas resize behavior.</figcaption>
+                <figcaption>Future motion capture for shape preview, final commit, undo, redo, and canvas resize behavior.</figcaption>
               </figure>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="next-title">
-            <p class="eyebrow">12 / What I would improve next</p>
+            <p class="eyebrow">14 / What I would improve next</p>
             <h2 id="next-title">The next pass would make it more editor-like.</h2>
             <ul class="case-template-list">
               <li>Add real keyboard shortcuts for undo, redo, save, tool selection, zoom, and canvas movement.</li>
@@ -427,7 +525,7 @@
               <li>Replace prompt-based text placement with an inline text box and editable text commit flow.</li>
               <li>Add a better autosave/reopen story, including restored local drawings and explicit document naming.</li>
               <li>Improve memory behavior for large canvases with region-based history or a command-style undo stack.</li>
-              <li>Capture real screenshots or short GIFs for the case study once the editor UI is finalized.</li>
+              <li>Add short GIFs for import/export, undo/redo, and shape preview after the interaction polish is finalized.</li>
             </ul>
           </section>
         </article>
@@ -455,7 +553,7 @@
         <div class="next-step-actions">
           <a class="button primary" href="paint.html">Open Web Paint</a>
           <a class="button secondary" href="work.html">View more work</a>
-          <a class="button ghost" href="index.html#contact">Contact Zac</a>
+          <a class="button ghost" href="contact.html">Contact Zac</a>
         </div>
       </section>
     </main>
@@ -467,17 +565,20 @@
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
+        <a href="contact.html">Contact</a>
         <a href="resume.html">Resume</a>
         <a href="https://github.com/Inefy" rel="noopener noreferrer">GitHub</a>
         <a href="work.html">Work</a>
         <a href="case-studies.html">Case Studies</a>
+        <a href="about.html">About</a>
         <a href="notes.html">Notes</a>
         <a href="interactive-lab.html">Interactive Lab</a>
+        <a href="changelog.html">Changelog</a>
         <a href="sitemap.xml">Sitemap</a>
       </nav>
       <p class="footer-note">Static site, practical demos, and build notes. <span id="year">2026</span></p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="shared.js" defer></script>
   </body>
 </html>
