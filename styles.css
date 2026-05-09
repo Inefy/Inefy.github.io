@@ -7293,6 +7293,7 @@ h3 {
   .button:hover,
   .filter-button:hover,
   .project-card:hover,
+  .start-path-card:hover,
   .movie-preview-panel:hover,
   .movie-card:hover {
     transform: none;
@@ -7330,6 +7331,7 @@ h3 {
   .button:hover,
   .filter-button:hover,
   .project-card:hover,
+  .start-path-card:hover,
   .movie-preview-panel:hover,
   .movie-card:hover {
     transform: none;
