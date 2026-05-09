@@ -5,15 +5,10 @@ const movieResults = document.querySelector("[data-movie-results]");
 const movieCount = document.querySelector("[data-movie-count]");
 const movieClearButton = document.querySelector("[data-movie-clear]");
 const moviePagination = document.querySelector("[data-movie-pagination]");
-const movieLoadMoreButton = document.querySelector("[data-movie-load-more]");
 const movieAnnouncement = document.querySelector("#movieAnnouncement");
-const INITIAL_MOVIE_CARD_COUNT = 36;
-const MOVIE_CARD_BATCH_COUNT = 36;
 let movieAnnouncementTimer = 0;
 let movieFilterFrame = 0;
 let activeMovieQuery = "";
-let activeMovieList = [];
-let visibleMovieCount = INITIAL_MOVIE_CARD_COUNT;
 
 function announceMovie(message) {
   if (!movieAnnouncement || !message) return;
@@ -279,26 +274,13 @@ function createMovieCard(movie) {
   return article;
 }
 
-function updateMoviePagination(totalMovies, visibleMovies) {
-  if (!moviePagination || !movieLoadMoreButton) return;
-
-  const remainingMovies = Math.max(totalMovies - visibleMovies, 0);
-  moviePagination.hidden = remainingMovies === 0;
-
-  if (remainingMovies === 0) {
-    movieLoadMoreButton.removeAttribute("aria-label");
-    return;
+function updateMoviePagination() {
+  if (moviePagination) {
+    moviePagination.hidden = true;
   }
-
-  const nextBatchCount = Math.min(MOVIE_CARD_BATCH_COUNT, remainingMovies);
-  movieLoadMoreButton.textContent = `Load ${nextBatchCount} more movies`;
-  movieLoadMoreButton.setAttribute(
-    "aria-label",
-    `Load ${nextBatchCount} more movies, ${remainingMovies} remaining`
-  );
 }
 
-function updateMovieResults(totalMovies, visibleMovies) {
+function updateMovieResults(totalMovies) {
   if (!movieResults) return;
 
   if (totalMovies === 0) {
@@ -306,17 +288,12 @@ function updateMovieResults(totalMovies, visibleMovies) {
     return;
   }
 
-  if (totalMovies === movieNightMovies.length && visibleMovies === totalMovies) {
+  if (totalMovies === movieNightMovies.length) {
     movieResults.textContent = `Showing all ${totalMovies} movies`;
     return;
   }
 
-  if (totalMovies === movieNightMovies.length) {
-    movieResults.textContent = `Showing ${visibleMovies} of ${totalMovies} movies`;
-    return;
-  }
-
-  movieResults.textContent = `Showing ${visibleMovies} of ${totalMovies} matching movies`;
+  movieResults.textContent = `Showing all ${totalMovies} matching movies`;
 }
 
 async function copyTextToClipboard(value) {
@@ -341,14 +318,8 @@ async function copyTextToClipboard(value) {
   }
 }
 
-function renderMovieList(movies, options = {}) {
+function renderMovieList(movies) {
   if (!movieGrid) return;
-
-  activeMovieList = movies;
-
-  if (options.resetVisibleCount) {
-    visibleMovieCount = INITIAL_MOVIE_CARD_COUNT;
-  }
 
   if (movieCount) {
     movieCount.textContent = movieNightMovies.length;
@@ -359,19 +330,18 @@ function renderMovieList(movies, options = {}) {
     empty.className = "movie-empty";
     empty.textContent = "No movies match that search.";
     movieGrid.replaceChildren(empty);
-    updateMovieResults(0, 0);
-    updateMoviePagination(0, 0);
+    updateMovieResults(0);
+    updateMoviePagination();
     return;
   }
 
-  const visibleMovies = movies.slice(0, Math.min(visibleMovieCount, movies.length));
   const fragment = document.createDocumentFragment();
-  visibleMovies.forEach((movie) => {
+  movies.forEach((movie) => {
     fragment.appendChild(createMovieCard(movie));
   });
   movieGrid.replaceChildren(fragment);
-  updateMovieResults(movies.length, visibleMovies.length);
-  updateMoviePagination(movies.length, visibleMovies.length);
+  updateMovieResults(movies.length);
+  updateMoviePagination();
 }
 
 function filterMovieList() {
@@ -385,7 +355,7 @@ function filterMovieList() {
     ? movieNightMovies.filter((movie) => movie.searchText.includes(query))
     : movieNightMovies;
 
-  renderMovieList(filteredMovies, { resetVisibleCount: true });
+  renderMovieList(filteredMovies);
 }
 
 function scheduleMovieFilter() {
@@ -403,7 +373,7 @@ function scrollMovieResultsIntoView() {
   });
 }
 
-renderMovieList(movieNightMovies, { resetVisibleCount: true });
+renderMovieList(movieNightMovies);
 
 if (movieSearch) {
   movieSearch.addEventListener("input", scheduleMovieFilter);
@@ -421,32 +391,7 @@ if (movieClearButton && movieSearch) {
     movieSearch.value = "";
     activeMovieQuery = "";
     movieSearch.focus();
-    renderMovieList(movieNightMovies, { resetVisibleCount: true });
-  });
-}
-
-if (movieLoadMoreButton) {
-  movieLoadMoreButton.addEventListener("click", () => {
-    const previousVisibleCount = Math.min(visibleMovieCount, activeMovieList.length);
-    visibleMovieCount += MOVIE_CARD_BATCH_COUNT;
-    const nextVisibleCount = Math.min(visibleMovieCount, activeMovieList.length);
-
-    const fragment = document.createDocumentFragment();
-    activeMovieList.slice(previousVisibleCount, nextVisibleCount).forEach((movie) => {
-      fragment.appendChild(createMovieCard(movie));
-    });
-    movieGrid.appendChild(fragment);
-    updateMovieResults(activeMovieList.length, nextVisibleCount);
-    updateMoviePagination(activeMovieList.length, nextVisibleCount);
-
-    const loadedCount = nextVisibleCount - previousVisibleCount;
-    if (loadedCount > 0) {
-      announceMovie(`Loaded ${loadedCount} more movies.`);
-    }
-
-    if (moviePagination && moviePagination.hidden) {
-      movieGrid.focus({ preventScroll: true });
-    }
+    renderMovieList(movieNightMovies);
   });
 }
 

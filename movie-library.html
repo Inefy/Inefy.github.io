@@ -208,7 +208,7 @@
             <p class="what-built-label">Testing and QA notes</p>
             <ul class="project-bullets">
               <li><strong>Automated tests:</strong> no dedicated automated catalog tests are present yet; current QA relies on browser smoke checks and manual validation of the static page.</li>
-              <li><strong>Manual checklist:</strong> search by title/year/runtime/rating, clear filters, copy several vote commands, verify result-count announcements, load more cards, and confirm the <code>noscript</code> list remains complete.</li>
+              <li><strong>Manual checklist:</strong> search by title/year/runtime/rating, clear filters, copy several vote commands, verify result-count announcements, confirm all movie cards render by default, and confirm the <code>noscript</code> list remains complete.</li>
               <li><strong>Browser/device checks:</strong> review mobile search controls, tap targets, keyboard focus, Clipboard API behavior, textarea fallback copying, lazy poster loading, and no-horizontal-overflow layouts.</li>
               <li><strong>Edge cases:</strong> empty searches, poster load failures, blocked clipboard access, missing external links, duplicate or ambiguous titles, and JavaScript-disabled browsing.</li>
               <li><strong>Known limitations:</strong> the dynamic cards and fallback list are not generated from one source yet, so catalog updates still need careful manual comparison.</li>
@@ -241,7 +241,7 @@
             </article>
             <article>
               <h3>Poster performance</h3>
-              <p>Poster images are rendered in batches with fixed dimensions, async decoding, lazy loading, and fallback poster styling so the large catalog does not block or jump during first view.</p>
+              <p>Poster images render for the full catalog with fixed dimensions, async decoding, lazy loading, and fallback poster styling so the page stays stable while images arrive.</p>
             </article>
           </div>
 
@@ -265,7 +265,7 @@
               </article>
               <article>
                 <h4>Image loading strategy</h4>
-                <p>Poster URLs are normalized for a larger card image, constrained to the expected poster host, and rendered with <code>loading="lazy"</code>, dimensions, async decoding, and a load-more batch after the first visible set.</p>
+                <p>Poster URLs are normalized for a larger card image, constrained to the expected poster host, and rendered with <code>loading="lazy"</code>, fixed dimensions, async decoding, and fallback styling for missing images.</p>
               </article>
               <article>
                 <h4>Accessibility labels</h4>
@@ -432,9 +432,6 @@
             </div>
           </noscript>
           <div class="movie-grid" id="movie-grid" tabindex="-1" aria-describedby="movie-library-keyboard-controls movie-library-touch-controls"></div>
-          <div class="movie-load-more" data-movie-pagination hidden>
-            <button class="button secondary" type="button" data-movie-load-more>Load more movies</button>
-          </div>
           <script src="movie-library.js"></script>
         </div>
       </section>

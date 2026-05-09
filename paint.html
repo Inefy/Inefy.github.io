@@ -98,47 +98,7 @@
         <span>Web Paint</span>
       </nav>
 
-      <section class="demo-overview" aria-labelledby="paint-overview-title">
-        <div class="demo-overview-copy">
-          <span class="next-step-kicker">Tool guide</span>
-          <h1 id="paint-overview-title">Web Paint</h1>
-          <p>Browser drawing tools become frustrating when state and history are unreliable; I built a vanilla JavaScript Canvas editor with pencil, eraser, fill, shapes, text, undo/redo snapshots, import/export, zoom, and local save.</p>
-          <dl class="demo-status-list" aria-label="Web Paint project status">
-            <div>
-              <dt>Status</dt>
-              <dd>Live demo / frontend prototype</dd>
-            </div>
-            <div>
-              <dt>Last updated</dt>
-              <dd>May 2026</dd>
-            </div>
-          </dl>
-          <div class="demo-overview-actions" role="group" aria-label="Web Paint actions">
-            <a href="interactive-lab.html">Back to Interactive Lab</a>
-            <button type="button" data-demo-proxy="newCanvasButton">New</button>
-            <button type="button" data-demo-proxy="saveButton">Save</button>
-            <button type="button" data-demo-proxy="fullscreenButton">Fullscreen</button>
-          </div>
-        </div>
-        <dl class="demo-control-list">
-          <div>
-            <dt>Controls</dt>
-            <dd>Choose a tool, brush size, shape, and color, then draw directly on the canvas.</dd>
-          </div>
-          <div>
-            <dt>Keyboard</dt>
-            <dd>Toolbar buttons are keyboard focusable; Enter or Space activates controls and Enter applies canvas size fields.</dd>
-          </div>
-          <div>
-            <dt>Touch</dt>
-            <dd>Touch drawing is supported with compact mobile rows, larger controls, and a canvas-first layout.</dd>
-          </div>
-          <div>
-            <dt>Accessibility</dt>
-            <dd>Tool buttons, size inputs, zoom controls, and status readouts are labelled; canvas artwork itself remains visual content.</dd>
-          </div>
-        </dl>
-      </section>
+      <h1 class="visually-hidden">Web Paint browser canvas drawing tool</h1>
 
       <section class="ribbon" id="paint-toolbar" aria-label="Paint toolbar">
         <div class="tabs" role="group" aria-label="Toolbar sections">
@@ -315,33 +275,6 @@
         </div>
       </section>
 
-      <section class="control-reference" aria-labelledby="paint-controls-title">
-        <div class="control-reference-heading">
-          <span class="next-step-kicker">Control reference</span>
-          <h2 id="paint-controls-title">Keyboard and touch controls</h2>
-        </div>
-        <div class="control-reference-grid">
-          <div class="control-reference-card">
-            <h3>Keyboard shortcuts</h3>
-            <ul class="shortcut-list" id="paint-keyboard-shortcuts">
-              <li><kbd>Tab / Shift+Tab</kbd><span>Move through toolbar commands, tools, swatches, zoom, and canvas controls.</span></li>
-              <li><kbd>Enter / Space</kbd><span>Activate the focused button, tool, shape, swatch, or command.</span></li>
-              <li><kbd>Enter in size fields</kbd><span>Apply the typed canvas width and height.</span></li>
-              <li><kbd>Resize handle + Arrows</kbd><span>Resize by 16 pixels; hold Shift for 128-pixel steps.</span></li>
-            </ul>
-          </div>
-          <div class="control-reference-card">
-            <h3>Touch and pointer controls</h3>
-            <ul class="shortcut-list" id="paint-touch-controls">
-              <li><kbd>One-finger draw</kbd><span>Draw, erase, fill, select, or place shapes with the active tool.</span></li>
-              <li><kbd>Toolbar scroll</kbd><span>Swipe the compact toolbar rows to reach commands on narrow screens.</span></li>
-              <li><kbd>Hide tools</kbd><span>Use the header button to give the canvas more vertical room.</span></li>
-              <li><kbd>Resize handle</kbd><span>Drag the handle at the canvas corner to resize visually.</span></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
       <section class="workspace" id="paint-workspace" aria-label="Canvas workspace">
         <aside class="tool-rail" aria-label="Quick tools">
           <div class="tool-rail-panel">
@@ -396,53 +329,124 @@
         </div>
       </footer>
 
-      <section class="demo-built" aria-labelledby="paint-built-title">
-        <span class="next-step-kicker">What I built</span>
-        <h2 id="paint-built-title">Canvas editor logic, toolbar state, and local file workflows.</h2>
-        <ul>
-          <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
-          <li>Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.</li>
-          <li>Managed tool settings, colors, brush size, shape choices, selection bounds, drawing drafts, pointer capture, and status output in vanilla JavaScript.</li>
-          <li>Added paste, copy, cut, fullscreen, canvas-size controls, mobile-friendly control panels, and mobile instruction copy.</li>
-        </ul>
-        <p class="ownership-note">This page uses standard browser Canvas, File, Clipboard, Fullscreen, and LocalStorage APIs; the drawing/tool orchestration is custom site code.</p>
-      </section>
+      <footer class="demo-app-footer" aria-label="Web Paint project details">
+        <section class="demo-overview" aria-labelledby="paint-overview-title">
+          <div class="demo-overview-copy">
+            <span class="next-step-kicker">Tool guide</span>
+            <h2 id="paint-overview-title">Web Paint</h2>
+            <p>Browser drawing tools become frustrating when state and history are unreliable; I built a vanilla JavaScript Canvas editor with pencil, eraser, fill, shapes, text, undo/redo snapshots, import/export, zoom, and local save.</p>
+            <dl class="demo-status-list" aria-label="Web Paint project status">
+              <div>
+                <dt>Status</dt>
+                <dd>Live demo / frontend prototype</dd>
+              </div>
+              <div>
+                <dt>Last updated</dt>
+                <dd>May 2026</dd>
+              </div>
+            </dl>
+            <div class="demo-overview-actions" role="group" aria-label="Web Paint actions">
+              <a href="interactive-lab.html">Back to Interactive Lab</a>
+              <button type="button" data-demo-proxy="newCanvasButton">New</button>
+              <button type="button" data-demo-proxy="saveButton">Save</button>
+              <button type="button" data-demo-proxy="fullscreenButton">Fullscreen</button>
+            </div>
+          </div>
+          <dl class="demo-control-list">
+            <div>
+              <dt>Controls</dt>
+              <dd>Choose a tool, brush size, shape, and color, then draw directly on the canvas.</dd>
+            </div>
+            <div>
+              <dt>Keyboard</dt>
+              <dd>Toolbar buttons are keyboard focusable; Enter or Space activates controls and Enter applies canvas size fields.</dd>
+            </div>
+            <div>
+              <dt>Touch</dt>
+              <dd>Touch drawing is supported with compact mobile rows, larger controls, and a canvas-first layout.</dd>
+            </div>
+            <div>
+              <dt>Accessibility</dt>
+              <dd>Tool buttons, size inputs, zoom controls, and status readouts are labelled; canvas artwork itself remains visual content.</dd>
+            </div>
+          </dl>
+        </section>
 
-      <section class="implementation-notes" aria-labelledby="paint-readiness-title">
-        <span class="next-step-kicker">Production readiness</span>
-        <h2 id="paint-readiness-title">Solid static prototype, not a production editor.</h2>
-        <p>
-          <strong>Already solid</strong> covers drawing tools, import/export, local save, zoom, and responsive controls. <strong>Prototype-only</strong> areas include full-canvas ImageData history, prompt-based text placement, limited keyboard shortcuts, and no semantic representation of canvas content. Real-user hardening would add memory-aware history, autosave recovery, richer shortcuts, stronger accessibility output, wider browser testing, and privacy controls if cloud storage or sharing were added.
-        </p>
-      </section>
+        <section class="control-reference" aria-labelledby="paint-controls-title">
+          <div class="control-reference-heading">
+            <span class="next-step-kicker">Control reference</span>
+            <h2 id="paint-controls-title">Keyboard and touch controls</h2>
+          </div>
+          <div class="control-reference-grid">
+            <div class="control-reference-card">
+              <h3>Keyboard shortcuts</h3>
+              <ul class="shortcut-list" id="paint-keyboard-shortcuts">
+                <li><kbd>Tab / Shift+Tab</kbd><span>Move through toolbar commands, tools, swatches, zoom, and canvas controls.</span></li>
+                <li><kbd>Enter / Space</kbd><span>Activate the focused button, tool, shape, swatch, or command.</span></li>
+                <li><kbd>Enter in size fields</kbd><span>Apply the typed canvas width and height.</span></li>
+                <li><kbd>Resize handle + Arrows</kbd><span>Resize by 16 pixels; hold Shift for 128-pixel steps.</span></li>
+              </ul>
+            </div>
+            <div class="control-reference-card">
+              <h3>Touch and pointer controls</h3>
+              <ul class="shortcut-list" id="paint-touch-controls">
+                <li><kbd>One-finger draw</kbd><span>Draw, erase, fill, select, or place shapes with the active tool.</span></li>
+                <li><kbd>Toolbar scroll</kbd><span>Swipe the compact toolbar rows to reach commands on narrow screens.</span></li>
+                <li><kbd>Hide tools</kbd><span>Use the header button to give the canvas more vertical room.</span></li>
+                <li><kbd>Resize handle</kbd><span>Drag the handle at the canvas corner to resize visually.</span></li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-      <section class="implementation-notes" aria-labelledby="paint-qa-title">
-        <span class="next-step-kicker">Testing and QA notes</span>
-        <h2 id="paint-qa-title">Manual QA targets the browser APIs most likely to vary.</h2>
-        <p>
-          <strong>Automated tests:</strong> no dedicated test suite exists yet for this canvas tool. <strong>Manual checks:</strong> draw with every tool, test undo/redo, import invalid and large images, copy/cut/save/export, resize/zoom/fullscreen, local save/load, selection states, and status announcements. <strong>Browser/device checks:</strong> verify desktop mouse, mobile touch, keyboard focus, clipboard fallbacks, blocked LocalStorage, and large-canvas memory limits. <strong>Known limitations:</strong> no pixel-regression tests, pointer-event replay, or stronger nonvisual representation of canvas content yet.
-        </p>
-      </section>
+        <section class="demo-built" aria-labelledby="paint-built-title">
+          <span class="next-step-kicker">What I built</span>
+          <h2 id="paint-built-title">Canvas editor logic, toolbar state, and local file workflows.</h2>
+          <ul>
+            <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
+            <li>Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.</li>
+            <li>Managed tool settings, colors, brush size, shape choices, selection bounds, drawing drafts, pointer capture, and status output in vanilla JavaScript.</li>
+            <li>Added paste, copy, cut, fullscreen, canvas-size controls, mobile-friendly control panels, and mobile instruction copy.</li>
+          </ul>
+          <p class="ownership-note">This page uses standard browser Canvas, File, Clipboard, Fullscreen, and LocalStorage APIs; the drawing/tool orchestration is custom site code.</p>
+        </section>
 
-      <section class="implementation-notes" aria-labelledby="paint-run-title">
-        <span class="next-step-kicker">Deployment and run notes</span>
-        <h2 id="paint-run-title">No-build static tool with local-only user files.</h2>
-        <p>
-          <strong>Hosted/run location:</strong> GitHub Pages serves <code>paint.html</code>, <code>paint.css</code>, and <code>paint.js</code>; all drawing work happens in the browser. <strong>Environment/config:</strong> no environment variables are required. <strong>External APIs/services:</strong> none beyond browser APIs such as Canvas, Pointer Events, File input, Clipboard, Fullscreen, object URLs, and LocalStorage. <strong>Local development:</strong> run <code>python -m http.server 8000</code> from the repo root and open <code>/paint.html</code>. <strong>Security/privacy:</strong> drawings stay local unless the user exports them; future sharing would require authenticated storage and upload validation.
-        </p>
-      </section>
+        <section class="implementation-notes" aria-labelledby="paint-readiness-title">
+          <span class="next-step-kicker">Production readiness</span>
+          <h2 id="paint-readiness-title">Solid static prototype, not a production editor.</h2>
+          <p>
+            <strong>Already solid</strong> covers drawing tools, import/export, local save, zoom, and responsive controls. <strong>Prototype-only</strong> areas include full-canvas ImageData history, prompt-based text placement, limited keyboard shortcuts, and no semantic representation of canvas content. Real-user hardening would add memory-aware history, autosave recovery, richer shortcuts, stronger accessibility output, wider browser testing, and privacy controls if cloud storage or sharing were added.
+          </p>
+        </section>
 
-      <section class="game-next-step" aria-labelledby="paint-next-title">
-        <div>
-          <span class="next-step-kicker">Keep exploring</span>
-          <h2 id="paint-next-title">Read the Web Paint case study</h2>
-          <p>See how this tool demonstrates canvas state, pointer input, toolbar UI, local save/load, and export workflows.</p>
-        </div>
-        <div class="next-step-actions">
-          <a href="web-paint-case-study.html">View case study</a>
-          <a href="interactive-lab.html">Open Interactive Lab</a>
-        </div>
-      </section>
+        <section class="implementation-notes" aria-labelledby="paint-qa-title">
+          <span class="next-step-kicker">Testing and QA notes</span>
+          <h2 id="paint-qa-title">Manual QA targets the browser APIs most likely to vary.</h2>
+          <p>
+            <strong>Automated tests:</strong> no dedicated test suite exists yet for this canvas tool. <strong>Manual checks:</strong> draw with every tool, test undo/redo, import invalid and large images, copy/cut/save/export, resize/zoom/fullscreen, local save/load, selection states, and status announcements. <strong>Browser/device checks:</strong> verify desktop mouse, mobile touch, keyboard focus, clipboard fallbacks, blocked LocalStorage, and large-canvas memory limits. <strong>Known limitations:</strong> no pixel-regression tests, pointer-event replay, or stronger nonvisual representation of canvas content yet.
+          </p>
+        </section>
+
+        <section class="implementation-notes" aria-labelledby="paint-run-title">
+          <span class="next-step-kicker">Deployment and run notes</span>
+          <h2 id="paint-run-title">No-build static tool with local-only user files.</h2>
+          <p>
+            <strong>Hosted/run location:</strong> GitHub Pages serves <code>paint.html</code>, <code>paint.css</code>, and <code>paint.js</code>; all drawing work happens in the browser. <strong>Environment/config:</strong> no environment variables are required. <strong>External APIs/services:</strong> none beyond browser APIs such as Canvas, Pointer Events, File input, Clipboard, Fullscreen, object URLs, and LocalStorage. <strong>Local development:</strong> run <code>python -m http.server 8000</code> from the repo root and open <code>/paint.html</code>. <strong>Security/privacy:</strong> drawings stay local unless the user exports them; future sharing would require authenticated storage and upload validation.
+          </p>
+        </section>
+
+        <section class="game-next-step" aria-labelledby="paint-next-title">
+          <div>
+            <span class="next-step-kicker">Keep exploring</span>
+            <h2 id="paint-next-title">Read the Web Paint case study</h2>
+            <p>See how this tool demonstrates canvas state, pointer input, toolbar UI, local save/load, and export workflows.</p>
+          </div>
+          <div class="next-step-actions">
+            <a href="web-paint-case-study.html">View case study</a>
+            <a href="interactive-lab.html">Open Interactive Lab</a>
+          </div>
+        </section>
+      </footer>
     </main>
 
     <script src="demo-navigation.js" defer></script>
