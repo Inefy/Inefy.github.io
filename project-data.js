@@ -5,7 +5,7 @@
     collections: {
       homeSelected: ["traverseops", "moviebot", "web-paint"],
       workFlagship: ["traverseops", "moviebot", "web-paint"],
-      workSupporting: ["movie-library", "portfolio-site"],
+      workSupporting: ["movie-library", "portfolio-site", "interactive-lab"],
       workExperiments: [
         "mini-golf",
         "asteroid-drift",
@@ -29,16 +29,18 @@
         workStatus: "Public demo / case study",
         caseStatus: "Flagship / public demo",
         updated: "May 2026",
-        description: "Field teams lose time when maps, inspections, and work orders are split; I built a MapLibre/Supabase demo linking asset filters, selected records, and work-order flows.",
-        caseProblem: "Field crews lose time when maps, asset records, inspections, imports, reports, and work orders live in separate tools.",
+        description: "A map-first field-operations demo for tracking hydrant-style assets, inspections, work orders, imports, reports, and team roles.",
+        problemLine: "Field teams need a clear way to see asset status, assign work, and move from map context to operational tasks.",
+        caseProblem: "Field teams need a clear way to see asset status, assign work, and move from map context to operational tasks.",
+        whatBuiltLine: "I built a static demo that models asset workflows, role-based screens, map filtering, import flows, inspection records, and work-order handoffs.",
         whatBuilt: [
-          "Modeled assets, inspections, work orders, imports, reports, and team roles around field-crew and supervisor workflows.",
-          "Built a map-first asset workflow with status filtering, selected-asset panels, and direct paths into inspection and work-order screens.",
-          "Documented demo boundaries and production hardening needs, including auth, role permissions, offline sync, audit logs, validation, and mobile field testing."
+          "MapLibre-style asset map with status filtering and selected-asset workflows.",
+          "Inspection and work-order screens for field crew and supervisor-style roles.",
+          "Import/reporting flow designed around municipal asset operations."
         ],
         ownership: "Uses external map/data tooling and sample municipal-style data; it is a public demo, not a production deployment.",
         production: "Solid workflow model and public-safe sample data. Real use needs authentication, role permissions, audit logs, offline sync, import validation, field-device QA, and map/source monitoring.",
-        stack: ["MapLibre", "Supabase", "Work orders", "Imports", "Reports", "Mobile field UI"],
+        stack: ["HTML", "CSS", "JavaScript", "MapLibre-style UI", "Static data"],
         stackText: "MapLibre, Supabase-backed sample data, desktop/mobile frontend, Capacitor-ready app structure.",
         challenge: "Keeping dense map, record, and workflow UI understandable on both desktop review screens and mobile field contexts.",
         testing: "Automated tests: no public automated suite is linked yet. Known limitations: real auth, offline sync, GIS feeds, and device-lab testing are not simulated. Manual QA covers sample-data loading, tabs, map filters, selected assets, inspection/work-order paths, import states, reports, mobile widths, keyboard focus, and empty/reset states.",
@@ -70,16 +72,18 @@
         workStatus: "Public repo / live showcase",
         caseStatus: "Automation / public repo",
         updated: "May 2026",
-        description: "Streamer-run movie nights need reliable voting and playback handoff; I built a Python/TwitchIO bot that tracks chat votes, rescans local movies, resolves ties, and drives OBS WebSocket.",
-        caseProblem: "Streamer-run movie nights need reliable voting, result tallying, queue state, and OBS playback without constant manual control.",
+        description: "A Python automation bot that lets Twitch chat vote on public-domain movies and controls OBS playback for stream movie nights.",
+        problemLine: "Running a movie night manually is repetitive, hard to coordinate, and easy to interrupt while streaming.",
+        caseProblem: "Running a movie night manually is repetitive, hard to coordinate, and easy to interrupt while streaming.",
+        whatBuiltLine: "I built the Twitch chat voting flow, movie selection logic, OBS WebSocket playback control, token handling, reconnect behavior, and companion catalog links.",
         whatBuilt: [
-          "Implemented Twitch chat commands for voting, results, current movie, time remaining, movie list, and help.",
-          "Built vote-state logic for changed votes, duplicate prevention, partial title matching, tie resolution, and fallback selection.",
-          "Connected OBS WebSocket playback automation with movie-folder scanning, token refresh, reconnect behavior, and setup/security notes."
+          "Python/TwitchIO command handling for vote collection and vote changes.",
+          "OBS WebSocket integration for playback automation.",
+          "Token refresh, reconnect handling, tie resolution, and local movie folder scanning."
         ],
         ownership: "Uses TwitchIO, Twitch OAuth/chat, OBS WebSocket, IMDb/poster links, and local public-domain media files as external inputs.",
         production: "Solid command, vote, and OBS automation path for a local operator. Real use needs secret rotation, rate-limit handling, reconnect health checks, structured logs, tests, and an operator dashboard.",
-        stack: ["Python", "TwitchIO", "OBS WebSocket", "OAuth refresh", "Vote state"],
+        stack: ["Python", "TwitchIO", "OBS WebSocket", "OAuth", "Local files"],
         stackText: "Python, TwitchIO, Twitch IRC/chat commands, OAuth refresh, OBS WebSocket, static showcase pages.",
         challenge: "Making a long-running stream tool resilient across Twitch auth, chat connection health, local file state, and OBS handoff timing.",
         testing: "Automated tests: pytest coverage exercises scanning, duration fallback, command behavior, OBS calls, token helpers, playback scheduling, fallback paths, and cleanup. Known limitations: no live operator dashboard, synthetic Twitch/OBS E2E environment, or production alerting yet. Manual QA verifies real OBS/Twitch configuration and portfolio pages.",
@@ -99,8 +103,9 @@
         ],
         workLinks: [
           { label: "Case Study", href: "moviebot-case-study.html" },
-          { label: "Demo", href: "movie-night.html" },
-          { label: "GitHub", href: "https://github.com/Inefy/twitch-movie-bot" }
+          { label: "GitHub", href: "https://github.com/Inefy/twitch-movie-bot" },
+          { label: "Movie Night", href: "movie-night.html" },
+          { label: "Movie Library", href: "movie-library.html" }
         ],
         caseLinks: [
           { label: "Full case study", href: "moviebot-case-study.html" },
@@ -119,12 +124,14 @@
         workStatus: "Live browser tool",
         caseStatus: "Canvas tool / live demo",
         updated: "May 2026",
-        description: "Browser drawing needs reliable state; I built a vanilla JavaScript Canvas editor with tool modes, undo/redo snapshots, import/export, zoom, and mobile-friendly panels.",
-        caseProblem: "Static browser tools need reliable drawing state, history, import/export, and mobile-friendly controls without a framework.",
+        description: "A vanilla JavaScript canvas editor with drawing tools, text, shapes, undo/redo, import/export, zoom, and responsive controls.",
+        problemLine: "Browser drawing tools need fast canvas interaction, predictable tool state, and controls that stay usable across desktop and touch screens.",
+        caseProblem: "Browser drawing tools need fast canvas interaction, predictable tool state, and controls that stay usable across desktop and touch screens.",
+        whatBuiltLine: "I built the canvas rendering flow, tool state management, history stack, import/export behavior, keyboard shortcuts, and mobile control layout.",
         whatBuilt: [
-          "Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.",
-          "Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.",
-          "Managed tool settings, selected color, brush size, selection state, and status output in vanilla JavaScript."
+          "Canvas drawing modes for pencil, eraser, shapes, fill, and text.",
+          "Undo/redo history, image import/export, zoom, and canvas resizing.",
+          "UI state management for color, brush size, active tool, and status output."
         ],
         ownership: "Uses standard browser Canvas, Clipboard, File, Fullscreen, and LocalStorage APIs; no drawing framework is used.",
         production: "Solid static canvas editor prototype. Broader use would need memory-aware history, autosave recovery, richer keyboard shortcuts, accessibility improvements, and cross-browser device testing.",
@@ -141,12 +148,12 @@
           height: "670"
         },
         links: [
-          { label: "Live Demo", href: "paint.html" },
+          { label: "Open Tool", href: "paint.html" },
           { label: "Case Study", href: "web-paint-case-study.html" },
           { label: "Source", href: `${githubPortfolio}/blob/main/paint.js` }
         ],
         workLinks: [
-          { label: "Demo", href: "paint.html" },
+          { label: "Open Tool", href: "paint.html" },
           { label: "Case Study", href: "web-paint-case-study.html" },
           { label: "Source", href: `${githubPortfolio}/blob/main/paint.js` }
         ],
@@ -159,22 +166,24 @@
       },
       {
         id: "movie-library",
-        title: "Public Domain Movie Library",
-        displayTitle: "Public Domain Movie Library",
+        title: "Movie Library",
+        displayTitle: "Movie Library \u2014 Public-Domain Voting Catalog",
         status: "Supporting live page",
         workStatus: "Supporting live page",
         caseStatus: "Companion app / static UI",
         updated: "May 2026",
-        description: "Viewers need accurate vote commands; I built a static HTML/CSS/JavaScript MovieBot catalog with filters, lazy posters, copyable !vote commands, and a no-JS fallback.",
-        caseProblem: "MovieBot viewers need a fast way to browse public-domain titles and copy accurate vote commands without crowding the live stream page.",
+        description: "A searchable public-domain movie catalog that supports the StreamCinema bot by helping viewers find movies and copy vote commands.",
+        problemLine: "Viewers need a simple way to browse eligible movies and submit valid vote commands without guessing titles.",
+        caseProblem: "Viewers need a simple way to browse eligible movies and submit valid vote commands without guessing titles.",
+        whatBuiltLine: "I built the searchable catalog UI, filter behavior, vote-command copy flow, static fallback content, poster loading strategy, and accessibility labels.",
         whatBuilt: [
-          "Built a searchable catalog that filters public-domain MovieBot queue data by title, year, runtime, and rating.",
-          "Implemented copyable !vote commands with button labels and feedback so viewers can send accurate Twitch votes.",
-          "Added lazy-loaded poster cards, accessible metadata, and a static noscript fallback for the full movie list."
+          "Search and filter controls for public-domain movie entries.",
+          "Copy-to-clipboard vote commands with clear user feedback.",
+          "Lazy-loaded poster cards with no-JS fallback content."
         ],
         ownership: "Uses public-domain movie metadata, external IMDb links, and externally hosted poster images as source content.",
         production: "Solid static catalog, copy buttons, and fallback content. Hardening would generate pages from one trusted data source, validate poster/link health, and keep viewer privacy intact.",
-        stack: ["HTML", "CSS", "JavaScript", "Static data", "Lazy posters"],
+        stack: ["HTML", "CSS", "JavaScript", "Static data", "Clipboard API"],
         stackText: "Static HTML, CSS Grid, vanilla JavaScript search, movie metadata, external poster images, no-JavaScript fallback markup.",
         challenge: "Keeping a large static movie list searchable and indexable while preserving a readable fallback when JavaScript or external posters are unavailable.",
         testing: "Automated tests: no dedicated catalog suite exists yet. Known limitations: dynamic cards and fallback markup are still manually kept in sync. Manual QA covers search/filter cases, copy command states, result-count announcements, poster fallbacks, no-JS fallback content, mobile controls, and external link checks.",
@@ -187,9 +196,8 @@
           height: "630"
         },
         links: [
-          { label: "Case Study", href: "case-studies.html#movie-library" },
-          { label: "Demo", href: "movie-library.html" },
-          { label: "MovieBot", href: "moviebot-case-study.html" },
+          { label: "Open Library", href: "movie-library.html" },
+          { label: "MovieBot Case Study", href: "moviebot-case-study.html" },
           { label: "Movie Night", href: "movie-night.html" },
           { label: "GitHub", href: `${githubPortfolio}/blob/main/movie-library.html` }
         ],
@@ -202,20 +210,22 @@
       },
       {
         id: "portfolio-site",
-        title: "Inefy Portfolio Site",
-        displayTitle: "Inefy Portfolio Site",
+        title: "Portfolio Site",
+        displayTitle: "Portfolio Site \u2014 Static Developer Portfolio",
         status: "Static GitHub Pages site",
         workStatus: "Static GitHub Pages site",
         updated: "May 2026",
-        description: "Recruiters need a fast proof-to-contact path; I built a GitHub Pages portfolio with reusable project sections, case studies, metadata, reduced motion, and accessible CTAs.",
+        description: "A hand-built static portfolio for presenting software projects, case studies, technical notes, demos, metadata, and recruiter paths.",
+        problemLine: "A hiring portfolio needs to explain technical work quickly while staying fast, accessible, indexable, and easy to maintain.",
+        whatBuiltLine: "I built the static site structure, responsive layouts, project pages, case-study patterns, navigation, metadata, accessibility improvements, and deployment polish.",
         whatBuilt: [
-          "Reworked homepage positioning, selected-work hierarchy, resume/contact paths, navigation, footer links, metadata, and case-study routing.",
-          "Built reusable static sections for project cards, technical strengths, notes, interactive demos, and work/case-study indexes.",
-          "Added mobile-first CSS, visible focus states, reduced-motion handling, sitemap/robots metadata, and browser-verified mobile controls."
+          "Static GitHub Pages architecture with semantic HTML and reusable CSS patterns.",
+          "Hiring-focused navigation, project cards, case studies, notes, resume, and contact paths.",
+          "SEO metadata, Open Graph previews, sitemap, reduced-motion support, and focus states."
         ],
         ownership: "Runs on GitHub Pages with static HTML/CSS/JavaScript; external project images and embeds are credited through their linked pages.",
         production: "Solid static portfolio surface. Hardening would add automated link checks, HTML validation, visual regression snapshots, accessibility scans, and a repeatable image/metadata release process.",
-        stack: ["HTML", "CSS", "JavaScript", "GitHub Pages", "SEO metadata"],
+        stack: ["HTML", "CSS", "JavaScript", "GitHub Pages", "SEO", "Accessibility"],
         stackText: "HTML, CSS, vanilla JavaScript, GitHub Pages, SEO metadata.",
         visual: {
           webp: "inefy-desktop-final.webp",
@@ -225,9 +235,41 @@
           height: "1080"
         },
         links: [
-          { label: "Case Study", href: "notes.html#portfolio-cleanup" },
-          { label: "Demo", href: "index.html" },
-          { label: "GitHub", href: githubPortfolio }
+          { label: "Build Notes", href: "notes.html#portfolio-cleanup" },
+          { label: "GitHub", href: githubPortfolio },
+          { label: "View Source", href: githubPortfolio }
+        ]
+      },
+      {
+        id: "interactive-lab",
+        title: "Interactive Lab",
+        displayTitle: "Interactive Lab \u2014 Browser Games & JavaScript Experiments",
+        status: "Browser experiments",
+        workStatus: "Browser experiments",
+        updated: "May 2026",
+        description: "A collection of browser tools and games framed as small interaction, canvas, input, state, and accessibility experiments.",
+        problemLine: "Interactive demos need clear controls, reliable state, responsive layouts, and enough polish to be useful portfolio evidence.",
+        whatBuiltLine: "I built and refined browser games and tools with keyboard/touch input, pause states, score persistence, implementation notes, and consistent navigation.",
+        whatBuilt: [
+          "Canvas and DOM-based game loops with scoring, collision, movement, and restart behavior.",
+          "Keyboard and touch controls with visible instructions and accessible status updates.",
+          "LocalStorage best scores, pause/resume states, mobile layout checks, and reduced-motion support."
+        ],
+        ownership: "Uses standard browser APIs and familiar arcade/puzzle mechanics; the implementation work is custom static HTML, CSS, and JavaScript.",
+        production: "Solid secondary portfolio evidence for interaction work. The demos remain archived experiments, so deeper releases would need automated game-state tests, expanded accessibility alternatives, and broader device QA.",
+        stack: ["HTML", "CSS", "JavaScript", "Canvas API", "LocalStorage"],
+        stackText: "HTML, CSS, JavaScript, Canvas API, LocalStorage, keyboard/touch input.",
+        visual: {
+          webp: "assets/asteroid-drift-preview.webp",
+          png: "assets/asteroid-drift-preview.png",
+          alt: "Interactive Lab preview showing an Asteroid Drift canvas game start screen with controls and an asteroid field",
+          width: "1233",
+          height: "651"
+        },
+        links: [
+          { label: "Open Interactive Lab", href: "interactive-lab.html" },
+          { label: "Play Demos", href: "interactive-lab.html#lab-archive" },
+          { label: "View Source", href: githubPortfolio }
         ]
       },
       {

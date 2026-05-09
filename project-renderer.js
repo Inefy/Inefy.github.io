@@ -103,6 +103,10 @@
     wrapper.className = "what-built-card";
     wrapper.appendChild(textElement("p", "what-built-label", "What I built"));
 
+    if (project.whatBuiltLine) {
+      wrapper.appendChild(textElement("p", "what-built-summary", project.whatBuiltLine));
+    }
+
     appendList(wrapper, project.whatBuilt || [], "project-bullets");
 
     if (project.ownership) {
@@ -178,6 +182,11 @@
 
     body.appendChild(textElement("h3", "", project.displayTitle || project.title));
     body.appendChild(textElement("p", "project-problem", project.description));
+
+    if (project.problemLine) {
+      body.appendChild(textElement("p", "project-problem-line", project.problemLine));
+    }
+
     body.appendChild(createWhatBuilt(project));
 
     const stack = createTechStack(project);
@@ -215,6 +224,15 @@
     body.appendChild(header);
 
     body.appendChild(textElement("p", "", project.description));
+
+    if (project.problemLine) {
+      const problem = textElement("p", "project-problem-line", "");
+      const strong = document.createElement("strong");
+      strong.textContent = "Problem:";
+      problem.append(strong, ` ${project.problemLine}`);
+      body.appendChild(problem);
+    }
+
     body.appendChild(createWhatBuilt(project));
     body.appendChild(createFacts(project));
     appendLinks(body, project.workLinks || project.links, "work-links");
@@ -263,6 +281,9 @@
     const whatBuiltRow = document.createElement("div");
     whatBuiltRow.appendChild(textElement("dt", "", "What I built"));
     const whatBuiltDescription = document.createElement("dd");
+    if (project.whatBuiltLine) {
+      whatBuiltDescription.appendChild(textElement("p", "what-built-summary", project.whatBuiltLine));
+    }
     appendList(whatBuiltDescription, project.whatBuilt || []);
     if (project.ownership) {
       whatBuiltDescription.appendChild(textElement("p", "ownership-note", project.ownership));

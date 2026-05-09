@@ -1385,6 +1385,17 @@ h3 {
   font-weight: 750;
 }
 
+.project-problem-line {
+  margin: -4px 0 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.project-problem-line strong {
+  color: var(--gold);
+}
+
 .project-bullets {
   display: grid;
   gap: 10px;
@@ -1414,6 +1425,13 @@ h3 {
   font-size: 0.68rem;
   font-weight: 900;
   text-transform: uppercase;
+}
+
+.what-built-summary {
+  margin: 0;
+  color: var(--soft);
+  font-weight: 720;
+  line-height: 1.45;
 }
 
 .what-built-card .project-bullets {

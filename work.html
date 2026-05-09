@@ -131,8 +131,8 @@
               <tr>
                 <th scope="row">TraverseOps</th>
                 <td data-label="Type">Field-operations map and work-order demo</td>
-                <td data-label="Stack">MapLibre-style UI, Supabase-style data model, HTML, CSS, JavaScript</td>
-                <td data-label="What it demonstrates">Asset filtering, selected-record workflows, inspections, work orders, imports, reports, role-aware screens, and production-hardening judgment.</td>
+                <td data-label="Stack">HTML, CSS, JavaScript, MapLibre-style UI, static data</td>
+                <td data-label="What it demonstrates">Asset-status filtering, selected-asset workflows, field crew/supervisor screens, inspections, work orders, imports, and reports.</td>
                 <td data-label="Demo"><a href="traverseops-demo.html">Open demo</a></td>
                 <td data-label="Source"><span class="matrix-unavailable">Not public yet</span></td>
                 <td data-label="Case study"><a href="traverseops-case-study.html">Read case study</a></td>
@@ -140,8 +140,8 @@
               <tr>
                 <th scope="row">MovieBot / StreamCinema</th>
                 <td data-label="Type">Python Twitch chat voting and OBS automation bot</td>
-                <td data-label="Stack">Python, TwitchIO, OBS WebSocket, OAuth, local media scanning</td>
-                <td data-label="What it demonstrates">Command parsing, vote-state handling, tie resolution, token refresh, reconnect behavior, and OBS media-source control.</td>
+                <td data-label="Stack">Python, TwitchIO, OBS WebSocket, OAuth, local files</td>
+                <td data-label="What it demonstrates">Vote collection, OBS playback automation, token refresh, reconnect handling, vote changes, tie resolution, and movie folder scanning.</td>
                 <td data-label="Demo"><a href="movie-night.html">Movie Night</a></td>
                 <td data-label="Source"><a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a></td>
                 <td data-label="Case study"><a href="moviebot-case-study.html">Read case study</a></td>
@@ -149,8 +149,8 @@
               <tr>
                 <th scope="row">Web Paint</th>
                 <td data-label="Type">Browser canvas drawing editor</td>
-                <td data-label="Stack">HTML, CSS, JavaScript, Canvas API, Pointer Events, File/Clipboard APIs</td>
-                <td data-label="What it demonstrates">Tool state, canvas rendering, typed-array fill, undo/redo snapshots, import/export, zoom, resizing, and mobile tool panels.</td>
+                <td data-label="Stack">HTML, CSS, JavaScript, Canvas API</td>
+                <td data-label="What it demonstrates">Drawing modes, undo/redo history, import/export, zoom, canvas resizing, and UI state for tools, colors, brush size, and status output.</td>
                 <td data-label="Demo"><a href="paint.html">Open tool</a></td>
                 <td data-label="Source"><a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source</a></td>
                 <td data-label="Case study"><a href="web-paint-case-study.html">Read case study</a></td>
@@ -158,26 +158,26 @@
               <tr>
                 <th scope="row">Movie Library</th>
                 <td data-label="Type">Static voting catalog for MovieBot</td>
-                <td data-label="Stack">HTML, CSS, JavaScript, static data, Clipboard API, lazy-loaded posters</td>
-                <td data-label="What it demonstrates">Search/filter UI, copyable <code>!vote</code> commands, poster loading, result counts, accessible labels, and no-JS fallback content.</td>
-                <td data-label="Demo"><a href="movie-library.html">Open catalog</a></td>
+                <td data-label="Stack">HTML, CSS, JavaScript, static data, Clipboard API</td>
+                <td data-label="What it demonstrates">Public-domain search and filters, copy-to-clipboard vote commands, lazy-loaded posters, no-JS fallback content, and accessible labels.</td>
+                <td data-label="Demo"><a href="movie-library.html">Open Library</a></td>
                 <td data-label="Source"><a href="https://github.com/Inefy/Inefy.github.io/blob/main/movie-library.html" rel="noopener noreferrer">Source</a></td>
                 <td data-label="Case study"><a href="case-studies.html#movie-library">Read listing</a></td>
               </tr>
               <tr>
-                <th scope="row">Interactive Lab demos</th>
+                <th scope="row">Interactive Lab</th>
                 <td data-label="Type">Canvas games and browser experiments</td>
                 <td data-label="Stack">HTML, CSS, JavaScript, Canvas API, LocalStorage, keyboard/touch input</td>
-                <td data-label="What it demonstrates">Game loops, collision checks, grid state, touch controls, pause/resume behavior, best-score persistence, and accessible instructions.</td>
+                <td data-label="What it demonstrates">Scoring, collision, movement, restart behavior, keyboard/touch controls, status updates, localStorage best scores, pause/resume states, and reduced-motion support.</td>
                 <td data-label="Demo"><a href="interactive-lab.html">Open lab</a></td>
                 <td data-label="Source"><a href="https://github.com/Inefy/Inefy.github.io" rel="noopener noreferrer">Repo</a></td>
                 <td data-label="Case study"><a href="interactive-lab.html">Experiment index</a></td>
               </tr>
               <tr>
-                <th scope="row">Portfolio site</th>
+                <th scope="row">Portfolio Site</th>
                 <td data-label="Type">Static developer portfolio and case-study system</td>
-                <td data-label="Stack">HTML, CSS, JavaScript, GitHub Pages, Open Graph, JSON-LD, sitemap/robots</td>
-                <td data-label="What it demonstrates">Information architecture, recruiter paths, metadata, responsive layout, accessibility basics, reduced motion, and no-build static deployment.</td>
+                <td data-label="Stack">HTML, CSS, JavaScript, GitHub Pages, SEO, accessibility</td>
+                <td data-label="What it demonstrates">Semantic static architecture, reusable CSS patterns, recruiter paths, case studies, notes, Open Graph previews, sitemap, reduced motion, and focus states.</td>
                 <td data-label="Demo"><a href="index.html">Homepage</a></td>
                 <td data-label="Source"><a href="https://github.com/Inefy/Inefy.github.io" rel="noopener noreferrer">GitHub</a></td>
                 <td data-label="Case study"><a href="notes.html#portfolio-cleanup">Build note</a></td>
@@ -197,23 +197,56 @@
         <div class="work-grid flagship-work-grid" data-project-render="work-flagship">
           <article class="work-card work-card-featured work-card-fallback">
             <div class="work-card-body">
-              <div class="work-card-header"><span class="work-status">Public demo / case study</span><h3>TraverseOps</h3></div>
-              <p>Field teams lose time when maps, inspections, and work orders are split; TraverseOps links asset filters, selected records, and work-order flows.</p>
-              <div class="work-links"><a href="traverseops-case-study.html">Case Study</a><a href="traverseops-demo.html">Demo</a></div>
+              <div class="work-card-header"><span class="work-status">Public demo / case study</span><h3>TraverseOps &mdash; Field Operations Map &amp; Work-Order Demo</h3></div>
+              <p>A map-first field-operations demo for tracking hydrant-style assets, inspections, work orders, imports, reports, and team roles.</p>
+              <p class="project-problem-line"><strong>Problem:</strong> Field teams need a clear way to see asset status, assign work, and move from map context to operational tasks.</p>
+              <div class="what-built-card">
+                <p class="what-built-label">What I built</p>
+                <p class="what-built-summary">I built a static demo that models asset workflows, role-based screens, map filtering, import flows, inspection records, and work-order handoffs.</p>
+                <ul class="project-bullets">
+                  <li>MapLibre-style asset map with status filtering and selected-asset workflows.</li>
+                  <li>Inspection and work-order screens for field crew and supervisor-style roles.</li>
+                  <li>Import/reporting flow designed around municipal asset operations.</li>
+                </ul>
+              </div>
+              <div class="tech-chip-list tech-stack"><span class="tech-chip">HTML</span><span class="tech-chip">CSS</span><span class="tech-chip">JavaScript</span><span class="tech-chip">MapLibre-style UI</span><span class="tech-chip">Static data</span></div>
+              <div class="work-links"><a href="traverseops-case-study.html">Case Study</a><a href="traverseops-demo.html">Live Demo</a></div>
             </div>
           </article>
           <article class="work-card">
             <div class="work-card-body">
-              <div class="work-card-header"><span class="work-status">Public repo / live showcase</span><h3>MovieBot / StreamCinema Vote Bot</h3></div>
-              <p>Streamer-run movie nights need reliable voting and playback handoff; MovieBot tracks chat votes, resolves ties, rescans local movies, and drives OBS WebSocket.</p>
-              <div class="work-links"><a href="moviebot-case-study.html">Case Study</a><a href="movie-night.html">Demo</a><a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a></div>
+              <div class="work-card-header"><span class="work-status">Public repo / live showcase</span><h3>StreamCinema Vote Bot &mdash; Twitch Chat Voting + OBS Automation</h3></div>
+              <p>A Python automation bot that lets Twitch chat vote on public-domain movies and controls OBS playback for stream movie nights.</p>
+              <p class="project-problem-line"><strong>Problem:</strong> Running a movie night manually is repetitive, hard to coordinate, and easy to interrupt while streaming.</p>
+              <div class="what-built-card">
+                <p class="what-built-label">What I built</p>
+                <p class="what-built-summary">I built the Twitch chat voting flow, movie selection logic, OBS WebSocket playback control, token handling, reconnect behavior, and companion catalog links.</p>
+                <ul class="project-bullets">
+                  <li>Python/TwitchIO command handling for vote collection and vote changes.</li>
+                  <li>OBS WebSocket integration for playback automation.</li>
+                  <li>Token refresh, reconnect handling, tie resolution, and local movie folder scanning.</li>
+                </ul>
+              </div>
+              <div class="tech-chip-list tech-stack"><span class="tech-chip">Python</span><span class="tech-chip">TwitchIO</span><span class="tech-chip">OBS WebSocket</span><span class="tech-chip">OAuth</span><span class="tech-chip">Local files</span></div>
+              <div class="work-links"><a href="moviebot-case-study.html">Case Study</a><a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a><a href="movie-night.html">Movie Night</a><a href="movie-library.html">Movie Library</a></div>
             </div>
           </article>
           <article class="work-card">
             <div class="work-card-body">
               <div class="work-card-header"><span class="work-status">Live browser tool</span><h3>Web Paint &mdash; Browser Canvas Drawing Tool</h3></div>
-              <p>Browser drawing needs reliable state; Web Paint provides canvas tools, undo/redo snapshots, import/export, zoom, and mobile-friendly panels.</p>
-              <div class="work-links"><a href="paint.html">Demo</a><a href="web-paint-case-study.html">Case Study</a><a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source</a></div>
+              <p>A vanilla JavaScript canvas editor with drawing tools, text, shapes, undo/redo, import/export, zoom, and responsive controls.</p>
+              <p class="project-problem-line"><strong>Problem:</strong> Browser drawing tools need fast canvas interaction, predictable tool state, and controls that stay usable across desktop and touch screens.</p>
+              <div class="what-built-card">
+                <p class="what-built-label">What I built</p>
+                <p class="what-built-summary">I built the canvas rendering flow, tool state management, history stack, import/export behavior, keyboard shortcuts, and mobile control layout.</p>
+                <ul class="project-bullets">
+                  <li>Canvas drawing modes for pencil, eraser, shapes, fill, and text.</li>
+                  <li>Undo/redo history, image import/export, zoom, and canvas resizing.</li>
+                  <li>UI state management for color, brush size, active tool, and status output.</li>
+                </ul>
+              </div>
+              <div class="tech-chip-list tech-stack"><span class="tech-chip">HTML</span><span class="tech-chip">CSS</span><span class="tech-chip">JavaScript</span><span class="tech-chip">Canvas API</span></div>
+              <div class="work-links"><a href="web-paint-case-study.html">Case Study</a><a href="paint.html">Open Tool</a><a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source</a></div>
             </div>
           </article>
         </div>
@@ -229,16 +262,26 @@
         <div class="work-grid compact-work-grid" data-project-render="work-supporting">
           <article class="work-card">
             <div class="work-card-body">
-              <div class="work-card-header"><span class="work-status">Supporting live page</span><h3>Public Domain Movie Library</h3></div>
-              <p>MovieBot viewers need accurate vote commands; the library adds search, filters, copyable commands, lazy posters, and a no-JS fallback.</p>
-              <div class="work-links"><a href="case-studies.html#movie-library">Case Study</a><a href="movie-library.html">Demo</a><a href="moviebot-case-study.html">MovieBot</a></div>
+              <div class="work-card-header"><span class="work-status">Supporting live page</span><h3>Movie Library &mdash; Public-Domain Voting Catalog</h3></div>
+              <p>A searchable public-domain movie catalog that supports the StreamCinema bot by helping viewers find movies and copy vote commands.</p>
+              <p class="project-problem-line"><strong>Problem:</strong> Viewers need a simple way to browse eligible movies and submit valid vote commands without guessing titles.</p>
+              <div class="work-links"><a href="movie-library.html">Open Library</a><a href="moviebot-case-study.html">MovieBot Case Study</a><a href="movie-night.html">Movie Night</a></div>
             </div>
           </article>
           <article class="work-card">
             <div class="work-card-body">
-              <div class="work-card-header"><span class="work-status">Static GitHub Pages site</span><h3>Inefy Portfolio Site</h3></div>
-              <p>This portfolio keeps recruiter paths, case studies, metadata, reduced motion, and accessible CTAs in a no-build static site.</p>
-              <div class="work-links"><a href="notes.html#portfolio-cleanup">Case Study</a><a href="index.html">Demo</a><a href="https://github.com/Inefy/Inefy.github.io" rel="noopener noreferrer">GitHub</a></div>
+              <div class="work-card-header"><span class="work-status">Static GitHub Pages site</span><h3>Portfolio Site &mdash; Static Developer Portfolio</h3></div>
+              <p>A hand-built static portfolio for presenting software projects, case studies, technical notes, demos, metadata, and recruiter paths.</p>
+              <p class="project-problem-line"><strong>Problem:</strong> A hiring portfolio needs to explain technical work quickly while staying fast, accessible, indexable, and easy to maintain.</p>
+              <div class="work-links"><a href="notes.html#portfolio-cleanup">Build Notes</a><a href="https://github.com/Inefy/Inefy.github.io" rel="noopener noreferrer">GitHub</a><a href="https://github.com/Inefy/Inefy.github.io" rel="noopener noreferrer">View Source</a></div>
+            </div>
+          </article>
+          <article class="work-card">
+            <div class="work-card-body">
+              <div class="work-card-header"><span class="work-status">Browser experiments</span><h3>Interactive Lab &mdash; Browser Games &amp; JavaScript Experiments</h3></div>
+              <p>A collection of browser tools and games framed as small interaction, canvas, input, state, and accessibility experiments.</p>
+              <p class="project-problem-line"><strong>Problem:</strong> Interactive demos need clear controls, reliable state, responsive layouts, and enough polish to be useful portfolio evidence.</p>
+              <div class="work-links"><a href="interactive-lab.html">Open Interactive Lab</a><a href="interactive-lab.html#lab-archive">Play Demos</a><a href="https://github.com/Inefy/Inefy.github.io" rel="noopener noreferrer">View Source</a></div>
             </div>
           </article>
         </div>
