@@ -87,11 +87,20 @@
                 <span class="work-status">Public demo / case study</span>
                 <h3>TraverseOps</h3>
               </div>
-              <p>Map-first field operations demo for finding assets, recording inspections, and turning site issues into trackable work.</p>
+              <p>Field teams lose time when maps, inspections, and work orders are split; I built a MapLibre/Supabase demo linking asset filters, selected records, and work-order flows.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Modeled assets, inspections, work orders, imports, reports, and team roles around field-crew and supervisor workflows.</li>
+                  <li>Built a map-first asset workflow with status filtering, selected-asset panels, and direct paths into inspection and work-order screens.</li>
+                  <li>Documented demo boundaries and production hardening needs, including auth, role permissions, offline sync, audit logs, validation, and mobile field testing.</li>
+                </ul>
+                <p class="ownership-note">Uses external map/data tooling and sample municipal-style data; it is not an active field deployment.</p>
+              </div>
               <dl class="work-facts">
                 <div>
                   <dt>Stack</dt>
-                  <dd>MapLibre, Supabase, Capacitor-ready UI, responsive frontend</dd>
+                  <dd>MapLibre, Supabase, Capacitor-ready UI, desktop/mobile frontend</dd>
                 </div>
                 <div>
                   <dt>Status</dt>
@@ -114,7 +123,16 @@
                 <span class="work-status">Public repo / live showcase</span>
                 <h3>MovieBot / StreamCinema Vote Bot</h3>
               </div>
-              <p>Python Twitch/OBS automation that lets chat vote on public-domain movies and hands the winning media file to OBS.</p>
+              <p>Streamer-run movie nights need reliable voting and playback handoff; I built a Python/TwitchIO bot that tracks chat votes, rescans local movies, resolves ties, and drives OBS WebSocket.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Implemented Twitch chat commands for voting, results, current movie, time remaining, movie list, and help.</li>
+                  <li>Built vote-state logic for changed votes, duplicate prevention, partial title matching, tie resolution, and fallback selection.</li>
+                  <li>Connected OBS WebSocket playback automation with movie-folder scanning, token refresh, reconnect behavior, and setup/security notes.</li>
+                </ul>
+                <p class="ownership-note">Uses TwitchIO, Twitch OAuth/chat, OBS WebSocket, and public-domain local media as external dependencies.</p>
+              </div>
               <dl class="work-facts">
                 <div>
                   <dt>Stack</dt>
@@ -141,23 +159,34 @@
             <div class="work-card-body">
               <div class="work-card-header">
                 <span class="work-status">Live browser tool</span>
-                <h3>Web Paint</h3>
+                <h3>Web Paint &mdash; Browser Canvas Drawing Tool</h3>
               </div>
-              <p>Paint-style browser drawing app with canvas tools, shapes, undo/redo, zoom, local save/load, and PNG export.</p>
+              <p>Browser drawing needs reliable state; I built a vanilla JavaScript Canvas editor with tool modes, undo/redo snapshots, import/export, zoom, and mobile-friendly panels.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
+                  <li>Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.</li>
+                  <li>Managed tool settings, selected color, brush size, selection state, and status output in vanilla JavaScript.</li>
+                </ul>
+                <p class="ownership-note">Uses browser Canvas, Clipboard, File, Fullscreen, and LocalStorage APIs; no drawing framework is used.</p>
+              </div>
+              <div class="tech-stack" aria-label="Web Paint tech stack">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Canvas API</span>
+              </div>
               <dl class="work-facts">
-                <div>
-                  <dt>Stack</dt>
-                  <dd>HTML Canvas, vanilla JavaScript, CSS Grid, LocalStorage</dd>
-                </div>
                 <div>
                   <dt>Status</dt>
                   <dd>Live static tool in the Interactive Lab</dd>
                 </div>
               </dl>
               <div class="work-links">
-                <a href="web-paint-case-study.html">Case Study</a>
                 <a href="paint.html">Demo</a>
-                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">GitHub</a>
+                <a href="web-paint-case-study.html">Case Study</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source</a>
               </div>
             </div>
           </article>
@@ -181,7 +210,16 @@
                 <span class="work-status">Supporting live page</span>
                 <h3>Public Domain Movie Library</h3>
               </div>
-              <p>Searchable static poster wall for the MovieBot queue, with a no-JavaScript fallback list.</p>
+              <p>Viewers need accurate vote commands; I built a static HTML/CSS/JavaScript MovieBot catalog with filters, lazy posters, copyable <code>!vote</code> commands, and a no-JS fallback.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Built a searchable catalog that filters public-domain MovieBot queue data by title, year, runtime, and rating.</li>
+                  <li>Implemented copyable <code>!vote</code> commands with button labels and feedback so viewers can send accurate Twitch votes.</li>
+                  <li>Added lazy-loaded poster cards, accessible metadata, and a static <code>noscript</code> fallback for the full movie list.</li>
+                </ul>
+                <p class="ownership-note">Uses public-domain movie metadata, external IMDb links, and externally hosted poster images as source content.</p>
+              </div>
               <dl class="work-facts">
                 <div>
                   <dt>Stack</dt>
@@ -209,7 +247,16 @@
                 <span class="work-status">Static GitHub Pages site</span>
                 <h3>Inefy Portfolio Site</h3>
               </div>
-              <p>Static portfolio with case-study sections, accessible navigation, metadata, responsive pages, and build notes.</p>
+              <p>Recruiters need a fast proof-to-contact path; I built a GitHub Pages portfolio with reusable project sections, case studies, metadata, reduced motion, and accessible CTAs.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Reworked homepage positioning, selected-work hierarchy, resume/contact paths, navigation, footer links, metadata, and case-study routing.</li>
+                  <li>Built reusable static sections for project cards, technical strengths, notes, interactive demos, and work/case-study indexes.</li>
+                  <li>Added mobile-first CSS, visible focus states, reduced-motion handling, sitemap/robots metadata, and browser-verified mobile controls.</li>
+                </ul>
+                <p class="ownership-note">Runs on GitHub Pages with static HTML/CSS/JavaScript; external project images and embeds are credited through their linked pages.</p>
+              </div>
               <dl class="work-facts">
                 <div>
                   <dt>Stack</dt>
@@ -234,7 +281,7 @@
         <div class="section-heading">
           <p class="eyebrow">03 / Interactive experiments</p>
           <h2 id="experiments-title">Browser demos that show frontend mechanics.</h2>
-          <p>Playable demos kept separate from the main case studies, useful for showing input handling, canvas rendering, local state, and responsive controls.</p>
+          <p>Playable demos kept separate from the main case studies, framed around input handling, canvas rendering, local state, and keyboard/touch controls.</p>
         </div>
 
         <div class="work-grid experiment-work-grid">
@@ -243,7 +290,16 @@
             <div class="work-card-body">
               <span class="work-status">Physics game</span>
               <h3>Mini Golf</h3>
-              <p>Five-hole canvas golf game with aiming, shot power, collisions, hazards, and saved best scores.</p>
+              <p>Touch golf needs clear aiming and scoring; I built a Canvas/JavaScript five-hole course with drag power, collision response, hazards, scorecards, and best runs.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Created five course layouts with par values, walls, hazard zones, surface types, cup targets, and hole progression.</li>
+                  <li>Implemented drag aiming, shot-power calculation, ball motion, wall/hazard/cup collision checks, and stroke counting.</li>
+                  <li>Built scorecard UI, best-score persistence, pause/restart/fullscreen controls, touch hints, and hole navigation.</li>
+                </ul>
+                <p class="ownership-note">Uses standard canvas APIs and familiar mini-golf mechanics; the course implementation is custom JavaScript.</p>
+              </div>
               <dl class="work-facts">
                 <div><dt>Stack</dt><dd>Canvas, JavaScript, local persistence</dd></div>
                 <div><dt>Status</dt><dd>Live demo</dd></div>
@@ -260,7 +316,16 @@
             <div class="work-card-body">
               <span class="work-status">Arcade loop</span>
               <h3>Asteroid Drift</h3>
-              <p>Asteroids-style canvas game with thrust, shields, waves, scoring, and keyboard/touch controls.</p>
+              <p>Arcade loops need low-latency input; I built a Canvas/JavaScript Asteroids-style demo with thrust, shooting, shields, randomized spawns, collisions, waves, and touch controls.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Implemented ship thrust, rotation, projectile firing, shield charge, wraparound movement, and lives/scoring state.</li>
+                  <li>Built randomized asteroid spawning, split behavior, wave progression, collision checks, and HUD progress updates.</li>
+                  <li>Added keyboard and touch controls that feed the same input state, plus pause/restart/fullscreen and reduced-motion handling.</li>
+                </ul>
+                <p class="ownership-note">Uses established Asteroids-style mechanics and browser canvas APIs; the runtime is custom vanilla JavaScript.</p>
+              </div>
               <dl class="work-facts">
                 <div><dt>Stack</dt><dd>Canvas, JavaScript, real-time loop</dd></div>
                 <div><dt>Status</dt><dd>Live demo</dd></div>
@@ -277,7 +342,16 @@
             <div class="work-card-body">
               <span class="work-status">Grid game</span>
               <h3>Snake Lab</h3>
-              <p>Snake-style grid game with timed movement, input buffering, score state, and touch controls.</p>
+              <p>Snake needs fast turns without illegal reversals; I built a Canvas/JavaScript grid game with buffered input, growth, collisions, pace changes, and best scores.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Implemented grid state for snake segments, food placement, growth, wall/body collision detection, score, and length.</li>
+                  <li>Built input buffering for Arrow keys, WASD, swipe gestures, and touch buttons while blocking illegal reverse turns.</li>
+                  <li>Added pace changes, pause/restart/fullscreen controls, viewport-aware canvas sizing, and local best-score persistence.</li>
+                </ul>
+                <p class="ownership-note">Uses classic Snake rules and browser canvas APIs; the game state and controls are custom JavaScript.</p>
+              </div>
               <dl class="work-facts">
                 <div><dt>Stack</dt><dd>Canvas, JavaScript, keyboard/touch input</dd></div>
                 <div><dt>Status</dt><dd>Live demo</dd></div>
@@ -294,7 +368,16 @@
             <div class="work-card-body">
               <span class="work-status">Arcade game</span>
               <h3>Brick Breaker</h3>
-              <p>Paddle-and-ball game with brick collision, level clears, score tracking, and responsive sizing.</p>
+              <p>Paddle games need precise collisions; I built a Canvas/JavaScript Brick Breaker with launch state, wall/paddle/brick checks, levels, progress, and touch controls.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Implemented paddle movement, ball launch state, wall/paddle/brick collision checks, lives, scoring, and level-clearing logic.</li>
+                  <li>Built progress, level, best-score, and power readouts around a viewport-aware Canvas playfield.</li>
+                  <li>Added keyboard, pointer, and labeled touch controls that share the same movement and launch state.</li>
+                </ul>
+                <p class="ownership-note">Uses familiar brick-breaker mechanics and browser canvas APIs; the level/runtime logic is custom JavaScript.</p>
+              </div>
               <dl class="work-facts">
                 <div><dt>Stack</dt><dd>Canvas, JavaScript, collision checks</dd></div>
                 <div><dt>Status</dt><dd>Live demo</dd></div>
@@ -311,7 +394,16 @@
             <div class="work-card-body">
               <span class="work-status">Puzzle game</span>
               <h3>2048</h3>
-              <p>Tile-merge puzzle with board transforms, undo snapshots, saved best score, and swipe input.</p>
+              <p>Tile merging needs deterministic board transforms; I built an HTML/CSS/JavaScript 2048 with single-merge rules, random spawns, undo, best score, and accessible summaries.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Implemented directional board transforms, merge rules, random tile spawning, win/loss checks, score updates, and move counting.</li>
+                  <li>Built undo snapshots, local save/best-score persistence, keyboard shortcuts, swipe handling, and on-screen direction controls.</li>
+                  <li>Added an accessible focusable board with dynamic row summaries, live status announcements, and decorative tile rendering separated from screen-reader output.</li>
+                </ul>
+                <p class="ownership-note">Uses the established 2048 rule set; the browser UI, state updates, and persistence are custom code.</p>
+              </div>
               <dl class="work-facts">
                 <div><dt>Stack</dt><dd>HTML grid, JavaScript, LocalStorage</dd></div>
                 <div><dt>Status</dt><dd>Live demo</dd></div>
@@ -328,7 +420,16 @@
             <div class="work-card-body">
               <span class="work-status">Logic game</span>
               <h3>Minefield Sweep</h3>
-              <p>Minesweeper-style puzzle with safe first click, recursive reveal, flag mode, and timer state.</p>
+              <p>Mine puzzles need clear state and safe starts; I built a JavaScript grid game with delayed mines, recursive reveal, flag mode, timers, and accessible labels.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Implemented delayed mine placement, safe first reveal, adjacent counts, recursive empty-cell reveal, flag toggling, and win/loss state.</li>
+                  <li>Built difficulty switching, timer/best-time persistence, mines-left tracking, cleared-percent updates, pause/restart controls, and touch flag mode.</li>
+                  <li>Rendered the board as a keyboard-navigable grid with roving focus, row/column labels, live announcements, and state-specific cell descriptions.</li>
+                </ul>
+                <p class="ownership-note">Uses classic minesweeper rules; the board generation, reveal logic, and DOM UI are custom JavaScript.</p>
+              </div>
               <dl class="work-facts">
                 <div><dt>Stack</dt><dd>JavaScript grid state, DOM UI</dd></div>
                 <div><dt>Status</dt><dd>Live demo</dd></div>
@@ -345,7 +446,16 @@
             <div class="work-card-body">
               <span class="work-status">Timing game</span>
               <h3>Flappy Workbench</h3>
-              <p>Flappy-style timing game with obstacle gaps, collision checks, scoring, and restart flow.</p>
+              <p>Timing games need consistent physics; I built a Canvas/JavaScript Flappy-style loop with gravity, obstacle gaps, collision checks, best score, pause, and mobile flap input.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Implemented gravity, jump impulse, pipe spawning, gap sizing, collision checks, score tracking, and restart flow.</li>
+                  <li>Built the Canvas render loop for the player, scrolling obstacles, ground movement, menu state, status text, and best-score persistence.</li>
+                  <li>Added keyboard, pointer, tap, and labeled mobile Flap controls with pause/restart/fullscreen support.</li>
+                </ul>
+                <p class="ownership-note">Uses Flappy-style mechanics and browser canvas APIs; the implementation is custom vanilla JavaScript.</p>
+              </div>
               <dl class="work-facts">
                 <div><dt>Stack</dt><dd>Canvas, JavaScript, lightweight state machine</dd></div>
                 <div><dt>Status</dt><dd>Live demo</dd></div>
@@ -372,7 +482,16 @@
             <div class="work-card-body">
               <span class="work-status">Build log</span>
               <h3>Portfolio cleanup pass</h3>
-              <p>Homepage positioning, CTA hierarchy, metadata, recruiter paths, and selected-work framing.</p>
+              <p>Recruiters need a fast path from proof to contact; I rebuilt the static portfolio flow around homepage positioning, CTA hierarchy, metadata, resume paths, and selected-work framing.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Repositioned the hero around software development hiring actions instead of older casual homepage copy.</li>
+                  <li>Restructured selected work, technical strengths, notes previews, resume/contact paths, and footer navigation.</li>
+                  <li>Documented QA checks and accessibility/SEO follow-ups in the build notes.</li>
+                </ul>
+                <p class="ownership-note">This is a static-site content and UI pass; GitHub Pages supplies the hosting layer.</p>
+              </div>
               <dl class="work-facts">
                 <div><dt>Stack</dt><dd>HTML, CSS, metadata, GitHub Pages</dd></div>
                 <div><dt>Status</dt><dd>Documented build note</dd></div>
@@ -390,7 +509,16 @@
             <div class="work-card-body">
               <span class="work-status">Build log</span>
               <h3>MovieBot stream surface split</h3>
-              <p>Separated the live stream page from the searchable library so voting and browsing stay clear.</p>
+              <p>MovieBot viewers need voting and browsing to stay distinct; I split the static stream page from the searchable HTML/CSS/JavaScript catalog and linked both back to the Python bot case study.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Split the live stream room and searchable catalog into separate pages with cross-links back to MovieBot.</li>
+                  <li>Built the movie catalog search, vote-command copy flow, poster grid, and static fallback list.</li>
+                  <li>Updated the MovieBot narrative so the bot, stream room, and catalog read as one system.</li>
+                </ul>
+                <p class="ownership-note">Uses public-domain movie data, IMDb links, external poster images, and Twitch embed APIs.</p>
+              </div>
               <dl class="work-facts">
                 <div><dt>Stack</dt><dd>Static pages, movie data, no-JavaScript fallback</dd></div>
                 <div><dt>Status</dt><dd>Documented build note</dd></div>
@@ -408,9 +536,18 @@
             <div class="work-card-body">
               <span class="work-status">Build log</span>
               <h3>TraverseOps public-demo framing</h3>
-              <p>Clarified sample-data status and foregrounded the map-first field workflow for portfolio review.</p>
+              <p>Field-operations demos can look shallow without context; I reframed TraverseOps around MapLibre/Supabase sample data, asset workflows, demo limits, and production-hardening requirements.</p>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Reframed the project around field assets, inspections, work orders, imports, reports, and role-based review.</li>
+                  <li>Added case-study sections for architecture, demo boundaries, screenshots, and production hardening.</li>
+                  <li>Clarified that the public demo uses sample data and needs real auth, audit, validation, and offline sync for production.</li>
+                </ul>
+                <p class="ownership-note">The page documents a public demo concept; the operational data shown is sample content.</p>
+              </div>
               <dl class="work-facts">
-                <div><dt>Stack</dt><dd>Product framing, case-study copy, responsive preview</dd></div>
+                <div><dt>Stack</dt><dd>Product framing, case-study copy, mobile preview</dd></div>
                 <div><dt>Status</dt><dd>Documented build note</dd></div>
               </dl>
               <div class="work-links">

@@ -18,7 +18,8 @@ const fullscreenButton = document.querySelector("#fullscreenButton");
 const ctx = canvas.getContext("2d");
 const WORLD_WIDTH = 960;
 const WORLD_HEIGHT = 620;
-const BEST_KEY = "brick-breaker-best";
+const BEST_KEY = "inefy-brick-breaker-best";
+const LEGACY_BEST_KEYS = ["brick-breaker-best"];
 const START_LIVES = 3;
 const MAX_LIVES = 5;
 const MAX_LEVEL = 5;
@@ -112,8 +113,10 @@ const ball = {
 
 function readBest() {
   try {
-    const value = Number.parseInt(window.localStorage.getItem(BEST_KEY) || "0", 10);
-    return Number.isFinite(value) ? value : 0;
+    return [BEST_KEY, ...LEGACY_BEST_KEYS].reduce((currentBest, key) => {
+      const value = Number.parseInt(window.localStorage.getItem(key) || "0", 10);
+      return Number.isFinite(value) ? Math.max(currentBest, value) : currentBest;
+    }, 0);
   } catch {
     return 0;
   }
@@ -246,6 +249,9 @@ function togglePause() {
   if (state === "playing" || state === "serve") {
     pausedFrom = state;
     state = "paused";
+    keys.left = false;
+    keys.right = false;
+    pointerActive = false;
     updateHud("Paused");
     setMenu(true, "Paused", "Resume", `Score ${score}`);
     return;
@@ -335,7 +341,9 @@ function updateGame(dt) {
     updatePowerTimers(dt);
     updatePowerUps(dt);
   }
-  updatePaddle(dt);
+  if (state === "playing" || state === "serve") {
+    updatePaddle(dt);
+  }
 
   if (state === "serve") {
     ball.x = paddle.x + paddle.width / 2;
@@ -1091,6 +1099,12 @@ function handleKeyDown(event) {
     event.preventDefault();
     primeAudio();
     handleAction();
+  }
+  if (event.code === "KeyP" || event.code === "Escape") {
+    if (state === "playing" || state === "serve" || state === "paused") {
+      event.preventDefault();
+      togglePause();
+    }
   }
   if (event.code === "Enter") {
     event.preventDefault();

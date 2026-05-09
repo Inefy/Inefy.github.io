@@ -227,6 +227,7 @@ function createMovieCard(movie) {
   copyButton.type = "button";
   copyButton.dataset.vote = voteCommand(movie.title);
   copyButton.setAttribute("aria-label", `Copy vote command for ${movie.title}`);
+  copyButton.setAttribute("aria-live", "polite");
   copyButton.textContent = "Copy !vote";
 
   poster.appendChild(posterImage);

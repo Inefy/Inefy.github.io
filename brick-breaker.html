@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="A polished Brick Breaker-style browser arcade game from the Inefy interactive lab.">
+    <meta name="description" content="Brick Breaker by Zac Batten: a Canvas/JavaScript paddle game with launch state, wall/paddle/brick collisions, lives, levels, progress tracking, power feedback, and labeled touch controls.">
     <title>Brick Breaker / Interactive Lab</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2368b7ff'/%3E%3Cpath d='M14 16h13v10H14zM30 16h20v10H30zM14 29h20v10H14zM37 29h13v10H37zM19 45h26v6H19z' fill='%23070c10'/%3E%3Ccircle cx='48' cy='47' r='5' fill='%23f5c45b'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="brick-breaker.css">
@@ -38,6 +38,38 @@
         <span aria-hidden="true">/</span>
         <span>Brick Breaker</span>
       </nav>
+
+      <section class="demo-overview" aria-labelledby="breaker-overview-title">
+        <div class="demo-overview-copy">
+          <span class="next-step-kicker">Game guide</span>
+          <h1 id="breaker-overview-title">Brick Breaker</h1>
+          <p>Paddle games need precise collision and mobile input; I built a Canvas/JavaScript Brick Breaker with launch state, wall/paddle/brick collisions, lives, levels, progress tracking, power feedback, and labeled touch controls.</p>
+          <div class="demo-overview-actions" aria-label="Brick Breaker actions">
+            <a href="interactive-lab.html">Back to Interactive Lab</a>
+            <button type="button" data-demo-proxy="startButton">Start Game</button>
+            <button type="button" data-demo-proxy="restartButton">Restart</button>
+            <button type="button" data-demo-proxy="pauseButton">Pause</button>
+          </div>
+        </div>
+        <dl class="demo-control-list">
+          <div>
+            <dt>Controls</dt>
+            <dd>Move the paddle, launch the ball, clear bricks, and keep the ball in play.</dd>
+          </div>
+          <div>
+            <dt>Keyboard</dt>
+            <dd>Arrow keys or A/D move, Space launches or acts, and P, Escape, or Enter resumes from pause.</dd>
+          </div>
+          <div>
+            <dt>Touch</dt>
+            <dd>Use the on-screen left, launch, and right buttons or pointer movement on the playfield.</dd>
+          </div>
+          <div>
+            <dt>Accessibility</dt>
+            <dd>Score, best score, lives, level, power state, and clear progress are shown outside the canvas.</dd>
+          </div>
+        </dl>
+      </section>
 
       <section class="game-hud" aria-label="Game status">
         <div class="hud-cluster">
@@ -92,19 +124,38 @@
               <button class="menu-button" type="button" id="startButton">Start Game</button>
             </div>
           </div>
-          <div class="touch-bar" aria-label="Touch controls">
-            <button type="button" data-control="left" aria-label="Move left">&larr;</button>
-            <button type="button" data-control="launch" aria-label="Launch ball">Launch</button>
-            <button type="button" data-control="right" aria-label="Move right">&rarr;</button>
+          <div class="touch-bar" role="group" aria-label="Touch controls">
+            <button type="button" data-control="left" aria-label="Move paddle left" aria-controls="gameCanvas">&larr;</button>
+            <button type="button" data-control="launch" aria-label="Launch ball" aria-controls="gameCanvas">Launch</button>
+            <button type="button" data-control="right" aria-label="Move paddle right" aria-controls="gameCanvas">&rarr;</button>
           </div>
         </div>
+      </section>
+
+      <section class="implementation-notes" aria-labelledby="breaker-implementation-title">
+        <span class="next-step-kicker">Implementation notes</span>
+        <h2 id="breaker-implementation-title">Paddle state, brick collision, and level progress.</h2>
+        <p>
+          <strong>Main state</strong> covers paddle position, ball position and velocity, brick layout, score, lives, level, power state, best score, and whether the ball is served, playing, paused, won, or over. The animation loop moves the ball and paddle, resolves collisions, updates HUD values, and redraws the canvas. Collision logic handles walls, paddle angles, brick removal, power feedback, and level-cleared progress; scoring comes from brick hits, level clears, and survival. Keyboard input uses Arrow keys or A/D for movement and Space/Enter for launch or resume. Touch buttons set the same movement flags and launch action. The lesson was keeping pointer, keyboard, and button input funneled into shared paddle/action state so controls stay predictable.
+        </p>
+      </section>
+
+      <section class="demo-built" aria-labelledby="breaker-built-title">
+        <span class="next-step-kicker">What I built</span>
+        <h2 id="breaker-built-title">Paddle physics, level state, and arcade HUD behavior.</h2>
+        <ul>
+          <li>Implemented paddle movement, ball launch state, wall/paddle/brick collision checks, lives, scoring, and level-clearing logic.</li>
+          <li>Built progress, level, best-score, and power readouts around a responsive Canvas playfield.</li>
+          <li>Added keyboard, pointer, and labeled touch controls that share the same movement and launch state.</li>
+        </ul>
+        <p class="ownership-note">Brick-breaker rules are a known arcade pattern; this play loop, UI state, collision code, and presentation are custom browser code.</p>
       </section>
 
       <section class="game-next-step" aria-labelledby="breaker-next-title">
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="breaker-next-title">More playable UI studies</h2>
-          <p>Brick Breaker is one of the Interactive Lab demos focused on canvas redraws, collision logic, keyboard input, and compact game-state UI.</p>
+          <p>Paddle collision work is one of the lab's arcade examples; compare it with the other browser demos and the main case studies for broader implementation context.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>
@@ -113,6 +164,7 @@
       </section>
     </main>
 
+    <script src="demo-navigation.js"></script>
     <script src="brick-breaker.js"></script>
   </body>
 </html>

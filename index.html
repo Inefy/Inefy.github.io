@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Zac Batten's Inefy workbench: stream tools, movie-night bots, useful automations, and personal build notes.">
+    <meta name="description" content="Zac Batten's Inefy workbench: stream tools, movie-night bots, Python automations, browser tools, and technical build notes.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/">
     <meta property="og:site_name" content="Inefy Workbench">
@@ -89,7 +89,7 @@
             I build practical web tools, Python automations, and frontend interfaces for map-heavy field workflows, Twitch/OBS streams, and browser experiments.
           </p>
           <p class="hero-proof">
-            The work here focuses on usable static sites, chat-driven stream tooling, map-based operations UI, and small browser projects that replace repeated manual steps.
+            The work here focuses on static sites, chat-driven stream tooling, map-based operations UI, and browser projects that replace repeated manual steps.
           </p>
           <ul class="hero-proof-chips" aria-label="Proof of work types">
             <li>Python Twitch/OBS bot</li>
@@ -127,7 +127,7 @@
           </div>
           <div>
             <span class="dock-label">Project shape</span>
-            <strong>Static + useful</strong>
+            <strong>Static + practical</strong>
             <p>GitHub Pages front ends with focused JavaScript and public proof links.</p>
           </div>
         </aside>
@@ -159,7 +159,7 @@
         </div>
         <div class="about-copy">
           <p>
-            I am Zac Batten, a software developer who likes building practical tools that make messy workflows feel smaller: web apps for field work, Python automation for streams, frontend interfaces that explain themselves, maps that help people act, and browser experiments that stay useful. Right now I am focused on sharper frontend patterns, resilient JavaScript, Python integrations, and map-based interfaces that can be demonstrated clearly in public. My strongest fit is work where a team needs someone who can turn repeated manual steps into a working demo, then keep improving the interface until it is easier to understand and harder to break. I value clarity, working demos, resilience, and usability, so this portfolio favors live projects, accessible paths, and proof over vague project names.
+            I am Zac Batten, a software developer who likes building tools that shrink messy workflows: web apps for field work, Python automation for streams, frontend interfaces that explain themselves, maps that help people act, and browser experiments with visible state. Right now I am focused on sharper frontend patterns, resilient JavaScript, Python integrations, and map-based interfaces that can be demonstrated clearly in public. My strongest fit is work where a team needs someone who can turn repeated manual steps into a working demo, then keep improving the interface until it is easier to understand and harder to break. I value clarity, working demos, resilience, and usability, so this portfolio favors live projects, accessible paths, and proof over vague project names.
           </p>
           <div class="about-actions" aria-label="About section actions">
             <a class="button secondary" href="resume.html">View resume</a>
@@ -173,7 +173,7 @@
           <p class="eyebrow">Technical strengths</p>
           <h2 id="technical-strengths-title">Skills tied to working projects.</h2>
           <p>
-            These are the patterns that show up across the portfolio: small tools, practical interfaces, and demos that can be opened instead of only described.
+            These are the patterns that show up across the portfolio: focused tools, practical interfaces, and demos that can be opened instead of only described.
           </p>
         </div>
 
@@ -200,7 +200,7 @@
           </article>
           <article class="strength-card">
             <h3>Canvas tools/games</h3>
-            <p>Using browser APIs for drawing tools and small games with responsive controls, local state, and direct user feedback.</p>
+            <p>Using browser APIs for drawing tools and canvas games with keyboard/touch controls, local state, and direct user feedback.</p>
             <a href="paint.html">Open Web Paint</a>
           </article>
           <article class="strength-card">
@@ -220,13 +220,13 @@
             <strong>Problem:</strong> Field crews lose time when maps, asset records, inspections, and work orders live in separate tools.
           </p>
           <p class="flagship-solution">
-            <strong>Solution:</strong> TraverseOps brings asset lookup, field context, inspection notes, and work-order flow into one responsive map workspace.
+            <strong>Solution:</strong> TraverseOps brings asset lookup, field context, inspection notes, and work-order flow into one map workspace for desktop review and mobile field use.
           </p>
           <ul class="flagship-highlights" aria-label="TraverseOps technical highlights">
             <li>MapLibre interface for asset discovery, map movement, and selected-asset context.</li>
             <li>Inspection and work-order screens shaped around field crew decision points.</li>
             <li>Supabase-backed demo data model with public-safe records and realistic workflow states.</li>
-            <li>Responsive, Capacitor-ready UI structure for desktop review and mobile field use.</li>
+            <li>Capacitor-ready UI structure for desktop review and mobile field use.</li>
           </ul>
           <div class="flagship-actions">
             <a class="button primary" href="traverseops-case-study.html">Read Case Study</a>
@@ -276,20 +276,24 @@
               </div>
               <h3>TraverseOps &mdash; Field Operations Map &amp; Work-Order Demo</h3>
               <p class="project-problem">
-                Field crews and supervisors lose time when asset maps, inspection records, imports, reports, and work orders live in separate tools.
+                Field teams lose time when maps, inspections, and work orders are split; I built a MapLibre/Supabase demo linking asset filters, selected records, and work-order flows.
               </p>
-              <ul class="project-bullets">
-                <li>MapLibre-style asset map with status filtering and selected-asset workflows.</li>
-                <li>Inspection and work-order screens for field crew/supervisor-style roles.</li>
-                <li>Import/reporting flow designed to model municipal asset operations.</li>
-              </ul>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Modeled assets, inspections, work orders, imports, reports, and team roles around field-crew and supervisor workflows.</li>
+                  <li>Built a map-first asset workflow with status filtering, selected-asset panels, and direct paths into inspection and work-order screens.</li>
+                  <li>Documented demo boundaries and production hardening needs, including auth, role permissions, offline sync, audit logs, validation, and mobile field testing.</li>
+                </ul>
+                <p class="ownership-note">Uses external map/data tooling such as MapLibre and Supabase; the public demo uses sample municipal-style data.</p>
+              </div>
               <div class="tech-stack" aria-label="TraverseOps tech stack">
                 <span>MapLibre</span>
                 <span>Supabase</span>
                 <span>Work orders</span>
                 <span>Imports</span>
                 <span>Reports</span>
-                <span>Responsive UI</span>
+                <span>Mobile field UI</span>
               </div>
               <div class="card-actions">
                 <a href="traverseops-case-study.html">Case Study</a>
@@ -309,13 +313,17 @@
               </div>
               <h3>StreamCinema Vote Bot &mdash; Twitch Chat Voting + OBS Automation</h3>
               <p class="project-problem">
-                Manually running stream movie nights is repetitive and hard to coordinate; Twitch chat votes determine playback while the bot controls OBS.
+                Streamer-run movie nights need reliable voting and playback handoff; I built a Python/TwitchIO bot that tracks chat votes, rescans local movies, resolves ties, and drives OBS WebSocket.
               </p>
-              <ul class="project-bullets">
-                <li>Python/TwitchIO command handling for vote collection.</li>
-                <li>OBS WebSocket integration for playback automation.</li>
-                <li>Token refresh, reconnect handling, vote changes, and tie resolution.</li>
-              </ul>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Implemented Twitch chat commands for voting, results, current movie, time remaining, movie list, and help.</li>
+                  <li>Built vote-state logic for changed votes, duplicate prevention, partial title matching, tie resolution, and fallback selection.</li>
+                  <li>Connected OBS WebSocket playback automation with movie-folder scanning, token refresh, reconnect behavior, and setup/security notes.</li>
+                </ul>
+                <p class="ownership-note">Uses TwitchIO, Twitch OAuth/chat, OBS WebSocket, and local public-domain media files as external inputs and APIs.</p>
+              </div>
               <div class="tech-stack" aria-label="MovieBot tech stack">
                 <span>Python</span>
                 <span>TwitchIO</span>
@@ -351,25 +359,29 @@
                 <span><i aria-hidden="true"></i> Browser tool</span>
                 <span>Canvas app</span>
               </div>
-              <h3>Web Paint</h3>
+              <h3>Web Paint &mdash; Browser Canvas Drawing Tool</h3>
               <p class="project-problem">
-                A drawing tool needs familiar controls, reliable canvas state, and export behavior without a heavy app framework.
+                Browser drawing needs reliable state; I built a vanilla JavaScript Canvas editor with tool modes, undo/redo snapshots, import/export, zoom, and mobile-friendly panels.
               </p>
-              <ul class="project-bullets">
-                <li>Canvas drawing with brush, shape, eraser, fill, undo, and redo tools.</li>
-                <li>Responsive ribbon UI with color swatches, zoom, and canvas resizing.</li>
-                <li>Local save/load and PNG export for useful standalone workflows.</li>
-              </ul>
+              <div class="what-built-card">
+                <h4>What I built</h4>
+                <ul class="project-bullets">
+                  <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
+                  <li>Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.</li>
+                  <li>Managed tool settings, selected color, brush size, selection state, and status output in vanilla JavaScript.</li>
+                </ul>
+                <p class="ownership-note">Uses browser Canvas, Clipboard, File, Fullscreen, and LocalStorage APIs; no drawing framework is used.</p>
+              </div>
               <div class="tech-stack" aria-label="Web Paint tech stack">
-                <span>HTML Canvas</span>
+                <span>HTML</span>
+                <span>CSS</span>
                 <span>JavaScript</span>
-                <span>CSS Grid</span>
-                <span>LocalStorage</span>
+                <span>Canvas API</span>
               </div>
               <div class="card-actions">
-                <a href="web-paint-case-study.html">Case Study</a>
                 <a href="paint.html">Live Demo</a>
-                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">GitHub</a>
+                <a href="web-paint-case-study.html">Case Study</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source</a>
               </div>
             </div>
           </article>
@@ -379,10 +391,10 @@
       <section class="site-build-notes" aria-labelledby="site-build-title">
         <div>
           <p class="eyebrow">Site build notes</p>
-          <h2 id="site-build-title">This portfolio is also a small static build.</h2>
+          <h2 id="site-build-title">This portfolio is also a static GitHub Pages build.</h2>
         </div>
         <p>
-          The site itself stays intentionally smaller than the project cards: GitHub Pages, responsive CSS, metadata, reduced-motion support, and build notes for future maintenance.
+          Recruiters need a fast path from proof to contact; I built this GitHub Pages portfolio with hiring-focused navigation, reusable project sections, case-study pages, mobile-first CSS, metadata, reduced-motion support, and accessible CTAs.
         </p>
         <div class="site-build-actions">
           <a href="notes.html">Read notes</a>
@@ -398,7 +410,7 @@
           <span class="status-badge">Public repo / live showcase</span>
           <h2 id="moviebot-title">MovieBot reduces the manual work behind Twitch movie nights.</h2>
           <p class="case-lede">
-            MovieBot is a Python Twitch bot that turns chat commands into a watch-party queue. It tracks votes, handles stream-room commands, refreshes tokens, and hands the winning local media file to OBS.
+            Twitch movie nights are awkward to run manually, so I built a Python/TwitchIO bot that turns chat commands into vote state, handles changed votes and ties, scans local public-domain movies, refreshes tokens, reconnects when needed, and hands the winner to OBS through WebSocket.
           </p>
           <div class="case-actions">
           <a class="button primary" href="movie-night.html">Open Movie Night</a>
@@ -443,7 +455,7 @@
           <article>
             <span>Next</span>
             <h3>Better operator view</h3>
-            <p>The next useful pass is a small control/status panel for queue state, current votes, OBS connection health, and upcoming media.</p>
+            <p>The next implementation pass is an operator control/status panel for queue state, current votes, OBS connection health, and upcoming media.</p>
           </article>
         </div>
       </section>
@@ -454,7 +466,7 @@
           <span class="status-badge">Public demo / case study</span>
           <h2 id="traverse-title">TraverseOps turns field work into a shared map.</h2>
           <p class="traverse-lede">
-            I built TraverseOps as a focused municipal operations app for crews who need to find assets, record what happened on site, and turn problems into trackable work. The public app is a demo workspace with sample data, not an active municipal deployment.
+            Field crews and supervisors need one place to locate hydrant-style assets, inspect condition, open work orders, import updates, and report status. I built TraverseOps as a public MapLibre/Supabase demo with sample data, role-aware screens, asset-status filters, selected-asset workflows, import/reporting views, and a production-hardening plan.
           </p>
           <div class="traverse-actions">
             <a class="button primary" href="https://traverseops.app" rel="noopener noreferrer">Open TraverseOps demo</a>
@@ -512,7 +524,7 @@
           <span class="status-badge">Live browser tool</span>
           <h2 id="web-paint-title">Web Paint turns a familiar desktop workflow into a browser tool.</h2>
           <p class="case-lede">
-            Web Paint is a no-build canvas app with drawing tools, shape controls, undo/redo, zoom, local save/load, and PNG export in a responsive Paint-style interface.
+            Browser drawing tools become frustrating when tool state, history, imports, and resizing are unreliable. I built Web Paint as a no-build HTML/CSS/JavaScript Canvas editor with drawing modes, typed-array flood fill, capped undo/redo snapshots, PNG import/export, local save/load, zoom, fullscreen, and mobile-friendly tool panels.
           </p>
           <div class="case-actions">
             <a class="button primary" href="paint.html">Open Web Paint</a>
@@ -524,7 +536,7 @@
             <span>Pointer events</span>
             <span>LocalStorage</span>
             <span>PNG export</span>
-            <span>Responsive UI</span>
+            <span>Mobile tool UI</span>
           </div>
         </div>
 
@@ -560,7 +572,7 @@
           <article>
             <span>Constraints</span>
             <h3>No framework, still tool-like</h3>
-            <p>The UI uses static HTML, CSS, and JavaScript, so the tool state, pointer handling, responsive ribbon, and file export all live in focused browser code.</p>
+            <p>The UI uses static HTML, CSS, and JavaScript, so the tool state, pointer handling, narrow-screen ribbon, and file export all live in focused browser code.</p>
           </article>
           <article>
             <span>Role</span>
@@ -570,7 +582,7 @@
           <article>
             <span>Next</span>
             <h3>More precision tools</h3>
-            <p>The next useful pass would add selection movement, richer keyboard shortcuts, and cleaner layer-like workflows without making the app heavy.</p>
+            <p>The next implementation pass would add selection movement, richer keyboard shortcuts, and layer-style workflows without making the app heavy.</p>
           </article>
         </div>
       </section>
@@ -578,11 +590,11 @@
       <section class="note-strip" aria-label="Personal notes">
         <article>
           <span class="note-kicker">Current rule</span>
-          <p>Make the useful version first. Make it pretty after it survives real use.</p>
+          <p>Ship the working version first. Refine the interface after it survives real use.</p>
         </article>
         <article>
           <span class="note-kicker">Favorite scale</span>
-          <p>Small enough to finish, annoying enough that finishing it feels great.</p>
+          <p>Scoped tightly enough to finish, annoying enough that the fix proves something.</p>
         </article>
         <article>
           <span class="note-kicker">Why Inefy</span>
@@ -595,7 +607,7 @@
           <p class="eyebrow">Notes / Build logs</p>
           <h2 id="notes-title">Recent build notes.</h2>
           <p>
-            Short technical notes on project decisions, implementation cleanup, and the next useful edge to test.
+            Short technical notes on project decisions, implementation cleanup, and the next edge case to test.
           </p>
           <a class="button secondary" href="notes.html">Read build notes</a>
         </div>
@@ -626,7 +638,7 @@
           <p class="eyebrow">Interactive lab</p>
           <h2 id="lab-title">Browser experiments that show the frontend mechanics.</h2>
           <p>
-            A compact set of playable demos kept below the professional project work: useful enough to show implementation range, small enough not to compete with case studies.
+            A compact set of playable demos kept below the professional project work: technical enough to show implementation range, scoped so they do not compete with case studies.
           </p>
           <a class="button secondary" href="interactive-lab.html">View full lab archive</a>
         </div>
@@ -635,11 +647,21 @@
           <article class="lab-card">
             <span class="lab-card-kicker">Canvas tool</span>
             <h3>Web Paint</h3>
-            <p>A Paint-style browser drawing app with tools, color controls, undo/redo, zoom, local save/load, and PNG export.</p>
+            <p>Browser drawing needs reliable state; I built a vanilla JavaScript Canvas editor with tool modes, undo/redo snapshots, import/export, zoom, and mobile-friendly panels.</p>
             <dl class="lab-detail-list">
               <div>
+                <dt>What I built</dt>
+                <dd>
+                  <ul>
+                    <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
+                    <li>Built undo/redo snapshots, import validation, PNG export, zoom, canvas resizing, and local save/load behavior.</li>
+                    <li>Managed toolbar state, swatches, brush sizes, selection bounds, and status output in custom vanilla JavaScript.</li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
                 <dt>Demonstrates</dt>
-                <dd>Canvas state, pointer events, export flow, and responsive tool UI.</dd>
+                <dd>Canvas state, pointer events, export flow, and touch-friendly tool UI.</dd>
               </div>
               <div>
                 <dt>Controls</dt>
@@ -654,8 +676,18 @@
           <article class="lab-card">
             <span class="lab-card-kicker">Physics game</span>
             <h3>Mini Golf</h3>
-            <p>A five-hole browser golf game with aiming, shot power, collisions, hazards, sand traps, and saved best scores.</p>
+            <p>Touch golf needs clear aiming and scoring; I built a Canvas/JavaScript five-hole course with drag power, collision response, hazards, scorecards, and best runs.</p>
             <dl class="lab-detail-list">
+              <div>
+                <dt>What I built</dt>
+                <dd>
+                  <ul>
+                    <li>Created five course layouts with par values, walls, hazard zones, surface types, cup targets, and hole progression.</li>
+                    <li>Implemented drag aiming, shot-power calculation, ball motion, wall/hazard/cup collision checks, and stroke counting.</li>
+                    <li>Built scorecard UI, best-score persistence, pause/restart/fullscreen controls, touch hints, and hole navigation.</li>
+                  </ul>
+                </dd>
+              </div>
               <div>
                 <dt>Demonstrates</dt>
                 <dd>Canvas physics, collision checks, level state, local persistence, and touch-friendly UI.</dd>
@@ -673,8 +705,18 @@
           <article class="lab-card">
             <span class="lab-card-kicker">Arcade loop</span>
             <h3>Asteroid Drift</h3>
-            <p>An Asteroids-style canvas game with thrust movement, drifting rocks, shields, scoring, and escalating waves.</p>
+            <p>Arcade loops need low-latency input; I built a Canvas/JavaScript Asteroids-style demo with thrust, shooting, shields, randomized spawns, collisions, waves, and touch controls.</p>
             <dl class="lab-detail-list">
+              <div>
+                <dt>What I built</dt>
+                <dd>
+                  <ul>
+                    <li>Implemented ship thrust, rotation, projectile firing, shield charge, wraparound movement, and lives/scoring state.</li>
+                    <li>Built randomized asteroid spawning, split behavior, wave progression, collision checks, and HUD progress updates.</li>
+                    <li>Added keyboard and touch controls that feed the same input state, plus pause/restart/fullscreen and reduced-motion handling.</li>
+                  </ul>
+                </dd>
+              </div>
               <div>
                 <dt>Demonstrates</dt>
                 <dd>Real-time game loop, entity spawning, collision response, HUD state, and keyboard/touch input.</dd>

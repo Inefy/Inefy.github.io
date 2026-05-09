@@ -50,6 +50,19 @@ button:disabled {
   opacity: 0.52;
 }
 
+.sr-only {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .merge-app {
   position: relative;
   isolation: isolate;
@@ -458,6 +471,12 @@ button:disabled {
   pointer-events: none;
 }
 
+.tile::after {
+  position: relative;
+  z-index: 1;
+  content: attr(data-label);
+}
+
 .tile-x-0 {
   left: 0;
 }
@@ -683,7 +702,7 @@ button:disabled {
 
 .touch-pad {
   display: none;
-  grid-template-columns: repeat(3, 44px);
+  grid-template-columns: repeat(3, 48px);
   grid-template-areas:
     ". up ."
     "left down right";
@@ -692,8 +711,8 @@ button:disabled {
 
 .touch-pad button {
   display: grid;
-  width: 44px;
-  height: 40px;
+  min-width: 48px;
+  min-height: 48px;
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
@@ -703,12 +722,14 @@ button:disabled {
   color: #ffffff;
   font-size: 1.15rem;
   font-weight: 900;
+  touch-action: manipulation;
 }
 
 .touch-pad button:hover,
 .touch-pad button:focus-visible {
   border-color: rgba(104, 183, 255, 0.74);
   background: rgba(104, 183, 255, 0.14);
+  box-shadow: 0 0 0 3px rgba(104, 183, 255, 0.12);
   outline: none;
 }
 
@@ -950,13 +971,13 @@ body[data-game-state="over"] .status-dot {
 
   .touch-pad {
     display: grid;
-    grid-template-columns: repeat(3, 40px);
+    grid-template-columns: repeat(3, 46px);
     gap: 6px;
   }
 
   .touch-pad button {
-    width: 40px;
-    height: 36px;
+    min-width: 46px;
+    min-height: 46px;
   }
 }
 
@@ -987,7 +1008,7 @@ body[data-game-state="over"] .status-dot {
   }
 
   .touch-pad button {
-    height: 32px;
+    min-height: 44px;
   }
 }
 

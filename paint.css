@@ -27,6 +27,7 @@ body {
   height: 100%;
   margin: 0;
   overflow: hidden;
+  overflow-x: hidden;
 }
 
 body,
@@ -175,6 +176,10 @@ input:focus-visible {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+}
+
+.paint-mobile-instruction {
+  display: none;
 }
 
 .tabs {
@@ -509,7 +514,7 @@ input:focus-visible {
 
 .workspace {
   display: grid;
-  min-height: 0;
+  min-height: clamp(360px, calc(100vh - 300px), 640px);
   grid-template-columns: 94px minmax(0, 1fr);
   background:
     linear-gradient(45deg, rgba(148, 163, 184, 0.1) 25%, transparent 25%),
@@ -687,8 +692,12 @@ input:focus-visible {
 }
 
 @media (max-width: 760px) {
-  .paint-app {
-    grid-template-rows: 56px 220px minmax(0, 1fr) 40px;
+  body .paint-app {
+    height: 100dvh;
+    max-width: 100vw;
+    grid-template-rows: auto auto auto minmax(138px, 24dvh) minmax(300px, 1fr) auto auto auto;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .brand-title strong {
@@ -709,10 +718,6 @@ input:focus-visible {
     padding-bottom: 12px;
   }
 
-  .paint-app {
-    grid-template-rows: auto 220px minmax(0, 1fr) 40px;
-  }
-
   .paint-nav {
     width: 100%;
     overflow-x: auto;
@@ -724,30 +729,289 @@ input:focus-visible {
     display: none;
   }
 
+  .paint-nav a,
+  .paint-nav button {
+    min-height: 44px;
+    flex: 0 0 auto;
+  }
+
+  .paint-app .demo-overview {
+    gap: 10px;
+    margin-bottom: 8px;
+    padding: 10px;
+  }
+
+  .paint-app .demo-overview h1 {
+    font-size: 1.55rem;
+  }
+
+  .paint-app .demo-overview p,
+  .paint-app .demo-overview dd {
+    font-size: 0.82rem;
+  }
+
+  .paint-app .demo-overview-actions {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .paint-app .demo-overview-actions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .paint-app .demo-overview-actions a,
+  .paint-app .demo-overview-actions button {
+    flex: 0 0 auto;
+    min-height: 44px;
+  }
+
+  .paint-app .demo-control-list {
+    display: none;
+  }
+
+  .ribbon {
+    grid-template-rows: 48px auto minmax(0, 1fr);
+    min-height: 138px;
+    max-height: 24dvh;
+    overflow: hidden;
+  }
+
+  .tabs {
+    gap: 16px;
+    overflow-x: auto;
+    padding: 0 12px;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    min-width: 76px;
+    min-height: 44px;
+    height: 48px;
+    font-size: 14px;
+  }
+
+  .paint-mobile-instruction {
+    display: block;
+    margin: 0;
+    padding: 7px 12px 6px;
+    color: #41516a;
+    background: #eef6ff;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .ribbon-content {
+    max-width: 100vw;
+    align-items: start;
+    gap: 8px;
+    padding: 8px 10px 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-padding-inline: 10px;
+    scroll-snap-type: x proximity;
+  }
+
+  .ribbon-group {
+    height: auto;
+    min-height: 82px;
+    max-height: calc(24dvh - 58px);
+    grid-template-rows: minmax(0, 1fr) 18px;
+    padding: 8px;
+    overflow: auto;
+    border-radius: 10px;
+    scroll-snap-align: start;
+  }
+
+  .ribbon-group-body {
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .ribbon-group-label {
+    font-size: 11px;
+  }
+
+  .command-button,
+  .tool-button,
+  .shape-button,
+  .brush-size-button,
+  .mini-command-button,
+  .rail-button,
+  .zoom-button,
+  .size-action-button,
+  .swatch {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .command-button {
+    width: 54px;
+    height: 54px;
+    grid-template-rows: 26px 1fr;
+    font-size: 11px;
+  }
+
+  .command-icon {
+    font-size: 24px;
+  }
+
+  .tool-button {
+    width: 58px;
+    height: 58px;
+    grid-template-rows: 30px 1fr;
+    font-size: 11px;
+  }
+
+  .tool-icon {
+    font-size: 25px;
+  }
+
+  .mini-command-button {
+    height: 44px;
+    min-width: 88px;
+    text-align: center;
+  }
+
+  .brush-size-button {
+    width: 46px;
+    height: 44px;
+  }
+
+  .shape-grid {
+    grid-template-columns: repeat(4, 44px);
+    grid-auto-rows: 44px;
+    gap: 6px;
+  }
+
+  .shape-button {
+    width: 44px;
+    height: 44px;
+    font-size: 23px;
+  }
+
+  .colors-group {
+    width: min(92vw, 390px);
+    min-width: min(92vw, 390px);
+    flex: 0 0 min(92vw, 390px);
+  }
+
+  .color-panel {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .current-colors {
+    flex-basis: 70px;
+    width: 70px;
+    height: 54px;
+  }
+
+  .current-color {
+    width: 42px;
+    height: 42px;
+  }
+
+  .swatches {
+    grid-template-columns: repeat(5, 44px);
+    grid-auto-rows: 44px;
+    gap: 6px;
+    max-height: 94px;
+    overflow: auto;
+  }
+
+  .swatch {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+  }
+
+  .canvas-size-stack,
+  .canvas-size-stack.compact {
+    grid-template-columns: repeat(2, minmax(82px, 1fr));
+    gap: 8px;
+  }
+
+  .size-label input,
+  .size-action-button {
+    width: 100%;
+    height: 44px;
+  }
+
   .workspace {
-    grid-template-columns: 82px minmax(0, 1fr);
+    min-height: 300px;
+    grid-template-columns: 64px minmax(0, 1fr);
   }
 
   .tool-rail {
-    padding: 16px 0 0 12px;
+    gap: 10px;
+    padding: 12px 0 0 8px;
+  }
+
+  .tool-rail-panel {
+    gap: 7px;
+    padding: 7px;
   }
 
   .rail-button {
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
   }
 
   .canvas-scroll {
-    padding: 20px;
+    padding: 18px 14px;
+    overflow: auto;
   }
 
   .canvas-stage {
-    width: min(1024px, calc(100vw - 120px), calc((100vh - 390px) * 4 / 3));
-    min-width: 260px;
+    width: min(1024px, calc(100vw - 96px), calc((100dvh - 360px) * 4 / 3));
+    min-width: 220px;
+  }
+
+  .resize-handle {
+    right: -18px;
+    bottom: -18px;
+    width: 44px;
+    height: 44px;
+    border-width: 2px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.18);
+  }
+
+  .statusbar {
+    min-height: 52px;
+    height: auto;
+    padding: 6px 10px;
+  }
+
+  .status-right {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .zoom-control {
+    width: min(100%, 360px);
+    gap: 10px;
+  }
+
+  .zoom-button {
+    width: 44px;
+    height: 44px;
   }
 
   .zoom-slider {
-    width: 96px;
+    width: min(38vw, 150px);
+    min-height: 44px;
   }
 }
 

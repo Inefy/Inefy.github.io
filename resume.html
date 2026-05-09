@@ -72,7 +72,7 @@
             <p class="resume-kicker">Summary</p>
             <h2 id="summary-title">Practical software for real workflows.</h2>
             <p>
-              I focus on small, useful systems: static web tools, Python automations, Twitch chat bots, OBS handoffs, map-first operations interfaces, and browser-based experiments. The work is strongest where a repeated manual task needs a clear interface, reliable state handling, and a public proof link.
+              I focus on workflow-sized systems: static web tools, Python automations, Twitch chat bots, OBS handoffs, map-first operations interfaces, and browser-based experiments. The work is strongest where a repeated manual task needs a clear interface, reliable state handling, and a public proof link.
             </p>
           </section>
 
@@ -80,7 +80,7 @@
             <p class="resume-kicker">Skills</p>
             <h2 id="skills-title">Technical strengths</h2>
             <ul class="resume-list">
-              <li>HTML, CSS, JavaScript, responsive UI, accessibility-minded static pages</li>
+              <li>HTML, CSS, JavaScript, mobile-first UI, accessibility-minded static pages</li>
               <li>Python automation, TwitchIO, OAuth refresh flows, OBS WebSocket handoffs</li>
               <li>MapLibre, Supabase-backed app shapes, field operations interfaces</li>
               <li>GitHub Pages, metadata, link previews, no-JavaScript fallbacks</li>
@@ -93,17 +93,35 @@
             <h2 id="projects-title">Selected work</h2>
             <div class="resume-item">
               <h3>MovieBot</h3>
-              <p>Python Twitch bot that tracks chat votes, manages movie-night commands, refreshes tokens, and hands the winning local media file to OBS.</p>
+              <p>Streamer-run movie nights need reliable voting and playback handoff; I built a Python/TwitchIO bot that collects chat votes, resolves ties and changed votes, scans local public-domain movies, and controls OBS through WebSocket.</p>
+              <p><strong>What I built:</strong></p>
+              <ul class="resume-list">
+                <li>Implemented Twitch chat commands for voting, results, current movie, time remaining, movie lists, and help output.</li>
+                <li>Built vote-state logic for changed votes, duplicate prevention, partial title matching, tie resolution, and fallback selection.</li>
+                <li>Connected OBS WebSocket playback automation with movie-folder scanning, token refresh, reconnect behavior, and setup/security notes.</li>
+              </ul>
               <a class="text-link" href="moviebot-case-study.html">Read case study</a>
             </div>
             <div class="resume-item">
               <h3>TraverseOps</h3>
-              <p>Municipal field operations demo for map-first asset lookup, inspection flows, work-order screens, and sync-oriented UI structure.</p>
+              <p>Field teams lose time when maps, inspections, imports, reports, and work orders live in separate tools; I built a MapLibre/Supabase demo that connects asset lookup, selected-record context, and work-order workflows.</p>
+              <p><strong>What I built:</strong></p>
+              <ul class="resume-list">
+                <li>Modeled assets, inspections, work orders, imports, reports, and team roles around field-crew and supervisor workflows.</li>
+                <li>Built a map-first asset workflow with status filtering, selected-asset panels, and direct paths into inspection and work-order screens.</li>
+                <li>Documented demo boundaries and production hardening needs, including auth, role permissions, offline sync, audit logs, validation, and mobile field testing.</li>
+              </ul>
               <a class="text-link" href="traverseops-case-study.html">View project</a>
             </div>
             <div class="resume-item">
               <h3>zacbatten.me</h3>
-              <p>Static portfolio and workbench with project cards, social metadata, movie library pages, build logs, and browser tools.</p>
+              <p>Recruiters need a fast path from proof to contact; I built a static GitHub Pages portfolio with hiring-focused navigation, reusable project sections, case-study pages, mobile-first CSS, metadata, reduced-motion support, and accessible CTAs.</p>
+              <p><strong>What I built:</strong></p>
+              <ul class="resume-list">
+                <li>Reworked homepage positioning, selected-work hierarchy, resume/contact paths, navigation, footer links, metadata, and case-study routing.</li>
+                <li>Built reusable static sections for project cards, technical strengths, notes, interactive demos, and work/case-study indexes.</li>
+                <li>Added mobile-first CSS, visible focus states, reduced-motion handling, sitemap/robots metadata, and browser-verified mobile controls.</li>
+              </ul>
               <a class="text-link" href="work.html">View selected work</a>
             </div>
           </section>
@@ -112,7 +130,7 @@
             <p class="resume-kicker">Experience</p>
             <h2 id="experience-title">Independent software projects</h2>
             <p>
-              Current public work centers on building and documenting useful software projects end to end: product framing, frontend implementation, automation scripts, static deployment, and project write-ups.
+              Current public work centers on building and documenting software projects end to end: product framing, frontend implementation, automation scripts, static deployment, and project write-ups.
             </p>
             <p class="resume-note">
               Formal employment history can be added here when the PDF resume is ready.

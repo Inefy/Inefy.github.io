@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="A polished Asteroids-style browser arcade game from the Inefy interactive lab.">
+    <meta name="description" content="Asteroid Drift by Zac Batten: a Canvas/JavaScript Asteroids-style demo with thrust, shooting, shields, randomized asteroid spawning, collision checks, waves, scoring, and touch controls.">
     <title>Asteroid Drift / Interactive Lab</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2368b7ff'/%3E%3Cpath d='M32 9l10 34-10-6-10 6z' fill='%23070f13'/%3E%3Ccircle cx='14' cy='18' r='5' fill='%23f5c45b'/%3E%3Ccircle cx='49' cy='45' r='8' fill='%23ff8fc6'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="asteroid-drift.css">
@@ -39,6 +39,48 @@
         <span aria-hidden="true">/</span>
         <span>Asteroid Drift</span>
       </nav>
+
+      <section class="demo-overview" aria-labelledby="drift-overview-title">
+        <div class="demo-overview-copy">
+          <span class="next-step-kicker">Game guide</span>
+          <h1 id="drift-overview-title">Asteroid Drift</h1>
+          <p>An arcade loop needs responsive input and readable state; I built a Canvas/JavaScript Asteroids-style demo with thrust, rotation, shooting, shields, randomized spawning, collision checks, waves, scoring, and touch controls.</p>
+          <ul class="drift-proof-list" aria-label="What this demo shows">
+            <li>Canvas vector rendering</li>
+            <li>Shared keyboard/touch input</li>
+            <li>Wave spawning and scoring</li>
+            <li>Shield and cooldown systems</li>
+          </ul>
+          <div class="demo-overview-actions" aria-label="Asteroid Drift actions">
+            <a href="interactive-lab.html">Back to Interactive Lab</a>
+            <button type="button" data-demo-proxy="startButton">Launch Ship</button>
+            <button type="button" data-demo-proxy="restartButton">Restart</button>
+            <button type="button" data-demo-proxy="pauseButton">Pause</button>
+          </div>
+        </div>
+        <dl class="demo-control-list">
+          <div>
+            <dt>Controls</dt>
+            <dd>Rotate to aim, hold thrust to build momentum, fire charged shots, and use shield only when a collision is unavoidable.</dd>
+          </div>
+          <div>
+            <dt>Keyboard</dt>
+            <dd>Arrow keys or WASD move, Space or Enter fires, Shift or S shields, P or Escape pauses, and R restarts.</dd>
+          </div>
+          <div>
+            <dt>Touch</dt>
+            <dd>Hold Left/Right to rotate, hold Thrust to move, tap Fire for shots, and hold Shield to absorb hits while energy drains.</dd>
+          </div>
+          <div>
+            <dt>Scoring</dt>
+            <dd>Small asteroids are worth points, wave clears add bonuses, later waves spawn more threats, and the best score is saved locally.</dd>
+          </div>
+          <div>
+            <dt>Accessibility</dt>
+            <dd>Score, wave, lives, shield, charge, and status text are exposed outside the canvas for nonvisual game state.</dd>
+          </div>
+        </dl>
+      </section>
 
       <section class="game-hud" aria-label="Game status">
         <div class="hud-cluster">
@@ -105,25 +147,106 @@
               </div>
               <strong id="menuTitle">Asteroid Drift</strong>
               <span class="menu-meta" id="menuMeta">Outer belt signal locked.</span>
+              <p class="menu-brief">Clear escalating asteroid waves with momentum-based flight, charged shots, and a shield that buys time but drains quickly.</p>
+              <dl class="menu-start-grid" aria-label="Start screen controls and goals">
+                <div>
+                  <dt>Move</dt>
+                  <dd>Arrow keys or WASD</dd>
+                </div>
+                <div>
+                  <dt>Fire</dt>
+                  <dd>Space or Enter</dd>
+                </div>
+                <div>
+                  <dt>Shield</dt>
+                  <dd>Shift or S</dd>
+                </div>
+                <div>
+                  <dt>Goal</dt>
+                  <dd>Split rocks, clear waves, save lives</dd>
+                </div>
+              </dl>
               <button class="menu-button" type="button" id="startButton">Launch Ship</button>
             </div>
           </div>
 
           <div class="touch-controls" aria-label="Touch controls">
-            <button type="button" data-control="left" aria-label="Rotate left">&larr;</button>
+            <button type="button" data-control="left" aria-label="Rotate left">Left</button>
             <button type="button" data-control="thrust" aria-label="Thrust">Thrust</button>
-            <button type="button" data-control="right" aria-label="Rotate right">&rarr;</button>
+            <button type="button" data-control="right" aria-label="Rotate right">Right</button>
             <button type="button" data-control="shield" aria-label="Shield">Shield</button>
             <button type="button" data-control="fire" aria-label="Fire">Fire</button>
           </div>
+          <p class="touch-hint">Touch controls: hold rotation/thrust, tap Fire, hold Shield for close calls.</p>
         </div>
+      </section>
+
+      <section class="implementation-notes drift-systems" aria-labelledby="drift-systems-title">
+        <span class="next-step-kicker">Scoring and progression</span>
+        <h2 id="drift-systems-title">A small arcade loop with readable risk and reward.</h2>
+        <div class="drift-system-grid">
+          <article>
+            <strong>Wave pressure</strong>
+            <p>Each wave starts with more large asteroids, and clearing the field advances the run instead of resetting the ship.</p>
+          </article>
+          <article>
+            <strong>Scoring model</strong>
+            <p>Hits award points based on asteroid size, wave clears add a bonus, and the best score persists between sessions.</p>
+          </article>
+          <article>
+            <strong>Survival tools</strong>
+            <p>Lives absorb mistakes, shield energy gives a short defensive window, and blaster charge prevents button-mashing from flattening the loop.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="implementation-notes" aria-labelledby="drift-implementation-title">
+        <span class="next-step-kicker">Implementation notes</span>
+        <h2 id="drift-implementation-title">Movement, shooting, collision, shield, and spawning systems.</h2>
+        <div class="drift-note-grid">
+          <article>
+            <strong>Movement model</strong>
+            <p>The ship uses rotation, thrust acceleration, drag, max-speed clamping, and screen wrapping so movement feels inertial without needing a physics library.</p>
+          </article>
+          <article>
+            <strong>Shooting cadence</strong>
+            <p>Bullets inherit position and direction from the ship, expire after a short lifetime, and respect a cooldown meter that is surfaced in the HUD.</p>
+          </article>
+          <article>
+            <strong>Collision checks</strong>
+            <p>Bullet and ship impacts use distance checks against asteroid radius, then split large rocks into smaller entities and update score, lives, particles, and wave progress.</p>
+          </article>
+          <article>
+            <strong>Shield behavior</strong>
+            <p>Shield input drains energy while active, recharges when released, and can absorb a crash without consuming a life if the player times it well.</p>
+          </article>
+          <article>
+            <strong>Spawning rules</strong>
+            <p>Asteroids spawn from screen edges with randomized heading, speed, spin, and shape points, then the wave system measures remaining asteroid work to track progress.</p>
+          </article>
+          <article>
+            <strong>Input architecture</strong>
+            <p>Keyboard and touch controls write into the same input state, so desktop and mobile drive one gameplay loop instead of separate code paths.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="demo-built" aria-labelledby="drift-built-title">
+        <span class="next-step-kicker">What I built</span>
+        <h2 id="drift-built-title">Arcade movement, wave state, and responsive combat controls.</h2>
+        <ul>
+          <li>Implemented ship thrust, rotation, projectile firing, shield charge, wraparound movement, and lives/scoring state.</li>
+          <li>Built randomized asteroid spawning, split behavior, wave progression, collision checks, and HUD progress updates.</li>
+          <li>Added keyboard and touch controls that feed the same input state, plus pause/restart/fullscreen and reduced-motion handling.</li>
+        </ul>
+        <p class="ownership-note">Asteroids-style mechanics are an established genre reference; this browser implementation, visuals, and state loop are custom JavaScript.</p>
       </section>
 
       <section class="game-next-step" aria-labelledby="drift-next-title">
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="drift-next-title">More canvas game loops</h2>
-          <p>Asteroid Drift sits with the Interactive Lab demos that show input handling, collision checks, HUD updates, and lightweight browser game loops.</p>
+          <p>Real-time input and collision checks are one of the lab's arcade examples; compare this demo with the other browser experiments and the main case studies for broader implementation context.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>
@@ -132,6 +255,7 @@
       </section>
     </main>
 
+    <script src="demo-navigation.js"></script>
     <script src="asteroid-drift.js"></script>
   </body>
 </html>

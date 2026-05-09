@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Web Paint case study by Zac Batten: a browser-based canvas drawing editor built with vanilla JavaScript, pointer events, canvas state, undo/redo, import/export, and responsive tool UI.">
+    <meta name="description" content="Web Paint case study by Zac Batten: a vanilla JavaScript Canvas editor with drawing modes, typed-array flood fill, capped undo/redo snapshots, PNG import/export, local save, zoom, and mobile-friendly tool UI.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/web-paint-case-study.html">
     <meta property="og:site_name" content="Inefy Workbench">
     <meta property="og:title" content="Web Paint Case Study / Zac Batten">
-    <meta property="og:description" content="A vanilla JavaScript canvas drawing editor with tools, shapes, state management, undo/redo, import/export, touch-aware input, and performance constraints.">
+    <meta property="og:description" content="A vanilla JavaScript Canvas editor with drawing modes, typed-array flood fill, undo/redo snapshots, import/export, local save, zoom, and mobile-friendly tool panels.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://zacbatten.me/web-paint-case-study.html">
     <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <meta property="og:image:alt" content="Inefy workbench portfolio preview with selected work and browser tools.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Web Paint Case Study / Zac Batten">
-    <meta name="twitter:description" content="Browser-based canvas drawing editor built with vanilla JavaScript.">
+    <meta name="twitter:description" content="Vanilla JavaScript Canvas editor with drawing modes, undo/redo snapshots, import/export, and mobile-friendly tool panels.">
     <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <title>Web Paint Case Study / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
@@ -62,7 +62,7 @@
           <p class="eyebrow">Frontend tooling case study</p>
           <h1 id="case-title">Web Paint</h1>
           <p class="case-template-summary">
-            Web Paint is a browser-based canvas drawing editor built with vanilla JavaScript. It recreates a familiar Paint-style workflow with pointer-based drawing tools, shape previews, flood fill, selection copy/cut, undo/redo history, image import, PNG export, zoom, fullscreen, local save, and responsive tool panels.
+            Browser drawing tools become frustrating when tool state, canvas history, imports, and resizing are unreliable. I built Web Paint as a no-build HTML/CSS/JavaScript Canvas editor that supports pencil, eraser, fill, shapes, text, selection, undo/redo snapshots, PNG import/export, local save, zoom, fullscreen, and mobile-friendly control panels, with flood fill using typed arrays and history capped to keep large canvases manageable.
           </p>
           <dl class="case-template-meta" aria-label="Project metadata">
             <div>
@@ -88,7 +88,7 @@
           <div>
             <strong>Canvas editor in the browser</strong>
           </div>
-          <figcaption>Placeholder preview for the live Web Paint tool: ribbon controls, drawing canvas, tool state, import/export, and responsive workspace.</figcaption>
+          <figcaption>Placeholder preview for the live Web Paint tool: ribbon controls, drawing canvas, tool state, import/export, and narrow-screen workspace behavior.</figcaption>
         </figure>
       </section>
 
@@ -112,24 +112,25 @@
             <p class="eyebrow">01 / Project summary</p>
             <h2 id="summary-title">A real canvas tool, not only a visual mockup.</h2>
             <p>
-              Web Paint is a single-page drawing editor that uses the Canvas 2D API directly. The project focuses on the parts that make a browser tool feel usable: fast pointer input, predictable tool switching, image history, import validation, selection export, canvas resizing, zoom, and a desktop-inspired toolbar that still works at narrow widths.
+              A browser drawing editor needs predictable tool state, durable history, safe imports, and export paths that work without a backend. I built Web Paint with the Canvas 2D API, vanilla JavaScript state, pointer events, typed-array flood fill, capped ImageData history, PNG import/export, localStorage save/load, canvas resizing, zoom, and a desktop-inspired toolbar that still works at narrow widths.
             </p>
             <div class="case-study-callout">
               <strong>Hiring signal:</strong>
-              <span>The implementation shows frontend fundamentals without leaning on a framework: DOM wiring, event handling, state modeling, Canvas APIs, browser storage, clipboard APIs, file validation, responsive layout, and honest accessibility tradeoffs.</span>
+              <span>The implementation shows frontend fundamentals without leaning on a framework: DOM wiring, event handling, state modeling, Canvas APIs, browser storage, clipboard APIs, file validation, mobile layout, and honest accessibility tradeoffs.</span>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="role-title">
-            <p class="eyebrow">02 / What Zac built</p>
+            <p class="eyebrow">02 / What I built</p>
             <h2 id="role-title">The full editor surface and interaction model.</h2>
             <ul class="case-template-list">
-              <li>Built the Paint-style shell: titlebar, ribbon tabs, tool groups, quick tool rail, canvas workspace, resize handle, and status bar.</li>
-              <li>Implemented Canvas 2D drawing for pencil, brush, eraser, text, flood fill, and multiple shapes.</li>
-              <li>Modeled active tool, selected shape, color, brush size, zoom, selection rectangles, drawing drafts, resize drags, and history in JavaScript state.</li>
-              <li>Added import, paste, copy, cut, PNG download, local save, fullscreen, zoom, canvas-size controls, and responsive layout behavior.</li>
-              <li>Included guardrails for image types, file size, pixel count, bounded canvas dimensions, pointer capture, and requestAnimationFrame-based drawing updates.</li>
+              <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
+              <li>Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.</li>
+              <li>Managed tool settings, colors, brush size, shape choices, selection bounds, drawing drafts, pointer capture, and status output in vanilla JavaScript.</li>
+              <li>Added paste, copy, cut, fullscreen, canvas-size controls, mobile-friendly control panels, and mobile instruction copy.</li>
+              <li>Included guardrails for MIME type, file size, pixel count, bounded canvas dimensions, requestAnimationFrame-based drawing, and large-canvas history limits.</li>
             </ul>
+            <p class="ownership-note">External pieces are browser APIs: Canvas 2D, File input, Clipboard, Fullscreen, object URLs, and LocalStorage. The editor logic and UI wiring are vanilla JavaScript in this repo.</p>
           </section>
 
           <section class="case-template-section" aria-labelledby="tool-list-title">
@@ -202,13 +203,13 @@
               </li>
             </ol>
             <p>
-              Continuous pointer movement is throttled through <code>requestAnimationFrame</code> with a pending point, which keeps drawing responsive while avoiding unnecessary repeated work during high-frequency pointer events.
+              Continuous pointer movement is throttled through <code>requestAnimationFrame</code> with a pending point, which keeps drawing responsive to pen/mouse input while avoiding unnecessary repeated work during high-frequency pointer events.
             </p>
           </section>
 
           <section class="case-template-section" aria-labelledby="state-title">
             <p class="eyebrow">05 / Tool state management</p>
-            <h2 id="state-title">A small state object coordinates the editor.</h2>
+            <h2 id="state-title">A focused state object coordinates the editor.</h2>
             <div class="case-template-feature-list">
               <article>
                 <h3>Active mode</h3>
@@ -235,13 +236,13 @@
               Undo and redo are implemented with an array of <code>ImageData</code> snapshots and a history index. Before saving a new edit, the app slices away any redo states after the current index, pushes the latest pixels, and caps the stack at 24 snapshots. Restoring a state uses <code>putImageData</code>.
             </p>
             <p>
-              This is simple, reliable, and appropriate for a demo-sized editor because every tool produces a final pixel state. The tradeoff is memory: large canvases make each snapshot expensive. A production version would likely move toward command history, dirty-region snapshots, compression, or worker-backed persistence for bigger documents.
+              This direct snapshot model is reliable for a demo-sized editor because every tool produces a final pixel state. The tradeoff is memory: large canvases make each snapshot expensive. A production version would likely move toward command history, dirty-region snapshots, compression, or worker-backed persistence for bigger documents.
             </p>
           </section>
 
           <section class="case-template-section" aria-labelledby="import-export-title">
             <p class="eyebrow">07 / Import and export flow</p>
-            <h2 id="import-export-title">Browser APIs make the tool useful without a backend.</h2>
+            <h2 id="import-export-title">Browser APIs make the tool work without a backend.</h2>
             <ol class="case-study-flow">
               <li>
                 <strong>Open image</strong>
@@ -261,7 +262,7 @@
               </li>
               <li>
                 <strong>Export and local save</strong>
-                <span>Save downloads a PNG. Local save stores a PNG data URL in <code>localStorage</code>, which is useful for a static demo but not a full document system.</span>
+                <span>Save downloads a PNG. Local save stores a PNG data URL in <code>localStorage</code>, which works for a static demo but is not a full document system.</span>
               </li>
             </ol>
           </section>

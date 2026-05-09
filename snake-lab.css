@@ -305,6 +305,11 @@ body[data-game-state="playing"] .status-dot {
   box-shadow: 0 0 18px rgba(109, 225, 166, 0.62);
 }
 
+body[data-game-state="paused"] .status-dot {
+  background: var(--muted);
+  box-shadow: 0 0 18px rgba(214, 200, 174, 0.42);
+}
+
 body[data-game-state="over"] .status-dot {
   background: var(--danger);
   box-shadow: 0 0 18px rgba(255, 111, 79, 0.62);
@@ -325,6 +330,10 @@ body[data-game-state="won"] .status-dot {
 
 body[data-game-state="playing"] .round-status {
   color: var(--mint);
+}
+
+body[data-game-state="paused"] .round-status {
+  color: var(--muted);
 }
 
 body[data-game-state="over"] .round-status {
@@ -470,6 +479,8 @@ body[data-game-state="won"] .round-status {
 
 .touch-pad button {
   display: grid;
+  min-width: 44px;
+  min-height: 44px;
   place-items: center;
   color: var(--ink);
   background: rgba(9, 17, 18, 0.68);
@@ -481,6 +492,7 @@ body[data-game-state="won"] .round-status {
   font-weight: 950;
   pointer-events: auto;
   backdrop-filter: blur(10px);
+  touch-action: none;
 }
 
 .touch-pad button[data-dir="up"] {
@@ -617,7 +629,7 @@ body[data-game-state="won"] .round-status {
   .touch-pad {
     right: 10px;
     bottom: 10px;
-    grid-template-columns: repeat(3, 40px);
-    grid-template-rows: repeat(3, 40px);
+    grid-template-columns: repeat(3, 44px);
+    grid-template-rows: repeat(3, 44px);
   }
 }

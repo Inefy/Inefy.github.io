@@ -90,15 +90,22 @@
               <dl class="case-study-proof">
                 <div>
                   <dt>Problem</dt>
-                  <dd>Field crews lose time when maps, asset records, inspections, and work orders live in separate tools.</dd>
+                  <dd>Field crews lose time when maps, asset records, inspections, imports, reports, and work orders live in separate tools.</dd>
                 </div>
                 <div>
-                  <dt>What Zac built</dt>
-                  <dd>A map-first field operations demo with asset lookup, selected-asset context, inspection notes, and work-order flow.</dd>
+                  <dt>What I built</dt>
+                  <dd>
+                    <ul>
+                      <li>Modeled assets, inspections, work orders, imports, reports, and team roles around field-crew and supervisor workflows.</li>
+                      <li>Built a map-first asset workflow with status filtering, selected-asset panels, and direct paths into inspection and work-order screens.</li>
+                      <li>Documented demo boundaries and production hardening needs, including auth, role permissions, offline sync, audit logs, validation, and mobile field testing.</li>
+                    </ul>
+                    <p class="ownership-note">Uses external map/data tooling and sample municipal-style data; it is a public demo, not a production deployment.</p>
+                  </dd>
                 </div>
                 <div>
                   <dt>Tech stack</dt>
-                  <dd>MapLibre, Supabase-backed sample data, responsive frontend, Capacitor-ready app structure.</dd>
+                  <dd>MapLibre, Supabase-backed sample data, desktop/mobile frontend, Capacitor-ready app structure.</dd>
                 </div>
                 <div>
                   <dt>Main technical challenge</dt>
@@ -124,11 +131,18 @@
               <dl class="case-study-proof">
                 <div>
                   <dt>Problem</dt>
-                  <dd>Hosted Twitch movie nights need voting, result tallying, queue state, and OBS playback without constant manual control.</dd>
+                  <dd>Streamer-run movie nights need reliable voting, result tallying, queue state, and OBS playback without constant manual control.</dd>
                 </div>
                 <div>
-                  <dt>What Zac built</dt>
-                  <dd>A Python Twitch bot that listens to chat commands, tracks votes, refreshes OAuth tokens, and hands the selected local media file to OBS.</dd>
+                  <dt>What I built</dt>
+                  <dd>
+                    <ul>
+                      <li>Implemented Twitch chat commands for voting, results, current movie, time remaining, movie list, and help.</li>
+                      <li>Built vote-state logic for changed votes, duplicate prevention, partial title matching, tie resolution, and fallback selection.</li>
+                      <li>Connected OBS WebSocket playback automation with movie-folder scanning, token refresh, reconnect behavior, and setup/security notes.</li>
+                    </ul>
+                    <p class="ownership-note">Uses TwitchIO, Twitch OAuth/chat, OBS WebSocket, IMDb/poster links, and local public-domain media files as external inputs.</p>
+                  </dd>
                 </div>
                 <div>
                   <dt>Tech stack</dt>
@@ -155,30 +169,37 @@
             <div class="case-study-listing-body">
               <div class="case-study-listing-header">
                 <span class="work-status">Canvas tool / live demo</span>
-                <h3>Web Paint</h3>
+                <h3>Web Paint &mdash; Browser Canvas Drawing Tool</h3>
               </div>
               <dl class="case-study-proof">
                 <div>
                   <dt>Problem</dt>
-                  <dd>A useful browser drawing tool needs familiar controls, reliable canvas state, and export behavior without a heavy framework.</dd>
+                  <dd>Static browser tools need reliable drawing state, history, import/export, and mobile-friendly controls without a framework.</dd>
                 </div>
                 <div>
-                  <dt>What Zac built</dt>
-                  <dd>A Paint-style app with drawing tools, shapes, eraser, fill, undo/redo, zoom, local save/load, canvas resizing, and PNG export.</dd>
+                  <dt>What I built</dt>
+                  <dd>
+                    <ul>
+                      <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
+                      <li>Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.</li>
+                      <li>Managed tool settings, selected color, brush size, selection state, and status output in vanilla JavaScript.</li>
+                    </ul>
+                    <p class="ownership-note">Uses standard browser Canvas, Clipboard, File, Fullscreen, and LocalStorage APIs; no drawing framework is used.</p>
+                  </dd>
                 </div>
                 <div>
                   <dt>Tech stack</dt>
-                  <dd>HTML Canvas, vanilla JavaScript, pointer events, CSS Grid, LocalStorage, File APIs.</dd>
+                  <dd>HTML, CSS, JavaScript, Canvas API, pointer events, LocalStorage, File APIs.</dd>
                 </div>
                 <div>
                   <dt>Main technical challenge</dt>
-                  <dd>Keeping tool state, canvas history, resizing, zoom, and export predictable while the UI stays responsive.</dd>
+                  <dd>Keeping tool state, canvas history, resizing, zoom, and export predictable across desktop and narrow screens.</dd>
                 </div>
               </dl>
               <div class="work-links">
-                <a href="web-paint-case-study.html">Full case study</a>
                 <a href="paint.html">Live demo</a>
-                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">GitHub</a>
+                <a href="web-paint-case-study.html">Full case study</a>
+                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source</a>
               </div>
             </div>
           </article>
@@ -195,11 +216,18 @@
               <dl class="case-study-proof">
                 <div>
                   <dt>Problem</dt>
-                  <dd>The live Movie Night page should stay focused on watching and voting, while viewers still need a fast way to browse the full queue.</dd>
+                  <dd>MovieBot viewers need a fast way to browse public-domain titles and copy accurate vote commands without crowding the live stream page.</dd>
                 </div>
                 <div>
-                  <dt>What Zac built</dt>
-                  <dd>A companion library page with poster cards, search/filter behavior, queue metadata, copyable vote actions, and a no-JavaScript fallback list.</dd>
+                  <dt>What I built</dt>
+                  <dd>
+                    <ul>
+                      <li>Built a searchable catalog that filters public-domain MovieBot queue data by title, year, runtime, and rating.</li>
+                      <li>Implemented copyable <code>!vote</code> commands with button labels and feedback so viewers can send accurate Twitch votes.</li>
+                      <li>Added lazy-loaded poster cards, accessible metadata, and a static <code>noscript</code> fallback for the full movie list.</li>
+                    </ul>
+                    <p class="ownership-note">Uses public-domain movie metadata, external IMDb links, and externally hosted poster images as source content.</p>
+                  </dd>
                 </div>
                 <div>
                   <dt>Tech stack</dt>
@@ -207,7 +235,7 @@
                 </div>
                 <div>
                   <dt>Main technical challenge</dt>
-                  <dd>Keeping a large static movie list usable and indexable while preserving a clean fallback when JavaScript or external posters are unavailable.</dd>
+                  <dd>Keeping a large static movie list searchable and indexable while preserving a readable fallback when JavaScript or external posters are unavailable.</dd>
                 </div>
               </dl>
               <div class="work-links">

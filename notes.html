@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Build logs from Zac Batten's Inefy workbench: short notes on MovieBot, TraverseOps, the personal site, and small automation work.">
+    <meta name="description" content="Build logs from Zac Batten's portfolio: implementation notes on MovieBot, TraverseOps, static site architecture, case studies, metadata, and browser tools.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/notes.html">
     <meta property="og:site_name" content="Inefy Workbench">
     <meta property="og:title" content="Notes / Build Logs / Inefy Workbench">
-    <meta property="og:description" content="Short build logs for MovieBot, TraverseOps, the personal site, and small automation work.">
+    <meta property="og:description" content="Implementation notes for MovieBot, TraverseOps, static site architecture, case studies, metadata, and browser tools.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/notes.html">
     <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <meta property="og:image:alt" content="Inefy workbench notes and build logs page preview.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Notes / Build Logs / Inefy Workbench">
-    <meta name="twitter:description" content="Short build logs for MovieBot, TraverseOps, the personal site, and small automation work.">
+    <meta name="twitter:description" content="Implementation notes for MovieBot, TraverseOps, static site architecture, case studies, metadata, and browser tools.">
     <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <title>Notes / Build Logs / Inefy Workbench</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
@@ -81,7 +81,7 @@
             </div>
             <h3>Portfolio cleanup pass</h3>
             <p>
-              Tightened the homepage around featured builds, changed the primary CTA to "View featured builds," added Open Graph/Twitter/canonical metadata, made the active-lane metric truthful in HTML, and switched the clock to actual Newfoundland time.
+              Recruiters needed a faster path from proof to contact, so I rebuilt the static HTML/CSS/JavaScript homepage around selected work, resume/contact CTAs, Open Graph/Twitter/canonical metadata, truthful project metrics, and actual Newfoundland time.
             </p>
             <dl class="proof-list">
               <div>
@@ -107,7 +107,7 @@
             </div>
             <h3>Stream page and movie library split</h3>
             <p>
-              Kept the live Twitch room focused on watching and voting, then moved the full public-domain queue into its own searchable movie-library page.
+              MovieBot viewers needed voting and browsing to stay distinct, so I kept the Twitch room focused on watching/chat commands and moved the public-domain queue into a searchable static movie-library page with copyable <code>!vote</code> commands.
             </p>
             <dl class="proof-list">
               <div>
@@ -134,7 +134,7 @@
             </div>
             <h3>Demo state made explicit</h3>
             <p>
-              Reframed TraverseOps as a public demo and case-study project so visitors can understand the app shape without mistaking the demo workspace for a live municipal deployment.
+              Field-operations demos can look like map screenshots without workflow context, so I reframed TraverseOps as a MapLibre/Supabase public demo with sample data, asset workflows, production limits, and case-study links.
             </p>
             <dl class="proof-list">
               <div>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="A polished minesweeper-style browser puzzle game from the Inefy interactive lab.">
+    <meta name="description" content="Minefield Sweep by Zac Batten: a JavaScript grid puzzle with delayed mine placement, recursive reveal, flag mode, difficulty switching, timer/best-time state, and accessible cell labels.">
     <title>Minefield Sweep / Interactive Lab</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2346d6ca'/%3E%3Cpath d='M19 17h26v30H19z' fill='%23070f13'/%3E%3Cpath d='M24 22h16v5H24zm0 10h16v5H24zm0 10h10v5H24z' fill='%23f5c45b'/%3E%3Ccircle cx='46' cy='18' r='7' fill='%23ff6f61'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="minefield-sweep.css">
@@ -29,7 +29,8 @@
         <nav class="game-nav" aria-label="Game page navigation">
           <a href="interactive-lab.html">Interactive Lab</a>
           <button type="button" id="newGameButton">New Field</button>
-          <button type="button" id="flagModeButton" aria-pressed="false">Flag Mode</button>
+          <button type="button" id="pauseButton">Pause</button>
+          <button type="button" id="flagModeButton" aria-pressed="false" aria-label="Flag mode off. Cell clicks reveal hidden cells.">Flag Mode</button>
           <button class="nav-cta" type="button" id="fullscreenButton">Fullscreen</button>
         </nav>
       </header>
@@ -39,6 +40,39 @@
         <span aria-hidden="true">/</span>
         <span>Minefield Sweep</span>
       </nav>
+
+      <section class="demo-overview" aria-labelledby="sweep-overview-title">
+        <div class="demo-overview-copy">
+          <span class="next-step-kicker">Game guide</span>
+          <h1 id="sweep-overview-title">Minefield Sweep</h1>
+          <p>Mine puzzles need clear state and safe first moves; I built a JavaScript grid game with delayed mine placement, recursive reveal, flag mode, difficulty switching, timer/best-time state, and accessible cell labels.</p>
+          <div class="demo-overview-actions" aria-label="Minefield Sweep actions">
+            <a href="interactive-lab.html">Back to Interactive Lab</a>
+            <button type="button" data-demo-proxy="startButton">Start Field</button>
+            <button type="button" data-demo-proxy="newGameButton">New Field</button>
+            <button type="button" data-demo-proxy="pauseButton">Pause</button>
+            <button type="button" data-demo-proxy="flagModeButton">Flag Mode</button>
+          </div>
+        </div>
+        <dl class="demo-control-list">
+          <div>
+            <dt>Controls</dt>
+            <dd>Reveal cells, mark suspected mines, switch difficulty, and clear the field without triggering a mine.</dd>
+          </div>
+          <div>
+            <dt>Keyboard</dt>
+            <dd>Focus a cell, use Arrow keys to move, Enter or Space reveals, F toggles a flag, and P or Escape pauses.</dd>
+          </div>
+          <div>
+            <dt>Touch</dt>
+            <dd>Tap to reveal, use Flag Mode to mark mines, and use Scout/Ranger/Warden buttons for difficulty.</dd>
+          </div>
+          <div>
+            <dt>Accessibility</dt>
+            <dd>The minefield is a keyboard-focusable grid with live status, mines-left, timer, best-time, and cleared-percentage readouts.</dd>
+          </div>
+        </dl>
+      </section>
 
       <section class="game-hud" aria-label="Game status">
         <div class="hud-cluster">
@@ -61,20 +95,21 @@
         </div>
         <div class="hud-status">
           <span class="status-dot" aria-hidden="true"></span>
-          <p class="round-status" id="roundStatus" aria-live="polite">Ready</p>
+          <p class="round-status" id="roundStatus">Ready</p>
+          <p class="sr-only" id="gameAnnouncement" role="status" aria-live="polite" aria-atomic="true">Minefield ready.</p>
         </div>
       </section>
 
       <section class="game-stage-wrap" aria-label="Playfield">
-        <div class="difficulty-bar" aria-label="Difficulty">
-          <button type="button" data-difficulty="scout" class="active">Scout</button>
-          <button type="button" data-difficulty="ranger">Ranger</button>
-          <button type="button" data-difficulty="warden">Warden</button>
+        <div class="difficulty-bar" role="radiogroup" aria-label="Difficulty">
+          <button type="button" data-difficulty="scout" class="active" role="radio" aria-checked="true">Scout</button>
+          <button type="button" data-difficulty="ranger" role="radio" aria-checked="false">Ranger</button>
+          <button type="button" data-difficulty="warden" role="radio" aria-checked="false">Warden</button>
         </div>
 
         <section class="board-shell" aria-label="Minefield board">
           <div class="board-scroll">
-            <div class="mine-board" id="mineBoard" role="grid" tabindex="0" aria-label="Minefield board"></div>
+            <div class="mine-board" id="mineBoard" role="grid" tabindex="-1" aria-label="Minefield board"></div>
           </div>
 
           <div class="game-menu" id="gameMenu">
@@ -93,11 +128,30 @@
         </section>
       </section>
 
+      <section class="implementation-notes" aria-labelledby="sweep-implementation-title">
+        <span class="next-step-kicker">Implementation notes</span>
+        <h2 id="sweep-implementation-title">Board generation, reveal flow, and accessible cell state.</h2>
+        <p>
+          <strong>Main state</strong> includes difficulty config, mine positions, revealed cells, flags, timer, first-click status, cleared percentage, best time, and game status. The loop is event-driven rather than continuous: clicks, key presses, or difficulty changes update board state and then re-render the grid. Mine placement waits for the first reveal so the first move can stay safe. Reveal logic expands empty regions recursively, counts adjacent mines, toggles flags, and checks win/loss conditions; scoring is represented by clear time and completion percentage. Keyboard users can focus cells, move with Arrow keys, reveal with Enter or Space, and flag with F. Touch uses tap-to-reveal and Flag Mode. The lesson was treating every cell as stateful UI, not just a visual tile.
+        </p>
+      </section>
+
+      <section class="demo-built" aria-labelledby="sweep-built-title">
+        <span class="next-step-kicker">What I built</span>
+        <h2 id="sweep-built-title">Mine placement, reveal logic, and accessible board state.</h2>
+        <ul>
+          <li>Implemented delayed mine placement, safe first reveal, adjacent counts, recursive empty-cell reveal, flag toggling, and win/loss state.</li>
+          <li>Built difficulty switching, timer/best-time persistence, mines-left tracking, cleared-percent updates, pause/restart controls, and touch flag mode.</li>
+          <li>Rendered the board as a keyboard-navigable grid with roving focus, row/column labels, live announcements, and state-specific cell descriptions.</li>
+        </ul>
+        <p class="ownership-note">Minesweeper-style rules are the reference; this board generation, reveal state, difficulty model, and UI treatment are custom code.</p>
+      </section>
+
       <section class="game-next-step" aria-labelledby="sweep-next-title">
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="sweep-next-title">More logic demos</h2>
-          <p>Minefield Sweep belongs with the Interactive Lab demos that show board generation, recursive reveal logic, state feedback, and accessible controls.</p>
+          <p>Recursive reveal and keyboard grid state are one of the lab's logic examples; compare this demo with the other browser experiments and the main case studies for broader implementation context.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>
@@ -106,6 +160,7 @@
       </section>
     </main>
 
+    <script src="demo-navigation.js"></script>
     <script src="minefield-sweep.js"></script>
   </body>
 </html>

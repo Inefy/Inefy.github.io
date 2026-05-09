@@ -316,6 +316,11 @@ body[data-game-state="serve"] .status-dot {
   box-shadow: 0 0 18px rgba(104, 183, 255, 0.62);
 }
 
+body[data-game-state="paused"] .status-dot {
+  background: var(--muted);
+  box-shadow: 0 0 18px rgba(216, 203, 180, 0.42);
+}
+
 body[data-game-state="over"] .status-dot {
   background: var(--danger);
   box-shadow: 0 0 18px rgba(255, 111, 79, 0.62);
@@ -337,6 +342,10 @@ body[data-game-state="won"] .status-dot {
 body[data-game-state="playing"] .round-status,
 body[data-game-state="serve"] .round-status {
   color: var(--blue);
+}
+
+body[data-game-state="paused"] .round-status {
+  color: var(--muted);
 }
 
 body[data-game-state="over"] .round-status {
@@ -577,7 +586,7 @@ body[data-game-state="won"] .round-status {
 
 .touch-bar button {
   display: grid;
-  min-height: 42px;
+  min-height: 48px;
   place-items: center;
   color: var(--ink);
   background: rgba(9, 15, 22, 0.7);
@@ -589,6 +598,7 @@ body[data-game-state="won"] .round-status {
   font-weight: 950;
   pointer-events: auto;
   backdrop-filter: blur(10px);
+  touch-action: none;
 }
 
 .touch-bar button[data-control="launch"] {

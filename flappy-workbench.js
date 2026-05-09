@@ -10,6 +10,7 @@ const startButton = document.querySelector("#startButton");
 const restartButton = document.querySelector("#restartButton");
 const pauseButton = document.querySelector("#pauseButton");
 const fullscreenButton = document.querySelector("#fullscreenButton");
+const flapButton = document.querySelector("#flapButton");
 
 const ctx = canvas.getContext("2d");
 const WORLD_WIDTH = 960;
@@ -26,7 +27,8 @@ const GRAVITY = 1020;
 const FLAP_VELOCITY = -340;
 const PIPE_SPEED_START = 160;
 const PIPE_SPEED_GAIN = 14.8;
-const BEST_KEY = "flappy-workbench-best";
+const BEST_KEY = "inefy-flappy-workbench-best";
+const LEGACY_BEST_KEYS = ["flappy-workbench-best"];
 const PIPE_WARNING_DISTANCE = 235;
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -57,6 +59,7 @@ let shakePower;
 let flashTime;
 let audioContext;
 let prefersReducedMotion = reducedMotionQuery.matches;
+let flapPointerActivated = false;
 
 function syncMotionPreference(event = reducedMotionQuery) {
   prefersReducedMotion = event.matches;
@@ -78,8 +81,10 @@ if (reducedMotionQuery.addEventListener) {
 
 function readBest() {
   try {
-    const stored = Number.parseInt(window.localStorage.getItem(BEST_KEY) || "0", 10);
-    return Number.isFinite(stored) ? stored : 0;
+    return [BEST_KEY, ...LEGACY_BEST_KEYS].reduce((currentBest, key) => {
+      const stored = Number.parseInt(window.localStorage.getItem(key) || "0", 10);
+      return Number.isFinite(stored) ? Math.max(currentBest, stored) : currentBest;
+    }, 0);
   } catch {
     return 0;
   }
@@ -690,7 +695,7 @@ function tick(time) {
 }
 
 stage.addEventListener("pointerdown", (event) => {
-  if (event.target === startButton) return;
+  if (event.target.closest?.("button, a")) return;
   event.preventDefault();
   flap();
 });
@@ -707,6 +712,23 @@ startButton?.addEventListener("click", (event) => {
 
 restartButton?.addEventListener("click", () => startRun());
 pauseButton?.addEventListener("click", togglePause);
+flapButton?.addEventListener("pointerdown", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  flapPointerActivated = true;
+  window.setTimeout(() => {
+    flapPointerActivated = false;
+  }, 350);
+  flap();
+});
+flapButton?.addEventListener("click", (event) => {
+  event.stopPropagation();
+  if (flapPointerActivated) {
+    flapPointerActivated = false;
+    return;
+  }
+  flap();
+});
 fullscreenButton?.addEventListener("click", () => {
   if (document.fullscreenElement) {
     document.exitFullscreen();
@@ -720,7 +742,8 @@ window.addEventListener("keydown", (event) => {
     event.preventDefault();
     flap();
   }
-  if (event.key.toLowerCase() === "p") {
+  if (event.key.toLowerCase() === "p" || event.key === "Escape") {
+    event.preventDefault();
     togglePause();
   }
   if (event.key.toLowerCase() === "r") {

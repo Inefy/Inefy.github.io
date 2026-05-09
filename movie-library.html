@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Browse Zurra3's public domain movie-night library with posters, years, runtimes, IMDb ratings, and search.">
+    <meta name="description" content="Browse the public-facing voting catalog for Zac Batten's MovieBot Twitch movie-night bot, with public-domain movie data, search, vote-command copying, and static fallback content.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/movie-library.html">
     <meta property="og:site_name" content="Inefy Workbench">
     <meta property="og:title" content="Public Domain Movie Library / Zurra3 Movie Night">
-    <meta property="og:description" content="Browse the public domain movie-night queue with titles, years, runtimes, ratings, and a no-JavaScript fallback.">
+    <meta property="og:description" content="Public-facing MovieBot voting catalog with public-domain movie data, search, copyable vote commands, lazy-loaded posters, and a no-JavaScript fallback.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/movie-library.html">
     <meta property="og:image" content="https://zacbatten.me/assets/movie-library-preview.png">
@@ -19,7 +19,7 @@
     <meta property="og:image:alt" content="Public domain movie library preview with poster wall.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Public Domain Movie Library / Zurra3 Movie Night">
-    <meta name="twitter:description" content="Public domain movie-night queue with search and a static fallback list.">
+    <meta name="twitter:description" content="MovieBot voting catalog with search, copyable vote commands, public-domain movie data, and static fallback content.">
     <meta name="twitter:image" content="https://zacbatten.me/assets/movie-library-preview.png">
     <title>Public Domain Movie Library / Zurra3 Movie Night</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
@@ -66,7 +66,7 @@
           <p class="eyebrow">Movie library</p>
           <h1 id="movies-title">Public domain movie picks.</h1>
           <p>
-            A searchable poster wall for the movie-night queue. Use it to find a title before dropping <code>!vote movie name</code> in chat.
+            Viewers need a reliable way to choose vote commands; I built this static HTML/CSS/JavaScript MovieBot catalog so they can search public-domain titles, copy the exact <code>!vote</code> command, and return to Twitch chat with fewer typing mistakes.
           </p>
           <div class="movie-list-stats" aria-label="Movie library stats">
             <div>
@@ -85,6 +85,80 @@
             <a class="button secondary" href="https://www.imdb.com/list/ls544522770/" rel="noopener noreferrer">Source IMDb list</a>
           </div>
         </div>
+
+        <section class="movie-library-system" aria-labelledby="movie-library-system-title">
+          <div class="movie-library-system-header">
+            <p class="eyebrow">MovieBot system surface</p>
+            <h2 id="movie-library-system-title">A public voting catalog for the Twitch movie bot.</h2>
+            <p>
+              MovieBot needs a viewer-facing catalog so people can find eligible public-domain titles before sending Twitch chat commands. I built this static companion page with title/year/runtime/rating filters, copy-to-clipboard vote commands, lazy-loaded poster cards, accessible labels, and a complete no-JavaScript fallback so the movie queue remains readable without the dynamic UI.
+            </p>
+          </div>
+
+          <div class="what-built-card">
+            <h4>What I built</h4>
+            <ul class="project-bullets">
+              <li>Built a searchable catalog that filters public-domain MovieBot queue data by title, year, runtime, and rating.</li>
+              <li>Implemented copyable <code>!vote</code> commands with button labels and feedback so viewers can send accurate Twitch votes.</li>
+              <li>Added lazy-loaded poster cards, accessible metadata, and normalized external poster URLs for the static movie dataset.</li>
+              <li>Kept a complete ordered movie list in <code>noscript</code> markup so the catalog still works without JavaScript.</li>
+            </ul>
+            <p class="ownership-note">External pieces include IMDb links, externally hosted poster images, and public-domain movie metadata; the catalog UI and filtering/copy behavior are custom static-site code.</p>
+          </div>
+
+          <div class="movie-library-system-grid" aria-label="How Movie Library supports MovieBot">
+            <article>
+              <h3>Voting workflow</h3>
+              <p>Each rendered movie card includes a title-specific copy button so a viewer can send <code>!vote Movie Title</code> to Twitch chat without manually retyping long or ambiguous titles.</p>
+            </article>
+            <article>
+              <h3>Public-domain catalog</h3>
+              <p>The list is built around public-domain movie-night data: title, year, runtime, IMDb rating, IMDb link, and poster URL for each queue item.</p>
+            </article>
+            <article>
+              <h3>Static fallback</h3>
+              <p>If JavaScript is disabled, a full ordered list remains available in the page markup so the catalog still works as a readable static queue.</p>
+            </article>
+            <article>
+              <h3>Poster performance</h3>
+              <p>Poster images are rendered with fixed dimensions, async decoding, and lazy loading where appropriate so the large catalog does not block the first view.</p>
+            </article>
+          </div>
+
+          <div class="movie-library-tech-notes" aria-labelledby="movie-library-tech-title">
+            <div class="movie-library-tech-heading">
+              <p class="eyebrow">Technical notes</p>
+              <h3 id="movie-library-tech-title">Frontend details behind the catalog.</h3>
+            </div>
+            <div class="movie-library-tech-grid">
+              <article>
+                <h4>Search and filtering</h4>
+                <p>Vanilla JavaScript filters the in-page movie data by title, year, runtime, or rating and updates the visible result count through an <code>aria-live</code> toolbar.</p>
+              </article>
+              <article>
+                <h4>Vote command copying</h4>
+                <p>Each card stores its generated <code>!vote</code> command in a data attribute. The copy flow uses the Clipboard API with a textarea fallback and temporary copied/failed button states.</p>
+              </article>
+              <article>
+                <h4>No-JS fallback</h4>
+                <p>The <code>noscript</code> block includes the full static list, preserving movie discovery even when filtering, copy buttons, and dynamic poster cards are unavailable.</p>
+              </article>
+              <article>
+                <h4>Image loading strategy</h4>
+                <p>Poster URLs are normalized for a larger card image, constrained to the expected poster host, and rendered with <code>loading="lazy"</code>, dimensions, and async decoding.</p>
+              </article>
+              <article>
+                <h4>Accessibility labels</h4>
+                <p>The search input has a visible label, copy buttons include movie-specific accessible names, IMDb links describe their destination, and poster images use title-specific alt text.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="movie-library-system-actions">
+            <a class="button primary" href="moviebot-case-study.html">Read MovieBot case study</a>
+            <a class="button secondary" href="movie-night.html#watch">Return to Movie Night</a>
+          </div>
+        </section>
 
         <div class="movie-library-shell">
           <div class="movie-library-toolbar">

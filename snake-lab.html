@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="A polished Snake-style browser mini game from the Inefy interactive lab.">
+    <meta name="description" content="Snake Lab by Zac Batten: a Canvas/JavaScript grid game with timed movement, buffered keyboard/touch input, food placement, growth, collision checks, pace changes, and local best scores.">
     <title>Snake Lab / Interactive Lab</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236de1a6'/%3E%3Cpath d='M16 18h19a13 13 0 0 1 0 26H24v-9h11a4 4 0 0 0 0-8H16z' fill='%230c0f10'/%3E%3Ccircle cx='45' cy='23' r='3' fill='%23f5c45b'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="snake-lab.css">
@@ -38,6 +38,38 @@
         <span aria-hidden="true">/</span>
         <span>Snake Lab</span>
       </nav>
+
+      <section class="demo-overview" aria-labelledby="snake-overview-title">
+        <div class="demo-overview-copy">
+          <span class="next-step-kicker">Game guide</span>
+          <h1 id="snake-overview-title">Snake Lab</h1>
+          <p>Snake depends on fast turns without illegal reversals; I built a Canvas/JavaScript grid game with timed movement, buffered keyboard/touch input, food placement, growth, collision checks, pace changes, and local best scores.</p>
+          <div class="demo-overview-actions" aria-label="Snake Lab actions">
+            <a href="interactive-lab.html">Back to Interactive Lab</a>
+            <button type="button" data-demo-proxy="startButton">Start Run</button>
+            <button type="button" data-demo-proxy="restartButton">Restart</button>
+            <button type="button" data-demo-proxy="pauseButton">Pause</button>
+          </div>
+        </div>
+        <dl class="demo-control-list">
+          <div>
+            <dt>Controls</dt>
+            <dd>Steer the snake, collect food, avoid walls and your own body, and keep the run alive as pace increases.</dd>
+          </div>
+          <div>
+            <dt>Keyboard</dt>
+            <dd>Arrow keys or WASD turn, Space, P, or Escape pauses and resumes, and Enter starts or resumes when not actively playing.</dd>
+          </div>
+          <div>
+            <dt>Touch</dt>
+            <dd>Swipe on the canvas or use the large on-screen direction pad.</dd>
+          </div>
+          <div>
+            <dt>Accessibility</dt>
+            <dd>Score, best score, length, pace, and live run status are readable outside the canvas.</dd>
+          </div>
+        </dl>
+      </section>
 
       <section class="game-hud" aria-label="Game status">
         <div class="hud-cluster">
@@ -75,20 +107,39 @@
               <button class="menu-button" type="button" id="startButton">Start Run</button>
             </div>
           </div>
-          <div class="touch-pad" aria-label="Touch direction controls">
-            <button type="button" data-dir="up" aria-label="Move up">&uarr;</button>
-            <button type="button" data-dir="left" aria-label="Move left">&larr;</button>
-            <button type="button" data-dir="down" aria-label="Move down">&darr;</button>
-            <button type="button" data-dir="right" aria-label="Move right">&rarr;</button>
+          <div class="touch-pad" role="group" aria-label="Touch direction controls">
+            <button type="button" data-dir="up" aria-label="Move snake up" aria-controls="gameCanvas">&uarr;</button>
+            <button type="button" data-dir="left" aria-label="Move snake left" aria-controls="gameCanvas">&larr;</button>
+            <button type="button" data-dir="down" aria-label="Move snake down" aria-controls="gameCanvas">&darr;</button>
+            <button type="button" data-dir="right" aria-label="Move snake right" aria-controls="gameCanvas">&rarr;</button>
           </div>
         </div>
+      </section>
+
+      <section class="implementation-notes" aria-labelledby="snake-implementation-title">
+        <span class="next-step-kicker">Implementation notes</span>
+        <h2 id="snake-implementation-title">Grid state, buffered turns, and pace feedback.</h2>
+        <p>
+          <strong>Main state</strong> includes the snake segment list, current direction, queued direction, food position, score, length, pace, best score, and run state. The game uses a timed grid step instead of pixel physics, then redraws the board on canvas after each move. Collision logic tests the next head cell against walls and existing body segments; scoring grows the snake, moves food, increases pace, and saves the best run locally. Keyboard input maps Arrow keys and WASD into direction changes, while Space and Enter control pause or start. Touch support uses both swipe detection and on-screen direction buttons. The lesson was using an input buffer so quick turns register without allowing illegal reverse moves.
+        </p>
+      </section>
+
+      <section class="demo-built" aria-labelledby="snake-built-title">
+        <span class="next-step-kicker">What I built</span>
+        <h2 id="snake-built-title">Grid movement, input buffering, and compact run feedback.</h2>
+        <ul>
+          <li>Implemented grid state for snake segments, food placement, growth, wall/body collision detection, score, and length.</li>
+          <li>Built input buffering for Arrow keys, WASD, swipe gestures, and touch buttons while blocking illegal reverse turns.</li>
+          <li>Added pace changes, pause/restart/fullscreen controls, viewport-aware canvas sizing, and local best-score persistence.</li>
+        </ul>
+        <p class="ownership-note">The classic Snake rules are the reference point; the rendering, state model, controls, and HUD are custom JavaScript.</p>
       </section>
 
       <section class="game-next-step" aria-labelledby="snake-next-title">
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="snake-next-title">More grid-state experiments</h2>
-          <p>Snake Lab is part of the Interactive Lab archive for keyboard input, touch controls, timed movement, and compact browser game UI.</p>
+          <p>Buffered grid input is one of the lab's control examples; compare this demo with the other browser experiments and the main case studies for broader implementation context.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>
@@ -97,6 +148,7 @@
       </section>
     </main>
 
+    <script src="demo-navigation.js"></script>
     <script src="snake-lab.js"></script>
   </body>
 </html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="A polished five-level mini golf browser game from the Inefy interactive lab.">
+    <meta name="description" content="Mini Golf by Zac Batten: a Canvas/JavaScript five-hole course with drag-to-aim shots, power calculation, collision response, hazards, scorecard state, and local best-score persistence.">
     <title>Mini Golf / Interactive Lab</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236de1a6'/%3E%3Ccircle cx='22' cy='45' r='8' fill='%23fff8e6'/%3E%3Cpath d='M40 13v35' stroke='%23070f13' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M42 15h15l-4 8 4 8H42z' fill='%23f5c45b'/%3E%3Ccircle cx='45' cy='47' r='8' fill='%23070f13'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="mini-golf.css">
@@ -29,6 +29,7 @@
         <nav class="game-nav" aria-label="Game page navigation">
           <a href="interactive-lab.html">Interactive Lab</a>
           <button type="button" id="restartLevelButton">Restart Hole</button>
+          <button type="button" id="pauseButton">Pause</button>
           <button type="button" id="resetRunButton">Reset Run</button>
           <button class="nav-cta" type="button" id="fullscreenButton">Fullscreen</button>
         </nav>
@@ -39,6 +40,39 @@
         <span aria-hidden="true">/</span>
         <span>Mini Golf</span>
       </nav>
+
+      <section class="demo-overview" aria-labelledby="golf-overview-title">
+        <div class="demo-overview-copy">
+          <span class="next-step-kicker">Game guide</span>
+          <h1 id="golf-overview-title">Mini Golf</h1>
+          <p>A touch-friendly golf demo needs aiming, scoring, and hole flow; I built a Canvas/JavaScript five-hole course with drag-to-aim shots, power calculation, collision response, hazards, scorecard state, and local best-score persistence.</p>
+          <div class="demo-overview-actions" aria-label="Mini Golf actions">
+            <a href="interactive-lab.html">Back to Interactive Lab</a>
+            <button type="button" data-demo-proxy="startButton">Start Round</button>
+            <button type="button" data-demo-proxy="restartLevelButton">Restart Hole</button>
+            <button type="button" data-demo-proxy="pauseButton">Pause</button>
+            <button type="button" data-demo-proxy="resetRunButton">Reset Run</button>
+          </div>
+        </div>
+        <dl class="demo-control-list">
+          <div>
+            <dt>Controls</dt>
+            <dd>Drag from the ball to aim and set power, then release to shoot.</dd>
+          </div>
+          <div>
+            <dt>Keyboard</dt>
+            <dd>Space or Enter starts the round, P or Escape pauses and resumes, R restarts the current hole, and N advances after a clear.</dd>
+          </div>
+          <div>
+            <dt>Touch</dt>
+            <dd>Touch-drag aims and shoots; Prev, Next, Pause, and Restart buttons remain visible for hole navigation.</dd>
+          </div>
+          <div>
+            <dt>Accessibility</dt>
+            <dd>Live status, progress, lie, and power readouts describe the current run, while the canvas remains a visual playfield.</dd>
+          </div>
+        </dl>
+      </section>
 
       <section class="game-hud" aria-label="Game status">
         <div class="hud-cluster">
@@ -90,7 +124,7 @@
 
       <section class="game-stage-wrap" aria-label="Playfield">
         <div class="game-stage" id="gameStage">
-          <canvas id="gameCanvas" aria-label="Mini golf course"></canvas>
+          <canvas id="gameCanvas" aria-label="Mini golf course" aria-describedby="golfTouchHint"></canvas>
 
           <div class="game-menu" id="gameMenu">
             <div class="menu-card">
@@ -106,19 +140,40 @@
             </div>
           </div>
 
-          <div class="touch-bar" aria-label="Touch controls">
-            <button type="button" id="previousHoleButton">Prev</button>
-            <button type="button" id="nextHoleButton">Next</button>
-            <button type="button" id="restartTouchButton">Restart</button>
+          <p class="touch-hint" id="golfTouchHint">Touch-drag from the ball to aim, then release to shoot.</p>
+          <div class="touch-bar" role="group" aria-label="Touch controls">
+            <button type="button" id="previousHoleButton" aria-label="Previous hole" aria-controls="gameCanvas">Prev</button>
+            <button type="button" id="nextHoleButton" aria-label="Next hole" aria-controls="gameCanvas">Next</button>
+            <button type="button" id="pauseTouchButton" aria-label="Pause or resume round" aria-controls="gameCanvas">Pause</button>
+            <button type="button" id="restartTouchButton" aria-label="Restart current hole" aria-controls="gameCanvas">Restart</button>
           </div>
         </div>
+      </section>
+
+      <section class="implementation-notes" aria-labelledby="golf-implementation-title">
+        <span class="next-step-kicker">Implementation notes</span>
+        <h2 id="golf-implementation-title">Course data, shot physics, and score state.</h2>
+        <p>
+          <strong>Main state</strong> includes the current hole, ball position and velocity, aim vector, stroke count, surface, scorecard, and saved best score. The canvas loop advances physics only while the ball is moving, so static aiming and score UI stay cheap. Collision logic checks walls, hazards, cup distance, and surface zones; scoring increments strokes per shot, records each hole, and persists the run best in localStorage. Pointer input captures drag start, move, and release for aiming and power, while keyboard shortcuts start, restart, and advance. Touch uses the same pointer path plus visible Prev, Next, and Restart controls. The main lesson was separating hole data from physics code, which made new layouts possible without rewriting collision behavior.
+        </p>
+      </section>
+
+      <section class="demo-built" aria-labelledby="golf-built-title">
+        <span class="next-step-kicker">What I built</span>
+        <h2 id="golf-built-title">Five-hole course logic, shot physics, and score feedback.</h2>
+        <ul>
+          <li>Created five course layouts with par values, walls, hazard zones, surface types, cup targets, and hole progression.</li>
+          <li>Implemented drag aiming, shot-power calculation, ball motion, wall/hazard/cup collision checks, and stroke counting.</li>
+          <li>Built scorecard UI, best-score persistence, pause/restart/fullscreen controls, touch hints, and hole navigation.</li>
+        </ul>
+        <p class="ownership-note">The game uses standard Canvas/browser APIs and familiar mini-golf rules; the layouts, state handling, and UI wiring are custom code.</p>
       </section>
 
       <section class="game-next-step" aria-labelledby="golf-next-title">
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="golf-next-title">More physics-style demos</h2>
-          <p>Mini Golf is part of the Interactive Lab archive for canvas physics, collision handling, level state, and responsive playfield controls.</p>
+          <p>Drag-to-aim physics is one of the lab's input examples; compare it with the other browser demos and the main case studies for broader implementation context.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>
@@ -127,6 +182,7 @@
       </section>
     </main>
 
+    <script src="demo-navigation.js"></script>
     <script src="mini-golf.js"></script>
   </body>
 </html>

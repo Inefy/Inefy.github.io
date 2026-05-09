@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="A browser-based Paint-style image creator from the Inefy interactive lab.">
+    <meta name="description" content="Web Paint is a vanilla JavaScript Canvas editor with drawing modes, typed-array flood fill, undo/redo snapshots, PNG import/export, local save, zoom, and mobile-friendly tool panels.">
     <title>Web Paint / Interactive Lab</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2360a5fa'/%3E%3Cpath d='M16 18h32v8H26v8h18v8H26v4H16z' fill='%23172033'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="paint.css">
@@ -39,11 +39,47 @@
         <span>Web Paint</span>
       </nav>
 
+      <section class="demo-overview" aria-labelledby="paint-overview-title">
+        <div class="demo-overview-copy">
+          <span class="next-step-kicker">Tool guide</span>
+          <h1 id="paint-overview-title">Web Paint</h1>
+          <p>Browser drawing tools become frustrating when state and history are unreliable; I built a vanilla JavaScript Canvas editor with pencil, eraser, fill, shapes, text, undo/redo snapshots, import/export, zoom, and local save.</p>
+          <div class="demo-overview-actions" aria-label="Web Paint actions">
+            <a href="interactive-lab.html">Back to Interactive Lab</a>
+            <button type="button" data-demo-proxy="newCanvasButton">New</button>
+            <button type="button" data-demo-proxy="saveButton">Save</button>
+            <button type="button" data-demo-proxy="fullscreenButton">Fullscreen</button>
+          </div>
+        </div>
+        <dl class="demo-control-list">
+          <div>
+            <dt>Controls</dt>
+            <dd>Choose a tool, brush size, shape, and color, then draw directly on the canvas.</dd>
+          </div>
+          <div>
+            <dt>Keyboard</dt>
+            <dd>Toolbar buttons are keyboard focusable; Enter or Space activates controls and Enter applies canvas size fields.</dd>
+          </div>
+          <div>
+            <dt>Touch</dt>
+            <dd>Touch drawing is supported with compact mobile rows, larger controls, and a canvas-first layout.</dd>
+          </div>
+          <div>
+            <dt>Accessibility</dt>
+            <dd>Tool buttons, size inputs, zoom controls, and status readouts are labelled; canvas artwork itself remains visual content.</dd>
+          </div>
+        </dl>
+      </section>
+
       <section class="ribbon" aria-label="Paint toolbar">
         <nav class="tabs" aria-label="Toolbar sections">
           <button class="tab is-active" type="button" data-tab="home">Home</button>
           <button class="tab" type="button" data-tab="view">View</button>
         </nav>
+
+        <p class="paint-mobile-instruction">
+          Mobile: swipe the compact toolbar, choose a tool, then draw with one finger. Use Hide tools for more canvas space.
+        </p>
 
         <div class="ribbon-content">
           <section class="ribbon-group file-group home-only" aria-label="File commands">
@@ -263,6 +299,18 @@
         </div>
       </footer>
 
+      <section class="demo-built" aria-labelledby="paint-built-title">
+        <span class="next-step-kicker">What I built</span>
+        <h2 id="paint-built-title">Canvas editor logic, toolbar state, and local file workflows.</h2>
+        <ul>
+          <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
+          <li>Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.</li>
+          <li>Managed tool settings, colors, brush size, shape choices, selection bounds, drawing drafts, pointer capture, and status output in vanilla JavaScript.</li>
+          <li>Added paste, copy, cut, fullscreen, canvas-size controls, mobile-friendly control panels, and mobile instruction copy.</li>
+        </ul>
+        <p class="ownership-note">This page uses standard browser Canvas, File, Clipboard, Fullscreen, and LocalStorage APIs; the drawing/tool orchestration is custom site code.</p>
+      </section>
+
       <section class="game-next-step" aria-labelledby="paint-next-title">
         <div>
           <span class="next-step-kicker">Keep exploring</span>
@@ -276,6 +324,7 @@
       </section>
     </main>
 
+    <script src="demo-navigation.js"></script>
     <script src="paint.js"></script>
   </body>
 </html>

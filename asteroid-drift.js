@@ -196,6 +196,8 @@
     document.body.dataset.gameState = state;
     document.body.dataset.shield = String(shieldActive);
     pauseButton.textContent = state === "paused" ? "Resume" : "Pause";
+    pauseButton.disabled = state === "menu" || state === "over";
+    pauseButton.setAttribute("aria-pressed", state === "paused" ? "true" : "false");
   }
 
   function buildStars() {
@@ -290,10 +292,10 @@
     state = showStart ? "menu" : "playing";
     if (showStart) {
       showMenu({
-        kicker: "Vector arcade",
+        kicker: "Canvas arcade demo",
         title: "Asteroid Drift",
-        meta: "Outer belt signal locked.",
-        button: "Launch Ship"
+        meta: "Survive escalating waves with thrust, fire, shield, and smart momentum.",
+        button: "Launch Run"
       });
       updateHud("Ready");
     } else {

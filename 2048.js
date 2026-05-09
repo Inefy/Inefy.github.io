@@ -22,6 +22,8 @@
   const topTileValue = document.getElementById("topTileValue");
   const movesValue = document.getElementById("movesValue");
   const roundStatus = document.getElementById("roundStatus");
+  const gameAnnouncement = document.getElementById("gameAnnouncement");
+  const boardState = document.getElementById("merge-board-state");
   const scoreChip = document.querySelector(".score-chip.current");
 
   let grid = createGrid();
@@ -38,6 +40,7 @@
   let hasSavedGame = false;
   let scorePulseTimer = 0;
   let boardFeedbackTimer = 0;
+  let announcementTimer = 0;
 
   function createGrid() {
     return Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
@@ -162,6 +165,52 @@
 
   function formatMoveCount(value) {
     return `${formatNumber(value)} ${value === 1 ? "move" : "moves"}`;
+  }
+
+  function formatCellValue(value) {
+    return value > 0 ? formatNumber(value) : "empty";
+  }
+
+  function boardRowsText(source = grid) {
+    return source
+      .map((row, index) => `Row ${index + 1}: ${row.map(formatCellValue).join(", ")}`)
+      .join(". ");
+  }
+
+  function boardSummaryText() {
+    return hasAnyTile() ? `Board: ${boardRowsText()}.` : "Board is empty.";
+  }
+
+  function scoreSummaryText(prefix = "Status") {
+    const topTile = getTopTile();
+    return `${prefix}. Score ${formatNumber(score)}. ${formatMoveCount(moves)}. Top tile ${formatNumber(topTile || 0)}.`;
+  }
+
+  function directionLabel(direction) {
+    return direction.charAt(0).toUpperCase() + direction.slice(1);
+  }
+
+  function updateAccessibleBoardState() {
+    const topTile = getTopTile();
+    if (boardState) {
+      boardState.textContent = boardSummaryText();
+    }
+    boardEl.setAttribute(
+      "aria-label",
+      `2048 board. Score ${formatNumber(score)}. ${formatMoveCount(moves)}. Top tile ${formatNumber(topTile || 0)}.`
+    );
+  }
+
+  function announce(message, { includeBoard = false } = {}) {
+    if (!gameAnnouncement || !message) {
+      return;
+    }
+
+    window.clearTimeout(announcementTimer);
+    gameAnnouncement.textContent = "";
+    announcementTimer = window.setTimeout(() => {
+      gameAnnouncement.textContent = includeBoard ? `${message} ${boardSummaryText()}` : message;
+    }, 20);
   }
 
   function getTopTile(source = grid) {
@@ -319,7 +368,11 @@
     mergedKeys = new Set();
     render();
     hideMenu();
-    updateHud("Move undone");
+    updateHud("Move undone", {
+      announce: true,
+      includeBoard: true,
+      message: scoreSummaryText("Move undone")
+    });
     saveGame();
     boardEl.focus({ preventScroll: true });
   }
@@ -339,7 +392,9 @@
         const tile = document.createElement("div");
         tile.className = `tile tile-x-${col} tile-y-${row}`;
         tile.dataset.value = String(value);
-        tile.textContent = formatNumber(value);
+        tile.dataset.label = formatNumber(value);
+        tile.setAttribute("aria-hidden", "true");
+        tile.setAttribute("role", "presentation");
 
         if (value >= 1024) {
           tile.classList.add("large");
@@ -367,21 +422,27 @@
     }
 
     tileLayer.appendChild(fragment);
-    boardEl.setAttribute(
-      "aria-label",
-      `2048 board. Score ${score}. Top tile ${getTopTile()}. Use arrow keys, WASD, swipe, or the direction buttons.`
-    );
+    updateAccessibleBoardState();
   }
 
-  function updateHud(statusText) {
+  function updateHud(statusText, options = {}) {
     const topTile = getTopTile();
     scoreValue.textContent = formatNumber(score);
     bestValue.textContent = formatNumber(best);
     topTileValue.textContent = formatNumber(topTile || 2);
     movesValue.textContent = formatNumber(moves);
     roundStatus.textContent = statusText;
+    scoreValue.setAttribute("aria-label", `Score ${formatNumber(score)}`);
+    bestValue.setAttribute("aria-label", `Best score ${formatNumber(best)}`);
+    topTileValue.setAttribute("aria-label", `Top tile ${formatNumber(topTile || 0)}`);
+    movesValue.setAttribute("aria-label", formatMoveCount(moves));
     document.body.dataset.gameState = state;
     undoButton.disabled = !canUndo();
+    updateAccessibleBoardState();
+
+    if (options.announce) {
+      announce(options.message || scoreSummaryText(statusText), { includeBoard: Boolean(options.includeBoard) });
+    }
   }
 
   function flashScore(gained) {
@@ -429,7 +490,7 @@
     }
   }
 
-  function evaluateBoard(statusText) {
+  function evaluateBoard(statusText, options = {}) {
     updateBest();
 
     if (getTopTile() >= TARGET_TILE && !hasWon && !keepPlaying) {
@@ -442,7 +503,11 @@
         showContinue: true
       });
       flashBoard("is-celebrating");
-      updateHud("2048 reached");
+      updateHud("2048 reached", {
+        announce: true,
+        includeBoard: true,
+        message: scoreSummaryText("2048 reached")
+      });
       saveGame();
       return;
     }
@@ -454,14 +519,18 @@
         meta: `Final score ${formatNumber(score)}`,
         primaryLabel: "Try Again"
       });
-      updateHud("Board full");
+      updateHud("Board full", {
+        announce: true,
+        includeBoard: true,
+        message: scoreSummaryText("Game over. No moves remain")
+      });
       saveGame();
       return;
     }
 
     if (state === "playing") {
       hideMenu();
-      updateHud(statusText);
+      updateHud(statusText, options);
     } else if (state === "idle") {
       showMenu({
         title: "2048",
@@ -498,7 +567,11 @@
       updateHud("Ready");
     } else {
       hideMenu();
-      updateHud("Playing");
+      updateHud("Playing", {
+        announce: true,
+        includeBoard: true,
+        message: scoreSummaryText("New game started")
+      });
       saveGame();
       boardEl.focus({ preventScroll: true });
     }
@@ -518,7 +591,11 @@
     state = "playing";
     hasSavedGame = false;
     hideMenu();
-    updateHud("Playing");
+    updateHud("Playing", {
+      announce: true,
+      includeBoard: true,
+      message: scoreSummaryText("Game started")
+    });
     saveGame();
     boardEl.focus({ preventScroll: true });
   }
@@ -527,7 +604,11 @@
     keepPlaying = true;
     state = "playing";
     hideMenu();
-    updateHud("Keep going");
+    updateHud("Keep going", {
+      announce: true,
+      includeBoard: true,
+      message: scoreSummaryText("Continuing after 2048")
+    });
     saveGame();
     boardEl.focus({ preventScroll: true });
   }
@@ -564,7 +645,10 @@
 
     if (gridsAreEqual(before, next)) {
       flashBoard("is-shaking");
-      updateHud("No move");
+      updateHud("No move", {
+        announce: true,
+        message: scoreSummaryText(`No move ${directionLabel(direction)}`)
+      });
       return false;
     }
 
@@ -577,7 +661,13 @@
     addRandomTile();
     render();
     flashScore(gained);
-    evaluateBoard(gained > 0 ? `+${formatNumber(gained)}` : "Moved");
+    evaluateBoard(gained > 0 ? `+${formatNumber(gained)}` : "Moved", {
+      announce: true,
+      includeBoard: true,
+      message: scoreSummaryText(gained > 0
+        ? `Moved ${directionLabel(direction)}. Gained ${formatNumber(gained)}`
+        : `Moved ${directionLabel(direction)}`)
+    });
     return true;
   }
 
@@ -615,8 +705,22 @@
     }
   }
 
+  function isEditableTarget(target) {
+    return target instanceof Element
+      && Boolean(target.closest("input, textarea, select, [contenteditable='true'], [contenteditable='']"));
+  }
+
+  function isBoardShortcutTarget(target) {
+    return target === boardEl
+      || (target instanceof Node && boardEl.contains(target))
+      || target === document.body
+      || target === document.documentElement;
+  }
+
   function handleKeyDown(event) {
     const key = event.key.toLowerCase();
+    const target = event.target;
+    const canUseBoardShortcuts = isBoardShortcutTarget(target) && !isEditableTarget(target);
     const keyMap = {
       arrowup: "up",
       w: "up",
@@ -629,17 +733,24 @@
     };
 
     if (keyMap[key]) {
+      if (!canUseBoardShortcuts) {
+        return;
+      }
       event.preventDefault();
       handleMove(keyMap[key]);
       return;
     }
 
-    if ((key === "enter" || key === " ") && !gameMenu.classList.contains("is-hidden")) {
+    if (
+      (key === "enter" || key === " ")
+      && !gameMenu.classList.contains("is-hidden")
+      && (target === boardEl || target === document.body || target === document.documentElement)
+    ) {
       event.preventDefault();
       activateGame();
     }
 
-    if (key === "z" && (event.ctrlKey || event.metaKey)) {
+    if (key === "z" && (event.ctrlKey || event.metaKey) && canUseBoardShortcuts) {
       event.preventDefault();
       undoMove();
     }

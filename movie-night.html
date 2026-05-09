@@ -66,7 +66,7 @@
           <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span>Live when Zurra3 is online</p>
           <h1 id="stream-title">Zurra3 Movie Night</h1>
           <p class="stream-hero-text">
-            A Twitch stream for public domain movies where chat can help choose what plays next. The bot watches the local movie folder, tracks votes in chat, and hands the next pick to OBS.
+            Viewers need a clear stream surface around the voting bot, so I built a static Movie Night page that embeds Twitch, explains chat commands, links the searchable public-domain Movie Library, and shows how the Python bot scans local movies, tracks votes, and hands the next pick to OBS.
           </p>
           <div class="hero-badges" aria-label="Movie night details">
             <span>Public domain movies</span>
@@ -104,7 +104,7 @@
           <p class="eyebrow">Stream</p>
           <h2 id="watch-title">The room, the chat, and the next vote.</h2>
           <p>
-            The player shows the live Zurra3 channel, built around public domain movie nights. Chat stays beside it on wide screens so viewers can watch the movie-night flow and vote without leaving the page.
+            The page frames the live Zurra3 channel around the MovieBot workflow: viewers can watch, keep chat visible on wide screens, browse the catalog, copy a <code>!vote</code> command, and understand that OBS playback is controlled by the Python automation.
           </p>
         </div>
 
@@ -138,7 +138,7 @@
           <p class="eyebrow">Movie list</p>
           <h2 id="movies-title">Public domain movie library.</h2>
           <p>
-            The full list now has its own page so this stream page stays focused. Browse posters, search titles, and pick something before voting in chat.
+            The full MovieBot catalog lives on its own static page so the stream view stays focused. Viewers can search posters, copy exact vote commands, and return to chat without manually retyping long public-domain titles.
           </p>
           <div class="movie-list-stats" aria-label="Movie library stats">
             <div>
@@ -164,7 +164,7 @@
           <div class="movie-preview-copy">
             <span class="provider-badge">110 titles</span>
             <strong>Open the full poster wall</strong>
-            <p>Search the complete public domain queue without crowding the live stream page.</p>
+            <p>Search the complete public-domain queue and copy exact MovieBot vote commands without crowding the live stream page.</p>
           </div>
           <div class="movie-preview-posters" aria-hidden="true">
             <div class="movie-preview-tile">
@@ -188,9 +188,23 @@
           <p class="eyebrow">Bot at work</p>
           <h2 id="bot-title">How StreamCinema Vote Bot runs the night.</h2>
           <p>
-            The bot is a simple remote control for a Twitch stream showing public domain movies. It keeps a list of local video files, listens to chat, counts votes, and tells OBS which file to play next.
+            Streamer-run public-domain movie nights need reliable voting and playback handoff. I built the Python/TwitchIO bot to scan local video files, listen to chat commands, count and resolve votes, refresh/reconnect when services drift, and tell OBS WebSocket which file to play next.
           </p>
         </div>
+
+        <section class="bot-note" aria-labelledby="movie-night-built-title">
+          <div>
+            <span class="note-kicker">What I built</span>
+            <h3 id="movie-night-built-title">Viewer-facing stream page and bot explanation surface.</h3>
+            <ul class="case-template-list">
+              <li>Created the static stream room that embeds the Twitch player/chat and keeps movie-library, bot-source, and case-study paths close to the voting experience.</li>
+              <li>Added embed fallbacks and external links so the page still gives viewers a clear path when Twitch embeds are blocked.</li>
+              <li>Separated the searchable movie catalog into its own page so the live-room UI stays focused on watching and voting.</li>
+              <li>Wrote the bot-flow explanation that connects local folder scanning, chat commands, tie resolution, token refresh/reconnect behavior, and OBS playback handoff.</li>
+            </ul>
+            <p class="ownership-note">The page depends on Twitch embeds, Twitch chat, OBS WebSocket, and public-domain movie data; the static site structure, copy, and MovieBot presentation are custom portfolio code.</p>
+          </div>
+        </section>
 
         <div class="bot-flow">
           <article>

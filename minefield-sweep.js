@@ -19,6 +19,7 @@
   const menuMeta = document.getElementById("menuMeta");
   const startButton = document.getElementById("startButton");
   const newGameButton = document.getElementById("newGameButton");
+  const pauseButton = document.getElementById("pauseButton");
   const flagModeButton = document.getElementById("flagModeButton");
   const fullscreenButton = document.getElementById("fullscreenButton");
   const minesLeftValue = document.getElementById("minesLeftValue");
@@ -26,6 +27,7 @@
   const bestValue = document.getElementById("bestValue");
   const clearedValue = document.getElementById("clearedValue");
   const roundStatus = document.getElementById("roundStatus");
+  const gameAnnouncement = document.getElementById("gameAnnouncement");
   const difficultyButtons = Array.from(document.querySelectorAll("[data-difficulty]"));
 
   let currentDifficulty = readDifficulty();
@@ -41,6 +43,9 @@
   let timerStartedAt = 0;
   let longPressTimer = 0;
   let suppressClickIndex = -1;
+  let pausedFocusIndex = 0;
+  let focusedCellIndex = 0;
+  let announcementTimer = 0;
 
   function readDifficulty() {
     try {
@@ -113,6 +118,15 @@
 
   function indexOf(row, col) {
     return row * config().cols + col;
+  }
+
+  function cellPosition(index) {
+    return `row ${rowOf(index) + 1}, column ${colOf(index) + 1}`;
+  }
+
+  function normalizeCellIndex(index) {
+    const value = Number(index);
+    return Math.max(0, Math.min(cells.length - 1, Number.isFinite(value) ? value : 0));
   }
 
   function neighbors(index) {
@@ -219,6 +233,45 @@
     return Math.floor((revealedCount / clearable) * 100);
   }
 
+  function announce(message) {
+    if (!gameAnnouncement || !message) {
+      return;
+    }
+
+    window.clearTimeout(announcementTimer);
+    gameAnnouncement.textContent = "";
+    announcementTimer = window.setTimeout(() => {
+      gameAnnouncement.textContent = message;
+    }, 20);
+  }
+
+  function cellAnnouncement(index, action) {
+    const cell = cells[index];
+    const position = cellPosition(index);
+
+    if (!cell) {
+      return "";
+    }
+
+    if (action === "flagged") {
+      return `Flag placed at ${position}. ${minesLeft()} mines left.`;
+    }
+
+    if (action === "unflagged") {
+      return `Flag removed at ${position}. ${minesLeft()} mines left.`;
+    }
+
+    if (cell.mine) {
+      return `Mine revealed at ${position}. Field lost.`;
+    }
+
+    if (cell.adjacent === 0) {
+      return `Cleared ${position}. Empty area revealed. ${clearPercent()} percent cleared.`;
+    }
+
+    return `Revealed ${position}. ${cell.adjacent} nearby ${cell.adjacent === 1 ? "mine" : "mines"}. ${clearPercent()} percent cleared.`;
+  }
+
   function updateHud(statusText) {
     minesLeftValue.textContent = String(minesLeft());
     timeValue.textContent = formatTime(seconds);
@@ -227,12 +280,30 @@
     roundStatus.textContent = statusText;
     document.body.dataset.gameState = state;
     document.body.dataset.flagMode = String(flagMode);
+    pauseButton.textContent = state === "paused" ? "Resume" : "Pause";
+    pauseButton.disabled = state !== "playing" && state !== "paused";
+    pauseButton.setAttribute("aria-pressed", state === "paused" ? "true" : "false");
+    flagModeButton.textContent = flagMode ? "Flag Mode On" : "Flag Mode";
     flagModeButton.setAttribute("aria-pressed", String(flagMode));
+    flagModeButton.setAttribute(
+      "aria-label",
+      flagMode
+        ? "Flag mode on. Cell clicks place or remove flags."
+        : "Flag mode off. Cell clicks reveal hidden cells."
+    );
+    flagModeButton.disabled = state === "paused";
   }
 
   function setActiveDifficultyButton() {
     difficultyButtons.forEach((button) => {
-      button.classList.toggle("active", button.dataset.difficulty === currentDifficulty);
+      const selected = button.dataset.difficulty === currentDifficulty;
+      const details = DIFFICULTIES[button.dataset.difficulty];
+      button.classList.toggle("active", selected);
+      button.setAttribute("aria-checked", String(selected));
+      button.setAttribute(
+        "aria-label",
+        `${details.label} difficulty, ${details.rows} by ${details.cols}, ${details.mines} mines${selected ? ", selected" : ""}`
+      );
     });
   }
 
@@ -265,6 +336,8 @@
     minesPlaced = false;
     seconds = 0;
     suppressClickIndex = -1;
+    pausedFocusIndex = 0;
+    focusedCellIndex = 0;
     window.clearTimeout(longPressTimer);
     boardShell.classList.remove("is-cleared");
     setActiveDifficultyButton();
@@ -282,6 +355,7 @@
     }
 
     updateHud("Ready");
+    announce(`${config().label} field ready. ${config().rows} rows, ${config().cols} columns, ${mineTotal} mines.`);
   }
 
   function startField() {
@@ -289,14 +363,59 @@
       resetBoard(currentDifficulty, false);
     }
 
+    if (state === "paused") {
+      resumeField();
+      return;
+    }
+
     hideMenu();
     updateHud(state === "idle" ? "Ready" : "Sweeping");
     focusCell(0);
+    announce(`Focus moved to ${cellPosition(0)}. Use arrow keys to move, Enter or Space to reveal, and F to flag.`);
+  }
+
+  function pauseField() {
+    if (state !== "playing") {
+      return false;
+    }
+
+    const activeIndex = Number(document.activeElement?.dataset?.index);
+    pausedFocusIndex = Number.isFinite(activeIndex) ? activeIndex : 0;
+    stopTimer();
+    state = "paused";
+    window.clearTimeout(longPressTimer);
+    showMenu({
+      kicker: "Paused",
+      title: "Minefield Paused",
+      meta: `${config().label} / ${formatTime(seconds)}`,
+      button: "Resume"
+    });
+    updateHud("Paused");
+    announce(`Paused at ${formatTime(seconds)}.`);
+    return true;
+  }
+
+  function resumeField() {
+    if (state !== "paused") {
+      return false;
+    }
+
+    state = "playing";
+    hideMenu();
+    startTimer();
+    updateHud("Sweeping");
+    focusCell(pausedFocusIndex);
+    announce(`Resumed. Focus returned to ${cellPosition(pausedFocusIndex)}.`);
+    return true;
+  }
+
+  function togglePause() {
+    return state === "paused" ? resumeField() : pauseField();
   }
 
   function revealCell(index) {
     const cell = cells[index];
-    if (!cell || state === "won" || state === "lost" || cell.flagged) {
+    if (!cell || state === "won" || state === "lost" || state === "paused" || cell.flagged) {
       return false;
     }
 
@@ -326,6 +445,7 @@
       renderBoard();
       updateHud("Sweeping");
       focusCell(index);
+      announce(cellAnnouncement(index, "revealed"));
     }
     return true;
   }
@@ -365,6 +485,7 @@
     const flagged = nearby.filter((neighborIndex) => cells[neighborIndex].flagged).length;
     if (flagged !== cell.adjacent) {
       updateHud("Check flags");
+      announce(`Check flags around ${cellPosition(index)}. ${cell.adjacent} ${cell.adjacent === 1 ? "flag is" : "flags are"} needed.`);
       return false;
     }
 
@@ -389,7 +510,7 @@
 
   function toggleFlag(index) {
     const cell = cells[index];
-    if (!cell || cell.revealed || state === "won" || state === "lost") {
+    if (!cell || cell.revealed || state === "won" || state === "lost" || state === "paused") {
       return false;
     }
 
@@ -403,6 +524,7 @@
     renderBoard();
     updateHud(cell.flagged ? "Flagged" : "Unflagged");
     focusCell(index);
+    announce(cellAnnouncement(index, cell.flagged ? "flagged" : "unflagged"));
     return true;
   }
 
@@ -427,6 +549,7 @@
       button: "New Field"
     });
     updateHud("Cleared");
+    announce(`Field cleared in ${formatTime(seconds)}. New best is ${formatTime(readBest())}.`);
   }
 
   function loseField(hitIndex) {
@@ -451,33 +574,43 @@
       button: "New Field"
     });
     updateHud("Mine hit");
+    announce(cellAnnouncement(hitIndex, "revealed"));
   }
 
   function cellLabel(cell, index) {
-    const row = rowOf(index) + 1;
-    const col = colOf(index) + 1;
+    const position = `Row ${rowOf(index) + 1}, column ${colOf(index) + 1}`;
 
     if (cell.wrongFlag) {
-      return `Row ${row}, column ${col}, wrong flag`;
+      return `${position}. Wrong flag. This cell did not contain a mine.`;
     }
 
     if (cell.flagged && !cell.revealed) {
-      return `Row ${row}, column ${col}, flagged`;
+      return `${position}. Flagged hidden cell. Press F${flagMode ? " or Enter" : ""} to remove the flag.`;
     }
 
     if (!cell.revealed) {
-      return `Row ${row}, column ${col}, hidden`;
+      return flagMode
+        ? `${position}. Hidden cell. Flag mode is on. Press Enter, Space, or F to place a flag.`
+        : `${position}. Hidden cell. Press Enter or Space to reveal. Press F to flag.`;
     }
 
     if (cell.mine) {
-      return `Row ${row}, column ${col}, mine`;
+      return `${position}. Revealed mine.`;
     }
 
     if (cell.adjacent === 0) {
-      return `Row ${row}, column ${col}, clear`;
+      return `${position}. Revealed clear cell with no nearby mines.`;
     }
 
-    return `Row ${row}, column ${col}, ${cell.adjacent} nearby`;
+    return `${position}. Revealed clear cell with ${cell.adjacent} nearby ${cell.adjacent === 1 ? "mine" : "mines"}. Press Enter or Space to chord when matching flags are placed.`;
+  }
+
+  function syncCellTabIndexes() {
+    boardEl.querySelectorAll(".cell").forEach((button) => {
+      const selected = Number(button.dataset.index) === focusedCellIndex;
+      button.tabIndex = selected ? 0 : -1;
+      button.setAttribute("aria-selected", String(selected));
+    });
   }
 
   function renderBoard() {
@@ -490,8 +623,14 @@
     boardEl.style.setProperty("--rows", active.rows);
     boardEl.setAttribute("aria-rowcount", String(active.rows));
     boardEl.setAttribute("aria-colcount", String(active.cols));
-    boardEl.setAttribute("aria-label", `${active.label} minefield, ${active.rows} by ${active.cols}, ${mineTotal} mines`);
+    boardEl.setAttribute(
+      "aria-label",
+      flagMode
+        ? `${active.label} minefield, ${active.rows} by ${active.cols}, ${mineTotal} mines. Flag mode is on. Use arrow keys to move, Enter or Space to toggle a flag, and F to toggle a flag.`
+        : `${active.label} minefield, ${active.rows} by ${active.cols}, ${mineTotal} mines. Use arrow keys to move, Enter or Space to reveal, and F to flag.`
+    );
     boardEl.textContent = "";
+    focusedCellIndex = normalizeCellIndex(focusedCellIndex);
 
     cells.forEach((cell, index) => {
       const button = document.createElement("button");
@@ -499,7 +638,12 @@
       button.className = "cell";
       button.dataset.index = String(index);
       button.setAttribute("role", "gridcell");
+      button.setAttribute("aria-rowindex", String(rowOf(index) + 1));
+      button.setAttribute("aria-colindex", String(colOf(index) + 1));
       button.setAttribute("aria-label", cellLabel(cell, index));
+      button.setAttribute("aria-selected", String(index === focusedCellIndex));
+      button.setAttribute("aria-keyshortcuts", "Enter Space F ArrowUp ArrowRight ArrowDown ArrowLeft");
+      button.tabIndex = index === focusedCellIndex ? 0 : -1;
 
       if (cell.revealed) {
         button.classList.add("revealed");
@@ -521,8 +665,10 @@
 
       button.addEventListener("click", (event) => {
         event.preventDefault();
+        focusedCellIndex = index;
         if (suppressClickIndex === index) {
           suppressClickIndex = -1;
+          syncCellTabIndexes();
           return;
         }
         handlePrimaryAction(index);
@@ -530,7 +676,13 @@
 
       button.addEventListener("contextmenu", (event) => {
         event.preventDefault();
+        focusedCellIndex = index;
         toggleFlag(index);
+      });
+
+      button.addEventListener("focus", () => {
+        focusedCellIndex = index;
+        syncCellTabIndexes();
       });
 
       button.addEventListener("pointerdown", (event) => {
@@ -558,6 +710,11 @@
   }
 
   function handlePrimaryAction(index) {
+    if (state === "paused") {
+      updateHud("Paused");
+      return;
+    }
+
     if (!gameMenu.classList.contains("is-hidden") && state !== "won" && state !== "lost") {
       hideMenu();
     }
@@ -570,7 +727,9 @@
   }
 
   function focusCell(index) {
-    const button = boardEl.querySelector(`[data-index="${index}"]`);
+    focusedCellIndex = normalizeCellIndex(index);
+    syncCellTabIndexes();
+    const button = boardEl.querySelector(`[data-index="${focusedCellIndex}"]`);
     button?.focus({ preventScroll: true });
   }
 
@@ -583,6 +742,10 @@
   function handleBoardKeyDown(event) {
     const target = event.target.closest?.(".cell");
     if (!target) {
+      if (["arrowup", "arrowright", "arrowdown", "arrowleft", "enter", " "].includes(event.key.toLowerCase())) {
+        event.preventDefault();
+        focusCell(focusedCellIndex);
+      }
       return;
     }
 
@@ -607,6 +770,21 @@
     } else if (key === "f") {
       event.preventDefault();
       toggleFlag(index);
+    } else if (key === "p" || key === "escape") {
+      event.preventDefault();
+      togglePause();
+    }
+  }
+
+  function handlePageKeyDown(event) {
+    if (event.defaultPrevented) {
+      return;
+    }
+
+    const key = event.key.toLowerCase();
+    if ((key === "p" || key === "escape") && (state === "playing" || state === "paused")) {
+      event.preventDefault();
+      togglePause();
     }
   }
 
@@ -624,6 +802,32 @@
 
   function setDifficulty(key) {
     resetBoard(key, true);
+    announce(`${config().label} difficulty selected. ${config().rows} by ${config().cols}, ${mineTotal} mines.`);
+  }
+
+  function handleDifficultyKeyDown(event) {
+    const focusedIndex = difficultyButtons.indexOf(event.currentTarget);
+    const currentIndex = focusedIndex >= 0
+      ? focusedIndex
+      : difficultyButtons.findIndex((button) => button.dataset.difficulty === currentDifficulty);
+    let nextIndex = currentIndex;
+
+    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      nextIndex = (currentIndex - 1 + difficultyButtons.length) % difficultyButtons.length;
+    } else if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      nextIndex = (currentIndex + 1) % difficultyButtons.length;
+    } else if (event.key === "Home") {
+      nextIndex = 0;
+    } else if (event.key === "End") {
+      nextIndex = difficultyButtons.length - 1;
+    } else {
+      return;
+    }
+
+    event.preventDefault();
+    const nextButton = difficultyButtons[nextIndex];
+    setDifficulty(nextButton.dataset.difficulty);
+    nextButton.focus();
   }
 
   function debugSetMines(mineIndices, options = {}) {
@@ -645,6 +849,7 @@
     seconds = Math.max(0, Number(options.seconds) || 0);
     minesPlaced = true;
     state = options.state || "playing";
+    focusedCellIndex = normalizeCellIndex(options.focusIndex);
     boardShell.classList.remove("is-cleared");
     hideMenu();
     setActiveDifficultyButton();
@@ -679,16 +884,21 @@
   function bindEvents() {
     startButton.addEventListener("click", startField);
     newGameButton.addEventListener("click", () => resetBoard(currentDifficulty, false));
+    pauseButton.addEventListener("click", togglePause);
     flagModeButton.addEventListener("click", () => {
       flagMode = !flagMode;
       updateHud(flagMode ? "Flag mode" : "Sweep mode");
+      renderBoard();
+      announce(flagMode ? "Flag mode on. Cell clicks now place or remove flags." : "Flag mode off. Cell clicks now reveal cells.");
       focusCell(0);
     });
     fullscreenButton.addEventListener("click", toggleFullscreen);
+    window.addEventListener("keydown", handlePageKeyDown);
     boardEl.addEventListener("keydown", handleBoardKeyDown);
     boardEl.addEventListener("contextmenu", (event) => event.preventDefault());
     difficultyButtons.forEach((button) => {
       button.addEventListener("click", () => setDifficulty(button.dataset.difficulty));
+      button.addEventListener("keydown", handleDifficultyKeyDown);
     });
   }
 
@@ -698,6 +908,7 @@
     setDifficulty,
     reveal: revealCell,
     flag: toggleFlag,
+    pause: togglePause,
     chord: chordCell,
     debugSetMines,
     getState

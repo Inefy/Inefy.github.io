@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="TraverseOps case study by Zac Batten: a field-operations demo for hydrant-style asset tracking, inspections, work orders, imports, reports, and team roles.">
+    <meta name="description" content="TraverseOps case study by Zac Batten: a MapLibre/Supabase field-operations demo connecting hydrant-style asset maps, inspections, work orders, imports, reports, and team roles.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/traverseops-case-study.html">
     <meta property="og:site_name" content="Inefy Workbench">
     <meta property="og:title" content="TraverseOps Case Study / Zac Batten">
-    <meta property="og:description" content="A map-first field-operations demo for asset tracking, inspections, work orders, imports, reports, and team roles.">
+    <meta property="og:description" content="A MapLibre/Supabase field-operations demo connecting hydrant-style asset maps, inspections, work orders, imports, reports, and team roles.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://zacbatten.me/traverseops-case-study.html">
     <meta property="og:image" content="https://zacbatten.me/assets/traverseops-workspace.png">
     <meta property="og:image:alt" content="TraverseOps map workspace showing municipal assets and selected asset details.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TraverseOps Case Study / Zac Batten">
-    <meta name="twitter:description" content="Map-first field operations demo with asset tracking, inspections, work orders, imports, reports, and team roles.">
+    <meta name="twitter:description" content="MapLibre/Supabase field operations demo with asset tracking, inspections, work orders, imports, reports, and team roles.">
     <meta name="twitter:image" content="https://zacbatten.me/assets/traverseops-workspace.png">
     <title>TraverseOps Case Study / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
@@ -62,7 +62,7 @@
           <p class="eyebrow">Flagship case study</p>
           <h1 id="case-title">TraverseOps</h1>
           <p class="case-template-summary">
-            TraverseOps is a field-operations demo for hydrant-style asset tracking, inspections, work orders, imports, reports, and team roles. It is built to show how a map-first interface can connect field records and operational decisions without forcing crews through disconnected spreadsheets, map viewers, and ticket lists.
+            Field crews and supervisors need one place to locate hydrant-style assets, inspect condition, open work orders, import updates, and report status. I built TraverseOps as a public MapLibre/Supabase field-operations demo with sample data, role-aware screens, asset-status filters, selected-asset workflows, import validation framing, reporting views, and a production-hardening plan that separates demo behavior from real municipal requirements.
           </p>
           <dl class="case-template-meta" aria-label="Project metadata">
             <div>
@@ -111,26 +111,27 @@
         <article class="case-template-main">
           <section class="case-template-section" aria-labelledby="summary-title">
             <p class="eyebrow">01 / Summary</p>
-            <h2 id="summary-title">A serious workflow demo, not a map-pin toy.</h2>
+            <h2 id="summary-title">A serious workflow demo, not just map pins.</h2>
             <p>
-              TraverseOps is framed around the work a small utility, municipality, or field-services team would need to do around physical assets: find the right asset, understand its history, record an inspection, open a work order, import updated asset records, and report on operating status. The point is not only to display hydrants on a map. The point is to show how location, records, workflow state, and team permissions fit together in one usable interface.
+              Field-operations teams lose time when location, records, workflow state, and team permissions are split across disconnected spreadsheets, map viewers, and ticket lists. I built TraverseOps to show how a MapLibre map, Supabase-backed sample data, selected-asset context, inspection flows, work orders, imports, reports, and role-aware screens can fit together in one usable public demo.
             </p>
             <div class="case-study-callout">
               <strong>Hiring signal:</strong>
-              <span>The project demonstrates product modeling, map UI decisions, multi-entity data thinking, responsive workflow design, and awareness of what would need to change before production use.</span>
+              <span>The project demonstrates product modeling, map UI decisions, multi-entity data thinking, field-device workflow design, and awareness of what would need to change before production use.</span>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="role-title">
-            <p class="eyebrow">02 / My role</p>
-            <h2 id="role-title">What Zac personally built</h2>
+            <p class="eyebrow">02 / What I built</p>
+            <h2 id="role-title">The demo product model, workflow structure, and public case-study framing.</h2>
             <ul class="case-template-list">
-              <li>Defined the product shape around field assets, inspections, work orders, imports, reports, and team roles.</li>
-              <li>Built the map-first interface concept: asset discovery, selected-asset detail, operational context, and responsive layout behavior.</li>
-              <li>Designed the sample data model so the demo can represent real workflow relationships without exposing real municipal data.</li>
-              <li>Created the public-demo framing: clear limitations, sample-data expectations, and a case-study narrative that hiring managers can evaluate without opening the app.</li>
-              <li>Planned the production hardening path, including auth, permissions, audit logs, import validation, offline sync, and operational monitoring.</li>
+              <li>Modeled assets, inspections, work orders, imports, reports, and team roles around field-crew and supervisor workflows.</li>
+              <li>Built a map-first asset workflow with status filtering, selected-asset panels, and direct paths into inspection and work-order screens.</li>
+              <li>Designed sample data relationships so the demo can represent municipal-style operations without exposing real field records.</li>
+              <li>Documented demo boundaries and production hardening needs, including auth, role permissions, offline sync, audit logs, validation, and mobile field testing.</li>
+              <li>Framed the case study so reviewers can evaluate product modeling, workflow tradeoffs, map UI decisions, and production gaps without opening the demo.</li>
             </ul>
+            <p class="ownership-note">External pieces include map/data tooling such as MapLibre and Supabase. The public demo uses sample hydrant-style records rather than real municipal operating data.</p>
           </section>
 
           <section class="case-template-section" aria-labelledby="problem-title">
@@ -150,7 +151,7 @@
             <div class="case-template-feature-list">
               <article>
                 <h3>Field technicians</h3>
-                <p>Need fast asset lookup, mobile-friendly detail views, simple inspection entry, and clear next actions while standing near the asset.</p>
+                <p>Need fast asset lookup, mobile-friendly detail views, checklist-driven inspection entry, and clear next actions while standing near the asset.</p>
               </article>
               <article>
                 <h3>Supervisors</h3>
@@ -196,7 +197,7 @@
             <ul class="case-template-stack" aria-label="TraverseOps technology stack">
               <li>MapLibre</li>
               <li>Supabase</li>
-              <li>Responsive frontend</li>
+              <li>Desktop/mobile frontend</li>
               <li>JavaScript</li>
               <li>Static portfolio shell</li>
               <li>Capacitor-ready UI</li>
@@ -313,10 +314,10 @@
             <p class="eyebrow">09 / Import workflow</p>
             <h2 id="import-title">Imports are treated as a validation workflow, not a blind upload.</h2>
             <p>
-              A production field system often starts with legacy spreadsheets or GIS exports. TraverseOps frames imports as a step-by-step workflow: choose a file, map incoming columns to known fields, validate coordinates and IDs, preview rejected rows, then commit the clean records into the asset registry.
+              A production field system often starts with legacy spreadsheets or GIS exports. TraverseOps frames imports as a step-by-step workflow: choose a file, map incoming columns to known fields, validate coordinates and IDs, preview rejected rows, then commit validated records into the asset registry.
             </p>
             <ul class="case-template-list">
-              <li>Column mapping makes the import explainable instead of assuming every source file is clean.</li>
+              <li>Column mapping makes the import explainable instead of assuming every source file already matches the target schema.</li>
               <li>Validation catches missing coordinates, duplicate IDs, unknown asset types, and invalid status values before records reach the map.</li>
               <li>Import summaries create a review point for administrators and a future audit trail for production use.</li>
             </ul>
@@ -378,7 +379,7 @@
               <article>
                 <span class="architecture-kicker">Validation</span>
                 <h3>Strict data and workflow rules</h3>
-                <p><strong>Demo:</strong> uses clean sample records to explain the asset, inspection, and work-order lifecycle.</p>
+                <p><strong>Demo:</strong> uses curated sample records to explain the asset, inspection, and work-order lifecycle.</p>
                 <p><strong>Production:</strong> validate required fields, coordinates, status transitions, priority values, due dates, duplicate assets, and work-order state changes on both client and server.</p>
               </article>
               <article>
@@ -402,7 +403,7 @@
               <article>
                 <span class="architecture-kicker">Mobile QA</span>
                 <h3>Real field-device testing</h3>
-                <p><strong>Demo:</strong> uses responsive layouts and field-oriented screens.</p>
+                <p><strong>Demo:</strong> uses desktop/mobile layouts and field-oriented screens.</p>
                 <p><strong>Production:</strong> test on actual phones/tablets, gloves/wet-screen scenarios where relevant, GPS permissions, battery constraints, camera/photo attachments, sunlight readability, and intermittent network conditions.</p>
               </article>
               <article>
@@ -489,7 +490,7 @@
         <div>
           <p class="eyebrow">Next step</p>
           <h2 id="traverseops-next-title">Review the demo, then compare the rest of the work.</h2>
-          <p>TraverseOps is the flagship field-operations project. The Work page also shows MovieBot, Web Paint, and smaller browser experiments.</p>
+          <p>Field-operations workflow is the strongest portfolio case study; the Work page also shows Python automation, Canvas tooling, and browser experiments for comparison.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="https://traverseops.app" rel="noopener noreferrer">Open live demo</a>

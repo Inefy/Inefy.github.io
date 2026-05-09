@@ -171,7 +171,9 @@
   const menuMeta = document.getElementById("menuMeta");
   const startButton = document.getElementById("startButton");
   const restartLevelButton = document.getElementById("restartLevelButton");
+  const pauseButton = document.getElementById("pauseButton");
   const restartTouchButton = document.getElementById("restartTouchButton");
+  const pauseTouchButton = document.getElementById("pauseTouchButton");
   const resetRunButton = document.getElementById("resetRunButton");
   const fullscreenButton = document.getElementById("fullscreenButton");
   const previousHoleButton = document.getElementById("previousHoleButton");
@@ -193,6 +195,7 @@
 
   let levelIndex = 0;
   let state = "menu";
+  let pausedFrom = "ready";
   let ball = createBall(LEVELS[0].tee);
   let levelStrokes = 0;
   let scorecard = [];
@@ -368,8 +371,17 @@
     powerMeter.setAttribute("aria-valuenow", String(percent));
     surfaceValue.textContent = surfaceLabel(surface);
     renderScorecard();
-    previousHoleButton.disabled = levelIndex === 0 || state === "moving";
+    previousHoleButton.disabled = levelIndex === 0 || state === "moving" || state === "paused";
     nextHoleButton.disabled = state !== "level-complete";
+    [pauseButton, pauseTouchButton].forEach((button) => {
+      if (!button) {
+        return;
+      }
+
+      button.textContent = state === "paused" ? "Resume" : "Pause";
+      button.disabled = state !== "ready" && state !== "moving" && state !== "paused";
+      button.setAttribute("aria-pressed", state === "paused" ? "true" : "false");
+    });
   }
 
   function resetLevel(index = levelIndex, options = {}) {
@@ -384,6 +396,7 @@
     isAiming = false;
     aimPointer = null;
     state = options.menu ? "menu" : "ready";
+    pausedFrom = "ready";
     hideMenu();
     if (options.menu) {
       showMenu({
@@ -406,6 +419,8 @@
       resetRun(false);
     } else if (state === "level-complete") {
       nextLevel();
+    } else if (state === "paused") {
+      resumeRound();
     } else if (state === "moving") {
       hideMenu();
       updateHud("Rolling");
@@ -414,6 +429,44 @@
       hideMenu();
       updateHud("Line up shot");
     }
+  }
+
+  function canPause() {
+    return state === "ready" || state === "moving";
+  }
+
+  function pauseRound() {
+    if (!canPause()) {
+      return false;
+    }
+
+    pausedFrom = state;
+    state = "paused";
+    isAiming = false;
+    aimPointer = null;
+    showMenu({
+      kicker: `Hole ${levelIndex + 1}`,
+      title: "Paused",
+      meta: `${levelStrokes} strokes / par ${activeLevel().par}`,
+      button: "Resume"
+    });
+    updateHud("Paused");
+    return true;
+  }
+
+  function resumeRound() {
+    if (state !== "paused") {
+      return false;
+    }
+
+    state = pausedFrom === "moving" ? "moving" : "ready";
+    hideMenu();
+    updateHud(state === "moving" ? "Rolling" : "Line up shot");
+    return true;
+  }
+
+  function togglePause() {
+    return state === "paused" ? resumeRound() : pauseRound();
   }
 
   function nextLevel() {
@@ -1182,13 +1235,17 @@
   function loop(timestamp) {
     const dt = Math.min(0.033, ((timestamp - lastTime) || 16.7) / 1000);
     lastTime = timestamp;
-    worldTime += dt;
-    updatePhysics(dt);
-    if (!prefersReducedMotion) {
-      updateParticles(dt);
-    } else {
-      particles = [];
+
+    if (state !== "paused") {
+      worldTime += dt;
+      updatePhysics(dt);
+      if (!prefersReducedMotion) {
+        updateParticles(dt);
+      } else {
+        particles = [];
+      }
     }
+
     render();
     animationFrame = window.requestAnimationFrame(loop);
   }
@@ -1251,20 +1308,17 @@
         event.preventDefault();
         beginRound();
       }
+    } else if (key === "p" || key === "escape") {
+      if (state === "ready" || state === "moving" || state === "paused") {
+        event.preventDefault();
+        togglePause();
+      }
     } else if (key === "r") {
       event.preventDefault();
       resetLevel(levelIndex);
     } else if (key === "n" && state === "level-complete") {
       event.preventDefault();
       nextLevel();
-    } else if (key === "escape") {
-      event.preventDefault();
-      showMenu({
-        kicker: `Hole ${levelIndex + 1}`,
-        title: activeLevel().name,
-        meta: `${levelStrokes} strokes / par ${activeLevel().par}`,
-        button: state === "level-complete" ? "Next Hole" : "Resume"
-      });
     }
   }
 
@@ -1284,6 +1338,8 @@
     startButton.addEventListener("click", beginRound);
     restartLevelButton.addEventListener("click", () => resetLevel(levelIndex));
     restartTouchButton.addEventListener("click", () => resetLevel(levelIndex));
+    pauseButton.addEventListener("click", togglePause);
+    pauseTouchButton.addEventListener("click", togglePause);
     resetRunButton.addEventListener("click", () => resetRun(true));
     previousHoleButton.addEventListener("click", previousLevel);
     nextHoleButton.addEventListener("click", nextLevel);
@@ -1302,6 +1358,7 @@
       level: levelIndex + 1,
       levelName: activeLevel().name,
       state,
+      pausedFrom,
       strokes: levelStrokes,
       scorecard: [...scorecard],
       total: runTotal(),
@@ -1340,6 +1397,7 @@
     resetLevel,
     nextLevel,
     previousLevel,
+    pause: togglePause,
     shoot: shootFromVector,
     debugSetBall,
     debugTick,

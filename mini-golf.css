@@ -348,6 +348,11 @@ body[data-game-state="moving"] .status-dot {
   box-shadow: 0 0 0 5px rgba(104, 183, 255, 0.12);
 }
 
+body[data-game-state="paused"] .status-dot {
+  background: var(--muted);
+  box-shadow: 0 0 0 5px rgba(174, 189, 192, 0.12);
+}
+
 body[data-game-state="level-complete"] .status-dot,
 body[data-game-state="run-complete"] .status-dot {
   background: var(--gold);
@@ -707,14 +712,41 @@ body[data-surface="water"] .lie-readout strong {
   bottom: 22px;
   z-index: 3;
   display: none;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
-  width: min(360px, calc(100% - 44px));
+  width: min(430px, calc(100% - 44px));
 }
 
 .touch-bar button {
-  min-height: 38px;
+  min-height: 48px;
   padding: 0 10px;
+  touch-action: none;
+}
+
+.touch-hint {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 82px;
+  z-index: 3;
+  display: none;
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 14, 16, 0.74);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 850;
+  line-height: 1.25;
+  text-align: center;
+  pointer-events: none;
+  backdrop-filter: blur(12px);
+}
+
+.game-menu:not(.is-hidden) ~ .touch-hint,
+.game-menu:not(.is-hidden) ~ .touch-bar {
+  display: none;
 }
 
 @media (max-width: 900px) {
@@ -845,6 +877,10 @@ body[data-surface="water"] .lie-readout strong {
     display: grid;
   }
 
+  .touch-hint {
+    display: block;
+  }
+
   .menu-card {
     gap: 10px;
     padding: 16px;
@@ -936,5 +972,26 @@ body[data-surface="water"] .lie-readout strong {
   .touch-bar button:hover:not(:disabled),
   .menu-button:hover {
     transform: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .touch-bar {
+    right: 10px;
+    bottom: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .touch-bar button {
+    min-height: 44px;
+    padding: 0 8px;
+    font-size: 0.78rem;
+  }
+
+  .touch-hint {
+    left: 10px;
+    right: 10px;
+    bottom: 64px;
+    font-size: 0.76rem;
   }
 }

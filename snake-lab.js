@@ -17,7 +17,8 @@ const ctx = canvas.getContext("2d");
 const GRID = 24;
 const MAX_CELLS = GRID * GRID;
 const START_LENGTH = 4;
-const BEST_KEY = "snake-lab-best";
+const BEST_KEY = "inefy-snake-lab-best";
+const LEGACY_BEST_KEYS = ["snake-lab-best"];
 const STEP_START = 138;
 const STEP_MIN = 58;
 const STEP_GAIN = 3.6;
@@ -67,8 +68,10 @@ if (reducedMotionQuery.addEventListener) {
 
 function readBest() {
   try {
-    const value = Number.parseInt(window.localStorage.getItem(BEST_KEY) || "0", 10);
-    return Number.isFinite(value) ? value : 0;
+    return [BEST_KEY, ...LEGACY_BEST_KEYS].reduce((currentBest, key) => {
+      const value = Number.parseInt(window.localStorage.getItem(key) || "0", 10);
+      return Number.isFinite(value) ? Math.max(currentBest, value) : currentBest;
+    }, 0);
   } catch {
     return 0;
   }
@@ -591,6 +594,12 @@ function handleKey(event) {
     event.preventDefault();
     primeAudio();
     setDirection(...map[event.code]);
+  }
+  if (event.code === "KeyP" || event.code === "Escape") {
+    if (state === "playing" || state === "paused") {
+      event.preventDefault();
+      togglePause();
+    }
   }
   if (event.code === "Space") {
     event.preventDefault();
