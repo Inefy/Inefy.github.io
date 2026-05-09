@@ -28,7 +28,8 @@ body {
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   background:
     radial-gradient(circle at 10% 12%, rgba(70, 214, 202, 0.24), transparent 25rem),
     radial-gradient(circle at 92% 6%, rgba(245, 196, 91, 0.2), transparent 24rem),
@@ -70,13 +71,13 @@ button:disabled {
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr);
+  align-content: start;
+  grid-template-rows: auto;
   gap: 12px;
   width: 100%;
-  height: 100svh;
   min-height: 100svh;
   padding: 16px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .sweep-app::before,

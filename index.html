@@ -216,8 +216,8 @@
           <nav class="hero-proof-links" aria-label="Proof links">
             <span class="prompt">$ proof</span>
             <a href="movie-night.html">Movie Night page</a>
-            <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">MovieBot repo</a>
-            <a href="traverseops-demo.html">TraverseOps demo</a>
+            <a href="moviebot-case-study.html">MovieBot case study</a>
+            <a href="traverseops-case-study.html">TraverseOps case study</a>
           </nav>
         </div>
 
@@ -378,81 +378,23 @@
           </p>
         </div>
 
-        <div class="selected-work-grid">
+        <div class="selected-work-grid" data-project-render="home-selected">
           <article class="project-card selected-work-card" data-tags="automation field web">
-            <figure class="project-visual">
-              <picture>
-                <source srcset="assets/traverseops-workspace.webp" type="image/webp">
-                <img src="assets/traverseops-workspace.png" alt="TraverseOps map workspace with municipal asset details" loading="lazy" decoding="async" width="1440" height="1100">
-              </picture>
-            </figure>
             <div class="project-card-body">
-              <div class="project-meta">
-                <span><i aria-hidden="true"></i> Public demo</span>
-                <span>Field ops UI</span>
-              </div>
+              <div class="project-meta"><span><i aria-hidden="true"></i> Public demo</span><span>Field ops UI</span></div>
               <h3>TraverseOps &mdash; Field Operations Map &amp; Work-Order Demo</h3>
-              <p class="project-problem">
-                Field teams lose time when maps, inspections, and work orders are split; I built a MapLibre/Supabase demo linking asset filters, selected records, and work-order flows.
-              </p>
-              <div class="what-built-card">
-                <p class="what-built-label">What I built</p>
-                <ul class="project-bullets">
-                  <li>Modeled assets, inspections, work orders, imports, reports, and team roles around field-crew and supervisor workflows.</li>
-                  <li>Built a map-first asset workflow with status filtering, selected-asset panels, and direct paths into inspection and work-order screens.</li>
-                  <li>Documented demo boundaries and production hardening needs, including auth, role permissions, offline sync, audit logs, validation, and mobile field testing.</li>
-                </ul>
-                <p class="ownership-note">Uses external map/data tooling such as MapLibre and Supabase; the public demo uses sample municipal-style data.</p>
-                <p class="ownership-note"><strong>Production readiness:</strong> Solid map/work-order workflow and sample data model; real use needs auth, RBAC, audit trails, offline sync, import validation, mobile field testing, and ops monitoring.</p>
-              </div>
-              <div class="tech-stack">
-                <span>MapLibre</span>
-                <span>Supabase</span>
-                <span>Work orders</span>
-                <span>Imports</span>
-                <span>Reports</span>
-                <span>Mobile field UI</span>
-              </div>
+              <p class="project-problem">Field teams lose time when maps, inspections, and work orders are split; TraverseOps links asset filters, selected records, and work-order flows.</p>
               <div class="card-actions">
                 <a href="traverseops-case-study.html">Case Study</a>
                 <a href="traverseops-demo.html">Live Demo</a>
               </div>
             </div>
           </article>
-
           <article class="project-card selected-work-card" data-tags="automation stream">
-            <figure class="project-visual">
-              <picture>
-                <source srcset="assets/movie-night-preview.webp" type="image/webp">
-                <img src="assets/movie-night-preview.png" alt="Movie Night page with Twitch stream, chat panel, MovieBot commands, and movie library links" loading="lazy" decoding="async" width="1200" height="630">
-              </picture>
-            </figure>
             <div class="project-card-body">
-              <div class="project-meta">
-                <span><i aria-hidden="true"></i> Public repo</span>
-                <span>Twitch / OBS</span>
-              </div>
+              <div class="project-meta"><span><i aria-hidden="true"></i> Public repo</span><span>Twitch / OBS</span></div>
               <h3>StreamCinema Vote Bot &mdash; Twitch Chat Voting + OBS Automation</h3>
-              <p class="project-problem">
-                Streamer-run movie nights need reliable voting and playback handoff; I built a Python/TwitchIO bot that tracks chat votes, rescans local movies, resolves ties, and drives OBS WebSocket.
-              </p>
-              <div class="what-built-card">
-                <p class="what-built-label">What I built</p>
-                <ul class="project-bullets">
-                  <li>Implemented Twitch chat commands for voting, results, current movie, time remaining, movie list, and help.</li>
-                  <li>Built vote-state logic for changed votes, duplicate prevention, partial title matching, tie resolution, and fallback selection.</li>
-                  <li>Connected OBS WebSocket playback automation with movie-folder scanning, token refresh, reconnect behavior, and setup/security notes.</li>
-                </ul>
-                <p class="ownership-note">Uses TwitchIO, Twitch OAuth/chat, OBS WebSocket, and local public-domain media files as external inputs and APIs.</p>
-                <p class="ownership-note"><strong>Production readiness:</strong> Solid local automation flow for voting and OBS control; real stream operations need secret rotation, reconnect health checks, rate-limit handling, logs, tests, and an operator dashboard.</p>
-              </div>
-              <div class="tech-stack">
-                <span>Python</span>
-                <span>TwitchIO</span>
-                <span>OBS WebSocket</span>
-                <span>OAuth refresh</span>
-                <span>Vote state</span>
-              </div>
+              <p class="project-problem">Streamer-run movie nights need reliable voting and playback handoff; MovieBot tracks chat votes, resolves ties, and controls OBS playback.</p>
               <div class="card-actions">
                 <a href="moviebot-case-study.html">Case Study</a>
                 <a href="movie-night.html">Movie Night</a>
@@ -461,39 +403,11 @@
               </div>
             </div>
           </article>
-
           <article class="project-card selected-work-card" data-tags="web">
-            <figure class="project-visual">
-              <picture>
-                <source srcset="assets/web-paint-workspace.webp" type="image/webp">
-                <img src="assets/web-paint-workspace.png" alt="Web Paint browser tool showing the project guide, toolbar controls, brush settings, and drawing workspace" loading="lazy" decoding="async" width="1280" height="670">
-              </picture>
-            </figure>
             <div class="project-card-body">
-              <div class="project-meta">
-                <span><i aria-hidden="true"></i> Browser tool</span>
-                <span>Canvas app</span>
-              </div>
+              <div class="project-meta"><span><i aria-hidden="true"></i> Browser tool</span><span>Canvas app</span></div>
               <h3>Web Paint &mdash; Browser Canvas Drawing Tool</h3>
-              <p class="project-problem">
-                Browser drawing needs reliable state; I built a vanilla JavaScript Canvas editor with tool modes, undo/redo snapshots, import/export, zoom, and mobile-friendly panels.
-              </p>
-              <div class="what-built-card">
-                <p class="what-built-label">What I built</p>
-                <ul class="project-bullets">
-                  <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
-                  <li>Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.</li>
-                  <li>Managed tool settings, selected color, brush size, selection state, and status output in vanilla JavaScript.</li>
-                </ul>
-                <p class="ownership-note">Uses browser Canvas, Clipboard, File, Fullscreen, and LocalStorage APIs; no drawing framework is used.</p>
-                <p class="ownership-note"><strong>Production readiness:</strong> Solid static canvas editor prototype; broader use would need memory-aware history, autosave recovery, richer keyboard shortcuts, accessibility improvements, and cross-browser device testing.</p>
-              </div>
-              <div class="tech-stack">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>Canvas API</span>
-              </div>
+              <p class="project-problem">Browser drawing needs reliable state; Web Paint provides canvas tools, undo/redo, import/export, zoom, and mobile-friendly panels.</p>
               <div class="card-actions">
                 <a href="paint.html">Live Demo</a>
                 <a href="web-paint-case-study.html">Case Study</a>
@@ -883,6 +797,7 @@
         </div>
         <div class="contact-actions">
           <a class="button primary" href="mailto:hello@zacbatten.me">Email Zac</a>
+          <button class="button secondary copy-email-button" type="button" data-copy-email="hello@zacbatten.me">Copy email</button>
           <a class="button primary" href="resume.html">View resume</a>
           <a class="button primary" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub">GitHub</a>
         </div>
@@ -910,6 +825,8 @@
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
+    <script src="project-data.js" defer></script>
+    <script src="project-renderer.js" defer></script>
     <script src="shared.js" defer></script>
     <script src="home.js" defer></script>
   </body>

@@ -123,6 +123,88 @@
     });
   }
 
+  function ensureCopyEmailStatus() {
+    let status = document.querySelector("[data-copy-email-status]");
+    if (status) return status;
+
+    status = document.createElement("span");
+    status.className = "sr-only";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+    status.setAttribute("aria-atomic", "true");
+    status.dataset.copyEmailStatus = "true";
+    document.body.appendChild(status);
+    return status;
+  }
+
+  async function copyTextToClipboard(value) {
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(value);
+        return true;
+      } catch {
+        // Fall back for browsers that expose the Clipboard API but block writes.
+      }
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = value;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.inset = "0 auto auto 0";
+    textarea.style.width = "1px";
+    textarea.style.height = "1px";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    textarea.setSelectionRange(0, value.length);
+
+    let didCopy = false;
+    try {
+      didCopy = document.execCommand("copy");
+    } finally {
+      textarea.remove();
+    }
+
+    if (!didCopy) {
+      throw new Error("Email copy failed");
+    }
+
+    return didCopy;
+  }
+
+  function initCopyEmailButtons() {
+    const buttons = document.querySelectorAll("[data-copy-email]");
+    if (!buttons.length) return;
+
+    const status = ensureCopyEmailStatus();
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", async () => {
+        const email = button.dataset.copyEmail || "hello@zacbatten.me";
+        const originalText = button.dataset.originalText || button.textContent.trim() || "Copy email";
+        button.dataset.originalText = originalText;
+        button.disabled = true;
+
+        try {
+          await copyTextToClipboard(email);
+          button.textContent = "Copied";
+          status.textContent = `Email address copied: ${email}.`;
+        } catch {
+          button.textContent = "Copy failed";
+          status.textContent = "Could not copy the email address. Use the Email Zac link instead.";
+        }
+
+        window.clearTimeout(Number(button.dataset.resetTimer));
+        button.dataset.resetTimer = String(window.setTimeout(() => {
+          button.textContent = button.dataset.originalText || "Copy email";
+          button.disabled = false;
+        }, 2200));
+      });
+    });
+  }
+
   initMobileNavigation();
   initSkipLinks();
+  initCopyEmailButtons();
 })();

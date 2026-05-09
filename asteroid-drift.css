@@ -30,7 +30,8 @@ body {
 
 body {
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   background:
     linear-gradient(115deg, rgba(104, 183, 255, 0.14), transparent 32%),
     linear-gradient(245deg, rgba(255, 143, 198, 0.12), transparent 30%),
@@ -58,12 +59,13 @@ a {
 .drift-app {
   position: relative;
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr);
+  align-content: start;
+  grid-template-rows: auto;
   gap: 12px;
   width: 100%;
   min-height: 100svh;
   padding: 16px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .drift-app::before,

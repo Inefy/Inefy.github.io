@@ -111,6 +111,10 @@
           <p class="case-template-summary">
             Twitch movie nights can bog down in manual polling and OBS setup: viewers need a low-friction voting flow, the streamer needs fewer repetitive steps, and OBS needs the right local media file at the right time. I built StreamCinema Vote Bot in Python with TwitchIO and OBS WebSocket integration so chat commands create a vote state, changed votes and ties are handled predictably, movie folders are scanned for eligible titles, tokens refresh, reconnects recover, and the winning public-domain movie can be handed to OBS.
           </p>
+          <div class="case-hero-actions">
+            <a class="button primary" href="#obs-flow-title">Jump to architecture</a>
+            <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Open GitHub repo</a>
+          </div>
           <dl class="case-template-meta" aria-label="Project metadata">
             <div>
               <dt>Project type</dt>
@@ -135,7 +139,7 @@
           </dl>
         </div>
 
-        <figure class="case-study-image-frame">
+        <figure class="screenshot-gallery__item case-study-image-frame">
           <picture>
             <source srcset="assets/movie-night-preview.webp" type="image/webp">
             <img src="assets/movie-night-preview.png" alt="Movie Night showcase page with Twitch stream, chat, MovieBot workflow details, and public-domain movie links" width="1200" height="630" loading="eager" fetchpriority="high" decoding="async">
@@ -152,6 +156,7 @@
         </div>
         <div class="work-links">
           <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub repo</a>
+          <a href="#obs-flow-title">Architecture / OBS flow</a>
           <a href="movie-night.html">Movie Night</a>
           <a href="movie-library.html">Movie Library</a>
           <a href="notes.html#moviebot-page-split">Related build note</a>
@@ -385,65 +390,79 @@
           <section class="case-template-section" aria-labelledby="obs-flow-title">
             <p class="eyebrow">08 / OBS playback flow</p>
             <h2 id="obs-flow-title">The OBS handoff updates the configured media source.</h2>
-            <div class="moviebot-flow-diagram" role="img" aria-labelledby="moviebot-flow-title" aria-describedby="moviebot-flow-description">
+            <div class="case-inline-actions" aria-label="MovieBot architecture next steps">
+              <a class="button primary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Open GitHub repo</a>
+              <a class="button secondary" href="#deployment-title">Read setup notes</a>
+            </div>
+            <div class="moviebot-flow-diagram">
               <div class="moviebot-flow-heading">
                 <strong id="moviebot-flow-title">MovieBot system flow</strong>
                 <span id="moviebot-flow-description">Viewer chat commands are parsed by the Twitch bot, update vote state, resolve the poll, select a local movie, control OBS WebSocket playback, and produce the stream output. Token refresh, reconnect behavior, and local movie folder scanning support the main flow.</span>
               </div>
-              <div class="moviebot-flow-track" aria-hidden="true">
-                <div class="moviebot-flow-node">
-                  <span>Viewer</span>
-                  <strong>Chat command</strong>
-                  <small><code>!vote</code>, <code>!results</code>, <code>!time</code></small>
-                </div>
-                <div class="moviebot-flow-node">
-                  <span>Twitch bot</span>
-                  <strong>Command parser</strong>
-                  <small>Validate poll state, title text, and command args</small>
-                </div>
-                <div class="moviebot-flow-node">
-                  <span>State</span>
-                  <strong>Vote state</strong>
-                  <small>Per-viewer votes and movie totals</small>
-                </div>
-                <div class="moviebot-flow-node">
-                  <span>Poll</span>
-                  <strong>Tie resolution</strong>
-                  <small>Highest votes, random tie/fallback pick</small>
-                </div>
-                <div class="moviebot-flow-node">
-                  <span>Media</span>
-                  <strong>Selected movie</strong>
-                  <small>Normalized local file path</small>
-                </div>
-                <div class="moviebot-flow-node">
-                  <span>OBS</span>
-                  <strong>WebSocket playback</strong>
-                  <small>Set source, switch scene, restart media</small>
-                </div>
-                <div class="moviebot-flow-node">
-                  <span>Output</span>
-                  <strong>Stream output</strong>
-                  <small>Next public-domain movie plays</small>
-                </div>
-              </div>
-              <div class="moviebot-support-grid" aria-hidden="true">
-                <div>
-                  <span>Support path</span>
-                  <strong>Token refresh</strong>
-                  <p>Validate and refresh Twitch OAuth tokens before auth failures break chat control.</p>
-                </div>
-                <div>
-                  <span>Support path</span>
-                  <strong>Reconnect behavior</strong>
-                  <p>Recover Twitch IRC and OBS WebSocket connections with health checks, reconnects, and backoff.</p>
-                </div>
-                <div>
-                  <span>Support path</span>
-                  <strong>Local movie folder scanning</strong>
-                  <p>Scan playable files, refresh the in-memory movie list, and provide titles for vote matching.</p>
-                </div>
-              </div>
+              <figure class="architecture-svg-card">
+                <svg class="architecture-svg" viewBox="0 0 960 520" role="img" aria-labelledby="moviebot-svg-title" aria-describedby="moviebot-svg-desc" focusable="false">
+                  <title id="moviebot-svg-title">MovieBot chat-to-OBS architecture diagram</title>
+                  <desc id="moviebot-svg-desc">Twitch chat commands enter a Python command parser, update vote state, resolve the poll, choose a scanned local movie, and send OBS WebSocket commands. Token refresh and reconnect routines support Twitch and OBS connections.</desc>
+                  <defs>
+                    <marker id="moviebot-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#68b7ff"></path>
+                    </marker>
+                    <marker id="moviebot-support-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6de1a6"></path>
+                    </marker>
+                  </defs>
+
+                  <rect class="svg-node svg-node-blue" x="42" y="112" width="132" height="96" rx="12"></rect>
+                  <text class="svg-kicker" x="64" y="144">VIEWER</text>
+                  <text class="svg-label" x="64" y="174">Chat</text>
+                  <text class="svg-note" x="64" y="196">!vote / !results</text>
+
+                  <rect class="svg-node svg-node-blue" x="214" y="112" width="148" height="96" rx="12"></rect>
+                  <text class="svg-kicker" x="236" y="144">TWITCHIO</text>
+                  <text class="svg-label" x="236" y="174">Parser</text>
+                  <text class="svg-note" x="236" y="196">Validate command</text>
+
+                  <rect class="svg-node svg-node-accent" x="402" y="112" width="132" height="96" rx="12"></rect>
+                  <text class="svg-kicker" x="424" y="144">STATE</text>
+                  <text class="svg-label" x="424" y="174">Votes</text>
+                  <text class="svg-note" x="424" y="196">One vote/user</text>
+
+                  <rect class="svg-node svg-node-gold" x="574" y="112" width="132" height="96" rx="12"></rect>
+                  <text class="svg-kicker" x="596" y="144">POLL</text>
+                  <text class="svg-label" x="596" y="174">Winner</text>
+                  <text class="svg-note" x="596" y="196">Pick winner</text>
+
+                  <rect class="svg-node svg-node-accent" x="746" y="112" width="148" height="96" rx="12"></rect>
+                  <text class="svg-kicker" x="768" y="144">OBS</text>
+                  <text class="svg-label" x="768" y="174">OBS control</text>
+                  <text class="svg-note" x="768" y="196">Set source / scene</text>
+
+                  <rect class="svg-node svg-node-blue" x="746" y="298" width="148" height="96" rx="12"></rect>
+                  <text class="svg-kicker" x="768" y="330">OUTPUT</text>
+                  <text class="svg-label" x="768" y="360">Stream</text>
+                  <text class="svg-note" x="768" y="382">Movie starts</text>
+
+                  <rect class="svg-node svg-node-accent" x="214" y="298" width="148" height="96" rx="12"></rect>
+                  <text class="svg-kicker" x="236" y="330">MEDIA</text>
+                  <text class="svg-label" x="236" y="360">Folder scan</text>
+                  <text class="svg-note" x="236" y="382">Playable files</text>
+
+                  <rect class="svg-node svg-node-gold" x="402" y="298" width="180" height="96" rx="12"></rect>
+                  <text class="svg-kicker" x="424" y="330">RELIABILITY</text>
+                  <text class="svg-label" x="424" y="360">Token / reconnect</text>
+                  <text class="svg-note" x="424" y="382">Twitch and OBS</text>
+
+                  <path class="svg-arrow svg-arrow-blue" marker-end="url(#moviebot-arrow)" d="M 174 160 H 204"></path>
+                  <path class="svg-arrow svg-arrow-blue" marker-end="url(#moviebot-arrow)" d="M 362 160 H 392"></path>
+                  <path class="svg-arrow svg-arrow-blue" marker-end="url(#moviebot-arrow)" d="M 534 160 H 564"></path>
+                  <path class="svg-arrow svg-arrow-blue" marker-end="url(#moviebot-arrow)" d="M 706 160 H 736"></path>
+                  <path class="svg-arrow svg-arrow-blue" marker-end="url(#moviebot-arrow)" d="M 820 208 V 288"></path>
+                  <path class="svg-arrow" marker-end="url(#moviebot-support-arrow)" d="M 288 298 C 322 246 414 226 468 208"></path>
+                  <path class="svg-arrow" marker-end="url(#moviebot-support-arrow)" d="M 582 346 C 688 348 718 222 746 188"></path>
+                  <path class="svg-arrow svg-arrow-muted" marker-end="url(#moviebot-support-arrow)" d="M 492 298 C 440 246 330 228 288 208"></path>
+                </svg>
+                <figcaption>MovieBot is organized as a long-running local automation loop: chat creates structured input, vote state decides the next file, OBS receives playback commands, and recovery routines keep the stream path from failing quietly.</figcaption>
+              </figure>
             </div>
             <p>
               Text fallback: a viewer sends a chat command, TwitchIO routes it to the bot command parser, and the bot validates the command before changing vote state. When the poll ends, the bot resolves the winner or tie, selects a local movie path from the scanned folder, and sends OBS WebSocket commands to update the media source, switch scenes, restart playback, and produce the stream output. Separate background routines keep Twitch tokens fresh, recover chat/OBS connections, and rescan the local movie folder.
@@ -466,6 +485,23 @@
                 <span>Media loading uses configurable retry attempts and delays; failures trigger fallback movie selection when possible.</span>
               </li>
             </ol>
+            <figure class="case-code-example" aria-labelledby="moviebot-obs-code-title">
+              <figcaption id="moviebot-obs-code-title">What this demonstrates: the OBS handoff is a small command pipeline around a normalized local file path, guarded by connection-aware WebSocket calls.</figcaption>
+              <pre tabindex="0"><code class="language-python">normalized_path = os.path.normpath(path)
+settings = {"local_file": normalized_path}
+
+set_settings_request = obs_requests.SetInputSettings(
+    inputName=MEDIA_SOURCE_NAME,
+    inputSettings=settings,
+    overlay=True
+)
+
+set_response = await self.safe_obs_call(set_settings_request)
+if set_response is not None and await self._set_program_scene(SCENE_NAME):
+    if await self._restart_media_input(MEDIA_SOURCE_NAME):
+        return True</code></pre>
+              <p class="case-code-note">Trimmed from the public bot source to show the core OBS media-source update without local paths or credentials.</p>
+            </figure>
           </section>
 
           <section class="case-template-section" aria-labelledby="movie-scan-title">
@@ -498,6 +534,22 @@
                 <p>At poll end, tied winners are resolved by random selection and announced. If no votes exist, the bot picks a random movie when one is available.</p>
               </article>
             </div>
+            <figure class="case-code-example" aria-labelledby="moviebot-vote-code-title">
+              <figcaption id="moviebot-vote-code-title">What this demonstrates: each viewer owns one vote, and changing votes updates both the per-user map and aggregate movie totals.</figcaption>
+              <pre tabindex="0"><code class="language-python">previous_vote_path = self.voter_data.get(user)
+if previous_vote_path:
+    if previous_vote_path == selected_movie_path:
+        await ctx.send(f"@{user}, you already voted for '{selected_basename}'.")
+        return
+    if previous_vote_path in self.votes:
+        self.votes[previous_vote_path] -= 1
+        if self.votes[previous_vote_path] &lt;= 0:
+            del self.votes[previous_vote_path]
+
+self.votes[selected_movie_path] = self.votes.get(selected_movie_path, 0) + 1
+self.voter_data[user] = selected_movie_path</code></pre>
+              <p class="case-code-note">Trimmed from the public bot source so the vote-change logic is visible without surrounding chat and logging code.</p>
+            </figure>
           </section>
 
           <section class="case-template-section" aria-labelledby="reliability-title">
@@ -609,27 +661,31 @@
           <section class="case-template-section" aria-labelledby="screenshots-title">
             <p class="eyebrow">15 / Screenshots and capture placeholders</p>
             <h2 id="screenshots-title">Static screenshots now, motion captures still pending.</h2>
-            <div class="case-template-screenshot-grid">
-              <figure class="case-study-image-frame">
-                <picture>
-                  <source srcset="assets/movie-night-preview.webp" type="image/webp">
-                  <img src="assets/movie-night-preview.png" alt="Movie Night page showing Twitch stream, chat area, MovieBot automation context, and movie library links" width="1200" height="630" loading="lazy" decoding="async">
-                </picture>
+            <div class="screenshot-gallery screenshot-gallery--feature-first case-template-screenshot-grid">
+              <figure class="screenshot-gallery__item case-study-image-frame">
+                <a class="screenshot-gallery__link" href="assets/movie-night-preview.png" aria-label="Open full-size Movie Night showcase screenshot">
+                  <picture>
+                    <source srcset="assets/movie-night-preview.webp" type="image/webp">
+                    <img src="assets/movie-night-preview.png" alt="Movie Night page showing Twitch stream, chat area, MovieBot automation context, and movie library links" width="1200" height="630" loading="lazy" decoding="async">
+                  </picture>
+                </a>
                 <figcaption>Movie Night page that presents the bot workflow to viewers.</figcaption>
               </figure>
-              <figure class="case-study-image-frame">
-                <picture>
-                  <source srcset="assets/movie-library-preview.webp" type="image/webp">
-                  <img src="assets/movie-library-preview.png" alt="Movie Library page with searchable public-domain poster grid and MovieBot vote-command buttons" width="1200" height="630" loading="lazy" decoding="async">
-                </picture>
+              <figure class="screenshot-gallery__item case-study-image-frame">
+                <a class="screenshot-gallery__link" href="assets/movie-library-preview.png" aria-label="Open full-size Movie Library screenshot">
+                  <picture>
+                    <source srcset="assets/movie-library-preview.webp" type="image/webp">
+                    <img src="assets/movie-library-preview.png" alt="Movie Library page with searchable public-domain poster grid and MovieBot vote-command buttons" width="1200" height="630" loading="lazy" decoding="async">
+                  </picture>
+                </a>
                 <figcaption>Movie Library page used to browse titles before sending <code>!vote</code> in chat.</figcaption>
               </figure>
-              <figure class="case-template-image-placeholder" role="img" aria-label="Planned GIF area showing a Twitch chat vote command and MovieBot confirmation">
+              <figure class="screenshot-gallery__placeholder case-template-image-placeholder" role="img" aria-label="Planned GIF area showing a Twitch chat vote command and MovieBot confirmation">
                 <span class="placeholder-kicker">Capture pending</span>
                 <strong>Chat vote confirmation</strong>
                 <figcaption>Intended to show <code>!vote</code>, partial title matching, vote-change feedback, and <code>!results</code>.</figcaption>
               </figure>
-              <figure class="case-template-image-placeholder" role="img" aria-label="Planned GIF area showing OBS source update after the MovieBot vote winner is selected">
+              <figure class="screenshot-gallery__placeholder case-template-image-placeholder" role="img" aria-label="Planned GIF area showing OBS source update after the MovieBot vote winner is selected">
                 <span class="placeholder-kicker">Capture pending</span>
                 <strong>OBS playback handoff</strong>
                 <figcaption>Intended to show the media source updating, scene switching, and playback restart after a winning movie is selected.</figcaption>

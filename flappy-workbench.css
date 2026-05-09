@@ -21,7 +21,11 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  overflow: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body,
@@ -47,9 +51,10 @@ a:focus-visible {
 .game-app {
   display: grid;
   width: 100vw;
-  height: 100svh;
-  grid-template-rows: 56px auto minmax(0, 1fr);
-  overflow: hidden;
+  min-height: 100svh;
+  align-content: start;
+  grid-template-rows: auto;
+  overflow: visible;
   color: var(--ink);
   background:
     linear-gradient(135deg, rgba(109, 225, 166, 0.13), transparent 34rem),
@@ -238,7 +243,7 @@ a:focus-visible {
 .game-stage {
   position: relative;
   width: min(100%, 1180px);
-  height: 100%;
+  height: clamp(320px, 44vw, 520px);
   min-height: 320px;
   overflow: hidden;
   background: #101516;

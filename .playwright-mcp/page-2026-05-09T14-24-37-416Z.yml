@@ -1,0 +1,792 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#top"
+  - banner [ref=e3]:
+    - link "Zac Batten home" [ref=e4] [cursor=pointer]:
+      - /url: index.html#top
+      - generic [ref=e5]: ZB
+      - generic [ref=e6]:
+        - generic [ref=e7]: Zac Batten
+        - generic [ref=e8]: Inefy workbench
+    - navigation "Primary navigation" [ref=e9]:
+      - link "Work" [ref=e10] [cursor=pointer]:
+        - /url: work.html
+      - link "Case Studies" [ref=e11] [cursor=pointer]:
+        - /url: case-studies.html
+      - link "About" [ref=e12] [cursor=pointer]:
+        - /url: about.html
+      - link "Notes" [ref=e13] [cursor=pointer]:
+        - /url: notes.html
+      - link "Resume" [ref=e14] [cursor=pointer]:
+        - /url: resume.html
+      - link "Contact" [ref=e15] [cursor=pointer]:
+        - /url: contact.html
+      - link "View Zac Batten on GitHub" [ref=e16] [cursor=pointer]:
+        - /url: https://github.com/Inefy
+        - text: GitHub
+  - main [ref=e17]:
+    - region "Professional projects, working demos, and build notes." [ref=e18]:
+      - generic [ref=e19]:
+        - paragraph [ref=e20]: Work
+        - heading "Professional projects, working demos, and build notes." [level=1] [ref=e21]
+        - paragraph [ref=e22]: "A complete project index for hiring review: flagship case studies first, then supporting pages, browser experiments, and notes that explain the implementation decisions."
+        - navigation "Work page sections" [ref=e23]:
+          - link "Start here" [ref=e24] [cursor=pointer]:
+            - /url: "#start-here"
+          - link "Project comparison" [ref=e25] [cursor=pointer]:
+            - /url: "#project-comparison"
+          - link "Flagship case studies" [ref=e26] [cursor=pointer]:
+            - /url: "#flagship-case-studies"
+          - link "Supporting projects" [ref=e27] [cursor=pointer]:
+            - /url: "#supporting-projects"
+          - link "Proof of polish" [ref=e28] [cursor=pointer]:
+            - /url: "#proof-of-polish"
+          - link "Interactive experiments" [ref=e29] [cursor=pointer]:
+            - /url: "#interactive-experiments"
+          - link "Site/build notes" [ref=e30] [cursor=pointer]:
+            - /url: "#site-build-notes"
+    - region "Start here depending on what you care about." [ref=e31]:
+      - generic [ref=e32]:
+        - paragraph [ref=e33]: Quick routes
+        - heading "Start here depending on what you care about." [level=2] [ref=e34]
+        - paragraph [ref=e35]: Different reviewers can jump straight to the strongest proof for their lens.
+      - generic "Suggested starting points by reviewer interest" [ref=e36]:
+        - link "Automation MovieBot Python Twitch voting, OBS WebSocket control, token refresh, reconnect handling." [ref=e37] [cursor=pointer]:
+          - /url: moviebot-case-study.html
+          - generic [ref=e38]: Automation
+          - strong [ref=e39]: MovieBot
+          - generic [ref=e40]: Python Twitch voting, OBS WebSocket control, token refresh, reconnect handling.
+        - link "Product / workflow UI TraverseOps Map-first field operations, asset workflows, inspections, work orders, reports." [ref=e41] [cursor=pointer]:
+          - /url: traverseops-case-study.html
+          - generic [ref=e42]: Product / workflow UI
+          - strong [ref=e43]: TraverseOps
+          - generic [ref=e44]: Map-first field operations, asset workflows, inspections, work orders, reports.
+        - link "Frontend / canvas Web Paint Vanilla JavaScript state, Canvas 2D rendering, undo/redo, import/export." [ref=e45] [cursor=pointer]:
+          - /url: web-paint-case-study.html
+          - generic [ref=e46]: Frontend / canvas
+          - strong [ref=e47]: Web Paint
+          - generic [ref=e48]: Vanilla JavaScript state, Canvas 2D rendering, undo/redo, import/export.
+        - link "Interactive JavaScript Interactive Lab Canvas games, keyboard/touch input, localStorage scores, pause/resume loops." [ref=e49] [cursor=pointer]:
+          - /url: interactive-lab.html
+          - generic [ref=e50]: Interactive JavaScript
+          - strong [ref=e51]: Interactive Lab
+          - generic [ref=e52]: Canvas games, keyboard/touch input, localStorage scores, pause/resume loops.
+        - link "Static site polish Portfolio build notes GitHub Pages, metadata, accessibility passes, reduced motion, link paths." [ref=e53] [cursor=pointer]:
+          - /url: notes.html#portfolio-cleanup
+          - generic [ref=e54]: Static site polish
+          - strong [ref=e55]: Portfolio build notes
+          - generic [ref=e56]: GitHub Pages, metadata, accessibility passes, reduced motion, link paths.
+    - region "Compare scope, stack, and proof quickly." [ref=e57]:
+      - generic [ref=e58]:
+        - paragraph [ref=e59]: 01 / Project comparison
+        - heading "Compare scope, stack, and proof quickly." [level=2] [ref=e60]
+        - paragraph [ref=e61]: Use this matrix for a fast hiring scan before opening the deeper case studies or demos.
+      - generic "Scrollable project comparison matrix" [ref=e62]:
+        - table "Comparison of Zac Batten portfolio projects by project type, stack, demonstrated skills, demo, source, and case study." [ref=e63]:
+          - caption [ref=e64]: Comparison of Zac Batten portfolio projects by project type, stack, demonstrated skills, demo, source, and case study.
+          - rowgroup [ref=e65]:
+            - row "Project Type Stack What it demonstrates Demo Source Case study" [ref=e66]:
+              - columnheader "Project" [ref=e67]
+              - columnheader "Type" [ref=e68]
+              - columnheader "Stack" [ref=e69]
+              - columnheader "What it demonstrates" [ref=e70]
+              - columnheader "Demo" [ref=e71]
+              - columnheader "Source" [ref=e72]
+              - columnheader "Case study" [ref=e73]
+          - rowgroup [ref=e74]:
+            - row "TraverseOps Type Field-operations map and work-order demo Stack MapLibre-style UI, Supabase-style data model, HTML, CSS, JavaScript What it demonstrates Asset filtering, selected-record workflows, inspections, work orders, imports, reports, role-aware screens, and production-hardening judgment. Demo Open demo Source Not public yet Case study Read case study" [ref=e75]:
+              - rowheader "TraverseOps" [ref=e76]
+              - cell "Type Field-operations map and work-order demo" [ref=e77]
+              - cell "Stack MapLibre-style UI, Supabase-style data model, HTML, CSS, JavaScript" [ref=e78]
+              - cell "What it demonstrates Asset filtering, selected-record workflows, inspections, work orders, imports, reports, role-aware screens, and production-hardening judgment." [ref=e79]
+              - cell "Demo Open demo" [ref=e80]:
+                - text: Demo
+                - link "Open demo" [ref=e81] [cursor=pointer]:
+                  - /url: traverseops-demo.html
+              - cell "Source Not public yet" [ref=e82]:
+                - text: Source
+                - generic [ref=e83]: Not public yet
+              - cell "Case study Read case study" [ref=e84]:
+                - text: Case study
+                - link "Read case study" [ref=e85] [cursor=pointer]:
+                  - /url: traverseops-case-study.html
+            - row "MovieBot / StreamCinema Type Python Twitch chat voting and OBS automation bot Stack Python, TwitchIO, OBS WebSocket, OAuth, local media scanning What it demonstrates Command parsing, vote-state handling, tie resolution, token refresh, reconnect behavior, and OBS media-source control. Demo Movie Night Source GitHub Case study Read case study" [ref=e86]:
+              - rowheader "MovieBot / StreamCinema" [ref=e87]
+              - cell "Type Python Twitch chat voting and OBS automation bot" [ref=e88]
+              - cell "Stack Python, TwitchIO, OBS WebSocket, OAuth, local media scanning" [ref=e89]
+              - cell "What it demonstrates Command parsing, vote-state handling, tie resolution, token refresh, reconnect behavior, and OBS media-source control." [ref=e90]
+              - cell "Demo Movie Night" [ref=e91]:
+                - text: Demo
+                - link "Movie Night" [ref=e92] [cursor=pointer]:
+                  - /url: movie-night.html
+              - cell "Source GitHub" [ref=e93]:
+                - text: Source
+                - link "GitHub" [ref=e94] [cursor=pointer]:
+                  - /url: https://github.com/Inefy/twitch-movie-bot
+              - cell "Case study Read case study" [ref=e95]:
+                - text: Case study
+                - link "Read case study" [ref=e96] [cursor=pointer]:
+                  - /url: moviebot-case-study.html
+            - row "Web Paint Type Browser canvas drawing editor Stack HTML, CSS, JavaScript, Canvas API, Pointer Events, File/Clipboard APIs What it demonstrates Tool state, canvas rendering, typed-array fill, undo/redo snapshots, import/export, zoom, resizing, and mobile tool panels. Demo Open tool Source Source Case study Read case study" [ref=e97]:
+              - rowheader "Web Paint" [ref=e98]
+              - cell "Type Browser canvas drawing editor" [ref=e99]
+              - cell "Stack HTML, CSS, JavaScript, Canvas API, Pointer Events, File/Clipboard APIs" [ref=e100]
+              - cell "What it demonstrates Tool state, canvas rendering, typed-array fill, undo/redo snapshots, import/export, zoom, resizing, and mobile tool panels." [ref=e101]
+              - cell "Demo Open tool" [ref=e102]:
+                - text: Demo
+                - link "Open tool" [ref=e103] [cursor=pointer]:
+                  - /url: paint.html
+              - cell "Source Source" [ref=e104]:
+                - text: Source
+                - link "Source" [ref=e105] [cursor=pointer]:
+                  - /url: https://github.com/Inefy/Inefy.github.io/blob/main/paint.js
+              - cell "Case study Read case study" [ref=e106]:
+                - text: Case study
+                - link "Read case study" [ref=e107] [cursor=pointer]:
+                  - /url: web-paint-case-study.html
+            - row "Movie Library Type Static voting catalog for MovieBot Stack HTML, CSS, JavaScript, static data, Clipboard API, lazy-loaded posters What it demonstrates Search/filter UI, copyable !vote commands, poster loading, result counts, accessible labels, and no-JS fallback content. Demo Open catalog Source Source Case study Read listing" [ref=e108]:
+              - rowheader "Movie Library" [ref=e109]
+              - cell "Type Static voting catalog for MovieBot" [ref=e110]
+              - cell "Stack HTML, CSS, JavaScript, static data, Clipboard API, lazy-loaded posters" [ref=e111]
+              - cell "What it demonstrates Search/filter UI, copyable !vote commands, poster loading, result counts, accessible labels, and no-JS fallback content." [ref=e112]:
+                - text: What it demonstrates Search/filter UI, copyable
+                - code [ref=e113]: "!vote"
+                - text: commands, poster loading, result counts, accessible labels, and no-JS fallback content.
+              - cell "Demo Open catalog" [ref=e114]:
+                - text: Demo
+                - link "Open catalog" [ref=e115] [cursor=pointer]:
+                  - /url: movie-library.html
+              - cell "Source Source" [ref=e116]:
+                - text: Source
+                - link "Source" [ref=e117] [cursor=pointer]:
+                  - /url: https://github.com/Inefy/Inefy.github.io/blob/main/movie-library.html
+              - cell "Case study Read listing" [ref=e118]:
+                - text: Case study
+                - link "Read listing" [ref=e119] [cursor=pointer]:
+                  - /url: case-studies.html#movie-library
+            - row "Interactive Lab demos Type Canvas games and browser experiments Stack HTML, CSS, JavaScript, Canvas API, LocalStorage, keyboard/touch input What it demonstrates Game loops, collision checks, grid state, touch controls, pause/resume behavior, best-score persistence, and accessible instructions. Demo Open lab Source Repo Case study Experiment index" [ref=e120]:
+              - rowheader "Interactive Lab demos" [ref=e121]
+              - cell "Type Canvas games and browser experiments" [ref=e122]
+              - cell "Stack HTML, CSS, JavaScript, Canvas API, LocalStorage, keyboard/touch input" [ref=e123]
+              - cell "What it demonstrates Game loops, collision checks, grid state, touch controls, pause/resume behavior, best-score persistence, and accessible instructions." [ref=e124]
+              - cell "Demo Open lab" [ref=e125]:
+                - text: Demo
+                - link "Open lab" [ref=e126] [cursor=pointer]:
+                  - /url: interactive-lab.html
+              - cell "Source Repo" [ref=e127]:
+                - text: Source
+                - link "Repo" [ref=e128] [cursor=pointer]:
+                  - /url: https://github.com/Inefy/Inefy.github.io
+              - cell "Case study Experiment index" [ref=e129]:
+                - text: Case study
+                - link "Experiment index" [ref=e130] [cursor=pointer]:
+                  - /url: interactive-lab.html
+            - row "Portfolio site Type Static developer portfolio and case-study system Stack HTML, CSS, JavaScript, GitHub Pages, Open Graph, JSON-LD, sitemap/robots What it demonstrates Information architecture, recruiter paths, metadata, responsive layout, accessibility basics, reduced motion, and no-build static deployment. Demo Homepage Source GitHub Case study Build note" [ref=e131]:
+              - rowheader "Portfolio site" [ref=e132]
+              - cell "Type Static developer portfolio and case-study system" [ref=e133]
+              - cell "Stack HTML, CSS, JavaScript, GitHub Pages, Open Graph, JSON-LD, sitemap/robots" [ref=e134]
+              - cell "What it demonstrates Information architecture, recruiter paths, metadata, responsive layout, accessibility basics, reduced motion, and no-build static deployment." [ref=e135]
+              - cell "Demo Homepage" [ref=e136]:
+                - text: Demo
+                - link "Homepage" [ref=e137] [cursor=pointer]:
+                  - /url: index.html
+              - cell "Source GitHub" [ref=e138]:
+                - text: Source
+                - link "GitHub" [ref=e139] [cursor=pointer]:
+                  - /url: https://github.com/Inefy/Inefy.github.io
+              - cell "Case study Build note" [ref=e140]:
+                - text: Case study
+                - link "Build note" [ref=e141] [cursor=pointer]:
+                  - /url: notes.html#portfolio-cleanup
+    - region "Flagship professional work." [ref=e142]:
+      - generic [ref=e143]:
+        - paragraph [ref=e144]: 02 / Flagship case studies
+        - heading "Flagship professional work." [level=2] [ref=e145]
+        - paragraph [ref=e146]: "Projects with the clearest hiring signal: practical product shape, working proof, and technical implementation detail."
+      - generic [ref=e147]:
+        - article [ref=e148]:
+          - figure [ref=e149]:
+            - img "TraverseOps map workspace showing municipal assets and selected asset details" [ref=e151]
+          - generic [ref=e152]:
+            - generic [ref=e153]:
+              - generic [ref=e154]: Public demo / case study
+              - heading "TraverseOps — Field Operations Map & Work-Order Demo" [level=3] [ref=e155]
+            - paragraph [ref=e156]: Field teams lose time when maps, inspections, and work orders are split; I built a MapLibre/Supabase demo linking asset filters, selected records, and work-order flows.
+            - generic [ref=e157]:
+              - paragraph [ref=e158]: What I built
+              - list [ref=e159]:
+                - listitem [ref=e160]: Modeled assets, inspections, work orders, imports, reports, and team roles around field-crew and supervisor workflows.
+                - listitem [ref=e161]: Built a map-first asset workflow with status filtering, selected-asset panels, and direct paths into inspection and work-order screens.
+                - listitem [ref=e162]: Documented demo boundaries and production hardening needs, including auth, role permissions, offline sync, audit logs, validation, and mobile field testing.
+              - paragraph [ref=e163]: Uses external map/data tooling and sample municipal-style data; it is a public demo, not a production deployment.
+              - paragraph [ref=e164]:
+                - strong [ref=e165]: "Production readiness:"
+                - text: Solid workflow model and public-safe sample data. Real use needs authentication, role permissions, audit logs, offline sync, import validation, field-device QA, and map/source monitoring.
+            - generic [ref=e166]:
+              - generic [ref=e167]:
+                - term [ref=e168]: Stack
+                - definition [ref=e169]: MapLibre, Supabase-backed sample data, desktop/mobile frontend, Capacitor-ready app structure.
+              - generic [ref=e170]:
+                - term [ref=e171]: Status
+                - definition [ref=e172]: Public demo / case study
+              - generic [ref=e173]:
+                - term [ref=e174]: Updated
+                - definition [ref=e175]: May 2026
+            - generic [ref=e176]:
+              - link "Case Study" [ref=e177] [cursor=pointer]:
+                - /url: traverseops-case-study.html
+              - link "Live Demo" [ref=e178] [cursor=pointer]:
+                - /url: traverseops-demo.html
+        - article [ref=e179]:
+          - figure [ref=e180]:
+            - img "Movie Night page with Twitch stream, chat panel, MovieBot workflow notes, and movie library links" [ref=e182]
+          - generic [ref=e183]:
+            - generic [ref=e184]:
+              - generic [ref=e185]: Public repo / live showcase
+              - heading "StreamCinema Vote Bot — Twitch Chat Voting + OBS Automation" [level=3] [ref=e186]
+            - paragraph [ref=e187]: Streamer-run movie nights need reliable voting and playback handoff; I built a Python/TwitchIO bot that tracks chat votes, rescans local movies, resolves ties, and drives OBS WebSocket.
+            - generic [ref=e188]:
+              - paragraph [ref=e189]: What I built
+              - list [ref=e190]:
+                - listitem [ref=e191]: Implemented Twitch chat commands for voting, results, current movie, time remaining, movie list, and help.
+                - listitem [ref=e192]: Built vote-state logic for changed votes, duplicate prevention, partial title matching, tie resolution, and fallback selection.
+                - listitem [ref=e193]: Connected OBS WebSocket playback automation with movie-folder scanning, token refresh, reconnect behavior, and setup/security notes.
+              - paragraph [ref=e194]: Uses TwitchIO, Twitch OAuth/chat, OBS WebSocket, IMDb/poster links, and local public-domain media files as external inputs.
+              - paragraph [ref=e195]:
+                - strong [ref=e196]: "Production readiness:"
+                - text: Solid command, vote, and OBS automation path for a local operator. Real use needs secret rotation, rate-limit handling, reconnect health checks, structured logs, tests, and an operator dashboard.
+            - generic [ref=e197]:
+              - generic [ref=e198]:
+                - term [ref=e199]: Stack
+                - definition [ref=e200]: Python, TwitchIO, Twitch IRC/chat commands, OAuth refresh, OBS WebSocket, static showcase pages.
+              - generic [ref=e201]:
+                - term [ref=e202]: Status
+                - definition [ref=e203]: Public repo / live showcase
+              - generic [ref=e204]:
+                - term [ref=e205]: Updated
+                - definition [ref=e206]: May 2026
+            - generic [ref=e207]:
+              - link "Case Study" [ref=e208] [cursor=pointer]:
+                - /url: moviebot-case-study.html
+              - link "Demo" [ref=e209] [cursor=pointer]:
+                - /url: movie-night.html
+              - link "GitHub" [ref=e210] [cursor=pointer]:
+                - /url: https://github.com/Inefy/twitch-movie-bot
+        - article [ref=e211]:
+          - figure [ref=e212]:
+            - img "Web Paint browser tool showing toolbar controls, brush settings, touch guidance, and drawing workspace" [ref=e214]
+          - generic [ref=e215]:
+            - generic [ref=e216]:
+              - generic [ref=e217]: Live browser tool
+              - heading "Web Paint — Browser Canvas Drawing Tool" [level=3] [ref=e218]
+            - paragraph [ref=e219]: Browser drawing needs reliable state; I built a vanilla JavaScript Canvas editor with tool modes, undo/redo snapshots, import/export, zoom, and mobile-friendly panels.
+            - generic [ref=e220]:
+              - paragraph [ref=e221]: What I built
+              - list [ref=e222]:
+                - listitem [ref=e223]: Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.
+                - listitem [ref=e224]: Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.
+                - listitem [ref=e225]: Managed tool settings, selected color, brush size, selection state, and status output in vanilla JavaScript.
+              - paragraph [ref=e226]: Uses standard browser Canvas, Clipboard, File, Fullscreen, and LocalStorage APIs; no drawing framework is used.
+              - paragraph [ref=e227]:
+                - strong [ref=e228]: "Production readiness:"
+                - text: Solid static canvas editor prototype. Broader use would need memory-aware history, autosave recovery, richer keyboard shortcuts, accessibility improvements, and cross-browser device testing.
+            - generic [ref=e229]:
+              - generic [ref=e230]:
+                - term [ref=e231]: Stack
+                - definition [ref=e232]: HTML, CSS, JavaScript, Canvas API, pointer events, LocalStorage, File APIs.
+              - generic [ref=e233]:
+                - term [ref=e234]: Status
+                - definition [ref=e235]: Live browser tool
+              - generic [ref=e236]:
+                - term [ref=e237]: Updated
+                - definition [ref=e238]: May 2026
+            - generic [ref=e239]:
+              - link "Demo" [ref=e240] [cursor=pointer]:
+                - /url: paint.html
+              - link "Case Study" [ref=e241] [cursor=pointer]:
+                - /url: web-paint-case-study.html
+              - link "Source" [ref=e242] [cursor=pointer]:
+                - /url: https://github.com/Inefy/Inefy.github.io/blob/main/paint.js
+    - region "Smaller project surfaces that support the main work." [ref=e243]:
+      - generic [ref=e244]:
+        - paragraph [ref=e245]: 03 / Supporting projects
+        - heading "Smaller project surfaces that support the main work." [level=2] [ref=e246]
+        - paragraph [ref=e247]: "Pages and utilities that round out the portfolio: search, static architecture, metadata, and recruiter paths."
+      - generic [ref=e248]:
+        - article [ref=e249]:
+          - figure [ref=e250]:
+            - img "Movie Library page showing public-domain poster cards, search controls, and MovieBot vote-command actions" [ref=e252]
+          - generic [ref=e253]:
+            - generic [ref=e254]:
+              - generic [ref=e255]: Supporting live page
+              - heading "Public Domain Movie Library" [level=3] [ref=e256]
+            - paragraph [ref=e257]: Viewers need accurate vote commands; I built a static HTML/CSS/JavaScript MovieBot catalog with filters, lazy posters, copyable !vote commands, and a no-JS fallback.
+            - generic [ref=e258]:
+              - paragraph [ref=e259]: What I built
+              - list [ref=e260]:
+                - listitem [ref=e261]: Built a searchable catalog that filters public-domain MovieBot queue data by title, year, runtime, and rating.
+                - listitem [ref=e262]: Implemented copyable !vote commands with button labels and feedback so viewers can send accurate Twitch votes.
+                - listitem [ref=e263]: Added lazy-loaded poster cards, accessible metadata, and a static noscript fallback for the full movie list.
+              - paragraph [ref=e264]: Uses public-domain movie metadata, external IMDb links, and externally hosted poster images as source content.
+              - paragraph [ref=e265]:
+                - strong [ref=e266]: "Production readiness:"
+                - text: Solid static catalog, copy buttons, and fallback content. Hardening would generate pages from one trusted data source, validate poster/link health, and keep viewer privacy intact.
+            - generic [ref=e267]:
+              - generic [ref=e268]:
+                - term [ref=e269]: Stack
+                - definition [ref=e270]: Static HTML, CSS Grid, vanilla JavaScript search, movie metadata, external poster images, no-JavaScript fallback markup.
+              - generic [ref=e271]:
+                - term [ref=e272]: Status
+                - definition [ref=e273]: Supporting live page
+              - generic [ref=e274]:
+                - term [ref=e275]: Updated
+                - definition [ref=e276]: May 2026
+            - generic [ref=e277]:
+              - link "Case Study" [ref=e278] [cursor=pointer]:
+                - /url: case-studies.html#movie-library
+              - link "Demo" [ref=e279] [cursor=pointer]:
+                - /url: movie-library.html
+              - link "MovieBot" [ref=e280] [cursor=pointer]:
+                - /url: moviebot-case-study.html
+              - link "Movie Night" [ref=e281] [cursor=pointer]:
+                - /url: movie-night.html
+              - link "GitHub" [ref=e282] [cursor=pointer]:
+                - /url: https://github.com/Inefy/Inefy.github.io/blob/main/movie-library.html
+        - article [ref=e283]:
+          - figure [ref=e284]:
+            - img "Inefy portfolio homepage showing Zac Batten hero copy, selected project cards, and recruiter contact paths" [ref=e286]
+          - generic [ref=e287]:
+            - generic [ref=e288]:
+              - generic [ref=e289]: Static GitHub Pages site
+              - heading "Inefy Portfolio Site" [level=3] [ref=e290]
+            - paragraph [ref=e291]: Recruiters need a fast proof-to-contact path; I built a GitHub Pages portfolio with reusable project sections, case studies, metadata, reduced motion, and accessible CTAs.
+            - generic [ref=e292]:
+              - paragraph [ref=e293]: What I built
+              - list [ref=e294]:
+                - listitem [ref=e295]: Reworked homepage positioning, selected-work hierarchy, resume/contact paths, navigation, footer links, metadata, and case-study routing.
+                - listitem [ref=e296]: Built reusable static sections for project cards, technical strengths, notes, interactive demos, and work/case-study indexes.
+                - listitem [ref=e297]: Added mobile-first CSS, visible focus states, reduced-motion handling, sitemap/robots metadata, and browser-verified mobile controls.
+              - paragraph [ref=e298]: Runs on GitHub Pages with static HTML/CSS/JavaScript; external project images and embeds are credited through their linked pages.
+              - paragraph [ref=e299]:
+                - strong [ref=e300]: "Production readiness:"
+                - text: Solid static portfolio surface. Hardening would add automated link checks, HTML validation, visual regression snapshots, accessibility scans, and a repeatable image/metadata release process.
+            - generic [ref=e301]:
+              - generic [ref=e302]:
+                - term [ref=e303]: Stack
+                - definition [ref=e304]: HTML, CSS, vanilla JavaScript, GitHub Pages, SEO metadata.
+              - generic [ref=e305]:
+                - term [ref=e306]: Status
+                - definition [ref=e307]: Static GitHub Pages site
+              - generic [ref=e308]:
+                - term [ref=e309]: Updated
+                - definition [ref=e310]: May 2026
+            - generic [ref=e311]:
+              - link "Case Study" [ref=e312] [cursor=pointer]:
+                - /url: notes.html#portfolio-cleanup
+              - link "Demo" [ref=e313] [cursor=pointer]:
+                - /url: index.html
+              - link "GitHub" [ref=e314] [cursor=pointer]:
+                - /url: https://github.com/Inefy/Inefy.github.io
+    - region "Technical care visible in the site itself." [ref=e315]:
+      - generic [ref=e316]:
+        - paragraph [ref=e317]: 04 / Proof of polish
+        - heading "Technical care visible in the site itself." [level=2] [ref=e318]
+        - paragraph [ref=e319]: Small implementation details that make the portfolio easier to review, share, crawl, and navigate without requiring a build system or backend.
+      - generic [ref=e320]:
+        - article [ref=e321]:
+          - generic [ref=e322]:
+            - generic [ref=e323]:
+              - generic [ref=e324]: Static architecture
+              - heading "Deployable as plain files." [level=3] [ref=e325]
+            - generic [ref=e326]:
+              - generic [ref=e327]:
+                - term [ref=e328]: Hosting
+                - definition [ref=e329]: GitHub Pages serves static HTML, CSS, JavaScript, images, sitemap, and robots files without a custom backend.
+              - generic [ref=e330]:
+                - term [ref=e331]: No-JS fallbacks
+                - definition [ref=e332]: Key pages keep HTML fallback content where dynamic rendering or filtering is used, including the Movie Library catalog path.
+              - generic [ref=e333]:
+                - term [ref=e334]: Security headers
+                - definition [ref=e335]: Pages include a Content Security Policy meta tag that limits script, style, image, frame, connection, media, and worker sources.
+        - article [ref=e336]:
+          - generic [ref=e337]:
+            - generic [ref=e338]:
+              - generic [ref=e339]: Review experience
+              - heading "Built for sharing and scanning." [level=3] [ref=e340]
+            - generic [ref=e341]:
+              - generic [ref=e342]:
+                - term [ref=e343]: Metadata
+                - definition [ref=e344]: Major pages include unique titles, descriptions, Open Graph tags, Twitter card metadata, sitemap entries, and structured project context.
+              - generic [ref=e345]:
+                - term [ref=e346]: Media loading
+                - definition [ref=e347]: Project screenshots and poster-heavy surfaces use lazy loading, async decoding, explicit dimensions, and static placeholders to reduce layout shift.
+              - generic [ref=e348]:
+                - term [ref=e349]: Accessibility
+                - definition [ref=e350]: Skip links, visible focus states, keyboard-friendly navigation, labeled controls, status updates, and reduced-motion support are treated as part of the implementation.
+    - region "Browser demos that show frontend mechanics." [ref=e351]:
+      - generic [ref=e352]:
+        - paragraph [ref=e353]: 05 / Interactive experiments
+        - heading "Browser demos that show frontend mechanics." [level=2] [ref=e354]
+        - paragraph [ref=e355]: Playable demos kept separate from the main case studies, framed around input handling, canvas rendering, local state, and keyboard/touch controls.
+      - generic [ref=e356]:
+        - article [ref=e357]:
+          - figure [ref=e358]:
+            - img "Mini Golf canvas game start screen with a five-hole course, tee, cup, hazard, and start-round control" [ref=e360]
+          - generic [ref=e361]:
+            - generic [ref=e362]:
+              - generic [ref=e363]: Physics game
+              - heading "Mini Golf" [level=3] [ref=e364]
+            - paragraph [ref=e365]: Touch golf needs clear aiming and scoring; I built a Canvas/JavaScript five-hole course with drag power, collision response, hazards, scorecards, and best runs.
+            - generic [ref=e366]:
+              - paragraph [ref=e367]: What I built
+              - list [ref=e368]:
+                - listitem [ref=e369]: Created five course layouts with par values, walls, hazard zones, surface types, cup targets, and hole progression.
+                - listitem [ref=e370]: Implemented drag aiming, shot-power calculation, ball motion, wall/hazard/cup collision checks, and stroke counting.
+                - listitem [ref=e371]: Built scorecard UI, best-score persistence, pause/restart/fullscreen controls, touch hints, and hole navigation.
+              - paragraph [ref=e372]: Uses standard canvas APIs and familiar mini-golf mechanics; the course implementation is custom JavaScript.
+              - paragraph [ref=e373]:
+                - strong [ref=e374]: "Production readiness:"
+                - text: Solid input, scoring, and course loop; archived experiment. Hardening would add physics edge-case tests, mobile browser QA, accessible alternatives, and save-state migration.
+            - generic [ref=e375]:
+              - generic [ref=e376]:
+                - term [ref=e377]: Stack
+                - definition [ref=e378]: Canvas, JavaScript, local persistence.
+              - generic [ref=e379]:
+                - term [ref=e380]: Status
+                - definition [ref=e381]: Physics game
+              - generic [ref=e382]:
+                - term [ref=e383]: Updated
+                - definition [ref=e384]: May 2026
+            - generic [ref=e385]:
+              - link "Demo" [ref=e386] [cursor=pointer]:
+                - /url: mini-golf.html
+              - link "GitHub" [ref=e387] [cursor=pointer]:
+                - /url: https://github.com/Inefy/Inefy.github.io/blob/main/mini-golf.js
+        - article [ref=e388]:
+          - figure [ref=e389]:
+            - img "Asteroid Drift canvas game start screen with ship controls, wave goal, and asteroid field preview" [ref=e391]
+          - generic [ref=e392]:
+            - generic [ref=e393]:
+              - generic [ref=e394]: Arcade loop
+              - heading "Asteroid Drift" [level=3] [ref=e395]
+            - paragraph [ref=e396]: Arcade loops need low-latency input; I built a Canvas/JavaScript Asteroids-style demo with thrust, shooting, shields, randomized spawns, collisions, waves, and touch controls.
+            - generic [ref=e397]:
+              - paragraph [ref=e398]: What I built
+              - list [ref=e399]:
+                - listitem [ref=e400]: Implemented ship thrust, rotation, projectile firing, shield charge, wraparound movement, and lives/scoring state.
+                - listitem [ref=e401]: Built randomized asteroid spawning, split behavior, wave progression, collision checks, and HUD progress updates.
+                - listitem [ref=e402]: Added keyboard and touch controls that feed the same input state, plus pause/restart/fullscreen and reduced-motion handling.
+              - paragraph [ref=e403]: Uses established Asteroids-style mechanics and browser canvas APIs; the runtime is custom vanilla JavaScript.
+              - paragraph [ref=e404]:
+                - strong [ref=e405]: "Production readiness:"
+                - text: Strongest game prototype with polished loop and controls. Real release work would tune difficulty, profile performance, test touch devices, and expand nonvisual status output.
+            - generic [ref=e406]:
+              - generic [ref=e407]:
+                - term [ref=e408]: Stack
+                - definition [ref=e409]: Canvas, JavaScript, real-time loop.
+              - generic [ref=e410]:
+                - term [ref=e411]: Status
+                - definition [ref=e412]: Arcade loop
+              - generic [ref=e413]:
+                - term [ref=e414]: Updated
+                - definition [ref=e415]: May 2026
+            - generic [ref=e416]:
+              - link "Demo" [ref=e417] [cursor=pointer]:
+                - /url: asteroid-drift.html
+              - link "GitHub" [ref=e418] [cursor=pointer]:
+                - /url: https://github.com/Inefy/Inefy.github.io/blob/main/asteroid-drift.js
+        - article [ref=e419]:
+          - figure [ref=e420]:
+            - img "Snake Lab canvas playfield with start menu and touch direction controls" [ref=e422]
+          - generic [ref=e423]:
+            - generic [ref=e424]:
+              - generic [ref=e425]: Grid game
+              - heading "Snake Lab" [level=3] [ref=e426]
+            - paragraph [ref=e427]: Snake needs fast turns without illegal reversals; I built a Canvas/JavaScript grid game with buffered input, growth, collisions, pace changes, and best scores.
+            - generic [ref=e428]:
+              - paragraph [ref=e429]: What I built
+              - list [ref=e430]:
+                - listitem [ref=e431]: Implemented grid state for snake segments, food placement, growth, wall/body collision detection, score, and length.
+                - listitem [ref=e432]: Built input buffering for Arrow keys, WASD, swipe gestures, and touch buttons while blocking illegal reverse turns.
+                - listitem [ref=e433]: Added pace changes, pause/restart/fullscreen controls, viewport-aware canvas sizing, and local best-score persistence.
+              - paragraph [ref=e434]: Uses classic Snake rules and browser canvas APIs; the game state and controls are custom JavaScript.
+              - paragraph [ref=e435]:
+                - strong [ref=e436]: "Production readiness:"
+                - text: Solid deterministic grid state and input buffering; archived experiment. Hardening would add regression tests for turns/collisions, deeper screen-reader alternatives, and save reset controls.
+            - generic [ref=e437]:
+              - generic [ref=e438]:
+                - term [ref=e439]: Stack
+                - definition [ref=e440]: Canvas, JavaScript, keyboard/touch input.
+              - generic [ref=e441]:
+                - term [ref=e442]: Status
+                - definition [ref=e443]: Grid game
+              - generic [ref=e444]:
+                - term [ref=e445]: Updated
+                - definition [ref=e446]: May 2026
+            - generic [ref=e447]:
+              - link "Demo" [ref=e448] [cursor=pointer]:
+                - /url: snake-lab.html
+              - link "GitHub" [ref=e449] [cursor=pointer]:
+                - /url: https://github.com/Inefy/Inefy.github.io/blob/main/snake-lab.js
+        - article [ref=e450]:
+          - figure [ref=e451]:
+            - img "Brick Breaker canvas playfield with start menu, paddle, ball, and brick layout" [ref=e453]
+          - generic [ref=e454]:
+            - generic [ref=e455]:
+              - generic [ref=e456]: Arcade game
+              - heading "Brick Breaker" [level=3] [ref=e457]
+            - paragraph [ref=e458]: Paddle games need precise collisions; I built a Canvas/JavaScript Brick Breaker with launch state, wall/paddle/brick checks, levels, progress, and touch controls.
+            - generic [ref=e459]:
+              - paragraph [ref=e460]: What I built
+              - list [ref=e461]:
+                - listitem [ref=e462]: Implemented paddle movement, ball launch state, wall/paddle/brick collision checks, lives, scoring, and level-clearing logic.
+                - listitem [ref=e463]: Built progress, level, best-score, and power readouts around a viewport-aware Canvas playfield.
+                - listitem [ref=e464]: Added keyboard, pointer, and labeled touch controls that share the same movement and launch state.
+              - paragraph [ref=e465]: Uses familiar brick-breaker mechanics and browser canvas APIs; the level/runtime logic is custom JavaScript.
+              - paragraph [ref=e466]:
+                - strong [ref=e467]: "Production readiness:"
+                - text: Solid paddle, launch, collision, and score loop; archived experiment. Hardening would cover collision edge tests, performance profiling, level data validation, and accessibility fallbacks.
+            - generic [ref=e468]:
+              - generic [ref=e469]:
+                - term [ref=e470]: Stack
+                - definition [ref=e471]: Canvas, JavaScript, collision checks.
+              - generic [ref=e472]:
+                - term [ref=e473]: Status
+                - definition [ref=e474]: Arcade game
+              - generic [ref=e475]:
+                - term [ref=e476]: Updated
+                - definition [ref=e477]: May 2026
+            - generic [ref=e478]:
+              - link "Demo" [ref=e479] [cursor=pointer]:
+                - /url: brick-breaker.html
+              - link "GitHub" [ref=e480] [cursor=pointer]:
+                - /url: https://github.com/Inefy/Inefy.github.io/blob/main/brick-breaker.js
+        - article [ref=e481]:
+          - figure [ref=e482]:
+            - img "2048 puzzle game start screen with numbered tiles and keyboard/touch control panels in the background" [ref=e484]
+          - generic [ref=e485]:
+            - generic [ref=e486]:
+              - generic [ref=e487]: Puzzle game
+              - heading "2048" [level=3] [ref=e488]
+            - paragraph [ref=e489]: Tile merging needs deterministic board transforms; I built an HTML/CSS/JavaScript 2048 with single-merge rules, random spawns, undo, best score, and accessible summaries.
+            - generic [ref=e490]:
+              - paragraph [ref=e491]: What I built
+              - list [ref=e492]:
+                - listitem [ref=e493]: Implemented directional board transforms, merge rules, random tile spawning, win/loss checks, score updates, and move counting.
+                - listitem [ref=e494]: Built undo snapshots, local save/best-score persistence, keyboard shortcuts, swipe handling, and on-screen direction controls.
+                - listitem [ref=e495]: Added an accessible focusable board with dynamic row summaries, live status announcements, and decorative tile rendering separated from screen-reader output.
+              - paragraph [ref=e496]: Uses the established 2048 rule set; the browser UI, state updates, and persistence are custom code.
+              - paragraph [ref=e497]:
+                - strong [ref=e498]: "Production readiness:"
+                - text: Solid board transforms, persistence, undo, and accessible summaries; archived experiment. Hardening would add unit tests for merge rules, state migration, and screen-reader regression checks.
+            - generic [ref=e499]:
+              - generic [ref=e500]:
+                - term [ref=e501]: Stack
+                - definition [ref=e502]: HTML grid, JavaScript, LocalStorage.
+              - generic [ref=e503]:
+                - term [ref=e504]: Status
+                - definition [ref=e505]: Puzzle game
+              - generic [ref=e506]:
+                - term [ref=e507]: Updated
+                - definition [ref=e508]: May 2026
+            - generic [ref=e509]:
+              - link "Demo" [ref=e510] [cursor=pointer]:
+                - /url: 2048.html
+              - link "GitHub" [ref=e511] [cursor=pointer]:
+                - /url: https://github.com/Inefy/Inefy.github.io/blob/main/2048.js
+        - article [ref=e512]:
+          - figure [ref=e513]:
+            - img "Minefield Sweep board preview with difficulty controls, start menu, and minefield grid" [ref=e515]
+          - generic [ref=e516]:
+            - generic [ref=e517]:
+              - generic [ref=e518]: Logic game
+              - heading "Minefield Sweep" [level=3] [ref=e519]
+            - paragraph [ref=e520]: Mine puzzles need clear state and safe starts; I built a JavaScript grid game with delayed mines, recursive reveal, flag mode, timers, and accessible labels.
+            - generic [ref=e521]:
+              - paragraph [ref=e522]: What I built
+              - list [ref=e523]:
+                - listitem [ref=e524]: Implemented delayed mine placement, safe first reveal, adjacent counts, recursive empty-cell reveal, flag toggling, and win/loss state.
+                - listitem [ref=e525]: Built difficulty switching, timer/best-time persistence, mines-left tracking, cleared-percent updates, pause/restart controls, and touch flag mode.
+                - listitem [ref=e526]: Rendered the board as a keyboard-navigable grid with roving focus, row/column labels, live announcements, and state-specific cell descriptions.
+              - paragraph [ref=e527]: Uses classic minesweeper rules; the board generation, reveal logic, and DOM UI are custom JavaScript.
+              - paragraph [ref=e528]:
+                - strong [ref=e529]: "Production readiness:"
+                - text: Strong accessibility prototype with keyboard grid state and safe first reveal. Hardening would add reveal/flag tests, focus regression checks, difficulty validation, and clearer saved-state controls.
+            - generic [ref=e530]:
+              - generic [ref=e531]:
+                - term [ref=e532]: Stack
+                - definition [ref=e533]: JavaScript grid state, DOM UI.
+              - generic [ref=e534]:
+                - term [ref=e535]: Status
+                - definition [ref=e536]: Logic game
+              - generic [ref=e537]:
+                - term [ref=e538]: Updated
+                - definition [ref=e539]: May 2026
+            - generic [ref=e540]:
+              - link "Demo" [ref=e541] [cursor=pointer]:
+                - /url: minefield-sweep.html
+              - link "GitHub" [ref=e542] [cursor=pointer]:
+                - /url: https://github.com/Inefy/Inefy.github.io/blob/main/minefield-sweep.js
+        - article [ref=e543]:
+          - figure [ref=e544]:
+            - img "Flappy Workbench canvas playfield with start menu, bird, pipe obstacles, and touch controls" [ref=e546]
+          - generic [ref=e547]:
+            - generic [ref=e548]:
+              - generic [ref=e549]: Timing game
+              - heading "Flappy Workbench" [level=3] [ref=e550]
+            - paragraph [ref=e551]: Timing games need consistent physics; I built a Canvas/JavaScript Flappy-style loop with gravity, obstacle gaps, collision checks, best score, pause, and mobile flap input.
+            - generic [ref=e552]:
+              - paragraph [ref=e553]: What I built
+              - list [ref=e554]:
+                - listitem [ref=e555]: Implemented gravity, jump impulse, pipe spawning, gap sizing, collision checks, score tracking, and restart flow.
+                - listitem [ref=e556]: Built the Canvas render loop for the player, scrolling obstacles, ground movement, menu state, status text, and best-score persistence.
+                - listitem [ref=e557]: Added keyboard, pointer, tap, and labeled mobile Flap controls with pause/restart/fullscreen support.
+              - paragraph [ref=e558]: Uses Flappy-style mechanics and browser canvas APIs; the implementation is custom vanilla JavaScript.
+              - paragraph [ref=e559]:
+                - strong [ref=e560]: "Production readiness:"
+                - text: Solid timing loop, collision checks, and touch input; archived experiment. Hardening would add deterministic physics tests, mobile-browser QA, reduced-motion review, and more robust pause/resume validation.
+            - generic [ref=e561]:
+              - generic [ref=e562]:
+                - term [ref=e563]: Stack
+                - definition [ref=e564]: Canvas, JavaScript, lightweight state machine.
+              - generic [ref=e565]:
+                - term [ref=e566]: Status
+                - definition [ref=e567]: Timing game
+              - generic [ref=e568]:
+                - term [ref=e569]: Updated
+                - definition [ref=e570]: May 2026
+            - generic [ref=e571]:
+              - link "Demo" [ref=e572] [cursor=pointer]:
+                - /url: flappy-workbench.html
+              - link "GitHub" [ref=e573] [cursor=pointer]:
+                - /url: https://github.com/Inefy/Inefy.github.io/blob/main/flappy-workbench.js
+    - region "Implementation notes behind the portfolio." [ref=e574]:
+      - generic [ref=e575]:
+        - paragraph [ref=e576]: 06 / Site and build notes
+        - heading "Implementation notes behind the portfolio." [level=2] [ref=e577]
+        - paragraph [ref=e578]: Short build logs that connect the visible pages to implementation decisions, QA checks, and next improvements.
+      - generic [ref=e579]:
+        - article [ref=e580]:
+          - figure [ref=e581]
+          - generic [ref=e583]:
+            - generic [ref=e584]:
+              - generic [ref=e585]: Build log
+              - heading "Portfolio cleanup pass" [level=3] [ref=e586]
+            - paragraph [ref=e587]: Recruiters need a fast path from proof to contact; I rebuilt the static portfolio flow around homepage positioning, CTA hierarchy, metadata, resume paths, and selected-work framing.
+            - generic [ref=e588]:
+              - paragraph [ref=e589]: What I built
+              - list [ref=e590]:
+                - listitem [ref=e591]: Repositioned the hero around software development hiring actions instead of older casual homepage copy.
+                - listitem [ref=e592]: Restructured selected work, technical strengths, notes previews, resume/contact paths, and footer navigation.
+                - listitem [ref=e593]: Documented QA checks and accessibility/SEO follow-ups in the build notes.
+              - paragraph [ref=e594]: This is a static-site content and UI pass; GitHub Pages supplies the hosting layer.
+            - generic [ref=e595]:
+              - generic [ref=e596]:
+                - term [ref=e597]: Stack
+                - definition [ref=e598]: HTML, CSS, metadata, GitHub Pages.
+              - generic [ref=e599]:
+                - term [ref=e600]: Status
+                - definition [ref=e601]: Build log
+            - generic [ref=e602]:
+              - link "Read Note" [ref=e603] [cursor=pointer]:
+                - /url: notes.html#portfolio-cleanup
+              - link "Demo" [ref=e604] [cursor=pointer]:
+                - /url: index.html
+              - link "GitHub" [ref=e605] [cursor=pointer]:
+                - /url: https://github.com/Inefy/Inefy.github.io
+        - article [ref=e606]:
+          - figure [ref=e607]
+          - generic [ref=e609]:
+            - generic [ref=e610]:
+              - generic [ref=e611]: Build log
+              - heading "MovieBot stream surface split" [level=3] [ref=e612]
+            - paragraph [ref=e613]: MovieBot viewers need voting and browsing to stay distinct; I split the static stream page from the searchable HTML/CSS/JavaScript catalog and linked both back to the Python bot case study.
+            - generic [ref=e614]:
+              - paragraph [ref=e615]: What I built
+              - list [ref=e616]:
+                - listitem [ref=e617]: Split the live stream room and searchable catalog into separate pages with cross-links back to MovieBot.
+                - listitem [ref=e618]: Built the movie catalog search, vote-command copy flow, poster grid, and static fallback list.
+                - listitem [ref=e619]: Updated the MovieBot narrative so the bot, stream room, and catalog read as one system.
+              - paragraph [ref=e620]: Uses public-domain movie data, IMDb links, external poster images, and Twitch embed APIs.
+            - generic [ref=e621]:
+              - generic [ref=e622]:
+                - term [ref=e623]: Stack
+                - definition [ref=e624]: Static pages, movie data, no-JavaScript fallback.
+              - generic [ref=e625]:
+                - term [ref=e626]: Status
+                - definition [ref=e627]: Build log
+            - generic [ref=e628]:
+              - link "Read Note" [ref=e629] [cursor=pointer]:
+                - /url: notes.html#moviebot-page-split
+              - link "Demo" [ref=e630] [cursor=pointer]:
+                - /url: movie-night.html
+              - link "GitHub" [ref=e631] [cursor=pointer]:
+                - /url: https://github.com/Inefy/twitch-movie-bot
+        - article [ref=e632]:
+          - figure [ref=e633]
+          - generic [ref=e635]:
+            - generic [ref=e636]:
+              - generic [ref=e637]: Build log
+              - heading "TraverseOps public-demo framing" [level=3] [ref=e638]
+            - paragraph [ref=e639]: Field-operations demos can look shallow without context; I reframed TraverseOps around MapLibre/Supabase sample data, asset workflows, demo limits, and production-hardening requirements.
+            - generic [ref=e640]:
+              - paragraph [ref=e641]: What I built
+              - list [ref=e642]:
+                - listitem [ref=e643]: Reframed the project around field assets, inspections, work orders, imports, reports, and role-based review.
+                - listitem [ref=e644]: Added case-study sections for architecture, demo boundaries, screenshots, and production hardening.
+                - listitem [ref=e645]: Clarified that the public demo uses sample data and needs real auth, audit, validation, and offline sync for production.
+              - paragraph [ref=e646]: The page documents a public demo concept; the operational data shown is sample content.
+            - generic [ref=e647]:
+              - generic [ref=e648]:
+                - term [ref=e649]: Stack
+                - definition [ref=e650]: Product framing, case-study copy, mobile preview.
+              - generic [ref=e651]:
+                - term [ref=e652]: Status
+                - definition [ref=e653]: Build log
+            - generic [ref=e654]:
+              - link "Read Note" [ref=e655] [cursor=pointer]:
+                - /url: notes.html#traverseops-demo-framing
+              - link "Demo" [ref=e656] [cursor=pointer]:
+                - /url: traverseops-demo.html
+              - link "Case Study" [ref=e657] [cursor=pointer]:
+                - /url: traverseops-case-study.html
+    - region "Need the shorter path?" [ref=e658]:
+      - generic [ref=e659]:
+        - paragraph [ref=e660]: Next step
+        - heading "Need the shorter path?" [level=2] [ref=e661]
+        - paragraph [ref=e662]: For a hiring scan, start with TraverseOps, MovieBot, and Web Paint. For availability and contact details, use the resume or email links.
+      - generic [ref=e663]:
+        - link "View resume" [ref=e664] [cursor=pointer]:
+          - /url: resume.html
+        - link "Email Zac" [ref=e665] [cursor=pointer]:
+          - /url: mailto:hello@zacbatten.me
+        - link "Case studies" [ref=e666] [cursor=pointer]:
+          - /url: case-studies.html
+  - contentinfo [ref=e667]:
+    - generic [ref=e668]:
+      - strong [ref=e669]: Zac Batten
+      - generic [ref=e670]: Software developer building practical web tools, automation, and frontend interfaces.
+    - navigation "Footer navigation" [ref=e671]:
+      - link "Email Zac" [ref=e672] [cursor=pointer]:
+        - /url: mailto:hello@zacbatten.me
+      - link "Contact" [ref=e673] [cursor=pointer]:
+        - /url: contact.html
+      - link "Resume" [ref=e674] [cursor=pointer]:
+        - /url: resume.html
+      - link "GitHub" [ref=e675] [cursor=pointer]:
+        - /url: https://github.com/Inefy
+      - link "Work" [ref=e676] [cursor=pointer]:
+        - /url: work.html
+      - link "Case Studies" [ref=e677] [cursor=pointer]:
+        - /url: case-studies.html
+      - link "About" [ref=e678] [cursor=pointer]:
+        - /url: about.html
+      - link "Notes" [ref=e679] [cursor=pointer]:
+        - /url: notes.html
+      - link "Interactive Lab" [ref=e680] [cursor=pointer]:
+        - /url: interactive-lab.html
+      - link "Changelog" [ref=e681] [cursor=pointer]:
+        - /url: changelog.html
+      - link "Sitemap" [ref=e682] [cursor=pointer]:
+        - /url: sitemap.xml
+    - generic [ref=e683]: © 2026 Zac Batten

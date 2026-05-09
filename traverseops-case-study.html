@@ -110,6 +110,10 @@
           <p class="case-template-summary">
             Field crews and supervisors need one place to locate hydrant-style assets, inspect condition, open work orders, import updates, and report status. I built TraverseOps as a public MapLibre/Supabase field-operations demo with sample data, role-aware screens, asset-status filters, selected-asset workflows, import validation framing, reporting views, and a production-hardening plan that separates demo behavior from real municipal requirements.
           </p>
+          <div class="case-hero-actions">
+            <a class="button primary" href="traverseops-demo.html">Open live demo</a>
+            <a class="button secondary" href="work.html">Back to Work</a>
+          </div>
           <dl class="case-template-meta" aria-label="Project metadata">
             <div>
               <dt>Project type</dt>
@@ -134,7 +138,7 @@
           </dl>
         </div>
 
-        <figure class="case-study-image-frame">
+        <figure class="screenshot-gallery__item case-study-image-frame">
           <picture>
             <source srcset="assets/traverseops-workspace.webp" type="image/webp">
             <img src="assets/traverseops-workspace.png" alt="TraverseOps map workspace showing municipal assets, a selected asset panel, and field workflow context" width="1440" height="1100" loading="eager" fetchpriority="high" decoding="async">
@@ -325,46 +329,64 @@
           <section class="case-template-section" aria-labelledby="architecture-title">
             <p class="eyebrow">07 / Map/interface architecture</p>
             <h2 id="architecture-title">Map, record, workflow, and reporting layers stay separate.</h2>
-            <div class="traverse-architecture" role="img" aria-labelledby="architecture-diagram-title" aria-describedby="architecture-diagram-description">
+            <div class="traverse-architecture">
               <div class="traverse-architecture-heading">
                 <strong id="architecture-diagram-title">TraverseOps demo architecture</strong>
                 <span id="architecture-diagram-description">User roles interact with a map workspace backed by sample asset data, import records, inspections, work orders, and reporting/admin views inside a public demo boundary.</span>
               </div>
-              <div class="traverse-boundary">
-                <span class="traverse-boundary-label">Public demo / sample data boundary</span>
-                <div class="traverse-architecture-grid">
-                  <div class="architecture-node architecture-node-roles">
-                    <span class="architecture-kicker">User roles</span>
-                    <strong>Field crew, supervisor, admin</strong>
-                    <p>Different views and actions are shaped around who is inspecting, assigning, importing, or reviewing work.</p>
-                  </div>
-                  <div class="architecture-node architecture-node-data">
-                    <span class="architecture-kicker">Asset data / imports</span>
-                    <strong>Hydrant-style asset registry</strong>
-                    <p>Sample records enter through import-style flows with IDs, coordinates, status, condition, and area context.</p>
-                  </div>
-                  <div class="architecture-node architecture-node-map">
-                    <span class="architecture-kicker">Map layer</span>
-                    <strong>Asset map and selected record</strong>
-                    <p>MapLibre-style asset discovery, status filtering, selected markers, and detail panels keep location tied to workflow.</p>
-                  </div>
-                  <div class="architecture-node architecture-node-inspections">
-                    <span class="architecture-kicker">Inspections</span>
-                    <strong>Field observations</strong>
-                    <p>Inspection entries capture condition, checklist outcomes, notes, and follow-up signals against one asset.</p>
-                  </div>
-                  <div class="architecture-node architecture-node-work">
-                    <span class="architecture-kicker">Work orders</span>
-                    <strong>Trackable follow-up work</strong>
-                    <p>Issues found in the field become assigned, prioritized work tied back to the asset and source inspection.</p>
-                  </div>
-                  <div class="architecture-node architecture-node-reports">
-                    <span class="architecture-kicker">Reports / admin</span>
-                    <strong>Operational review</strong>
-                    <p>Reports summarize overdue inspections, open work, import exceptions, and status by area or role.</p>
-                  </div>
-                </div>
-              </div>
+              <figure class="architecture-svg-card">
+                <svg class="architecture-svg" viewBox="0 0 960 540" role="img" aria-labelledby="traverse-svg-title" aria-describedby="traverse-svg-desc" focusable="false">
+                  <title id="traverse-svg-title">TraverseOps architecture diagram</title>
+                  <desc id="traverse-svg-desc">Field, supervisor, and admin roles work inside a public sample-data boundary. Asset imports feed a registry, the registry feeds the map workspace, and selected assets connect inspections, work orders, and reports.</desc>
+                  <defs>
+                    <marker id="traverse-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6de1a6"></path>
+                    </marker>
+                  </defs>
+                  <rect class="svg-boundary" x="28" y="54" width="904" height="430" rx="18"></rect>
+                  <text class="svg-kicker" x="54" y="88">PUBLIC DEMO / SAMPLE DATA BOUNDARY</text>
+
+                  <rect class="svg-node svg-node-gold" x="62" y="134" width="178" height="96" rx="12"></rect>
+                  <text class="svg-kicker" x="84" y="166">USER ROLES</text>
+                  <text class="svg-label" x="84" y="196">Crew / supervisor</text>
+                  <text class="svg-note" x="84" y="218">Admin review paths</text>
+
+                  <rect class="svg-node svg-node-accent" x="296" y="134" width="178" height="96" rx="12"></rect>
+                  <text class="svg-kicker" x="318" y="166">ASSET IMPORTS</text>
+                  <text class="svg-label" x="318" y="196">Registry records</text>
+                  <text class="svg-note" x="318" y="218">IDs, status, areas</text>
+
+                  <rect class="svg-node svg-node-blue" x="530" y="134" width="178" height="96" rx="12"></rect>
+                  <text class="svg-kicker" x="552" y="166">MAP LAYER</text>
+                  <text class="svg-label" x="552" y="196">Selected asset</text>
+                  <text class="svg-note" x="552" y="218">Filters and panels</text>
+
+                  <rect class="svg-node svg-node-accent" x="296" y="314" width="178" height="96" rx="12"></rect>
+                  <text class="svg-kicker" x="318" y="346">INSPECTIONS</text>
+                  <text class="svg-label" x="318" y="376">Field notes</text>
+                  <text class="svg-note" x="318" y="398">Condition history</text>
+
+                  <rect class="svg-node svg-node-accent" x="530" y="314" width="178" height="96" rx="12"></rect>
+                  <text class="svg-kicker" x="552" y="346">WORK ORDERS</text>
+                  <text class="svg-label" x="552" y="376">Assigned work</text>
+                  <text class="svg-note" x="552" y="398">Priority and owner</text>
+
+                  <rect class="svg-node svg-node-gold" x="764" y="224" width="140" height="116" rx="12"></rect>
+                  <text class="svg-kicker" x="786" y="256">REPORTS</text>
+                  <text class="svg-label" x="786" y="286">Admin view</text>
+                  <text class="svg-note" x="786" y="308">Open work</text>
+                  <text class="svg-note" x="786" y="328">Import status</text>
+
+                  <path class="svg-arrow" marker-end="url(#traverse-arrow)" d="M 240 182 H 286"></path>
+                  <path class="svg-arrow svg-arrow-blue" marker-end="url(#traverse-arrow)" d="M 474 182 H 520"></path>
+                  <path class="svg-arrow svg-arrow-blue" marker-end="url(#traverse-arrow)" d="M 619 230 V 304"></path>
+                  <path class="svg-arrow" marker-end="url(#traverse-arrow)" d="M 530 362 H 484"></path>
+                  <path class="svg-arrow" marker-end="url(#traverse-arrow)" d="M 708 362 C 744 362 748 320 758 300"></path>
+                  <path class="svg-arrow svg-arrow-muted" marker-end="url(#traverse-arrow)" d="M 708 182 C 750 184 758 224 764 260"></path>
+                  <path class="svg-arrow svg-arrow-muted" marker-end="url(#traverse-arrow)" d="M 474 362 C 690 430 792 392 834 344"></path>
+                </svg>
+                <figcaption>TraverseOps separates role context, asset records, map selection, field workflows, and reporting so the demo can stay public while still modeling production-style relationships.</figcaption>
+              </figure>
             </div>
             <p>
               In plain terms: the demo keeps all public data inside a sample-data boundary. Users start from a role-specific field or admin context, import or review asset records, use the map to select an asset, then create inspections and work orders from that selected record. Reports and admin views summarize the same sample records so the workflow can be evaluated without exposing real municipal data.
@@ -423,6 +445,22 @@
                 </tbody>
               </table>
             </div>
+            <figure class="case-code-example" aria-labelledby="traverse-data-code-title">
+              <figcaption id="traverse-data-code-title">What this demonstrates: TraverseOps keeps workflow state explicit, then filters the same asset records used by the map, detail panel, reports, inspections, and work orders.</figcaption>
+              <pre tabindex="0"><code class="language-js">const traverseState = {
+  assets: [...traverseAssets],
+  inspections: [...baseInspections],
+  workOrders: [...baseWorkOrders],
+  selectedAssetId: "NH-014",
+  filter: "all"
+};
+
+function visibleAssets() {
+  if (traverseState.filter === "all") return traverseState.assets;
+  return traverseState.assets.filter((asset) => asset.status === traverseState.filter);
+}</code></pre>
+              <p class="case-code-note">This excerpt uses the public sample-data boundary from the demo, not private municipal records.</p>
+            </figure>
           </section>
 
           <section class="case-template-section" aria-labelledby="import-title">
@@ -606,33 +644,41 @@
           <section class="case-template-section" aria-labelledby="screenshots-title">
             <p class="eyebrow">16 / Screenshots and demo states</p>
             <h2 id="screenshots-title">Screenshots/demo</h2>
-            <div class="case-template-screenshot-grid">
-              <figure class="case-study-image-frame">
-                <picture>
-                  <source srcset="assets/traverseops-workspace.webp" type="image/webp">
-                  <img src="assets/traverseops-workspace.png" alt="TraverseOps map workspace showing asset markers and a selected asset detail panel" width="1440" height="1100" loading="lazy" decoding="async">
-                </picture>
+            <div class="screenshot-gallery screenshot-gallery--feature-first case-template-screenshot-grid">
+              <figure class="screenshot-gallery__item case-study-image-frame">
+                <a class="screenshot-gallery__link" href="assets/traverseops-workspace.png" aria-label="Open full-size TraverseOps map workspace screenshot">
+                  <picture>
+                    <source srcset="assets/traverseops-workspace.webp" type="image/webp">
+                    <img src="assets/traverseops-workspace.png" alt="TraverseOps map workspace showing asset markers and a selected asset detail panel" width="1440" height="1100" loading="lazy" decoding="async">
+                  </picture>
+                </a>
                 <figcaption>Map workspace with selected-asset context.</figcaption>
               </figure>
-              <figure class="case-study-image-frame">
-                <picture>
-                  <source srcset="assets/traverseops-imports.webp" type="image/webp">
-                  <img src="assets/traverseops-imports.png" alt="TraverseOps import tab showing sample import validation, accepted rows, rejected rows, and staging controls" width="1216" height="505" loading="lazy" decoding="async">
-                </picture>
+              <figure class="screenshot-gallery__item case-study-image-frame">
+                <a class="screenshot-gallery__link" href="assets/traverseops-imports.png" aria-label="Open full-size TraverseOps import workflow screenshot">
+                  <picture>
+                    <source srcset="assets/traverseops-imports.webp" type="image/webp">
+                    <img src="assets/traverseops-imports.png" alt="TraverseOps import tab showing sample import validation, accepted rows, rejected rows, and staging controls" width="1216" height="505" loading="lazy" decoding="async">
+                  </picture>
+                </a>
                 <figcaption>Import workflow with accepted/rejected sample records and staging actions.</figcaption>
               </figure>
-              <figure class="case-study-image-frame">
-                <picture>
-                  <source srcset="assets/traverseops-inspections.webp" type="image/webp">
-                  <img src="assets/traverseops-inspections.png" alt="TraverseOps inspection screen showing asset selection, condition notes, checklist items, and recent inspection records" width="1216" height="744" loading="lazy" decoding="async">
-                </picture>
+              <figure class="screenshot-gallery__item case-study-image-frame">
+                <a class="screenshot-gallery__link" href="assets/traverseops-inspections.png" aria-label="Open full-size TraverseOps inspection workflow screenshot">
+                  <picture>
+                    <source srcset="assets/traverseops-inspections.webp" type="image/webp">
+                    <img src="assets/traverseops-inspections.png" alt="TraverseOps inspection screen showing asset selection, condition notes, checklist items, and recent inspection records" width="1216" height="744" loading="lazy" decoding="async">
+                  </picture>
+                </a>
                 <figcaption>Inspection form and recent field records tied to selected sample assets.</figcaption>
               </figure>
-              <figure class="case-study-image-frame">
-                <picture>
-                  <source srcset="assets/traverseops-reports.webp" type="image/webp">
-                  <img src="assets/traverseops-reports.png" alt="TraverseOps reports tab showing sample operational summary cards for assets, inspections, and work orders" width="1216" height="218" loading="lazy" decoding="async">
-                </picture>
+              <figure class="screenshot-gallery__item case-study-image-frame">
+                <a class="screenshot-gallery__link" href="assets/traverseops-reports.png" aria-label="Open full-size TraverseOps reports screenshot">
+                  <picture>
+                    <source srcset="assets/traverseops-reports.webp" type="image/webp">
+                    <img src="assets/traverseops-reports.png" alt="TraverseOps reports tab showing sample operational summary cards for assets, inspections, and work orders" width="1216" height="218" loading="lazy" decoding="async">
+                  </picture>
+                </a>
                 <figcaption>Reporting summary for sample assets, inspection coverage, and work-order state.</figcaption>
               </figure>
             </div>
@@ -672,7 +718,7 @@
           <a class="button primary" href="traverseops-demo.html">Open live demo</a>
           <a class="button secondary" href="work.html">More work</a>
           <a class="button secondary" href="resume.html">View resume</a>
-          <a class="button ghost" href="mailto:hello@zacbatten.me">Contact Zac</a>
+          <a class="button ghost" href="mailto:hello@zacbatten.me">Email Zac</a>
         </div>
       </section>
     </main>

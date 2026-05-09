@@ -74,235 +74,33 @@
           <p>These are the projects with enough implementation detail to evaluate product thinking, frontend structure, automation work, and practical constraints.</p>
         </div>
 
-        <div class="case-study-list">
-          <article class="case-study-listing" id="traverseops">
-            <figure class="case-study-thumb">
-              <picture>
-                <source srcset="assets/traverseops-workspace.webp" type="image/webp">
-                <img src="assets/traverseops-workspace.png" alt="TraverseOps map workspace showing municipal assets and selected asset details" loading="lazy" decoding="async" width="1440" height="1100">
-              </picture>
-            </figure>
+        <div class="case-study-list" data-project-render="case-study-index">
+          <article class="case-study-listing case-study-listing-fallback" id="traverseops">
             <div class="case-study-listing-body">
-              <div class="case-study-listing-header">
-                <span class="work-status">Flagship / public demo</span>
-                <h3>TraverseOps</h3>
-              </div>
-              <dl class="case-study-proof">
-                <div>
-                  <dt>Problem</dt>
-                  <dd>Field crews lose time when maps, asset records, inspections, imports, reports, and work orders live in separate tools.</dd>
-                </div>
-                <div>
-                  <dt>What I built</dt>
-                  <dd>
-                    <ul>
-                      <li>Modeled assets, inspections, work orders, imports, reports, and team roles around field-crew and supervisor workflows.</li>
-                      <li>Built a map-first asset workflow with status filtering, selected-asset panels, and direct paths into inspection and work-order screens.</li>
-                      <li>Documented demo boundaries and production hardening needs, including auth, role permissions, offline sync, audit logs, validation, and mobile field testing.</li>
-                    </ul>
-                    <p class="ownership-note">Uses external map/data tooling and sample municipal-style data; it is a public demo, not a production deployment.</p>
-                  </dd>
-                </div>
-                <div>
-                  <dt>Tech stack</dt>
-                  <dd>MapLibre, Supabase-backed sample data, desktop/mobile frontend, Capacitor-ready app structure.</dd>
-                </div>
-                <div>
-                  <dt>Main technical challenge</dt>
-                  <dd>Keeping dense map, record, and workflow UI understandable on both desktop review screens and mobile field contexts.</dd>
-                </div>
-                <div>
-                  <dt>Production readiness</dt>
-                  <dd>Workflow modeling and public-safe data are solid; real deployment needs authentication, role permissions, audit logs, offline sync, import validation, field-device QA, and map/source monitoring.</dd>
-                </div>
-                <div>
-                  <dt>Testing / QA</dt>
-                  <dd><strong>Automated tests:</strong> no public automated suite is linked yet. <strong>Known limitations:</strong> real auth, offline sync, GIS feeds, and device-lab testing are not simulated. Manual QA covers sample-data loading, tabs, map filters, selected assets, inspection/work-order paths, import states, reports, mobile widths, keyboard focus, and empty/reset states.</dd>
-                </div>
-                <div>
-                  <dt>Deployment / run</dt>
-                  <dd><strong>Hosted/run location:</strong> static GitHub Pages demo. <strong>Environment/config:</strong> no public environment variables; sample data lives in client-side JavaScript. <strong>External APIs/services:</strong> no live municipal APIs. <strong>Local development:</strong> run <code>python -m http.server 8000</code>; production would keep GIS credentials, Supabase keys, and real records server-side.</dd>
-                </div>
-              </dl>
-              <div class="work-links">
-                <a href="traverseops-case-study.html">Full case study</a>
-                <a href="traverseops-demo.html">Live demo</a>
-                <a href="notes.html#traverseops-demo-framing">Build note</a>
-              </div>
+              <div class="case-study-listing-header"><span class="work-status">Flagship / public demo</span><h3>TraverseOps</h3></div>
+              <p>Field crews lose time when maps, asset records, inspections, imports, reports, and work orders live in separate tools.</p>
+              <div class="work-links"><a href="traverseops-case-study.html">Full case study</a><a href="traverseops-demo.html">Live demo</a></div>
             </div>
           </article>
-
-          <article class="case-study-listing" id="moviebot">
-            <figure class="case-study-thumb">
-              <picture>
-                <source srcset="assets/movie-night-preview.webp" type="image/webp">
-                <img src="assets/movie-night-preview.png" alt="Movie Night page with Twitch stream, chat panel, MovieBot workflow notes, and movie library links" loading="lazy" decoding="async" width="1200" height="630">
-              </picture>
-            </figure>
+          <article class="case-study-listing case-study-listing-fallback" id="moviebot">
             <div class="case-study-listing-body">
-              <div class="case-study-listing-header">
-                <span class="work-status">Automation / public repo</span>
-                <h3>MovieBot / StreamCinema Vote Bot</h3>
-              </div>
-              <dl class="case-study-proof">
-                <div>
-                  <dt>Problem</dt>
-                  <dd>Streamer-run movie nights need reliable voting, result tallying, queue state, and OBS playback without constant manual control.</dd>
-                </div>
-                <div>
-                  <dt>What I built</dt>
-                  <dd>
-                    <ul>
-                      <li>Implemented Twitch chat commands for voting, results, current movie, time remaining, movie list, and help.</li>
-                      <li>Built vote-state logic for changed votes, duplicate prevention, partial title matching, tie resolution, and fallback selection.</li>
-                      <li>Connected OBS WebSocket playback automation with movie-folder scanning, token refresh, reconnect behavior, and setup/security notes.</li>
-                    </ul>
-                    <p class="ownership-note">Uses TwitchIO, Twitch OAuth/chat, OBS WebSocket, IMDb/poster links, and local public-domain media files as external inputs.</p>
-                  </dd>
-                </div>
-                <div>
-                  <dt>Tech stack</dt>
-                  <dd>Python, TwitchIO, Twitch IRC/chat commands, OAuth refresh, OBS WebSocket, static showcase pages.</dd>
-                </div>
-                <div>
-                  <dt>Main technical challenge</dt>
-                  <dd>Making a long-running stream tool resilient across Twitch auth, chat connection health, local file state, and OBS handoff timing.</dd>
-                </div>
-                <div>
-                  <dt>Production readiness</dt>
-                  <dd>Voting and OBS automation are solid for a local operator; real stream use needs secret rotation, rate-limit handling, reconnect health checks, structured logs, tests, and an operator dashboard.</dd>
-                </div>
-                <div>
-                  <dt>Testing / QA</dt>
-                  <dd><strong>Automated tests:</strong> pytest coverage exercises scanning, duration fallback, command behavior, OBS calls, token helpers, playback scheduling, fallback paths, and cleanup. <strong>Known limitations:</strong> no live operator dashboard, synthetic Twitch/OBS E2E environment, or production alerting yet. Manual QA verifies real OBS/Twitch configuration and portfolio pages.</dd>
-                </div>
-                <div>
-                  <dt>Deployment / run</dt>
-                  <dd><strong>Hosted/run location:</strong> Python bot runs locally beside OBS; portfolio support pages are static. <strong>Environment/config:</strong> private <code>.env</code> for Twitch tokens, channel, movie directory, and OBS host/scene/source config. <strong>External APIs/services:</strong> Twitch OAuth/chat and OBS WebSocket. <strong>Local development:</strong> install Python requirements, configure <code>.env</code>, run tests, then run the bot against a test channel.</dd>
-                </div>
-              </dl>
-              <div class="work-links">
-                <a href="moviebot-case-study.html">Full case study</a>
-                <a href="movie-night.html">Live showcase</a>
-                <a href="movie-library.html">Movie Library</a>
-                <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a>
-              </div>
+              <div class="case-study-listing-header"><span class="work-status">Automation / public repo</span><h3>MovieBot / StreamCinema Vote Bot</h3></div>
+              <p>Streamer-run movie nights need reliable voting, result tallying, queue state, and OBS playback without constant manual control.</p>
+              <div class="work-links"><a href="moviebot-case-study.html">Full case study</a><a href="movie-night.html">Live showcase</a><a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a></div>
             </div>
           </article>
-
-          <article class="case-study-listing" id="web-paint">
-            <figure class="case-study-thumb">
-              <picture>
-                <source srcset="assets/web-paint-workspace.webp" type="image/webp">
-                <img src="assets/web-paint-workspace.png" alt="Web Paint browser tool showing toolbar controls, brush settings, touch guidance, and drawing workspace" loading="lazy" decoding="async" width="1280" height="670">
-              </picture>
-            </figure>
+          <article class="case-study-listing case-study-listing-fallback" id="web-paint">
             <div class="case-study-listing-body">
-              <div class="case-study-listing-header">
-                <span class="work-status">Canvas tool / live demo</span>
-                <h3>Web Paint &mdash; Browser Canvas Drawing Tool</h3>
-              </div>
-              <dl class="case-study-proof">
-                <div>
-                  <dt>Problem</dt>
-                  <dd>Static browser tools need reliable drawing state, history, import/export, and mobile-friendly controls without a framework.</dd>
-                </div>
-                <div>
-                  <dt>What I built</dt>
-                  <dd>
-                    <ul>
-                      <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
-                      <li>Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.</li>
-                      <li>Managed tool settings, selected color, brush size, selection state, and status output in vanilla JavaScript.</li>
-                    </ul>
-                    <p class="ownership-note">Uses standard browser Canvas, Clipboard, File, Fullscreen, and LocalStorage APIs; no drawing framework is used.</p>
-                  </dd>
-                </div>
-                <div>
-                  <dt>Tech stack</dt>
-                  <dd>HTML, CSS, JavaScript, Canvas API, pointer events, LocalStorage, File APIs.</dd>
-                </div>
-                <div>
-                  <dt>Main technical challenge</dt>
-                  <dd>Keeping tool state, canvas history, resizing, zoom, and export predictable across desktop and narrow screens.</dd>
-                </div>
-                <div>
-                  <dt>Production readiness</dt>
-                  <dd>The static editor works as a prototype; real creative use would need memory-aware history, autosave recovery, richer keyboard support, accessibility improvements, and broader browser/device testing.</dd>
-                </div>
-                <div>
-                  <dt>Testing / QA</dt>
-                  <dd><strong>Automated tests:</strong> no automated suite exists yet. <strong>Known limitations:</strong> no pixel-regression tests, pointer-event replay, or full nonvisual canvas model yet. Manual QA covers every tool mode, undo/redo, import/export, clipboard fallback, storage limits, touch input, keyboard focus, large-image rejection, and responsive panels.</dd>
-                </div>
-                <div>
-                  <dt>Deployment / run</dt>
-                  <dd><strong>Hosted/run location:</strong> no-build GitHub Pages tool. <strong>Environment/config:</strong> no environment variables. <strong>External APIs/services:</strong> browser Canvas, File, Clipboard, Fullscreen, and LocalStorage APIs. <strong>Local development:</strong> run a static server and open <code>/paint.html</code>; drawings stay local unless exported.</dd>
-                </div>
-              </dl>
-              <div class="work-links">
-                <a href="paint.html">Live demo</a>
-                <a href="web-paint-case-study.html">Full case study</a>
-                <a href="interactive-lab.html">Interactive Lab</a>
-                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source</a>
-              </div>
+              <div class="case-study-listing-header"><span class="work-status">Canvas tool / live demo</span><h3>Web Paint &mdash; Browser Canvas Drawing Tool</h3></div>
+              <p>Static browser tools need reliable drawing state, history, import/export, and mobile-friendly controls without a framework.</p>
+              <div class="work-links"><a href="paint.html">Live demo</a><a href="web-paint-case-study.html">Full case study</a></div>
             </div>
           </article>
-
-          <article class="case-study-listing" id="movie-library">
-            <figure class="case-study-thumb">
-              <picture>
-                <source srcset="assets/movie-library-preview.webp" type="image/webp">
-                <img src="assets/movie-library-preview.png" alt="Movie Library page showing public-domain poster cards, search controls, and MovieBot vote-command actions" loading="lazy" decoding="async" width="1200" height="630">
-              </picture>
-            </figure>
+          <article class="case-study-listing case-study-listing-fallback" id="movie-library">
             <div class="case-study-listing-body">
-              <div class="case-study-listing-header">
-                <span class="work-status">Companion app / static UI</span>
-                <h3>Public Domain Movie Library</h3>
-              </div>
-              <dl class="case-study-proof">
-                <div>
-                  <dt>Problem</dt>
-                  <dd>MovieBot viewers need a fast way to browse public-domain titles and copy accurate vote commands without crowding the live stream page.</dd>
-                </div>
-                <div>
-                  <dt>What I built</dt>
-                  <dd>
-                    <ul>
-                      <li>Built a searchable catalog that filters public-domain MovieBot queue data by title, year, runtime, and rating.</li>
-                      <li>Implemented copyable <code>!vote</code> commands with button labels and feedback so viewers can send accurate Twitch votes.</li>
-                      <li>Added lazy-loaded poster cards, accessible metadata, and a static <code>noscript</code> fallback for the full movie list.</li>
-                    </ul>
-                    <p class="ownership-note">Uses public-domain movie metadata, external IMDb links, and externally hosted poster images as source content.</p>
-                  </dd>
-                </div>
-                <div>
-                  <dt>Tech stack</dt>
-                  <dd>Static HTML, CSS Grid, vanilla JavaScript search, movie metadata, external poster images, no-JavaScript fallback markup.</dd>
-                </div>
-                <div>
-                  <dt>Main technical challenge</dt>
-                  <dd>Keeping a large static movie list searchable and indexable while preserving a readable fallback when JavaScript or external posters are unavailable.</dd>
-                </div>
-                <div>
-                  <dt>Production readiness</dt>
-                  <dd>Static catalog, copy buttons, and fallback content are solid; hardening would generate pages from one trusted data source, validate poster/link health, and keep viewer privacy intact.</dd>
-                </div>
-                <div>
-                  <dt>Testing / QA</dt>
-                  <dd><strong>Automated tests:</strong> no dedicated catalog suite exists yet. <strong>Known limitations:</strong> dynamic cards and fallback markup are still manually kept in sync. Manual QA covers search/filter cases, copy command states, result-count announcements, poster fallbacks, no-JS fallback content, mobile controls, and external link checks.</dd>
-                </div>
-                <div>
-                  <dt>Deployment / run</dt>
-                  <dd><strong>Hosted/run location:</strong> static GitHub Pages catalog. <strong>Environment/config:</strong> no environment variables; movie metadata lives in page/JavaScript source. <strong>External APIs/services:</strong> IMDb links and poster image URLs. <strong>Local development:</strong> run a static server and test search, copy buttons, poster loading, and no-JS fallback.</dd>
-                </div>
-              </dl>
-              <div class="work-links">
-                <a href="moviebot-case-study.html">MovieBot case study</a>
-                <a href="movie-library.html">Live demo</a>
-                <a href="movie-night.html">Movie Night</a>
-                <a href="https://github.com/Inefy/Inefy.github.io/blob/main/movie-library.html" rel="noopener noreferrer">GitHub</a>
-              </div>
+              <div class="case-study-listing-header"><span class="work-status">Companion app / static UI</span><h3>Public Domain Movie Library</h3></div>
+              <p>MovieBot viewers need a fast way to browse public-domain titles and copy accurate vote commands without crowding the stream page.</p>
+              <div class="work-links"><a href="moviebot-case-study.html">MovieBot case study</a><a href="movie-library.html">Live demo</a></div>
             </div>
           </article>
         </div>
@@ -317,7 +115,7 @@
         <div class="next-step-actions">
           <a class="button primary" href="work.html">View all work</a>
           <a class="button secondary" href="resume.html">View resume</a>
-          <a class="button ghost" href="mailto:hello@zacbatten.me">Contact Zac</a>
+          <a class="button ghost" href="mailto:hello@zacbatten.me">Email Zac</a>
         </div>
       </section>
     </main>
@@ -343,6 +141,8 @@
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
+    <script src="project-data.js" defer></script>
+    <script src="project-renderer.js" defer></script>
     <script src="shared.js" defer></script>
   </body>
 </html>

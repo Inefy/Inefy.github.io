@@ -31,7 +31,8 @@ body {
 
 body {
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   background:
     radial-gradient(circle at 12% 10%, rgba(109, 225, 166, 0.2), transparent 25rem),
     radial-gradient(circle at 92% 10%, rgba(245, 196, 91, 0.18), transparent 24rem),
@@ -59,12 +60,13 @@ a {
 .golf-app {
   position: relative;
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr);
+  align-content: start;
+  grid-template-rows: auto;
   gap: 12px;
   width: 100%;
   min-height: 100svh;
   padding: 16px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .golf-app::before,
