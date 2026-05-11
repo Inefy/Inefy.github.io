@@ -676,12 +676,20 @@
       return;
     }
 
+    if (event.target instanceof Element && event.target.closest(".game-menu, button, a")) {
+      return;
+    }
+
     pointerStart = {
       id: event.pointerId,
       x: event.clientX,
       y: event.clientY
     };
-    boardEl.setPointerCapture?.(event.pointerId);
+    try {
+      boardEl.setPointerCapture?.(event.pointerId);
+    } catch {
+      // Pointer capture is optional; keyboard and click input should keep working.
+    }
   }
 
   function handlePointerUp(event) {
@@ -693,6 +701,11 @@
     const deltaY = event.clientY - pointerStart.y;
     const distance = Math.max(Math.abs(deltaX), Math.abs(deltaY));
     pointerStart = null;
+    try {
+      boardEl.releasePointerCapture?.(event.pointerId);
+    } catch {
+      // The pointer may already have been released by the browser.
+    }
 
     if (distance < 24) {
       return;

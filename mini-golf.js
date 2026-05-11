@@ -10,6 +10,10 @@
   const ROUGH_FRICTION = 0.972;
   const SAND_FRICTION = 0.935;
   const BOUNCE = 0.76;
+  const COURSE_BOUNCE = 0.68;
+  const COURSE_EDGE_DAMPING = 0.9;
+  const COURSE_EDGE_SAMPLES = 20;
+  const AIM_START_RADIUS = 36;
   const SPINNER_BOUNCE = 0.86;
   const BEST_KEY = "inefy-mini-golf-best-total";
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -543,6 +547,22 @@
     };
   }
 
+  function capturePointer(event) {
+    try {
+      canvas.setPointerCapture?.(event.pointerId);
+    } catch {
+      // Synthetic or cancelled pointer events may not have active capture state.
+    }
+  }
+
+  function releasePointer(event) {
+    try {
+      canvas.releasePointerCapture?.(event.pointerId);
+    } catch {
+      // Pointer capture is an enhancement; aiming still works without it.
+    }
+  }
+
   function currentAimPower() {
     if (!isAiming || !aimPointer) {
       return { dx: 0, dy: 0, length: 0, power: 0 };
@@ -655,9 +675,111 @@
       (point.x >= rect.x && point.x <= rect.x + rect.w && point.y >= rect.y + radius && point.y <= rect.y + rect.h - radius);
   }
 
+  function pointInAnyZone(point, zones) {
+    return zones.some((zone) => inRoundedRect(point, zone));
+  }
+
   function isInAnyZone(zones) {
     const point = { x: ball.x, y: ball.y };
-    return zones.some((zone) => inRoundedRect(point, zone));
+    return pointInAnyZone(point, zones);
+  }
+
+  function courseZones(level) {
+    return [...level.fairways, ...level.sand, ...level.water];
+  }
+
+  function pointOnCourse(level, point, zones = courseZones(level)) {
+    return pointInAnyZone(point, zones);
+  }
+
+  function isBallOnCourse(level, candidate = ball, zones = courseZones(level)) {
+    if (!pointOnCourse(level, candidate, zones)) {
+      return false;
+    }
+
+    for (let index = 0; index < COURSE_EDGE_SAMPLES; index += 1) {
+      const angle = (Math.PI * 2 * index) / COURSE_EDGE_SAMPLES;
+      const probe = {
+        x: candidate.x + Math.cos(angle) * candidate.r,
+        y: candidate.y + Math.sin(angle) * candidate.r
+      };
+
+      if (!pointOnCourse(level, probe, zones)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  function courseBoundaryNormal(level, zones = courseZones(level)) {
+    let nx = 0;
+    let ny = 0;
+
+    for (let index = 0; index < COURSE_EDGE_SAMPLES; index += 1) {
+      const angle = (Math.PI * 2 * index) / COURSE_EDGE_SAMPLES;
+      const directionX = Math.cos(angle);
+      const directionY = Math.sin(angle);
+      const probe = {
+        x: ball.x + directionX * ball.r,
+        y: ball.y + directionY * ball.r
+      };
+
+      if (!pointOnCourse(level, probe, zones)) {
+        nx -= directionX;
+        ny -= directionY;
+      }
+    }
+
+    const normalLength = Math.hypot(nx, ny);
+    if (normalLength > 0.001) {
+      return { x: nx / normalLength, y: ny / normalLength };
+    }
+
+    const currentSpeed = speed();
+    if (currentSpeed > 0.001) {
+      return { x: -ball.vx / currentSpeed, y: -ball.vy / currentSpeed };
+    }
+
+    return { x: 0, y: -1 };
+  }
+
+  function resolveCourseBoundary(level, previousPosition) {
+    const zones = courseZones(level);
+    if (isBallOnCourse(level, ball, zones)) {
+      return false;
+    }
+
+    const normal = courseBoundaryNormal(level, zones);
+    const previousBall = { x: previousPosition.x, y: previousPosition.y, r: ball.r };
+    const fallbackBall = { x: lastSafePosition.x, y: lastSafePosition.y, r: ball.r };
+    const teeBall = { x: level.tee.x, y: level.tee.y, r: ball.r };
+
+    if (isBallOnCourse(level, previousBall, zones)) {
+      ball.x = previousPosition.x;
+      ball.y = previousPosition.y;
+    } else if (isBallOnCourse(level, fallbackBall, zones)) {
+      ball.x = lastSafePosition.x;
+      ball.y = lastSafePosition.y;
+    } else if (isBallOnCourse(level, teeBall, zones)) {
+      ball.x = level.tee.x;
+      ball.y = level.tee.y;
+    }
+
+    const velocityNormal = ball.vx * normal.x + ball.vy * normal.y;
+    if (velocityNormal < 0) {
+      ball.vx -= (1 + COURSE_BOUNCE) * velocityNormal * normal.x;
+      ball.vy -= (1 + COURSE_BOUNCE) * velocityNormal * normal.y;
+    }
+
+    ball.vx *= COURSE_EDGE_DAMPING;
+    ball.vy *= COURSE_EDGE_DAMPING;
+
+    if (Math.abs(velocityNormal) > 140) {
+      spawnParticles(ball.x, ball.y, "#d8ffe2", 6, 80);
+    }
+
+    return true;
   }
 
   function surfaceAtBall(level = activeLevel()) {
@@ -917,13 +1039,21 @@
     const stepDt = dt / steps;
 
     for (let step = 0; step < steps; step += 1) {
+      const previousPosition = { x: ball.x, y: ball.y };
       ball.x += ball.vx * stepDt;
       ball.y += ball.vy * stepDt;
 
       resolveBounds();
+
+      if (isInAnyZone(level.water)) {
+        hazardReset();
+        return;
+      }
+
       level.walls.forEach(resolveWall);
       level.bumpers.forEach(resolveBumper);
       level.spinners.forEach(resolveSpinner);
+      resolveCourseBoundary(level, previousPosition);
       limitBallSpeed();
 
       if (isInAnyZone(level.water)) {
@@ -981,6 +1111,27 @@
         ctx.stroke();
       }
     });
+  }
+
+  function drawCourseEdge(level) {
+    ctx.save();
+    ctx.lineJoin = "round";
+    ctx.shadowColor = "rgba(0, 0, 0, 0.34)";
+    ctx.shadowBlur = 7;
+    ctx.strokeStyle = "rgba(5, 12, 12, 0.42)";
+    ctx.lineWidth = 8;
+    level.fairways.forEach((zone) => {
+      roundRect(ctx, zone.x, zone.y, zone.w, zone.h, zone.r || 0);
+      ctx.stroke();
+    });
+    ctx.shadowBlur = 0;
+    ctx.strokeStyle = "rgba(216, 255, 226, 0.28)";
+    ctx.lineWidth = 3;
+    level.fairways.forEach((zone) => {
+      roundRect(ctx, zone.x + 1.5, zone.y + 1.5, zone.w - 3, zone.h - 3, Math.max(4, (zone.r || 0) - 1.5));
+      ctx.stroke();
+    });
+    ctx.restore();
   }
 
   function drawTeeMarker() {
@@ -1054,6 +1205,7 @@
     }
     ctx.restore();
 
+    drawCourseEdge(level);
     drawRoundedZones(level.fairways, "rgba(109, 225, 166, 0.32)", "rgba(214, 255, 226, 0.16)");
     ctx.save();
     ctx.globalCompositeOperation = "screen";
@@ -1292,10 +1444,14 @@
       hideMenu();
       state = "ready";
     }
+    if (distance(point, ball) > AIM_START_RADIUS) {
+      updateHud("Drag from ball to aim");
+      return;
+    }
     isAiming = true;
     aimPointer = point;
     updateHud("Aiming");
-    canvas.setPointerCapture?.(event.pointerId);
+    capturePointer(event);
   }
 
   function handlePointerMove(event) {
@@ -1315,7 +1471,7 @@
 
     event.preventDefault();
     const aim = currentAimPower();
-    canvas.releasePointerCapture?.(event.pointerId);
+    releasePointer(event);
     shootFromVector(aim.dx, aim.dy, aim.power);
     if (state === "ready") {
       isAiming = false;

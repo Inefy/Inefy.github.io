@@ -117,7 +117,13 @@
 
 :is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app)
   :is(.game-nav a, .game-nav button, .paint-nav a, .paint-nav button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
   min-height: 44px;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 :is(.game-app, .merge-app, .drift-app, .breaker-app, .sweep-app, .golf-app, .paint-app)
