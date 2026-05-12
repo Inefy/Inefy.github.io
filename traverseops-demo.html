@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="TraverseOps mobile-friendly demo by Zac Batten: sample field-operations map, inspections, work orders, imports, reports, and role workflow controls.">
+    <meta name="description" content="TraverseOps mobile-friendly sample app by Zac Batten: field-operations map, inspections, work orders, imports, reports, and role controls.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/traverseops-demo.html">
     <meta property="og:site_name" content="Inefy Workbench">
-    <meta property="og:title" content="TraverseOps Demo / Zac Batten">
-    <meta property="og:description" content="Mobile-friendly field-operations demo with sample assets, inspections, work orders, imports, reports, and map-first workflows.">
+    <meta property="og:title" content="TraverseOps Public App / Zac Batten">
+    <meta property="og:description" content="Mobile-friendly field-operations app with sample assets, inspections, work orders, imports, reports, and map-first screens.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/traverseops-demo.html">
     <meta property="og:image" content="https://zacbatten.me/assets/traverseops-workspace.png">
-    <meta property="og:image:alt" content="TraverseOps map workspace showing municipal assets and selected asset details.">
+    <meta property="og:image:alt" content="TraverseOps map workspace showing sample municipal-style assets and selected asset details.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TraverseOps Demo / Zac Batten">
-    <meta name="twitter:description" content="Sample field-operations demo for map-first asset lookup, inspections, work orders, imports, and reports.">
+    <meta name="twitter:title" content="TraverseOps Public App / Zac Batten">
+    <meta name="twitter:description" content="Sample field-operations app for map-first asset lookup, inspections, work orders, imports, and reports.">
     <meta name="twitter:image" content="https://zacbatten.me/assets/traverseops-workspace.png">
-    <title>TraverseOps Field Operations Demo / Zac Batten</title>
+    <title>TraverseOps Field Operations Public App / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,24 +56,24 @@
         <span aria-hidden="true">/</span>
         <a href="traverseops-case-study.html">TraverseOps case study</a>
         <span aria-hidden="true">/</span>
-        <span>Demo</span>
+        <span>Public app</span>
       </nav>
 
       <section class="traverse-demo-hero" aria-labelledby="traverse-demo-title">
         <div class="traverse-demo-hero-copy">
-          <p class="eyebrow">TraverseOps public demo</p>
-          <h1 id="traverse-demo-title">Field operations map and work-order demo.</h1>
+          <p class="eyebrow">TraverseOps public app</p>
+          <h1 id="traverse-demo-title">Field operations map and work orders.</h1>
           <p>
-            This static sample-data demo shows the TraverseOps product shape: a map-first asset workspace with inspections, work orders, import validation, reports, and role-aware controls that stay usable on a phone.
+            Designed around a Supabase-style data model; the public version uses sample data for safe review while showing a map-first asset workspace with inspections, work orders, import validation, reports, and role-aware controls that stay usable on a phone.
           </p>
           <div class="traverse-demo-actions">
             <a class="button primary" href="#traverse-workspace">Open workspace</a>
             <a class="button secondary" href="traverseops-case-study.html">Read case study</a>
           </div>
-          <dl class="project-status-list" aria-label="TraverseOps demo status">
+          <dl class="project-status-list" aria-label="TraverseOps app status">
             <div>
               <dt>Status</dt>
-              <dd>Public sample-data demo / prototype</dd>
+              <dd>Public sample-data prototype</dd>
             </div>
             <div>
               <dt>Last updated</dt>
@@ -81,35 +81,35 @@
             </div>
           </dl>
         </div>
-        <aside class="traverse-demo-note" aria-label="Demo boundaries">
+        <aside class="traverse-demo-note" aria-label="Public data boundaries">
           <strong>Sample data only</strong>
-          <p>No real municipal records are stored here. The goal is to demonstrate mobile workflow, UI state, and data relationships.</p>
+          <p>No real municipal records are stored here. The goal is to show mobile UI state and data relationships.</p>
         </aside>
       </section>
 
       <section class="next-step-panel" aria-labelledby="traverse-readiness-title">
         <div>
           <p class="eyebrow">Production readiness</p>
-          <h2 id="traverse-readiness-title">Sample workflow demo, not an active field deployment.</h2>
+          <h2 id="traverse-readiness-title">Sample records, not an active field deployment.</h2>
           <p>
-            The demo is solid for reviewing asset maps, inspection/work-order flows, imports, reports, and role-shaped UI. It remains demo-only because it uses sample data and does not enforce real auth, permissions, offline sync, audit logging, or production map/data reliability. Real users would require tenant-safe data access, import validation, mobile field-device testing, operational logs, backups, and alerts for sync or map-source failures.
+            The public version is useful for reviewing asset maps, inspection/work-order flows, imports, reports, and role-shaped UI. It remains sample-only because it does not enforce production authentication, permissions, offline sync, audit logging, or production map/data reliability. A field rollout would require tenant-safe data access, import validation, mobile device testing, logs, backups, and map-source alerts.
           </p>
         </div>
         <div class="next-step-actions">
-          <a class="button primary" href="traverseops-case-study.html#hardening-title">Read hardening plan</a>
-          <a class="button secondary" href="#traverse-workspace">Use sample demo</a>
+          <a class="button primary" href="traverseops-case-study.html#hardening-title">Read production plan</a>
+          <a class="button secondary" href="#traverse-workspace">Use sample app</a>
         </div>
       </section>
 
       <section class="next-step-panel" aria-labelledby="traverse-qa-title">
         <div>
           <p class="eyebrow">Testing and QA notes</p>
-          <h2 id="traverse-qa-title">The demo is checked against workflow, device, and data-state risks.</h2>
+          <h2 id="traverse-qa-title">QA checks device and data-state risks.</h2>
           <p>
-            <strong>Automated tests:</strong> no public test suite is linked for this sample-data demo yet. Manual QA covers loading/resetting sample data, tab switching, map-marker selection, filters, inspection and work-order forms, import staging, report summaries, keyboard focus, mobile touch targets, and repeated empty/reset states. Browser checks should include narrow phones, tablets, desktop widths, reduced motion, and long labels or notes that could break layout.
+            <strong>Automated tests:</strong> no public test suite is linked yet. Manual QA covers loading/resetting sample data, tab switching, map-marker selection, filters, inspection and work-order forms, import staging, report summaries, keyboard focus, mobile touch targets, and repeated empty/reset states. Browser checks should include narrow phones, tablets, desktop widths, reduced motion, and long labels or notes that could break layout.
           </p>
           <p>
-            <strong>Known limitations:</strong> the demo does not simulate real authentication, offline sync conflicts, production GIS feeds, bulk import security, or actual field-device network loss.
+            <strong>Known limitations:</strong> the app does not simulate production authentication, offline sync conflicts, production GIS services, bulk import security, or actual field-device network loss.
           </p>
         </div>
         <div class="next-step-actions">
@@ -121,12 +121,12 @@
       <section class="next-step-panel" aria-labelledby="traverse-run-title">
         <div>
           <p class="eyebrow">Deployment and run notes</p>
-          <h2 id="traverse-run-title">Static sample-data demo with no public secrets.</h2>
+          <h2 id="traverse-run-title">Sample-data browser app with no public secrets.</h2>
           <p>
-            <strong>Hosted/run location:</strong> GitHub Pages serves <code>traverseops-demo.html</code>, <code>traverseops-demo.js</code>, shared CSS, and local screenshots/assets. <strong>Environment/config:</strong> no environment variables are required; sample assets, inspections, work orders, and import states live in client-side JavaScript. <strong>External APIs/services:</strong> this public demo does not connect to real GIS, Supabase, auth, or municipal APIs.
+            <strong>Hosted/run location:</strong> GitHub Pages serves <code>traverseops-demo.html</code>, <code>traverseops-demo.js</code>, shared CSS, and local screenshots/assets. <strong>Environment/config:</strong> no environment variables are required; sample assets, inspections, work orders, and import states live in client-side JavaScript. <strong>External APIs/services:</strong> this public app does not connect to GIS services, Supabase, authentication, or municipal APIs.
           </p>
           <p>
-            <strong>Local development:</strong> run <code>python -m http.server 8000</code> from the portfolio repo root and open <code>/traverseops-demo.html</code>. <strong>Security:</strong> keep real asset data, service-role keys, GIS credentials, and private imports out of static files; production would move validation and permissions server-side.
+            <strong>Local development:</strong> run <code>python -m http.server 8000</code> from the portfolio repo root and open <code>/traverseops-demo.html</code>. <strong>Security:</strong> keep production asset data, service-role keys, GIS credentials, and private imports out of public files; production would move validation and permissions server-side.
           </p>
         </div>
         <div class="next-step-actions">
@@ -152,15 +152,15 @@
           </div>
           <div class="traverse-sample-actions" aria-label="Sample data controls">
             <button type="button" data-load-sample>Load sample data</button>
-            <button type="button" data-reset-demo>Reset demo</button>
+            <button type="button" data-reset-demo>Reset sample</button>
           </div>
         </div>
 
         <div class="traverse-status-bar" role="status" aria-live="polite" aria-atomic="true" data-traverse-status>
-          Sample workspace ready. Select a marker or open a workflow tab.
+          Sample workspace ready. Select a marker or open a task tab.
         </div>
 
-        <div class="traverse-tabs" role="tablist" aria-label="TraverseOps demo sections">
+        <div class="traverse-tabs" role="tablist" aria-label="TraverseOps app sections">
           <button type="button" role="tab" aria-selected="true" aria-controls="traverse-panel-map" id="traverse-tab-map" data-traverse-tab="map">Map</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="traverse-panel-assets" id="traverse-tab-assets" data-traverse-tab="assets">Assets</button>
           <button type="button" role="tab" aria-selected="false" aria-controls="traverse-panel-inspections" id="traverse-tab-inspections" data-traverse-tab="inspections">Inspections</button>
@@ -204,7 +204,7 @@
                 </button>
                 <div class="traverse-empty-state" data-map-empty hidden>
                   <strong>No assets match this filter.</strong>
-                  <span>Try All or clear the status filter.</span>
+                  <span>Try All or remove the status filter.</span>
                 </div>
               </div>
             </div>
@@ -277,7 +277,7 @@
               <fieldset class="traverse-checklist">
                 <legend>Checklist</legend>
                 <label><input type="checkbox" checked> Marker visible</label>
-                <label><input type="checkbox" checked> Access clear</label>
+                <label><input type="checkbox" checked> Access unobstructed</label>
                 <label><input type="checkbox"> Follow-up required</label>
               </fieldset>
               <button class="traverse-submit" type="submit">Save inspection</button>
@@ -353,7 +353,7 @@
             <div class="traverse-form-card">
               <div class="traverse-panel-heading">
                 <div>
-                  <p class="eyebrow">Import workflow</p>
+                  <p class="eyebrow">Import review</p>
                   <h3>Validate before committing sample records.</h3>
                 </div>
               </div>
@@ -370,7 +370,7 @@
               <li class="complete"><strong>File selected</strong><span>CSV-like sample data is ready.</span></li>
               <li class="complete"><strong>Columns mapped</strong><span>ID, type, status, zone, and coordinates match expected fields.</span></li>
               <li><strong>Validation pending</strong><span>Run validation to check coordinates and duplicate IDs.</span></li>
-              <li><strong>Commit disabled in demo</strong><span>Production would require permissions, audit logs, and rollback support.</span></li>
+              <li><strong>Commit disabled here</strong><span>Production would require permissions, audit logs, and rollback support.</span></li>
             </ol>
           </div>
         </section>
@@ -387,8 +387,8 @@
       <section class="next-step-panel" aria-labelledby="traverse-demo-next">
         <div>
           <p class="eyebrow">Next step</p>
-          <h2 id="traverse-demo-next">Compare the demo with the case study.</h2>
-          <p>The case study explains the architecture, data model, demo limits, and production hardening plan behind this mobile-friendly sample workspace.</p>
+          <h2 id="traverse-demo-next">Compare the app with the case study.</h2>
+          <p>The case study explains the architecture, data model, public limits, and production plan behind this mobile-friendly sample workspace.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="traverseops-case-study.html">Read case study</a>
@@ -400,7 +400,7 @@
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer building practical web tools, automation, and frontend interfaces.</span>
+        <span>Software developer building web tools, automation, and frontend interfaces.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
