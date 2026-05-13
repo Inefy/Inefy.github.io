@@ -265,19 +265,19 @@
             <div class="production-hardening-grid">
               <article>
                 <h3>Already solid</h3>
-                <p>The repo covers Twitch chat commands, vote changes, tie handling, movie-folder scanning, OBS WebSocket handoff, token refresh, reconnect paths, setup documentation, and a public pytest suite.</p>
+                <p>The repo covers Twitch commands, vote changes, ties, movie-folder scanning, OBS handoff, token refresh, reconnect paths, setup docs, and public pytest checks.</p>
               </article>
               <article>
                 <h3>Showcase-only</h3>
-                <p>The portfolio showcase is not a hosted bot service. It assumes a local movie folder, local OBS configuration, local environment secrets, and an operator who can inspect logs when something goes wrong.</p>
+                <p>The showcase is not a hosted bot service. It assumes local movies, local OBS config, private environment secrets, and an operator watching logs.</p>
               </article>
               <article>
                 <h3>Production work</h3>
-                <p>For regular public use, I would add an operator dashboard, queue controls, richer integration tests, rate limiting, structured logging, health checks, alerting, and safer recovery around Twitch/OBS downtime.</p>
+                <p>For regular public use, I would add an operator dashboard, queue controls, integration tests, rate limits, structured logs, health checks, alerts, and Twitch/OBS recovery.</p>
               </article>
               <article>
                 <h3>Security and ops</h3>
-                <p>Twitch tokens, OBS passwords, and local media paths must stay out of source control. A production setup would need secret rotation, scoped bot permissions, moderation rules, and backups for configuration/state.</p>
+                <p>Twitch tokens, OBS passwords, and local media paths must stay out of source. A real setup would need secret rotation, scoped bot permissions, moderation rules, and config/state backups.</p>
               </article>
             </div>
           </section>
@@ -645,23 +645,23 @@ self.voter_data[user] = selected_movie_path</code></pre>
             <div class="production-hardening-grid">
               <article>
                 <h3>Hosted/run location</h3>
-                <p>The Python bot runs on the stream operator's machine, near the local movie folder and OBS instance it controls. The Movie Night, Movie Library, and case-study pages live on GitHub Pages and support that local runtime.</p>
+                <p>The Python bot runs on the stream operator's machine beside the movie folder and OBS instance. Movie Night, Movie Library, and this case study live on GitHub Pages.</p>
               </article>
               <article>
                 <h3>Environment/config</h3>
-                <p>The bot uses a local <code>.env</code> based on <code>.env.example</code>: Twitch client ID/secret, access token, refresh token, channel name, movie directory, OBS host/port/password, scene name, media source name, and optional movie-list URL.</p>
+                <p>The bot uses a local <code>.env</code>: Twitch client ID/secret, access/refresh tokens, channel, movie directory, OBS host/port/password, scene, media source, and optional movie-list URL.</p>
               </article>
               <article>
                 <h3>External APIs/services</h3>
-                <p>Runtime dependencies include Twitch OAuth/chat through TwitchIO, OBS WebSocket, local filesystem access to public-domain movie files, and ffprobe/MoviePy for duration checks. The portfolio support pages also link to IMDb and external poster images.</p>
+                <p>Runtime dependencies are TwitchIO/OAuth, OBS WebSocket, local public-domain movie files, and ffprobe/MoviePy for duration checks. Support pages link to IMDb and poster images.</p>
               </article>
               <article>
                 <h3>Local development</h3>
-                <p>Clone the bot repo, create a Python 3.8+ virtual environment, install requirements, copy <code>.env.example</code> to <code>.env</code>, configure Twitch/OBS/movie paths, run <code>pytest</code>, then run <code>python bot.py</code> against a test channel and local OBS setup.</p>
+                <p>Clone the bot repo, create a Python 3.8+ venv, install requirements, copy <code>.env.example</code> to <code>.env</code>, configure Twitch/OBS/movie paths, run <code>pytest</code>, then run <code>python bot.py</code>.</p>
               </article>
               <article>
                 <h3>Secrets and operations</h3>
-                <p>Never commit <code>.env</code>, Twitch tokens, client secrets, OBS passwords, generated logs, or local media paths that expose private files. A production stream setup would add secret rotation, scoped bot permissions, structured logs, health checks, and a safer operator dashboard.</p>
+                <p>Never commit <code>.env</code>, Twitch tokens, client secrets, OBS passwords, generated logs, or private media paths. A real stream setup would add secret rotation, scoped bot permissions, structured logs, health checks, and an operator dashboard.</p>
               </article>
             </div>
           </section>
@@ -670,12 +670,12 @@ self.voter_data[user] = selected_movie_path</code></pre>
             <p class="eyebrow">14 / Testing and QA notes</p>
             <h2 id="testing-title">Tests focus on risky Twitch/OBS failure modes.</h2>
             <p>
-              The public repo includes pytest coverage for config/bot logic around configuration defaults, scanning, token refresh, OBS connection behavior, command behavior, playback scheduling, fallback paths, startup behavior, and cleanup. GitHub Actions runs the suite on push and pull request.
+              The public repo includes pytest checks for config/bot logic: defaults, scanning, token refresh, OBS connection behavior, commands, playback scheduling, fallback paths, startup, and cleanup. GitHub Actions runs the suite on push and pull request.
             </p>
             <div class="production-hardening-grid">
               <article>
                 <h3>Automated tests</h3>
-                <p><a href="https://github.com/Inefy/twitch-movie-bot/blob/main/tests/test_bot_logic.py" rel="noopener noreferrer">tests/test_bot_logic.py</a> exercises movie scanning, duration detection, configuration loading, token refresh helpers, OBS connection calls, chat command behavior, playback scheduling, fallback movie selection, startup, and cleanup.</p>
+                <p><a href="https://github.com/Inefy/twitch-movie-bot/blob/main/tests/test_bot_logic.py" rel="noopener noreferrer">tests/test_bot_logic.py</a> covers movie scanning, duration detection, config loading, token helpers, OBS calls, chat commands, playback scheduling, fallback selection, startup, and cleanup.</p>
               </article>
               <article>
                 <h3>CI status</h3>
@@ -683,7 +683,7 @@ self.voter_data[user] = selected_movie_path</code></pre>
               </article>
               <article>
                 <h3>Manual checklist</h3>
-                <p>Run the bot with a real local movie folder and OBS scene/source names, send <code>!vote</code>, <code>!results</code>, <code>!currentmovie</code>, <code>!time</code>, <code>!movies</code>, and <code>!help</code>, then confirm OBS updates the configured media source.</p>
+                <p>Run the bot with a local movie folder and OBS scene/source names, send <code>!vote</code>, <code>!results</code>, <code>!currentmovie</code>, <code>!time</code>, <code>!movies</code>, and <code>!help</code>, then confirm OBS updates the media source.</p>
               </article>
               <article>
                 <h3>Browser and device checks</h3>
@@ -691,7 +691,7 @@ self.voter_data[user] = selected_movie_path</code></pre>
               </article>
               <article>
                 <h3>Edge cases</h3>
-                <p>Covered scenarios include empty or missing movie folders, ambiguous partial titles, changed votes, no-vote polls, tied winners, missing duration tools, OBS timeouts, stale scheduled callbacks, and Twitch/IRC reconnect paths.</p>
+                <p>Covered scenarios include missing movie folders, ambiguous titles, changed votes, no-vote polls, ties, missing duration tools, OBS timeouts, stale callbacks, and Twitch/IRC reconnects.</p>
               </article>
               <article>
                 <h3>Known limitations</h3>

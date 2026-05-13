@@ -67,8 +67,8 @@
               "@type": "WebPage",
               "@id": "https://zacbatten.me/movie-library.html"
             },
-            "description": "Static public-domain movie voting catalog for MovieBot with search filters, copyable vote commands, lazy posters, and a no-JavaScript fallback.",
-            "keywords": "MovieBot, Twitch bot, public-domain movies, vote commands, static catalog, JavaScript search"
+            "description": "Public-domain movie voting catalog for MovieBot with search filters, copyable vote commands, lazy posters, and a no-JavaScript fallback.",
+            "keywords": "MovieBot, Twitch bot, public-domain movies, vote commands, JavaScript search"
           }
         ]
       }
@@ -118,7 +118,7 @@
           <p class="eyebrow">Movie library</p>
           <h1 id="movies-title">Public domain movie picks.</h1>
           <p>
-            Viewers need a reliable way to choose vote commands; I built this static HTML/CSS/JavaScript MovieBot catalog so they can search public-domain titles, copy the exact <code>!vote</code> command, and return to Twitch chat with fewer typing mistakes.
+            Viewers need a reliable way to choose vote commands; I built this HTML/CSS/JavaScript catalog so they can search public-domain titles, copy the exact <code>!vote</code> command, and return to Twitch chat with fewer typos.
           </p>
           <label class="movie-search-label" for="movie-search">Search movies</label>
           <input class="movie-search" id="movie-search" type="search" placeholder="Title, year, runtime, or rating" autocomplete="off" inputmode="search" enterkeyhint="search" autocapitalize="none" spellcheck="false" aria-describedby="movie-search-hint movie-library-keyboard-controls movie-library-touch-controls">
@@ -142,7 +142,7 @@
           <dl class="project-status-list" aria-label="Movie Library project status">
             <div>
               <dt>Status</dt>
-              <dd>Live demo / companion catalog</dd>
+              <dd>Live companion catalog</dd>
             </div>
             <div>
               <dt>Last updated</dt>
@@ -156,7 +156,7 @@
             <p class="eyebrow">MovieBot system surface</p>
             <h2 id="movie-library-system-title">A public voting catalog for the Twitch movie bot.</h2>
             <p>
-              MovieBot needs a viewer-facing catalog so people can find eligible public-domain titles before sending Twitch chat commands. I built this static companion page with title/year/runtime/rating filters, copy-to-clipboard vote commands, lazy-loaded poster cards, accessible labels, and a complete no-JavaScript fallback so the movie queue remains readable without the dynamic UI.
+              MovieBot needs a viewer catalog before chat voting starts. This page adds title/year/runtime/rating filters, copy-to-clipboard <code>!vote</code> buttons, lazy poster cards, labeled controls, and a full no-JavaScript list.
             </p>
           </div>
 
@@ -167,7 +167,7 @@
             </article>
             <article>
               <h3>Constraints</h3>
-              <p>The page is static, depends on external poster images and IMDb links, and still needs to remain readable when JavaScript or posters fail.</p>
+              <p>The page ships on GitHub Pages, depends on external poster images and IMDb links, and still has to work when JavaScript or posters fail.</p>
             </article>
             <article>
               <h3>Approach</h3>
@@ -175,7 +175,7 @@
             </article>
             <article>
               <h3>Tradeoff</h3>
-              <p>Keeping the catalog static makes GitHub Pages deployment easy, but movie data and fallback markup must be kept in sync when titles change.</p>
+              <p>GitHub Pages keeps deployment simple, but movie data and fallback markup must stay in sync when titles change.</p>
             </article>
             <article>
               <h3>Next improvement</h3>
@@ -188,18 +188,18 @@
             <ul class="project-bullets">
               <li>Built a searchable catalog that filters public-domain MovieBot queue data by title, year, runtime, and rating.</li>
               <li>Implemented copyable <code>!vote</code> commands with button labels and feedback so viewers can send accurate Twitch votes.</li>
-              <li>Added lazy-loaded poster cards, accessible metadata, and normalized external poster URLs for the static movie dataset.</li>
+              <li>Added lazy-loaded poster cards, labeled metadata, and normalized external poster URLs for the movie data.</li>
               <li>Kept a complete ordered movie list in <code>noscript</code> markup so the catalog still works without JavaScript.</li>
             </ul>
-            <p class="ownership-note">External pieces include IMDb links, externally hosted poster images, and public-domain movie metadata; the catalog UI and filtering/copy behavior are custom static-site code.</p>
+            <p class="ownership-note">External pieces include IMDb links, hosted poster images, and public-domain movie metadata; the catalog UI and filtering/copy behavior are custom client-side code.</p>
           </div>
 
           <div class="what-built-card">
             <p class="what-built-label">Production readiness</p>
             <ul class="project-bullets">
-              <li><strong>Already solid:</strong> static fallback content, client-side search, copyable vote commands, fixed poster dimensions, lazy loading, and accessible labels.</li>
-              <li><strong>Demo-only:</strong> movie data is maintained inside the static page and poster availability depends on external image URLs.</li>
-              <li><strong>Hardening needed:</strong> generate dynamic cards and fallback markup from one source, add poster health checks, validate catalog updates, and test clipboard behavior across browsers.</li>
+              <li><strong>Already solid:</strong> no-JS fallback content, client-side search, copyable vote commands, fixed poster dimensions, lazy loading, and labeled controls.</li>
+              <li><strong>Current limit:</strong> movie data lives in page/JavaScript source and poster availability depends on external image URLs.</li>
+              <li><strong>Next engineering:</strong> generate cards and fallback markup from one source, add poster health checks, validate catalog updates, and test clipboard behavior across browsers.</li>
               <li><strong>Security/privacy/ops:</strong> keep the catalog read-only, avoid tracking viewers, verify public-domain/source links, and guard any future user-submitted movie data before rendering.</li>
             </ul>
           </div>
@@ -207,8 +207,8 @@
           <div class="what-built-card">
             <p class="what-built-label">Testing and QA notes</p>
             <ul class="project-bullets">
-              <li><strong>Automated tests:</strong> no dedicated automated catalog tests are present yet; current QA relies on browser smoke checks and manual validation of the static page.</li>
-              <li><strong>Manual checklist:</strong> search by title/year/runtime/rating, clear filters, copy several vote commands, verify result-count announcements, confirm all movie cards render by default, and confirm the <code>noscript</code> list remains complete.</li>
+              <li><strong>Automated tests:</strong> no dedicated catalog tests are present yet; current QA relies on browser smoke checks and manual validation.</li>
+              <li><strong>Manual checklist:</strong> search by title/year/runtime/rating, reset filters, copy several vote commands, verify result-count announcements, confirm all movie cards render by default, and confirm the <code>noscript</code> list remains complete.</li>
               <li><strong>Browser/device checks:</strong> review mobile search controls, tap targets, keyboard focus, Clipboard API behavior, textarea fallback copying, lazy poster loading, and no-horizontal-overflow layouts.</li>
               <li><strong>Edge cases:</strong> empty searches, poster load failures, blocked clipboard access, missing external links, duplicate or ambiguous titles, and JavaScript-disabled browsing.</li>
               <li><strong>Known limitations:</strong> the dynamic cards and fallback list are not generated from one source yet, so catalog updates still need careful manual comparison.</li>
@@ -218,8 +218,8 @@
           <div class="what-built-card">
             <p class="what-built-label">Deployment and run notes</p>
             <ul class="project-bullets">
-              <li><strong>Hosted/run location:</strong> static GitHub Pages page at <code>zacbatten.me/movie-library.html</code>, backed by <code>movie-library.js</code> and in-page fallback markup.</li>
-              <li><strong>Environment/config:</strong> no environment variables are required; movie metadata is currently maintained in the static JavaScript and fallback HTML.</li>
+              <li><strong>Hosted/run location:</strong> GitHub Pages page at <code>zacbatten.me/movie-library.html</code>, backed by <code>movie-library.js</code> and in-page fallback markup.</li>
+              <li><strong>Environment/config:</strong> no environment variables are required; movie metadata is currently maintained in JavaScript and fallback HTML.</li>
               <li><strong>External APIs/services:</strong> IMDb links and externally hosted poster images are the external dependencies; search and copy behavior run entirely in the browser.</li>
               <li><strong>Local development:</strong> run <code>python -m http.server 8000</code> from the portfolio repo root, then open <code>/movie-library.html</code> to test search, copy buttons, poster loading, and no-JS fallback content.</li>
               <li><strong>Secrets/security:</strong> there are no frontend secrets. Keep the catalog read-only, avoid viewer tracking, validate poster/link sources, and sanitize any future user-submitted movie data before rendering.</li>
@@ -228,7 +228,7 @@
 
           <div class="movie-library-system-grid">
             <article>
-              <h3>Voting workflow</h3>
+              <h3>Voting path</h3>
               <p>Each rendered movie card includes a title-specific copy button so a viewer can send <code>!vote Movie Title</code> to Twitch chat without manually retyping long or ambiguous titles.</p>
             </article>
             <article>
@@ -236,8 +236,8 @@
               <p>The list is built around public-domain movie-night data: title, year, runtime, IMDb rating, IMDb link, and poster URL for each queue item.</p>
             </article>
             <article>
-              <h3>Static fallback</h3>
-              <p>If JavaScript is disabled, a full ordered list remains available in the page markup so the catalog still works as a readable static queue.</p>
+              <h3>No-JS fallback</h3>
+              <p>If JavaScript is disabled, a full ordered list remains in the page markup so the queue is still readable.</p>
             </article>
             <article>
               <h3>Poster performance</h3>
@@ -261,15 +261,15 @@
               </article>
               <article>
                 <h4>No-JS fallback</h4>
-                <p>The <code>noscript</code> block includes the full static list, preserving movie discovery even when filtering, copy buttons, and dynamic poster cards are unavailable.</p>
+                <p>The <code>noscript</code> block includes the full ordered list, preserving movie discovery even when filtering, copy buttons, and poster cards are unavailable.</p>
               </article>
               <article>
                 <h4>Image loading strategy</h4>
                 <p>Poster URLs are normalized for a larger card image, constrained to the expected poster host, and rendered with <code>loading="lazy"</code>, fixed dimensions, async decoding, and fallback styling for missing images.</p>
               </article>
               <article>
-                <h4>Accessibility labels</h4>
-                <p>The search input has a visible label, copy buttons include movie-specific accessible names, IMDb links describe their destination, and poster images use title-specific alt text.</p>
+                <h4>Labels and alt text</h4>
+                <p>The search input has a visible label, copy buttons name the movie, IMDb links describe their destination, and poster images use title-specific alt text.</p>
               </article>
             </div>
           </div>
@@ -315,7 +315,7 @@
           </div>
           <noscript>
             <div class="movie-fallback">
-              <strong>Static movie list</strong>
+              <strong>No-JS movie list</strong>
               <p>JavaScript search is off, so the full queue is listed below without poster filtering.</p>
               <ol class="movie-fallback-list">
                 <li><a href="https://www.imdb.com/title/tt0017463/" rel="noopener noreferrer">3 Bad Men <span>1926 / 1h 32m / IMDb 7.5</span></a></li>
@@ -440,7 +440,7 @@
         <div>
           <p class="eyebrow">Next step</p>
           <h2 id="movie-library-next-title">Return to the live room or the bot case study.</h2>
-          <p>The library supports the MovieBot workflow: browse titles here, then go back to the stream page or project write-up to see how chat voting drives OBS.</p>
+          <p>The library supports MovieBot: browse titles here, then return to the stream page or case study to see how chat voting drives OBS.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="movie-night.html#watch">Back to stream</a>
@@ -453,7 +453,7 @@
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer building practical web tools, automation, and frontend interfaces.</span>
+        <span>Software developer building web tools, automation, and frontend interfaces.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>

@@ -95,11 +95,11 @@
               </div>
               <div>
                 <dt>Tool state</dt>
-                <dd>Web Paint keeps the canvas pixels as the document source of truth and uses JavaScript state for the active tool, brush size, colors, selection bounds, zoom level, drag start, pending preview, and status messages.</dd>
+                <dd>Web Paint treats canvas pixels as the document and keeps the active tool, brush size, colors, selection bounds, zoom, drag start, preview, and status in JavaScript state.</dd>
               </div>
               <div>
                 <dt>Canvas rendering</dt>
-                <dd>Pointer events are converted from screen coordinates into canvas-space coordinates, then committed through the Canvas 2D API. Shape previews and resize work are scheduled around interaction state so the final pixels are only committed when the action ends.</dd>
+                <dd>Pointer events are converted into canvas coordinates and committed through Canvas 2D. Shape previews and resize work stay temporary until the pointer action ends.</dd>
               </div>
               <div>
                 <dt>Undo/redo</dt>
@@ -107,19 +107,19 @@
               </div>
               <div>
                 <dt>Import/export</dt>
-                <dd>The tool validates image type, file size, and pixel count before drawing imports onto the canvas. Export paths use PNG download, clipboard APIs where available, local save/load, and fallbacks when browser permissions are limited.</dd>
+                <dd>Imports check MIME type, file size, and pixel count. Exports use PNG download, Clipboard APIs where available, local save/load, and permission fallbacks.</dd>
               </div>
               <div>
                 <dt>Text and shape tools</dt>
-                <dd>Text, rectangle, circle, line, fill, pencil, eraser, and selection modes share the same state loop: capture the starting point, preview the draft interaction, then commit final pixels and save history.</dd>
+                <dd>Text, rectangle, circle, line, fill, pencil, eraser, and selection modes share one loop: capture a start point, preview the draft, commit pixels, then save history.</dd>
               </div>
               <div>
                 <dt>Mobile/touch constraints</dt>
-                <dd>Touch drawing needs large controls, compact panels, stable canvas sizing, pointer capture, and <code>touch-action: none</code> on the drawing surface so the browser does not treat a stroke as page scrolling.</dd>
+                <dd>Touch drawing needs large controls, compact panels, stable canvas sizing, pointer capture, and <code>touch-action: none</code> so strokes do not become page scrolls.</dd>
               </div>
               <div>
                 <dt>Nonvisual limitations</dt>
-                <dd>The shell uses labeled controls, visible focus states, status output, and grouped tool controls, but the drawing itself is still pixel data. A stronger version would need keyboard drawing shortcuts, a structured layer/object model, and better nonvisual descriptions of canvas content.</dd>
+                <dd>The shell has labels, focus states, status output, and grouped tools. The drawing is still pixel data, so a stronger version needs shortcuts, layers/objects, and nonvisual descriptions.</dd>
               </div>
               <div>
                 <dt>Technical takeaway</dt>
@@ -159,7 +159,7 @@
               </div>
               <div>
                 <dt>Why maps help</dt>
-                <dd>A map-first interface makes location the organizing layer. Crews can find nearby hydrant-style assets, see condition at a glance, select one record, and move into inspection or work-order tasks without losing spatial context.</dd>
+                <dd>A map-first interface makes location the organizing layer. Crews can find nearby hydrant-style assets, scan condition, select one record, and move into inspection or work-order tasks.</dd>
               </div>
               <div>
                 <dt>Asset state</dt>
@@ -171,11 +171,11 @@
               </div>
               <div>
                 <dt>Work orders</dt>
-                <dd>Work orders turn inspection findings into assignable follow-up. The important design choice is connecting the task back to the selected asset, current status, and supervisor-style review flow instead of treating it as a disconnected ticket.</dd>
+                <dd>Work orders turn inspection findings into assignable tasks tied to the selected asset, current status, and supervisor review path.</dd>
               </div>
               <div>
                 <dt>Imports</dt>
-                <dd>The import screen stays inside a sample-data boundary. Production systems would need schema checks, duplicate detection, coordinate validation, rollback behavior, and visible errors before new asset rows reached the map.</dd>
+                <dd>The import screen stays inside sample data. A real system would need schema checks, duplicate detection, coordinate validation, rollback behavior, and row-level errors.</dd>
               </div>
               <div>
                 <dt>Empty states</dt>
@@ -183,7 +183,7 @@
               </div>
               <div>
                 <dt>Production gaps</dt>
-                <dd>A production version would need production authentication, role permissions, offline sync, audit logs, import validation, stronger error handling, security review, mobile field-device testing, and dependable map/data-source operations.</dd>
+                <dd>A real deployment would need auth, role permissions, offline sync, audit logs, import validation, error handling, security review, device testing, and dependable map/data sources.</dd>
               </div>
               <div>
                 <dt>Technical takeaway</dt>
@@ -223,27 +223,27 @@
               </div>
               <div>
                 <dt>Chat command flow</dt>
-                <dd>Viewers send commands such as <code>!vote title</code>, <code>!results</code>, <code>!currentmovie</code>, <code>!time</code>, and <code>!movies</code>. TwitchIO routes each command into Python handlers that validate poll state and command arguments before touching playback state.</dd>
+                <dd>Viewers send <code>!vote title</code>, <code>!results</code>, <code>!currentmovie</code>, <code>!time</code>, and <code>!movies</code>. TwitchIO routes each command into Python handlers before playback state changes.</dd>
               </div>
               <div>
                 <dt>Vote state</dt>
-                <dd>The bot keeps a per-viewer vote map and aggregate movie totals. When a viewer changes their vote, the old title is decremented before the new title is counted, which prevents duplicate votes from inflating results.</dd>
+                <dd>The bot keeps per-viewer votes and movie totals. Changed votes decrement the old title before counting the new one, preventing duplicate vote inflation.</dd>
               </div>
               <div>
                 <dt>Tie handling</dt>
-                <dd>When a poll closes, the bot sorts by vote count, detects tied leaders, and chooses between tied titles with a fallback random selection. If nobody votes, it can pick a random available movie instead of stalling the stream.</dd>
+                <dd>When a poll closes, the bot sorts vote counts, detects ties, and picks among tied titles. If nobody votes, it can choose a random movie instead of stalling.</dd>
               </div>
               <div>
                 <dt>Movie folder scanning</dt>
-                <dd>The movie scanner walks the configured local folder for supported video extensions, refreshes the in-memory catalog during long sessions, avoids following symlinks, and falls back gracefully when duration tools or files are unavailable.</dd>
+                <dd>The scanner walks the configured movie folder, refreshes the in-memory catalog, avoids symlinks, and falls back when duration tools or files are unavailable.</dd>
               </div>
               <div>
                 <dt>OBS WebSocket control</dt>
-                <dd>After a winner is selected, the bot normalizes the local path, updates the configured OBS media source through WebSocket, switches to the movie scene, and restarts playback so the selected public-domain file becomes the stream output.</dd>
+                <dd>After a winner is selected, the bot normalizes the path, updates the OBS media source through WebSocket, switches scenes, and restarts playback.</dd>
               </div>
               <div>
                 <dt>Token refresh/reconnect</dt>
-                <dd>Long sessions need recovery paths, so the bot validates and refreshes Twitch OAuth tokens, watches the Twitch IRC connection, wraps OBS calls with connection checks, retries media handoff, and cleans up scheduled tasks during shutdown.</dd>
+                <dd>Long sessions use token refresh, Twitch IRC health checks, guarded OBS calls, media handoff retries, and scheduled-task cleanup on shutdown.</dd>
               </div>
               <div>
                 <dt>What changed</dt>
@@ -333,7 +333,7 @@
               </div>
               <div>
                 <dt>What changed</dt>
-                <dd>Kept <code>movie-night.html</code> focused on the stream, chat, bot flow, and fallback links, then moved title discovery into <code>movie-library.html</code> with JavaScript search, result counts, lazy posters, copyable <code>!vote</code> commands, and a complete no-JavaScript list.</dd>
+                <dd>Kept <code>movie-night.html</code> focused on the stream and bot flow, then moved title discovery into <code>movie-library.html</code> with search, result counts, lazy posters, copyable <code>!vote</code> commands, and a no-JavaScript list.</dd>
               </div>
               <div>
                 <dt>Technical takeaway</dt>
@@ -374,7 +374,7 @@
               </div>
               <div>
                 <dt>What changed</dt>
-                <dd>Reframed TraverseOps as a public MapLibre field-operations app designed around a Supabase-style data model. It uses sample data for safe review alongside asset filters, inspection/work-order screens, imports, reports, roles, and a deeper case study.</dd>
+                <dd>Reframed TraverseOps as a MapLibre field-operations app designed around a Supabase-style data model, with sample records, asset filters, inspection/work-order screens, imports, reports, roles, and a deeper case study.</dd>
               </div>
               <div>
                 <dt>Technical takeaway</dt>

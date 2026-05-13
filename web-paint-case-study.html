@@ -259,15 +259,15 @@
               </article>
               <article>
                 <h3>Prototype-only</h3>
-                <p>History uses full ImageData snapshots, the canvas content is not semantically represented, text placement is prompt-based, and the editor does not yet include layers, document naming, or full keyboard shortcuts.</p>
+                <p>History uses full ImageData snapshots. Canvas content has no semantic model, text placement uses a prompt, and the editor lacks layers, document names, and full shortcuts.</p>
               </article>
               <article>
                 <h3>Next engineering work</h3>
-                <p>A production editor would need memory-aware history, autosave recovery, better selection movement, richer keyboard commands, worker-backed heavy operations, broader browser testing, and nonvisual drawing descriptions.</p>
+                <p>A larger editor would need memory-aware history, autosave recovery, selection movement, richer shortcuts, workers for heavy operations, browser testing, and nonvisual descriptions.</p>
               </article>
               <article>
                 <h3>Security and privacy</h3>
-                <p>The current tool keeps work local in the browser. If cloud storage or sharing were added, file validation, privacy controls, data retention rules, upload limits, and abuse handling would become required.</p>
+                <p>The tool keeps drawings local. Cloud save or sharing would require file validation, privacy controls, retention rules, upload limits, and abuse handling.</p>
               </article>
             </div>
           </section>
@@ -562,23 +562,23 @@ function restoreHistory(index) {
             <div class="production-hardening-grid">
               <article>
                 <h3>Automated tests</h3>
-                <p>No automated test suite is present for Web Paint yet. The current confidence comes from manual browser testing of drawing tools, state transitions, import/export paths, and responsive control layouts.</p>
+                <p>No automated suite exists yet. Current confidence comes from manual checks of drawing tools, state transitions, import/export paths, and responsive controls.</p>
               </article>
               <article>
                 <h3>Manual checklist</h3>
-                <p>Check every tool mode, shape preview/commit, undo/redo, clear/new canvas, resize, zoom, fullscreen, image import, paste, copy/cut selection, PNG export, local save/load, and status messages.</p>
+                <p>Check every tool mode, shape preview/commit, undo/redo, reset/new canvas, resize, zoom, fullscreen, image import, paste, copy/cut selection, PNG export, local save/load, and status messages.</p>
               </article>
               <article>
                 <h3>Browser and device checks</h3>
-                <p>Test desktop mouse/keyboard, narrow mobile touch, tablet widths, high-DPI screens, clipboard permission differences, fullscreen availability, focus visibility, and reduced-motion behavior around UI transitions.</p>
+                <p>Test desktop mouse/keyboard, mobile touch, tablet widths, high-DPI screens, clipboard permissions, fullscreen availability, focus visibility, and reduced-motion behavior.</p>
               </article>
               <article>
                 <h3>Edge cases</h3>
-                <p>Exercise invalid files, very large images, unsupported clipboard writes, unavailable LocalStorage, canvas dimension limits, rapid tool switching mid-drag, selection operations with no selection, and history limits on large canvases.</p>
+                <p>Exercise invalid files, huge images, blocked clipboard writes, unavailable LocalStorage, canvas limits, rapid tool switching mid-drag, empty selections, and large-canvas history limits.</p>
               </article>
               <article>
                 <h3>Known limitations</h3>
-                <p>There are no automated regression tests for pixel output, pointer event sequences, memory pressure, or cross-browser clipboard behavior. Canvas content also needs a stronger nonvisual strategy.</p>
+                <p>There are no regression tests for pixel output, pointer sequences, memory pressure, or cross-browser clipboard behavior. Canvas content also needs a nonvisual strategy.</p>
               </article>
             </div>
           </section>

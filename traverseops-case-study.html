@@ -256,19 +256,19 @@
             <div class="production-hardening-grid">
               <article>
                 <h3>Already solid</h3>
-                <p>The public version has a coherent asset, inspection, work-order, import, reporting, and role model. The map-first flow and selected-asset context explain the product shape.</p>
+                <p>The public version ties assets, inspections, work orders, imports, reports, and roles to the selected map record.</p>
               </article>
               <article>
                 <h3>Public limits</h3>
-                <p>The public page uses sample municipal-style data and does not enforce production user accounts, permissions, audit trails, offline sync, or production GIS services.</p>
+                <p>The public page uses municipal-style sample data and has no real accounts, permissions, audit trails, offline sync, or GIS feeds.</p>
               </article>
               <article>
                 <h3>Production work</h3>
-                <p>Production use would require authentication, role-based permissions, import validation, audit logging, conflict-aware offline sync, mobile field-device testing, map source monitoring, and stronger error handling.</p>
+                <p>A real deployment would need auth, roles, import validation, audit logs, offline conflict handling, device tests, map monitoring, and sharper errors.</p>
               </article>
               <article>
                 <h3>Security and ops</h3>
-                <p>Production data would need tenant isolation, least-privilege data access, personally identifiable information review, backup/restore plans, operational logging, and alerts for sync/import/map failures.</p>
+                <p>Operational data would need tenant isolation, least-privilege access, PII review, backups, logs, and alerts for sync, import, and map failures.</p>
               </article>
             </div>
           </section>
@@ -547,62 +547,62 @@ function visibleAssets() {
             <p class="eyebrow">12 / Production plan</p>
             <h2 id="hardening-title">What would need to change before production deployment</h2>
             <p>
-              The public TraverseOps app shows the product shape and data model. A production field-operations system would need stronger guarantees around identity, authorization, data quality, offline behavior, security, and recovery before field crews or municipal operating records depended on it.
+              The public TraverseOps app shows the product shape and data model. A deployed field system would need identity, authorization, data quality, offline behavior, security, and recovery guarantees before crews or municipal records depended on it.
             </p>
             <div class="production-hardening-grid">
               <article>
                 <span class="architecture-kicker">Authentication</span>
                 <h3>Authenticated accounts and role permissions</h3>
                 <p><strong>Public app:</strong> shows field crew, supervisor, and admin-style flows.</p>
-                <p><strong>Production:</strong> add authenticated accounts, server-enforced roles, row-level permissions, least-privilege access, session expiry, and boundaries for who can inspect, assign, import, approve, or delete records.</p>
+                <p><strong>Production:</strong> add accounts, server-enforced roles, row-level permissions, least-privilege access, session expiry, and action boundaries.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Offline sync</span>
                 <h3>Field reliability in poor connectivity</h3>
                 <p><strong>Public app:</strong> communicates a mobile-friendly field path.</p>
-                <p><strong>Production:</strong> add offline inspection drafts, retry queues, conflict detection, sync status, background recovery, and user-visible warnings before a crew leaves an area with unsynced work.</p>
+                <p><strong>Production:</strong> add offline drafts, retry queues, conflict detection, sync status, recovery, and warnings for unsynced work.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Validation</span>
                 <h3>Strict data and state rules</h3>
                 <p><strong>Public app:</strong> uses curated sample records to explain the asset, inspection, and work-order lifecycle.</p>
-                <p><strong>Production:</strong> validate required fields, coordinates, status transitions, priority values, due dates, duplicate assets, and work-order state changes on both client and server.</p>
+                <p><strong>Production:</strong> validate fields, coordinates, status transitions, priorities, due dates, duplicate assets, and work-order state changes on client and server.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Audit logs</span>
                 <h3>Traceability for operational changes</h3>
                 <p><strong>Public app:</strong> models records that would be auditable.</p>
-                <p><strong>Production:</strong> record who changed each asset, inspection, import, assignment, status, and report-sensitive field, with timestamps and immutable history for accountability.</p>
+                <p><strong>Production:</strong> record who changed each asset, inspection, import, assignment, status, and report field, with timestamps and immutable history.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Error handling</span>
                 <h3>Recovery paths instead of silent failure</h3>
                 <p><strong>Public app:</strong> focuses on the intended happy path and product structure.</p>
-                <p><strong>Production:</strong> handle failed saves, map load failures, permission denials, stale records, sync conflicts, rejected imports, and retry exhaustion with specific messages and safe fallback states.</p>
+                <p><strong>Production:</strong> handle failed saves, map failures, denied permissions, stale records, sync conflicts, rejected imports, and retry exhaustion with specific messages.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Imports</span>
                 <h3>Defensive import validation</h3>
                 <p><strong>Public app:</strong> frames imports as a review concept.</p>
-                <p><strong>Production:</strong> add file type limits, schema mapping, row previews, duplicate detection, coordinate checks, rollback plans, rejected-row exports, import audit trails, and permission checks for bulk changes.</p>
+                <p><strong>Production:</strong> add file limits, schema mapping, row previews, duplicate checks, coordinate checks, rollback, rejected-row exports, import logs, and bulk-change permissions.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Mobile QA</span>
                 <h3>Field-device testing</h3>
                 <p><strong>Public app:</strong> uses desktop/mobile layouts and field-oriented screens.</p>
-                <p><strong>Production:</strong> test on actual phones/tablets, gloves/wet-screen scenarios where relevant, GPS permissions, battery constraints, camera/photo attachments, sunlight readability, and intermittent network conditions.</p>
+                <p><strong>Production:</strong> test phones/tablets, GPS permissions, battery limits, photo attachments, sunlight readability, and intermittent network conditions.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Security</span>
                 <h3>Protect operational records</h3>
                 <p><strong>Public app:</strong> uses public-safe sample data.</p>
-                <p><strong>Production:</strong> protect production asset data with TLS-only access, secret management, rate limits, abuse protection, secure file upload handling, dependency patching, backups, and privacy-aware logging.</p>
+                <p><strong>Production:</strong> protect asset data with TLS, secret management, rate limits, upload controls, dependency patching, backups, and privacy-aware logs.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Map data</span>
                 <h3>Reliable basemaps and asset sources</h3>
                 <p><strong>Public app:</strong> shows how asset location and status drive the interface.</p>
-                <p><strong>Production:</strong> define map tile/provider SLAs, cache strategy, fallback basemaps, geocoding limits, coordinate-system expectations, asset-source ownership, and alerts for stale or missing map data.</p>
+                <p><strong>Production:</strong> define tile/provider SLAs, cache strategy, fallback basemaps, geocoding limits, coordinate systems, asset-source ownership, and stale-data alerts.</p>
               </article>
             </div>
           </section>
@@ -617,19 +617,19 @@ function visibleAssets() {
               </article>
               <article>
                 <h3>Manual checklist</h3>
-                <p>Verify loading/resetting sample data, switching roles, opening each tab, selecting map assets, filtering status groups, entering inspection/work-order details, staging import rows, and reviewing report summaries.</p>
+                <p>Verify sample-data reset, role switching, tabs, map selection, status filters, inspection/work-order forms, import staging, and report summaries.</p>
               </article>
               <article>
                 <h3>Browser and device checks</h3>
-                <p>Check the map workspace, forms, tabs, and action buttons at narrow phone, tablet, and desktop widths. Keyboard focus order, touch target size, live status updates, and reduced-motion behavior are part of the review.</p>
+                <p>Check maps, forms, tabs, and buttons at phone, tablet, and desktop widths, including focus order, touch targets, status updates, and reduced motion.</p>
               </article>
               <article>
                 <h3>Edge cases</h3>
-                <p>Exercise empty sample data, repeated reset/load actions, invalid import-style rows, missing selected assets, filters with few results, role changes mid-task, and long notes/status labels that could stress the UI.</p>
+                <p>Exercise empty data, repeated resets, invalid import rows, missing selected assets, sparse filters, mid-task role changes, and long labels.</p>
               </article>
               <article>
                 <h3>Known limitations</h3>
-                <p>The public app does not yet have automated E2E tests, production GIS data validation, offline conflict simulation, authenticated permission tests, or device-lab testing against actual field phones/tablets.</p>
+                <p>The public app does not yet have automated E2E tests, GIS validation, offline-conflict simulation, authenticated permission tests, or field-device lab testing.</p>
               </article>
             </div>
           </section>
@@ -640,7 +640,7 @@ function visibleAssets() {
             <div class="production-hardening-grid">
               <article>
                 <h3>Hosted/run location</h3>
-                <p>The case study and app are hosted on GitHub Pages under <code>zacbatten.me</code>. The public version runs client-side from <code>traverseops-demo.html</code> and <code>traverseops-demo.js</code>; sample assets, inspections, and work orders are bundled in JavaScript.</p>
+                <p>The case study and app are hosted on GitHub Pages. <code>traverseops-demo.html</code> and <code>traverseops-demo.js</code> run client-side with bundled sample assets, inspections, and work orders.</p>
               </article>
               <article>
                 <h3>Environment/config</h3>
@@ -648,7 +648,7 @@ function visibleAssets() {
               </article>
               <article>
                 <h3>External APIs/services</h3>
-                <p>The case study explains a MapLibre map with a Supabase-style target data model, but this portfolio app does not connect to real municipal records, private GIS services, or a production Supabase project.</p>
+                <p>The case study explains a MapLibre map and Supabase-style target model, but the app does not connect to municipal records, private GIS services, or Supabase.</p>
               </article>
               <article>
                 <h3>Local development</h3>
@@ -656,7 +656,7 @@ function visibleAssets() {
               </article>
               <article>
                 <h3>Secrets and data safety</h3>
-                <p>No secrets belong in the public page. A production deployment would keep Supabase service-role keys, GIS credentials, user accounts, and municipal records out of client code, enforce row-level permissions server-side, and validate imports before storing them.</p>
+                <p>No secrets belong in the public page. A deployed version would keep service-role keys, GIS credentials, user accounts, and municipal records out of client code, enforce row-level permissions, and validate imports server-side.</p>
               </article>
             </div>
           </section>
