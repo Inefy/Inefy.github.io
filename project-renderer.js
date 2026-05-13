@@ -38,6 +38,50 @@
     return list;
   }
 
+  function safeLinkHref(value) {
+    if (typeof value !== "string") return "";
+
+    const href = value.trim();
+    if (!href || /^(?:javascript|data|vbscript):/i.test(href)) return "";
+
+    try {
+      const url = new URL(href, window.location.href);
+      const allowedProtocols = new Set(["http:", "https:", "mailto:"]);
+      const isExternal = url.origin !== window.location.origin;
+
+      if (!allowedProtocols.has(url.protocol)) return "";
+      if (isExternal && url.protocol === "http:") return "";
+
+      return href;
+    } catch {
+      return "";
+    }
+  }
+
+  function isExternalHttpLink(value) {
+    try {
+      const url = new URL(value, window.location.href);
+      return (url.protocol === "http:" || url.protocol === "https:") && url.origin !== window.location.origin;
+    } catch {
+      return false;
+    }
+  }
+
+  function safeAssetPath(value) {
+    if (typeof value !== "string") return "";
+
+    const source = value.trim();
+    if (!source || /^(?:javascript|data|vbscript):/i.test(source)) return "";
+
+    try {
+      const url = new URL(source, window.location.href);
+      if (url.origin !== window.location.origin) return "";
+      return source;
+    } catch {
+      return "";
+    }
+  }
+
   function appendLinks(parent, links, className) {
     if (!links?.length) return;
 
@@ -45,34 +89,42 @@
     wrapper.className = ["card__actions", className].filter(Boolean).join(" ");
 
     links.forEach((link) => {
+      const href = safeLinkHref(link.href);
+      if (!href) return;
+
       const anchor = document.createElement("a");
-      anchor.href = link.href;
+      anchor.href = href;
       anchor.textContent = link.label;
 
-      if (/^https?:\/\//.test(link.href)) {
+      if (isExternalHttpLink(href)) {
         anchor.rel = "noopener noreferrer";
       }
 
       wrapper.appendChild(anchor);
     });
 
+    if (!wrapper.children.length) return;
     parent.appendChild(wrapper);
   }
 
   function appendPicture(parent, visual) {
     if (!visual) return;
 
-    const picture = document.createElement("picture");
+    const png = safeAssetPath(visual.png);
+    if (!png) return;
 
-    if (visual.webp) {
+    const picture = document.createElement("picture");
+    const webp = safeAssetPath(visual.webp);
+
+    if (webp) {
       const source = document.createElement("source");
-      source.srcset = visual.webp;
+      source.srcset = webp;
       source.type = "image/webp";
       picture.appendChild(source);
     }
 
     const image = document.createElement("img");
-    image.src = visual.png;
+    image.src = png;
     image.alt = visual.alt || "";
     image.loading = "lazy";
     image.decoding = "async";

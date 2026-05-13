@@ -275,7 +275,17 @@ function renderReports() {
   const cards = reports.map(([label, value, detail]) => {
     const card = document.createElement("article");
     card.className = "traverse-report-card";
-    card.innerHTML = `<span>${label}</span><strong>${value}</strong><p>${detail}</p>`;
+
+    const labelElement = document.createElement("span");
+    labelElement.textContent = label;
+
+    const valueElement = document.createElement("strong");
+    valueElement.textContent = String(value);
+
+    const detailElement = document.createElement("p");
+    detailElement.textContent = detail;
+
+    card.append(labelElement, valueElement, detailElement);
     return card;
   });
 
