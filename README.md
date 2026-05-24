@@ -36,7 +36,9 @@ Suggested GitHub About fields:
 - `about.html` - concise human/professional overview.
 - `contact.html` - recruiter-friendly contact and opportunity fit page.
 - `styles.css` - shared site styles, desktop/mobile layout, accessibility states, and reduced-motion rules.
-- `script.js` - homepage interactions, local time, filtering, palette shuffle, and Twitch embed helpers.
+- `shared.js` - shared navigation, skip-link, footer year, and copy-email behavior.
+- `home.js` - homepage-only local time, selected-work filtering, palette shuffle, and pointer glow behavior.
+- `project-data.js` and `project-renderer.js` - shared project metadata and card rendering for homepage, work, and case-study indexes.
 - `movie-night.html` - MovieBot/Movie Night showcase.
 - `moviebot-case-study.html` - MovieBot technical case study.
 - `web-paint-case-study.html` - Web Paint technical case study.
@@ -75,7 +77,7 @@ Opening `index.html` directly also works for most pages, but a local static serv
 ## QA Checklist
 
 - Run a local link check before publishing meaningful navigation changes.
-- Verify `script.js` with `node --check script.js`.
+- Verify JavaScript syntax with `for file in *.js; do node --check "$file"; done`.
 - Check desktop and mobile layouts around the homepage hero, project cards, resume/contact sections, and game/tool pages.
 - Test with `prefers-reduced-motion: reduce` enabled.
 - Confirm public links to GitHub, resume, contact, and case studies remain valid.

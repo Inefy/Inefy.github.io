@@ -210,6 +210,9 @@
   function renderHomeCard(project) {
     const article = document.createElement("article");
     article.className = "card card--project project-card selected-work-card";
+    if (project.id) {
+      article.id = `${project.id}-feature`;
+    }
     article.dataset.tags = (project.tags || []).join(" ");
 
     article.appendChild(createVisual(project.visual, "project-visual"));
