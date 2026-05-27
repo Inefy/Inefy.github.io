@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0=' 'sha256-piPPGnlFhMpZOZo+7mlmQFrlTkzx86jHhzSZrLRVWEg='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-Mke69GYS2+HJbV51Dcj5tMiMHumlmfgXwLZSOuczu9g='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Open Web Paint, Zac Batten's browser canvas tool with Canvas 2D drawing modes, flood fill, undo/redo, PNG export, local save, zoom, and mobile controls.">
     <meta name="author" content="Zac Batten">
@@ -19,6 +19,7 @@
     <meta name="twitter:title" content="Web Paint Browser Canvas Tool / Zac Batten">
     <meta name="twitter:description" content="Canvas 2D drawing modes, flood fill, undo/redo, PNG export, local save, zoom, and mobile controls.">
     <meta name="twitter:image" content="https://zacbatten.me/assets/web-paint-workspace.png">
+    <meta name="twitter:image:alt" content="Web Paint browser tool showing toolbar controls, brush settings, and drawing workspace.">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -298,7 +299,8 @@
 
         <div class="canvas-scroll">
           <div class="canvas-stage" id="canvasStage">
-            <canvas id="paintCanvas" width="1024" height="768" aria-label="Drawing canvas" aria-describedby="paint-keyboard-shortcuts paint-touch-controls"></canvas>
+            <p class="visually-hidden" id="paint-canvas-accessibility-note">Canvas artwork is visual. The toolbar controls and status messages are labeled, but drawn content is not exposed as editable semantic objects.</p>
+            <canvas id="paintCanvas" width="1024" height="768" aria-label="Drawing canvas" aria-describedby="paint-keyboard-shortcuts paint-touch-controls paint-canvas-accessibility-note"></canvas>
             <div class="selection-box" id="selectionBox" hidden></div>
             <button class="resize-handle" id="canvasResizeHandle" type="button" aria-label="Resize canvas with pointer drag or arrow keys" aria-keyshortcuts="ArrowUp ArrowRight ArrowDown ArrowLeft Shift+ArrowUp Shift+ArrowRight Shift+ArrowDown Shift+ArrowLeft"></button>
           </div>

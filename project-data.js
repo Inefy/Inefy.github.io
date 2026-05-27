@@ -1,4 +1,7 @@
 (() => {
+  // Shared metadata for JS-enhanced project cards. Keep the no-JS fallback
+  // cards in index.html, work.html, and case-studies.html aligned with these
+  // titles, statuses, and source/demo/case-study labels.
   const githubPortfolio = "https://github.com/Inefy/Inefy.github.io";
   const movieBotRepo = "https://github.com/Inefy/twitch-movie-bot";
   const movieBotCi = `${movieBotRepo}/actions/workflows/tests.yml`;
@@ -48,8 +51,8 @@
           height: "1100"
         },
         links: [
-          { label: "Case Study", href: "traverseops-case-study.html" },
-          { label: "Public App", href: "traverseops-demo.html" }
+          { label: "Case study", href: "traverseops-case-study.html" },
+          { label: "Public app", href: "traverseops-demo.html" }
         ],
         caseLinks: [
           { label: "Full case study", href: "traverseops-case-study.html" },
@@ -61,11 +64,11 @@
         id: "moviebot",
         tags: ["automation", "stream"],
         title: "MovieBot / StreamCinema Vote Bot",
-        displayTitle: "StreamCinema Vote Bot \u2014 Twitch Chat Voting + OBS Automation",
-        status: "Public repo / live showcase",
-        homeMeta: ["Public repo", "Twitch / OBS"],
-        workStatus: "Public repo / live showcase",
-        caseStatus: "Automation / public repo",
+        displayTitle: "MovieBot / StreamCinema Vote Bot \u2014 Twitch Chat Voting + OBS Automation",
+        status: "Public repo / local automation",
+        homeMeta: ["Public repo", "Python / Twitch / OBS"],
+        workStatus: "Public repo / local automation",
+        caseStatus: "Python automation / public repo",
         updated: "May 2026",
         description: "A Python automation bot that lets Twitch chat vote on public-domain movies and controls OBS playback for stream movie nights.",
         problemLine: "Running a movie night manually is repetitive, hard to coordinate, and easy to interrupt while streaming.",
@@ -91,26 +94,26 @@
           height: "630"
         },
         links: [
-          { label: "Case Study", href: "moviebot-case-study.html" },
-          { label: "GitHub", href: movieBotRepo },
-          { label: "CI Tests", href: movieBotCi },
+          { label: "Case study", href: "moviebot-case-study.html" },
+          { label: "Source", href: movieBotRepo },
+          { label: "Tests", href: movieBotTests },
           { label: "Movie Night", href: "movie-night.html" },
           { label: "Movie Library", href: "movie-library.html" }
         ],
         workLinks: [
-          { label: "Case Study", href: "moviebot-case-study.html" },
-          { label: "GitHub", href: movieBotRepo },
+          { label: "Case study", href: "moviebot-case-study.html" },
+          { label: "Source", href: movieBotRepo },
           { label: "Tests", href: movieBotTests },
           { label: "Movie Night", href: "movie-night.html" },
           { label: "Movie Library", href: "movie-library.html" }
         ],
         caseLinks: [
           { label: "Full case study", href: "moviebot-case-study.html" },
-          { label: "Live showcase", href: "movie-night.html" },
-          { label: "CI tests", href: movieBotCi },
-          { label: "Test file", href: movieBotTests },
+          { label: "Movie Night", href: "movie-night.html" },
           { label: "Movie Library", href: "movie-library.html" },
-          { label: "GitHub", href: movieBotRepo }
+          { label: "Source", href: movieBotRepo },
+          { label: "CI tests", href: movieBotCi },
+          { label: "Pytest file", href: movieBotTests }
         ]
       },
       {
@@ -147,18 +150,18 @@
           height: "670"
         },
         links: [
-          { label: "Case Study", href: "web-paint-case-study.html" },
-          { label: "Open Tool", href: "paint.html" },
+          { label: "Case study", href: "web-paint-case-study.html" },
+          { label: "Live tool", href: "paint.html" },
           { label: "Source", href: `${githubPortfolio}/blob/main/paint.js` }
         ],
         workLinks: [
-          { label: "Open Tool", href: "paint.html" },
-          { label: "Case Study", href: "web-paint-case-study.html" },
+          { label: "Case study", href: "web-paint-case-study.html" },
+          { label: "Live tool", href: "paint.html" },
           { label: "Source", href: `${githubPortfolio}/blob/main/paint.js` }
         ],
         caseLinks: [
-          { label: "Open tool", href: "paint.html" },
           { label: "Full case study", href: "web-paint-case-study.html" },
+          { label: "Live tool", href: "paint.html" },
           { label: "Interactive Lab", href: "interactive-lab.html" },
           { label: "Source", href: `${githubPortfolio}/blob/main/paint.js` }
         ]
@@ -167,8 +170,8 @@
         id: "movie-library",
         title: "Movie Library",
         displayTitle: "Movie Library \u2014 Public-Domain Voting Catalog",
-        status: "Supporting live page",
-        workStatus: "Supporting live page",
+        status: "Live catalog / source in portfolio",
+        workStatus: "Live catalog / source in portfolio",
         caseStatus: "Companion app / client-side UI",
         updated: "May 2026",
         description: "A searchable public-domain movie catalog that supports the StreamCinema bot by helping viewers find movies and copy vote commands.",
@@ -195,16 +198,16 @@
           height: "630"
         },
         links: [
-          { label: "Open Library", href: "movie-library.html" },
-          { label: "MovieBot Case Study", href: "moviebot-case-study.html" },
+          { label: "Live catalog", href: "movie-library.html" },
+          { label: "MovieBot case study", href: "moviebot-case-study.html" },
           { label: "Movie Night", href: "movie-night.html" },
-          { label: "GitHub", href: `${githubPortfolio}/blob/main/movie-library.html` }
+          { label: "Source", href: `${githubPortfolio}/blob/main/movie-library.html` }
         ],
         caseLinks: [
+          { label: "Live catalog", href: "movie-library.html" },
           { label: "MovieBot case study", href: "moviebot-case-study.html" },
-          { label: "Open catalog", href: "movie-library.html" },
           { label: "Movie Night", href: "movie-night.html" },
-          { label: "GitHub", href: `${githubPortfolio}/blob/main/movie-library.html` }
+          { label: "Source", href: `${githubPortfolio}/blob/main/movie-library.html` }
         ]
       },
       {
@@ -237,10 +240,10 @@
           height: "756"
         },
         links: [
-          { label: "Live Site", href: "https://judybatten.com/" }
+          { label: "Live site", href: "https://judybatten.com/" }
         ],
         workLinks: [
-          { label: "Live Site", href: "https://judybatten.com/" }
+          { label: "Live site", href: "https://judybatten.com/" }
         ]
       },
       {
@@ -270,21 +273,20 @@
           height: "1080"
         },
         links: [
-          { label: "Build Notes", href: "notes.html#portfolio-cleanup" },
-          { label: "GitHub", href: githubPortfolio },
-          { label: "View Source", href: githubPortfolio }
+          { label: "Build note", href: "notes.html#portfolio-cleanup" },
+          { label: "Source", href: githubPortfolio }
         ]
       },
       {
         id: "interactive-lab",
         title: "Interactive Lab",
-        displayTitle: "Interactive Lab \u2014 Browser Games & JavaScript Experiments",
+        displayTitle: "Interactive Lab \u2014 Browser Mechanics Experiments",
         status: "Browser experiments",
         workStatus: "Browser experiments",
         updated: "May 2026",
-        description: "A collection of browser tools and games framed as small interaction, canvas, input, state, and keyboard experiments.",
+        description: "A collection of small browser mechanics experiments for Canvas rendering, input handling, grid logic, game loops, LocalStorage, and status UI.",
         problemLine: "Interactive browser builds need visible controls, reliable state, responsive layouts, and enough polish to be useful portfolio evidence.",
-        whatBuiltLine: "I built and refined browser games and tools with keyboard/touch input, pause states, score persistence, implementation notes, and consistent navigation.",
+        whatBuiltLine: "I built and refined browser tools and games with keyboard/touch input, pause states, score persistence, implementation notes, and consistent navigation.",
         whatBuilt: [
           "Canvas and DOM-based game loops with scoring, collision, movement, and restart behavior.",
           "Keyboard and touch controls with visible instructions and status updates.",
@@ -302,9 +304,9 @@
           height: "651"
         },
         links: [
-          { label: "Open Interactive Lab", href: "interactive-lab.html" },
-          { label: "Play Games", href: "interactive-lab.html#lab-archive" },
-          { label: "View Source", href: githubPortfolio }
+          { label: "Open lab", href: "interactive-lab.html" },
+          { label: "Browse demos", href: "interactive-lab.html#lab-archive" },
+          { label: "Source", href: githubPortfolio }
         ]
       },
       {
@@ -331,7 +333,7 @@
         },
         links: [
           { label: "Play", href: "mini-golf.html" },
-          { label: "GitHub", href: `${githubPortfolio}/blob/main/mini-golf.js` }
+          { label: "Source", href: `${githubPortfolio}/blob/main/mini-golf.js` }
         ]
       },
       {
@@ -358,7 +360,7 @@
         },
         links: [
           { label: "Play", href: "asteroid-drift.html" },
-          { label: "GitHub", href: `${githubPortfolio}/blob/main/asteroid-drift.js` }
+          { label: "Source", href: `${githubPortfolio}/blob/main/asteroid-drift.js` }
         ]
       },
       {
@@ -385,7 +387,7 @@
         },
         links: [
           { label: "Play", href: "snake-lab.html" },
-          { label: "GitHub", href: `${githubPortfolio}/blob/main/snake-lab.js` }
+          { label: "Source", href: `${githubPortfolio}/blob/main/snake-lab.js` }
         ]
       },
       {
@@ -412,7 +414,7 @@
         },
         links: [
           { label: "Play", href: "brick-breaker.html" },
-          { label: "GitHub", href: `${githubPortfolio}/blob/main/brick-breaker.js` }
+          { label: "Source", href: `${githubPortfolio}/blob/main/brick-breaker.js` }
         ]
       },
       {
@@ -439,7 +441,7 @@
         },
         links: [
           { label: "Play", href: "2048.html" },
-          { label: "GitHub", href: `${githubPortfolio}/blob/main/2048.js` }
+          { label: "Source", href: `${githubPortfolio}/blob/main/2048.js` }
         ]
       },
       {
@@ -466,7 +468,7 @@
         },
         links: [
           { label: "Play", href: "minefield-sweep.html" },
-          { label: "GitHub", href: `${githubPortfolio}/blob/main/minefield-sweep.js` }
+          { label: "Source", href: `${githubPortfolio}/blob/main/minefield-sweep.js` }
         ]
       },
       {
@@ -493,7 +495,7 @@
         },
         links: [
           { label: "Play", href: "flappy-workbench.html" },
-          { label: "GitHub", href: `${githubPortfolio}/blob/main/flappy-workbench.js` }
+          { label: "Source", href: `${githubPortfolio}/blob/main/flappy-workbench.js` }
         ]
       }
     ],
@@ -511,9 +513,9 @@
         ownership: "This is a content and UI pass; GitHub Pages supplies the hosting layer.",
         stackText: "HTML, CSS, metadata, GitHub Pages.",
         links: [
-          { label: "Read Note", href: "notes.html#portfolio-cleanup" },
+          { label: "Read note", href: "notes.html#portfolio-cleanup" },
           { label: "Homepage", href: "index.html" },
-          { label: "GitHub", href: githubPortfolio }
+          { label: "Source", href: githubPortfolio }
         ]
       },
       {
@@ -529,9 +531,9 @@
         ownership: "Uses public-domain movie data, IMDb links, external poster images, and Twitch embed APIs.",
         stackText: "GitHub Pages, movie data, no-JavaScript fallback.",
         links: [
-          { label: "Read Note", href: "notes.html#moviebot-page-split" },
+          { label: "Read note", href: "notes.html#moviebot-page-split" },
           { label: "Movie Night", href: "movie-night.html" },
-          { label: "GitHub", href: "https://github.com/Inefy/twitch-movie-bot" }
+          { label: "Source", href: "https://github.com/Inefy/twitch-movie-bot" }
         ]
       },
       {
@@ -547,9 +549,9 @@
         ownership: "The page documents a public sample app; the operational data shown is sample content.",
         stackText: "Product framing, case-study copy, mobile preview.",
         links: [
-          { label: "Read Note", href: "notes.html#traverseops-demo-framing" },
+          { label: "Read note", href: "notes.html#traverseops-demo-framing" },
           { label: "Public app", href: "traverseops-demo.html" },
-          { label: "Case Study", href: "traverseops-case-study.html" }
+          { label: "Case study", href: "traverseops-case-study.html" }
         ]
       }
     ]

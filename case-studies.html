@@ -3,23 +3,71 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-I36S1vyCWdKjaNsHyEHVicwlmiaVQRUpAojlpzdpOlA='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Technical case studies in Zac Batten's developer portfolio, covering TraverseOps, MovieBot Twitch bot automation, Web Paint, and Movie Library.">
+    <meta name="description" content="Technical case studies by Zac Batten covering TraverseOps map UI, MovieBot Twitch/OBS automation, Web Paint Canvas state, and Movie Library search.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/case-studies.html">
     <meta property="og:site_name" content="Inefy Workbench">
-    <meta property="og:title" content="Case Studies / Zac Batten Developer Portfolio">
-    <meta property="og:description" content="Detailed technical writeups in Zac Batten's developer portfolio: problems, builds, stacks, challenges, and project links.">
+    <meta property="og:title" content="Technical Case Studies / Zac Batten Developer Portfolio">
+    <meta property="og:description" content="Technical writeups for TraverseOps, MovieBot, Web Paint, and Movie Library, with project scope, implementation details, links, and known limits.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/case-studies.html">
     <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <meta property="og:image:alt" content="Inefy workbench case studies and selected project cards preview.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Case Studies / Zac Batten Developer Portfolio">
-    <meta name="twitter:description" content="Technical case studies for TraverseOps, MovieBot Twitch bot automation, Web Paint, and Movie Library.">
+    <meta name="twitter:title" content="Technical Case Studies / Zac Batten Developer Portfolio">
+    <meta name="twitter:description" content="TraverseOps map UI, MovieBot Twitch/OBS automation, Web Paint Canvas state, and Movie Library search/copy flows.">
     <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
-    <title>Case Studies / Zac Batten Developer Portfolio</title>
+    <meta name="twitter:image:alt" content="Inefy workbench case studies and selected project cards preview.">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "@id": "https://zacbatten.me/case-studies.html#case-studies",
+        "url": "https://zacbatten.me/case-studies.html",
+        "name": "Technical Case Studies / Zac Batten Developer Portfolio",
+        "description": "Technical case-study index for Zac Batten's TraverseOps, MovieBot, Web Paint, and Movie Library projects.",
+        "isPartOf": { "@id": "https://zacbatten.me/#website" },
+        "author": {
+          "@type": "Person",
+          "@id": "https://zacbatten.me/#zac-batten",
+          "name": "Zac Batten",
+          "url": "https://zacbatten.me/"
+        },
+        "mainEntity": {
+          "@type": "ItemList",
+          "name": "Technical case studies",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "TraverseOps MapLibre Case Study",
+              "url": "https://zacbatten.me/traverseops-case-study.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "MovieBot Twitch Bot Case Study",
+              "url": "https://zacbatten.me/moviebot-case-study.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Web Paint Canvas Case Study",
+              "url": "https://zacbatten.me/web-paint-case-study.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Movie Library Voting Catalog",
+              "url": "https://zacbatten.me/movie-library.html"
+            }
+          ]
+        }
+      }
+    </script>
+    <title>Technical Case Studies / Zac Batten Developer Portfolio</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,23 +132,23 @@
           </article>
           <article class="case-study-listing case-study-listing-fallback" id="moviebot">
             <div class="case-study-listing-body">
-              <div class="case-study-listing-header"><span class="work-status">Automation / public repo</span><h3>StreamCinema Vote Bot &mdash; Twitch Chat Voting + OBS Automation</h3></div>
+              <div class="case-study-listing-header"><span class="work-status">Python automation / public repo</span><h3>MovieBot / StreamCinema Vote Bot &mdash; Twitch Chat Voting + OBS Automation</h3></div>
               <p>Running a movie night manually is repetitive, hard to coordinate, and easy to interrupt while streaming.</p>
-              <div class="work-links"><a href="moviebot-case-study.html">Full case study</a><a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a><a href="movie-night.html">Movie Night</a><a href="movie-library.html">Movie Library</a></div>
+              <div class="work-links"><a href="moviebot-case-study.html">Full case study</a><a href="movie-night.html">Movie Night</a><a href="movie-library.html">Movie Library</a><a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Source</a><a href="https://github.com/Inefy/twitch-movie-bot/actions/workflows/tests.yml" rel="noopener noreferrer">CI tests</a><a href="https://github.com/Inefy/twitch-movie-bot/blob/main/tests/test_bot_logic.py" rel="noopener noreferrer">Pytest file</a></div>
             </div>
           </article>
           <article class="case-study-listing case-study-listing-fallback" id="web-paint">
             <div class="case-study-listing-body">
               <div class="case-study-listing-header"><span class="work-status">Canvas tool / live page</span><h3>Web Paint &mdash; Browser Canvas Drawing Tool</h3></div>
               <p>Browser drawing tools need fast canvas interaction, predictable tool state, and controls that stay usable across desktop and touch screens.</p>
-              <div class="work-links"><a href="web-paint-case-study.html">Full case study</a><a href="paint.html">Open Tool</a></div>
+              <div class="work-links"><a href="web-paint-case-study.html">Full case study</a><a href="paint.html">Live tool</a><a href="interactive-lab.html">Interactive Lab</a><a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source</a></div>
             </div>
           </article>
           <article class="case-study-listing case-study-listing-fallback" id="movie-library">
             <div class="case-study-listing-body">
               <div class="case-study-listing-header"><span class="work-status">Companion app / client-side UI</span><h3>Movie Library &mdash; Public-Domain Voting Catalog</h3></div>
               <p>Viewers need a simple way to browse eligible movies and submit valid vote commands without guessing titles.</p>
-              <div class="work-links"><a href="movie-library.html">Open Library</a><a href="moviebot-case-study.html">MovieBot Case Study</a><a href="movie-night.html">Movie Night</a></div>
+              <div class="work-links"><a href="movie-library.html">Live catalog</a><a href="moviebot-case-study.html">MovieBot case study</a><a href="movie-night.html">Movie Night</a><a href="https://github.com/Inefy/Inefy.github.io/blob/main/movie-library.html" rel="noopener noreferrer">Source</a></div>
             </div>
           </article>
         </div>

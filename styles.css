@@ -198,6 +198,7 @@ canvas {
   position: relative;
   overflow: hidden;
   margin: 0;
+  contain: layout paint;
   background: var(--card-media-bg);
 }
 
@@ -1429,6 +1430,16 @@ h3 {
   color: #07100d;
   background: var(--mint);
   border-color: var(--mint);
+}
+
+.filter-button:disabled,
+.filter-button:disabled:hover {
+  cursor: not-allowed;
+  opacity: 0.58;
+  color: var(--muted);
+  background: rgba(248, 244, 232, 0.05);
+  border-color: var(--line);
+  transform: none;
 }
 
 .project-grid {
@@ -3150,6 +3161,57 @@ h3 {
   justify-self: start;
 }
 
+.lab-skill-section {
+  padding-top: clamp(24px, 4vw, 56px);
+}
+
+.lab-skill-grid {
+  display: grid;
+  max-width: 1180px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.lab-skill-card {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 20px;
+  background: rgba(248, 244, 232, 0.052);
+  border: 1px solid rgba(248, 244, 232, 0.13);
+  border-radius: var(--card-radius);
+}
+
+.lab-skill-card h3 {
+  margin-bottom: 0;
+  font-size: 1.06rem;
+}
+
+.lab-skill-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.lab-skill-card ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.lab-skill-card li::marker {
+  color: var(--mint);
+}
+
+.lab-skill-card a {
+  color: inherit;
+  font-weight: 900;
+  text-decoration-color: rgba(109, 225, 166, 0.52);
+  text-underline-offset: 4px;
+}
+
 .lab-grid {
   display: grid;
   max-width: 1180px;
@@ -3164,7 +3226,7 @@ h3 {
   --card-border-color: var(--card-border-strong);
   display: grid;
   min-height: 100%;
-  grid-template-rows: auto auto auto auto 1fr auto;
+  grid-template-rows: auto auto auto auto auto 1fr auto;
   gap: 12px;
   padding: 28px;
   background: var(--card-bg);
@@ -3173,8 +3235,23 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.lab-card-featured {
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.95fr);
+  align-items: start;
+}
+
+.lab-card-featured .lab-card-visual {
+  grid-row: 1 / span 6;
+  min-height: 0;
+  height: 100%;
+  margin: 0;
+  aspect-ratio: auto;
+}
+
 .lab-card-visual {
   overflow: hidden;
+  min-width: 0;
   margin: -12px -12px 4px;
   aspect-ratio: 16 / 9;
   background: var(--card-media-bg);
@@ -3205,6 +3282,18 @@ h3 {
 .lab-card p {
   margin-bottom: 4px;
   color: var(--muted);
+}
+
+.lab-takeaway {
+  padding: 12px 14px;
+  color: var(--soft);
+  background: rgba(109, 225, 166, 0.08);
+  border: 1px solid rgba(109, 225, 166, 0.18);
+  border-radius: var(--card-radius);
+}
+
+.lab-takeaway strong {
+  color: var(--mint);
 }
 
 .lab-detail-list {
@@ -3299,6 +3388,10 @@ h3 {
 }
 
 @media (max-width: 1040px) {
+  .lab-skill-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .lab-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3334,6 +3427,10 @@ h3 {
     gap: 14px;
   }
 
+  .lab-skill-grid {
+    grid-template-columns: 1fr;
+  }
+
   .lab-archive-grid {
     max-width: none;
     grid-template-columns: 1fr;
@@ -3342,9 +3439,19 @@ h3 {
 
   .lab-card {
     min-height: 0;
-    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto auto;
     gap: 8px;
     padding: 20px;
+  }
+
+  .lab-card-featured {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-card-featured .lab-card-visual {
+    grid-row: auto;
+    min-height: 0;
+    margin: -6px -6px 6px;
   }
 
   .lab-card-visual {
@@ -3395,6 +3502,123 @@ h3 {
 
 .archive-lab-grid {
   max-width: none;
+}
+
+.lab-card[id] {
+  scroll-margin-top: 110px;
+}
+
+.note-path-section,
+.note-topic-section {
+  padding-top: clamp(24px, 4vw, 56px);
+}
+
+.note-read-first-grid,
+.note-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.note-index-card,
+.note-topic-card {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  padding: 24px;
+  background: var(--card-surface-note);
+  border: 1px solid var(--line);
+  border-radius: var(--card-radius);
+}
+
+.note-index-card h3,
+.note-topic-card h3 {
+  margin-bottom: 0;
+}
+
+.note-index-card h3 a {
+  color: inherit;
+  text-decoration-color: rgba(109, 225, 166, 0.55);
+  text-underline-offset: 4px;
+}
+
+.note-index-card p,
+.note-topic-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.note-topic-nav,
+.note-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.note-topic-nav {
+  margin-bottom: 18px;
+}
+
+.note-topic-nav a,
+.note-tag-list a {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  padding: 0 12px;
+  color: var(--soft);
+  background: var(--chip-surface);
+  border: 1px solid var(--chip-border);
+  border-radius: 999px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.note-topic-nav a {
+  min-height: 44px;
+}
+
+.note-link-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.note-link-list a {
+  color: inherit;
+  font-weight: 900;
+  text-decoration-color: rgba(109, 225, 166, 0.5);
+  text-underline-offset: 4px;
+}
+
+.note-topic-card,
+.build-log-list article {
+  scroll-margin-top: 110px;
+}
+
+@media (max-width: 900px) {
+  .note-read-first-grid,
+  .note-topic-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .note-read-first-grid,
+  .note-topic-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .note-index-card,
+  .note-topic-card {
+    padding: 20px;
+  }
 }
 
 .build-log-section {
@@ -4121,8 +4345,10 @@ h3 {
   position: relative;
   overflow: hidden;
   display: grid;
+  aspect-ratio: 16 / 10;
   min-height: 240px;
   margin: 0;
+  contain: layout paint;
   place-items: center;
   background:
     linear-gradient(135deg, rgba(109, 225, 166, 0.16), transparent),
@@ -4130,6 +4356,7 @@ h3 {
 }
 
 .work-card-featured .work-thumb {
+  aspect-ratio: 16 / 9;
   min-height: 420px;
 }
 
@@ -4376,8 +4603,10 @@ h3 {
   position: relative;
   overflow: hidden;
   display: grid;
+  aspect-ratio: 1200 / 630;
   min-height: 100%;
   margin: 0;
+  contain: layout paint;
   place-items: center;
   background: var(--card-media-bg);
 }
@@ -4872,6 +5101,7 @@ h3 {
   min-width: 0;
   margin: 0;
   overflow: hidden;
+  contain: layout paint;
   background: rgba(5, 8, 8, 0.78);
   border: 1px solid rgba(248, 244, 232, 0.14);
   border-radius: 8px;

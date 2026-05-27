@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0=' 'sha256-aBNsznouhGZCm9wJDs8zhHoraiRhueXqrg8i89+2D5I='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-dejCAySzsTI/ItxO8MLI860neQ28E23JK1Ggzd4d728='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Movie Library by Zac Batten: public-domain voting catalog for the MovieBot Twitch bot with search filters, copyable vote commands, lazy posters, and no-JS fallback.">
     <meta name="author" content="Zac Batten">
@@ -21,6 +21,7 @@
     <meta name="twitter:title" content="Movie Library Voting Catalog / Zac Batten">
     <meta name="twitter:description" content="Public-domain MovieBot catalog with search filters, copyable vote commands, lazy posters, and no-JavaScript fallback.">
     <meta name="twitter:image" content="https://zacbatten.me/assets/movie-library-preview.png">
+    <meta name="twitter:image:alt" content="Public domain movie library preview with poster wall.">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -121,7 +122,7 @@
             Viewers need a reliable way to choose vote commands; I built this HTML/CSS/JavaScript catalog so they can search public-domain titles, copy the exact <code>!vote</code> command, and return to Twitch chat with fewer typos.
           </p>
           <label class="movie-search-label" for="movie-search">Search movies</label>
-          <input class="movie-search" id="movie-search" type="search" placeholder="Title, year, runtime, or rating" autocomplete="off" inputmode="search" enterkeyhint="search" autocapitalize="none" spellcheck="false" aria-describedby="movie-search-hint movie-library-keyboard-controls movie-library-touch-controls">
+          <input class="movie-search" id="movie-search" type="search" placeholder="Title, year, runtime, or rating" autocomplete="off" inputmode="search" enterkeyhint="search" autocapitalize="none" spellcheck="false" aria-controls="movie-grid" aria-describedby="movie-search-hint movie-library-keyboard-controls movie-library-touch-controls">
           <p class="movie-search-hint" id="movie-search-hint">Search title, year, runtime, or rating. Press Enter or use the results button to jump to matching cards, then copy the exact vote command.</p>
           <a class="button secondary movie-results-jump" href="#movie-grid">Show matching results</a>
           <div class="movie-list-stats">
@@ -331,7 +332,7 @@
           <div class="movie-library-toolbar">
             <span data-movie-results role="status" aria-live="polite" aria-atomic="true">Showing all 110 movies</span>
             <span class="sr-only" id="movieAnnouncement" role="status" aria-live="polite" aria-atomic="true">Movie Library ready.</span>
-            <button class="filter-button" type="button" data-movie-clear>Clear</button>
+            <button class="filter-button" type="button" data-movie-clear aria-label="Clear movie search" aria-controls="movie-search movie-grid">Clear</button>
           </div>
           <noscript>
             <div class="movie-fallback">
@@ -452,7 +453,7 @@
             </div>
           </noscript>
           <div class="movie-grid" id="movie-grid" tabindex="-1" aria-describedby="movie-library-keyboard-controls movie-library-touch-controls"></div>
-          <script src="movie-library.js"></script>
+          <script src="movie-library.js" defer></script>
         </div>
       </section>
 

@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Browser tools and game experiments by Zac Batten, a frontend developer using Canvas, vanilla JavaScript, touch controls, local state, and accessible UI.">
+    <meta name="description" content="Browser mechanics experiments by Zac Batten showing Canvas rendering, keyboard and touch input, grid logic, game loops, LocalStorage, and status UI.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/interactive-lab.html">
     <meta property="og:site_name" content="Inefy Workbench">
-    <meta property="og:title" content="Interactive Lab / Zac Batten Frontend Developer">
-    <meta property="og:description" content="Canvas tools, arcade loops, puzzle games, local state, touch controls, and frontend UI experiments from Zac Batten.">
+    <meta property="og:title" content="Interactive Lab / Browser Mechanics Experiments">
+    <meta property="og:description" content="Small browser mechanics experiments showing Canvas rendering, input handling, grid logic, collision loops, LocalStorage, and status UI.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/interactive-lab.html">
     <meta property="og:image" content="https://zacbatten.me/assets/interactive-lab-preview.png">
     <meta property="og:image:alt" content="Interactive Lab archive with browser tool and game project cards.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Interactive Lab / Zac Batten Frontend Developer">
-    <meta name="twitter:description" content="Canvas tools, arcade loops, puzzle games, local state, touch controls, and frontend UI experiments.">
+    <meta name="twitter:title" content="Interactive Lab / Browser Mechanics Experiments">
+    <meta name="twitter:description" content="Canvas rendering, keyboard/touch input, grid logic, collision loops, LocalStorage, and status UI.">
     <meta name="twitter:image" content="https://zacbatten.me/assets/interactive-lab-preview.png">
-    <title>Interactive Lab / Zac Batten Frontend Developer</title>
+    <meta name="twitter:image:alt" content="Interactive Lab archive with browser tool and game project cards.">
+    <title>Interactive Lab / Browser Mechanics Experiments</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2368b7ff'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,26 +61,87 @@
       <section class="section lab-hero" aria-labelledby="lab-page-title">
         <div class="section-heading">
           <p class="eyebrow">Interactive lab</p>
-          <h1 id="lab-page-title">Browser experiments and playable UI studies.</h1>
+          <h1 id="lab-page-title">Browser mechanics experiments for UI skill evidence.</h1>
           <p>
-            This archive keeps browser experiments separate from the main case studies while still showing frontend mechanics: canvas state, keyboard and touch input, collision checks, score persistence, and compact no-backend interfaces.
+            This lab keeps small browser experiments separate from the flagship case studies. Treat it as supporting evidence for Canvas rendering, keyboard and touch input, grid logic, collision loops, LocalStorage, status updates, and compact no-backend UI.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="mini-golf.html">Play Mini Golf</a>
-            <a class="button secondary" href="asteroid-drift.html">Open Asteroid Drift</a>
+            <a class="button primary" href="paint.html">Open Web Paint</a>
+            <a class="button secondary" href="work.html#interactive-experiments">Back to Work</a>
             <a class="button ghost" href="#lab-archive">Browse all experiments</a>
           </div>
         </div>
       </section>
 
+      <section class="section lab-skill-section" id="lab-skill-map" aria-labelledby="lab-skill-title">
+        <div class="section-heading">
+          <p class="eyebrow">Skill map</p>
+          <h2 id="lab-skill-title">Browse experiments by what they prove.</h2>
+          <p>Web Paint is the flagship browser tool. The games stay here as smaller experiments for specific interaction mechanics.</p>
+        </div>
+
+        <div class="lab-skill-grid">
+          <article class="lab-skill-card">
+            <h3>Canvas rendering</h3>
+            <p>Rendering loops, tool previews, viewport-aware sizing, and redraw discipline.</p>
+            <ul>
+              <li><a href="#web-paint-experiment">Web Paint</a></li>
+              <li><a href="#asteroid-drift-experiment">Asteroid Drift</a></li>
+              <li><a href="#mini-golf-experiment">Mini Golf</a></li>
+            </ul>
+          </article>
+
+          <article class="lab-skill-card">
+            <h3>Keyboard / touch input</h3>
+            <p>Shared input state, large touch controls, keyboard paths, and responsive control layouts.</p>
+            <ul>
+              <li><a href="#web-paint-experiment">Web Paint</a></li>
+              <li><a href="#snake-lab-experiment">Snake Lab</a></li>
+              <li><a href="#minefield-sweep-experiment">Minefield Sweep</a></li>
+            </ul>
+          </article>
+
+          <article class="lab-skill-card">
+            <h3>Grid logic</h3>
+            <p>Board transforms, recursive reveal, roving focus, and deterministic tile/cell state.</p>
+            <ul>
+              <li><a href="#minefield-sweep-experiment">Minefield Sweep</a></li>
+              <li><a href="#2048-experiment">2048</a></li>
+              <li><a href="#snake-lab-experiment">Snake Lab</a></li>
+            </ul>
+          </article>
+
+          <article class="lab-skill-card">
+            <h3>Collision / game loop</h3>
+            <p>Entity updates, collision checks, physics timing, wave/level state, and HUD updates.</p>
+            <ul>
+              <li><a href="#asteroid-drift-experiment">Asteroid Drift</a></li>
+              <li><a href="#brick-breaker-experiment">Brick Breaker</a></li>
+              <li><a href="#flappy-workbench-experiment">Flappy Workbench</a></li>
+            </ul>
+          </article>
+
+          <article class="lab-skill-card">
+            <h3>Local state</h3>
+            <p>Undo snapshots, best scores, saved settings, status messages, and restart flows.</p>
+            <ul>
+              <li><a href="#web-paint-experiment">Web Paint</a></li>
+              <li><a href="#2048-experiment">2048</a></li>
+              <li><a href="#mini-golf-experiment">Mini Golf</a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
       <section class="section interactive-lab lab-archive-section" id="lab-archive" aria-labelledby="lab-archive-title">
         <div class="section-heading">
-          <p class="eyebrow">Archive</p>
-          <h2 id="lab-archive-title">Tools, games, and browser experiments.</h2>
+          <p class="eyebrow">Experiment archive</p>
+          <h2 id="lab-archive-title">Small builds with one technical lesson each.</h2>
+          <p>Each card keeps the description technical and links to the working page. Web Paint stays first because it is the strongest browser-tool proof.</p>
         </div>
 
         <div class="lab-grid archive-lab-grid">
-          <article class="lab-card">
+          <article class="lab-card lab-card-featured" id="web-paint-experiment">
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/web-paint-workspace.webp" type="image/webp">
@@ -89,6 +151,7 @@
             <span class="lab-card-kicker">Canvas tool</span>
             <h3>Web Paint</h3>
             <p>Browser drawing needs reliable state; I built a vanilla JavaScript Canvas editor with tool modes, undo/redo snapshots, import/export, zoom, and mobile-friendly panels.</p>
+            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Separate transient preview state from committed pixel history so drawing, undo/redo, resizing, and export stay predictable.</p>
             <dl class="lab-detail-list">
               <div>
                 <dt>What I built</dt>
@@ -118,13 +181,13 @@
               </div>
             </dl>
             <div class="lab-actions">
-              <a class="button secondary" href="paint.html">Open tool</a>
+              <a class="button secondary" href="paint.html">Live tool</a>
               <a class="button ghost" href="web-paint-case-study.html">Case study</a>
               <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source</a>
             </div>
           </article>
 
-          <article class="lab-card">
+          <article class="lab-card" id="mini-golf-experiment">
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/mini-golf-preview.webp" type="image/webp">
@@ -134,6 +197,7 @@
             <span class="lab-card-kicker">Physics game</span>
             <h3>Mini Golf</h3>
             <p>Touch golf needs clear aiming and scoring; I built a Canvas/JavaScript five-hole course with drag power, collision response, hazards, scorecards, and best runs.</p>
+            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Course data, shot state, collision checks, and score UI stay easier to test when each hole is modeled as structured level data.</p>
             <dl class="lab-detail-list">
               <div>
                 <dt>What I built</dt>
@@ -168,7 +232,7 @@
             </div>
           </article>
 
-          <article class="lab-card">
+          <article class="lab-card" id="asteroid-drift-experiment">
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/asteroid-drift-preview.webp" type="image/webp">
@@ -178,6 +242,7 @@
             <span class="lab-card-kicker">Arcade loop</span>
             <h3>Asteroid Drift</h3>
             <p>Arcade loops need low-latency input; I built a Canvas/JavaScript Asteroids-style demo with thrust, shooting, shields, randomized spawns, collisions, waves, and touch controls.</p>
+            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Keyboard and touch controls should feed one input model so the real-time loop does not fork by device.</p>
             <dl class="lab-detail-list">
               <div>
                 <dt>What I built</dt>
@@ -212,7 +277,7 @@
             </div>
           </article>
 
-          <article class="lab-card">
+          <article class="lab-card" id="snake-lab-experiment">
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/snake-lab-preview.webp" type="image/webp">
@@ -222,6 +287,7 @@
             <span class="lab-card-kicker">Grid game</span>
             <h3>Snake Lab</h3>
             <p>Snake needs fast turns without illegal reversals; I built a Canvas/JavaScript grid game with buffered input, growth, collisions, pace changes, and best scores.</p>
+            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Input buffering plus illegal-turn guards make fast keyboard, swipe, and button controls deterministic.</p>
             <dl class="lab-detail-list">
               <div>
                 <dt>What I built</dt>
@@ -256,7 +322,7 @@
             </div>
           </article>
 
-          <article class="lab-card">
+          <article class="lab-card" id="brick-breaker-experiment">
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/brick-breaker-preview.webp" type="image/webp">
@@ -266,6 +332,7 @@
             <span class="lab-card-kicker">Arcade game</span>
             <h3>Brick Breaker</h3>
             <p>Paddle games need precise collisions; I built a Canvas/JavaScript Brick Breaker with launch state, wall/paddle/brick checks, levels, progress, and touch controls.</p>
+            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Keeping launch state, paddle input, ball motion, and brick removal in one loop makes collision edge cases visible.</p>
             <dl class="lab-detail-list">
               <div>
                 <dt>What I built</dt>
@@ -300,7 +367,7 @@
             </div>
           </article>
 
-          <article class="lab-card">
+          <article class="lab-card" id="2048-experiment">
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/2048-preview.webp" type="image/webp">
@@ -310,6 +377,7 @@
             <span class="lab-card-kicker">Puzzle game</span>
             <h3>2048</h3>
             <p>Tile merging needs deterministic board transforms; I built an HTML/CSS/JavaScript 2048 with single-merge rules, random spawns, undo, best score, and accessible summaries.</p>
+            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Pure board transforms make merge rules, undo snapshots, persistence, and screen-reader summaries easier to reason about.</p>
             <dl class="lab-detail-list">
               <div>
                 <dt>What I built</dt>
@@ -344,7 +412,7 @@
             </div>
           </article>
 
-          <article class="lab-card">
+          <article class="lab-card" id="minefield-sweep-experiment">
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/minefield-sweep-preview.webp" type="image/webp">
@@ -354,6 +422,7 @@
             <span class="lab-card-kicker">Logic game</span>
             <h3>Minefield Sweep</h3>
             <p>Mine puzzles need clear state and safe starts; I built a JavaScript grid game with delayed mines, recursive reveal, flag mode, timers, and accessible labels.</p>
+            <p class="lab-takeaway"><strong>Technical takeaway:</strong> A board can be visual and still expose useful keyboard focus, cell labels, and live status feedback.</p>
             <dl class="lab-detail-list">
               <div>
                 <dt>What I built</dt>
@@ -388,7 +457,7 @@
             </div>
           </article>
 
-          <article class="lab-card">
+          <article class="lab-card" id="flappy-workbench-experiment">
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/flappy-workbench-preview.webp" type="image/webp">
@@ -398,6 +467,7 @@
             <span class="lab-card-kicker">Timing game</span>
             <h3>Flappy Workbench</h3>
             <p>Timing games need consistent physics; I built a Canvas/JavaScript Flappy-style loop with gravity, obstacle gaps, collision checks, best score, pause, and mobile flap input.</p>
+            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Simple physics loops still need explicit pause, restart, collision, score, and reduced-motion decisions.</p>
             <dl class="lab-detail-list">
               <div>
                 <dt>What I built</dt>
@@ -438,12 +508,12 @@
         <div>
           <p class="eyebrow">Next step</p>
           <h2 id="lab-next-title">Connect the experiments to the case studies.</h2>
-          <p>The lab keeps browser experiments in one place. For hiring context, jump back to selected work or read the Web Paint case study.</p>
+          <p>The lab keeps browser experiments in one place. For hiring context, jump back to selected work, case studies, or the resume.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="work.html">Back to selected work</a>
-          <a class="button secondary" href="web-paint-case-study.html">Web Paint case study</a>
-          <a class="button ghost" href="notes.html">Read build notes</a>
+          <a class="button secondary" href="case-studies.html">Case studies</a>
+          <a class="button ghost" href="resume.html">Resume</a>
         </div>
       </section>
     </main>

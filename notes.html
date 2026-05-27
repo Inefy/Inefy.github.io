@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Build notes from Zac Batten's developer portfolio on Python automation, MapLibre field tools, GitHub Pages SEO, case-study edits, and browser tools.">
+    <meta name="description" content="Build notes from Zac Batten on Web Paint Canvas state, MovieBot automation, TraverseOps framing, metadata, accessibility, and static-site QA.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/notes.html">
     <meta property="og:site_name" content="Inefy Workbench">
     <meta property="og:title" content="Build Notes / Zac Batten Developer Portfolio">
-    <meta property="og:description" content="Technical build notes on Python automation, MapLibre field tools, GitHub Pages SEO, case-study edits, and browser tools.">
+    <meta property="og:description" content="Technical build notes on Web Paint, MovieBot, TraverseOps, GitHub Pages metadata, accessibility evidence, and static portfolio QA.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/notes.html">
     <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
     <meta property="og:image:alt" content="Inefy workbench notes and build logs page preview.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Build Notes / Zac Batten Developer Portfolio">
-    <meta name="twitter:description" content="Python automation, MapLibre field tools, GitHub Pages SEO, case-study edits, and browser tools.">
+    <meta name="twitter:description" content="Web Paint, MovieBot, TraverseOps, GitHub Pages metadata, accessibility evidence, and static portfolio QA notes.">
     <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta name="twitter:image:alt" content="Inefy workbench notes and build logs page preview.">
     <title>Build Notes / Zac Batten Developer Portfolio</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,23 +63,155 @@
           <p class="eyebrow">Notes / Build logs</p>
           <h1 id="notes-title">Technical build logs.</h1>
           <p>
-            Short build logs from this portfolio: what changed, what broke, the tradeoffs, and the next fix. Start with the <a class="text-link" href="case-studies.html">case studies</a> for full context, or browse <a class="text-link" href="work.html">selected work</a>.
+            Short build logs from this portfolio: what changed, what broke, the tradeoffs, and the next fix. Use the quick path below, jump by topic, or start with the <a class="text-link" href="case-studies.html">case studies</a> for full context.
           </p>
+        </div>
+      </section>
+
+      <section class="section note-path-section" id="notes-start" aria-labelledby="notes-start-title">
+        <div class="section-heading">
+          <p class="eyebrow">Start here</p>
+          <h2 id="notes-start-title">Best technical notes to read first.</h2>
+          <p>Three short entries cover the strongest implementation signals without repeating the full case studies.</p>
+        </div>
+
+        <div class="note-read-first-grid">
+          <article class="note-index-card">
+            <div class="build-log-meta">
+              <time datetime="2026-05-09">May 9, 2026</time>
+              <span>Canvas</span>
+            </div>
+            <h3><a href="#web-paint-browser-canvas-editor">Building a browser canvas editor without a framework</a></h3>
+            <p>Start here for frontend state, pointer input, Canvas history, import/export, and nonvisual limits.</p>
+            <nav class="build-log-links" aria-label="Web Paint note shortcuts">
+              <a href="#web-paint-browser-canvas-editor">Read note</a>
+              <a href="web-paint-case-study.html">Case study</a>
+              <a href="paint.html">Live tool</a>
+            </nav>
+          </article>
+
+          <article class="note-index-card">
+            <div class="build-log-meta">
+              <time datetime="2026-05-09">May 9, 2026</time>
+              <span>Automation</span>
+            </div>
+            <h3><a href="#moviebot-chat-to-obs">How the Twitch MovieBot turns chat votes into OBS playback</a></h3>
+            <p>Start here for command handling, vote state, local file scanning, OBS WebSocket control, and reconnect concerns.</p>
+            <nav class="build-log-links" aria-label="MovieBot note shortcuts">
+              <a href="#moviebot-chat-to-obs">Read note</a>
+              <a href="moviebot-case-study.html">Case study</a>
+              <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Source</a>
+            </nav>
+          </article>
+
+          <article class="note-index-card">
+            <div class="build-log-meta">
+              <time datetime="2026-05-09">May 9, 2026</time>
+              <span>Maps</span>
+            </div>
+            <h3><a href="#traverseops-field-workflows">Designing field operations around maps, inspections, and work orders</a></h3>
+            <p>Start here for map-first workflow modeling, asset status, inspections, work orders, imports, and production gaps.</p>
+            <nav class="build-log-links" aria-label="TraverseOps note shortcuts">
+              <a href="#traverseops-field-workflows">Read note</a>
+              <a href="traverseops-case-study.html">Case study</a>
+              <a href="traverseops-demo.html">Public app</a>
+            </nav>
+          </article>
+        </div>
+      </section>
+
+      <section class="section note-topic-section" id="notes-by-topic" aria-labelledby="notes-topic-title">
+        <div class="section-heading">
+          <p class="eyebrow">Browse by topic</p>
+          <h2 id="notes-topic-title">Find notes by reviewer lens.</h2>
+          <p>These are static anchor links, so the full archive stays readable without JavaScript.</p>
+        </div>
+
+        <nav class="note-topic-nav" aria-label="Note topics">
+          <a href="#notes-frontend">Frontend</a>
+          <a href="#notes-automation">Automation</a>
+          <a href="#notes-maps">Maps</a>
+          <a href="#notes-canvas">Canvas</a>
+          <a href="#notes-accessibility">Accessibility</a>
+          <a href="#notes-portfolio-polish">Portfolio polish</a>
+        </nav>
+
+        <div class="note-topic-grid">
+          <article class="note-topic-card" id="notes-frontend">
+            <h3>Frontend</h3>
+            <p>UI state, page structure, browser APIs, and reviewer paths.</p>
+            <ul class="note-link-list">
+              <li><a href="#web-paint-browser-canvas-editor">Browser canvas editor without a framework</a></li>
+              <li><a href="#traverseops-field-workflows">Field operations around maps and work orders</a></li>
+              <li><a href="#moviebot-page-split">Stream room and searchable voting catalog split</a></li>
+              <li><a href="#portfolio-cleanup">Hiring-focused homepage and metadata pass</a></li>
+            </ul>
+          </article>
+
+          <article class="note-topic-card" id="notes-automation">
+            <h3>Automation</h3>
+            <p>Python bot behavior, command flow, vote state, and operational boundaries.</p>
+            <ul class="note-link-list">
+              <li><a href="#moviebot-chat-to-obs">Chat votes into OBS playback</a></li>
+              <li><a href="#moviebot-page-split">Stream room and searchable voting catalog split</a></li>
+            </ul>
+          </article>
+
+          <article class="note-topic-card" id="notes-maps">
+            <h3>Maps</h3>
+            <p>Map-first operations, sample data, field records, and production caveats.</p>
+            <ul class="note-link-list">
+              <li><a href="#traverseops-field-workflows">Maps, inspections, and work orders</a></li>
+              <li><a href="#traverseops-demo-framing">Sample-data boundaries and field-ops framing</a></li>
+            </ul>
+          </article>
+
+          <article class="note-topic-card" id="notes-canvas">
+            <h3>Canvas</h3>
+            <p>Pointer input, pixel state, history, export, and touch controls.</p>
+            <ul class="note-link-list">
+              <li><a href="#web-paint-browser-canvas-editor">Browser canvas editor without a framework</a></li>
+            </ul>
+          </article>
+
+          <article class="note-topic-card" id="notes-accessibility">
+            <h3>Accessibility</h3>
+            <p>Keyboard paths, status output, focus states, and honest Canvas limitations.</p>
+            <ul class="note-link-list">
+              <li><a href="#web-paint-browser-canvas-editor">Web Paint nonvisual limitations</a></li>
+              <li><a href="#portfolio-cleanup">Portfolio navigation and metadata pass</a></li>
+            </ul>
+          </article>
+
+          <article class="note-topic-card" id="notes-portfolio-polish">
+            <h3>Portfolio polish</h3>
+            <p>Static-site structure, metadata, project framing, and recruiter scan paths.</p>
+            <ul class="note-link-list">
+              <li><a href="#portfolio-cleanup">Hiring-focused homepage and metadata pass</a></li>
+              <li><a href="#moviebot-page-split">MovieBot page split</a></li>
+              <li><a href="#traverseops-demo-framing">TraverseOps public framing</a></li>
+            </ul>
+          </article>
         </div>
       </section>
 
       <section class="section build-log-section" id="build-logs" aria-labelledby="build-log-title">
         <div class="section-heading">
           <p class="eyebrow">Archive</p>
-          <h2 id="build-log-title">Recent build logs.</h2>
+          <h2 id="build-log-title">All build logs.</h2>
         </div>
 
         <div class="build-log-list">
           <article id="web-paint-browser-canvas-editor">
             <div class="build-log-meta">
-              <time datetime="2026-05-09">2026-05-09</time>
+              <time datetime="2026-05-09">May 9, 2026</time>
               <span>Web Paint</span>
             </div>
+            <ul class="note-tag-list" aria-label="Note tags">
+              <li><a href="#notes-frontend">Frontend</a></li>
+              <li><a href="#notes-canvas">Canvas</a></li>
+              <li><a href="#notes-accessibility">Accessibility</a></li>
+            </ul>
             <h3>Building a browser canvas editor without a framework</h3>
             <dl class="proof-list">
               <div>
@@ -140,9 +273,13 @@
 
           <article id="traverseops-field-workflows">
             <div class="build-log-meta">
-              <time datetime="2026-05-09">2026-05-09</time>
+              <time datetime="2026-05-09">May 9, 2026</time>
               <span>TraverseOps</span>
             </div>
+            <ul class="note-tag-list" aria-label="Note tags">
+              <li><a href="#notes-frontend">Frontend</a></li>
+              <li><a href="#notes-maps">Maps</a></li>
+            </ul>
             <h3>Designing field operations around maps, inspections, and work orders</h3>
             <dl class="proof-list">
               <div>
@@ -204,9 +341,12 @@
 
           <article id="moviebot-chat-to-obs">
             <div class="build-log-meta">
-              <time datetime="2026-05-09">2026-05-09</time>
+              <time datetime="2026-05-09">May 9, 2026</time>
               <span>MovieBot</span>
             </div>
+            <ul class="note-tag-list" aria-label="Note tags">
+              <li><a href="#notes-automation">Automation</a></li>
+            </ul>
             <h3>How the Twitch MovieBot turns chat votes into OBS playback</h3>
             <dl class="proof-list">
               <div>
@@ -267,15 +407,20 @@
               <a href="moviebot-case-study.html">MovieBot case study</a>
               <a href="movie-night.html">Movie Night</a>
               <a href="movie-library.html">Movie Library</a>
-              <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub</a>
+              <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Source</a>
             </nav>
           </article>
 
           <article id="portfolio-cleanup">
             <div class="build-log-meta">
-              <time datetime="2026-05-01">2026-05-01</time>
+              <time datetime="2026-05-01">May 1, 2026</time>
               <span>Portfolio site</span>
             </div>
+            <ul class="note-tag-list" aria-label="Note tags">
+              <li><a href="#notes-frontend">Frontend</a></li>
+              <li><a href="#notes-accessibility">Accessibility</a></li>
+              <li><a href="#notes-portfolio-polish">Portfolio polish</a></li>
+            </ul>
             <h3>Hiring-focused homepage and metadata pass</h3>
             <dl class="proof-list">
               <div>
@@ -314,9 +459,14 @@
 
           <article id="moviebot-page-split">
             <div class="build-log-meta">
-              <time datetime="2026-04-30">2026-04-30</time>
+              <time datetime="2026-04-30">April 30, 2026</time>
               <span>MovieBot</span>
             </div>
+            <ul class="note-tag-list" aria-label="Note tags">
+              <li><a href="#notes-frontend">Frontend</a></li>
+              <li><a href="#notes-automation">Automation</a></li>
+              <li><a href="#notes-portfolio-polish">Portfolio polish</a></li>
+            </ul>
             <h3>Stream room and searchable voting catalog split</h3>
             <dl class="proof-list">
               <div>
@@ -355,9 +505,13 @@
 
           <article id="traverseops-demo-framing">
             <div class="build-log-meta">
-              <time datetime="2026-04-29">2026-04-29</time>
+              <time datetime="2026-04-29">April 29, 2026</time>
               <span>TraverseOps</span>
             </div>
+            <ul class="note-tag-list" aria-label="Note tags">
+              <li><a href="#notes-maps">Maps</a></li>
+              <li><a href="#notes-portfolio-polish">Portfolio polish</a></li>
+            </ul>
             <h3>Sample-data boundaries and field-ops framing</h3>
             <dl class="proof-list">
               <div>

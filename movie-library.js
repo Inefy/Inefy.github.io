@@ -296,6 +296,12 @@ function updateMovieResults(totalMovies) {
   movieResults.textContent = `Showing all ${totalMovies} matching movies`;
 }
 
+function updateMovieClearState(hasQuery = Boolean(movieSearch?.value.trim())) {
+  if (!movieClearButton) return;
+
+  movieClearButton.disabled = !hasQuery;
+}
+
 async function copyTextToClipboard(value) {
   if (navigator.clipboard && window.isSecureContext) {
     await navigator.clipboard.writeText(value);
@@ -348,6 +354,7 @@ function filterMovieList() {
   if (!movieSearch) return;
 
   const query = movieSearch.value.trim().toLowerCase();
+  updateMovieClearState(Boolean(query));
   if (query === activeMovieQuery) return;
 
   activeMovieQuery = query;
@@ -374,6 +381,7 @@ function scrollMovieResultsIntoView() {
 }
 
 renderMovieList(movieNightMovies);
+updateMovieClearState(false);
 
 if (movieSearch) {
   movieSearch.addEventListener("input", scheduleMovieFilter);
@@ -392,6 +400,8 @@ if (movieClearButton && movieSearch) {
     activeMovieQuery = "";
     movieSearch.focus();
     renderMovieList(movieNightMovies);
+    updateMovieClearState(false);
+    announceMovie("Movie search cleared. Showing all movies.");
   });
 }
 

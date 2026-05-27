@@ -4,6 +4,7 @@
   const navToggle = document.querySelector("[data-nav-toggle]");
   const primaryNav = document.querySelector("#primary-nav");
   const mobileNavQuery = window.matchMedia("(max-width: 760px)");
+  let copyEmailAnnouncementTimer = 0;
 
   if (year) {
     year.textContent = new Date().getFullYear();
@@ -146,6 +147,16 @@
     return status;
   }
 
+  function announceCopyEmail(status, message) {
+    if (!status || !message) return;
+
+    window.clearTimeout(copyEmailAnnouncementTimer);
+    status.textContent = "";
+    copyEmailAnnouncementTimer = window.setTimeout(() => {
+      status.textContent = message;
+    }, 20);
+  }
+
   async function copyTextToClipboard(value) {
     if (navigator.clipboard && window.isSecureContext) {
       try {
@@ -202,14 +213,15 @@
         button.dataset.originalText = originalText;
         button.dataset.copying = "true";
         button.setAttribute("aria-busy", "true");
+        announceCopyEmail(status, `Copying ${email} to the clipboard.`);
 
         try {
           await copyTextToClipboard(email);
           button.textContent = "Copied email";
-          status.textContent = `Copied ${email} to the clipboard. You can paste it into your email app.`;
+          announceCopyEmail(status, `Copied ${email} to the clipboard. You can paste it into your email app.`);
         } catch {
           button.textContent = "Copy failed";
-          status.textContent = `Could not copy ${email}. Use the Email Zac link instead.`;
+          announceCopyEmail(status, `Could not copy ${email}. Use the Email Zac link instead.`);
         }
 
         window.clearTimeout(Number(button.dataset.resetTimer));

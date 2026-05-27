@@ -1,5 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
+const localHosts = new Set(["127.0.0.1", "localhost", "::1"]);
+
 async function gotoLocal(page, path) {
   await page.goto(path, { waitUntil: "domcontentloaded" });
 }
@@ -9,6 +11,18 @@ function primaryNav(page) {
 }
 
 test.describe("static portfolio smoke paths", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.route("**/*", async (route) => {
+      const { hostname } = new URL(route.request().url());
+      if (localHosts.has(hostname)) {
+        await route.continue();
+        return;
+      }
+
+      await route.abort();
+    });
+  });
+
   test("homepage loads and primary nav reaches Work, Resume, and Contact", async ({ page }) => {
     await gotoLocal(page, "/");
     await expect(page.getByRole("heading", { name: /frontend tools and automation/i })).toBeVisible();
@@ -73,7 +87,7 @@ test.describe("static portfolio smoke paths", () => {
 
   test("TraverseOps case study links into the public demo and map controls work", async ({ page }) => {
     await gotoLocal(page, "/traverseops-case-study.html");
-    await expect(page.getByRole("heading", { name: "TraverseOps" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "TraverseOps", exact: true })).toBeVisible();
 
     await page.getByRole("link", { name: /open public app/i }).first().click();
     await expect(page).toHaveURL(/\/traverseops-demo\.html$/);
@@ -90,9 +104,10 @@ test.describe("static portfolio smoke paths", () => {
   test("Interactive Lab archive loads the browser experiment index", async ({ page }) => {
     await gotoLocal(page, "/interactive-lab.html");
 
-    await expect(page.getByRole("heading", { name: /browser experiments and playable UI studies/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /browser mechanics experiments for ui skill evidence/i })).toBeVisible();
+    await expect(page.locator("#lab-skill-map")).toContainText("Canvas rendering");
     await expect(page.locator("#lab-archive")).toContainText("Web Paint");
     await expect(page.locator("#lab-archive")).toContainText("Mini Golf");
-    await expect(page.getByRole("link", { name: /open tool/i }).first()).toHaveAttribute("href", "paint.html");
+    await expect(page.getByRole("link", { name: /live tool/i }).first()).toHaveAttribute("href", "paint.html");
   });
 });

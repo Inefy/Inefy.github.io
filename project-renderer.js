@@ -128,6 +128,7 @@
     image.alt = visual.alt || "";
     image.loading = "lazy";
     image.decoding = "async";
+    image.setAttribute("fetchpriority", "low");
 
     if (visual.width) image.width = Number(visual.width);
     if (visual.height) image.height = Number(visual.height);
