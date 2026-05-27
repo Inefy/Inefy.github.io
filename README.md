@@ -51,7 +51,7 @@ Suggested GitHub About fields:
 
 ## Local Preview
 
-This is a static site with no package install step.
+This is a static site with no build step. The npm dependencies are only for local and CI quality checks.
 
 Clone the repo:
 
@@ -74,6 +74,13 @@ http://localhost:8000
 
 Opening `index.html` directly also works for most pages, but a local static server is better for testing links, media, and browser security behavior.
 
+Install the optional QA tools when you need to run automated checks:
+
+```bash
+npm install
+npx playwright install chromium
+```
+
 ## Adding Visual Proof Media
 
 - Store project screenshots in `assets/` as optimized `.webp` plus `.png` fallback when possible.
@@ -88,12 +95,14 @@ Opening `index.html` directly also works for most pages, but a local static serv
 - Run the same lightweight checks as CI before publishing meaningful navigation changes:
 
 ```bash
-node scripts/check-js.mjs
-node scripts/check-links.mjs
+npm run check:js
+npm run check:links
+npm run test:smoke
 ```
 
 - `scripts/check-js.mjs` recursively runs `node --check` for `.js` and `.mjs` files.
 - `scripts/check-links.mjs` checks local links, hash anchors, scripts, stylesheets, images, and `srcset` assets across `.html` files without checking external network URLs.
+- `npm run test:smoke` starts `python -m http.server 8000` through Playwright and checks the primary recruiter paths: homepage navigation, Work, Resume, Contact, Movie Library, Web Paint, TraverseOps, and Interactive Lab.
 - Check desktop and mobile layouts around the homepage hero, project cards, resume/contact sections, and game/tool pages.
 - Test with `prefers-reduced-motion: reduce` enabled.
 - Confirm public links to GitHub, resume, contact, and case studies remain valid.
@@ -104,4 +113,4 @@ The site deploys through GitHub Pages from the repository root. The custom domai
 
 ## GitHub Actions
 
-`.github/workflows/site-quality.yml` runs on pull requests and pushes to `main`. It has no build step, does not require secrets, and fails on JavaScript syntax errors or broken internal links/assets.
+`.github/workflows/site-quality.yml` runs on pull requests and pushes to `main`. It has no build step, does not require secrets, and fails on JavaScript syntax errors, broken internal links/assets, or broken Playwright smoke paths.
