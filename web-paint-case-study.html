@@ -69,7 +69,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260527-media-proof">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -140,6 +140,80 @@
           </picture>
           <figcaption>Live Web Paint tool surface: project guide, toolbar controls, brush settings, and drawing workspace.</figcaption>
         </figure>
+      </section>
+
+      <section class="case-review-summary" aria-labelledby="web-paint-review-title">
+        <div class="case-review-summary__intro">
+          <p class="eyebrow">Reviewer summary</p>
+          <h2 id="web-paint-review-title">Web Paint in 30 seconds.</h2>
+          <p>Use this first if you are evaluating fit for frontend state, Canvas tools, browser interaction, or static web app polish.</p>
+        </div>
+        <div class="case-review-summary__grid">
+          <article>
+            <h3>What this proves</h3>
+            <p>Canvas state, pointer input, undo/redo, import/export, and no-build browser UI.</p>
+          </article>
+          <article>
+            <h3>Core technical work</h3>
+            <p>Canvas 2D tools, pointer capture, active tool/color/brush state, capped ImageData history, typed-array flood fill, file validation, PNG export, localStorage, and mobile controls.</p>
+          </article>
+          <article>
+            <h3>Best reviewer path</h3>
+            <p>Open the tool first, then read the state, history, import/export, input, and testing sections.</p>
+          </article>
+          <article>
+            <h3>Known limits</h3>
+            <p>No layers, autosave recovery, full keyboard command set, automated pixel regression tests, memory-aware history, or semantic canvas content model.</p>
+          </article>
+        </div>
+        <div class="case-review-summary__links" aria-label="Web Paint reviewer links">
+          <a href="paint.html">Demo: Live tool</a>
+          <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source: paint.js</a>
+          <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.css" rel="noopener noreferrer">Source: paint.css</a>
+          <a href="interactive-lab.html">Demo: Interactive Lab</a>
+        </div>
+      </section>
+
+      <section class="demo-checklist" aria-labelledby="web-paint-demo-checklist-title">
+        <div class="demo-checklist__layout">
+          <div class="demo-checklist__copy">
+            <p class="eyebrow">Try this demo</p>
+            <h2 id="web-paint-demo-checklist-title">Try this in 2 minutes.</h2>
+            <p>The tool runs fully in the browser. These steps exercise Canvas state, pointer input, history, file commands, and responsive controls.</p>
+            <div class="demo-checklist__actions" aria-label="Web Paint demo actions">
+              <a href="paint.html">Open Web Paint</a>
+              <a href="paint.html#paint-toolbar">Jump to toolbar</a>
+              <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Review source</a>
+            </div>
+          </div>
+          <ol class="demo-checklist__steps">
+            <li><div><strong>Draw with pencil.</strong><span>Choose Pencil, pick a color or brush size, and draw directly on the canvas.</span></div></li>
+            <li><div><strong>Add shape or text.</strong><span>Select a shape or Text from the toolbar and place it on the canvas.</span></div></li>
+            <li><div><strong>Use undo and redo.</strong><span>Click the rail controls to verify ImageData history and toolbar state.</span></div></li>
+            <li><div><strong>Try file controls.</strong><span>Use Open, Save, copy/cut, or local save/load; on touch devices, also try Hide tools and compact controls.</span></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="media-proof" aria-labelledby="web-paint-media-proof-title">
+        <figure class="media-proof__frame">
+          <picture>
+            <source srcset="assets/web-paint-workspace.webp" type="image/webp">
+            <img src="assets/web-paint-workspace.png" alt="Web Paint browser canvas tool showing toolbar commands, brush controls, keyboard and touch guidance, and drawing workspace" width="1280" height="670" loading="lazy" decoding="async">
+          </picture>
+          <figcaption>Web Paint tool surface: toolbar state, browser Canvas workspace, keyboard/touch guidance, and local file controls.</figcaption>
+        </figure>
+        <div class="media-proof__copy">
+          <p class="eyebrow">Visual proof</p>
+          <h2 id="web-paint-media-proof-title">The tool is a working canvas editor.</h2>
+          <p>The screenshot shows the implemented browser UI rather than a mockup: the toolbar, canvas, status bar, and project guide are all part of the live page.</p>
+          <h3>What to notice</h3>
+          <ul class="media-proof__list">
+            <li>Drawing tools, brush sizes, shapes, colors, canvas sizing, zoom, and file commands live in one toolbar.</li>
+            <li>The canvas area reserves a stable workspace for pointer input, selection, resize, and undo/redo behavior.</li>
+            <li>The tool uses local browser APIs for import, export, clipboard, fullscreen, and storage; there is no backend.</li>
+          </ul>
+        </div>
       </section>
 
       <section class="case-template-links" aria-labelledby="project-links-title">

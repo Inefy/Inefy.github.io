@@ -6,7 +6,7 @@
 
   window.PortfolioProjectData = {
     collections: {
-      homeSelected: ["moviebot", "web-paint", "traverseops"],
+      homeSelected: ["traverseops", "moviebot", "web-paint"],
       workFlagship: ["traverseops", "moviebot", "web-paint"],
       workSupporting: ["judywebsite", "movie-library", "portfolio-site", "interactive-lab"],
       workExperiments: ["web-paint", "asteroid-drift", "minefield-sweep"],

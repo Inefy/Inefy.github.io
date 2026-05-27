@@ -71,7 +71,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260527-media-proof">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -147,6 +147,81 @@
           </picture>
           <figcaption>Movie Night showcase page: stream, chat, voting instructions, and MovieBot implementation context.</figcaption>
         </figure>
+      </section>
+
+      <section class="case-review-summary" aria-labelledby="moviebot-review-title">
+        <div class="case-review-summary__intro">
+          <p class="eyebrow">Reviewer summary</p>
+          <h2 id="moviebot-review-title">MovieBot in 30 seconds.</h2>
+          <p>Use this first if you are evaluating fit for Python automation, stream tooling, command logic, or practical integration work.</p>
+        </div>
+        <div class="case-review-summary__grid">
+          <article>
+            <h3>What this proves</h3>
+            <p>Python automation, Twitch/OBS integration, and tested command/state logic for a real operator workflow.</p>
+          </article>
+          <article>
+            <h3>Core technical work</h3>
+            <p>TwitchIO commands, vote state, changed votes, tie handling, local movie scan, OAuth refresh, reconnects, OBS WebSocket handoff, and pytest coverage.</p>
+          </article>
+          <article>
+            <h3>Best reviewer path</h3>
+            <p>Start with the repo and tests, then read the architecture, OBS flow, and vote-state sections; use Movie Night and Movie Library for viewer surfaces.</p>
+          </article>
+          <article>
+            <h3>Known limits</h3>
+            <p>Runs locally beside OBS; readiness depends on secrets, Twitch/OBS configuration, local media, health checks, structured logs, operator controls, and live integration testing.</p>
+          </article>
+        </div>
+        <div class="case-review-summary__links" aria-label="MovieBot reviewer links">
+          <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Source: GitHub repo</a>
+          <a href="https://github.com/Inefy/twitch-movie-bot/actions/workflows/tests.yml" rel="noopener noreferrer">Tests: CI workflow</a>
+          <a href="https://github.com/Inefy/twitch-movie-bot/blob/main/tests/test_bot_logic.py" rel="noopener noreferrer">Tests: Pytest file</a>
+          <a href="movie-night.html">Demo: Movie Night</a>
+          <a href="movie-library.html">Demo: Movie Library</a>
+        </div>
+      </section>
+
+      <section class="demo-checklist" aria-labelledby="moviebot-demo-checklist-title">
+        <div class="demo-checklist__layout">
+          <div class="demo-checklist__copy">
+            <p class="eyebrow">Try this demo</p>
+            <h2 id="moviebot-demo-checklist-title">Try this in 2 minutes.</h2>
+            <p>MovieBot itself is a local Python/Twitch/OBS bot. This browser path reviews the viewer surfaces, command flow, source, and tests without implying the bot runs in the page.</p>
+            <div class="demo-checklist__actions" aria-label="MovieBot demo actions">
+              <a href="movie-library.html">Open Movie Library</a>
+              <a href="movie-night.html#bot">Read command flow</a>
+              <a href="https://github.com/Inefy/twitch-movie-bot/actions/workflows/tests.yml" rel="noopener noreferrer">Review tests</a>
+            </div>
+          </div>
+          <ol class="demo-checklist__steps">
+            <li><div><strong>Search a movie.</strong><span>Open Movie Library and filter by a title, year, runtime, or rating.</span></div></li>
+            <li><div><strong>Copy a vote command.</strong><span>Use a card's Copy !vote button to get the exact Twitch chat command.</span></div></li>
+            <li><div><strong>Read the command flow.</strong><span>Use Movie Night or the architecture section to connect chat votes to OBS handoff.</span></div></li>
+            <li><div><strong>Review source and tests.</strong><span>Open the repo, CI workflow, and pytest file for the command/state logic.</span></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="media-proof" aria-labelledby="moviebot-media-proof-title">
+        <figure class="media-proof__frame">
+          <picture>
+            <source srcset="assets/movie-library-preview.webp" type="image/webp">
+            <img src="assets/movie-library-preview.png" alt="Movie Library page showing a searchable public-domain poster grid and copyable MovieBot vote command buttons" width="1200" height="630" loading="lazy" decoding="async">
+          </picture>
+          <figcaption>Movie Library is the browser-facing catalog around MovieBot: search, select a title, and copy an exact Twitch vote command.</figcaption>
+        </figure>
+        <div class="media-proof__copy">
+          <p class="eyebrow">Visual proof</p>
+          <h2 id="moviebot-media-proof-title">The browser pages support a local bot.</h2>
+          <p>The screenshot is not the Python runtime. It shows the reviewer-facing surface that helps viewers find a title before the local Twitch/OBS bot handles chat voting and playback.</p>
+          <h3>What to notice</h3>
+          <ul class="media-proof__list">
+            <li>The catalog turns long public-domain titles into accurate <code>!vote</code> commands.</li>
+            <li>Movie Night explains the stream context while source and tests prove the automation logic.</li>
+            <li>The actual bot still depends on local Python setup, Twitch credentials, OBS WebSocket configuration, and operator monitoring.</li>
+          </ul>
+        </div>
       </section>
 
       <section class="case-template-links" aria-labelledby="project-links-title">

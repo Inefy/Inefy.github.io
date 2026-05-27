@@ -70,7 +70,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260527-media-proof">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -145,6 +145,78 @@
           </picture>
           <figcaption>Primary TraverseOps workspace: a map view paired with asset context and operations panels.</figcaption>
         </figure>
+      </section>
+
+      <section class="case-review-summary" aria-labelledby="traverseops-review-title">
+        <div class="case-review-summary__intro">
+          <p class="eyebrow">Reviewer summary</p>
+          <h2 id="traverseops-review-title">TraverseOps in 30 seconds.</h2>
+          <p>Use this first if you are evaluating fit for frontend, internal-tools, map UI, or field-workflow roles.</p>
+        </div>
+        <div class="case-review-summary__grid">
+          <article>
+            <h3>What this proves</h3>
+            <p>Map-first operational UI, workflow modeling, and production-risk awareness for field teams.</p>
+          </article>
+          <article>
+            <h3>Core technical work</h3>
+            <p>Asset map, selected-record state, inspections, work orders, imports, reports, role-aware screens, and Supabase-shaped sample data.</p>
+          </article>
+          <article>
+            <h3>Best reviewer path</h3>
+            <p>Open the public app first, then read the summary, field loop, data model, and production-hardening sections.</p>
+          </article>
+          <article>
+            <h3>Known limits</h3>
+            <p>Public sample data only; no real auth, production database, municipal data, live GIS, offline sync, audit logs, server-side validation, or public automated test suite.</p>
+          </article>
+        </div>
+        <div class="case-review-summary__links" aria-label="TraverseOps reviewer links">
+          <a href="traverseops-demo.html">Demo: Public app</a>
+          <a href="work.html#flagship-case-studies">Context: Work index</a>
+          <a href="notes.html#traverseops-demo-framing">Note: Build framing</a>
+        </div>
+      </section>
+
+      <section class="demo-checklist" aria-labelledby="traverseops-demo-checklist-title">
+        <div class="demo-checklist__layout">
+          <div class="demo-checklist__copy">
+            <p class="eyebrow">Try this demo</p>
+            <h2 id="traverseops-demo-checklist-title">Try this in 2 minutes.</h2>
+            <p>The public app uses sample records. These steps show the workflow model and UI state, not a production field deployment.</p>
+            <div class="demo-checklist__actions" aria-label="TraverseOps demo actions">
+              <a href="traverseops-demo.html">Open public app</a>
+              <a href="traverseops-demo.html#traverse-workspace">Jump to workspace</a>
+            </div>
+          </div>
+          <ol class="demo-checklist__steps">
+            <li><div><strong>Filter assets by status.</strong><span>Use Needs inspection or Open work to see the map and list respond to sample asset state.</span></div></li>
+            <li><div><strong>Select an asset.</strong><span>Click a marker or asset card and watch the detail sheet update around that record.</span></div></li>
+            <li><div><strong>Inspect related work.</strong><span>Open Inspections or Work orders to see how field records stay tied to the selected asset.</span></div></li>
+            <li><div><strong>Review import and reporting.</strong><span>Use the Import tab to validate sample rows, then open Reports for the supervisor view.</span></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="media-proof" aria-labelledby="traverseops-media-proof-title">
+        <figure class="media-proof__frame">
+          <picture>
+            <source srcset="assets/traverseops-workspace.webp" type="image/webp">
+            <img src="assets/traverseops-workspace.png" alt="TraverseOps public app showing a map workspace, sample asset markers, a selected asset panel, and operational controls" width="1440" height="1100" loading="lazy" decoding="async">
+          </picture>
+          <figcaption>TraverseOps public workspace with sample asset data, status filters, map markers, and selected-asset context.</figcaption>
+        </figure>
+        <div class="media-proof__copy">
+          <p class="eyebrow">Visual proof</p>
+          <h2 id="traverseops-media-proof-title">Map context drives the workflow.</h2>
+          <p>The screenshot shows the core product shape: location first, then asset state, inspections, work orders, imports, and reports around the selected record.</p>
+          <h3>What to notice</h3>
+          <ul class="media-proof__list">
+            <li>Status filters change which sample assets are visible without leaving the map workspace.</li>
+            <li>The selected asset sheet keeps priority, open work, and next actions close to the map.</li>
+            <li>The public page demonstrates workflow modeling; it does not include production auth, real municipal data, or live GIS services.</li>
+          </ul>
+        </div>
       </section>
 
       <section class="case-template-links" aria-labelledby="project-links-title">

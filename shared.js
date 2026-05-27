@@ -125,9 +125,18 @@
 
   function ensureCopyEmailStatus() {
     let status = document.querySelector("[data-copy-email-status]");
-    if (status) return status;
+    if (status) {
+      if (!status.id) {
+        status.id = "copy-email-status";
+      }
+      status.setAttribute("role", "status");
+      status.setAttribute("aria-live", "polite");
+      status.setAttribute("aria-atomic", "true");
+      return status;
+    }
 
     status = document.createElement("span");
+    status.id = "copy-email-status";
     status.className = "sr-only";
     status.setAttribute("role", "status");
     status.setAttribute("aria-live", "polite");
@@ -180,25 +189,34 @@
     const status = ensureCopyEmailStatus();
 
     buttons.forEach((button) => {
+      button.setAttribute("aria-describedby", status.id);
+      if (!button.getAttribute("aria-label")) {
+        button.setAttribute("aria-label", "Copy email address to clipboard");
+      }
+
       button.addEventListener("click", async () => {
+        if (button.dataset.copying === "true") return;
+
         const email = button.dataset.copyEmail || "hello@zacbatten.me";
         const originalText = button.dataset.originalText || button.textContent.trim() || "Copy email";
         button.dataset.originalText = originalText;
-        button.disabled = true;
+        button.dataset.copying = "true";
+        button.setAttribute("aria-busy", "true");
 
         try {
           await copyTextToClipboard(email);
-          button.textContent = "Copied";
-          status.textContent = `Email address copied: ${email}.`;
+          button.textContent = "Copied email";
+          status.textContent = `Copied ${email} to the clipboard. You can paste it into your email app.`;
         } catch {
           button.textContent = "Copy failed";
-          status.textContent = "Could not copy the email address. Use the Email Zac link instead.";
+          status.textContent = `Could not copy ${email}. Use the Email Zac link instead.`;
         }
 
         window.clearTimeout(Number(button.dataset.resetTimer));
         button.dataset.resetTimer = String(window.setTimeout(() => {
           button.textContent = button.dataset.originalText || "Copy email";
-          button.disabled = false;
+          button.dataset.copying = "false";
+          button.removeAttribute("aria-busy");
         }, 2200));
       });
     });

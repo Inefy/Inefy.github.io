@@ -78,7 +78,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260527-demo-checklists">
   </head>
   <body class="stream-body">
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -149,6 +149,26 @@
               <dd>May 2026</dd>
             </div>
           </dl>
+          <section class="demo-checklist demo-checklist--embedded" aria-labelledby="movie-library-demo-checklist-title">
+            <div class="demo-checklist__layout">
+              <div class="demo-checklist__copy">
+                <p class="eyebrow">Try this demo</p>
+                <h2 id="movie-library-demo-checklist-title">Try this in 2 minutes.</h2>
+                <p>The catalog is the browser-facing MovieBot surface. The Python bot still runs separately in the stream setup.</p>
+              </div>
+              <ol class="demo-checklist__steps">
+                <li><div><strong>Search a title.</strong><span>Try a movie name, release year, runtime, or rating in the search field.</span></div></li>
+                <li><div><strong>Jump to results.</strong><span>Use Show matching results to land on the filtered card grid.</span></div></li>
+                <li><div><strong>Copy a vote.</strong><span>Click Copy !vote on a card and watch the status text confirm the command.</span></div></li>
+                <li><div><strong>Follow the implementation.</strong><span>Open the case study or bot source to see how the command feeds MovieBot.</span></div></li>
+              </ol>
+              <div class="demo-checklist__actions" aria-label="Movie Library demo actions">
+                <a href="#movie-search">Start at search</a>
+                <a href="#movie-grid">Show movie grid</a>
+                <a href="moviebot-case-study.html">Read case study</a>
+              </div>
+            </div>
+          </section>
         </div>
 
         <section class="movie-library-system" aria-labelledby="movie-library-system-title">

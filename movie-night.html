@@ -70,7 +70,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260527-demo-checklists">
   </head>
   <body class="stream-body">
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -150,6 +150,27 @@
             <strong>OBS WebSocket</strong>
             <p>The bot swaps the media source when the next pick is ready.</p>
           </div>
+        </div>
+      </section>
+
+      <section class="demo-checklist" aria-labelledby="movie-night-demo-checklist-title">
+        <div class="demo-checklist__layout">
+          <div class="demo-checklist__copy">
+            <p class="eyebrow">Try this demo</p>
+            <h2 id="movie-night-demo-checklist-title">Try this in 2 minutes.</h2>
+            <p>This page is the static stream room and workflow explanation. The actual MovieBot automation runs locally with Python, Twitch, and OBS.</p>
+            <div class="demo-checklist__actions" aria-label="Movie Night demo actions">
+              <a href="#watch">Open stream section</a>
+              <a href="movie-library.html">Open Movie Library</a>
+              <a href="moviebot-case-study.html">Read case study</a>
+            </div>
+          </div>
+          <ol class="demo-checklist__steps">
+            <li><div><strong>Open the room.</strong><span>Review the Twitch player/chat area and fallback links for blocked embeds.</span></div></li>
+            <li><div><strong>Browse the queue.</strong><span>Open Movie Library and search for a public-domain title.</span></div></li>
+            <li><div><strong>Copy a command.</strong><span>Use Copy !vote in the library, then return to the stream context.</span></div></li>
+            <li><div><strong>Read the bot flow.</strong><span>Scan how local folder scanning, chat votes, tie handling, and OBS playback connect.</span></div></li>
+          </ol>
         </div>
       </section>
 

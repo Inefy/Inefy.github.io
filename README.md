@@ -74,10 +74,26 @@ http://localhost:8000
 
 Opening `index.html` directly also works for most pages, but a local static server is better for testing links, media, and browser security behavior.
 
+## Adding Visual Proof Media
+
+- Store project screenshots in `assets/` as optimized `.webp` plus `.png` fallback when possible.
+- Add meaningful `alt` text and real `width`/`height` attributes on every screenshot to reserve layout space.
+- Use `loading="lazy"` for below-the-fold images; reserve `loading="eager"` and `fetchpriority="high"` for true hero media only.
+- Use the shared `.media-proof` pattern on case studies for a screenshot, caption, and short "What to notice" bullets.
+- Update `project-data.js` `visual` fields when a homepage/work-card thumbnail changes.
+- If a screenshot is not ready, leave an HTML TODO comment and use a styled placeholder container instead of an `<img>` with a missing `src`.
+
 ## QA Checklist
 
-- Run a local link check before publishing meaningful navigation changes.
-- Verify JavaScript syntax with `for file in *.js; do node --check "$file"; done`.
+- Run the same lightweight checks as CI before publishing meaningful navigation changes:
+
+```bash
+node scripts/check-js.mjs
+node scripts/check-links.mjs
+```
+
+- `scripts/check-js.mjs` recursively runs `node --check` for `.js` and `.mjs` files.
+- `scripts/check-links.mjs` checks local links, hash anchors, scripts, stylesheets, images, and `srcset` assets across `.html` files without checking external network URLs.
 - Check desktop and mobile layouts around the homepage hero, project cards, resume/contact sections, and game/tool pages.
 - Test with `prefers-reduced-motion: reduce` enabled.
 - Confirm public links to GitHub, resume, contact, and case studies remain valid.
@@ -85,3 +101,7 @@ Opening `index.html` directly also works for most pages, but a local static serv
 ## Deployment
 
 The site deploys through GitHub Pages from the repository root. The custom domain is configured in `CNAME`.
+
+## GitHub Actions
+
+`.github/workflows/site-quality.yml` runs on pull requests and pushes to `main`. It has no build step, does not require secrets, and fails on JavaScript syntax errors or broken internal links/assets.
