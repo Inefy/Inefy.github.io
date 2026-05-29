@@ -8,7 +8,7 @@
     <meta name="description" content="TraverseOps case study by Zac Batten: a MapLibre field-ops sample app for asset maps, inspections, work orders, imports, reports, and role-aware screens.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/traverseops-case-study.html">
-    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:site_name" content="Zac Batten Portfolio">
     <meta property="og:title" content="TraverseOps MapLibre Case Study / Zac Batten">
     <meta property="og:description" content="MapLibre field-operations sample app for hydrant-style asset maps, inspections, work orders, imports, reports, and role-aware screens.">
     <meta property="og:type" content="article">
@@ -80,7 +80,7 @@
         <span class="brand-mark" aria-hidden="true">ZB</span>
         <span class="brand-copy">
           <span>Zac Batten</span>
-          <small>Inefy workbench</small>
+          <small>Developer portfolio</small>
         </span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
@@ -150,9 +150,9 @@
 
       <section class="case-review-summary" aria-labelledby="traverseops-review-title">
         <div class="case-review-summary__intro">
-          <p class="eyebrow">Reviewer summary</p>
+          <p class="eyebrow">Quick summary</p>
           <h2 id="traverseops-review-title">TraverseOps in 30 seconds.</h2>
-          <p>Use this first if you are evaluating fit for frontend, internal-tools, map UI, or field-workflow roles.</p>
+          <p>Start here for frontend, internal-tools, map UI, and field-workflow work.</p>
         </div>
         <div class="case-review-summary__grid">
           <article>
@@ -164,7 +164,7 @@
             <p>Asset map, selected-record state, inspections, work orders, imports, reports, role-aware screens, and Supabase-shaped sample data.</p>
           </article>
           <article>
-            <h3>Best reviewer path</h3>
+            <h3>Best path</h3>
             <p>Open the public app first, then read the summary, field loop, data model, and production-hardening sections.</p>
           </article>
           <article>
@@ -172,7 +172,7 @@
             <p>Public sample data only; no real auth, production database, municipal data, live GIS, offline sync, audit logs, server-side validation, or public automated test suite.</p>
           </article>
         </div>
-        <div class="case-review-summary__links" aria-label="TraverseOps reviewer links">
+        <div class="case-review-summary__links" aria-label="TraverseOps links">
           <a href="traverseops-demo.html">Demo: Public app</a>
           <a href="work.html#flagship-case-studies">Context: Work index</a>
           <a href="notes.html#traverseops-demo-framing">Note: Build framing</a>
@@ -291,7 +291,7 @@
               </article>
               <article>
                 <h3>Tradeoff</h3>
-                <p>The public version favors reviewer access over production infrastructure such as enforced permissions, audit logging, and offline conflict resolution.</p>
+                <p>The public version favors easy access over production infrastructure such as enforced permissions, audit logging, and offline conflict resolution.</p>
               </article>
               <article>
                 <h3>Next improvement</h3>
@@ -299,7 +299,7 @@
               </article>
             </div>
             <div class="case-study-callout">
-              <strong>Hiring signal:</strong>
+              <strong>What it demonstrates:</strong>
               <span>The project demonstrates product modeling, map UI decisions, multi-entity data thinking, field-device design, and awareness of what would need to change before production use.</span>
             </div>
           </section>
@@ -318,7 +318,7 @@
               </article>
               <article>
                 <h3>Employer signal</h3>
-                <p>The project shows multi-entity data thinking, mobile field UI judgment, and honest production planning around authentication, offline sync, validation, and audit trails.</p>
+                <p>The project shows multi-entity data thinking, mobile field UI judgment, and clear production planning around authentication, offline sync, validation, and audit trails.</p>
               </article>
             </div>
           </section>
@@ -354,7 +354,7 @@
               <li>Built a map-first asset path with status filtering, selected-asset panels, and direct inspection/work-order screens.</li>
               <li>Designed sample data relationships so the app can represent municipal-style operations without exposing real field records.</li>
               <li>Documented public boundaries and production needs, including authentication, role permissions, offline sync, audit logs, validation, and mobile field testing.</li>
-              <li>Framed the case study so reviewers can evaluate product modeling, map UI decisions, and production gaps without opening the app.</li>
+              <li>Framed the case study so product modeling, map UI decisions, and production gaps are clear before opening the app.</li>
             </ul>
             <p class="ownership-note">External and target-architecture concepts include MapLibre and a Supabase-style relational model. The public app uses sample hydrant-style records rather than real municipal operating data or a production backend.</p>
           </section>
@@ -738,12 +738,12 @@ function visibleAssets() {
             <p class="eyebrow">15 / Results</p>
             <h2 id="results-title">What the project proves</h2>
             <p>
-              TraverseOps gives hiring reviewers a concrete product surface to evaluate: a domain with real constraints, a map-first field path, multi-entity records, role-aware operations, and a path from sample app to production deployment. It shows the ability to reason about software beyond isolated UI components.
+              TraverseOps gives visitors a concrete product surface to evaluate: a domain with real constraints, a map-first field path, multi-entity records, role-aware operations, and a path from sample app to production deployment.
             </p>
             <ul class="case-template-list">
               <li>Models a full operational loop from map lookup to inspection to work order to reporting.</li>
               <li>Uses realistic domain entities instead of a single-entity CRUD structure.</li>
-              <li>Documents limitations honestly so the public app does not pretend to be production software.</li>
+              <li>States public limits clearly so the app does not pretend to be production software.</li>
             </ul>
           </section>
 
@@ -795,7 +795,6 @@ function visibleAssets() {
             <h2 id="next-title">What I would improve next</h2>
             <ul class="case-template-list">
               <li>Add a public technical appendix with schema examples, import validation examples, and state-machine diagrams for inspections and work orders.</li>
-              <li>Add short GIFs showing import validation, inspection submission, assignment, and report updates end to end.</li>
               <li>Expose a safe source package or architecture notes if the TraverseOps app source cannot be public.</li>
               <li>Run a deeper accessibility pass on map controls, keyboard alternatives, focus order, and mobile field-entry forms.</li>
             </ul>
@@ -808,7 +807,7 @@ function visibleAssets() {
             <li><strong>Public app:</strong> <a href="traverseops-demo.html">TraverseOps</a></li>
             <li><strong>Related note:</strong> <a href="notes.html#traverseops-demo-framing">public framing build log</a></li>
             <li><strong>Primary evidence:</strong> map-first asset flow with sample operational data.</li>
-            <li><strong>Best hiring read:</strong> product modeling, data relationships, UI architecture, and production-risk awareness.</li>
+            <li><strong>Best read:</strong> product modeling, data relationships, UI architecture, and production-risk awareness.</li>
           </ul>
         </aside>
       </div>

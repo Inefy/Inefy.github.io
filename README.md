@@ -1,6 +1,6 @@
-# Zac Batten Portfolio / Inefy Workbench
+# Zac Batten Portfolio
 
-Static GitHub Pages portfolio for [zacbatten.me](https://zacbatten.me). It positions Zac Batten as a frontend, internal-tools, and automation developer through working demos, case studies, build notes, and recruiter-facing resume/contact paths.
+Static GitHub Pages portfolio for [zacbatten.me](https://zacbatten.me). It presents Zac Batten as a frontend, internal-tools, and automation developer through working demos, case studies, build notes, and resume/contact paths.
 
 ![Homepage preview](inefy-desktop-final.png)
 
@@ -11,18 +11,18 @@ Static GitHub Pages portfolio for [zacbatten.me](https://zacbatten.me). It posit
 - [TraverseOps](https://zacbatten.me/traverseops-case-study.html) - map-first field-operations UI and public sample app.
 - [MovieBot](https://zacbatten.me/moviebot-case-study.html) - Python/Twitch/OBS automation with repo and test links.
 - [Web Paint](https://zacbatten.me/web-paint-case-study.html) - Canvas state, drawing tools, undo/redo, import/export, and browser UI.
-- [Resume](https://zacbatten.me/resume.html) - recruiter-facing resume with project-backed evidence and contact links.
+- [Resume](https://zacbatten.me/resume.html) - resume with project-backed evidence and contact links.
 
 ## Why This Repo Matters
 
 - It is the source for a static portfolio, not a bundled app or backend service.
-- It gives hiring reviewers fast paths by role: frontend/internal tools, Python automation, map workflows, Canvas/browser tools, and GitHub Pages polish.
+- It gives visitors fast paths by skill area: frontend/internal tools, Python automation, map workflows, Canvas/browser tools, and GitHub Pages polish.
 - It backs portfolio claims with public demos, case studies, source links where available, known limits, and QA notes.
 - It deploys from plain files on GitHub Pages with no build step.
 
 ## What Zac Built
 
-- Homepage and Work pages that route reviewers to the strongest proof first.
+- Homepage and Work pages that route visitors to the strongest proof first.
 - Flagship case studies for TraverseOps, MovieBot, and Web Paint.
 - Movie Night and Movie Library pages that show the public-facing MovieBot workflow.
 - Interactive Lab demos for Web Paint, Flappy Workbench, Snake Lab, Brick Breaker, 2048, Minefield Sweep, Mini Golf, and Asteroid Drift.
@@ -60,7 +60,7 @@ npm run quality
 
 - `npm run check:js` recursively runs `node --check` for `.js` and `.mjs` files.
 - `npm run check:links` checks local links, hash anchors, scripts, stylesheets, images, and `srcset` assets across `.html` files without external network checks.
-- `npm run test:smoke` starts `python -m http.server 8000` through Playwright and checks the highest-value reviewer paths.
+- `npm run test:smoke` starts `python -m http.server 8000` through Playwright and checks the highest-value public paths.
 - `.github/workflows/site-quality.yml` runs `npm ci`, JS syntax checks, internal link checks, installs Chromium, and runs the Playwright smoke tests on pull requests and pushes to `main`.
 
 ## Image Standards
@@ -83,7 +83,7 @@ npm run quality
 - `moviebot-case-study.html`, `movie-night.html`, `movie-library.html`, `movie-library.js` - MovieBot proof, stream surface, and voting catalog.
 - `web-paint-case-study.html`, `paint.html`, `paint.css`, `paint.js` - Canvas case study and browser drawing tool.
 - `interactive-lab.html` plus game/tool files - standalone browser experiments.
-- `resume.html`, `contact.html`, `about.html`, `notes.html`, `changelog.html` - reviewer support pages.
+- `resume.html`, `contact.html`, `about.html`, `notes.html`, `changelog.html` - supporting public pages.
 - `project-data.js`, `project-renderer.js`, `shared.js`, `home.js` - shared metadata, rendering, navigation, copy, and homepage behavior.
 - `scripts/` and `tests/` - static QA scripts and Playwright smoke tests.
 - `assets/`, `CNAME`, `robots.txt`, `sitemap.xml` - visual assets, custom domain, and indexing files.
@@ -109,6 +109,6 @@ portfolio, github-pages, static-site, frontend, javascript, case-studies, movieb
 - Update shared project card metadata in `project-data.js` first, then keep the no-JS fallback cards in `index.html`, `work.html`, and `case-studies.html` aligned for titles, statuses, and source/demo/case-study labels.
 - Store future screenshots in `assets/` as optimized `.webp` plus `.png` fallback when useful.
 - Use meaningful alt text, real `width`/`height`, and `loading="lazy"` for below-the-fold images.
-- Keep accessibility claims evidence-based: keyboard checks, visible focus states, reduced motion, status messages, and honest Canvas limitations.
+- Keep accessibility claims evidence-based: keyboard checks, visible focus states, reduced motion, status messages, and current Canvas limits.
 - Keep SEO metadata project-specific; do not add review, rating, offer, price, or organization schema unless those claims are visible and verifiable.
 - DepositProof pages under `/depositproof-rental-vault/` are intentionally indexed as separate app support/privacy pages, not portfolio project pages.

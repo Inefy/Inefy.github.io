@@ -8,7 +8,7 @@
     <meta name="description" content="MovieBot case study by Zac Batten: Python automation with TwitchIO commands, Twitch bot vote handling, OAuth refresh, reconnect behavior, and OBS automation.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/moviebot-case-study.html">
-    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:site_name" content="Zac Batten Portfolio">
     <meta property="og:title" content="MovieBot Twitch Bot Case Study / Zac Batten">
     <meta property="og:description" content="Python automation for public-domain movie nights: Twitch bot vote handling, OAuth refresh, reconnect behavior, and OBS automation.">
     <meta property="og:type" content="article">
@@ -81,7 +81,7 @@
         <span class="brand-mark" aria-hidden="true">ZB</span>
         <span class="brand-copy">
           <span>Zac Batten</span>
-          <small>Inefy workbench</small>
+          <small>Developer portfolio</small>
         </span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
@@ -152,9 +152,9 @@
 
       <section class="case-review-summary" aria-labelledby="moviebot-review-title">
         <div class="case-review-summary__intro">
-          <p class="eyebrow">Reviewer summary</p>
+          <p class="eyebrow">Quick summary</p>
           <h2 id="moviebot-review-title">MovieBot in 30 seconds.</h2>
-          <p>Use this first if you are evaluating fit for Python automation, stream tooling, command logic, or practical integration work.</p>
+          <p>Start here for Python automation, stream tooling, command logic, and practical integration work.</p>
         </div>
         <div class="case-review-summary__grid">
           <article>
@@ -166,7 +166,7 @@
             <p>TwitchIO commands, vote state, changed votes, tie handling, local movie scan, OAuth refresh, reconnects, OBS WebSocket handoff, and pytest coverage.</p>
           </article>
           <article>
-            <h3>Best reviewer path</h3>
+            <h3>Best path</h3>
             <p>Start with the repo and tests, then read the architecture, OBS flow, and vote-state sections; use Movie Night and Movie Library for viewer surfaces.</p>
           </article>
           <article>
@@ -174,7 +174,7 @@
             <p>Runs locally beside OBS; readiness depends on secrets, Twitch/OBS configuration, local media, health checks, structured logs, operator controls, and live integration testing.</p>
           </article>
         </div>
-        <div class="case-review-summary__links" aria-label="MovieBot reviewer links">
+        <div class="case-review-summary__links" aria-label="MovieBot links">
           <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Source: GitHub repo</a>
           <a href="https://github.com/Inefy/twitch-movie-bot/actions/workflows/tests.yml" rel="noopener noreferrer">Tests: CI workflow</a>
           <a href="https://github.com/Inefy/twitch-movie-bot/blob/main/tests/test_bot_logic.py" rel="noopener noreferrer">Tests: Pytest file</a>
@@ -215,7 +215,7 @@
         <div class="media-proof__copy">
           <p class="eyebrow">Visual proof</p>
           <h2 id="moviebot-media-proof-title">The browser pages support a local bot.</h2>
-          <p>The screenshot is not the Python runtime. It shows the reviewer-facing surface that helps viewers find a title before the local Twitch/OBS bot handles chat voting and playback.</p>
+          <p>The screenshot is not the Python runtime. It shows the browser surface that helps viewers find a title before the local Twitch/OBS bot handles chat voting and playback.</p>
           <h3>What to notice</h3>
           <ul class="media-proof__list">
             <li>The catalog turns long public-domain titles into accurate <code>!vote</code> commands.</li>
@@ -311,7 +311,7 @@
               </article>
             </div>
             <div class="case-study-callout">
-              <strong>Hiring signal:</strong>
+              <strong>What it demonstrates:</strong>
               <span>The implementation combines async Python, Twitch authentication, local file scanning, user input validation, stateful voting, external process control, and recovery behavior for long-running stream sessions.</span>
             </div>
           </section>
@@ -777,8 +777,8 @@ self.voter_data[user] = selected_movie_path</code></pre>
           </section>
 
           <section class="case-template-section" aria-labelledby="screenshots-title">
-            <p class="eyebrow">15 / Screenshots and capture placeholders</p>
-            <h2 id="screenshots-title">Screenshots now, motion captures still pending.</h2>
+            <p class="eyebrow">15 / Screenshots</p>
+            <h2 id="screenshots-title">Browser surfaces around the local bot.</h2>
             <div class="screenshot-gallery screenshot-gallery--feature-first case-template-screenshot-grid">
               <figure class="screenshot-gallery__item case-study-image-frame">
                 <a class="screenshot-gallery__link" href="assets/movie-night-preview.png" aria-label="Open full-size Movie Night showcase screenshot">
@@ -798,16 +798,6 @@ self.voter_data[user] = selected_movie_path</code></pre>
                 </a>
                 <figcaption>Movie Library page used to browse titles before sending <code>!vote</code> in chat.</figcaption>
               </figure>
-              <figure class="screenshot-gallery__placeholder case-template-image-placeholder" role="img" aria-label="Planned GIF area showing a Twitch chat vote command and MovieBot confirmation">
-                <span class="placeholder-kicker">Capture pending</span>
-                <strong>Chat vote confirmation</strong>
-                <figcaption>Intended to show <code>!vote</code>, partial title matching, vote-change feedback, and <code>!results</code>.</figcaption>
-              </figure>
-              <figure class="screenshot-gallery__placeholder case-template-image-placeholder" role="img" aria-label="Planned GIF area showing OBS source update after the MovieBot vote winner is selected">
-                <span class="placeholder-kicker">Capture pending</span>
-                <strong>OBS playback handoff</strong>
-                <figcaption>Intended to show the media source updating, scene switching, and playback restart after a winning movie is selected.</figcaption>
-              </figure>
             </div>
           </section>
 
@@ -818,7 +808,6 @@ self.voter_data[user] = selected_movie_path</code></pre>
               <li>Add a local operator dashboard that shows current movie, active votes, OBS connection health, Twitch token status, and upcoming playback timing.</li>
               <li>Add a dry-run mode that exercises chat commands and OBS calls against mocks without touching a live stream setup.</li>
               <li>Add structured JSON logs or metrics so long sessions can be reviewed without scanning free-form console output.</li>
-              <li>Add a short GIF/screenshot capture set for the README and this case study to show the chat-to-OBS loop visually.</li>
             </ul>
           </section>
         </article>

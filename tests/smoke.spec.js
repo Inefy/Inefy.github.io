@@ -25,11 +25,11 @@ test.describe("static portfolio smoke paths", () => {
 
   test("homepage loads and primary nav reaches Work, Resume, and Contact", async ({ page }) => {
     await gotoLocal(page, "/");
-    await expect(page.getByRole("heading", { name: /frontend tools and automation/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /practical web tools and automation/i })).toBeVisible();
 
     await primaryNav(page).getByRole("link", { name: "Work" }).click();
     await expect(page).toHaveURL(/\/work\.html$/);
-    await expect(page.getByRole("heading", { name: /professional projects/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /^selected work/i })).toBeVisible();
 
     await gotoLocal(page, "/");
     await primaryNav(page).getByRole("link", { name: "Resume" }).click();
@@ -39,10 +39,10 @@ test.describe("static portfolio smoke paths", () => {
     await gotoLocal(page, "/");
     await primaryNav(page).getByRole("link", { name: "Contact" }).click();
     await expect(page).toHaveURL(/\/contact\.html$/);
-    await expect(page.getByRole("heading", { name: /developer for a practical web tool/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /practical web tool, automation workflow/i })).toBeVisible();
   });
 
-  test("Work page shows the flagship reviewer projects", async ({ page }) => {
+  test("Work page shows the flagship projects", async ({ page }) => {
     await gotoLocal(page, "/work.html");
 
     const flagship = page.locator("#flagship-case-studies");
@@ -52,7 +52,7 @@ test.describe("static portfolio smoke paths", () => {
     await expect(flagship).toContainText("Web Paint");
   });
 
-  test("Resume page exposes recruiter contact links", async ({ page }) => {
+  test("Resume page exposes contact links", async ({ page }) => {
     await gotoLocal(page, "/resume.html");
 
     await expect(page.getByRole("heading", { name: "Zac Batten" })).toBeVisible();
@@ -104,7 +104,7 @@ test.describe("static portfolio smoke paths", () => {
   test("Interactive Lab archive loads the browser experiment index", async ({ page }) => {
     await gotoLocal(page, "/interactive-lab.html");
 
-    await expect(page.getByRole("heading", { name: /browser mechanics experiments for ui skill evidence/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /browser mechanics experiments/i })).toBeVisible();
     await expect(page.locator("#lab-skill-map")).toContainText("Canvas rendering");
     await expect(page.locator("#lab-archive")).toContainText("Web Paint");
     await expect(page.locator("#lab-archive")).toContainText("Mini Golf");

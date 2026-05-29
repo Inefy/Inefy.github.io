@@ -8,7 +8,7 @@
     <meta name="description" content="Web Paint case study by Zac Batten: a browser canvas tool using vanilla JavaScript, Canvas 2D rendering, undo/redo, import/export, and mobile panels.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/web-paint-case-study.html">
-    <meta property="og:site_name" content="Inefy Workbench">
+    <meta property="og:site_name" content="Zac Batten Portfolio">
     <meta property="og:title" content="Web Paint Canvas Case Study / Zac Batten">
     <meta property="og:description" content="Browser canvas tool built with vanilla JavaScript, Canvas 2D rendering, undo/redo snapshots, import/export, and mobile tool panels.">
     <meta property="og:type" content="article">
@@ -80,7 +80,7 @@
         <span class="brand-mark" aria-hidden="true">ZB</span>
         <span class="brand-copy">
           <span>Zac Batten</span>
-          <small>Inefy workbench</small>
+          <small>Developer portfolio</small>
         </span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
@@ -146,9 +146,9 @@
 
       <section class="case-review-summary" aria-labelledby="web-paint-review-title">
         <div class="case-review-summary__intro">
-          <p class="eyebrow">Reviewer summary</p>
+          <p class="eyebrow">Quick summary</p>
           <h2 id="web-paint-review-title">Web Paint in 30 seconds.</h2>
-          <p>Use this first if you are evaluating fit for frontend state, Canvas tools, browser interaction, or static web app polish.</p>
+          <p>Start here for frontend state, Canvas tools, browser interaction, and static web app polish.</p>
         </div>
         <div class="case-review-summary__grid">
           <article>
@@ -160,7 +160,7 @@
             <p>Canvas 2D tools, pointer capture, active tool/color/brush state, capped ImageData history, typed-array flood fill, file validation, PNG export, localStorage, and mobile controls.</p>
           </article>
           <article>
-            <h3>Best reviewer path</h3>
+            <h3>Best path</h3>
             <p>Open the tool first, then read the state, history, import/export, input, and testing sections.</p>
           </article>
           <article>
@@ -168,7 +168,7 @@
             <p>No layers, autosave recovery, full keyboard command set, automated pixel regression tests, memory-aware history, or semantic canvas content model.</p>
           </article>
         </div>
-        <div class="case-review-summary__links" aria-label="Web Paint reviewer links">
+        <div class="case-review-summary__links" aria-label="Web Paint links">
           <a href="paint.html">Demo: Live tool</a>
           <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source: paint.js</a>
           <a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.css" rel="noopener noreferrer">Source: paint.css</a>
@@ -301,8 +301,8 @@
               </article>
             </div>
             <div class="case-study-callout">
-              <strong>Hiring signal:</strong>
-              <span>The implementation shows frontend fundamentals without leaning on a framework: DOM wiring, event handling, state modeling, Canvas APIs, browser storage, clipboard APIs, file validation, mobile layout, and honest nonvisual tradeoffs.</span>
+              <strong>What it demonstrates:</strong>
+              <span>The implementation shows frontend fundamentals without leaning on a framework: DOM wiring, event handling, state modeling, Canvas APIs, browser storage, clipboard APIs, file validation, mobile layout, and nonvisual tradeoffs.</span>
             </div>
           </section>
 
@@ -687,8 +687,8 @@ function restoreHistory(index) {
           </section>
 
           <section class="case-template-section" aria-labelledby="screenshots-title">
-            <p class="eyebrow">13 / Screenshots and captures</p>
-            <h2 id="screenshots-title">Screenshots from the live browser tool.</h2>
+            <p class="eyebrow">13 / Screenshot</p>
+            <h2 id="screenshots-title">Screenshot from the live browser tool.</h2>
             <div class="screenshot-gallery screenshot-gallery--feature-first case-template-screenshot-grid">
               <figure class="screenshot-gallery__item case-study-image-frame">
                 <a class="screenshot-gallery__link" href="assets/web-paint-workspace.png" aria-label="Open full-size Web Paint workspace screenshot">
@@ -698,20 +698,6 @@ function restoreHistory(index) {
                   </picture>
                 </a>
                 <figcaption>Real screenshot from the Web Paint tool page.</figcaption>
-              </figure>
-              <figure class="screenshot-gallery__placeholder case-template-image-placeholder" role="img" aria-label="Planned Web Paint GIF area for importing an image and exporting a PNG">
-                <div>
-                  <span class="placeholder-kicker">Capture pending</span>
-                  <strong>Import / export GIF</strong>
-                </div>
-                <figcaption>Future motion capture for opening an image, fitting it to the canvas, copying a selection, and saving a PNG.</figcaption>
-              </figure>
-              <figure class="screenshot-gallery__placeholder case-template-image-placeholder" role="img" aria-label="Planned Web Paint GIF area for undo, redo, and shape drawing behavior">
-                <div>
-                  <span class="placeholder-kicker">Capture pending</span>
-                  <strong>Undo / redo GIF</strong>
-                </div>
-                <figcaption>Future motion capture for shape preview, final commit, undo, redo, and canvas resize behavior.</figcaption>
               </figure>
             </div>
           </section>
@@ -725,7 +711,6 @@ function restoreHistory(index) {
               <li>Replace prompt-based text placement with an inline text box and editable text commit flow.</li>
               <li>Add a better autosave/reopen story, including restored local drawings and explicit document naming.</li>
               <li>Improve memory behavior for large canvases with region-based history or a command-style undo stack.</li>
-              <li>Add short GIFs for import/export, undo/redo, and shape preview after the interaction polish is finalized.</li>
             </ul>
           </section>
         </article>
