@@ -1,6 +1,7 @@
 (() => {
   const twitchPlayers = document.querySelectorAll("[data-twitch-player]");
   const twitchChats = document.querySelectorAll("[data-twitch-chat]");
+  const previewPosterImages = document.querySelectorAll(".movie-preview-posters img");
 
   function getTwitchParents() {
     const knownParents = ["zacbatten.me", "www.zacbatten.me", "inefy.github.io", "localhost", "127.0.0.1"];
@@ -177,5 +178,33 @@
     });
   }
 
+  function initMoviePreviewPosters() {
+    previewPosterImages.forEach((image) => {
+      const tile = image.closest(".movie-preview-tile");
+
+      const markLoaded = () => {
+        tile?.classList.add("is-loaded");
+      };
+
+      const markMissing = () => {
+        tile?.classList.add("is-missing");
+        image.remove();
+      };
+
+      if (image.complete) {
+        if (image.naturalWidth > 0) {
+          markLoaded();
+        } else {
+          markMissing();
+        }
+        return;
+      }
+
+      image.addEventListener("load", markLoaded, { once: true });
+      image.addEventListener("error", markMissing, { once: true });
+    });
+  }
+
+  initMoviePreviewPosters();
   mountTwitchEmbeds();
 })();

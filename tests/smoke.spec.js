@@ -75,6 +75,18 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.locator("[data-movie-results]")).toContainText(/matching movies/i);
   });
 
+  test("Movie Night keeps useful fallback UI when third-party embeds and posters are blocked", async ({ page }) => {
+    await gotoLocal(page, "/movie-night.html");
+    await expect(page.getByRole("heading", { name: "Zurra3 Movie Night" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Load stream" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Load chat" })).toBeVisible();
+
+    const posterPreview = page.locator(".movie-preview-posters");
+    await posterPreview.scrollIntoViewIfNeeded();
+    await expect(page.locator(".movie-preview-tile.is-missing")).toHaveCount(4);
+    await expect(page.getByRole("link", { name: /open the full movie library/i })).toBeVisible();
+  });
+
   test("Web Paint loads the canvas and core tool controls", async ({ page }) => {
     await gotoLocal(page, "/paint.html");
 

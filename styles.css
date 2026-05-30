@@ -6580,6 +6580,28 @@ h3 {
   object-position: center;
 }
 
+.movie-preview-tile.is-missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-preview-tile.is-missing::before {
+  content: "Poster unavailable";
+  max-width: 12ch;
+  color: var(--soft);
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.movie-preview-tile.is-missing img {
+  display: none;
+}
+
 .movie-preview-tile:nth-child(2),
 .movie-preview-tile:nth-child(4) {
   transform: translateY(22px);
