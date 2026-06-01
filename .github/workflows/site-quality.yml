@@ -30,6 +30,9 @@ jobs:
       - name: Check JavaScript syntax
         run: npm run check:js
 
+      - name: Check HTML metadata and security policy
+        run: npm run check:html
+
       - name: Check internal links and assets
         run: npm run check:links
 

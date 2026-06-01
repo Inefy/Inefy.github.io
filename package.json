@@ -5,10 +5,11 @@
   "description": "Static GitHub Pages portfolio quality checks.",
   "scripts": {
     "check:js": "node scripts/check-js.mjs",
+    "check:html": "node scripts/check-html.mjs",
     "check:links": "node scripts/check-links.mjs",
     "test:smoke": "playwright test",
     "test": "npm run test:smoke",
-    "quality": "npm run check:js && npm run check:links && npm run test:smoke"
+    "quality": "npm run check:js && npm run check:html && npm run check:links && npm run test:smoke"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0"

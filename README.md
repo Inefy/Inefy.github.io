@@ -51,6 +51,7 @@ Run checks:
 
 ```bash
 npm run check:js
+npm run check:html
 npm run check:links
 npm run test:smoke
 npm run quality
@@ -59,9 +60,10 @@ npm run quality
 ## Quality Checks
 
 - `npm run check:js` recursively runs `node --check` for `.js` and `.mjs` files.
+- `npm run check:html` checks required page metadata, Content Security Policy coverage, inline script/style CSP hashes, image attributes, and safe new-tab links.
 - `npm run check:links` checks local links, hash anchors, scripts, stylesheets, images, and `srcset` assets across `.html` files without external network checks.
 - `npm run test:smoke` starts `python -m http.server 8000` through Playwright and checks the highest-value public paths.
-- `.github/workflows/site-quality.yml` runs `npm ci`, JS syntax checks, internal link checks, installs Chromium, and runs the Playwright smoke tests on pull requests and pushes to `main`.
+- `.github/workflows/site-quality.yml` runs `npm ci`, JS syntax checks, HTML quality checks, internal link checks, installs Chromium, and runs the Playwright smoke tests on pull requests and pushes to `main`.
 
 ## Image Standards
 

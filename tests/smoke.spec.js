@@ -122,4 +122,23 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.locator("#lab-archive")).toContainText("Mini Golf");
     await expect(page.getByRole("link", { name: /live tool/i }).first()).toHaveAttribute("href", "paint.html");
   });
+
+  test("DepositProof support pages expose support, privacy, and contact paths", async ({ page }) => {
+    await gotoLocal(page, "/depositproof-rental-vault/");
+    await expect(page.getByRole("heading", { name: "DepositProof: Rental Vault" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute("href", "./privacy/");
+
+    await page.getByRole("link", { name: "Support" }).click();
+    await expect(page).toHaveURL(/\/depositproof-rental-vault\/support\/$/);
+    await expect(page.getByRole("heading", { name: "DepositProof Support" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "hello@zacbatten.me" }).first()).toHaveAttribute(
+      "href",
+      "mailto:hello@zacbatten.me?subject=DepositProof%20support%20request"
+    );
+
+    await gotoLocal(page, "/depositproof-rental-vault/privacy/");
+    await expect(page.getByRole("heading", { name: "DepositProof Privacy Policy" })).toBeVisible();
+    await expect(page.getByText("Effective date: May 13, 2026")).toBeVisible();
+    await expect(page.getByRole("link", { name: "DepositProof Support" })).toHaveAttribute("href", "../support/");
+  });
 });
