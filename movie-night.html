@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-5KOC4eyqWSWzzZ5bMvk9bz13XSRw7rw9YSfmfV96VSY='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-6y5eauRP/StQMH+wn4He4Ys24mPA1AU8x65TWtmGbfo='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Movie Night page for Zac Batten's StreamCinema system, showing public-domain movie voting, Twitch bot workflow, OBS automation notes, and Movie Library links.">
     <meta name="author" content="Zac Batten">
@@ -286,18 +286,6 @@
           </div>
         </section>
 
-        <section class="bot-note" aria-labelledby="movie-night-readiness-title">
-          <div>
-            <span class="note-kicker">Production readiness</span>
-            <h3 id="movie-night-readiness-title">A useful showcase surface, not the production bot runtime.</h3>
-            <ul class="case-template-list">
-              <li><strong>Already solid:</strong> static stream-room layout, Twitch embed fallbacks, clear Movie Library and source links, and a concise explanation of the bot workflow.</li>
-              <li><strong>Demo-only:</strong> the page shows the voting system and bot story, while actual playback still depends on the local Python bot, OBS setup, and stream operator.</li>
-              <li><strong>Hardening needed:</strong> operator status panels, embed-health messaging, live bot connection state, queue visibility, and stronger checks around Twitch/OBS availability.</li>
-              <li><strong>Security/privacy/ops:</strong> keep OAuth/OBS secrets out of the page, rely on Twitch moderation for chat, and avoid exposing local media paths or private stream configuration.</li>
-            </ul>
-          </div>
-        </section>
 
         <section class="bot-note" aria-labelledby="movie-night-qa-title">
           <div>
@@ -331,7 +319,7 @@
           <article>
             <span>01</span>
             <h3>Movies are scanned</h3>
-            <p>The bot reads the configured movie folder and remembers the playable files it can offer to chat.</p>
+            <p>The bot reads the movie folder and remembers the playable files it can offer to chat.</p>
           </article>
           <article>
             <span>02</span>

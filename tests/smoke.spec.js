@@ -39,7 +39,7 @@ test.describe("static portfolio smoke paths", () => {
     await gotoLocal(page, "/");
     await primaryNav(page).getByRole("link", { name: "Contact" }).click();
     await expect(page).toHaveURL(/\/contact\.html$/);
-    await expect(page.getByRole("heading", { name: /practical web tool, automation workflow/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /need a developer/i })).toBeVisible();
   });
 
   test("Work page shows the flagship projects", async ({ page }) => {
