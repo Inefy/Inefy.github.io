@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-GzYoRfkfpOgqMWrDpuJsaPPUosPfochBR/6h0zQ37hg='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-GzYoRfkfpOgqMWrDpuJsaPPUosPfochBR/6h0zQ37hg=' 'sha256-qnuu8tqCoR/Xw3+V10Xjsmv2SdCzLv9nEFMN2QLmqtk='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="TraverseOps case study by Zac Batten: a MapLibre field-ops sample app for asset maps, inspections, work orders, imports, reports, and role-aware screens.">
     <meta name="author" content="Zac Batten">
@@ -109,7 +109,7 @@
           <p class="eyebrow">Flagship case study</p>
           <h1 id="case-title">TraverseOps</h1>
           <p class="case-template-summary">
-            Field crews and supervisors need one place to locate hydrant-style assets, inspect condition, open work orders, import updates, and report status. TraverseOps is a public MapLibre sample app built around a Supabase-style data model, sample records, role-aware screens, asset-status filters, import validation, reports, and production requirements that separate the public version from real municipal operations.
+            Public MapLibre sample app for locating field assets, recording inspections, opening work orders, importing updates, and reporting status from one map-first workflow.
           </p>
           <div class="case-hero-actions">
             <a class="button primary" href="traverseops-demo.html">Open public app</a>
@@ -140,7 +140,7 @@
             <source srcset="assets/traverseops-workspace.webp" type="image/webp">
             <img src="assets/traverseops-workspace.png" alt="TraverseOps map workspace showing sample municipal-style assets, a selected asset panel, and field context" width="1440" height="1100" loading="eager" fetchpriority="high" decoding="async">
           </picture>
-          <figcaption>Primary TraverseOps workspace: a map view paired with asset context and operations panels.</figcaption>
+          <figcaption>Map view with asset context and operations panels.</figcaption>
         </figure>
       </section>
 
@@ -148,24 +148,24 @@
         <div class="case-review-summary__intro">
           <p class="eyebrow">Quick summary</p>
           <h2 id="traverseops-review-title">TraverseOps in 30 seconds.</h2>
-          <p>Start here for frontend, internal-tools, map UI, and field-workflow work.</p>
+          <p>Frontend, internal-tools, map UI, and field-workflow proof.</p>
         </div>
         <div class="case-review-summary__grid">
           <article>
             <h3>What this proves</h3>
-            <p>Map-first operational UI, workflow modeling, and production-risk awareness for field teams.</p>
+            <p>Map-first operational UI, workflow modeling, and production-risk awareness.</p>
           </article>
           <article>
             <h3>Core technical work</h3>
-            <p>Asset map, selected-record state, inspections, work orders, imports, reports, role-aware screens, and Supabase-shaped sample data.</p>
+            <p>Asset map, selected-record state, inspections, work orders, imports, reports, roles, and sample data.</p>
           </article>
           <article>
             <h3>Best path</h3>
-            <p>Open the public app first, then read the summary, field loop, data model, and production-hardening sections.</p>
+            <p>Open the app, then scan summary, field loop, data model, and hardening.</p>
           </article>
           <article>
             <h3>Known limits</h3>
-            <p>Public sample data only; no real auth, production database, municipal data, live GIS, offline sync, audit logs, server-side validation, or public automated test suite.</p>
+            <p>Sample data only; no real auth, database, municipal data, live GIS, offline sync, audit logs, server validation, or public tests.</p>
           </article>
         </div>
         <div class="case-review-summary__links" aria-label="TraverseOps links">
@@ -180,17 +180,17 @@
           <div class="demo-checklist__copy">
             <p class="eyebrow">Try this demo</p>
             <h2 id="traverseops-demo-checklist-title">Try this in 2 minutes.</h2>
-            <p>The public app uses sample records. These steps show the workflow model and UI state, not a production field deployment.</p>
+            <p>Sample records only; this shows workflow and UI state.</p>
             <div class="demo-checklist__actions" aria-label="TraverseOps demo actions">
               <a href="traverseops-demo.html">Open public app</a>
               <a href="traverseops-demo.html#traverse-workspace">Jump to workspace</a>
             </div>
           </div>
           <ol class="demo-checklist__steps">
-            <li><div><strong>Filter assets by status.</strong><span>Use Needs inspection or Open work to see the map and list respond to sample asset state.</span></div></li>
-            <li><div><strong>Select an asset.</strong><span>Click a marker or asset card and watch the detail sheet update around that record.</span></div></li>
-            <li><div><strong>Inspect related work.</strong><span>Open Inspections or Work orders to see how field records stay tied to the selected asset.</span></div></li>
-            <li><div><strong>Review import and reporting.</strong><span>Use the Import tab to validate sample rows, then open Reports for the supervisor view.</span></div></li>
+            <li><div><strong>Filter assets.</strong><span>Use Needs inspection or Open work.</span></div></li>
+            <li><div><strong>Select an asset.</strong><span>Click a marker or card and watch the detail sheet update.</span></div></li>
+            <li><div><strong>Inspect related work.</strong><span>Open Inspections or Work orders tied to the asset.</span></div></li>
+            <li><div><strong>Review imports and reports.</strong><span>Validate sample rows, then open Reports.</span></div></li>
           </ol>
         </div>
       </section>
@@ -201,17 +201,17 @@
             <source srcset="assets/traverseops-workspace.webp" type="image/webp">
             <img src="assets/traverseops-workspace.png" alt="TraverseOps public app showing a map workspace, sample asset markers, a selected asset panel, and operational controls" width="1440" height="1100" loading="lazy" decoding="async">
           </picture>
-          <figcaption>TraverseOps public workspace with sample asset data, status filters, map markers, and selected-asset context.</figcaption>
+          <figcaption>Public workspace with sample assets, filters, markers, and selected-asset context.</figcaption>
         </figure>
         <div class="media-proof__copy">
           <p class="eyebrow">Visual proof</p>
           <h2 id="traverseops-media-proof-title">Map context drives the workflow.</h2>
-          <p>The screenshot shows the core product shape: location first, then asset state, inspections, work orders, imports, and reports around the selected record.</p>
+          <p>Location comes first; asset state, inspections, work orders, imports, and reports follow the selected record.</p>
           <h3>What to notice</h3>
           <ul class="media-proof__list">
-            <li>Status filters change which sample assets are visible without leaving the map workspace.</li>
-            <li>The selected asset sheet keeps priority, open work, and next actions close to the map.</li>
-            <li>The public page demonstrates workflow modeling; it does not include production auth, real municipal data, or live GIS services.</li>
+            <li>Status filters update the map without leaving the workspace.</li>
+            <li>The asset sheet keeps priority, open work, and next actions close.</li>
+            <li>The page models workflow, not production auth, municipal data, or live GIS.</li>
           </ul>
         </div>
       </section>
@@ -219,8 +219,8 @@
       <section class="case-template-links" aria-labelledby="project-links-title">
         <div>
           <p class="eyebrow">Project links</p>
-          <h2 id="project-links-title">Open the app and related evidence.</h2>
-          <p>The public app uses sample data. I did not find a public source repository link in this portfolio repo, so the page links to the app and surrounding portfolio context.</p>
+          <h2 id="project-links-title">Open the app and evidence.</h2>
+          <p>The public app uses sample data. No public source repo is linked, so this page points to app and portfolio context.</p>
         </div>
         <div class="work-links">
           <a href="traverseops-demo.html">Public app</a>
@@ -239,11 +239,11 @@
         <dl class="case-tldr-grid">
           <div>
             <dt>Problem</dt>
-            <dd>Field teams lose time when maps, asset records, inspections, and work orders live in separate tools.</dd>
+            <dd>Field teams lose time when maps, records, inspections, and work orders are split.</dd>
           </div>
           <div>
             <dt>Built</dt>
-            <dd>A MapLibre-style field app with sample assets, selected-asset context, inspections, work orders, imports, reports, and role-aware screens.</dd>
+            <dd>MapLibre-style app with sample assets, selected context, inspections, work orders, imports, reports, and roles.</dd>
           </div>
           <div>
             <dt>Stack</dt>
@@ -255,11 +255,11 @@
           </div>
           <div>
             <dt>Result</dt>
-            <dd>A credible product prototype that connects map lookup, task records, field forms, and reporting around the same asset data.</dd>
+            <dd>Product prototype connecting map lookup, task records, forms, and reports around the same asset data.</dd>
           </div>
           <div>
             <dt>Current limitation</dt>
-            <dd>No real auth, production database access, municipal data, live GIS integration, offline sync, audit logs.</dd>
+            <dd>No real auth, production database, municipal data, live GIS, offline sync, audit logs, or server import validation.</dd>
           </div>
         </dl>
       </section>
@@ -268,101 +268,101 @@
         <article class="case-template-main">
           <section class="case-template-section" aria-labelledby="summary-title">
             <p class="eyebrow">01 / Summary</p>
-            <h2 id="summary-title">Records, maps, and follow-up work in one field app.</h2>
+            <h2 id="summary-title">Records, maps, and follow-up work in one app.</h2>
             <p>
-              Field-operations teams lose time when location, records, state, and team permissions are split across spreadsheets, map viewers, and ticket lists. TraverseOps shows how a MapLibre map, Supabase-shaped relational model, selected-asset context, inspections, work orders, imports, reports, and role-aware screens can fit together using public-safe sample records.
+              TraverseOps connects map location, asset state, inspections, work orders, imports, reports, and roles with public-safe sample records.
             </p>
             <div class="case-template-feature-list">
               <article>
                 <h3>Technical problem</h3>
-                <p>Asset location, inspection history, work-order state, imports, reports, and team roles need to stay connected around the selected field record.</p>
+                <p>Location, history, work state, imports, reports, and roles need one selected record.</p>
               </article>
               <article>
                 <h3>Constraints</h3>
-                <p>The public app uses sample data and does not include production authentication, offline sync, audit trails, or production GIS services.</p>
+                <p>The public app uses sample data and omits auth, offline sync, audit trails, and production GIS.</p>
               </article>
               <article>
                 <h3>Approach</h3>
-                <p>I modeled the app around a MapLibre workspace, Supabase-style relational data, status filters, selected-asset panels, and direct inspection/work-order paths.</p>
+                <p>I modeled a MapLibre workspace with relational sample data, filters, panels, and direct inspection/work-order paths.</p>
               </article>
               <article>
                 <h3>Tradeoff</h3>
-                <p>The public version favors easy access over production infrastructure such as enforced permissions, audit logging, and offline conflict resolution.</p>
+                <p>The public version favors easy review over permissions, audit logging, and offline conflict resolution.</p>
               </article>
               <article>
                 <h3>Next improvement</h3>
-                <p>Production work would add RBAC, offline sync, import validation, audit logs, field-device testing, and reliable map data sources.</p>
+                <p>Production would add RBAC, offline sync, import validation, audit logs, device testing, and reliable map sources.</p>
               </article>
             </div>
             <div class="case-study-callout">
               <strong>What it demonstrates:</strong>
-              <span>The project demonstrates product modeling, map UI decisions, multi-entity data thinking, field-device design, and awareness of what would need to change before production use.</span>
+              <span>Product modeling, map UI decisions, multi-entity data, field-device thinking, and production-risk awareness.</span>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="why-matters-title">
             <p class="eyebrow">Why this matters</p>
-            <h2 id="why-matters-title">It connects field data to the work people actually need to do.</h2>
+            <h2 id="why-matters-title">It connects field data to field work.</h2>
             <div class="case-template-feature-list">
               <article>
                 <h3>Operational problem</h3>
-                <p>Field crews and supervisors need maps, asset records, inspections, and work orders in one path instead of reconciling spreadsheets, map viewers, and ticket lists later.</p>
+                <p>Crews and supervisors need maps, records, inspections, and work orders in one path.</p>
               </article>
               <article>
                 <h3>Useful approach</h3>
-                <p>A map-first interface makes location the entry point; the selected asset becomes the hub for history, status, imports, reports, and follow-up work.</p>
+                <p>Location is the entry point; the selected asset owns history, status, imports, reports, and follow-up work.</p>
               </article>
               <article>
                 <h3>Employer signal</h3>
-                <p>The project shows multi-entity data thinking, mobile field UI judgment, and clear production planning around authentication, offline sync, validation, and audit trails.</p>
+                <p>The project shows multi-entity data thinking, mobile UI judgment, and production planning.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="readiness-title">
             <p class="eyebrow">Production readiness</p>
-            <h2 id="readiness-title">The data model is solid; the public version uses sample records.</h2>
+            <h2 id="readiness-title">Solid model; sample records.</h2>
             <div class="production-hardening-grid">
               <article>
                 <h3>Already solid</h3>
-                <p>The public version ties assets, inspections, work orders, imports, reports, and roles to the selected map record.</p>
+                <p>Assets, inspections, work orders, imports, reports, and roles tie to the selected map record.</p>
               </article>
               <article>
                 <h3>Public limits</h3>
-                <p>The public page uses municipal-style sample data and has no real accounts, permissions, audit trails, offline sync, or GIS feeds.</p>
+                <p>Sample data only; no accounts, permissions, audit trails, offline sync, or GIS feeds.</p>
               </article>
               <article>
                 <h3>Production work</h3>
-                <p>A real deployment would need auth, roles, import validation, audit logs, offline conflict handling, device tests, map monitoring, and sharper errors.</p>
+                <p>Production needs auth, roles, import validation, audit logs, offline conflicts, device tests, map monitoring, and clearer errors.</p>
               </article>
               <article>
                 <h3>Security and ops</h3>
-                <p>Operational data would need tenant isolation, least-privilege access, PII review, backups, logs, and alerts for sync, import, and map failures.</p>
+                <p>Operational data needs tenant isolation, least privilege, PII review, backups, logs, and alerts.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="role-title">
             <p class="eyebrow">02 / What I built</p>
-            <h2 id="role-title">The product model, task structure, and public case-study framing.</h2>
+            <h2 id="role-title">Product model, task structure, and public framing.</h2>
             <ul class="case-template-list">
-              <li>Modeled assets, inspections, work orders, imports, reports, and team roles around field-crew and supervisor tasks.</li>
-              <li>Built a map-first asset path with status filtering, selected-asset panels, and direct inspection/work-order screens.</li>
-              <li>Designed sample data relationships so the app can represent municipal-style operations without exposing real field records.</li>
-              <li>Documented public boundaries and production needs, including authentication, role permissions, offline sync, audit logs, validation, and mobile field testing.</li>
-              <li>Framed the case study so product modeling, map UI decisions, and production gaps are clear before opening the app.</li>
+              <li>Modeled assets, inspections, work orders, imports, reports, and roles around field tasks.</li>
+              <li>Built a map-first asset path with filters, selected panels, and inspection/work-order screens.</li>
+              <li>Used sample relationships to show municipal-style operations without real records.</li>
+              <li>Documented public limits and production needs: auth, roles, offline sync, audit logs, validation, and device testing.</li>
+              <li>Framed product modeling, map UI decisions, and production gaps before the app link.</li>
             </ul>
-            <p class="ownership-note">External and target-architecture concepts include MapLibre and a Supabase-style relational model. The public app uses sample hydrant-style records rather than real municipal operating data or a production backend.</p>
+            <p class="ownership-note">Uses MapLibre and Supabase-style concepts with sample records, not real municipal data or a production backend.</p>
           </section>
 
           <section class="case-template-section" aria-labelledby="problem-title">
             <p class="eyebrow">03 / Problem</p>
-            <h2 id="problem-title">Field crews need shared context at the asset, not after the fact.</h2>
+            <h2 id="problem-title">Crews need shared context at the asset.</h2>
             <p>
-              Hydrant-style asset operations break down when crews use one tool for maps, another for asset records, another for inspection notes, and another for work orders. The result is duplicated typing, delayed updates, uncertain asset status, and weak handoff between the person in the field and the person assigning or reviewing work.
+              Asset work breaks when maps, records, inspections, and work orders live apart. Crews get duplicate typing, delays, and weak handoff.
             </p>
             <p>
-              TraverseOps addresses that by treating the map as the entry point and the asset record as the hub. From one selected asset, the user should be able to see the location, understand condition/status, record an inspection, create a work order, and later report on the operational picture.
+              TraverseOps makes the map the entry point and the selected asset the hub for condition, inspections, work orders, and reports.
             </p>
           </section>
 
@@ -372,49 +372,49 @@
             <div class="case-template-feature-list">
               <article>
                 <h3>Field technicians</h3>
-                <p>Need fast asset lookup, mobile-friendly detail views, checklist-driven inspection entry, and obvious next actions while standing near the asset.</p>
+                <p>Need fast lookup, mobile detail views, checklist entry, and obvious next actions.</p>
               </article>
               <article>
                 <h3>Supervisors</h3>
-                <p>Need to review condition trends, assign or prioritize work orders, and understand which assets need attention without reconciling scattered notes.</p>
+                <p>Need condition trends, prioritized work orders, and clear assets needing attention.</p>
               </article>
               <article>
                 <h3>Operations administrators</h3>
-                <p>Need import tools, reporting views, team roles, and confidence that changes are traceable before the system becomes operationally critical.</p>
+                <p>Need imports, reports, roles, and traceable changes.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="field-loop-title">
             <p class="eyebrow">05 / Field loop</p>
-            <h2 id="field-loop-title">The core loop starts on the map and ends in accountable work.</h2>
+            <h2 id="field-loop-title">Map lookup to accountable work.</h2>
             <ol class="case-study-flow">
               <li>
                 <strong>Find an asset</strong>
-                <span>Use the map, filters, or asset list to locate the hydrant-style record.</span>
+                <span>Use the map, filters, or asset list.</span>
               </li>
               <li>
                 <strong>Review context</strong>
-                <span>Open the selected asset panel to see status, location, type, inspection history, and open work.</span>
+                <span>Open status, location, type, history, and open work.</span>
               </li>
               <li>
                 <strong>Record field activity</strong>
-                <span>Create an inspection with condition, checklist results, notes, and follow-up flags.</span>
+                <span>Create an inspection with condition, checklist, notes, and follow-up.</span>
               </li>
               <li>
                 <strong>Turn issues into work</strong>
-                <span>Create or update a work order, assign responsibility, set priority, and keep the record tied back to the asset.</span>
+                <span>Create or update a work order tied to the asset.</span>
               </li>
               <li>
                 <strong>Report and improve</strong>
-                <span>Use reports to spot overdue inspections, unresolved work, import exceptions, and asset status by area.</span>
+                <span>Spot overdue inspections, unresolved work, import exceptions, and area status.</span>
               </li>
             </ol>
           </section>
 
           <section class="case-template-section" aria-labelledby="stack-title">
             <p class="eyebrow">06 / Tech stack</p>
-            <h2 id="stack-title">Stack chosen for a credible public sample app.</h2>
+            <h2 id="stack-title">Stack for a public sample app.</h2>
             <ul class="case-template-stack" aria-label="TraverseOps technology stack">
               <li>MapLibre</li>
               <li>JavaScript</li>
@@ -424,7 +424,7 @@
               <li>Mobile field UI</li>
             </ul>
             <p>
-              The important technical decision is the app shape: map interaction, panels, and relational records are treated as separate concerns. That lets the public version show how sample data could grow into authenticated field operations without changing the core user model.
+              Map interaction, panels, and relational records stay separate so sample data can grow toward authenticated field operations.
             </p>
           </section>
 
@@ -434,7 +434,7 @@
             <div class="traverse-architecture">
               <div class="traverse-architecture-heading">
                 <strong id="architecture-diagram-title">TraverseOps architecture</strong>
-                <span id="architecture-diagram-description">User roles interact with a map workspace using sample asset data, import records, inspections, work orders, and reporting/admin views inside a public boundary.</span>
+                <span id="architecture-diagram-description">Roles use a map workspace with sample assets, imports, inspections, work orders, and reports inside a public boundary.</span>
               </div>
               <figure class="architecture-svg-card">
                 <svg class="architecture-svg" viewBox="0 0 960 540" role="img" aria-labelledby="traverse-svg-title" aria-describedby="traverse-svg-desc" focusable="false">
@@ -487,16 +487,16 @@
                   <path class="svg-arrow svg-arrow-muted" marker-end="url(#traverse-arrow)" d="M 708 182 C 750 184 758 224 764 260"></path>
                   <path class="svg-arrow svg-arrow-muted" marker-end="url(#traverse-arrow)" d="M 474 362 C 690 430 792 392 834 344"></path>
                 </svg>
-                <figcaption>TraverseOps separates role context, asset records, map selection, field tasks, and reporting so the app can stay public while still modeling production-style relationships.</figcaption>
+                <figcaption>Roles, records, map selection, field tasks, and reporting stay separate inside a public sample app.</figcaption>
               </figure>
             </div>
             <p>
-              In plain terms: public data stays inside a sample-data boundary. Users start from a field or admin role, import or review asset records, use the map to select an asset, then create inspections and work orders from that record. Reports and admin views summarize the same records without exposing real municipal data.
+              Public data stays inside a sample boundary. Users select an asset, create inspections and work orders, and view reports from the same records.
             </p>
             <ul class="case-template-list">
-              <li>The map layer answers where the asset is and which status or area needs attention.</li>
-              <li>The inspection and work-order layers answer what happened in the field and what follow-up work exists.</li>
-              <li>The reporting/admin layer answers what supervisors need to review across assets, imports, roles, and open work.</li>
+              <li>The map layer answers where and what status needs attention.</li>
+              <li>Inspection and work-order layers capture field events and follow-up work.</li>
+              <li>Reporting/admin layers summarize assets, imports, roles, and open work.</li>
             </ul>
           </section>
 
@@ -517,38 +517,38 @@
                   <tr>
                     <th scope="row">Assets</th>
                     <td>ID, type, coordinates, area, status, condition, last inspected date.</td>
-                    <td>The anchor record for map display, history, inspection, work, and reporting.</td>
+                    <td>Anchor for map display, history, inspection, work, and reporting.</td>
                   </tr>
                   <tr>
                     <th scope="row">Inspections</th>
                     <td>Asset ID, inspector, timestamp, checklist values, condition, notes, follow-up flag.</td>
-                    <td>Captures what was observed in the field and creates an auditable operational history.</td>
+                    <td>Captures field observations and history.</td>
                   </tr>
                   <tr>
                     <th scope="row">Work orders</th>
                     <td>Asset ID, issue summary, priority, status, assignee, due date, source inspection.</td>
-                    <td>Turns field findings into trackable work instead of leaving them as notes.</td>
+                    <td>Turns findings into trackable work.</td>
                   </tr>
                   <tr>
                     <th scope="row">Imports</th>
                     <td>File name, column mapping, validation result, imported count, rejected rows.</td>
-                    <td>Shows how bulk data enters the system without silently corrupting existing records.</td>
+                    <td>Shows bulk data entry without silent corruption.</td>
                   </tr>
                   <tr>
                     <th scope="row">Reports</th>
                     <td>Date range, area, status, overdue count, completed work, exception groups.</td>
-                    <td>Converts individual records into supervisor-level status and planning views.</td>
+                    <td>Converts records into supervisor status and planning views.</td>
                   </tr>
                   <tr>
                     <th scope="row">Team roles</th>
                     <td>User, role, permission scope, assigned area, active status.</td>
-                    <td>Models the difference between field entry, supervisory review, and administrative control.</td>
+                    <td>Models field entry, supervision, and admin control.</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <figure class="case-code-example" aria-labelledby="traverse-data-code-title">
-              <figcaption id="traverse-data-code-title">What this demonstrates: TraverseOps keeps status state explicit, then filters the same asset records used by the map, detail panel, reports, inspections, and work orders.</figcaption>
+              <figcaption id="traverse-data-code-title">Status state stays explicit and filters the same records used by map, panels, reports, inspections, and work orders.</figcaption>
               <pre tabindex="0"><code class="language-js">const traverseState = {
   assets: [...traverseAssets],
   inspections: [...baseInspections],
@@ -561,41 +561,41 @@ function visibleAssets() {
   if (traverseState.filter === "all") return traverseState.assets;
   return traverseState.assets.filter((asset) => asset.status === traverseState.filter);
 }</code></pre>
-              <p class="case-code-note">This excerpt uses the public sample-data boundary, not private municipal records.</p>
+              <p class="case-code-note">Sample-data excerpt; no private municipal records.</p>
             </figure>
           </section>
 
           <section class="case-template-section" aria-labelledby="import-title">
             <p class="eyebrow">09 / Imports</p>
-            <h2 id="import-title">Imports are treated as validation, not a blind upload.</h2>
+            <h2 id="import-title">Imports are validation, not blind upload.</h2>
             <p>
-              A production field system often starts with legacy spreadsheets or GIS exports. TraverseOps frames imports as steps: choose a file, map incoming columns to known fields, validate coordinates and IDs, preview rejected rows, then commit validated records into the asset registry.
+              TraverseOps frames imports as steps: choose a file, map columns, validate coordinates and IDs, preview rejected rows, then commit valid records.
             </p>
             <ul class="case-template-list">
-              <li>Column mapping makes the import explainable instead of assuming every source file already matches the target schema.</li>
-              <li>Validation catches missing coordinates, duplicate IDs, unknown asset types, and invalid status values before records reach the map.</li>
-              <li>Import summaries create a review point for administrators and a future audit trail for production use.</li>
+              <li>Column mapping makes imports explainable.</li>
+              <li>Validation catches missing coordinates, duplicate IDs, unknown types, and invalid statuses.</li>
+              <li>Import summaries create an admin review point.</li>
             </ul>
           </section>
 
           <section class="case-template-section" aria-labelledby="inspection-title">
             <p class="eyebrow">10 / Inspection and work-order flow</p>
-            <h2 id="inspection-title">Inspections create operational decisions.</h2>
+            <h2 id="inspection-title">Inspections create decisions.</h2>
             <p>
-              The inspection flow is designed around field decision-making. A crew member selects an asset, records condition and checklist information, adds notes, and flags whether follow-up work is required. When follow-up is needed, that inspection can become a work order tied back to the same asset.
+              A crew selects an asset, records condition and checklist notes, and flags follow-up. Follow-up becomes a work order tied to the same asset.
             </p>
             <div class="case-template-feature-list">
               <article>
                 <h3>Inspection entry</h3>
-                <p>Captures condition, pass/fail style checks, notes, and field context close to the selected map asset.</p>
+                <p>Captures condition, checks, notes, and field context.</p>
               </article>
               <article>
                 <h3>Work-order creation</h3>
-                <p>Converts inspection findings into a prioritized task with status, assignment, due date, and source record.</p>
+                <p>Converts findings into priority, status, assignment, due date, and source record.</p>
               </article>
               <article>
                 <h3>Status visibility</h3>
-                <p>Keeps open work and inspection freshness visible so supervisors can prioritize by asset, area, or urgency.</p>
+                <p>Keeps open work and inspection freshness visible by asset, area, or urgency.</p>
               </article>
             </div>
           </section>
@@ -604,128 +604,128 @@ function visibleAssets() {
             <p class="eyebrow">11 / Public limits</p>
             <h2 id="limitations-title">The public app is intentionally bounded.</h2>
             <ul class="case-template-list">
-              <li>Uses sample data only; it is not connected to an active municipal dataset or active field crew.</li>
-              <li>Role and permission concepts are represented for product context, but production authorization would need authenticated accounts and server-side policy enforcement.</li>
-              <li>Import flows should be treated as UI evidence, not as a guarantee that arbitrary operational files are safe to upload.</li>
-              <li>Offline sync, GPS permission handling, photo attachments, and conflict resolution would need deeper production engineering before field deployment.</li>
-              <li>The public page does not currently expose a public TraverseOps source repository link.</li>
+              <li>Sample data only; no active municipal dataset or field crew.</li>
+              <li>Roles are represented, but production needs authenticated accounts and server policy.</li>
+              <li>Import flows are UI evidence, not arbitrary-file safety guarantees.</li>
+              <li>Offline sync, GPS, photos, and conflict resolution need production engineering.</li>
+              <li>No public TraverseOps source repository is linked.</li>
             </ul>
           </section>
 
           <section class="case-template-section" aria-labelledby="hardening-title">
             <p class="eyebrow">12 / Production plan</p>
-            <h2 id="hardening-title">What would need to change before production deployment</h2>
+            <h2 id="hardening-title">Before production deployment</h2>
             <p>
-              The public TraverseOps app shows the product shape and data model. A deployed field system would need identity, authorization, data quality, offline behavior, security, and recovery guarantees before crews or municipal records depended on it.
+              The public app shows product shape and data model. Production needs identity, authorization, data quality, offline behavior, security, and recovery guarantees.
             </p>
             <div class="production-hardening-grid">
               <article>
                 <span class="architecture-kicker">Authentication</span>
-                <h3>Authenticated accounts and role permissions</h3>
-                <p><strong>Public app:</strong> shows field crew, supervisor, and admin-style flows.</p>
-                <p><strong>Production:</strong> add accounts, server-enforced roles, row-level permissions, least-privilege access, session expiry, and action boundaries.</p>
+                <h3>Accounts and permissions</h3>
+                <p><strong>Public:</strong> crew, supervisor, and admin-style flows.</p>
+                <p><strong>Production:</strong> accounts, server roles, row permissions, least privilege, session expiry, and action boundaries.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Offline sync</span>
-                <h3>Field reliability in poor connectivity</h3>
-                <p><strong>Public app:</strong> communicates a mobile-friendly field path.</p>
-                <p><strong>Production:</strong> add offline drafts, retry queues, conflict detection, sync status, recovery, and warnings for unsynced work.</p>
+                <h3>Reliability in poor connectivity</h3>
+                <p><strong>Public:</strong> mobile-friendly field path.</p>
+                <p><strong>Production:</strong> drafts, retry queues, conflicts, sync status, recovery, and unsynced warnings.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Validation</span>
                 <h3>Strict data and state rules</h3>
-                <p><strong>Public app:</strong> uses curated sample records to explain the asset, inspection, and work-order lifecycle.</p>
-                <p><strong>Production:</strong> validate fields, coordinates, status transitions, priorities, due dates, duplicate assets, and work-order state changes on client and server.</p>
+                <p><strong>Public:</strong> curated sample lifecycle.</p>
+                <p><strong>Production:</strong> validate fields, coordinates, status transitions, priorities, due dates, duplicates, and state changes.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Audit logs</span>
-                <h3>Traceability for operational changes</h3>
-                <p><strong>Public app:</strong> models records that would be auditable.</p>
-                <p><strong>Production:</strong> record who changed each asset, inspection, import, assignment, status, and report field, with timestamps and immutable history.</p>
+                <h3>Operational traceability</h3>
+                <p><strong>Public:</strong> records that could be auditable.</p>
+                <p><strong>Production:</strong> record who changed assets, inspections, imports, assignments, statuses, and reports.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Error handling</span>
-                <h3>Recovery paths instead of silent failure</h3>
-                <p><strong>Public app:</strong> focuses on the intended happy path and product structure.</p>
-                <p><strong>Production:</strong> handle failed saves, map failures, denied permissions, stale records, sync conflicts, rejected imports, and retry exhaustion with specific messages.</p>
+                <h3>Recovery instead of silence</h3>
+                <p><strong>Public:</strong> intended path and product structure.</p>
+                <p><strong>Production:</strong> handle failed saves, map failures, denied permissions, stale records, conflicts, rejected imports, and retries.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Imports</span>
                 <h3>Defensive import validation</h3>
-                <p><strong>Public app:</strong> frames imports as a review concept.</p>
-                <p><strong>Production:</strong> add file limits, schema mapping, row previews, duplicate checks, coordinate checks, rollback, rejected-row exports, import logs, and bulk-change permissions.</p>
+                <p><strong>Public:</strong> imports as a review concept.</p>
+                <p><strong>Production:</strong> file limits, mapping, previews, duplicate checks, coordinate checks, rollback, rejected-row exports, logs, and bulk permissions.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Mobile QA</span>
                 <h3>Field-device testing</h3>
-                <p><strong>Public app:</strong> uses desktop/mobile layouts and field-oriented screens.</p>
-                <p><strong>Production:</strong> test phones/tablets, GPS permissions, battery limits, photo attachments, sunlight readability, and intermittent network conditions.</p>
+                <p><strong>Public:</strong> desktop/mobile layouts.</p>
+                <p><strong>Production:</strong> phones/tablets, GPS, battery, photos, sunlight readability, and intermittent networks.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Security</span>
-                <h3>Protect operational records</h3>
-                <p><strong>Public app:</strong> uses public-safe sample data.</p>
-                <p><strong>Production:</strong> protect asset data with TLS, secret management, rate limits, upload controls, dependency patching, backups, and privacy-aware logs.</p>
+                <h3>Protect records</h3>
+                <p><strong>Public:</strong> sample data.</p>
+                <p><strong>Production:</strong> TLS, secrets, rate limits, upload controls, patching, backups, and privacy-aware logs.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Map data</span>
-                <h3>Reliable basemaps and asset sources</h3>
-                <p><strong>Public app:</strong> shows how asset location and status drive the interface.</p>
-                <p><strong>Production:</strong> define tile/provider SLAs, cache strategy, fallback basemaps, geocoding limits, coordinate systems, asset-source ownership, and stale-data alerts.</p>
+                <h3>Reliable basemaps and sources</h3>
+                <p><strong>Public:</strong> location and status drive the UI.</p>
+                <p><strong>Production:</strong> tile SLAs, cache strategy, fallbacks, geocoding limits, coordinate systems, ownership, and stale-data alerts.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="testing-title">
             <p class="eyebrow">13 / Testing and QA notes</p>
-            <h2 id="testing-title">Manual QA covers field risk and device assumptions.</h2>
+            <h2 id="testing-title">Manual QA covers field assumptions.</h2>
             <div class="production-hardening-grid">
               <article>
                 <h3>Automated tests</h3>
-                <p>No public automated test suite is linked for TraverseOps yet. Current QA evidence is manual browser testing, responsive checks, and documented production gaps.</p>
+                <p>No public automated suite yet. Current evidence is manual browser testing, responsive checks, and documented gaps.</p>
               </article>
               <article>
                 <h3>Manual checklist</h3>
-                <p>Verify sample-data reset, role switching, tabs, map selection, status filters, inspection/work-order forms, import staging, and report summaries.</p>
+                <p>Verify reset, roles, tabs, map selection, filters, forms, imports, and reports.</p>
               </article>
               <article>
                 <h3>Browser and device checks</h3>
-                <p>Check maps, forms, tabs, and buttons at phone, tablet, and desktop widths, including focus order, touch targets, status updates, and reduced motion.</p>
+                <p>Check maps, forms, tabs, and buttons at phone, tablet, and desktop widths.</p>
               </article>
               <article>
                 <h3>Edge cases</h3>
-                <p>Exercise empty data, repeated resets, invalid import rows, missing selected assets, sparse filters, mid-task role changes, and long labels.</p>
+                <p>Exercise empty data, resets, invalid imports, missing assets, sparse filters, role changes, and long labels.</p>
               </article>
               <article>
                 <h3>Known limitations</h3>
-                <p>The public app does not yet have automated E2E tests, GIS validation, offline-conflict simulation, authenticated permission tests, or field-device lab testing.</p>
+                <p>No automated E2E, GIS validation, offline-conflict simulation, permission tests, or field-device lab testing yet.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="deployment-title">
             <p class="eyebrow">14 / Deployment and run notes</p>
-            <h2 id="deployment-title">The public version runs in the browser with sample data.</h2>
+            <h2 id="deployment-title">Runs in the browser with sample data.</h2>
             <div class="production-hardening-grid">
               <article>
                 <h3>Hosted/run location</h3>
-                <p>The case study and app are hosted on GitHub Pages. <code>traverseops-demo.html</code> and <code>traverseops-demo.js</code> run client-side with bundled sample assets, inspections, and work orders.</p>
+                <p>Hosted on GitHub Pages. <code>traverseops-demo.html</code> and <code>traverseops-demo.js</code> run client-side with sample data.</p>
               </article>
               <article>
                 <h3>Environment/config</h3>
-                <p>No public environment variables are required. The visible role selector, filters, imports, reports, and forms operate against in-browser sample state rather than a backend service.</p>
+                <p>No env vars. Roles, filters, imports, reports, and forms use in-browser sample state.</p>
               </article>
               <article>
                 <h3>External APIs/services</h3>
-                <p>The case study explains a MapLibre map and Supabase-style target model, but the app does not connect to municipal records, private GIS services, or Supabase.</p>
+                <p>Explains MapLibre and Supabase-style concepts, but connects to no municipal records, private GIS, or Supabase.</p>
               </article>
               <article>
                 <h3>Local development</h3>
-                <p>Clone the portfolio repository, run <code>python -m http.server 8000</code> from the repo root, then open <code>http://localhost:8000/traverseops-demo.html</code> or <code>/traverseops-case-study.html</code>. There is no build step.</p>
+                <p>Run <code>python -m http.server 8000</code>, then open <code>/traverseops-demo.html</code> or <code>/traverseops-case-study.html</code>. No build step.</p>
               </article>
               <article>
                 <h3>Secrets and data safety</h3>
-                <p>No secrets belong in the public page. A deployed version would keep service-role keys, GIS credentials, user accounts, and municipal records out of client code, enforce row-level permissions, and validate imports server-side.</p>
+                <p>No secrets belong in the public page. Production would keep keys, GIS credentials, accounts, and records out of client code.</p>
               </article>
             </div>
           </section>
@@ -734,12 +734,12 @@ function visibleAssets() {
             <p class="eyebrow">15 / Results</p>
             <h2 id="results-title">What the project proves</h2>
             <p>
-              TraverseOps gives visitors a concrete product surface to evaluate: a domain with real constraints, a map-first field path, multi-entity records, role-aware operations, and a path from sample app to production deployment.
+              TraverseOps gives visitors a concrete surface to evaluate: map-first field flow, multi-entity records, roles, and production gaps.
             </p>
             <ul class="case-template-list">
-              <li>Models a full operational loop from map lookup to inspection to work order to reporting.</li>
-              <li>Uses realistic domain entities instead of a single-entity CRUD structure.</li>
-              <li>States public limits clearly so the app does not pretend to be production software.</li>
+              <li>Models map lookup, inspection, work order, and reporting.</li>
+              <li>Uses realistic entities instead of single-entity CRUD.</li>
+              <li>States public limits clearly.</li>
             </ul>
           </section>
 
@@ -763,7 +763,7 @@ function visibleAssets() {
                     <img src="assets/traverseops-imports.png" alt="TraverseOps import tab showing sample import validation, accepted rows, rejected rows, and staging controls" width="1216" height="505" loading="lazy" decoding="async">
                   </picture>
                 </a>
-                <figcaption>Import screen with accepted/rejected sample records and staging actions.</figcaption>
+                <figcaption>Import screen with accepted/rejected sample rows.</figcaption>
               </figure>
               <figure class="screenshot-gallery__item case-study-image-frame">
                 <a class="screenshot-gallery__link" href="assets/traverseops-inspections.png" aria-label="Open full-size TraverseOps inspection screen screenshot">
@@ -772,7 +772,7 @@ function visibleAssets() {
                     <img src="assets/traverseops-inspections.png" alt="TraverseOps inspection screen showing asset selection, condition notes, checklist items, and recent inspection records" width="1216" height="744" loading="lazy" decoding="async">
                   </picture>
                 </a>
-                <figcaption>Inspection form and recent field records tied to selected sample assets.</figcaption>
+                <figcaption>Inspection form and recent records tied to sample assets.</figcaption>
               </figure>
               <figure class="screenshot-gallery__item case-study-image-frame">
                 <a class="screenshot-gallery__link" href="assets/traverseops-reports.png" aria-label="Open full-size TraverseOps reports screenshot">
@@ -781,18 +781,18 @@ function visibleAssets() {
                     <img src="assets/traverseops-reports.png" alt="TraverseOps reports tab showing sample operational summary cards for assets, inspections, and work orders" width="1216" height="218" loading="lazy" decoding="async">
                   </picture>
                 </a>
-                <figcaption>Reporting summary for sample assets, inspection coverage, and work-order state.</figcaption>
+                <figcaption>Reports for sample assets, inspection coverage, and work-order state.</figcaption>
               </figure>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="next-title">
             <p class="eyebrow">17 / Next improvements</p>
-            <h2 id="next-title">What I would improve next</h2>
+            <h2 id="next-title">Next improvements</h2>
             <ul class="case-template-list">
-              <li>Add a public technical appendix with schema examples, import validation examples, and state-machine diagrams for inspections and work orders.</li>
-              <li>Expose a safe source package or architecture notes if the TraverseOps app source cannot be public.</li>
-              <li>Run a deeper accessibility pass on map controls, keyboard alternatives, focus order, and mobile field-entry forms.</li>
+              <li>Add schema, import validation, and state-machine examples.</li>
+              <li>Expose safe source or architecture notes.</li>
+              <li>Run deeper accessibility checks on map controls, focus order, and mobile forms.</li>
             </ul>
           </section>
         </article>
@@ -802,8 +802,8 @@ function visibleAssets() {
           <ul>
             <li><strong>Public app:</strong> <a href="traverseops-demo.html">TraverseOps</a></li>
             <li><strong>Related note:</strong> <a href="notes.html#traverseops-demo-framing">public framing build log</a></li>
-            <li><strong>Primary evidence:</strong> map-first asset flow with sample operational data.</li>
-            <li><strong>Best read:</strong> product modeling, data relationships, UI architecture, and production-risk awareness.</li>
+            <li><strong>Primary evidence:</strong> map-first asset flow with sample data.</li>
+            <li><strong>Best read:</strong> product model, data relationships, UI architecture, and risk awareness.</li>
           </ul>
         </aside>
       </div>
@@ -811,8 +811,8 @@ function visibleAssets() {
       <section class="next-step-panel" aria-labelledby="traverseops-next-title">
         <div>
           <p class="eyebrow">Next step</p>
-          <h2 id="traverseops-next-title">Review the app, then compare the rest of the work.</h2>
-          <p>TraverseOps is the flagship field-operations case study; the Work page also shows Python automation, Canvas tooling, and browser experiments for comparison.</p>
+          <h2 id="traverseops-next-title">Review the app, then compare.</h2>
+          <p>TraverseOps covers field operations; Work adds Python automation, Canvas tooling, and browser experiments.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="traverseops-demo.html">Open public app</a>
@@ -826,7 +826,7 @@ function visibleAssets() {
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer building web tools, automation, and frontend interfaces.</span>
+        <span>Software developer building web tools, automation, and frontend UI.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>

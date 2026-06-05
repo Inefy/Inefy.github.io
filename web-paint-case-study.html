@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-GkdKX8Uo5qeHUCGueO2o6u988A/XN9xoDZ5SA23OWzM='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-GkdKX8Uo5qeHUCGueO2o6u988A/XN9xoDZ5SA23OWzM=' 'sha256-eJh8u5z/Bvs0wAzs5VSEQdNM4+STxtZ2gwJROzgoQRs='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Web Paint case study by Zac Batten: a browser canvas tool using vanilla JavaScript, Canvas 2D rendering, undo/redo, import/export, and mobile panels.">
     <meta name="author" content="Zac Batten">
@@ -109,7 +109,7 @@
           <p class="eyebrow">Frontend tooling case study</p>
           <h1 id="case-title">Web Paint</h1>
           <p class="case-template-summary">
-            Browser drawing tools become frustrating when tool state, canvas history, imports, and resizing are unreliable. I built Web Paint as a no-build HTML/CSS/JavaScript Canvas editor that supports pencil, eraser, fill, shapes, text, selection, undo/redo snapshots, PNG import/export, local save, zoom, fullscreen, and mobile-friendly control panels, with flood fill using typed arrays and history capped to keep large canvases manageable.
+            No-build Canvas editor with pencil, eraser, fill, shapes, text, selection, undo/redo, PNG import/export, local save, zoom, fullscreen, and responsive controls.
           </p>
           <dl class="case-template-meta" aria-label="Project metadata">
             <div>
@@ -140,7 +140,7 @@
             <source srcset="assets/web-paint-workspace.webp" type="image/webp">
             <img src="assets/web-paint-workspace.png" alt="Web Paint live page with tool guide, toolbar commands, brush controls, and drawing workspace" width="1280" height="670" loading="eager" fetchpriority="high" decoding="async">
           </picture>
-          <figcaption>Live Web Paint tool surface: project guide, toolbar controls, brush settings, and drawing workspace.</figcaption>
+          <figcaption>Live Web Paint: toolbar, brush settings, and drawing workspace.</figcaption>
         </figure>
       </section>
 
@@ -148,24 +148,24 @@
         <div class="case-review-summary__intro">
           <p class="eyebrow">Quick summary</p>
           <h2 id="web-paint-review-title">Web Paint in 30 seconds.</h2>
-          <p>Start here for frontend state, Canvas tools, browser interaction, and static web app polish.</p>
+          <p>Frontend state, Canvas tools, browser interaction, and static app polish.</p>
         </div>
         <div class="case-review-summary__grid">
           <article>
             <h3>What this proves</h3>
-            <p>Canvas state, pointer input, undo/redo, import/export, and no-build browser UI.</p>
+            <p>Canvas state, pointer input, undo/redo, import/export, and no-build UI.</p>
           </article>
           <article>
             <h3>Core technical work</h3>
-            <p>Canvas 2D tools, pointer capture, active tool/color/brush state, capped ImageData history, typed-array flood fill, file validation, PNG export, localStorage, and mobile controls.</p>
+            <p>Canvas tools, pointer capture, tool/color/brush state, capped history, flood fill, file validation, PNG export, localStorage, and mobile controls.</p>
           </article>
           <article>
             <h3>Best path</h3>
-            <p>Open the tool first, then read the state, history, import/export, input, and testing sections.</p>
+            <p>Open the tool, then scan state, history, import/export, input, and testing.</p>
           </article>
           <article>
             <h3>Known limits</h3>
-            <p>No layers, autosave recovery, full keyboard command set, automated pixel regression tests, memory-aware history, or semantic canvas content model.</p>
+            <p>No layers, autosave recovery, full shortcuts, pixel regression tests, memory-aware history, or semantic canvas model.</p>
           </article>
         </div>
         <div class="case-review-summary__links" aria-label="Web Paint links">
@@ -181,7 +181,7 @@
           <div class="demo-checklist__copy">
             <p class="eyebrow">Try this demo</p>
             <h2 id="web-paint-demo-checklist-title">Try this in 2 minutes.</h2>
-            <p>The tool runs fully in the browser. These steps exercise Canvas state, pointer input, history, file commands, and responsive controls.</p>
+            <p>Runs in the browser. These steps exercise state, pointer input, history, files, and responsive controls.</p>
             <div class="demo-checklist__actions" aria-label="Web Paint demo actions">
               <a href="paint.html">Open Web Paint</a>
               <a href="paint.html#paint-toolbar">Jump to toolbar</a>
@@ -189,10 +189,10 @@
             </div>
           </div>
           <ol class="demo-checklist__steps">
-            <li><div><strong>Draw with pencil.</strong><span>Choose Pencil, pick a color or brush size, and draw directly on the canvas.</span></div></li>
-            <li><div><strong>Add shape or text.</strong><span>Select a shape or Text from the toolbar and place it on the canvas.</span></div></li>
-            <li><div><strong>Use undo and redo.</strong><span>Click the rail controls to verify ImageData history and toolbar state.</span></div></li>
-            <li><div><strong>Try file controls.</strong><span>Use Open, Save, copy/cut, or local save/load; on touch devices, also try Hide tools and compact controls.</span></div></li>
+            <li><div><strong>Draw.</strong><span>Pick Pencil, color, and size.</span></div></li>
+            <li><div><strong>Add shape or text.</strong><span>Place it from the toolbar.</span></div></li>
+            <li><div><strong>Use undo/redo.</strong><span>Verify history and toolbar state.</span></div></li>
+            <li><div><strong>Try files.</strong><span>Open, save, copy/cut, and local save/load.</span></div></li>
           </ol>
         </div>
       </section>
@@ -203,17 +203,17 @@
             <source srcset="assets/web-paint-workspace.webp" type="image/webp">
             <img src="assets/web-paint-workspace.png" alt="Web Paint browser canvas tool showing toolbar commands, brush controls, keyboard and touch guidance, and drawing workspace" width="1280" height="670" loading="lazy" decoding="async">
           </picture>
-          <figcaption>Web Paint tool surface: toolbar state, browser Canvas workspace, keyboard/touch guidance, and local file controls.</figcaption>
+          <figcaption>Toolbar state, Canvas workspace, guidance, and local file controls.</figcaption>
         </figure>
         <div class="media-proof__copy">
           <p class="eyebrow">Visual proof</p>
           <h2 id="web-paint-media-proof-title">The tool is a working canvas editor.</h2>
-          <p>The screenshot shows the implemented browser UI rather than a mockup: the toolbar, canvas, status bar, and project guide are all part of the live page.</p>
+          <p>The screenshot is the live browser UI: toolbar, canvas, status bar, and guide.</p>
           <h3>What to notice</h3>
           <ul class="media-proof__list">
-            <li>Drawing tools, brush sizes, shapes, colors, canvas sizing, zoom, and file commands live in one toolbar.</li>
-            <li>The canvas area reserves a stable workspace for pointer input, selection, resize, and undo/redo behavior.</li>
-            <li>The tool uses local browser APIs for import, export, clipboard, fullscreen, and storage; there is no backend.</li>
+            <li>Tools, sizes, shapes, colors, sizing, zoom, and files live in one toolbar.</li>
+            <li>The canvas keeps a stable workspace for input, selection, resize, and undo/redo.</li>
+            <li>Browser APIs handle import, export, clipboard, fullscreen, and storage.</li>
           </ul>
         </div>
       </section>
@@ -222,7 +222,7 @@
         <div>
           <p class="eyebrow">Project links</p>
           <h2 id="project-links-title">Open the tool and implementation.</h2>
-          <p>The live page runs as HTML/CSS/JavaScript on GitHub Pages. Source links point to the canvas logic and UI files inside the portfolio repository.</p>
+          <p>The live page runs as HTML/CSS/JavaScript on GitHub Pages. Source links point to canvas logic and UI files.</p>
         </div>
         <div class="work-links">
           <a href="paint.html">Live tool</a>
@@ -241,11 +241,11 @@
         <dl class="case-tldr-grid">
           <div>
             <dt>Problem</dt>
-            <dd>Browser drawing tools become frustrating when tool state, canvas history, imports, and resizing are unreliable.</dd>
+            <dd>Drawing tools need reliable state, history, imports, and resizing.</dd>
           </div>
           <div>
             <dt>Built</dt>
-            <dd>A no-build Canvas editor with pencil, eraser, fill, shapes, text, selection, undo/redo, import/export, local save, zoom, fullscreen, and mobile-friendly panels.</dd>
+            <dd>No-build Canvas editor with drawing tools, undo/redo, import/export, local save, zoom, fullscreen, and mobile panels.</dd>
           </div>
           <div>
             <dt>Stack</dt>
@@ -261,11 +261,11 @@
           </div>
           <div>
             <dt>Result</dt>
-            <dd>A working browser editor with predictable tool state, capped ImageData history, PNG export, localStorage save/load, and responsive controls.</dd>
+            <dd>Working editor with predictable state, capped history, PNG export, localStorage save/load, and responsive controls.</dd>
           </div>
           <div>
             <dt>Current limitation</dt>
-            <dd>No layers, autosave recovery, full keyboard command set, automated pixel regression tests, or semantic representation of canvas content.</dd>
+            <dd>No layers, autosave recovery, full shortcuts, pixel regression tests, or semantic canvas representation.</dd>
           </div>
         </dl>
       </section>
@@ -274,96 +274,96 @@
         <article class="case-template-main">
           <section class="case-template-section" aria-labelledby="summary-title">
             <p class="eyebrow">01 / Project summary</p>
-            <h2 id="summary-title">A real canvas tool, not only a visual mockup.</h2>
+            <h2 id="summary-title">A real canvas tool.</h2>
             <p>
-              A browser drawing editor needs predictable tool state, durable history, safe imports, and export paths that work without a backend. I built Web Paint with the Canvas 2D API, vanilla JavaScript state, pointer events, typed-array flood fill, capped ImageData history, PNG import/export, localStorage save/load, canvas resizing, zoom, and a desktop-inspired toolbar that still works at narrow widths.
+              Web Paint uses Canvas 2D, vanilla JavaScript state, pointer events, flood fill, capped history, PNG import/export, localStorage, resizing, zoom, and responsive controls.
             </p>
             <div class="case-template-feature-list">
               <article>
                 <h3>Technical problem</h3>
-                <p>Canvas tools have to coordinate mutable pixels, active tool state, pointer input, history, imports, exports, zoom, and resize behavior.</p>
+                <p>Canvas tools must coordinate pixels, tool state, pointer input, history, imports, exports, zoom, and resizing.</p>
               </article>
               <article>
                 <h3>Constraints</h3>
-                <p>The editor runs with no framework or backend, so browser APIs carry file handling, storage, clipboard, and fullscreen behavior.</p>
+                <p>No framework or backend; browser APIs handle files, storage, clipboard, and fullscreen.</p>
               </article>
               <article>
                 <h3>Approach</h3>
-                <p>I used a focused vanilla JavaScript state model, Canvas 2D drawing paths, pointer capture, typed-array flood fill, and capped ImageData snapshots.</p>
+                <p>I used vanilla JS state, Canvas paths, pointer capture, typed-array flood fill, and capped snapshots.</p>
               </article>
               <article>
                 <h3>Tradeoff</h3>
-                <p>ImageData history is straightforward and reliable for a small editor, but it becomes memory-heavy on large canvases.</p>
+                <p>ImageData history is simple, but memory-heavy on large canvases.</p>
               </article>
               <article>
                 <h3>Next improvement</h3>
-                <p>The next pass would add command or dirty-region history, worker-backed persistence, selection movement, richer shortcuts, and better nonvisual output.</p>
+                <p>Next: command/dirty-region history, workers, selection movement, shortcuts, and nonvisual output.</p>
               </article>
             </div>
             <div class="case-study-callout">
               <strong>What it demonstrates:</strong>
-              <span>The implementation shows frontend fundamentals without leaning on a framework: DOM wiring, event handling, state modeling, Canvas APIs, browser storage, clipboard APIs, file validation, mobile layout, and nonvisual tradeoffs.</span>
+              <span>DOM wiring, events, state, Canvas APIs, storage, clipboard, file validation, mobile layout, and nonvisual tradeoffs.</span>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="why-matters-title">
             <p class="eyebrow">Why this matters</p>
-            <h2 id="why-matters-title">It makes a browser-only drawing tool feel usable.</h2>
+            <h2 id="why-matters-title">It makes browser drawing usable.</h2>
             <div class="case-template-feature-list">
               <article>
                 <h3>Tool problem</h3>
-                <p>Lightweight drawing and markup tasks still need predictable tools, undo/redo, import, export, zoom, and mobile controls without forcing users into installed desktop software.</p>
+                <p>Drawing tasks need predictable tools, undo/redo, import, export, zoom, and mobile controls.</p>
               </article>
               <article>
                 <h3>Useful approach</h3>
-                <p>The Canvas 2D API, pointer events, focused tool state, bounded ImageData history, and browser file/clipboard/storage APIs make the editor usable without a backend.</p>
+                <p>Canvas 2D, pointer events, bounded history, and browser file/clipboard/storage APIs avoid a backend.</p>
               </article>
               <article>
                 <h3>Employer signal</h3>
-                <p>The project shows UI state modeling, DOM event handling, browser API integration, performance tradeoffs, mobile layout, and labeled controls.</p>
+                <p>Shows state modeling, DOM events, browser APIs, performance tradeoffs, mobile layout, and labels.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="readiness-title">
             <p class="eyebrow">Production readiness</p>
-            <h2 id="readiness-title">The editor works; larger documents need a more robust model.</h2>
+            <h2 id="readiness-title">Works now; larger documents need more.</h2>
             <div class="production-hardening-grid">
               <article>
                 <h3>Already solid</h3>
-                <p>The tool has working drawing modes, pointer input, undo/redo snapshots, import/export, local save/load, zoom, resize controls, visible status updates, and responsive tool panels.</p>
+                <p>Working modes, pointer input, undo/redo, import/export, local save/load, zoom, resizing, status, and responsive panels.</p>
               </article>
               <article>
                 <h3>Prototype-only</h3>
-                <p>History uses full ImageData snapshots. Canvas content has no semantic model, text placement uses a prompt, and the editor lacks layers, document names, and full shortcuts.</p>
+                <p>History uses full snapshots. No semantic model, layers, document names, or full shortcuts.</p>
               </article>
               <article>
                 <h3>Next engineering work</h3>
-                <p>A larger editor would need memory-aware history, autosave recovery, selection movement, richer shortcuts, workers for heavy operations, browser testing, and nonvisual descriptions.</p>
+                <p>Larger editor needs memory-aware history, autosave, selection movement, shortcuts, workers, tests, and nonvisual descriptions.</p>
               </article>
               <article>
                 <h3>Security and privacy</h3>
-                <p>The tool keeps drawings local. Cloud save or sharing would require file validation, privacy controls, retention rules, upload limits, and abuse handling.</p>
+                <p>Drawings stay local. Cloud save would need validation, privacy controls, retention rules, upload limits, and abuse handling.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="role-title">
             <p class="eyebrow">02 / What I built</p>
-            <h2 id="role-title">The full editor surface and interaction model.</h2>
+            <h2 id="role-title">Editor surface and interaction model.</h2>
             <ul class="case-template-list">
-              <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
-              <li>Built undo/redo snapshots, image import validation, PNG export, local save/load, zoom, and canvas resizing.</li>
-              <li>Managed tool settings, colors, brush size, shape choices, selection bounds, drawing drafts, pointer capture, and status output in vanilla JavaScript.</li>
-              <li>Added paste, copy, cut, fullscreen, canvas-size controls, mobile-friendly control panels, and mobile instruction copy.</li>
-              <li>Included guardrails for MIME type, file size, pixel count, bounded canvas dimensions, requestAnimationFrame-based drawing, and large-canvas history limits.</li>
+              <li>Implemented pencil, eraser, shapes, fill, text, selection, and previews.</li>
+              <li>Built undo/redo, import validation, PNG export, local save/load, zoom, and resizing.</li>
+              <li>Managed tool settings, colors, brush size, shapes, selection, drafts, pointer capture, and status in vanilla JS.</li>
+              <li>Added paste, copy, cut, fullscreen, canvas sizing, mobile panels, and mobile guidance.</li>
+              <li>Added guardrails for MIME type, size, pixels, canvas dimensions, animation-frame drawing, and history limits.</li>
             </ul>
-            <p class="ownership-note">External pieces are browser APIs: Canvas 2D, File input, Clipboard, Fullscreen, object URLs, and LocalStorage. The editor logic and UI wiring are vanilla JavaScript in this repo.</p>
+            <p class="ownership-note">Uses browser APIs: Canvas 2D, File, Clipboard, Fullscreen, object URLs, and LocalStorage. Logic/UI are vanilla JavaScript.</p>
           </section>
 
           <section class="case-template-section" aria-labelledby="tool-list-title">
             <p class="eyebrow">03 / Tool list</p>
-            <h2 id="tool-list-title">Editor features map to drawing tasks.</h2>
+            <h2 id="tool-list-title">Features map to drawing tasks.</h2>
             <div class="case-study-table-wrapper">
               <table class="case-study-table">
                 <caption>Primary Web Paint controls and implementation responsibilities.</caption>
@@ -378,27 +378,27 @@
                   <tr>
                     <th scope="row">Drawing</th>
                     <td>Pencil, brush, eraser, text, fill bucket.</td>
-                    <td>Pointer events convert screen coordinates into canvas coordinates; brush settings map to stroke style, line width, caps, joins, and fill color.</td>
+                    <td>Pointer events convert screen coordinates to canvas coordinates; brush settings map to stroke style.</td>
                   </tr>
                   <tr>
                     <th scope="row">Shapes</th>
                     <td>Line, rectangle, rounded rectangle, circle, triangle, right triangle, star, polygon.</td>
-                    <td>Shape drawing uses a saved draft image so dragging previews the current geometry without permanently painting every intermediate frame.</td>
+                    <td>Saved draft image previews drag geometry before commit.</td>
                   </tr>
                   <tr>
                     <th scope="row">Color and size</th>
                     <td>Palette swatches, active color preview, 2px, 6px, 12px, and 20px brush controls.</td>
-                    <td>UI buttons update shared state and active button classes so toolbar and drawing engine stay in sync.</td>
+                    <td>Buttons update shared state and active classes.</td>
                   </tr>
                   <tr>
                     <th scope="row">Canvas operations</th>
                     <td>New canvas, erase canvas, width/height controls, drag resize handle, zoom, fullscreen.</td>
-                    <td>Canvas dimensions are clamped from 64 to 4096 pixels; resize preserves overlapping pixels and resets history after the new canvas is committed.</td>
+                    <td>Dimensions clamp from 64 to 4096; resize preserves overlapping pixels and resets history.</td>
                   </tr>
                   <tr>
                     <th scope="row">File and clipboard</th>
                     <td>Open image, paste image/text, copy selection, cut selection, save PNG, local save.</td>
-                    <td>File APIs, ClipboardItem, object URLs, canvas blobs, LocalStorage, and PNG data URLs support open, paste, copy, export, and local-save actions.</td>
+                    <td>File APIs, ClipboardItem, object URLs, blobs, LocalStorage, and PNG URLs power open, paste, copy, export, and save.</td>
                   </tr>
                 </tbody>
               </table>
@@ -407,7 +407,7 @@
 
           <section class="case-template-section" aria-labelledby="rendering-title">
             <p class="eyebrow">04 / Canvas rendering model</p>
-            <h2 id="rendering-title">Pointer input is converted into canvas-space drawing.</h2>
+            <h2 id="rendering-title">Pointer input becomes canvas drawing.</h2>
             <figure class="architecture-svg-card">
               <svg class="architecture-svg" viewBox="0 0 960 520" role="img" aria-labelledby="web-paint-svg-title" aria-describedby="web-paint-svg-desc" focusable="false">
                 <title id="web-paint-svg-title">Web Paint canvas editor architecture diagram</title>
@@ -464,32 +464,32 @@
                 <path class="svg-arrow svg-arrow-blue" marker-end="url(#web-paint-blue-arrow)" d="M 328 364 C 476 282 630 268 724 208"></path>
                 <path class="svg-arrow svg-arrow-muted" marker-end="url(#web-paint-arrow)" d="M 724 316 C 712 266 748 238 774 208"></path>
               </svg>
-              <figcaption>Web Paint stays simple by separating control state, pointer-event handling, canvas rendering, history snapshots, and browser API flows for import/export.</figcaption>
+              <figcaption>Control state, pointer handling, rendering, history, and import/export flows stay separate.</figcaption>
             </figure>
             <ol class="case-study-flow">
               <li>
                 <strong>Capture pointer</strong>
-                <span><code>pointerdown</code> sets pointer capture, stores the current canvas rectangle, and calculates the starting canvas-space coordinate.</span>
+                <span><code>pointerdown</code> captures the pointer and start coordinate.</span>
               </li>
               <li>
                 <strong>Pick behavior by tool</strong>
-                <span>Fill, text, selection, freehand drawing, and shape drawing take different paths instead of trying to force all tools through one handler.</span>
+                <span>Fill, text, selection, freehand, and shapes use separate paths.</span>
               </li>
               <li>
                 <strong>Render freehand strokes</strong>
-                <span>Pencil, brush, and eraser draw line segments from the previous point to the latest point, using the current brush configuration.</span>
+                <span>Pencil, brush, and eraser draw segments with current brush settings.</span>
               </li>
               <li>
                 <strong>Preview shapes from a draft</strong>
-                <span>Shape drawing stores an ImageData draft at pointer start, restores it during drag, then renders the current geometry on top.</span>
+                <span>Shapes restore a draft during drag, then render current geometry.</span>
               </li>
               <li>
                 <strong>Commit a history snapshot</strong>
-                <span>On pointer release, the final canvas pixels are saved into bounded undo history so future edits can restore a known image state.</span>
+                <span>On release, final pixels enter bounded undo history.</span>
               </li>
             </ol>
             <p>
-              Continuous pointer movement is throttled through <code>requestAnimationFrame</code> with a pending point, which keeps drawing fluid under pen/mouse input while avoiding unnecessary repeated work during high-frequency pointer events.
+              Pointer movement is throttled with <code>requestAnimationFrame</code> so high-frequency input stays fluid.
             </p>
           </section>
 
@@ -499,22 +499,22 @@
             <div class="case-template-feature-list">
               <article>
                 <h3>Active mode</h3>
-                <p><code>activeTool</code> and <code>activeShape</code> decide whether the next pointer action draws freehand, fills an area, places text, creates a selection, or previews a shape.</p>
+                <p><code>activeTool</code> and <code>activeShape</code> choose freehand, fill, text, selection, or shape preview.</p>
               </article>
               <article>
                 <h3>Drawing session</h3>
-                <p><code>isDrawing</code>, <code>lastPoint</code>, <code>startPoint</code>, <code>draft</code>, <code>pendingPoint</code>, and <code>frameRequest</code> separate the live drag from committed canvas state.</p>
+                <p>Drawing fields separate live drag from committed canvas state.</p>
               </article>
               <article>
                 <h3>Selection and view</h3>
-                <p><code>selectionRect</code>, <code>selectionStart</code>, <code>zoom</code>, and cached canvas rectangles support selection overlays, clipboard operations, and scaled coordinate conversion.</p>
+                <p>Selection, zoom, and cached rectangles support overlays, clipboard, and scaled coordinates.</p>
               </article>
             </div>
             <p>
-              The important choice is that the canvas pixels remain the source of truth for the image, while JavaScript state describes the current interaction. That keeps the implementation understandable without a component framework.
+              Canvas pixels are the image source of truth; JavaScript state describes the current interaction.
             </p>
             <figure class="case-code-example" aria-labelledby="web-paint-tool-code-title">
-              <figcaption id="web-paint-tool-code-title">What this demonstrates: selecting a tool updates one shared state object, clears incompatible selection state, and syncs the visible toolbar controls.</figcaption>
+              <figcaption id="web-paint-tool-code-title">Selecting a tool updates shared state, clears selection, and syncs controls.</figcaption>
               <pre tabindex="0"><code class="language-js">function setTool(tool) {
   if (tool !== "select") clearSelection();
   state.activeTool = tool;
@@ -522,7 +522,7 @@
   toolStatus.textContent = `Tool: ${titleCase(tool)}`;
   syncActiveControls();
 }</code></pre>
-              <p class="case-code-note">This is the bridge between the DOM toolbar and the canvas input handlers.</p>
+              <p class="case-code-note">Bridge between DOM toolbar and canvas handlers.</p>
             </figure>
           </section>
 
@@ -530,13 +530,13 @@
             <p class="eyebrow">06 / Undo and redo strategy</p>
             <h2 id="history-title">History stores bounded ImageData snapshots.</h2>
             <p>
-              Undo and redo are implemented with an array of <code>ImageData</code> snapshots and a history index. Before saving a new edit, the app slices away any redo states after the current index, pushes the latest pixels, and caps the stack at 24 snapshots. Restoring a state uses <code>putImageData</code>.
+              Undo/redo use <code>ImageData</code> snapshots and a history index. New edits discard redo states, save latest pixels, and cap history at 24 snapshots.
             </p>
             <p>
-              This direct snapshot model works for a small editor because every tool produces a final pixel state. The tradeoff is memory: large canvases make each snapshot expensive. A production version would likely move toward command history, dirty-region snapshots, compression, or worker-backed persistence for bigger documents.
+              The model is simple but memory-heavy on large canvases. Production would use commands, dirty regions, compression, or workers.
             </p>
             <figure class="case-code-example" aria-labelledby="web-paint-history-code-title">
-              <figcaption id="web-paint-history-code-title">What this demonstrates: undo and redo are based on committed pixel snapshots, with redo states discarded when a new edit is saved.</figcaption>
+              <figcaption id="web-paint-history-code-title">Undo/redo use committed pixel snapshots; new edits discard redo states.</figcaption>
               <pre tabindex="0"><code class="language-js">function saveHistory() {
   state.history = state.history.slice(0, state.historyIndex + 1);
   state.history.push(context.getImageData(0, 0, canvas.width, canvas.height));
@@ -549,146 +549,146 @@ function restoreHistory(index) {
   if (!snapshot) return;
   context.putImageData(snapshot, 0, 0);
 }</code></pre>
-              <p class="case-code-note">The simple snapshot model fits the current editor, while the surrounding case study names the memory tradeoff.</p>
+              <p class="case-code-note">Simple snapshot model with a clear memory tradeoff.</p>
             </figure>
           </section>
 
           <section class="case-template-section" aria-labelledby="import-export-title">
             <p class="eyebrow">07 / Import and export flow</p>
-            <h2 id="import-export-title">Browser APIs make the tool work without a backend.</h2>
+            <h2 id="import-export-title">Browser APIs replace a backend.</h2>
             <ol class="case-study-flow">
               <li>
                 <strong>Open image</strong>
-                <span>The hidden file input accepts common image types. JavaScript validates MIME type and file size before loading the image through an object URL.</span>
+                <span>Validate MIME type and size before loading through an object URL.</span>
               </li>
               <li>
                 <strong>Validate dimensions</strong>
-                <span>Imported images with no dimensions or more than 48 million pixels are rejected before they are drawn onto the canvas.</span>
+                <span>Reject missing dimensions or images over 48 million pixels.</span>
               </li>
               <li>
                 <strong>Fit to canvas</strong>
-                <span>The image is scaled to fit the current canvas while preserving aspect ratio, centered on a white background, then committed to history.</span>
+                <span>Scale to fit, preserve aspect ratio, center, then commit history.</span>
               </li>
               <li>
                 <strong>Clipboard flow</strong>
-                <span>Copy and cut export either the full canvas or the current selection with <code>toBlob</code> and <code>ClipboardItem</code>, with download fallback when clipboard writing is unavailable.</span>
+                <span>Copy/cut export canvas or selection with clipboard and download fallback.</span>
               </li>
               <li>
                 <strong>Export and local save</strong>
-                <span>Save downloads a PNG. Local save stores a PNG data URL in <code>localStorage</code>, enough for this browser tool but not a full document system.</span>
+                <span>Save downloads PNG; local save stores a PNG data URL in <code>localStorage</code>.</span>
               </li>
             </ol>
           </section>
 
           <section class="case-template-section" aria-labelledby="input-title">
             <p class="eyebrow">08 / Keyboard, mouse, and touch</p>
-            <h2 id="input-title">Pointer events keep the drawing model device-agnostic.</h2>
+            <h2 id="input-title">Pointer events keep input device-agnostic.</h2>
             <div class="production-hardening-grid">
               <article>
                 <h3>Mouse and pen</h3>
-                <p>Canvas drawing and resizing use pointer events, pointer capture, and canvas-space coordinate mapping so drag behavior remains stable while the user is interacting with the canvas.</p>
+                <p>Pointer capture and canvas-space coordinates keep drag behavior stable.</p>
               </article>
               <article>
                 <h3>Touch devices</h3>
-                <p>The canvas sets <code>touch-action: none</code>, allowing touch drawing without the browser treating the gesture as page scroll or zoom inside the drawing surface.</p>
+                <p><code>touch-action: none</code> prevents drawing gestures from becoming page scrolls.</p>
               </article>
               <article>
                 <h3>Keyboard access</h3>
-                <p>Toolbar controls are native buttons and numeric inputs. Width and height fields commit on Enter, but richer shortcuts such as Ctrl+Z, Ctrl+Y, tool hotkeys, and selection movement are still future work.</p>
+                <p>Native buttons and inputs support keyboard use; richer shortcuts remain future work.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="accessibility-title">
             <p class="eyebrow">09 / Nonvisual limits and improvements</p>
-            <h2 id="accessibility-title">The shell is keyboard-friendly, but canvas content needs a deeper strategy.</h2>
+            <h2 id="accessibility-title">Keyboard shell; visual canvas.</h2>
             <p>
-              The interface uses semantic buttons, labels, visible focus states, ARIA labels for icon-only controls, and descriptive toolbar groups. The canvas itself has a label, but the drawing content is still visual pixel data with no equivalent structured representation.
+              The interface uses semantic buttons, labels, focus states, ARIA labels, and toolbar groups. Canvas content remains visual pixel data.
             </p>
             <div class="production-hardening-grid">
               <article>
                 <h3>Current support</h3>
-                <p>Native buttons and inputs support keyboard focus, tool groups are labeled, color swatches announce their value, and selection/resize controls have names.</p>
+                <p>Buttons and inputs focus, tool groups are labeled, swatches announce value, and selection/resize controls are named.</p>
               </article>
               <article>
                 <h3>Known limitations</h3>
-                <p>The app does not yet expose the drawn image as semantic content, lacks full keyboard drawing commands, and uses a prompt for text placement rather than an inline text tool.</p>
+                <p>No semantic drawing model, full keyboard drawing commands, or inline text tool yet.</p>
               </article>
               <article>
                 <h3>Next improvements</h3>
-                <p>Add keyboard shortcuts, a command palette, stronger status announcements, optional high-contrast toolbar mode, and an exportable text description field for drawings.</p>
+                <p>Add shortcuts, command palette, stronger status, high-contrast toolbar, and text descriptions.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="performance-title">
             <p class="eyebrow">10 / Performance considerations</p>
-            <h2 id="performance-title">Large canvases make memory and pixel work the main constraints.</h2>
+            <h2 id="performance-title">Large canvases drive the constraints.</h2>
             <p>
-              Web Paint already clamps canvases to 4096 by 4096 pixels, caps imports by file size and pixel count, runs flood fill with typed arrays, schedules resize preview work through <code>requestAnimationFrame</code>, and limits history to 24 snapshots.
+              Web Paint clamps canvases to 4096x4096, caps imports, uses typed-array flood fill, schedules resize previews with <code>requestAnimationFrame</code>, and limits history.
             </p>
             <p>
-              The biggest limitation is that undo/redo stores full ImageData snapshots. At large dimensions, every snapshot can consume significant memory, and operations such as flood fill or full-canvas history save can become expensive. A production version would add memory-aware history limits, offscreen canvas or worker processing, region-based invalidation, progressive import feedback, and stronger handling for low-memory mobile devices.
+              The main limit is full ImageData history. Production would add memory-aware limits, workers, region invalidation, import feedback, and low-memory mobile handling.
             </p>
           </section>
 
           <section class="case-template-section" aria-labelledby="testing-title">
             <p class="eyebrow">11 / Testing and QA notes</p>
-            <h2 id="testing-title">QA focuses on canvas state, browser APIs, and mobile input.</h2>
+            <h2 id="testing-title">QA focuses on state, APIs, and mobile input.</h2>
             <div class="production-hardening-grid">
               <article>
                 <h3>Automated tests</h3>
-                <p>No automated suite exists yet. Current confidence comes from manual checks of drawing tools, state transitions, import/export paths, and responsive controls.</p>
+                <p>No automated suite yet. Manual checks cover tools, state transitions, import/export, and responsive controls.</p>
               </article>
               <article>
                 <h3>Manual checklist</h3>
-                <p>Check every tool mode, shape preview/commit, undo/redo, reset/new canvas, resize, zoom, fullscreen, image import, paste, copy/cut selection, PNG export, local save/load, and status messages.</p>
+                <p>Check tools, previews, undo/redo, reset, resize, zoom, fullscreen, import, paste, copy/cut, export, local save/load, and status.</p>
               </article>
               <article>
                 <h3>Browser and device checks</h3>
-                <p>Test desktop mouse/keyboard, mobile touch, tablet widths, high-DPI screens, clipboard permissions, fullscreen availability, focus visibility, and reduced-motion behavior.</p>
+                <p>Test mouse/keyboard, touch, tablet widths, high-DPI, clipboard, fullscreen, focus, and reduced motion.</p>
               </article>
               <article>
                 <h3>Edge cases</h3>
-                <p>Exercise invalid files, huge images, blocked clipboard writes, unavailable LocalStorage, canvas limits, rapid tool switching mid-drag, empty selections, and large-canvas history limits.</p>
+                <p>Exercise invalid files, huge images, blocked clipboard, missing LocalStorage, canvas limits, mid-drag switches, empty selections, and history limits.</p>
               </article>
               <article>
                 <h3>Known limitations</h3>
-                <p>There are no regression tests for pixel output, pointer sequences, memory pressure, or cross-browser clipboard behavior. Canvas content also needs a nonvisual strategy.</p>
+                <p>No regression tests yet for pixels, pointer sequences, memory pressure, cross-browser clipboard, or nonvisual canvas content.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="deployment-title">
             <p class="eyebrow">12 / Deployment and run notes</p>
-            <h2 id="deployment-title">Web Paint runs as a browser tool.</h2>
+            <h2 id="deployment-title">Runs as a browser tool.</h2>
             <div class="production-hardening-grid">
               <article>
                 <h3>Hosted/run location</h3>
-                <p>The live tool is hosted on GitHub Pages at <code>zacbatten.me/paint.html</code>. It runs entirely in the browser from HTML, CSS, and <code>paint.js</code>, with no backend service.</p>
+                <p>Hosted on GitHub Pages at <code>zacbatten.me/paint.html</code>. HTML, CSS, and <code>paint.js</code>; no backend.</p>
               </article>
               <article>
                 <h3>Environment/config</h3>
-                <p>No environment variables are required. User settings and local saves rely on browser state such as <code>localStorage</code>; imported files are handled in the active browser session.</p>
+                <p>No env vars. Settings and local saves use browser state; imports stay in the active session.</p>
               </article>
               <article>
                 <h3>External APIs/services</h3>
-                <p>There are no external APIs for drawing. The implementation depends on browser APIs: Canvas 2D, Pointer Events, File input, Clipboard, Fullscreen, object URLs, and LocalStorage.</p>
+                <p>No external drawing APIs. Uses Canvas 2D, Pointer Events, File, Clipboard, Fullscreen, object URLs, and LocalStorage.</p>
               </article>
               <article>
                 <h3>Local development</h3>
-                <p>Clone the portfolio repository, run <code>python -m http.server 8000</code> from the repo root, and open <code>http://localhost:8000/paint.html</code>. A local server is preferred because clipboard, file, and fullscreen behavior can differ from direct <code>file://</code> access.</p>
+                <p>Run <code>python -m http.server 8000</code>, then open <code>/paint.html</code>. A local server avoids <code>file://</code> quirks.</p>
               </article>
               <article>
                 <h3>Secrets and privacy</h3>
-                <p>The current tool does not upload drawings or use secrets. If sharing or cloud save were added, it would need authentication, upload validation, storage quotas, data retention rules, and privacy controls.</p>
+                <p>No uploads or secrets. Cloud save would need auth, upload validation, quotas, retention rules, and privacy controls.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="screenshots-title">
             <p class="eyebrow">13 / Screenshot</p>
-            <h2 id="screenshots-title">Screenshot from the live browser tool.</h2>
+            <h2 id="screenshots-title">Live browser-tool screenshot.</h2>
             <div class="screenshot-gallery screenshot-gallery--feature-first case-template-screenshot-grid">
               <figure class="screenshot-gallery__item case-study-image-frame">
                 <a class="screenshot-gallery__link" href="assets/web-paint-workspace.png" aria-label="Open full-size Web Paint workspace screenshot">
@@ -704,13 +704,13 @@ function restoreHistory(index) {
 
           <section class="case-template-section" aria-labelledby="next-title">
             <p class="eyebrow">14 / What I would improve next</p>
-            <h2 id="next-title">The next pass would make it more editor-like.</h2>
+            <h2 id="next-title">Next editor improvements.</h2>
             <ul class="case-template-list">
-              <li>Add real keyboard shortcuts for undo, redo, save, tool selection, zoom, and canvas movement.</li>
-              <li>Support moving and resizing a selected region after it is created, rather than only copy/cut/export behavior.</li>
-              <li>Replace prompt-based text placement with an inline text box and editable text commit flow.</li>
-              <li>Add a better autosave/reopen story, including restored local drawings and explicit document naming.</li>
-              <li>Improve memory behavior for large canvases with region-based history or a command-style undo stack.</li>
+              <li>Add shortcuts for undo, redo, save, tools, zoom, and canvas movement.</li>
+              <li>Move and resize selected regions.</li>
+              <li>Replace prompt text with inline editable text.</li>
+              <li>Add autosave/reopen and document names.</li>
+              <li>Improve large-canvas memory with region or command history.</li>
             </ul>
           </section>
         </article>
@@ -732,8 +732,8 @@ function restoreHistory(index) {
       <section class="next-step-panel" aria-labelledby="web-paint-next-title">
         <div>
           <p class="eyebrow">Next step</p>
-          <h2 id="web-paint-next-title">Try the tool, then compare it with the rest of the work.</h2>
-          <p>Web Paint shows browser UI and Canvas mechanics. TraverseOps and MovieBot show map modeling and Python automation depth.</p>
+          <h2 id="web-paint-next-title">Try the tool, then compare.</h2>
+          <p>Web Paint shows browser UI and Canvas mechanics. TraverseOps and MovieBot show maps and Python automation.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="paint.html">Open Web Paint</a>
@@ -746,7 +746,7 @@ function restoreHistory(index) {
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer building web tools, automation, and frontend interfaces.</span>
+        <span>Software developer building web tools, automation, and frontend UI.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>

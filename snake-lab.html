@@ -58,7 +58,7 @@
         <div class="demo-overview-copy">
           <span class="next-step-kicker">Game guide</span>
           <h1 id="snake-overview-title">Snake Lab</h1>
-          <p>Snake depends on fast turns without illegal reversals; I built a Canvas/JavaScript grid game with timed movement, buffered keyboard/touch input, food placement, growth, collision checks, pace changes, and local best scores.</p>
+          <p>Canvas Snake with timed movement, buffered keyboard/touch input, food, growth, collisions, pace changes, and best scores.</p>
           <dl class="demo-status-list" aria-label="Snake Lab project status">
             <div>
               <dt>Status</dt>
@@ -79,11 +79,11 @@
         <dl class="demo-control-list">
           <div>
             <dt>Controls</dt>
-            <dd>Steer the snake, collect food, avoid walls and your own body, and keep the run alive as pace increases.</dd>
+            <dd>Steer, collect food, avoid walls/body, and survive as pace increases.</dd>
           </div>
           <div>
             <dt>Keyboard</dt>
-            <dd>Arrow keys or WASD turn, Space, P, or Escape pauses and resumes, and Enter starts or resumes when not actively playing.</dd>
+            <dd>Arrow/WASD turn, Space/P/Escape pauses, and Enter starts or resumes.</dd>
           </div>
           <div>
             <dt>Touch</dt>
@@ -173,7 +173,7 @@
         <span class="next-step-kicker">Implementation notes</span>
         <h2 id="snake-implementation-title">Grid state, buffered turns, and pace feedback.</h2>
         <p>
-          <strong>Main state</strong> includes the snake segment list, current direction, queued direction, food position, score, length, pace, best score, and run state. The game uses a timed grid step instead of pixel physics, then redraws the board on canvas after each move. Collision logic tests the next head cell against walls and existing body segments; scoring grows the snake, moves food, increases pace, and saves the best run locally. Keyboard input maps Arrow keys and WASD into direction changes, while Space and Enter control pause or start. Touch support uses both swipe detection and on-screen direction buttons. The lesson was using an input buffer so quick turns register without allowing illegal reverse moves.
+          <strong>Main state</strong> tracks segments, direction, food, score, pace, and run state. One timed step moves, collides, grows, and saves.
         </p>
       </section>
 
@@ -192,7 +192,7 @@
         <span class="next-step-kicker">Production readiness</span>
         <h2 id="snake-readiness-title">Archived experiment with solid grid state.</h2>
         <p>
-          <strong>Already solid</strong> includes deterministic movement, buffered input, collision checks, local best score, and keyboard/touch controls. <strong>Demo-only</strong> areas include limited automated tests and canvas-first gameplay. Hardening would add regression tests for turns and collisions, save migration/reset controls, better screen-reader alternatives, and mobile browser QA.
+          <strong>Solid:</strong> deterministic movement, buffered input, collisions, best score, and keyboard/touch controls. <strong>Hardening:</strong> turn/collision tests, save reset, screen-reader alternatives, and mobile QA.
         </p>
       </section>
 
@@ -200,7 +200,7 @@
         <span class="next-step-kicker">Deployment and run notes</span>
         <h2 id="snake-run-title">Static browser game with no runtime secrets.</h2>
         <p>
-          <strong>Hosted/run location:</strong> GitHub Pages serves <code>snake-lab.html</code>, <code>snake-lab.css</code>, and <code>snake-lab.js</code>. <strong>Environment/config:</strong> no environment variables are required; grid size, speed, scoring, and input rules are client-side JavaScript. <strong>External APIs/services:</strong> none beyond Canvas/DOM events, touch input, Fullscreen, and LocalStorage for best score. <strong>Local development:</strong> run <code>python -m http.server 8000</code> and open <code>/snake-lab.html</code>. <strong>Security:</strong> saved scores stay in the local browser.
+          GitHub Pages serves <code>snake-lab.html</code>, <code>snake-lab.css</code>, and <code>snake-lab.js</code>. No env vars or external APIs beyond browser APIs and LocalStorage. Local: run <code>python -m http.server 8000</code> and open <code>/snake-lab.html</code>.
         </p>
       </section>
 
@@ -208,7 +208,7 @@
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="snake-next-title">More grid-state experiments</h2>
-          <p>Buffered grid input is one of the lab's control examples; compare this demo with the other browser experiments and the main case studies for broader implementation context.</p>
+          <p>Compare buffered grid input with the other demos and main case studies.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>

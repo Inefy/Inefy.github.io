@@ -60,7 +60,7 @@
         <div class="demo-overview-copy">
           <span class="next-step-kicker">Game guide</span>
           <h1 id="sweep-overview-title">Minefield Sweep</h1>
-          <p>Mine puzzles need clear state and safe first moves; I built a JavaScript grid game with delayed mine placement, recursive reveal, flag mode, difficulty switching, timer/best-time state, and accessible cell labels.</p>
+          <p>JavaScript mine puzzle with delayed mines, recursive reveal, flag mode, difficulty, timer/best time, and labeled cells.</p>
           <dl class="demo-status-list" aria-label="Minefield Sweep project status">
             <div>
               <dt>Status</dt>
@@ -86,7 +86,7 @@
           </div>
           <div>
             <dt>Keyboard</dt>
-            <dd>Focus a cell, use Arrow keys to move, Enter or Space reveals, F toggles a flag, and P or Escape pauses.</dd>
+            <dd>Focus a cell, Arrow to move, Enter/Space reveals, F flags, and P/Escape pauses.</dd>
           </div>
           <div>
             <dt>Touch</dt>
@@ -184,7 +184,7 @@
         <span class="next-step-kicker">Implementation notes</span>
         <h2 id="sweep-implementation-title">Board generation, reveal flow, and accessible cell state.</h2>
         <p>
-          <strong>Main state</strong> includes difficulty config, mine positions, revealed cells, flags, timer, first-click status, cleared percentage, best time, and game status. The loop is event-driven rather than continuous: clicks, key presses, or difficulty changes update board state and then re-render the grid. Mine placement waits for the first reveal so the first move can stay safe. Reveal logic expands empty regions recursively, counts adjacent mines, toggles flags, and checks win/loss conditions; scoring is represented by clear time and completion percentage. Keyboard users can focus cells, move with Arrow keys, reveal with Enter or Space, and flag with F. Touch uses tap-to-reveal and Flag Mode. The lesson was treating every cell as stateful UI with labels, focus, and game state.
+          <strong>Main state</strong> tracks difficulty, mines, cells, flags, timer, progress, and status. First reveal is safe; later reveals expand, count, flag, and finish.
         </p>
       </section>
 
@@ -203,7 +203,7 @@
         <span class="next-step-kicker">Production readiness</span>
         <h2 id="sweep-readiness-title">Accessible prototype with testable logic still to add.</h2>
         <p>
-          <strong>Already solid</strong> includes safe first reveal, recursive clearing, flag mode, difficulty state, keyboard navigation, live announcements, and cell labels. <strong>Prototype-only</strong> areas include limited automated tests and simple local best-time persistence. Hardening would add reveal/flag tests, focus regression checks, difficulty validation, reset controls, and assistive-tech QA.
+          <strong>Solid:</strong> safe reveal, recursive clearing, flags, keyboard navigation, and labels. <strong>Hardening:</strong> reveal tests, focus checks, validation, and assistive-tech QA.
         </p>
       </section>
 
@@ -211,7 +211,7 @@
         <span class="next-step-kicker">Deployment and run notes</span>
         <h2 id="sweep-run-title">Static logic game with difficulty config in source.</h2>
         <p>
-          <strong>Hosted/run location:</strong> GitHub Pages serves <code>minefield-sweep.html</code>, <code>minefield-sweep.css</code>, and <code>minefield-sweep.js</code>. <strong>Environment/config:</strong> no environment variables are required; difficulty sizes, mine counts, timer behavior, and reveal logic are client-side JavaScript. <strong>External APIs/services:</strong> none beyond DOM events, keyboard/touch input, and LocalStorage for best times. <strong>Local development:</strong> run <code>python -m http.server 8000</code> and open <code>/minefield-sweep.html</code>. <strong>Security:</strong> game state is local and no user data is transmitted.
+          GitHub Pages serves <code>minefield-sweep.html</code>, <code>minefield-sweep.css</code>, and <code>minefield-sweep.js</code>. No env vars or external APIs beyond browser events and LocalStorage. Local: run <code>python -m http.server 8000</code> and open <code>/minefield-sweep.html</code>.
         </p>
       </section>
 
@@ -219,7 +219,7 @@
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="sweep-next-title">More logic demos</h2>
-          <p>Recursive reveal and keyboard grid state are one of the lab's logic examples; compare this demo with the other browser experiments and the main case studies for broader implementation context.</p>
+          <p>Compare recursive reveal and keyboard grid state with the other demos and main case studies.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>

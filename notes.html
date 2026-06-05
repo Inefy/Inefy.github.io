@@ -63,7 +63,7 @@
           <p class="eyebrow">Notes / Build logs</p>
           <h1 id="notes-title">Technical build logs.</h1>
           <p>
-            Short build logs from this portfolio: what changed, what broke, the tradeoffs, and the next fix. Use the quick path below, jump by topic, or start with the <a class="text-link" href="case-studies.html">case studies</a> for full context.
+            Short logs on changes, tradeoffs, and next fixes. Use the quick path, topics, or <a class="text-link" href="case-studies.html">case studies</a>.
           </p>
         </div>
       </section>
@@ -71,8 +71,8 @@
       <section class="section note-path-section" id="notes-start" aria-labelledby="notes-start-title">
         <div class="section-heading">
           <p class="eyebrow">Start here</p>
-          <h2 id="notes-start-title">Best technical notes to read first.</h2>
-          <p>Three short entries cover the strongest implementation signals without repeating the full case studies.</p>
+          <h2 id="notes-start-title">Read these first.</h2>
+          <p>Three entries cover the strongest implementation signals.</p>
         </div>
 
         <div class="note-read-first-grid">
@@ -82,7 +82,7 @@
               <span>Canvas</span>
             </div>
             <h3><a href="#web-paint-browser-canvas-editor">Building a browser canvas editor without a framework</a></h3>
-            <p>Start here for frontend state, pointer input, Canvas history, import/export, and nonvisual limits.</p>
+            <p>Frontend state, pointer input, Canvas history, import/export, and nonvisual limits.</p>
             <nav class="build-log-links" aria-label="Web Paint note shortcuts">
               <a href="#web-paint-browser-canvas-editor">Read note</a>
               <a href="web-paint-case-study.html">Case study</a>
@@ -96,7 +96,7 @@
               <span>Automation</span>
             </div>
             <h3><a href="#moviebot-chat-to-obs">How the Twitch MovieBot turns chat votes into OBS playback</a></h3>
-            <p>Start here for command handling, vote state, local file scanning, OBS WebSocket control, and reconnect concerns.</p>
+            <p>Command handling, vote state, local scanning, OBS control, and reconnects.</p>
             <nav class="build-log-links" aria-label="MovieBot note shortcuts">
               <a href="#moviebot-chat-to-obs">Read note</a>
               <a href="moviebot-case-study.html">Case study</a>
@@ -110,7 +110,7 @@
               <span>Maps</span>
             </div>
             <h3><a href="#traverseops-field-workflows">Designing field operations around maps, inspections, and work orders</a></h3>
-            <p>Start here for map-first workflow modeling, asset status, inspections, work orders, imports, and production gaps.</p>
+            <p>Map-first workflow, asset status, inspections, work orders, imports, and production gaps.</p>
             <nav class="build-log-links" aria-label="TraverseOps note shortcuts">
               <a href="#traverseops-field-workflows">Read note</a>
               <a href="traverseops-case-study.html">Case study</a>
@@ -124,7 +124,7 @@
         <div class="section-heading">
           <p class="eyebrow">Browse by topic</p>
           <h2 id="notes-topic-title">Browse notes by topic.</h2>
-          <p>These are static anchor links, so the full archive stays readable without JavaScript.</p>
+          <p>Static anchor links keep the archive readable without JavaScript.</p>
         </div>
 
         <nav class="note-topic-nav" aria-label="Note topics">
@@ -139,7 +139,7 @@
         <div class="note-topic-grid">
           <article class="note-topic-card" id="notes-frontend">
             <h3>Frontend</h3>
-            <p>UI state, page structure, browser APIs, and public project paths.</p>
+            <p>UI state, page structure, browser APIs, and project paths.</p>
             <ul class="note-link-list">
               <li><a href="#web-paint-browser-canvas-editor">Browser canvas editor without a framework</a></li>
               <li><a href="#traverseops-field-workflows">Field operations around maps and work orders</a></li>
@@ -150,7 +150,7 @@
 
           <article class="note-topic-card" id="notes-automation">
             <h3>Automation</h3>
-            <p>Python bot behavior, command flow, vote state, and operational boundaries.</p>
+            <p>Python bot behavior, commands, vote state, and operations.</p>
             <ul class="note-link-list">
               <li><a href="#moviebot-chat-to-obs">Chat votes into OBS playback</a></li>
               <li><a href="#moviebot-page-split">Stream room and searchable voting catalog split</a></li>
@@ -159,7 +159,7 @@
 
           <article class="note-topic-card" id="notes-maps">
             <h3>Maps</h3>
-            <p>Map-first operations, sample data, field records, and production caveats.</p>
+            <p>Map-first operations, sample data, field records, and caveats.</p>
             <ul class="note-link-list">
               <li><a href="#traverseops-field-workflows">Maps, inspections, and work orders</a></li>
               <li><a href="#traverseops-demo-framing">Sample-data boundaries and field-ops framing</a></li>
@@ -176,7 +176,7 @@
 
           <article class="note-topic-card" id="notes-accessibility">
             <h3>Accessibility</h3>
-            <p>Keyboard paths, status output, focus states, and Canvas limitations.</p>
+            <p>Keyboard paths, status output, focus states, and Canvas limits.</p>
             <ul class="note-link-list">
               <li><a href="#web-paint-browser-canvas-editor">Web Paint nonvisual limitations</a></li>
               <li><a href="#portfolio-cleanup">Portfolio navigation and metadata pass</a></li>
@@ -224,39 +224,39 @@
               </div>
               <div>
                 <dt>Problem</dt>
-                <dd>A browser drawing editor has to feel immediate while keeping tool settings, pointer input, canvas pixels, history, imports, and export actions predictable in plain JavaScript.</dd>
+                <dd>A browser drawing editor needs fast tools, predictable pixels, safe imports, and reliable export in plain JavaScript.</dd>
               </div>
               <div>
                 <dt>Tool state</dt>
-                <dd>Web Paint treats canvas pixels as the document and keeps the active tool, brush size, colors, selection bounds, zoom, drag start, preview, and status in JavaScript state.</dd>
+                <dd>Canvas pixels are the document; tool, brush, color, selection, zoom, preview, and status live in JavaScript state.</dd>
               </div>
               <div>
                 <dt>Canvas rendering</dt>
-                <dd>Pointer events are converted into canvas coordinates and committed through Canvas 2D. Shape previews and resize work stay temporary until the pointer action ends.</dd>
+                <dd>Pointer events become canvas coordinates. Shape previews and resize work stay temporary until commit.</dd>
               </div>
               <div>
                 <dt>Undo/redo</dt>
-                <dd>History uses capped <code>ImageData</code> snapshots after meaningful commits. The model is simple and reliable for a browser editor, but large canvases make every snapshot expensive.</dd>
+                <dd>Capped <code>ImageData</code> snapshots keep undo simple; large canvases make snapshots expensive.</dd>
               </div>
               <div>
                 <dt>Import/export</dt>
-                <dd>Imports check MIME type, file size, and pixel count. Exports use PNG download, Clipboard APIs where available, local save/load, and permission fallbacks.</dd>
+                <dd>Imports check MIME type, size, and pixels. Exports use PNG, Clipboard APIs, local save/load, and fallbacks.</dd>
               </div>
               <div>
                 <dt>Text and shape tools</dt>
-                <dd>Text, rectangle, circle, line, fill, pencil, eraser, and selection modes share one loop: capture a start point, preview the draft, commit pixels, then save history.</dd>
+                <dd>Tools share one loop: capture, preview, commit pixels, save history.</dd>
               </div>
               <div>
                 <dt>Mobile/touch constraints</dt>
-                <dd>Touch drawing needs large controls, compact panels, stable canvas sizing, pointer capture, and <code>touch-action: none</code> so strokes do not become page scrolls.</dd>
+                <dd>Touch drawing needs large controls, stable sizing, pointer capture, and <code>touch-action: none</code>.</dd>
               </div>
               <div>
                 <dt>Nonvisual limitations</dt>
-                <dd>The shell has labels, focus states, status output, and grouped tools. The drawing is still pixel data, so a stronger version needs shortcuts, layers/objects, and nonvisual descriptions.</dd>
+                <dd>The shell has labels, focus, status, and grouped tools. Pixels still need shortcuts, layers/objects, and nonvisual descriptions.</dd>
               </div>
               <div>
                 <dt>Technical takeaway</dt>
-                <dd>Without a component framework, the hard part is keeping event handling, UI state, pixel commits, history, and browser API failures small enough to reason about.</dd>
+                <dd>The hard part is keeping events, UI state, pixel commits, history, and API failures easy to reason about.</dd>
               </div>
               <div>
                 <dt>Related link</dt>
@@ -292,39 +292,39 @@
               </div>
               <div>
                 <dt>Problem</dt>
-                <dd>Field operations break down when crews locate assets in one tool, record inspections somewhere else, and turn follow-up work into notes that have to be reconciled later.</dd>
+                <dd>Field operations break down when maps, inspections, and follow-up work live in separate tools.</dd>
               </div>
               <div>
                 <dt>Why maps help</dt>
-                <dd>A map-first interface makes location the organizing layer. Crews can find nearby hydrant-style assets, scan condition, select one record, and move into inspection or work-order tasks.</dd>
+                <dd>A map-first interface makes location the organizing layer for assets, condition, inspections, and work orders.</dd>
               </div>
               <div>
                 <dt>Asset state</dt>
-                <dd>Each asset has identity, location, status, inspection history, and open-work indicators. Status filters keep the map useful when there are too many points to scan manually.</dd>
+                <dd>Each asset has identity, location, status, history, and open-work indicators. Filters keep the map scannable.</dd>
               </div>
               <div>
                 <dt>Inspections</dt>
-                <dd>Inspection screens model the field path: pick an asset, record condition, capture notes, and leave a timestamped trail for status changes.</dd>
+                <dd>Inspection screens model the field path: pick an asset, record condition, capture notes, and timestamp the change.</dd>
               </div>
               <div>
                 <dt>Work orders</dt>
-                <dd>Work orders turn inspection findings into assignable tasks tied to the selected asset, current status, and supervisor review path.</dd>
+                <dd>Work orders turn findings into tasks tied to the asset, status, and supervisor review.</dd>
               </div>
               <div>
                 <dt>Imports</dt>
-                <dd>The import screen stays inside sample data. A real system would need schema checks, duplicate detection, coordinate validation, rollback behavior, and row-level errors.</dd>
+                <dd>The import screen uses sample data. Production needs schema checks, duplicate detection, coordinate validation, rollback, and row errors.</dd>
               </div>
               <div>
                 <dt>Empty states</dt>
-                <dd>Field tools often start with no selection, filtered-out results, missing reports, or no work assigned. Those moments should show the next valid action instead of a blank panel.</dd>
+                <dd>No selection, empty filters, missing reports, and no assigned work should show the next valid action.</dd>
               </div>
               <div>
                 <dt>Production gaps</dt>
-                <dd>A real deployment would need auth, role permissions, offline sync, audit logs, import validation, error handling, security review, device testing, and dependable map/data sources.</dd>
+                <dd>Production needs auth, roles, offline sync, audit logs, validation, errors, security review, device testing, and dependable map/data sources.</dd>
               </div>
               <div>
                 <dt>Technical takeaway</dt>
-                <dd>The useful part of TraverseOps is not only rendering points on a map; it is tying spatial context to state changes, inspection history, follow-up work, and operational guardrails.</dd>
+                <dd>The useful part is tying map context to state changes, history, follow-up work, and guardrails.</dd>
               </div>
               <div>
                 <dt>Related link</dt>
@@ -359,43 +359,43 @@
               </div>
               <div>
                 <dt>Problem</dt>
-                <dd>Running a Twitch movie night by hand means reading chat, counting votes, resolving ties, finding the local movie file, and updating OBS while the stream is live.</dd>
+                <dd>Manual movie nights mean reading chat, counting votes, resolving ties, finding files, and updating OBS live.</dd>
               </div>
               <div>
                 <dt>Chat command flow</dt>
-                <dd>Viewers send <code>!vote title</code>, <code>!results</code>, <code>!currentmovie</code>, <code>!time</code>, and <code>!movies</code>. TwitchIO routes each command into Python handlers before playback state changes.</dd>
+                <dd>Viewers use <code>!vote</code>, <code>!results</code>, <code>!currentmovie</code>, <code>!time</code>, and <code>!movies</code>. TwitchIO routes them to Python handlers.</dd>
               </div>
               <div>
                 <dt>Vote state</dt>
-                <dd>The bot keeps per-viewer votes and movie totals. Changed votes decrement the old title before counting the new one, preventing duplicate vote inflation.</dd>
+                <dd>The bot keeps per-viewer votes and movie totals. Changed votes decrement the old title first.</dd>
               </div>
               <div>
                 <dt>Tie handling</dt>
-                <dd>When a poll closes, the bot sorts vote counts, detects ties, and picks among tied titles. If nobody votes, it can choose a random movie instead of stalling.</dd>
+                <dd>At poll close, the bot sorts votes, resolves ties, and can choose randomly when nobody votes.</dd>
               </div>
               <div>
                 <dt>Movie folder scanning</dt>
-                <dd>The scanner walks the configured movie folder, refreshes the in-memory catalog, avoids symlinks, and falls back when duration tools or files are unavailable.</dd>
+                <dd>The scanner refreshes the local catalog, avoids symlinks, and falls back when duration tools or files fail.</dd>
               </div>
               <div>
                 <dt>OBS WebSocket control</dt>
-                <dd>After a winner is selected, the bot normalizes the path, updates the OBS media source through WebSocket, switches scenes, and restarts playback.</dd>
+                <dd>After a winner, the bot normalizes the path, updates OBS, switches scenes, and restarts playback.</dd>
               </div>
               <div>
                 <dt>Token refresh/reconnect</dt>
-                <dd>Long sessions use token refresh, Twitch IRC health checks, guarded OBS calls, media handoff retries, and scheduled-task cleanup on shutdown.</dd>
+                <dd>Long sessions use token refresh, IRC checks, guarded OBS calls, retries, and cleanup.</dd>
               </div>
               <div>
                 <dt>What changed</dt>
-                <dd>The portfolio now explains the bot as an automation pipeline rather than just a chat command project: chat input, state management, local file discovery, OBS control, and reconnect behavior are shown as one system.</dd>
+                <dd>The portfolio now frames the bot as one pipeline: chat input, state, local files, OBS control, and reconnects.</dd>
               </div>
               <div>
                 <dt>Technical takeaway</dt>
-                <dd>The interesting work is not the command syntax; it is keeping chat, local media, OAuth, OBS WebSocket calls, and failure recovery coordinated in a long-running Python process.</dd>
+                <dd>The key work is coordinating chat, media, OAuth, OBS calls, and recovery in a long-running Python process.</dd>
               </div>
               <div>
                 <dt>What would improve next</dt>
-                <dd>Add an operator dashboard, dry-run mode, structured logs, health indicators for Twitch/OBS, stronger integration tests, and safer queue controls for live stream operations.</dd>
+                <dd>Add an operator dashboard, dry-run mode, structured logs, health indicators, integration tests, and safer queue controls.</dd>
               </div>
               <div>
                 <dt>Related link</dt>
@@ -433,15 +433,15 @@
               </div>
               <div>
                 <dt>Problem</dt>
-                <dd>The homepage needed a faster read on Zac's role, strongest projects, resume path, and technical evidence.</dd>
+                <dd>The homepage needed a faster read on role, projects, resume path, and evidence.</dd>
               </div>
               <div>
                 <dt>What changed</dt>
-                <dd>Reworked the HTML/CSS/JavaScript homepage around selected work, resume/contact CTAs, stronger project cards, social preview metadata, canonical URLs, and shorter paths to case studies.</dd>
+                <dd>Reworked the homepage around selected work, CTAs, project cards, metadata, canonical URLs, and case-study paths.</dd>
               </div>
               <div>
                 <dt>Technical takeaway</dt>
-                <dd>A GitHub Pages portfolio still needs product-level information architecture: obvious primary actions, stable metadata, indexable project pages, keyboard-friendly links, and no broken user paths.</dd>
+                <dd>A portfolio still needs clear actions, stable metadata, indexable pages, keyboard-friendly links, and working paths.</dd>
               </div>
               <div>
                 <dt>Related link</dt>
@@ -479,15 +479,15 @@
               </div>
               <div>
                 <dt>Problem</dt>
-                <dd>The live Twitch room and the movie queue were trying to serve different jobs: watching the stream, reading bot commands, browsing titles, and copying valid vote text.</dd>
+                <dd>The Twitch room and movie queue had different jobs: watch, read commands, browse titles, and copy votes.</dd>
               </div>
               <div>
                 <dt>What changed</dt>
-                <dd>Kept <code>movie-night.html</code> focused on the stream and bot flow, then moved title discovery into <code>movie-library.html</code> with search, result counts, lazy posters, copyable <code>!vote</code> commands, and a no-JavaScript list.</dd>
+                <dd>Kept <code>movie-night.html</code> focused on the stream and moved search, posters, copyable <code>!vote</code>, and no-JS list to <code>movie-library.html</code>.</dd>
               </div>
               <div>
                 <dt>Technical takeaway</dt>
-                <dd>Separating the stream room from the catalog keeps pages simpler, improves mobile usability, and gives the bot system better QA and fallback boundaries.</dd>
+                <dd>Splitting stream and catalog keeps pages simpler and improves mobile, QA, and fallback boundaries.</dd>
               </div>
               <div>
                 <dt>Related link</dt>
@@ -524,15 +524,15 @@
               </div>
               <div>
                 <dt>Problem</dt>
-                <dd>A map-heavy sample app can look like a UI mockup unless the page explains records, roles, sample-data limits, and production risks.</dd>
+                <dd>A map sample can look shallow without records, roles, sample-data limits, and risks.</dd>
               </div>
               <div>
                 <dt>What changed</dt>
-                <dd>Reframed TraverseOps as a MapLibre field-operations app designed around a Supabase-style data model, with sample records, asset filters, inspection/work-order screens, imports, reports, roles, and a deeper case study.</dd>
+                <dd>Reframed TraverseOps around MapLibre UI, Supabase-style data, sample records, filters, inspections, work orders, imports, reports, roles, and a case study.</dd>
               </div>
               <div>
                 <dt>Technical takeaway</dt>
-                <dd>For operations software, the page has to show data ownership, user roles, edge cases, and deployment constraints. That context separates a credible prototype from a visual-only project.</dd>
+                <dd>Operations software needs data ownership, roles, edge cases, and deployment constraints to read as credible.</dd>
               </div>
               <div>
                 <dt>Related link</dt>
@@ -552,8 +552,8 @@
       <section class="next-step-panel" aria-labelledby="notes-next-title">
         <div>
           <p class="eyebrow">Next step</p>
-          <h2 id="notes-next-title">Connect the build notes to the work.</h2>
-          <p>Use the notes as implementation context, then jump into the project sections that show the finished interfaces and technical decisions.</p>
+          <h2 id="notes-next-title">Connect notes to work.</h2>
+          <p>Use notes for implementation context, then jump to the finished project pages.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="work.html">View selected work</a>
@@ -566,7 +566,7 @@
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer building web tools, automation, and frontend interfaces.</span>
+        <span>Software developer building web tools, automation, and frontend UI.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>

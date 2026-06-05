@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-8C3zcLF3gMVir+HyQQou6099nxv96eRfDbyq6/eC0xc='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-8C3zcLF3gMVir+HyQQou6099nxv96eRfDbyq6/eC0xc=' 'sha256-hQBaMgZKOW6aTPDllo9rmBc7QXSUe8Wfnv1PfrLfmdo='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="MovieBot case study by Zac Batten: Python automation with TwitchIO commands, Twitch bot vote handling, OAuth refresh, reconnect behavior, and OBS automation.">
     <meta name="author" content="Zac Batten">
@@ -110,7 +110,7 @@
           <p class="eyebrow">Python automation case study</p>
           <h1 id="case-title">MovieBot / StreamCinema Vote Bot</h1>
           <p class="case-template-summary">
-            Twitch movie nights can bog down in manual polling and OBS setup: viewers need a low-friction voting flow, the streamer needs fewer repetitive steps, and OBS needs the right local media file at the right time. I built StreamCinema Vote Bot in Python with TwitchIO and OBS WebSocket integration so chat commands create a vote state, changed votes and ties are handled predictably, movie folders are scanned for eligible titles, tokens refresh, reconnects recover, and the winning public-domain movie can be handed to OBS.
+            Python/TwitchIO bot for Twitch votes and OBS playback. It scans local movies, resolves ties, refreshes tokens, reconnects, and sends OBS the winner.
           </p>
           <div class="case-hero-actions">
             <a class="button primary" href="#obs-flow-title">Jump to architecture</a>
@@ -146,7 +146,7 @@
             <source srcset="assets/movie-night-preview.webp" type="image/webp">
             <img src="assets/movie-night-preview.png" alt="Movie Night showcase page with Twitch stream, chat, MovieBot details, and public-domain movie links" width="1200" height="630" loading="eager" fetchpriority="high" decoding="async">
           </picture>
-          <figcaption>Movie Night showcase page: stream, chat, voting instructions, and MovieBot implementation context.</figcaption>
+          <figcaption>Movie Night page: stream, chat, voting instructions, and bot context.</figcaption>
         </figure>
       </section>
 
@@ -154,24 +154,24 @@
         <div class="case-review-summary__intro">
           <p class="eyebrow">Quick summary</p>
           <h2 id="moviebot-review-title">MovieBot in 30 seconds.</h2>
-          <p>Start here for Python automation, stream tooling, command logic, and practical integration work.</p>
+          <p>Python automation, stream tooling, command logic, and integration proof.</p>
         </div>
         <div class="case-review-summary__grid">
           <article>
             <h3>What this proves</h3>
-            <p>Python automation, Twitch/OBS integration, and tested command/state logic for a real operator workflow.</p>
+            <p>Python automation, Twitch/OBS integration, and tested command/state logic.</p>
           </article>
           <article>
             <h3>Core technical work</h3>
-            <p>TwitchIO commands, vote state, changed votes, tie handling, local movie scan, OAuth refresh, reconnects, OBS WebSocket handoff, and pytest coverage.</p>
+            <p>TwitchIO commands, vote state, ties, local scanning, OAuth refresh, reconnects, OBS handoff, and pytest.</p>
           </article>
           <article>
             <h3>Best path</h3>
-            <p>Start with the repo and tests, then read the architecture, OBS flow, and vote-state sections; use Movie Night and Movie Library for viewer surfaces.</p>
+            <p>Start with repo/tests, then scan architecture, OBS flow, and vote state. Movie Night and Library show viewer surfaces.</p>
           </article>
           <article>
             <h3>Known limits</h3>
-            <p>Runs locally beside OBS; readiness depends on secrets, Twitch/OBS configuration, local media, health checks, structured logs, operator controls, and live integration testing.</p>
+            <p>Runs locally beside OBS; readiness depends on secrets, config, local media, health checks, logs, operator controls, and live tests.</p>
           </article>
         </div>
         <div class="case-review-summary__links" aria-label="MovieBot links">
@@ -188,7 +188,7 @@
           <div class="demo-checklist__copy">
             <p class="eyebrow">Try this demo</p>
             <h2 id="moviebot-demo-checklist-title">Try this in 2 minutes.</h2>
-            <p>MovieBot itself is a local Python/Twitch/OBS bot. This browser path reviews the viewer surfaces, command flow, source, and tests without implying the bot runs in the page.</p>
+            <p>The bot runs locally. This path reviews viewer pages, command flow, source, and tests.</p>
             <div class="demo-checklist__actions" aria-label="MovieBot demo actions">
               <a href="movie-library.html">Open Movie Library</a>
               <a href="movie-night.html#bot">Read command flow</a>
@@ -196,10 +196,10 @@
             </div>
           </div>
           <ol class="demo-checklist__steps">
-            <li><div><strong>Search a movie.</strong><span>Open Movie Library and filter by a title, year, runtime, or rating.</span></div></li>
-            <li><div><strong>Copy a vote command.</strong><span>Use a card's Copy !vote button to get the exact Twitch chat command.</span></div></li>
-            <li><div><strong>Read the command flow.</strong><span>Use Movie Night or the architecture section to connect chat votes to OBS handoff.</span></div></li>
-            <li><div><strong>Review source and tests.</strong><span>Open the repo, CI workflow, and pytest file for the command/state logic.</span></div></li>
+            <li><div><strong>Search a movie.</strong><span>Filter by title, year, runtime, or rating.</span></div></li>
+            <li><div><strong>Copy a vote.</strong><span>Use Copy !vote for the exact chat command.</span></div></li>
+            <li><div><strong>Read command flow.</strong><span>Connect chat votes to OBS handoff.</span></div></li>
+            <li><div><strong>Review source/tests.</strong><span>Open the repo, CI workflow, and pytest file.</span></div></li>
           </ol>
         </div>
       </section>
@@ -210,17 +210,17 @@
             <source srcset="assets/movie-library-preview.webp" type="image/webp">
             <img src="assets/movie-library-preview.png" alt="Movie Library page showing a searchable public-domain poster grid and copyable MovieBot vote command buttons" width="1200" height="630" loading="lazy" decoding="async">
           </picture>
-          <figcaption>Movie Library is the browser-facing catalog around MovieBot: search, select a title, and copy an exact Twitch vote command.</figcaption>
+          <figcaption>Movie Library: search, select a title, and copy an exact vote command.</figcaption>
         </figure>
         <div class="media-proof__copy">
           <p class="eyebrow">Visual proof</p>
           <h2 id="moviebot-media-proof-title">The browser pages support a local bot.</h2>
-          <p>The screenshot is not the Python runtime. It shows the browser surface that helps viewers find a title before the local Twitch/OBS bot handles chat voting and playback.</p>
+          <p>The screenshot shows the viewer catalog, not the Python runtime.</p>
           <h3>What to notice</h3>
           <ul class="media-proof__list">
-            <li>The catalog turns long public-domain titles into accurate <code>!vote</code> commands.</li>
-            <li>Movie Night explains the stream context while source and tests prove the automation logic.</li>
-            <li>The actual bot still depends on local Python setup, Twitch credentials, OBS WebSocket configuration, and operator monitoring.</li>
+            <li>The catalog turns long titles into accurate <code>!vote</code> commands.</li>
+            <li>Movie Night gives context; source and tests prove the automation.</li>
+            <li>The bot still needs local Python, Twitch credentials, OBS config, and monitoring.</li>
           </ul>
         </div>
       </section>
@@ -229,7 +229,7 @@
         <div>
           <p class="eyebrow">Project links</p>
           <h2 id="project-links-title">Open the repo, room, and queue.</h2>
-          <p>The source repository documents the bot runtime. The Movie Night and Movie Library pages show how the automation is presented to viewers.</p>
+          <p>The repo documents runtime; Movie Night and Library show the viewer surfaces.</p>
         </div>
         <div class="work-links">
           <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">GitHub repo</a>
@@ -251,11 +251,11 @@
         <dl class="case-tldr-grid">
           <div>
             <dt>Problem</dt>
-            <dd>Streamers need chat voting for movie nights without manually tracking messages, vote changes, ties, and playback handoff.</dd>
+            <dd>Streamers need chat voting without manually tracking votes, ties, and playback handoff.</dd>
           </div>
           <div>
             <dt>Built</dt>
-            <dd>A Python Twitch bot that scans local public-domain movie files, accepts chat votes, resolves winners, and updates OBS playback.</dd>
+            <dd>Python Twitch bot that scans local movies, accepts votes, resolves winners, and updates OBS.</dd>
           </div>
           <div>
             <dt>Stack</dt>
@@ -271,11 +271,11 @@
           </div>
           <div>
             <dt>Result</dt>
-            <dd>Chat commands, local movie lookup, vote state, tie handling, token refresh, reconnect paths, and OBS media updates are tied into one operator flow.</dd>
+            <dd>Chat commands, local lookup, vote state, ties, token refresh, reconnects, and OBS updates in one flow.</dd>
           </div>
           <div>
             <dt>Current limitation</dt>
-            <dd>Local setup is required; stream availability depends on Twitch channel state, OBS configuration, local media files, and operator monitoring.</dd>
+            <dd>Local setup required; availability depends on Twitch, OBS, local media, and monitoring.</dd>
           </div>
         </dl>
       </section>
@@ -286,159 +286,159 @@
             <p class="eyebrow">01 / Summary</p>
             <h2 id="summary-title">Chat votes become OBS playback.</h2>
             <p>
-              Streamer-run movie nights need reliable voting and playback handoff without constant operator control. I built the bot as a Python/TwitchIO remote-control layer: viewers vote in chat, the process tracks the local public-domain catalog and vote state, tie and changed-vote logic selects a winner, and OBS WebSocket receives the media-source update with token refresh, IRC recovery, OBS reconnection, media-load retries, and setup checks around the main flow.
+              MovieBot is a Python/TwitchIO control layer: chat updates vote state, local files provide the winner, and OBS WebSocket updates playback.
             </p>
             <div class="case-template-feature-list">
               <article>
                 <h3>Technical problem</h3>
-                <p>Viewer chat, vote state, local movie files, Twitch auth, and OBS playback have to stay coordinated during a long-running stream session.</p>
+                <p>Chat, vote state, local files, Twitch auth, and OBS playback must stay coordinated.</p>
               </article>
               <article>
                 <h3>Constraints</h3>
-                <p>The bot depends on Twitch OAuth/IRC, OBS WebSocket, local media paths, public-domain files, and services that can disconnect mid-stream.</p>
+                <p>The bot depends on Twitch OAuth/IRC, OBS WebSocket, local paths, and services that can disconnect.</p>
               </article>
               <article>
                 <h3>Approach</h3>
-                <p>I built a Python/TwitchIO command parser, vote-state layer, movie-folder scanner, token refresh/reconnect paths, and OBS media-source handoff.</p>
+                <p>I built commands, vote state, movie scanning, refresh/reconnect paths, and OBS handoff.</p>
               </article>
               <article>
                 <h3>Tradeoff</h3>
-                <p>Using local folders keeps setup simple for one streamer, but it is less portable than a hosted catalog with operator controls and remote storage.</p>
+                <p>Local folders keep setup simple but less portable than hosted storage and operator controls.</p>
               </article>
               <article>
                 <h3>Next improvement</h3>
-                <p>The next pass is an operator dashboard with connection health, current votes, queue state, OBS status, and stronger Twitch/OBS integration tests.</p>
+                <p>Next: operator dashboard, connection health, vote/queue state, OBS status, and stronger integration tests.</p>
               </article>
             </div>
             <div class="case-study-callout">
               <strong>What it demonstrates:</strong>
-              <span>The implementation combines async Python, Twitch authentication, local file scanning, user input validation, stateful voting, external process control, and recovery behavior for long-running stream sessions.</span>
+              <span>Async Python, Twitch auth, local scanning, input validation, stateful voting, OBS control, and recovery behavior.</span>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="why-matters-title">
             <p class="eyebrow">Why this matters</p>
-            <h2 id="why-matters-title">It turns live-stream chores into reliable automation.</h2>
+            <h2 id="why-matters-title">It turns stream chores into automation.</h2>
             <div class="case-template-feature-list">
               <article>
                 <h3>Operational problem</h3>
-                <p>Streamer-run movie nights require voting, tallying, local movie lookup, tie handling, and OBS playback changes while the host is also managing the live stream.</p>
+                <p>Movie nights require voting, tallying, lookup, tie handling, and OBS changes while hosting.</p>
               </article>
               <article>
                 <h3>Useful approach</h3>
-                <p>A Python bot treats Twitch chat as structured input, keeps vote and movie state locally, and hands the selected file to OBS through WebSocket with reconnect and token-refresh paths.</p>
+                <p>The bot treats chat as input, keeps local state, and hands selected files to OBS with refresh/reconnect paths.</p>
               </article>
               <article>
                 <h3>Employer signal</h3>
-                <p>The project demonstrates integration work, async command handling, long-running process reliability, API authentication, local file automation, and user-facing support pages.</p>
+                <p>Shows integration work, async commands, reliability, API auth, file automation, and support pages.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="readiness-title">
             <p class="eyebrow">Production readiness</p>
-            <h2 id="readiness-title">The bot flow works; real stream ops need stronger controls.</h2>
+            <h2 id="readiness-title">Bot flow works; stream ops need controls.</h2>
             <div class="production-hardening-grid">
               <article>
                 <h3>Already solid</h3>
-                <p>The repo covers Twitch commands, vote changes, ties, movie-folder scanning, OBS handoff, token refresh, reconnect paths, setup docs, and public pytest checks.</p>
+                <p>Repo covers commands, vote changes, ties, scanning, OBS handoff, token refresh, reconnects, docs, and pytest.</p>
               </article>
               <article>
                 <h3>Showcase-only</h3>
-                <p>The showcase is not a hosted bot service. It assumes local movies, local OBS config, private environment secrets, and an operator watching logs.</p>
+                <p>Not a hosted service. Assumes local movies, OBS config, private secrets, and log monitoring.</p>
               </article>
               <article>
                 <h3>Production work</h3>
-                <p>For regular public use, I would add an operator dashboard, queue controls, integration tests, rate limits, structured logs, health checks, alerts, and Twitch/OBS recovery.</p>
+                <p>For public use: dashboard, queue controls, integration tests, rate limits, logs, health checks, alerts, and recovery.</p>
               </article>
               <article>
                 <h3>Security and ops</h3>
-                <p>Twitch tokens, OBS passwords, and local media paths must stay out of source. A real setup would need secret rotation, scoped bot permissions, moderation rules, and config/state backups.</p>
+                <p>Tokens, OBS passwords, and media paths stay out of source. Production needs rotation, scoped permissions, moderation, and backups.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="role-title">
             <p class="eyebrow">02 / What I built</p>
-            <h2 id="role-title">The bot logic, OBS handoff, reliability paths, and viewer-facing support pages.</h2>
+            <h2 id="role-title">Bot logic, OBS handoff, reliability, and support pages.</h2>
             <ul class="case-template-list">
-              <li>Implemented Twitch chat commands for voting, results, current movie, time remaining, movie lists, and help output.</li>
-              <li>Built movie-folder scanning with supported video extensions, one-level subfolder support, periodic rescans, and local public-domain media validation.</li>
-              <li>Built vote-state logic for changed votes, duplicate prevention, partial title matching, tie resolution, and fallback selection.</li>
-              <li>Connected OBS WebSocket playback automation by verifying scene/source names, updating the media source, switching scenes, and restarting playback.</li>
-              <li>Added Twitch OAuth token refresh, IRC health checks, reconnect behavior, startup validation, logging, pytest coverage for config/bot logic, and Movie Night/Movie Library showcase pages.</li>
+              <li>Implemented Twitch commands for votes, results, current movie, time, movie lists, and help.</li>
+              <li>Built movie scanning with extension filters, one-level subfolders, rescans, and local media validation.</li>
+              <li>Built vote-state logic for changed votes, duplicates, partial matches, ties, and fallback selection.</li>
+              <li>Connected OBS by verifying scenes/sources, updating media, switching scenes, and restarting playback.</li>
+              <li>Added OAuth refresh, IRC health checks, reconnects, startup validation, logs, pytest, and support pages.</li>
             </ul>
-            <p class="ownership-note">External pieces include TwitchIO, Twitch OAuth/chat, OBS WebSocket, IMDb links, poster URLs, and the local public-domain movie files the bot scans.</p>
+            <p class="ownership-note">External pieces: TwitchIO, Twitch OAuth/chat, OBS WebSocket, IMDb links, posters, and local public-domain files.</p>
           </section>
 
           <section class="case-template-section" aria-labelledby="problem-title">
             <p class="eyebrow">03 / Problem</p>
-            <h2 id="problem-title">Manual stream control does not scale well during a live watch party.</h2>
+            <h2 id="problem-title">Manual stream control does not scale.</h2>
             <p>
-              A hosted movie stream needs viewers to pick what plays next, but manual tallying is distracting and error-prone. The streamer has to watch chat, count votes, resolve ambiguous titles, pick a winner, update OBS with the correct local file, and keep the stream running through token or connection issues.
+              Manual voting distracts the streamer: count votes, resolve titles, pick a winner, update OBS, and recover when services drop.
             </p>
             <p>
-              MovieBot reduces that operator burden by turning chat into a controlled input surface and turning OBS into an automated output target. Viewers get predictable commands, while the streamer gets repeatable playback handoff and logs when something goes wrong.
+              MovieBot turns chat into input and OBS into output. Viewers get predictable commands; the streamer gets repeatable handoff and logs.
             </p>
           </section>
 
           <section class="case-template-section" aria-labelledby="viewer-flow-title">
             <p class="eyebrow">04 / Viewer flow</p>
-            <h2 id="viewer-flow-title">The viewer experience stays inside Twitch chat.</h2>
+            <h2 id="viewer-flow-title">Viewer flow stays in Twitch chat.</h2>
             <ol class="case-study-flow">
               <li>
                 <strong>Browse options</strong>
-                <span>Viewers use the Movie Library page or the <code>!movies</code> command to see available public-domain titles.</span>
+                <span>Use Movie Library or <code>!movies</code> to see titles.</span>
               </li>
               <li>
                 <strong>Vote by title</strong>
-                <span>During an active poll, viewers use <code>!vote &lt;movie name&gt;</code>. The bot accepts exact matches or unambiguous partial matches.</span>
+                <span>Use <code>!vote &lt;movie name&gt;</code>; exact or clear partial matches work.</span>
               </li>
               <li>
                 <strong>Check the room state</strong>
-                <span>Commands like <code>!currentmovie</code>, <code>!time</code>, and <code>!results</code> let viewers see what is playing, what is leading, and how much time remains.</span>
+                <span><code>!currentmovie</code>, <code>!time</code>, and <code>!results</code> show state.</span>
               </li>
               <li>
                 <strong>Change a vote</strong>
-                <span>If a viewer picks a different title, the bot removes their previous vote and adds the new one instead of double-counting them.</span>
+                <span>Changing a title replaces the previous vote.</span>
               </li>
               <li>
                 <strong>Watch the winner</strong>
-                <span>When the current movie ends, the winning title is selected and OBS starts the next local media file after a short reaction delay.</span>
+                <span>At poll end, OBS starts the winning local file.</span>
               </li>
             </ol>
           </section>
 
           <section class="case-template-section" aria-labelledby="operator-flow-title">
             <p class="eyebrow">05 / Streamer/operator flow</p>
-            <h2 id="operator-flow-title">The streamer configures the environment, then lets the bot run the loop.</h2>
+            <h2 id="operator-flow-title">Operator sets config, then runs the loop.</h2>
             <ol class="case-study-flow">
               <li>
                 <strong>Prepare Twitch credentials</strong>
-                <span>Create a Twitch developer app, use a bot account, and provide client ID, client secret, access token, refresh token, and channel name through local environment settings.</span>
+                <span>Set client ID/secret, tokens, and channel in local env settings.</span>
               </li>
               <li>
                 <strong>Prepare OBS</strong>
-                <span>Enable OBS WebSocket, configure the movie scene, and name the media source exactly as the bot expects.</span>
+                <span>Enable OBS WebSocket and configure scene/source names.</span>
               </li>
               <li>
                 <strong>Point at local media</strong>
-                <span>Set the movie directory to the local folder containing the public-domain video files.</span>
+                <span>Set the folder containing public-domain video files.</span>
               </li>
               <li>
                 <strong>Start the bot</strong>
-                <span>Run <code>python bot.py</code>. Startup validates required settings, refreshes or validates Twitch tokens, scans movies, connects to OBS, and schedules the first movie.</span>
+                <span>Run <code>python bot.py</code>. Startup validates settings, tokens, movies, OBS, and schedule.</span>
               </li>
               <li>
                 <strong>Monitor logs</strong>
-                <span>Runtime information is written to the console and <code>bot.log</code>, including OBS errors, token refresh failures, chat recovery, and playback fallback behavior.</span>
+                <span>Console and <code>bot.log</code> show OBS errors, token issues, chat recovery, and fallbacks.</span>
               </li>
             </ol>
           </section>
 
           <section class="case-template-section" aria-labelledby="stack-title">
             <p class="eyebrow">06 / Tech stack</p>
-            <h2 id="stack-title">Python automation around Twitch, OBS, and local media.</h2>
+            <h2 id="stack-title">Python around Twitch, OBS, and local media.</h2>
             <ul class="case-template-stack" aria-label="MovieBot technology stack">
               <li>Python 3.8+</li>
               <li>TwitchIO</li>
@@ -448,7 +448,7 @@
               <li>MoviePy / ffprobe</li>
             </ul>
             <p>
-              The bot is intentionally small: Python handles async chat commands and background routines, TwitchIO connects to chat, OBS WebSocket controls local playback, ffprobe/MoviePy inspect movie duration, and environment variables keep local credentials out of source control.
+              Python handles commands, background routines, chat, OBS playback, duration checks, and private env config.
             </p>
           </section>
 
@@ -457,7 +457,7 @@
             <h2 id="command-flow-title">Commands are validated before they change state.</h2>
             <div class="case-study-table-wrapper">
               <table class="case-study-table">
-                <caption>Viewer-facing command behavior from the MovieBot source.</caption>
+                  <caption>Viewer command behavior from the MovieBot source.</caption>
                 <thead>
                   <tr>
                     <th scope="col">Command</th>
@@ -469,32 +469,32 @@
                   <tr>
                     <th scope="row"><code>!vote title</code></th>
                     <td>Registers a vote for a matching movie during an active poll.</td>
-                    <td>Rejects empty votes, inactive polls, no matches, and ambiguous partial matches; updates previous votes instead of double-counting.</td>
+                    <td>Rejects invalid votes and updates previous votes instead of double-counting.</td>
                   </tr>
                   <tr>
                     <th scope="row"><code>!results</code></th>
                     <td>Shows current vote counts sorted by vote total and title.</td>
-                    <td>Handles no active poll and no-vote states with explicit chat replies.</td>
+                    <td>Handles inactive poll and no-vote states.</td>
                   </tr>
                   <tr>
                     <th scope="row"><code>!currentmovie</code></th>
                     <td>Shows the currently playing movie.</td>
-                    <td>Reports when no movie is active so chat does not infer stale state.</td>
+                    <td>Reports when no movie is active.</td>
                   </tr>
                   <tr>
                     <th scope="row"><code>!time</code></th>
                     <td>Shows total duration and remaining time for the current movie.</td>
-                    <td>Uses recorded start time and duration instead of manual operator estimates.</td>
+                    <td>Uses recorded start time and duration.</td>
                   </tr>
                   <tr>
                     <th scope="row"><code>!movies</code></th>
                     <td>Links to the public movie list when configured, otherwise lists the first available titles.</td>
-                    <td>Keeps chat commands short while supporting a larger library page.</td>
+                    <td>Keeps chat short while supporting the library page.</td>
                   </tr>
                   <tr>
                     <th scope="row"><code>!help</code></th>
                     <td>Explains the available commands.</td>
-                    <td>Sends lines with a small delay and has a fallback compact message if help output fails.</td>
+                    <td>Sends delayed lines with a compact fallback.</td>
                   </tr>
                 </tbody>
               </table>
@@ -503,7 +503,7 @@
 
           <section class="case-template-section" aria-labelledby="obs-flow-title">
             <p class="eyebrow">08 / OBS playback flow</p>
-            <h2 id="obs-flow-title">The OBS handoff updates the configured media source.</h2>
+            <h2 id="obs-flow-title">OBS handoff updates the media source.</h2>
             <div class="case-inline-actions" aria-label="MovieBot architecture next steps">
               <a class="button primary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Open GitHub repo</a>
               <a class="button secondary" href="#deployment-title">Read setup notes</a>
@@ -511,7 +511,7 @@
             <div class="moviebot-flow-diagram">
               <div class="moviebot-flow-heading">
                 <strong id="moviebot-flow-title">MovieBot system flow</strong>
-                <span id="moviebot-flow-description">Viewer chat commands are parsed by the Twitch bot, update vote state, resolve the poll, select a local movie, control OBS WebSocket playback, and produce the stream output. Token refresh, reconnect behavior, and local movie folder scanning support the main flow.</span>
+                <span id="moviebot-flow-description">Chat commands update votes, pick a movie, and control OBS. Refresh, reconnect, and scan routines support the loop.</span>
               </div>
               <figure class="architecture-svg-card">
                 <svg class="architecture-svg" viewBox="0 0 960 520" role="img" aria-labelledby="moviebot-svg-title" aria-describedby="moviebot-svg-desc" focusable="false">
@@ -575,32 +575,32 @@
                   <path class="svg-arrow" marker-end="url(#moviebot-support-arrow)" d="M 582 346 C 688 348 718 222 746 188"></path>
                   <path class="svg-arrow svg-arrow-muted" marker-end="url(#moviebot-support-arrow)" d="M 492 298 C 440 246 330 228 288 208"></path>
                 </svg>
-                <figcaption>MovieBot is organized as a long-running local automation loop: chat creates structured input, vote state decides the next file, OBS receives playback commands, and recovery routines keep the stream path from failing quietly.</figcaption>
+                <figcaption>Chat creates input, vote state selects a file, OBS receives playback commands, and recovery routines keep the loop alive.</figcaption>
               </figure>
             </div>
             <p>
-              Text fallback: a viewer sends a chat command, TwitchIO routes it to the bot command parser, and the bot validates the command before changing vote state. When the poll ends, the bot resolves the winner or tie, selects a local movie path from the scanned folder, and sends OBS WebSocket commands to update the media source, switch scenes, restart playback, and produce the stream output. Separate background routines keep Twitch tokens fresh, recover chat/OBS connections, and rescan the local movie folder.
+              Text fallback: TwitchIO routes chat to Python. The bot validates input, picks a local movie, updates OBS, and runs refresh/reconnect routines.
             </p>
             <ol class="case-study-flow">
               <li>
                 <strong>Verify OBS connection</strong>
-                <span>The bot connects to OBS WebSocket, checks that the configured scene exists, and verifies the configured media source through scene item lookup.</span>
+                <span>Connect to OBS, check scene, and verify media source.</span>
               </li>
               <li>
                 <strong>Set the local file</strong>
-                <span>The selected movie path is normalized and sent to OBS with <code>SetInputSettings</code> against the configured media source.</span>
+                <span>Normalize the selected path and send it to OBS.</span>
               </li>
               <li>
                 <strong>Refresh the source</strong>
-                <span>The source is hidden, updated, shown again, the program scene is switched, and the media input is restarted so playback begins immediately.</span>
+                <span>Hide, update, show, switch scene, and restart the media input.</span>
               </li>
               <li>
                 <strong>Retry before giving up</strong>
-                <span>Media loading uses configurable retry attempts and delays; failures trigger fallback movie selection when possible.</span>
+                <span>Retry media loading; fall back to another movie when possible.</span>
               </li>
             </ol>
             <figure class="case-code-example" aria-labelledby="moviebot-obs-code-title">
-              <figcaption id="moviebot-obs-code-title">What this demonstrates: the OBS handoff is a small command pipeline around a normalized local file path, guarded by connection-aware WebSocket calls.</figcaption>
+              <figcaption id="moviebot-obs-code-title">OBS handoff is a small command pipeline around a normalized local file path.</figcaption>
               <pre tabindex="0"><code class="language-python">normalized_path = os.path.normpath(path)
 settings = {"local_file": normalized_path}
 
@@ -614,20 +614,20 @@ set_response = await self.safe_obs_call(set_settings_request)
 if set_response is not None and await self._set_program_scene(SCENE_NAME):
     if await self._restart_media_input(MEDIA_SOURCE_NAME):
         return True</code></pre>
-              <p class="case-code-note">Trimmed from the public bot source to show the core OBS media-source update without local paths or credentials.</p>
+              <p class="case-code-note">Trimmed from public source; no local paths or credentials.</p>
             </figure>
           </section>
 
           <section class="case-template-section" aria-labelledby="movie-scan-title">
             <p class="eyebrow">09 / Movie folder scanning</p>
-            <h2 id="movie-scan-title">Local media is discovered from disk and refreshed during the session.</h2>
+            <h2 id="movie-scan-title">Local media is scanned and refreshed.</h2>
             <p>
-              The bot scans the configured movie directory for supported video extensions, including common formats like <code>.mp4</code>, <code>.mkv</code>, <code>.avi</code>, <code>.mov</code>, <code>.webm</code>, <code>.wmv</code>, <code>.mpeg</code>, <code>.mpg</code>, <code>.m4v</code>, and <code>.ts</code>. It also scans one level of subdirectories without following symlinks.
+              The bot scans configured movie folders for common video formats and one level of subdirectories, without following symlinks.
             </p>
             <ul class="case-template-list">
-              <li>If the movie directory is missing, the scanner logs the problem and returns an empty list instead of crashing mid-command.</li>
-              <li>A periodic movie rescan refreshes the in-memory list every 10 minutes while keeping the previous list if a rescan finds no files.</li>
-              <li>Movie duration is read with <code>ffprobe</code> when available, falls back to MoviePy, and finally uses a default duration if both duration checks fail.</li>
+              <li>Missing directories log an error and return an empty list.</li>
+              <li>A 10-minute rescan refreshes the list and keeps the prior list if no files appear.</li>
+              <li>Duration uses <code>ffprobe</code>, then MoviePy, then a default.</li>
             </ul>
           </section>
 
@@ -637,19 +637,19 @@ if set_response is not None and await self._set_program_scene(SCENE_NAME):
             <div class="case-template-feature-list">
               <article>
                 <h3>Partial title matching</h3>
-                <p>The bot checks exact matches first, then substring matches. Ambiguous partial matches are rejected with a request to be more specific.</p>
+                <p>Exact matches win first; ambiguous partial matches are rejected.</p>
               </article>
               <article>
                 <h3>Vote changes</h3>
-                <p>Each viewer maps to one selected movie. Changing a vote decrements the old movie total, removes empty vote buckets, and increments the new title.</p>
+                <p>Each viewer owns one vote. Changing it decrements the old title and increments the new one.</p>
               </article>
               <article>
                 <h3>Tie and fallback handling</h3>
-                <p>At poll end, tied winners are resolved by random selection and announced. If no votes exist, the bot picks a random movie when one is available.</p>
+                <p>Ties are random and announced. No votes can fall back to a random movie.</p>
               </article>
             </div>
             <figure class="case-code-example" aria-labelledby="moviebot-vote-code-title">
-              <figcaption id="moviebot-vote-code-title">What this demonstrates: each viewer owns one vote, and changing votes updates both the per-user map and aggregate movie totals.</figcaption>
+              <figcaption id="moviebot-vote-code-title">Each viewer owns one vote; changes update user and aggregate state.</figcaption>
               <pre tabindex="0"><code class="language-python">previous_vote_path = self.voter_data.get(user)
 if previous_vote_path:
     if previous_vote_path == selected_movie_path:
@@ -662,123 +662,123 @@ if previous_vote_path:
 
 self.votes[selected_movie_path] = self.votes.get(selected_movie_path, 0) + 1
 self.voter_data[user] = selected_movie_path</code></pre>
-              <p class="case-code-note">Trimmed from the public bot source so the vote-change logic is visible without surrounding chat and logging code.</p>
+              <p class="case-code-note">Trimmed from public source for vote-change logic.</p>
             </figure>
           </section>
 
           <section class="case-template-section" aria-labelledby="reliability-title">
             <p class="eyebrow">11 / Token refresh and reconnect behavior</p>
-            <h2 id="reliability-title">Long-running stream sessions need recovery paths.</h2>
+            <h2 id="reliability-title">Long sessions need recovery paths.</h2>
             <div class="production-hardening-grid">
               <article>
                 <span class="architecture-kicker">Twitch OAuth</span>
-                <h3>Token validation and refresh</h3>
-                <p>The bot validates the current access token, refreshes when invalid or near expiry, saves updated tokens back to <code>.env</code>, and updates the running process environment.</p>
+                <h3>Token refresh</h3>
+                <p>Validates access tokens, refreshes near expiry, saves updates, and refreshes process env.</p>
               </article>
               <article>
                 <span class="architecture-kicker">IRC health</span>
-                <h3>Chat reconnect with backoff</h3>
-                <p>A periodic health routine checks whether the Twitch IRC websocket is still connected. Recovery refreshes tokens, forces reconnects, and can hard reset the TwitchIO connection after repeated failure.</p>
+                <h3>Chat reconnect</h3>
+                <p>Checks IRC health, refreshes tokens, reconnects, and can hard reset TwitchIO after repeated failure.</p>
               </article>
               <article>
                 <span class="architecture-kicker">OBS health</span>
-                <h3>Connection checks and safe calls</h3>
-                <p>OBS calls go through an <code>ensure_obs_connection</code> wrapper, use timeouts, mark the connection as down on failures, and attempt reconnection before later calls.</p>
+                <h3>Safe OBS calls</h3>
+                <p>OBS calls use connection checks, timeouts, failure marking, and reconnect attempts.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Playback state</span>
                 <h3>Stale callback protection</h3>
-                <p>A playback generation counter prevents an old scheduled poll-end callback from ending a newer movie after a retry or playback change.</p>
+                <p>A generation counter prevents old callbacks from ending a newer movie.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Failure fallback</span>
-                <h3>Alternative movie selection</h3>
-                <p>If OBS cannot load a selected file, the bot clears vote state, excludes the failed path, and schedules a random fallback movie if another file exists.</p>
+                <h3>Alternative selection</h3>
+                <p>If OBS fails to load a file, the bot clears votes, excludes the failed path, and tries another movie.</p>
               </article>
               <article>
                 <span class="architecture-kicker">Shutdown</span>
-                <h3>Best-effort cleanup</h3>
-                <p>Shutdown cancels scheduled callbacks and startup tasks, stops periodic routines, disconnects OBS, and closes TwitchIO without assuming every object is fully initialized.</p>
+                <h3>Cleanup</h3>
+                <p>Shutdown cancels callbacks/tasks, stops routines, disconnects OBS, and closes TwitchIO.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="security-title">
             <p class="eyebrow">12 / Setup and security notes</p>
-            <h2 id="security-title">Credentials stay local, and setup failures should stop early.</h2>
+            <h2 id="security-title">Credentials stay local.</h2>
             <ul class="case-template-list">
-              <li>The repo uses <code>.env.example</code> with placeholders for Twitch client ID, client secret, access token, refresh token, channel name, movie directory, OBS host/port/password, scene name, media source name, and optional movie-list URL.</li>
-              <li>The README explicitly warns not to commit <code>.env</code>, Twitch tokens, Twitch client secrets, OBS passwords, or generated logs.</li>
-              <li>Startup checks required Twitch settings and verifies that <code>MOVIE_DIRECTORY</code> exists before running.</li>
-              <li>OBS setup requires WebSocket to be enabled and the scene/source names to match the environment configuration exactly.</li>
-              <li>If credentials were ever committed, the documented response is to rotate them before publishing from secret-free history.</li>
+              <li><code>.env.example</code> covers Twitch, movie directory, OBS, scene/source, and optional movie-list URL.</li>
+              <li>README warns not to commit <code>.env</code>, tokens, secrets, passwords, or logs.</li>
+              <li>Startup checks required Twitch settings and <code>MOVIE_DIRECTORY</code>.</li>
+              <li>OBS WebSocket and scene/source names must match config.</li>
+              <li>Committed credentials should be rotated before publishing clean history.</li>
             </ul>
           </section>
 
           <section class="case-template-section" aria-labelledby="deployment-title">
             <p class="eyebrow">13 / Deployment and run notes</p>
-            <h2 id="deployment-title">The bot runs locally beside OBS; GitHub Pages documents it.</h2>
+            <h2 id="deployment-title">Runs locally beside OBS.</h2>
             <div class="production-hardening-grid">
               <article>
                 <h3>Hosted/run location</h3>
-                <p>The Python bot runs on the stream operator's machine beside the movie folder and OBS instance. Movie Night, Movie Library, and this case study live on GitHub Pages.</p>
+                <p>The Python bot runs on the operator machine beside the movie folder and OBS. Support pages live on GitHub Pages.</p>
               </article>
               <article>
                 <h3>Environment/config</h3>
-                <p>The bot uses a local <code>.env</code>: Twitch client ID/secret, access/refresh tokens, channel, movie directory, OBS host/port/password, scene, media source, and optional movie-list URL.</p>
+                <p>Local <code>.env</code>: Twitch credentials, channel, movie directory, OBS config, scene/source, and optional movie-list URL.</p>
               </article>
               <article>
                 <h3>External APIs/services</h3>
-                <p>Runtime dependencies are TwitchIO/OAuth, OBS WebSocket, local public-domain movie files, and ffprobe/MoviePy for duration checks. Support pages link to IMDb and poster images.</p>
+                <p>Runtime uses TwitchIO/OAuth, OBS WebSocket, local movie files, and ffprobe/MoviePy. Support pages link to IMDb/posters.</p>
               </article>
               <article>
                 <h3>Local development</h3>
-                <p>Clone the bot repo, create a Python 3.8+ venv, install requirements, copy <code>.env.example</code> to <code>.env</code>, configure Twitch/OBS/movie paths, run <code>pytest</code>, then run <code>python bot.py</code>.</p>
+                <p>Create a Python 3.8+ venv, install requirements, configure <code>.env</code>, run <code>pytest</code>, then <code>python bot.py</code>.</p>
               </article>
               <article>
                 <h3>Secrets and operations</h3>
-                <p>Never commit <code>.env</code>, Twitch tokens, client secrets, OBS passwords, generated logs, or private media paths. A real stream setup would add secret rotation, scoped bot permissions, structured logs, health checks, and an operator dashboard.</p>
+                <p>Never commit <code>.env</code>, tokens, secrets, passwords, logs, or media paths. Production adds rotation, scoped permissions, logs, health checks, and dashboard.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="testing-title">
             <p class="eyebrow">14 / Testing and QA notes</p>
-            <h2 id="testing-title">Tests focus on risky Twitch/OBS failure modes.</h2>
+            <h2 id="testing-title">Tests target Twitch/OBS risks.</h2>
             <p>
-              The public repo includes pytest checks for config/bot logic: defaults, scanning, token refresh, OBS connection behavior, commands, playback scheduling, fallback paths, startup, and cleanup. GitHub Actions runs the suite on push and pull request.
+              Public pytest checks cover config, scanning, token refresh, OBS calls, commands, scheduling, fallbacks, startup, and cleanup. GitHub Actions runs the suite.
             </p>
             <div class="production-hardening-grid">
               <article>
                 <h3>Automated tests</h3>
-                <p><a href="https://github.com/Inefy/twitch-movie-bot/blob/main/tests/test_bot_logic.py" rel="noopener noreferrer">tests/test_bot_logic.py</a> covers movie scanning, duration detection, config loading, token helpers, OBS calls, chat commands, playback scheduling, fallback selection, startup, and cleanup.</p>
+                <p><a href="https://github.com/Inefy/twitch-movie-bot/blob/main/tests/test_bot_logic.py" rel="noopener noreferrer">tests/test_bot_logic.py</a> covers scanning, durations, config, token helpers, OBS calls, commands, scheduling, fallbacks, startup, and cleanup.</p>
               </article>
               <article>
                 <h3>CI status</h3>
-                <p><a href="https://github.com/Inefy/twitch-movie-bot/actions/workflows/tests.yml" rel="noopener noreferrer">GitHub Actions</a> installs requirements and runs <code>pytest</code> for every push and pull request.</p>
+                <p><a href="https://github.com/Inefy/twitch-movie-bot/actions/workflows/tests.yml" rel="noopener noreferrer">GitHub Actions</a> installs requirements and runs <code>pytest</code>.</p>
               </article>
               <article>
                 <h3>Manual checklist</h3>
-                <p>Run the bot with a local movie folder and OBS scene/source names, send <code>!vote</code>, <code>!results</code>, <code>!currentmovie</code>, <code>!time</code>, <code>!movies</code>, and <code>!help</code>, then confirm OBS updates the media source.</p>
+                <p>Run with local movies and OBS config, send key commands, then confirm OBS updates the media source.</p>
               </article>
               <article>
                 <h3>Browser and device checks</h3>
-                <p>The portfolio surfaces need separate QA: Movie Night embeds, Movie Library search/copy behavior, GitHub/source links, mobile layout, keyboard focus, and fallback links when Twitch embeds are blocked.</p>
+                <p>QA Movie Night embeds, Library search/copy, links, mobile layout, focus, and blocked-embed fallbacks.</p>
               </article>
               <article>
                 <h3>Edge cases</h3>
-                <p>Covered scenarios include missing movie folders, ambiguous titles, changed votes, no-vote polls, ties, missing duration tools, OBS timeouts, stale callbacks, and Twitch/IRC reconnects.</p>
+                <p>Covers missing folders, ambiguous titles, changed votes, no-vote polls, ties, missing duration tools, OBS timeouts, stale callbacks, and reconnects.</p>
               </article>
               <article>
                 <h3>Known limitations</h3>
-                <p>The bot does not yet have a live operator dashboard, CI-backed Twitch/OBS integration environment, synthetic end-to-end stream test, structured metrics, or alerting for long unattended sessions.</p>
+                <p>No dashboard, CI-backed Twitch/OBS integration, synthetic E2E stream test, metrics, or alerting yet.</p>
               </article>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="screenshots-title">
             <p class="eyebrow">15 / Screenshots</p>
-            <h2 id="screenshots-title">Browser surfaces around the local bot.</h2>
+            <h2 id="screenshots-title">Browser surfaces around the bot.</h2>
             <div class="screenshot-gallery screenshot-gallery--feature-first case-template-screenshot-grid">
               <figure class="screenshot-gallery__item case-study-image-frame">
                 <a class="screenshot-gallery__link" href="assets/movie-night-preview.png" aria-label="Open full-size Movie Night showcase screenshot">
@@ -787,7 +787,7 @@ self.voter_data[user] = selected_movie_path</code></pre>
                     <img src="assets/movie-night-preview.png" alt="Movie Night page showing Twitch stream, chat area, MovieBot automation context, and movie library links" width="1200" height="630" loading="lazy" decoding="async">
                   </picture>
                 </a>
-                <figcaption>Movie Night page that presents the bot flow to viewers.</figcaption>
+                <figcaption>Movie Night page presenting the bot flow.</figcaption>
               </figure>
               <figure class="screenshot-gallery__item case-study-image-frame">
                 <a class="screenshot-gallery__link" href="assets/movie-library-preview.png" aria-label="Open full-size Movie Library screenshot">
@@ -796,18 +796,18 @@ self.voter_data[user] = selected_movie_path</code></pre>
                     <img src="assets/movie-library-preview.png" alt="Movie Library page with searchable public-domain poster grid and MovieBot vote-command buttons" width="1200" height="630" loading="lazy" decoding="async">
                   </picture>
                 </a>
-                <figcaption>Movie Library page used to browse titles before sending <code>!vote</code> in chat.</figcaption>
+                <figcaption>Movie Library page for browsing titles before <code>!vote</code>.</figcaption>
               </figure>
             </div>
           </section>
 
           <section class="case-template-section" aria-labelledby="next-title">
             <p class="eyebrow">16 / Next improvements</p>
-            <h2 id="next-title">What I would improve next</h2>
+            <h2 id="next-title">Next improvements</h2>
             <ul class="case-template-list">
-              <li>Add a local operator dashboard that shows current movie, active votes, OBS connection health, Twitch token status, and upcoming playback timing.</li>
-              <li>Add a dry-run mode that exercises chat commands and OBS calls against mocks without touching a live stream setup.</li>
-              <li>Add structured JSON logs or metrics so long sessions can be reviewed without scanning free-form console output.</li>
+              <li>Add an operator dashboard for movie, votes, OBS health, token status, and playback timing.</li>
+              <li>Add dry-run mode for chat commands and OBS calls against mocks.</li>
+              <li>Add structured logs or metrics for long sessions.</li>
             </ul>
           </section>
         </article>
@@ -821,7 +821,7 @@ self.voter_data[user] = selected_movie_path</code></pre>
             <li><strong>Queue:</strong> <a href="movie-library.html">Movie Library</a></li>
             <li><strong>Related note:</strong> <a href="notes.html#moviebot-page-split">stream page and movie library split</a></li>
             <li><strong>Commands:</strong> <code>!vote</code>, <code>!results</code>, <code>!currentmovie</code>, <code>!time</code>, <code>!movies</code>, <code>!help</code></li>
-            <li><strong>Reliability evidence:</strong> token refresh, IRC recovery, OBS reconnects, retries, fallbacks, and pytest-backed checks.</li>
+            <li><strong>Reliability:</strong> token refresh, IRC recovery, OBS reconnects, retries, fallbacks, and pytest.</li>
           </ul>
         </aside>
       </div>
@@ -829,7 +829,8 @@ self.voter_data[user] = selected_movie_path</code></pre>
       <section class="next-step-panel" aria-labelledby="moviebot-next-title">
         <div>
           <p class="eyebrow">Next step</p>
-          <h2 id="moviebot-next-title">Review the source, then open the stream surface.</h2>
+          <h2 id="moviebot-next-title">Review source, then stream pages.</h2>
+          <p>The repo shows the Python automation. Movie Night and Movie Library show the viewer surfaces.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Open GitHub repo</a>
@@ -843,7 +844,7 @@ self.voter_data[user] = selected_movie_path</code></pre>
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer building web tools, automation, and frontend interfaces.</span>
+        <span>Software developer building web tools, automation, and frontend UI.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>

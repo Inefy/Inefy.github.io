@@ -58,7 +58,7 @@
         <div class="demo-overview-copy">
           <span class="next-step-kicker">Game guide</span>
           <h1 id="breaker-overview-title">Brick Breaker</h1>
-          <p>Paddle games need precise collision and mobile input; I built a Canvas/JavaScript Brick Breaker with launch state, wall/paddle/brick collisions, lives, levels, progress tracking, power feedback, and labeled touch controls.</p>
+          <p>Canvas Brick Breaker with launch state, wall/paddle/brick collisions, lives, levels, progress, feedback, and touch controls.</p>
           <dl class="demo-status-list" aria-label="Brick Breaker project status">
             <div>
               <dt>Status</dt>
@@ -189,7 +189,7 @@
         <span class="next-step-kicker">Implementation notes</span>
         <h2 id="breaker-implementation-title">Paddle state, brick collision, and level progress.</h2>
         <p>
-          <strong>Main state</strong> covers paddle position, ball position and velocity, brick layout, score, lives, level, power state, best score, and whether the ball is served, playing, paused, won, or over. The animation loop moves the ball and paddle, resolves collisions, updates HUD values, and redraws the canvas. Collision logic handles walls, paddle angles, brick removal, power feedback, and level-cleared progress; scoring comes from brick hits, level clears, and survival. Keyboard input uses Arrow keys or A/D for movement and Space/Enter for launch or resume. Touch buttons set the same movement flags and launch action. The lesson was keeping pointer, keyboard, and button input funneled into shared paddle/action state so controls stay predictable.
+          <strong>Main state</strong> tracks paddle, ball, bricks, score, lives, level, power, and run state. The loop moves, collides, updates HUD, and redraws.
         </p>
       </section>
 
@@ -201,14 +201,14 @@
           <li>Built progress, level, best-score, and power readouts around a viewport-aware Canvas playfield.</li>
           <li>Added keyboard, pointer, and labeled touch controls that share the same movement and launch state.</li>
         </ul>
-        <p class="ownership-note">Brick-breaker rules are a known arcade pattern; this play loop, UI state, collision code, and presentation are custom browser code.</p>
+        <p class="ownership-note">Brick-breaker rules are familiar; this loop, state, collision code, and presentation are custom.</p>
       </section>
 
       <section class="implementation-notes" aria-labelledby="breaker-readiness-title">
         <span class="next-step-kicker">Production readiness</span>
         <h2 id="breaker-readiness-title">Archived experiment with a working arcade loop.</h2>
         <p>
-          <strong>Already solid</strong> includes launch state, paddle movement, wall/paddle/brick collisions, levels, scoring, and touch controls. <strong>Demo-only</strong> areas include informal collision tuning and limited nonvisual alternatives. Hardening would add collision edge tests, performance profiling, validated level data, mobile QA, and stronger accessibility fallbacks.
+          <strong>Solid:</strong> launch, paddle movement, collisions, levels, scoring, and touch. <strong>Hardening:</strong> collision tests, profiling, level validation, mobile QA, and accessibility fallbacks.
         </p>
       </section>
 
@@ -216,7 +216,7 @@
         <span class="next-step-kicker">Deployment and run notes</span>
         <h2 id="breaker-run-title">Static arcade page with level data in source.</h2>
         <p>
-          <strong>Hosted/run location:</strong> GitHub Pages serves <code>brick-breaker.html</code>, <code>brick-breaker.css</code>, and <code>brick-breaker.js</code>. <strong>Environment/config:</strong> no environment variables are required; level layout, scoring, lives, and physics constants live in JavaScript. <strong>External APIs/services:</strong> none beyond Canvas, keyboard/touch/pointer events, Fullscreen, and LocalStorage for best score. <strong>Local development:</strong> run <code>python -m http.server 8000</code> and open <code>/brick-breaker.html</code>. <strong>Security:</strong> there are no secrets or remote writes.
+          GitHub Pages serves <code>brick-breaker.html</code>, <code>brick-breaker.css</code>, and <code>brick-breaker.js</code>. No env vars or external APIs beyond browser APIs and LocalStorage. Local: run <code>python -m http.server 8000</code> and open <code>/brick-breaker.html</code>.
         </p>
       </section>
 
@@ -224,7 +224,7 @@
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="breaker-next-title">More playable UI studies</h2>
-          <p>Paddle collision work is one of the lab's arcade examples; compare it with the other browser demos and the main case studies for broader implementation context.</p>
+          <p>Compare paddle collision work with the other demos and main case studies.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>

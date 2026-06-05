@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-I36S1vyCWdKjaNsHyEHVicwlmiaVQRUpAojlpzdpOlA='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-I36S1vyCWdKjaNsHyEHVicwlmiaVQRUpAojlpzdpOlA=' 'sha256-Ftygg9D3FzDdUHY2an0gMLnPH7S5IHJo6A7uPUURBCY='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Technical case studies by Zac Batten covering TraverseOps map UI, MovieBot Twitch/OBS automation, Web Paint Canvas state, and Movie Library search.">
     <meta name="author" content="Zac Batten">
@@ -102,9 +102,9 @@
       <section class="section case-studies-hero" aria-labelledby="case-studies-title">
         <div class="section-heading">
           <p class="eyebrow">Case studies</p>
-          <h1 id="case-studies-title">Technical depth behind the main projects.</h1>
+          <h1 id="case-studies-title">Technical depth behind the projects.</h1>
           <p>
-            A focused index of project problems, implementation details, stacks, and technical tradeoffs.
+            Project problems, implementation details, stacks, and tradeoffs.
           </p>
           <nav class="work-jump-nav" aria-label="Case study shortcuts">
             <a href="#traverseops">TraverseOps</a>
@@ -125,22 +125,29 @@
           <article class="case-study-listing case-study-listing-fallback" id="traverseops">
             <div class="case-study-listing-body">
               <div class="case-study-listing-header"><span class="work-status">Flagship / public app</span><h3>TraverseOps &mdash; Field Operations Map &amp; Work Orders</h3></div>
-              <p>Field teams need one path from asset status to assigned work.</p>
+              <p>Field teams need asset state and work orders in one place.</p>
               <div class="work-links"><a href="traverseops-case-study.html">Full case study</a><a href="traverseops-demo.html">Public app</a></div>
             </div>
           </article>
           <article class="case-study-listing case-study-listing-fallback" id="moviebot">
             <div class="case-study-listing-body">
               <div class="case-study-listing-header"><span class="work-status">Python automation / public repo</span><h3>MovieBot / StreamCinema Vote Bot &mdash; Twitch Chat Voting + OBS Automation</h3></div>
-              <p>24/7 running open domain movies with crowd voting.</p>
+          <p>24/7 running open domain movies with crowd voting.</p>
               <div class="work-links"><a href="moviebot-case-study.html">Full case study</a><a href="movie-night.html">Movie Night</a><a href="movie-library.html">Movie Library</a><a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer">Source</a><a href="https://github.com/Inefy/twitch-movie-bot/actions/workflows/tests.yml" rel="noopener noreferrer">CI tests</a><a href="https://github.com/Inefy/twitch-movie-bot/blob/main/tests/test_bot_logic.py" rel="noopener noreferrer">Pytest file</a></div>
             </div>
           </article>
           <article class="case-study-listing case-study-listing-fallback" id="web-paint">
             <div class="case-study-listing-body">
               <div class="case-study-listing-header"><span class="work-status">Canvas tool / live page</span><h3>Web Paint &mdash; Browser Canvas Drawing Tool</h3></div>
-              <p>Browser drawing tools need fast canvas interaction and predictable tool state.</p>
+              <p>Browser drawing tools need fast input and predictable state.</p>
               <div class="work-links"><a href="web-paint-case-study.html">Full case study</a><a href="paint.html">Live tool</a><a href="interactive-lab.html">Interactive Lab</a><a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer">Source</a></div>
+            </div>
+          </article>
+          <article class="case-study-listing case-study-listing-fallback" id="movie-library">
+            <div class="case-study-listing-body">
+              <div class="case-study-listing-header"><span class="work-status">Companion app / client-side UI</span><h3>Movie Library &mdash; Public-Domain Voting Catalog</h3></div>
+              <p>Viewers need quick browsing and valid vote commands.</p>
+              <div class="work-links"><a href="movie-library.html">Live catalog</a><a href="moviebot-case-study.html">MovieBot case study</a><a href="movie-night.html">Movie Night</a><a href="https://github.com/Inefy/Inefy.github.io/blob/main/movie-library.html" rel="noopener noreferrer">Source</a></div>
             </div>
           </article>
         </div>
@@ -149,8 +156,8 @@
       <section class="next-step-panel" aria-labelledby="case-studies-next-title">
         <div>
           <p class="eyebrow">Next step</p>
-          <h2 id="case-studies-next-title">Want the full project index?</h2>
-          <p>The Work page includes these case studies plus supporting pages, browser experiments, and build notes.</p>
+          <h2 id="case-studies-next-title">Want the full index?</h2>
+          <p>The Work page adds supporting pages, experiments, and build notes.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="work.html">View all work</a>

@@ -58,7 +58,7 @@
         <div class="demo-overview-copy">
           <span class="next-step-kicker">Game guide</span>
           <h1 id="drift-overview-title">Asteroid Drift</h1>
-          <p>An arcade loop needs low-latency input and readable state; I built a Canvas/JavaScript Asteroids-style demo with thrust, rotation, shooting, shields, randomized spawning, collision checks, waves, scoring, and touch controls.</p>
+          <p>Canvas Asteroids-style loop with thrust, rotation, shooting, shields, randomized spawns, collisions, waves, scoring, and touch controls.</p>
           <ul class="drift-proof-list" aria-label="What this demo shows">
             <li>Canvas vector rendering</li>
             <li>Shared keyboard/touch input</li>
@@ -85,19 +85,19 @@
         <dl class="demo-control-list">
           <div>
             <dt>Controls</dt>
-            <dd>Rotate to aim, hold thrust to build momentum, fire charged shots, and use shield only when a collision is unavoidable.</dd>
+            <dd>Rotate, thrust, fire charged shots, and shield near collisions.</dd>
           </div>
           <div>
             <dt>Keyboard</dt>
-            <dd>Arrow keys or WASD move, Space or Enter fires, Shift or S shields, P or Escape pauses, and R restarts.</dd>
+            <dd>Arrow/WASD move, Space/Enter fires, Shift/S shields, P/Escape pauses, R restarts.</dd>
           </div>
           <div>
             <dt>Touch</dt>
-            <dd>Hold Left/Right to rotate, hold Thrust to move, tap Fire for shots, and hold Shield to absorb hits while energy drains.</dd>
+            <dd>Hold Left/Right/Thrust, tap Fire, and hold Shield while energy drains.</dd>
           </div>
           <div>
             <dt>Scoring</dt>
-            <dd>Small asteroids are worth points, wave clears add bonuses, later waves spawn more threats, and the best score is saved locally.</dd>
+            <dd>Asteroids score by size, wave clears add bonuses, and best score saves locally.</dd>
           </div>
           <div>
             <dt>Accessibility</dt>
@@ -241,15 +241,15 @@
         <div class="drift-system-grid">
           <article>
             <strong>Wave pressure</strong>
-            <p>Each wave starts with more large asteroids, and clearing the field advances the run instead of resetting the ship.</p>
+            <p>Each wave adds asteroids; clearing the field advances the run.</p>
           </article>
           <article>
             <strong>Scoring model</strong>
-            <p>Hits award points based on asteroid size, wave clears add a bonus, and the best score persists between sessions.</p>
+            <p>Hits score by asteroid size, wave clears add bonuses, and best score persists.</p>
           </article>
           <article>
             <strong>Survival tools</strong>
-            <p>Lives absorb mistakes, shield energy gives a short defensive window, and blaster charge prevents button-mashing from flattening the loop.</p>
+            <p>Lives, shield energy, and blaster charge keep risk readable.</p>
           </article>
         </div>
       </section>
@@ -260,27 +260,27 @@
         <div class="drift-note-grid">
           <article>
             <strong>Movement model</strong>
-            <p>The ship uses rotation, thrust acceleration, drag, max-speed clamping, and screen wrapping so movement feels inertial without needing a physics library.</p>
+          <p>The ship uses rotation, thrust, drag, speed clamping, and screen wrapping for inertia without a physics library.</p>
           </article>
           <article>
             <strong>Shooting cadence</strong>
-            <p>Bullets inherit position and direction from the ship, expire after a short lifetime, and respect a cooldown meter that is surfaced in the HUD.</p>
+          <p>Bullets inherit ship position/direction, expire quickly, and use a HUD cooldown.</p>
           </article>
           <article>
             <strong>Collision checks</strong>
-            <p>Bullet and ship impacts use distance checks against asteroid radius, then split large rocks into smaller entities and update score, lives, particles, and wave progress.</p>
+          <p>Impacts use radius checks, split large rocks, and update score, lives, particles, and waves.</p>
           </article>
           <article>
             <strong>Shield behavior</strong>
-            <p>Shield input drains energy while active, recharges when released, and can absorb a crash without consuming a life if the player times it well.</p>
+          <p>Shield drains while active, recharges when released, and can absorb a crash.</p>
           </article>
           <article>
             <strong>Spawning rules</strong>
-            <p>Asteroids spawn from screen edges with randomized heading, speed, spin, and shape points, then the wave system measures remaining asteroid work to track progress.</p>
+          <p>Asteroids spawn from screen edges with randomized heading, speed, spin, and shape.</p>
           </article>
           <article>
             <strong>Input architecture</strong>
-            <p>Keyboard and touch controls write into the same input state, so desktop and mobile drive one gameplay loop instead of separate code paths.</p>
+          <p>Keyboard and touch write into one input state.</p>
           </article>
         </div>
       </section>
@@ -300,7 +300,7 @@
         <span class="next-step-kicker">Production readiness</span>
         <h2 id="drift-readiness-title">Polished prototype with release hardening still ahead.</h2>
         <p>
-          <strong>Already solid</strong> includes movement, shooting, shield state, spawning, collisions, waves, HUD feedback, best-score persistence, and keyboard/touch controls. <strong>Prototype-only</strong> areas include game balance, informal performance testing, and canvas-first accessibility. Hardening would add deterministic collision tests, difficulty tuning, mobile-device QA, performance profiling, and richer nonvisual state output.
+          <strong>Solid:</strong> movement, shooting, shields, spawns, collisions, waves, HUD, best score, and keyboard/touch. <strong>Hardening:</strong> collision tests, difficulty tuning, mobile QA, profiling, and richer nonvisual status.
         </p>
       </section>
 
@@ -308,7 +308,7 @@
         <span class="next-step-kicker">Deployment and run notes</span>
         <h2 id="drift-run-title">Static canvas game with local browser state.</h2>
         <p>
-          <strong>Hosted/run location:</strong> GitHub Pages serves <code>asteroid-drift.html</code>, <code>asteroid-drift.css</code>, and <code>asteroid-drift.js</code>. <strong>Environment/config:</strong> no environment variables are required; tuning values and entity rules live in the JavaScript. <strong>External APIs/services:</strong> none beyond Canvas, Pointer Events, Fullscreen, and LocalStorage for best score. <strong>Local development:</strong> run <code>python -m http.server 8000</code> and open <code>/asteroid-drift.html</code>. <strong>Security:</strong> no secrets or user data are sent off-device.
+          GitHub Pages serves <code>asteroid-drift.html</code>, <code>asteroid-drift.css</code>, and <code>asteroid-drift.js</code>. No env vars or external APIs beyond browser APIs and LocalStorage. Local: run <code>python -m http.server 8000</code> and open <code>/asteroid-drift.html</code>.
         </p>
       </section>
 
@@ -316,7 +316,7 @@
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="drift-next-title">More canvas game loops</h2>
-          <p>Real-time input and collision checks are one of the lab's arcade examples; compare this demo with the other browser experiments and the main case studies for broader implementation context.</p>
+          <p>Compare real-time input and collisions with the other demos and main case studies.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>

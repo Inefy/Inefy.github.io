@@ -57,7 +57,7 @@
         <div class="demo-overview-copy">
           <span class="next-step-kicker">Game guide</span>
           <h1 id="flappy-overview-title">Flappy Workbench</h1>
-          <p>Timing games need consistent physics and fast restart; I built a Canvas/JavaScript Flappy-style loop with gravity, jump impulse, obstacle gaps, collision checks, score/best tracking, pause/restart controls, and a labeled mobile Flap button.</p>
+          <p>Canvas Flappy-style loop with gravity, jump impulse, gaps, collisions, score/best tracking, pause/restart, and mobile Flap.</p>
           <dl class="demo-status-list" aria-label="Flappy Workbench project status">
             <div>
               <dt>Status</dt>
@@ -153,7 +153,7 @@
         <span class="next-step-kicker">Implementation notes</span>
         <h2 id="flappy-implementation-title">Gravity/jump physics, obstacle timing, and run state.</h2>
         <p>
-          <strong>Main state</strong> tracks bird position and velocity, pipe array, score, best score, gravity, jump impulse, elapsed time, and whether the run is idle, playing, paused, or over. A fixed-tick loop updates physics, spawns and moves pipes, checks collisions, and redraws the canvas. Collision logic compares the bird against floor/ceiling bounds and pipe gaps; scoring increments when a passed pipe is marked complete, then persists the best score locally. Keyboard input uses Space or Arrow Up to flap, P to pause, and R to restart. Touch and pointer input call the same flap action on the stage. The lesson was keeping the state machine bounded so pause, restart, menu, and scoring behavior stay easy to reason about.
+          <strong>Main state</strong> tracks bird, pipes, score, physics values, time, and run state. One loop updates physics, spawns pipes, checks collisions, and redraws.
         </p>
       </section>
 
@@ -162,17 +162,17 @@
         <h2 id="flappy-built-title">Timing-based flight loop, obstacle generation, and run-state UI.</h2>
         <ul>
           <li>Implemented gravity, jump impulse, pipe spawning, gap sizing, collision checks, score tracking, and restart flow.</li>
-          <li>Built the Canvas render loop for the player, scrolling obstacles, ground movement, menu state, status text, and best-score persistence.</li>
+          <li>Built render loop, obstacles, ground, menu state, status text, and best-score persistence.</li>
           <li>Added keyboard, pointer, tap, and labeled mobile Flap controls with pause/restart/fullscreen support.</li>
         </ul>
-        <p class="ownership-note">The Flappy-style rule set is an external genre reference; the browser implementation, visuals, controls, and state wiring are custom code.</p>
+        <p class="ownership-note">Flappy-style rules are familiar; browser implementation, visuals, controls, and state are custom.</p>
       </section>
 
       <section class="implementation-notes" aria-labelledby="flappy-readiness-title">
         <span class="next-step-kicker">Production readiness</span>
         <h2 id="flappy-readiness-title">Archived experiment with a working timing loop.</h2>
         <p>
-          <strong>Already solid</strong> includes gravity, obstacle spawning, scoring, best-score persistence, pause/restart, and touch input. <strong>Demo-only</strong> pieces include informal physics tuning and limited nonvisual gameplay support. Hardening would add deterministic physics tests, mobile-browser QA, reduced-motion review, save reset behavior, and more robust pause/resume validation.
+          <strong>Solid:</strong> gravity, obstacles, scoring, best score, pause/restart, and touch input. <strong>Hardening:</strong> physics tests, mobile QA, reduced motion, save reset, and pause/resume checks.
         </p>
       </section>
 
@@ -180,7 +180,7 @@
         <span class="next-step-kicker">Deployment and run notes</span>
         <h2 id="flappy-run-title">Static timing game with no backend.</h2>
         <p>
-          <strong>Hosted/run location:</strong> GitHub Pages serves <code>flappy-workbench.html</code>, <code>flappy-workbench.css</code>, and <code>flappy-workbench.js</code>. <strong>Environment/config:</strong> no environment variables are required; gravity, pipe timing, scoring, and pause/restart behavior are configured in JavaScript. <strong>External APIs/services:</strong> none beyond Canvas, keyboard/touch/pointer events, Fullscreen, and LocalStorage for best score. <strong>Local development:</strong> run <code>python -m http.server 8000</code> and open <code>/flappy-workbench.html</code>. <strong>Security:</strong> no secrets or remote user data are involved.
+          GitHub Pages serves <code>flappy-workbench.html</code>, <code>flappy-workbench.css</code>, and <code>flappy-workbench.js</code>. No env vars or external APIs beyond browser APIs and LocalStorage. Local: run <code>python -m http.server 8000</code> and open <code>/flappy-workbench.html</code>.
         </p>
       </section>
 
@@ -188,7 +188,7 @@
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="flappy-next-title">More browser demos</h2>
-          <p>Timing-based obstacle movement is one of the lab's canvas examples; compare it with the other browser demos and the main case studies for broader implementation context.</p>
+          <p>Compare timing-based obstacles with the other demos and main case studies.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>

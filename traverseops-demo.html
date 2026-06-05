@@ -65,7 +65,7 @@
           <p class="eyebrow">TraverseOps public app</p>
           <h1 id="traverse-demo-title">Field operations map and work orders.</h1>
           <p>
-            Designed around a Supabase-style data model; the public version uses sample data for safe review while showing a map-first asset workspace with inspections, work orders, import validation, reports, and role-aware controls that stay usable on a phone.
+            Sample-data, map-first asset workspace with inspections, work orders, import validation, reports, and role-aware mobile controls.
           </p>
           <div class="traverse-demo-actions">
             <a class="button primary" href="#traverse-workspace">Open workspace</a>
@@ -84,7 +84,7 @@
         </div>
         <aside class="traverse-demo-note" aria-label="Public data boundaries">
           <strong>Sample data only</strong>
-          <p>No real municipal records are stored here. The goal is to show mobile UI state and data relationships.</p>
+            <p>No real municipal records. This shows UI state and data relationships.</p>
         </aside>
       </section>
 
@@ -93,17 +93,17 @@
           <div class="demo-checklist__copy">
             <p class="eyebrow">Try this demo</p>
             <h2 id="traverse-demo-checklist-title">Try this in 2 minutes.</h2>
-            <p>This is a sample-data prototype. Use the checklist to review the field workflow without treating the page as production software.</p>
+            <p>Sample-data prototype. Review the workflow, not production readiness.</p>
             <div class="demo-checklist__actions" aria-label="TraverseOps public app actions">
               <a href="#traverse-workspace">Open workspace</a>
               <a href="traverseops-case-study.html">Read case study</a>
             </div>
           </div>
           <ol class="demo-checklist__steps">
-            <li><div><strong>Filter by status.</strong><span>Use the map filter buttons for Needs inspection, Open work, Healthy, and All.</span></div></li>
-            <li><div><strong>Select an asset.</strong><span>Click a map marker and check the selected asset sheet for status, priority, and open work.</span></div></li>
-            <li><div><strong>Open related context.</strong><span>Use Start inspection, Create work order, or the task tabs to inspect the linked records.</span></div></li>
-            <li><div><strong>Review import/report flow.</strong><span>Run Validate sample import, then open Reports to see the sample supervisor summary.</span></div></li>
+            <li><div><strong>Filter by status.</strong><span>Use Needs inspection, Open work, Healthy, and All.</span></div></li>
+            <li><div><strong>Select an asset.</strong><span>Click a marker and check status, priority, and open work.</span></div></li>
+            <li><div><strong>Open context.</strong><span>Use inspection/work-order actions or task tabs.</span></div></li>
+            <li><div><strong>Review imports/reports.</strong><span>Validate sample import, then open Reports.</span></div></li>
           </ol>
         </div>
       </section>
@@ -111,9 +111,9 @@
       <section class="next-step-panel" aria-labelledby="traverse-readiness-title">
         <div>
           <p class="eyebrow">Production readiness</p>
-          <h2 id="traverse-readiness-title">Sample records, not an active field deployment.</h2>
+          <h2 id="traverse-readiness-title">Sample records, not deployment.</h2>
           <p>
-            The public version is useful for reviewing asset maps, inspection/work-order flows, imports, reports, and role-shaped UI. It remains sample-only because it does not enforce production authentication, permissions, offline sync, audit logging, or production map/data reliability. A field rollout would require tenant-safe data access, import validation, mobile device testing, logs, backups, and map-source alerts.
+            Review maps, inspections, work orders, imports, reports, and roles. Production needs auth, offline sync, audit logs, reliable data, QA, backups, and alerts.
           </p>
         </div>
         <div class="next-step-actions">
@@ -125,12 +125,12 @@
       <section class="next-step-panel" aria-labelledby="traverse-qa-title">
         <div>
           <p class="eyebrow">Testing and QA notes</p>
-          <h2 id="traverse-qa-title">QA checks device and data-state risks.</h2>
+          <h2 id="traverse-qa-title">QA checks device and data state.</h2>
           <p>
-            <strong>Automated tests:</strong> no public test suite is linked yet. Manual QA covers loading/resetting sample data, tab switching, map-marker selection, filters, inspection and work-order forms, import staging, report summaries, keyboard focus, mobile touch targets, and repeated empty/reset states. Browser checks should include narrow phones, tablets, desktop widths, reduced motion, and long labels or notes that could break layout.
+            <strong>Automated:</strong> no public suite linked yet. <strong>Manual:</strong> sample data, tabs, marker selection, filters, forms, imports, reports, focus, mobile targets, and empty/reset states.
           </p>
           <p>
-            <strong>Known limitations:</strong> the app does not simulate production authentication, offline sync conflicts, production GIS services, bulk import security, or actual field-device network loss.
+            <strong>Limits:</strong> no production auth, offline conflicts, GIS services, bulk-import security, or field network loss.
           </p>
         </div>
         <div class="next-step-actions">
@@ -142,12 +142,12 @@
       <section class="next-step-panel" aria-labelledby="traverse-run-title">
         <div>
           <p class="eyebrow">Deployment and run notes</p>
-          <h2 id="traverse-run-title">Sample-data browser app with no public secrets.</h2>
+          <h2 id="traverse-run-title">Sample-data app with no secrets.</h2>
           <p>
-            <strong>Hosted/run location:</strong> GitHub Pages serves <code>traverseops-demo.html</code>, <code>traverseops-demo.js</code>, shared CSS, and local screenshots/assets. <strong>Environment/config:</strong> no environment variables are required; sample assets, inspections, work orders, and import states live in client-side JavaScript. <strong>External APIs/services:</strong> this public app does not connect to GIS services, Supabase, authentication, or municipal APIs.
+            GitHub Pages serves <code>traverseops-demo.html</code>, <code>traverseops-demo.js</code>, CSS, and assets. No env vars. Sample assets, inspections, work orders, and imports live in client-side JavaScript.
           </p>
           <p>
-            <strong>Local development:</strong> run <code>python -m http.server 8000</code> from the portfolio repo root and open <code>/traverseops-demo.html</code>. <strong>Security:</strong> keep production asset data, service-role keys, GIS credentials, and private imports out of public files; production would move validation and permissions server-side.
+            Local: run <code>python -m http.server 8000</code> and open <code>/traverseops-demo.html</code>. Production data, keys, GIS credentials, and private imports stay out of public files.
           </p>
         </div>
         <div class="next-step-actions">

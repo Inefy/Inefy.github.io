@@ -63,7 +63,7 @@
           <p class="eyebrow">Interactive lab</p>
           <h1 id="lab-page-title">Browser mechanics experiments.</h1>
           <p>
-            This lab keeps small browser experiments separate from the flagship case studies. Treat it as supporting evidence for Canvas rendering, keyboard and touch input, grid logic, collision loops, LocalStorage, status updates, and compact no-backend UI.
+            Supporting browser experiments for Canvas rendering, keyboard/touch input, grid logic, collision loops, LocalStorage, status, and no-backend UI.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="paint.html">Open Web Paint</a>
@@ -76,14 +76,14 @@
       <section class="section lab-skill-section" id="lab-skill-map" aria-labelledby="lab-skill-title">
         <div class="section-heading">
           <p class="eyebrow">Skill map</p>
-          <h2 id="lab-skill-title">Browse experiments by what they prove.</h2>
-          <p>Web Paint is the flagship browser tool. The games stay here as smaller experiments for specific interaction mechanics.</p>
+          <h2 id="lab-skill-title">Browse by proof.</h2>
+          <p>Web Paint is the flagship browser tool; games cover focused mechanics.</p>
         </div>
 
         <div class="lab-skill-grid">
           <article class="lab-skill-card">
             <h3>Canvas rendering</h3>
-            <p>Rendering loops, tool previews, viewport-aware sizing, and redraw discipline.</p>
+            <p>Rendering loops, previews, responsive sizing, and redraw discipline.</p>
             <ul>
               <li><a href="#web-paint-experiment">Web Paint</a></li>
               <li><a href="#asteroid-drift-experiment">Asteroid Drift</a></li>
@@ -93,7 +93,7 @@
 
           <article class="lab-skill-card">
             <h3>Keyboard / touch input</h3>
-            <p>Shared input state, large touch controls, keyboard paths, and responsive control layouts.</p>
+            <p>Shared input, touch controls, keyboard paths, and responsive controls.</p>
             <ul>
               <li><a href="#web-paint-experiment">Web Paint</a></li>
               <li><a href="#snake-lab-experiment">Snake Lab</a></li>
@@ -103,7 +103,7 @@
 
           <article class="lab-skill-card">
             <h3>Grid logic</h3>
-            <p>Board transforms, recursive reveal, roving focus, and deterministic tile/cell state.</p>
+            <p>Board transforms, recursive reveal, roving focus, and deterministic cells.</p>
             <ul>
               <li><a href="#minefield-sweep-experiment">Minefield Sweep</a></li>
               <li><a href="#2048-experiment">2048</a></li>
@@ -113,7 +113,7 @@
 
           <article class="lab-skill-card">
             <h3>Collision / game loop</h3>
-            <p>Entity updates, collision checks, physics timing, wave/level state, and HUD updates.</p>
+            <p>Entity updates, collisions, physics timing, wave/level state, and HUD updates.</p>
             <ul>
               <li><a href="#asteroid-drift-experiment">Asteroid Drift</a></li>
               <li><a href="#brick-breaker-experiment">Brick Breaker</a></li>
@@ -123,7 +123,7 @@
 
           <article class="lab-skill-card">
             <h3>Local state</h3>
-            <p>Undo snapshots, best scores, saved settings, status messages, and restart flows.</p>
+            <p>Undo, best scores, saved settings, status messages, and restart flows.</p>
             <ul>
               <li><a href="#web-paint-experiment">Web Paint</a></li>
               <li><a href="#2048-experiment">2048</a></li>
@@ -136,8 +136,8 @@
       <section class="section interactive-lab lab-archive-section" id="lab-archive" aria-labelledby="lab-archive-title">
         <div class="section-heading">
           <p class="eyebrow">Experiment archive</p>
-          <h2 id="lab-archive-title">Small builds with one technical lesson each.</h2>
-          <p>Each card keeps the description technical and links to the working page. Web Paint stays first because it is the strongest browser-tool proof.</p>
+          <h2 id="lab-archive-title">Small builds, one lesson each.</h2>
+          <p>Each card links to a working page.</p>
         </div>
 
         <div class="lab-grid archive-lab-grid">
@@ -150,34 +150,20 @@
             </figure>
             <span class="lab-card-kicker">Canvas tool</span>
             <h3>Web Paint</h3>
-            <p>Browser drawing needs reliable state; I built a vanilla JavaScript Canvas editor with tool modes, undo/redo snapshots, import/export, zoom, and mobile-friendly panels.</p>
-            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Separate transient preview state from committed pixel history so drawing, undo/redo, resizing, and export stay predictable.</p>
+            <p>Canvas editor with tools, history, import/export, zoom, and mobile panels.</p>
+            <p class="lab-takeaway"><strong>Takeaway:</strong> Preview pixels stay separate from saved history.</p>
             <dl class="lab-detail-list">
               <div>
-                <dt>What I built</dt>
-                <dd>
-                  <ul>
-                    <li>Implemented Canvas drawing modes for pencil, eraser, shapes, fill, text, selection, and preview rendering.</li>
-                    <li>Built undo/redo snapshots, import validation, PNG export, zoom, canvas resizing, and local save/load behavior.</li>
-                    <li>Managed toolbar state, swatches, brush sizes, selection bounds, and status output in custom vanilla JavaScript.</li>
-                  </ul>
-                </dd>
-              </div>
-              <div>
-                <dt>Demonstrates</dt>
-                <dd>Canvas state, pointer events, touch-friendly toolbar UI, and client-side export.</dd>
+                <dt>Built</dt>
+                <dd>Draw tools, previews, validation, PNG export, zoom, and local save.</dd>
               </div>
               <div>
                 <dt>Controls</dt>
-                <dd>Mouse, touch, swatches, sliders, toolbar buttons, and file actions.</dd>
+                <dd>Mouse, touch, swatches, sliders, toolbar buttons, and files.</dd>
               </div>
               <div>
-                <dt>Mobile/touch</dt>
-                <dd>Supported for touch drawing and toolbar actions; the dense ribbon works best on tablet or desktop widths.</dd>
-              </div>
-              <div>
-                <dt>Production readiness</dt>
-                <dd>Solid static prototype for drawing and export. Before real users, it needs memory-aware history, autosave recovery, richer keyboard shortcuts, and stronger nonvisual drawing support.</dd>
+                <dt>Status</dt>
+                <dd>Prototype; needs smarter history, autosave, shortcuts, and accessibility work.</dd>
               </div>
             </dl>
             <div class="lab-actions">
@@ -196,34 +182,20 @@
             </figure>
             <span class="lab-card-kicker">Physics game</span>
             <h3>Mini Golf</h3>
-            <p>Touch golf needs clear aiming and scoring; I built a Canvas/JavaScript five-hole course with drag power, collision response, hazards, scorecards, and best runs.</p>
-            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Course data, shot state, collision checks, and score UI stay easier to test when each hole is modeled as structured level data.</p>
+            <p>Canvas mini golf with drag power, collisions, hazards, and scorecards.</p>
+            <p class="lab-takeaway"><strong>Takeaway:</strong> Structured hole data keeps play predictable.</p>
             <dl class="lab-detail-list">
               <div>
-                <dt>What I built</dt>
-                <dd>
-                  <ul>
-                    <li>Created five course layouts with par values, walls, hazard zones, surface types, cup targets, and hole progression.</li>
-                    <li>Implemented drag aiming, shot-power calculation, ball motion, wall/hazard/cup collision checks, and stroke counting.</li>
-                    <li>Built scorecard UI, best-score persistence, pause/restart/fullscreen controls, touch hints, and hole navigation.</li>
-                  </ul>
-                </dd>
-              </div>
-              <div>
-                <dt>Demonstrates</dt>
-                <dd>Canvas physics, level state, collision handling, and local persistence.</dd>
+                <dt>Built</dt>
+                <dd>Five holes, par, hazards, collisions, scorecards, and best scores.</dd>
               </div>
               <div>
                 <dt>Controls</dt>
-                <dd>Drag to aim and set power, release to shoot, then advance hole-by-hole.</dd>
+                <dd>Drag to aim and set power; release to shoot.</dd>
               </div>
               <div>
-                <dt>Mobile/touch</dt>
-                <dd>Supported with drag aiming and on-screen course controls; designed to remain playable on narrow screens.</dd>
-              </div>
-              <div>
-                <dt>Production readiness</dt>
-                <dd>Archived live experiment with solid input and scoring. A fuller release would need physics edge-case tests, more mobile QA, accessible alternatives, and save-state controls.</dd>
+                <dt>Status</dt>
+                <dd>Archived; needs physics tests, mobile QA, save controls, and alternatives.</dd>
               </div>
             </dl>
             <div class="lab-actions">
@@ -241,34 +213,20 @@
             </figure>
             <span class="lab-card-kicker">Arcade loop</span>
             <h3>Asteroid Drift</h3>
-            <p>Arcade loops need low-latency input; I built a Canvas/JavaScript Asteroids-style demo with thrust, shooting, shields, randomized spawns, collisions, waves, and touch controls.</p>
-            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Keyboard and touch controls should feed one input model so the real-time loop does not fork by device.</p>
+            <p>Canvas arcade loop with thrust, shooting, shields, waves, and touch controls.</p>
+            <p class="lab-takeaway"><strong>Takeaway:</strong> Keyboard and touch feed one input model.</p>
             <dl class="lab-detail-list">
               <div>
-                <dt>What I built</dt>
-                <dd>
-                  <ul>
-                    <li>Implemented ship thrust, rotation, projectile firing, shield charge, wraparound movement, and lives/scoring state.</li>
-                    <li>Built randomized asteroid spawning, split behavior, wave progression, collision checks, and HUD progress updates.</li>
-                    <li>Added keyboard and touch controls that feed the same input state, plus pause/restart/fullscreen and reduced-motion handling.</li>
-                  </ul>
-                </dd>
-              </div>
-              <div>
-                <dt>Demonstrates</dt>
-                <dd>Real-time game loop, entity spawning, collision response, and HUD updates.</dd>
+                <dt>Built</dt>
+                <dd>Ship controls, asteroid waves, collisions, scoring, HUD, and reduced motion.</dd>
               </div>
               <div>
                 <dt>Controls</dt>
-                <dd>Keyboard or on-screen controls for thrust, turn, fire, pause, and fullscreen.</dd>
+                <dd>Keyboard or touch for thrust, turn, shield, fire, and pause.</dd>
               </div>
               <div>
-                <dt>Mobile/touch</dt>
-                <dd>Supported through on-screen thrust, turn, shield, and fire buttons alongside keyboard controls.</dd>
-              </div>
-              <div>
-                <dt>Production readiness</dt>
-                <dd>Polished prototype with the strongest game loop in the lab. Hardening would focus on difficulty tuning, performance profiling, device testing, and expanded nonvisual state output.</dd>
+                <dt>Status</dt>
+                <dd>Prototype; needs tuning, profiling, device tests, and better nonvisual status.</dd>
               </div>
             </dl>
             <div class="lab-actions">
@@ -286,34 +244,20 @@
             </figure>
             <span class="lab-card-kicker">Grid game</span>
             <h3>Snake Lab</h3>
-            <p>Snake needs fast turns without illegal reversals; I built a Canvas/JavaScript grid game with buffered input, growth, collisions, pace changes, and best scores.</p>
-            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Input buffering plus illegal-turn guards make fast keyboard, swipe, and button controls deterministic.</p>
+            <p>Canvas Snake with buffered input, growth, collisions, pacing, and best scores.</p>
+            <p class="lab-takeaway"><strong>Takeaway:</strong> Turn guards keep controls deterministic.</p>
             <dl class="lab-detail-list">
               <div>
-                <dt>What I built</dt>
-                <dd>
-                  <ul>
-                    <li>Implemented grid state for snake segments, food placement, growth, wall/body collision detection, score, and length.</li>
-                    <li>Built input buffering for Arrow keys, WASD, swipe gestures, and touch buttons while blocking illegal reverse turns.</li>
-                    <li>Added pace changes, pause/restart/fullscreen controls, viewport-aware canvas sizing, and local best-score persistence.</li>
-                  </ul>
-                </dd>
-              </div>
-              <div>
-                <dt>Demonstrates</dt>
-                <dd>Grid state, timed movement, collision rules, and input buffering.</dd>
+                <dt>Built</dt>
+                <dd>Grid state, food, growth, collisions, pacing, pause, and best scores.</dd>
               </div>
               <div>
                 <dt>Controls</dt>
-                <dd>Arrow keys, WASD, swipe-style touch controls, pause, restart, and fullscreen.</dd>
+                <dd>Arrow keys, WASD, swipe controls, pause, restart, and fullscreen.</dd>
               </div>
               <div>
-                <dt>Mobile/touch</dt>
-                <dd>Supported with large on-screen direction controls and the same buffered movement logic as keyboard play.</dd>
-              </div>
-              <div>
-                <dt>Production readiness</dt>
-                <dd>Archived experiment with solid grid state and input buffering. Real-user hardening would add collision/turn tests, save reset controls, and better screen-reader alternatives.</dd>
+                <dt>Status</dt>
+                <dd>Archived; needs turn tests, save reset, and stronger screen-reader support.</dd>
               </div>
             </dl>
             <div class="lab-actions">
@@ -331,34 +275,20 @@
             </figure>
             <span class="lab-card-kicker">Arcade game</span>
             <h3>Brick Breaker</h3>
-            <p>Paddle games need precise collisions; I built a Canvas/JavaScript Brick Breaker with launch state, wall/paddle/brick checks, levels, progress, and touch controls.</p>
-            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Keeping launch state, paddle input, ball motion, and brick removal in one loop makes collision edge cases visible.</p>
+            <p>Canvas Brick Breaker with launch state, collisions, levels, and touch controls.</p>
+            <p class="lab-takeaway"><strong>Takeaway:</strong> One loop handles input, motion, and brick removal.</p>
             <dl class="lab-detail-list">
               <div>
-                <dt>What I built</dt>
-                <dd>
-                  <ul>
-                    <li>Implemented paddle movement, ball launch state, wall/paddle/brick collision checks, lives, scoring, and level-clearing logic.</li>
-                    <li>Built progress, level, best-score, and power readouts around a viewport-aware Canvas playfield.</li>
-                    <li>Added keyboard, pointer, and labeled touch controls that share the same movement and launch state.</li>
-                  </ul>
-                </dd>
-              </div>
-              <div>
-                <dt>Demonstrates</dt>
-                <dd>Collision checks, level reset logic, paddle input, and canvas redraw loops.</dd>
+                <dt>Built</dt>
+                <dd>Paddle state, launch flow, collisions, lives, scores, and levels.</dd>
               </div>
               <div>
                 <dt>Controls</dt>
-                <dd>Keyboard, pointer movement, touch controls, restart, pause, and fullscreen.</dd>
+                <dd>Keyboard, pointer, touch, restart, pause, and fullscreen.</dd>
               </div>
               <div>
-                <dt>Mobile/touch</dt>
-                <dd>Supported with touch controls for moving and launching, plus viewport-aware canvas sizing for narrow screens.</dd>
-              </div>
-              <div>
-                <dt>Production readiness</dt>
-                <dd>Archived experiment with a working arcade loop. Hardening would add collision edge tests, performance checks, validated level data, and nonvisual gameplay alternatives.</dd>
+                <dt>Status</dt>
+                <dd>Archived; needs collision tests, performance checks, and nonvisual alternatives.</dd>
               </div>
             </dl>
             <div class="lab-actions">
@@ -376,34 +306,20 @@
             </figure>
             <span class="lab-card-kicker">Puzzle game</span>
             <h3>2048</h3>
-            <p>Tile merging needs deterministic board transforms; I built an HTML/CSS/JavaScript 2048 with single-merge rules, random spawns, undo, best score, and accessible summaries.</p>
-            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Pure board transforms make merge rules, undo snapshots, persistence, and screen-reader summaries easier to reason about.</p>
+            <p>2048 with merge rules, spawns, undo, best score, and row summaries.</p>
+            <p class="lab-takeaway"><strong>Takeaway:</strong> Pure board transforms simplify undo and persistence.</p>
             <dl class="lab-detail-list">
               <div>
-                <dt>What I built</dt>
-                <dd>
-                  <ul>
-                    <li>Implemented directional board transforms, merge rules, random tile spawning, win/loss checks, score updates, and move counting.</li>
-                    <li>Built undo snapshots, local save/best-score persistence, keyboard shortcuts, swipe handling, and on-screen direction controls.</li>
-                    <li>Added an accessible focusable board with dynamic row summaries, live status announcements, and decorative tile rendering separated from screen-reader output.</li>
-                  </ul>
-                </dd>
-              </div>
-              <div>
-                <dt>Demonstrates</dt>
-                <dd>Board transforms, merge rules, undo snapshots, and persistent score state.</dd>
+                <dt>Built</dt>
+                <dd>Board transforms, spawns, undo, local save, shortcuts, and live status.</dd>
               </div>
               <div>
                 <dt>Controls</dt>
-                <dd>Arrow keys, swipe, on-screen direction buttons, undo, restart, and fullscreen.</dd>
+                <dd>Arrow keys, swipe, direction buttons, undo, restart, and fullscreen.</dd>
               </div>
               <div>
-                <dt>Mobile/touch</dt>
-                <dd>Supported with swipe gestures and on-screen direction buttons for touch-first play.</dd>
-              </div>
-              <div>
-                <dt>Production readiness</dt>
-                <dd>Archived experiment with solid board transforms, undo, and accessible summaries. Hardening would add merge-rule tests, state migration, and screen-reader regression checks.</dd>
+                <dt>Status</dt>
+                <dd>Archived; needs merge tests, state migration, and screen-reader checks.</dd>
               </div>
             </dl>
             <div class="lab-actions">
@@ -421,34 +337,20 @@
             </figure>
             <span class="lab-card-kicker">Logic game</span>
             <h3>Minefield Sweep</h3>
-            <p>Mine puzzles need clear state and safe starts; I built a JavaScript grid game with delayed mines, recursive reveal, flag mode, timers, and accessible labels.</p>
-            <p class="lab-takeaway"><strong>Technical takeaway:</strong> A board can be visual and still expose useful keyboard focus, cell labels, and live status feedback.</p>
+            <p>Mine puzzle with delayed mines, recursive reveal, flags, timers, and labels.</p>
+            <p class="lab-takeaway"><strong>Takeaway:</strong> Visual boards still need focus and live status.</p>
             <dl class="lab-detail-list">
               <div>
-                <dt>What I built</dt>
-                <dd>
-                  <ul>
-                    <li>Implemented delayed mine placement, safe first reveal, adjacent counts, recursive empty-cell reveal, flag toggling, and win/loss state.</li>
-                    <li>Built difficulty switching, timer/best-time persistence, mines-left tracking, cleared-percent updates, pause/restart controls, and touch flag mode.</li>
-                    <li>Rendered the board as a keyboard-navigable grid with roving focus, row/column labels, live announcements, and state-specific cell descriptions.</li>
-                  </ul>
-                </dd>
-              </div>
-              <div>
-                <dt>Demonstrates</dt>
-                <dd>Recursive reveal logic, board generation, flag state, and accessible grid feedback.</dd>
+                <dt>Built</dt>
+                <dd>Safe first reveal, flags, win/loss, timer, roving focus, and labels.</dd>
               </div>
               <div>
                 <dt>Controls</dt>
-                <dd>Click or tap to reveal, right-click or flag mode to mark mines, plus restart controls.</dd>
+                <dd>Click/tap to reveal; right-click or flag mode to mark mines.</dd>
               </div>
               <div>
-                <dt>Mobile/touch</dt>
-                <dd>Supported with tap-to-reveal, flag mode, difficulty buttons, and a horizontally safe board shell.</dd>
-              </div>
-              <div>
-                <dt>Production readiness</dt>
-                <dd>Accessible prototype with keyboard grid state and safe first reveal. Hardening would add reveal/flag tests, focus regression checks, difficulty validation, and clearer saved-state controls.</dd>
+                <dt>Status</dt>
+                <dd>Prototype; needs reveal tests, focus checks, validation, and save controls.</dd>
               </div>
             </dl>
             <div class="lab-actions">
@@ -466,34 +368,20 @@
             </figure>
             <span class="lab-card-kicker">Timing game</span>
             <h3>Flappy Workbench</h3>
-            <p>Timing games need consistent physics; I built a Canvas/JavaScript Flappy-style loop with gravity, obstacle gaps, collision checks, best score, pause, and mobile flap input.</p>
-            <p class="lab-takeaway"><strong>Technical takeaway:</strong> Simple physics loops still need explicit pause, restart, collision, score, and reduced-motion decisions.</p>
+            <p>Flappy-style loop with gravity, gaps, collisions, best score, and mobile input.</p>
+            <p class="lab-takeaway"><strong>Takeaway:</strong> Simple physics still needs pause and restart rules.</p>
             <dl class="lab-detail-list">
               <div>
-                <dt>What I built</dt>
-                <dd>
-                  <ul>
-                    <li>Implemented gravity, jump impulse, pipe spawning, gap sizing, collision checks, score tracking, and restart flow.</li>
-                    <li>Built the Canvas render loop for the player, scrolling obstacles, ground movement, menu state, status text, and best-score persistence.</li>
-                    <li>Added keyboard, pointer, tap, and labeled mobile Flap controls with pause/restart/fullscreen support.</li>
-                  </ul>
-                </dd>
-              </div>
-              <div>
-                <dt>Demonstrates</dt>
-                <dd>Gravity/jump physics, obstacle generation, collision checks, and game-state transitions.</dd>
+                <dt>Built</dt>
+                <dd>Gravity, jumps, pipes, collisions, scoring, restart flow, and status.</dd>
               </div>
               <div>
                 <dt>Controls</dt>
-                <dd>Click, tap, or keyboard input to flap, with restart and fullscreen controls.</dd>
+                <dd>Click, tap, keyboard, restart, pause, and fullscreen.</dd>
               </div>
               <div>
-                <dt>Mobile/touch</dt>
-                <dd>Supported with tap input, keyboard input, and viewport-aware canvas scaling.</dd>
-              </div>
-              <div>
-                <dt>Production readiness</dt>
-                <dd>Archived experiment with a working timing loop and mobile flap input. Hardening would add deterministic physics tests, mobile-browser QA, reduced-motion review, and pause/resume validation.</dd>
+                <dt>Status</dt>
+                <dd>Archived; needs physics tests, mobile QA, and pause/resume validation.</dd>
               </div>
             </dl>
             <div class="lab-actions">
@@ -507,8 +395,8 @@
       <section class="next-step-panel" aria-labelledby="lab-next-title">
         <div>
           <p class="eyebrow">Next step</p>
-          <h2 id="lab-next-title">Connect the experiments to the case studies.</h2>
-          <p>The lab keeps browser experiments in one place. For broader context, jump back to selected work, case studies, or the resume.</p>
+          <h2 id="lab-next-title">Connect experiments to case studies.</h2>
+          <p>For broader context, jump to Work, Case Studies, or Resume.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="work.html">Back to selected work</a>
@@ -521,7 +409,7 @@
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer building practical web tools, automation, and frontend interfaces.</span>
+        <span>Software developer building web tools, automation, and frontend UI.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>

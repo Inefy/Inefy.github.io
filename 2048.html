@@ -58,7 +58,7 @@
         <div class="demo-overview-copy">
           <span class="next-step-kicker">Game guide</span>
           <h1 id="merge-overview-title">2048</h1>
-          <p>Tile merging needs deterministic board transforms; I built an HTML/CSS/JavaScript 2048 implementation with move compression, single-merge resolution, random tile spawning, undo snapshots, saved best score, swipe input, and accessible board summaries.</p>
+          <p>HTML/CSS/JavaScript 2048 with deterministic merges, random spawns, undo, saved best score, swipe input, and board summaries.</p>
           <dl class="demo-status-list" aria-label="2048 project status">
             <div>
               <dt>Status</dt>
@@ -83,7 +83,7 @@
           </div>
           <div>
             <dt>Keyboard</dt>
-            <dd>Focus the board, then use Arrow keys or WASD to move tiles. Enter or Space starts from the menu, and Ctrl/Cmd+Z undoes the last move.</dd>
+            <dd>Focus the board, use Arrow/WASD to move, Enter/Space to start, and Ctrl/Cmd+Z to undo.</dd>
           </div>
           <div>
             <dt>Touch</dt>
@@ -152,7 +152,7 @@
         <div class="game-stage">
           <section class="merge-panel" aria-label="2048 board">
             <h2 class="sr-only" id="merge-board-title">2048 board</h2>
-            <p class="sr-only" id="merge-keyboard-instructions">Focus the board, then use Arrow keys or W, A, S, and D to move tiles. Press Control Z or Command Z to undo the last move.</p>
+            <p class="sr-only" id="merge-keyboard-instructions">Focus the board, then use Arrow keys or W, A, S, and D. Press Control Z or Command Z to undo.</p>
             <p class="sr-only" id="merge-touch-instructions">On touch screens, swipe on the board or use the labeled direction buttons below the board.</p>
             <p class="sr-only" id="merge-board-state">Board not started.</p>
             <div class="merge-board" id="gameBoard" role="group" aria-label="2048 board" aria-describedby="merge-keyboard-instructions merge-touch-instructions merge-board-state merge-keyboard-shortcuts merge-touch-controls" aria-keyshortcuts="ArrowUp ArrowRight ArrowDown ArrowLeft W A S D Control+Z Meta+Z" tabindex="0">
@@ -192,36 +192,36 @@
 
       <section class="implementation-notes" aria-labelledby="merge-implementation-title">
         <span class="next-step-kicker">Implementation notes</span>
-        <h2 id="merge-implementation-title">Board transforms, merge history, and tile input.</h2>
+        <h2 id="merge-implementation-title">Board transforms, history, and input.</h2>
         <p>
-          <strong>Main state</strong> is the 4-by-4 board array, score, best score, move count, previous board snapshot, new tile marker, merged tile keys, and win/over status. Each move is a deterministic board transform: compress values toward a direction, merge equal neighbors once, spawn a random tile, and re-render the tile layer. Scoring is calculated from merge values, with undo restoring the previous board and score. Keyboard input maps Arrow keys and WASD to directions, Enter or Space starts from the menu, and Ctrl/Cmd+Z undoes. Touch behavior supports swipe gestures plus on-screen direction buttons. The lesson was separating the logical board transform from DOM rendering so merge rules stay testable by inspection.
+          <strong>Main state</strong> tracks board, score, best, moves, undo, and win/loss. Each move compresses, merges, spawns, and re-renders through one input path.
         </p>
       </section>
 
       <section class="demo-built" aria-labelledby="merge-built-title">
         <span class="next-step-kicker">What I built</span>
-        <h2 id="merge-built-title">Tile-state engine, board input, and win/loss feedback.</h2>
+        <h2 id="merge-built-title">Tile engine, input, and feedback.</h2>
         <ul>
           <li>Implemented directional board transforms, merge rules, random tile spawning, win/loss checks, score updates, and move counting.</li>
           <li>Built undo snapshots, local save/best-score persistence, keyboard shortcuts, swipe handling, and on-screen direction controls.</li>
-          <li>Added an accessible focusable board with dynamic row summaries, live status announcements, and decorative tile rendering separated from screen-reader output.</li>
+          <li>Added a focusable board with row summaries, live status, and separate visual tiles.</li>
         </ul>
-        <p class="ownership-note">The 2048 game rules are external and well established; this no-dependency browser implementation and UI shell are custom code.</p>
+        <p class="ownership-note">2048 rules are established; this no-dependency browser implementation is custom.</p>
       </section>
 
       <section class="implementation-notes" aria-labelledby="merge-readiness-title">
         <span class="next-step-kicker">Production readiness</span>
-        <h2 id="merge-readiness-title">Archived experiment with strong board-state fundamentals.</h2>
+        <h2 id="merge-readiness-title">Archived experiment with solid board state.</h2>
         <p>
-          <strong>Already solid</strong> includes merge transforms, undo, local persistence, swipe input, keyboard controls, and accessible board summaries. <strong>Demo-only</strong> areas include limited automated rule coverage and simple localStorage state. Hardening would add unit tests for every merge path, save migration/reset behavior, and screen-reader regression checks.
+          <strong>Solid:</strong> merges, undo, persistence, swipe, keyboard controls, and summaries. <strong>Hardening:</strong> merge tests, save migration/reset, and screen-reader checks.
         </p>
       </section>
 
       <section class="implementation-notes" aria-labelledby="merge-run-title">
         <span class="next-step-kicker">Deployment and run notes</span>
-        <h2 id="merge-run-title">Static board game with browser-only persistence.</h2>
+        <h2 id="merge-run-title">Static game with browser persistence.</h2>
         <p>
-          <strong>Hosted/run location:</strong> GitHub Pages serves <code>2048.html</code>, <code>2048.css</code>, and <code>2048.js</code>. <strong>Environment/config:</strong> no environment variables are required; board size, tile rules, keyboard/swipe controls, and scoring live in JavaScript. <strong>External APIs/services:</strong> none beyond DOM events, touch input, and LocalStorage for save/best score state. <strong>Local development:</strong> run <code>python -m http.server 8000</code> and open <code>/2048.html</code>. <strong>Security:</strong> stored board state remains local to the browser.
+          GitHub Pages serves <code>2048.html</code>, <code>2048.css</code>, and <code>2048.js</code>. No env vars or external APIs. Local: run <code>python -m http.server 8000</code> and open <code>/2048.html</code>. State stays local.
         </p>
       </section>
 
@@ -229,7 +229,7 @@
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="merge-next-title">More browser experiments</h2>
-          <p>Tile-merge logic is one of the lab's state-management examples; compare it with the canvas games and the main case studies for broader implementation context.</p>
+          <p>Compare tile state with the canvas games and main case studies.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>

@@ -60,7 +60,7 @@
         <div class="demo-overview-copy">
           <span class="next-step-kicker">Game guide</span>
           <h1 id="golf-overview-title">Mini Golf</h1>
-          <p>A touch-friendly golf demo needs aiming, scoring, and hole flow; I built a Canvas/JavaScript five-hole course with drag-to-aim shots, power calculation, collision response, hazards, scorecard state, and local best-score persistence.</p>
+          <p>Canvas mini golf with drag-to-aim shots, power calculation, collisions, hazards, scorecards, and local best score.</p>
           <dl class="demo-status-list" aria-label="Mini Golf project status">
             <div>
               <dt>Status</dt>
@@ -86,7 +86,7 @@
           </div>
           <div>
             <dt>Keyboard</dt>
-            <dd>Space or Enter starts the round, P or Escape pauses and resumes, R restarts the current hole, and N advances after a clear.</dd>
+            <dd>Space/Enter starts, P/Escape pauses, R restarts, and N advances after a clear.</dd>
           </div>
           <div>
             <dt>Touch</dt>
@@ -206,7 +206,7 @@
         <span class="next-step-kicker">Implementation notes</span>
         <h2 id="golf-implementation-title">Course data, shot physics, and score state.</h2>
         <p>
-          <strong>Main state</strong> includes the current hole, ball position and velocity, aim vector, stroke count, surface, scorecard, and saved best score. The canvas loop advances physics only while the ball is moving, so static aiming and score UI stay cheap. Collision logic checks walls, hazards, cup distance, and surface zones; scoring increments strokes per shot, records each hole, and persists the run best in localStorage. Pointer input captures drag start, move, and release for aiming and power, while keyboard shortcuts start, restart, and advance. Touch uses the same pointer path plus visible Prev, Next, and Restart controls. The main lesson was separating hole data from physics code, which made new layouts possible without rewriting collision behavior.
+          <strong>Main state</strong> tracks hole, ball, aim, strokes, surface, scorecard, and best score. Physics runs only while the ball moves.
         </p>
       </section>
 
@@ -218,14 +218,14 @@
           <li>Implemented drag aiming, shot-power calculation, ball motion, wall/hazard/cup collision checks, and stroke counting.</li>
           <li>Built scorecard UI, best-score persistence, pause/restart/fullscreen controls, touch hints, and hole navigation.</li>
         </ul>
-        <p class="ownership-note">The game uses standard Canvas/browser APIs and familiar mini-golf rules; the layouts, state handling, and UI wiring are custom code.</p>
+        <p class="ownership-note">Uses standard Canvas/browser APIs and familiar mini-golf rules; layouts, state, and UI are custom.</p>
       </section>
 
       <section class="implementation-notes" aria-labelledby="golf-readiness-title">
         <span class="next-step-kicker">Production readiness</span>
         <h2 id="golf-readiness-title">Archived experiment with a clear course loop.</h2>
         <p>
-          <strong>Already solid</strong> includes drag aiming, course progression, collision checks, hazards, scorecards, best-score persistence, and touch input. <strong>Demo-only</strong> areas include informal physics tuning and limited accessibility alternatives. Hardening would add physics edge-case tests, mobile browser QA, save reset/migration behavior, and nonvisual course feedback.
+          <strong>Solid:</strong> drag aiming, progression, collisions, hazards, scorecards, and touch. <strong>Hardening:</strong> physics tests, mobile QA, save controls, and nonvisual feedback.
         </p>
       </section>
 
@@ -233,7 +233,7 @@
         <span class="next-step-kicker">Deployment and run notes</span>
         <h2 id="golf-run-title">No-build game page with course config in JavaScript.</h2>
         <p>
-          <strong>Hosted/run location:</strong> GitHub Pages serves <code>mini-golf.html</code>, <code>mini-golf.css</code>, and <code>mini-golf.js</code>. <strong>Environment/config:</strong> no environment variables are required; course layouts, par values, hazards, and scoring rules are static JavaScript config. <strong>External APIs/services:</strong> none beyond Canvas, Pointer Events, Fullscreen, and LocalStorage for best runs. <strong>Local development:</strong> run <code>python -m http.server 8000</code> and open <code>/mini-golf.html</code>. <strong>Security:</strong> no secrets, accounts, or networked user data are involved.
+          GitHub Pages serves <code>mini-golf.html</code>, <code>mini-golf.css</code>, and <code>mini-golf.js</code>. No env vars or external APIs beyond browser APIs and LocalStorage. Local: run <code>python -m http.server 8000</code> and open <code>/mini-golf.html</code>.
         </p>
       </section>
 
@@ -241,7 +241,7 @@
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="golf-next-title">More physics-style demos</h2>
-          <p>Drag-to-aim physics is one of the lab's input examples; compare it with the other browser demos and the main case studies for broader implementation context.</p>
+          <p>Compare drag-to-aim physics with the other demos and main case studies.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>
