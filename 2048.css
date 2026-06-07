@@ -302,7 +302,7 @@ button:disabled {
 .score-chip span {
   color: var(--muted);
   font-size: 0.72rem;
-  font-weight: 750;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -633,7 +633,7 @@ button:disabled {
 .menu-kicker {
   color: var(--mint);
   font-size: 0.74rem;
-  font-weight: 850;
+  font-weight: 900;
   text-transform: uppercase;
 }
 

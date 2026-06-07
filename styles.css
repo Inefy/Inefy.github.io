@@ -387,7 +387,7 @@ h3 {
   line-height: 1.05;
 }
 
-.brand-copy small {
+.brand-subtitle {
   margin-top: 4px;
   color: var(--muted);
   font-family: "JetBrains Mono", monospace;
@@ -401,7 +401,7 @@ h3 {
   gap: 5px;
   color: var(--muted);
   font-size: 0.88rem;
-  font-weight: 850;
+  font-weight: 900;
 }
 
 .nav[hidden] {
@@ -564,7 +564,7 @@ h3 {
 .project-status-list dd {
   margin: 0;
   color: var(--soft);
-  font-weight: 850;
+  font-weight: 900;
   line-height: 1.35;
 }
 
@@ -937,11 +937,12 @@ h3 {
   color: var(--gold);
 }
 
-.hero-dock strong {
+.hero-dock h3 {
   display: block;
   margin-bottom: 5px;
   font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 1.35rem;
+  line-height: 1.1;
 }
 
 .hero-dock p {
@@ -949,65 +950,49 @@ h3 {
   font-size: 0.94rem;
 }
 
-#local-time {
-  display: inline-block;
-  min-width: 13ch;
-}
-
-.metric-band {
+.metric-band,
+.credibility-strip {
+  --stat-accent: rgba(104, 183, 255, 0.08);
+  --stat-bg: rgba(21, 26, 27, 0.9);
+  --stat-padding: clamp(22px, 3.6vw, 42px) clamp(18px, 5vw, 76px);
+  --stat-value-size: clamp(2rem, 4vw, 3.5rem);
+  --stat-label-size: inherit;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--line);
   border-bottom: 1px solid var(--line);
-}
-
-.metric-band div {
-  padding: clamp(22px, 3.6vw, 42px) clamp(18px, 5vw, 76px);
-  background:
-    linear-gradient(135deg, rgba(104, 183, 255, 0.08), transparent 56%),
-    rgba(21, 26, 27, 0.9);
-}
-
-.metric-band strong {
-  display: block;
-  color: var(--ink);
-  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1;
-}
-
-.metric-band span {
-  color: var(--muted);
-  font-weight: 800;
 }
 
 .credibility-strip {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border-bottom: 1px solid var(--line);
+  --stat-accent: rgba(104, 183, 255, 0.07);
+  --stat-bg: rgba(21, 26, 27, 0.88);
+  --stat-padding: clamp(18px, 2.7vw, 30px) clamp(18px, 5vw, 76px);
+  --stat-value-size: clamp(1.7rem, 3vw, 2.7rem);
+  --stat-label-size: 0.92rem;
 }
 
+.metric-band div,
 .credibility-strip div {
-  padding: clamp(18px, 2.7vw, 30px) clamp(18px, 5vw, 76px);
+  padding: var(--stat-padding);
   background:
-    linear-gradient(135deg, rgba(104, 183, 255, 0.07), transparent 56%),
-    rgba(21, 26, 27, 0.88);
+    linear-gradient(135deg, var(--stat-accent), transparent 56%),
+    var(--stat-bg);
 }
 
+.metric-band strong,
 .credibility-strip strong {
   display: block;
   color: var(--ink);
   font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: clamp(1.7rem, 3vw, 2.7rem);
+  font-size: var(--stat-value-size);
   line-height: 1;
 }
 
+.metric-band span,
 .credibility-strip span {
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: var(--stat-label-size);
   font-weight: 800;
 }
 
@@ -1041,7 +1026,7 @@ h3 {
   margin: 0;
   color: var(--muted);
   font-size: 0.95rem;
-  font-weight: 750;
+  font-weight: 800;
   line-height: 1.5;
 }
 
@@ -1137,7 +1122,7 @@ h3 {
   margin-bottom: 0;
   color: var(--soft);
   font-size: clamp(1rem, 1.45vw, 1.16rem);
-  font-weight: 650;
+  font-weight: 700;
   line-height: 1.7;
 }
 
@@ -1177,7 +1162,7 @@ h3 {
   border: 1px solid rgba(109, 225, 166, 0.18);
   border-radius: 8px;
   font-size: 0.82rem;
-  font-weight: 850;
+  font-weight: 900;
 }
 
 .about-actions {
@@ -1229,7 +1214,7 @@ h3 {
 .strength-card p {
   margin-bottom: 22px;
   color: var(--muted);
-  font-weight: 650;
+  font-weight: 700;
 }
 
 .strength-card p strong,
@@ -1271,7 +1256,7 @@ h3 {
   margin-bottom: 14px;
   color: var(--soft);
   font-size: clamp(1rem, 1.45vw, 1.16rem);
-  font-weight: 650;
+  font-weight: 700;
 }
 
 .flagship-problem strong,
@@ -1548,7 +1533,7 @@ h3 {
 .project-problem {
   margin-bottom: 18px;
   color: var(--soft);
-  font-weight: 750;
+  font-weight: 800;
 }
 
 .project-problem-line {
@@ -1596,7 +1581,7 @@ h3 {
 .what-built-summary {
   margin: 0;
   color: var(--soft);
-  font-weight: 720;
+  font-weight: 700;
   line-height: 1.45;
 }
 
@@ -1616,22 +1601,6 @@ h3 {
   flex-wrap: wrap;
   gap: 7px;
   margin-bottom: 18px;
-}
-
-.tech-stack span,
-.tech-chip {
-  display: inline-flex;
-  min-height: 28px;
-  align-items: center;
-  padding: 0 9px;
-  color: var(--soft);
-  background: var(--chip-surface);
-  border: 1px solid var(--chip-border);
-  border-radius: var(--card-radius);
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.67rem;
-  font-weight: 800;
-  text-transform: uppercase;
 }
 
 .paint-preview {
@@ -1946,8 +1915,7 @@ h3 {
 }
 
 .case-tags span,
-.traverse-tags span,
-.tech-chip {
+.traverse-tags span {
   display: inline-flex;
   min-height: 30px;
   align-items: center;
@@ -2248,7 +2216,7 @@ h3 {
   border-radius: 8px;
   font: inherit;
   font-size: 1rem;
-  font-weight: 750;
+  font-weight: 800;
 }
 
 .traverse-form-card textarea {
@@ -2966,14 +2934,31 @@ h3 {
   padding-left: 20px;
 }
 
-.contact-page h1 {
+.contact-page h1,
+.error-page h1 {
   max-width: 1040px;
   font-size: clamp(3rem, 7vw, 6.4rem);
   line-height: 0.95;
   overflow-wrap: anywhere;
 }
 
-.contact-page-content {
+.contact-hero-subtitle {
+  max-width: 760px;
+  margin: -4px 0 0;
+  color: var(--soft);
+  font-size: clamp(1.02rem, 1.8vw, 1.24rem);
+}
+
+.contact-hero-subtitle a {
+  color: var(--gold);
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-color: rgba(109, 225, 166, 0.48);
+  text-underline-offset: 4px;
+}
+
+.contact-page-content,
+.error-page-content {
   padding-top: clamp(24px, 4vw, 54px);
 }
 
@@ -3139,7 +3124,7 @@ h3 {
 
 .opportunity-statement {
   color: var(--soft);
-  font-weight: 750;
+  font-weight: 800;
 }
 
 .interactive-lab {
@@ -3690,7 +3675,7 @@ h3 {
   margin: 0;
   color: var(--soft);
   font-size: clamp(1rem, 1.4vw, 1.14rem);
-  font-weight: 650;
+  font-weight: 700;
   line-height: 1.6;
 }
 
@@ -3727,7 +3712,7 @@ h3 {
 .resume-header-links a,
 .resume-link-list a {
   color: var(--soft);
-  font-weight: 850;
+  font-weight: 900;
   overflow-wrap: anywhere;
   text-decoration: underline;
   text-decoration-color: rgba(109, 225, 166, 0.52);
@@ -5164,7 +5149,7 @@ h3 {
   position: relative;
   padding-left: 20px;
   color: var(--soft);
-  font-weight: 750;
+  font-weight: 800;
   line-height: 1.45;
 }
 
@@ -6993,7 +6978,7 @@ h3 {
 
 .movie-fallback-list a {
   color: var(--ink);
-  font-weight: 850;
+  font-weight: 900;
 }
 
 .movie-fallback-list span {
@@ -8434,7 +8419,7 @@ h3 {
     margin-bottom: 14px;
   }
 
-  .tech-stack span {
+  .tech-stack .tech-chip {
     min-height: 26px;
     font-size: 0.62rem;
   }
@@ -8547,7 +8532,7 @@ h3 {
 }
 
 @media (max-width: 430px) {
-  .brand-copy small {
+  .brand-subtitle {
     display: none;
   }
 

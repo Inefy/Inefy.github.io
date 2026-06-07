@@ -42,6 +42,7 @@
       ? `https://www.twitch.tv/popout/${encodeURIComponent(channel)}/chat?popout=`
       : `https://www.twitch.tv/${encodeURIComponent(channel)}`;
     link.rel = "noopener noreferrer";
+    link.target = "_blank";
     link.textContent = type === "chat" ? "Open chat" : "Open stream";
 
     inner.append(title, message, link);
@@ -63,6 +64,7 @@
       ? `https://www.twitch.tv/popout/${encodeURIComponent(channel)}/chat?popout=`
       : `https://www.twitch.tv/${encodeURIComponent(channel)}`;
     link.rel = "noopener noreferrer";
+    link.target = "_blank";
     link.textContent = type === "chat" ? "Open chat" : "Open stream";
 
     assist.append(label, link);
@@ -105,6 +107,7 @@
       ? `https://www.twitch.tv/popout/${encodeURIComponent(channel)}/chat?popout=`
       : `https://www.twitch.tv/${encodeURIComponent(channel)}`;
     link.rel = "noopener noreferrer";
+    link.target = "_blank";
     link.textContent = type === "chat" ? "Open chat" : "Open stream";
 
     actions.append(loadButton, link);

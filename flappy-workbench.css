@@ -140,7 +140,7 @@ a:focus-visible {
   gap: 6px;
   color: var(--muted);
   font-size: 0.92rem;
-  font-weight: 850;
+  font-weight: 900;
 }
 
 .game-nav a,
@@ -351,7 +351,7 @@ a:focus-visible {
   border: 1px solid rgba(255, 247, 232, 0.16);
   border-radius: 8px;
   font-size: 0.84rem;
-  font-weight: 850;
+  font-weight: 900;
   line-height: 1.25;
   pointer-events: none;
 }

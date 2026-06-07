@@ -86,7 +86,7 @@ npm run quality
 - `web-paint-case-study.html`, `paint.html`, `paint.css`, `paint.js` - Canvas case study and browser drawing tool.
 - `interactive-lab.html` plus game/tool files - standalone browser experiments.
 - `resume.html`, `contact.html`, `about.html`, `notes.html`, `changelog.html` - supporting public pages.
-- `project-data.js`, `project-renderer.js`, `shared.js`, `home.js` - shared metadata, rendering, navigation, copy, and homepage behavior.
+- `shared.js`, `home.js` - shared navigation, copy, and homepage behavior.
 - `scripts/` and `tests/` - static QA scripts and Playwright smoke tests.
 - `assets/`, `CNAME`, `robots.txt`, `sitemap.xml` - visual assets, custom domain, and indexing files.
 
@@ -108,7 +108,7 @@ portfolio, github-pages, static-site, frontend, javascript, case-studies, movieb
 ## Maintenance Notes
 
 - This is a static site with no build step. npm is used only for QA tooling.
-- Update shared project card metadata in `project-data.js` first, then keep the no-JS fallback cards in `index.html`, `work.html`, and `case-studies.html` aligned for titles, statuses, and source/demo/case-study labels.
+- Update project cards directly in `index.html`, `work.html`, and `case-studies.html`; these pages intentionally use static HTML cards for no-JS parity and simpler maintenance.
 - Store future screenshots in `assets/` as optimized `.webp` plus `.png` fallback when useful.
 - Use meaningful alt text, real `width`/`height`, and `loading="lazy"` for below-the-fold images.
 - Keep accessibility claims evidence-based: keyboard checks, visible focus states, reduced motion, status messages, and current Canvas limits.

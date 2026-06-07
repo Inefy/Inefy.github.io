@@ -169,7 +169,7 @@ a:focus-visible {
   gap: 7px;
   color: var(--muted);
   font-size: 0.9rem;
-  font-weight: 850;
+  font-weight: 900;
 }
 
 .game-nav a,
@@ -280,7 +280,7 @@ a:focus-visible {
   color: var(--muted);
   font-family: "JetBrains Mono", Consolas, monospace;
   font-size: 0.64rem;
-  font-weight: 850;
+  font-weight: 900;
   text-transform: uppercase;
 }
 

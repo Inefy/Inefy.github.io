@@ -177,7 +177,7 @@
   min-height: 44px;
   color: var(--demo-nav-muted);
   font-size: 0.8rem;
-  font-weight: 850;
+  font-weight: 900;
 }
 
 .game-breadcrumb a {
@@ -257,7 +257,7 @@
 
 .demo-status-list dd {
   color: var(--demo-nav-ink);
-  font-weight: 850;
+  font-weight: 900;
 }
 
 .demo-overview-actions {

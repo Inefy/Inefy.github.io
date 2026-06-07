@@ -163,34 +163,11 @@
         await navigator.clipboard.writeText(value);
         return true;
       } catch {
-        // Fall back for browsers that expose the Clipboard API but block writes.
+        throw new Error("Clipboard write blocked");
       }
     }
 
-    const textarea = document.createElement("textarea");
-    textarea.value = value;
-    textarea.setAttribute("readonly", "");
-    textarea.style.position = "fixed";
-    textarea.style.inset = "0 auto auto 0";
-    textarea.style.width = "1px";
-    textarea.style.height = "1px";
-    textarea.style.opacity = "0";
-    document.body.appendChild(textarea);
-    textarea.select();
-    textarea.setSelectionRange(0, value.length);
-
-    let didCopy = false;
-    try {
-      didCopy = document.execCommand("copy");
-    } finally {
-      textarea.remove();
-    }
-
-    if (!didCopy) {
-      throw new Error("Email copy failed");
-    }
-
-    return didCopy;
+    throw new Error("Clipboard API unavailable");
   }
 
   function initCopyEmailButtons() {

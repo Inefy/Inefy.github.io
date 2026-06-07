@@ -248,7 +248,7 @@ a {
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
   color: var(--text);
   font-size: 0.9rem;
-  font-weight: 850;
+  font-weight: 900;
   padding: 0 14px;
   transition: border-color 140ms ease, background 140ms ease, box-shadow 140ms ease, transform 120ms ease;
 }
@@ -502,7 +502,7 @@ body[data-game-state="over"] .status-dot {
   background: rgba(104, 183, 255, 0.09);
   color: var(--text);
   font-size: 0.74rem;
-  font-weight: 850;
+  font-weight: 900;
 }
 
 .drift-system-grid,
@@ -781,7 +781,7 @@ body[data-game-state="over"] .status-dot {
   min-height: 1.2em;
   color: var(--muted);
   font-size: 0.92rem;
-  font-weight: 750;
+  font-weight: 800;
 }
 
 .menu-brief {
@@ -789,7 +789,7 @@ body[data-game-state="over"] .status-dot {
   max-width: 34rem;
   color: var(--text);
   font-size: 0.95rem;
-  font-weight: 750;
+  font-weight: 800;
   line-height: 1.45;
 }
 
@@ -881,7 +881,7 @@ body[data-game-state="over"] .status-dot {
   margin: 8px 0 0;
   color: var(--muted);
   font-size: 0.78rem;
-  font-weight: 750;
+  font-weight: 800;
   line-height: 1.35;
   text-align: center;
 }
