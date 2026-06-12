@@ -143,7 +143,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260612-visual">
+    <link rel="stylesheet" href="styles.css?v=20260612-visual2">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -168,12 +168,14 @@
     </header>
 
     <main id="top" tabindex="-1">
-      <section class="hero simple-hero" aria-labelledby="hero-title">
+      <section class="hero home-hero" aria-labelledby="hero-title">
+        <div class="hero-ambient" aria-hidden="true"></div>
         <div class="hero-copy">
-          <p class="eyebrow">Zac Batten / Software developer</p>
-          <h1 id="hero-title">I build practical web tools.</h1>
-          <p class="hero-role">Frontend, internal tools, Python automation, map UI, and browser apps.</p>
+          <p class="hero-badge"><span class="live-dot" aria-hidden="true"></span> Available for new work</p>
+          <h1 id="hero-title">I build <span class="gradient-text">practical web&nbsp;tools</span>.</h1>
+          <p class="hero-role"><span class="rotating-word" data-words='["Map-first field-operations UI.","Python bots that run movie nights.","Canvas tools that work on phones.","Internal tools with clear state."]'>Map-first field-operations UI.</span></p>
           <p class="hero-text">
+            Frontend, internal tools, Python automation, map UI, and browser apps.
             This site is the short version: what I build, three useful examples, and the fastest way to reach me.
           </p>
           <div class="hero-actions">
@@ -183,36 +185,29 @@
           </div>
         </div>
 
-        <aside class="quick-profile" aria-label="Quick summary">
-          <h2>Quick read</h2>
-          <dl>
-            <div>
-              <dt>Best fit</dt>
-              <dd>Frontend and internal tools with clear state and useful workflows.</dd>
-            </div>
-            <div>
-              <dt>Automation</dt>
-              <dd>Python bots, Twitch/OBS workflows, recovery paths, and tests.</dd>
-            </div>
-            <div>
-              <dt>Proof</dt>
-              <dd>Three focused projects below, with demos, source, or case studies.</dd>
-            </div>
-          </dl>
-        </aside>
+        <div class="hero-terminal" aria-label="Quick summary, styled as a terminal">
+          <div class="terminal-bar" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <strong>zac@portfolio:~</strong>
+          </div>
+          <div class="terminal-body">
+            <p class="t-cmd"><span class="prompt" aria-hidden="true">$</span> whoami</p>
+            <p class="t-out">Zac Batten &mdash; software developer</p>
+            <p class="t-cmd"><span class="prompt" aria-hidden="true">$</span> ls ./skills</p>
+            <p class="t-out">frontend/&ensp;python/&ensp;automation/&ensp;map-ui/&ensp;canvas/</p>
+            <p class="t-cmd"><span class="prompt" aria-hidden="true">$</span> cat availability.txt</p>
+            <p class="t-out t-mint">open to frontend &amp; internal-tools roles</p>
+            <p class="t-cmd"><span class="prompt" aria-hidden="true">$</span> <span class="terminal-cursor" aria-hidden="true"></span></p>
+          </div>
+        </div>
       </section>
 
-      <section class="quick-answer" aria-labelledby="quick-answer-title">
-        <div>
-          <p class="eyebrow">At a glance</p>
-          <h2 id="quick-answer-title">What to remember.</h2>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>JavaScript</span><span>Python</span><span>MapLibre</span><span>Canvas API</span><span>TwitchIO</span><span>OBS WebSocket</span><span>SQLite</span><span>Playwright</span><span>GitHub Pages</span><span>Accessibility</span>
+          <span>JavaScript</span><span>Python</span><span>MapLibre</span><span>Canvas API</span><span>TwitchIO</span><span>OBS WebSocket</span><span>SQLite</span><span>Playwright</span><span>GitHub Pages</span><span>Accessibility</span>
         </div>
-        <ul>
-          <li><strong>Web tools:</strong> interfaces that organize real workflows, not just screens.</li>
-          <li><strong>Automation:</strong> scripts and bots that handle repeated operational work.</li>
-          <li><strong>Browser apps:</strong> Canvas, maps, catalogs, games, and GitHub Pages prototypes.</li>
-        </ul>
-      </section>
+      </div>
 
       <section class="section selected-work-section" id="featured-builds" aria-labelledby="selected-work-title">
         <div class="section-heading">
@@ -225,6 +220,7 @@
 
         <div class="selected-work-grid">
           <article class="project-card selected-work-card" id="traverseops-feature" data-tags="automation field web">
+            <span class="card-number" aria-hidden="true">01</span>
             <figure class="card__media project-visual">
               <picture>
                 <source srcset="assets/traverseops-workspace.webp" type="image/webp">
@@ -242,6 +238,7 @@
             </div>
           </article>
           <article class="project-card selected-work-card" id="moviebot-feature" data-tags="automation stream">
+            <span class="card-number" aria-hidden="true">02</span>
             <figure class="card__media project-visual">
               <picture>
                 <source srcset="assets/movie-night-preview.webp" type="image/webp">
@@ -259,6 +256,7 @@
             </div>
           </article>
           <article class="project-card selected-work-card" id="web-paint-feature" data-tags="web">
+            <span class="card-number" aria-hidden="true">03</span>
             <figure class="card__media project-visual">
               <picture>
                 <source srcset="assets/web-paint-workspace.webp" type="image/webp">
@@ -274,6 +272,43 @@
                 <a href="paint.html">Live tool</a>
               </div>
             </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="metric-band" aria-label="Portfolio in numbers">
+        <div><strong><span data-count="3">3</span></strong><span>in-depth case studies</span></div>
+        <div><strong><span data-count="7">7</span></strong><span>playable lab experiments</span></div>
+        <div><strong><span data-count="25">25</span></strong><span>hand-built pages on this site</span></div>
+        <div><strong>0</strong><span>frameworks &mdash; vanilla HTML/CSS/JS</span></div>
+      </section>
+
+      <section class="section what-section" aria-labelledby="what-title">
+        <div class="section-heading">
+          <p class="eyebrow">At a glance</p>
+          <h2 id="what-title">What I do.</h2>
+        </div>
+        <div class="what-grid">
+          <article class="what-card">
+            <span class="what-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </span>
+            <h3>Web tools</h3>
+            <p>Interfaces that organize real workflows &mdash; asset maps, imports, reports, and role-aware screens &mdash; not just static pages.</p>
+          </article>
+          <article class="what-card">
+            <span class="what-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            </span>
+            <h3>Automation</h3>
+            <p>Python scripts and bots that handle repeated operational work, with token refresh, reconnect paths, and tests.</p>
+          </article>
+          <article class="what-card">
+            <span class="what-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18M3 12h18"/></svg>
+            </span>
+            <h3>Browser apps</h3>
+            <p>Canvas drawing tools, map interfaces, catalogs, and games &mdash; built with vanilla JavaScript and shipped on GitHub Pages.</p>
           </article>
         </div>
       </section>
@@ -294,18 +329,20 @@
         </nav>
       </section>
 
-      <section class="contact-section" id="contact">
-        <div>
-          <p class="eyebrow">Contact</p>
-          <h2>Need a practical web tool or automation workflow?</h2>
-          <p>
-            I am open to frontend, automation, internal-tools, and practical web app work. Send the role, timeline, and closest project example.
-          </p>
-        </div>
-        <div class="contact-actions">
-          <a class="button primary" href="mailto:hello@zacbatten.me">Email Zac</a>
-          <button class="button secondary copy-email-button" type="button" data-copy-email="hello@zacbatten.me">Copy email</button>
-          <a class="button secondary" href="resume.html">Resume</a>
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="contact-panel">
+          <div class="contact-panel-copy">
+            <p class="eyebrow">Contact</p>
+            <h2 id="contact-title">Let&rsquo;s build something useful.</h2>
+            <p>
+              I am open to frontend, automation, internal-tools, and practical web app work. Send the role, timeline, and closest project example.
+            </p>
+          </div>
+          <div class="contact-actions">
+            <a class="button primary" href="mailto:hello@zacbatten.me">Email Zac</a>
+            <button class="button secondary copy-email-button" type="button" data-copy-email="hello@zacbatten.me">Copy email</button>
+            <a class="button secondary" href="resume.html">Resume</a>
+          </div>
         </div>
       </section>
     </main>
@@ -328,6 +365,7 @@
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="shared.js?v=20260612-visual" defer></script>
+    <script src="shared.js?v=20260612-visual2" defer></script>
+    <script src="home.js?v=20260612-visual2" defer></script>
   </body>
 </html>

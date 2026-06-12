@@ -215,7 +215,8 @@
     if (!("IntersectionObserver" in window)) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const sections = document.querySelectorAll("main > section");
+    const sections = Array.from(document.querySelectorAll("main > section"))
+      .filter((section) => !section.classList.contains("home-hero"));
     if (!sections.length) return;
 
     document.body.classList.add("reveal-enabled");
@@ -232,8 +233,54 @@
     sections.forEach((section) => observer.observe(section));
   }
 
+  function initHeaderScrollState() {
+    if (!siteHeader) return;
+
+    let ticking = false;
+
+    function sync() {
+      siteHeader.classList.toggle("is-scrolled", window.scrollY > 14);
+      ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(sync);
+      }
+    }, { passive: true });
+
+    sync();
+  }
+
+  function initSpotlightCards() {
+    if (window.matchMedia("(hover: none), (pointer: coarse)").matches) return;
+
+    const cards = document.querySelectorAll(
+      ".project-card, .selected-work-card, .strength-card, .lab-card, .resume-card, .work-card, .note-card, .case-study-listing, .supporting-work-grid article, .what-card, .hero-terminal, .quick-profile"
+    );
+
+    cards.forEach((card) => {
+      if (card.querySelector(":scope > .spot-layer")) return;
+
+      const layer = document.createElement("span");
+      layer.className = "spot-layer";
+      layer.setAttribute("aria-hidden", "true");
+      card.appendChild(layer);
+      card.classList.add("spot-card");
+
+      card.addEventListener("pointermove", (event) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty("--spot-x", `${event.clientX - rect.left}px`);
+        card.style.setProperty("--spot-y", `${event.clientY - rect.top}px`);
+      });
+    });
+  }
+
   initMobileNavigation();
   initSkipLinks();
   initCopyEmailButtons();
   initScrollReveal();
+  initHeaderScrollState();
+  initSpotlightCards();
 })();
