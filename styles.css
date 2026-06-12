@@ -9260,7 +9260,7 @@ h3 {
 }
 
 .home-hero h1 {
-  max-width: 12ch;
+  max-width: 17ch;
   margin-bottom: 20px;
   font-size: clamp(3rem, 6vw, 5.9rem);
   line-height: 0.98;
@@ -9742,4 +9742,165 @@ h3 {
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* ================================================================
+   2026-06 visual refresh, wave 2: page heroes, UX layer, footer
+   ================================================================ */
+
+/* --- Subpage hero ambiance --- */
+
+.hero-ambient-host {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .hero-ambient {
+    display: none;
+  }
+}
+
+/* --- Section eyebrow accent --- */
+
+.eyebrow:not(:has(.live-dot))::before {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, var(--mint), rgba(109, 225, 166, 0));
+  border-radius: 999px;
+}
+
+/* --- Nav: vertical centering + active page dot --- */
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.nav a[aria-current="page"]::before {
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  content: "";
+  background: var(--mint);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(109, 225, 166, 0.8);
+}
+
+/* --- Scroll progress bar (injected by shared.js) --- */
+
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 200;
+  height: 3px;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--mint), var(--gold));
+  transform: scaleX(var(--scroll-p, 0));
+  transform-origin: 0 50%;
+}
+
+/* --- Back to top (injected by shared.js) --- */
+
+.back-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 90;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  padding: 0;
+  color: var(--ink);
+  background: rgba(13, 18, 18, 0.85);
+  border: 1px solid rgba(248, 244, 232, 0.22);
+  border-radius: 50%;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 240ms ease, transform 240ms ease, visibility 240ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.back-to-top:hover {
+  color: var(--mint);
+  border-color: rgba(109, 225, 166, 0.5);
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* --- Footer upgrade --- */
+
+.site-footer {
+  position: relative;
+  padding-top: 42px;
+  padding-bottom: 42px;
+}
+
+.site-footer::before {
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent 4%, rgba(109, 225, 166, 0.55), rgba(245, 196, 91, 0.45), transparent 96%);
+}
+
+.footer-identity strong {
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.12rem;
+  color: var(--ink);
+}
+
+/* --- Text links --- */
+
+.text-link {
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+  text-decoration-color: rgba(109, 225, 166, 0.5);
+}
+
+.text-link:hover {
+  color: var(--gold);
+  text-decoration-color: currentColor;
+}
+
+/* --- Scrollbar (subtle, dark) --- */
+
+html {
+  scrollbar-color: #273232 #0c0f10;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0c0f10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #243030;
+  border: 3px solid #0c0f10;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2f3e3e;
 }

@@ -277,10 +277,75 @@
     });
   }
 
+  function initScrollProgress() {
+    const bar = document.createElement("div");
+    bar.className = "scroll-progress";
+    bar.setAttribute("aria-hidden", "true");
+    document.body.appendChild(bar);
+
+    let ticking = false;
+
+    function sync() {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      bar.style.setProperty("--scroll-p", progress.toFixed(4));
+      ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(sync);
+      }
+    }, { passive: true });
+
+    window.addEventListener("resize", () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(sync);
+      }
+    }, { passive: true });
+
+    sync();
+  }
+
+  function initBackToTop() {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "back-to-top";
+    button.setAttribute("aria-label", "Back to top");
+    button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+    document.body.appendChild(button);
+
+    let ticking = false;
+
+    function sync() {
+      button.classList.toggle("is-visible", window.scrollY > 680);
+      ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(sync);
+      }
+    }, { passive: true });
+
+    button.addEventListener("click", () => {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    });
+
+    sync();
+  }
+
   initMobileNavigation();
   initSkipLinks();
   initCopyEmailButtons();
   initScrollReveal();
   initHeaderScrollState();
   initSpotlightCards();
+  initScrollProgress();
+  initBackToTop();
 })();
