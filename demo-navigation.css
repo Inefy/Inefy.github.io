@@ -18,7 +18,7 @@
   color: #07100d;
   background: var(--demo-nav-cta);
   border-radius: 8px;
-  font-weight: 900;
+  font-weight: 700;
   text-decoration: none;
   transform: translateY(-180%);
   transition: transform 160ms ease;
@@ -177,7 +177,7 @@
   min-height: 44px;
   color: var(--demo-nav-muted);
   font-size: 0.8rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .game-breadcrumb a {
@@ -251,13 +251,13 @@
   color: var(--demo-nav-cta);
   font-family: "JetBrains Mono", Consolas, monospace;
   font-size: 0.66rem;
-  font-weight: 900;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
 .demo-status-list dd {
   color: var(--demo-nav-ink);
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .demo-overview-actions {
@@ -280,7 +280,7 @@
   cursor: pointer;
   font: inherit;
   font-size: 0.82rem;
-  font-weight: 900;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -378,7 +378,7 @@
   color: var(--demo-nav-cta);
   font-family: "JetBrains Mono", Consolas, monospace;
   font-size: 0.66rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .demo-checklist__steps strong {
@@ -408,7 +408,7 @@
   border: 1px solid rgba(248, 244, 232, 0.16);
   border-radius: 8px;
   font-size: 0.82rem;
-  font-weight: 900;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -434,7 +434,7 @@
   color: var(--demo-nav-accent);
   font-family: "JetBrains Mono", monospace;
   font-size: 0.64rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -529,7 +529,7 @@
   border-radius: 6px;
   font-family: "JetBrains Mono", Consolas, monospace;
   font-size: 0.72rem;
-  font-weight: 900;
+  font-weight: 700;
   white-space: nowrap;
 }
 
@@ -570,7 +570,7 @@
   margin-bottom: 3px;
   color: var(--demo-nav-accent);
   font-size: 0.66rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -660,7 +660,7 @@
   background: rgba(248, 244, 232, 0.07);
   border: 1px solid rgba(248, 244, 232, 0.16);
   border-radius: 8px;
-  font-weight: 900;
+  font-weight: 700;
   text-decoration: none;
 }
 

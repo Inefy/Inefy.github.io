@@ -102,7 +102,7 @@ button {
 
 .brand {
   gap: 12px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .brand-mark {
@@ -149,7 +149,7 @@ button {
   gap: 6px;
   color: #c4bdad;
   font-size: 0.92rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .paint-nav a,

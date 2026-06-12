@@ -211,7 +211,29 @@
     });
   }
 
+  function initScrollReveal() {
+    if (!("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const sections = document.querySelectorAll("main > section");
+    if (!sections.length) return;
+
+    document.body.classList.add("reveal-enabled");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0 });
+
+    sections.forEach((section) => observer.observe(section));
+  }
+
   initMobileNavigation();
   initSkipLinks();
   initCopyEmailButtons();
+  initScrollReveal();
 })();
