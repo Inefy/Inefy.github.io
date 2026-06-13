@@ -10182,3 +10182,112 @@ body.cmdk-open {
     transition: transform 160ms ease;
   }
 }
+
+/* ================================================================
+   2026-06 polish pass — rhythm, texture, dividers, cards, motion, perf
+   Appended last so it intentionally overrides earlier rules.
+   ================================================================ */
+
+/* 1 — Tighter, consistent vertical rhythm (removes the large black gaps) */
+.section,
+.case-study-section,
+.traverse-section,
+.contact-section,
+.note-strip {
+  padding: clamp(52px, 6vw, 96px) clamp(18px, 5vw, 76px);
+}
+
+.section-heading {
+  margin-bottom: clamp(26px, 3.4vw, 44px);
+}
+
+/* 2 — Hairline top divider so each section reads as a distinct slab */
+main > section:not(.home-hero):not(.hero) {
+  border-top: 1px solid rgba(248, 244, 232, 0.055);
+}
+
+/* 3 — Carry subtle colour + depth into the dark sections (was flat black) */
+body::after {
+  display: block;
+  background:
+    radial-gradient(140% 70% at 50% 0%, rgba(109, 225, 166, 0.05), transparent 58%),
+    radial-gradient(130% 70% at 50% 100%, rgba(104, 183, 255, 0.05), transparent 60%);
+  mask-image: none;
+}
+
+/* 4 — Ticker: edge fade so it clearly reads as a marquee, not a duplicate row */
+.ticker {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.ticker-track {
+  animation-duration: 40s;
+}
+
+/* 5 — Project cards: more depth + green border-glow on hover, snappier zoom */
+.selected-work-card {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.selected-work-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(109, 225, 166, 0.5);
+  box-shadow:
+    0 28px 64px rgba(0, 0, 0, 0.36),
+    0 0 30px -10px rgba(109, 225, 166, 0.4);
+}
+
+.selected-work-card:hover .project-visual img {
+  transform: scale(1.05);
+}
+
+/* 6 — Typography: close the hero → section-heading size jump a touch */
+.home-hero h1 {
+  font-size: clamp(2.8rem, 5.2vw, 5rem);
+}
+
+/* 7 — Header: demote GitHub to a plain link so Contact is the single CTA */
+.nav .nav-utility {
+  color: var(--muted);
+  background: transparent;
+  border-color: transparent;
+}
+
+.nav .nav-utility:hover {
+  color: var(--mint);
+  background: rgba(109, 225, 166, 0.06);
+  border-color: rgba(109, 225, 166, 0.18);
+}
+
+/* 8 — Gentler, earlier reveal (paired with the JS rootMargin change) */
+@media (prefers-reduced-motion: no-preference) {
+  body.reveal-enabled main > section {
+    transform: translateY(10px);
+    transition: opacity 460ms ease, transform 460ms ease;
+  }
+
+  body.reveal-enabled :is(.selected-work-grid, .what-grid, .supporting-work-grid, .browse-more-links, .metric-band) > * {
+    transform: translateY(14px);
+    transition: opacity 440ms ease, transform 440ms ease;
+  }
+}
+
+/* 9 — Performance: keep the hero blur from re-rasterising every frame.
+   Dropping scale() from the drift keeps the pre-blurred layer cached,
+   so only a cheap compositor transform runs. */
+.hero-ambient::before,
+.hero-ambient::after {
+  filter: blur(42px);
+  will-change: transform;
+}
+
+@keyframes ambient-drift {
+  from {
+    transform: translate3d(-3%, -2%, 0);
+  }
+
+  to {
+    transform: translate3d(4%, 4%, 0);
+  }
+}

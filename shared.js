@@ -228,9 +228,31 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0 });
+    }, { rootMargin: "0px 0px 18% 0px", threshold: 0 });
 
     sections.forEach((section) => observer.observe(section));
+
+    // Failsafe: if a section is already within the viewport but the observer
+    // hasn't revealed it (very fast scroll, odd viewport), reveal it on scroll
+    // so nothing is ever left as an invisible gap.
+    let failsafeTicking = false;
+    function failsafeReveal() {
+      const vh = window.innerHeight;
+      sections.forEach((section) => {
+        if (section.classList.contains("reveal-visible")) return;
+        const rect = section.getBoundingClientRect();
+        if (rect.top < vh * 0.92 && rect.bottom > 0) {
+          section.classList.add("reveal-visible");
+        }
+      });
+      failsafeTicking = false;
+    }
+    window.addEventListener("scroll", () => {
+      if (!failsafeTicking) {
+        failsafeTicking = true;
+        window.requestAnimationFrame(failsafeReveal);
+      }
+    }, { passive: true });
   }
 
   function initHeaderScrollState() {
@@ -597,6 +619,7 @@
           break;
       }
     });
+
 
     document.addEventListener("keydown", function (event) {
       const key = (event.key || "").toLowerCase();
