@@ -9904,3 +9904,281 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #2f3e3e;
 }
+
+/* ================================================================
+   Command palette (⌘K) — injected by shared.js
+   ================================================================ */
+
+/* --- Header trigger --- */
+.site-header .brand {
+  margin-right: auto;
+}
+
+.cmdk-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 10px 8px 11px;
+  color: var(--muted);
+  background: rgba(248, 244, 232, 0.05);
+  border: 1px solid rgba(248, 244, 232, 0.13);
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.cmdk-trigger:hover {
+  color: var(--soft);
+  background: rgba(248, 244, 232, 0.08);
+  border-color: rgba(109, 225, 166, 0.34);
+}
+
+.cmdk-trigger-icon {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  color: var(--mint);
+}
+
+.cmdk-trigger-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cmdk-trigger-label {
+  white-space: nowrap;
+}
+
+.cmdk-kbd {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  padding: 2px 6px;
+  color: var(--soft);
+  background: rgba(248, 244, 232, 0.07);
+  border: 1px solid rgba(248, 244, 232, 0.16);
+  border-radius: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+@media (max-width: 760px) {
+  .cmdk-trigger-label,
+  .cmdk-trigger .cmdk-kbd {
+    display: none;
+  }
+  .cmdk-trigger {
+    padding: 8px;
+    min-width: 44px;
+    justify-content: center;
+  }
+}
+
+/* --- Overlay + panel --- */
+.cmdk-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(56px, 12vh, 140px) 18px 18px;
+  background: rgba(6, 9, 9, 0.62);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cmdk-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.cmdk-panel {
+  width: min(100%, 560px);
+  max-height: min(70vh, 560px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background:
+    linear-gradient(150deg, rgba(109, 225, 166, 0.06), transparent 46%),
+    var(--panel-strong);
+  border: 1px solid rgba(109, 225, 166, 0.22);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow);
+}
+
+.cmdk-search {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.cmdk-search-icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--mint);
+}
+
+.cmdk-search-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cmdk-input {
+  flex: 1;
+  min-width: 0;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  font: inherit;
+  font-size: 1rem;
+}
+
+.cmdk-input::placeholder {
+  color: var(--muted);
+}
+
+.cmdk-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.cmdk-list {
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.cmdk-group-label {
+  padding: 12px 12px 6px;
+  color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cmdk-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  color: var(--soft);
+  cursor: pointer;
+  scroll-margin: 8px;
+}
+
+.cmdk-option.is-active {
+  color: var(--ink);
+  background: rgba(109, 225, 166, 0.12);
+}
+
+.cmdk-option-icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--mint);
+}
+
+.cmdk-option-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cmdk-option-label {
+  flex: 1;
+  min-width: 0;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.cmdk-option-desc {
+  display: block;
+  margin-top: 1px;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.76rem;
+}
+
+.cmdk-option-hint {
+  flex: none;
+  color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  opacity: 0;
+}
+
+.cmdk-option.is-active .cmdk-option-hint {
+  opacity: 1;
+}
+
+.cmdk-empty {
+  padding: 26px 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.cmdk-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 11px 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.cmdk-footer span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cmdk-footer kbd {
+  padding: 1px 5px;
+  background: rgba(248, 244, 232, 0.06);
+  border: 1px solid rgba(248, 244, 232, 0.14);
+  border-radius: 5px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+}
+
+body.cmdk-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cmdk-overlay {
+    transition: opacity 180ms ease, visibility 180ms ease;
+  }
+  .cmdk-panel {
+    transform: translateY(-8px) scale(0.99);
+    transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cmdk-overlay.is-open .cmdk-panel {
+    transform: translateY(0) scale(1);
+  }
+  .cmdk-trigger:hover .cmdk-trigger-icon {
+    transform: scale(1.08);
+    transition: transform 160ms ease;
+  }
+}

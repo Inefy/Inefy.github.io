@@ -340,6 +340,283 @@
     sync();
   }
 
+  function initCommandPalette() {
+    const header = document.querySelector(".site-header");
+    if (!header || document.querySelector(".cmdk-overlay")) return;
+
+    const ua = navigator.userAgent || "";
+    const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || ua);
+    const modLabel = isMac ? "⌘" : "Ctrl";
+
+    const ICON = {
+      search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
+      page: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></svg>',
+      project: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg>',
+      play: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg>',
+      mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>',
+      copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>',
+      external: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>'
+    };
+
+    const items = [
+      { group: "Pages", label: "Home", desc: "Portfolio overview", icon: "page", type: "link", href: "index.html", keywords: "start front" },
+      { group: "Pages", label: "Work", desc: "Selected projects index", icon: "page", type: "link", href: "work.html", keywords: "projects portfolio" },
+      { group: "Pages", label: "About", desc: "Background and approach", icon: "page", type: "link", href: "about.html", keywords: "bio who" },
+      { group: "Pages", label: "Resume", desc: "Compact experience scan", icon: "page", type: "link", href: "resume.html", keywords: "cv experience hire" },
+      { group: "Pages", label: "Contact", desc: "Ways to reach me", icon: "page", type: "link", href: "contact.html", keywords: "email hire reach" },
+      { group: "Pages", label: "Case studies", desc: "Deep dives on builds", icon: "page", type: "link", href: "case-studies.html", keywords: "writeups detail" },
+      { group: "Pages", label: "Build notes", desc: "Implementation notes", icon: "page", type: "link", href: "notes.html", keywords: "blog notes" },
+      { group: "Pages", label: "Interactive Lab", desc: "Small experiments", icon: "page", type: "link", href: "interactive-lab.html", keywords: "experiments demos" },
+      { group: "Pages", label: "Changelog", desc: "Site updates", icon: "page", type: "link", href: "changelog.html", keywords: "updates history" },
+
+      { group: "Projects", label: "TraverseOps", desc: "Map-first field-operations UI", icon: "project", type: "link", href: "traverseops-case-study.html", keywords: "map maplibre internal tools assets" },
+      { group: "Projects", label: "TraverseOps demo", desc: "Live sample app", icon: "project", type: "link", href: "traverseops-demo.html", keywords: "map demo live" },
+      { group: "Projects", label: "MovieBot", desc: "Python / Twitch / OBS automation", icon: "project", type: "link", href: "moviebot-case-study.html", keywords: "python twitch obs bot" },
+      { group: "Projects", label: "Web Paint", desc: "Canvas drawing tool", icon: "project", type: "link", href: "web-paint-case-study.html", keywords: "canvas draw" },
+      { group: "Projects", label: "Web Paint (live tool)", desc: "Open the editor", icon: "project", type: "link", href: "paint.html", keywords: "canvas draw live" },
+      { group: "Projects", label: "Movie Library", desc: "Public-domain voting catalog", icon: "project", type: "link", href: "movie-library.html", keywords: "catalog movies vote" },
+      { group: "Projects", label: "Movie Night", desc: "Stream + chat + bot page", icon: "project", type: "link", href: "movie-night.html", keywords: "stream twitch" },
+
+      { group: "Play", label: "2048", desc: "Tile-merge puzzle", icon: "play", type: "link", href: "2048.html", keywords: "game puzzle" },
+      { group: "Play", label: "Snake Lab", desc: "Classic snake", icon: "play", type: "link", href: "snake-lab.html", keywords: "game snake" },
+      { group: "Play", label: "Brick Breaker", desc: "Paddle and bricks", icon: "play", type: "link", href: "brick-breaker.html", keywords: "game breakout arkanoid" },
+      { group: "Play", label: "Asteroid Drift", desc: "Space shooter", icon: "play", type: "link", href: "asteroid-drift.html", keywords: "game space asteroids" },
+      { group: "Play", label: "Minefield Sweep", desc: "Minesweeper", icon: "play", type: "link", href: "minefield-sweep.html", keywords: "game minesweeper" },
+      { group: "Play", label: "Mini Golf", desc: "Putt-putt physics", icon: "play", type: "link", href: "mini-golf.html", keywords: "game golf" },
+      { group: "Play", label: "Flappy Workbench", desc: "Flap through gaps", icon: "play", type: "link", href: "flappy-workbench.html", keywords: "game flappy bird" },
+
+      { group: "Actions", label: "Copy email", desc: "hello@zacbatten.me", icon: "copy", type: "copy", value: "hello@zacbatten.me", keywords: "contact clipboard" },
+      { group: "Actions", label: "Email Zac", desc: "Open mail client", icon: "mail", type: "link", href: "mailto:hello@zacbatten.me", keywords: "contact" },
+      { group: "Actions", label: "GitHub", desc: "github.com/Inefy", icon: "external", type: "external", href: "https://github.com/Inefy", keywords: "code source repo" }
+    ];
+
+    const trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.className = "cmdk-trigger";
+    trigger.setAttribute("aria-haspopup", "dialog");
+    trigger.setAttribute("aria-expanded", "false");
+    trigger.setAttribute("aria-label", "Open command menu");
+    trigger.innerHTML =
+      '<span class="cmdk-trigger-icon" aria-hidden="true">' + ICON.search + "</span>" +
+      '<span class="cmdk-trigger-label">Search</span>' +
+      '<span class="cmdk-kbd" aria-hidden="true">' + modLabel + "K</span>";
+    const navEl = header.querySelector(".nav-toggle") || header.querySelector(".nav");
+    header.insertBefore(trigger, navEl);
+
+    const overlay = document.createElement("div");
+    overlay.className = "cmdk-overlay";
+    const panel = document.createElement("div");
+    panel.className = "cmdk-panel";
+    panel.setAttribute("role", "dialog");
+    panel.setAttribute("aria-modal", "true");
+    panel.setAttribute("aria-label", "Command menu");
+
+    const inputId = "cmdk-input";
+    const listId = "cmdk-list";
+    panel.innerHTML =
+      '<div class="cmdk-search">' +
+        '<span class="cmdk-search-icon" aria-hidden="true">' + ICON.search + "</span>" +
+        '<input id="' + inputId + '" class="cmdk-input" type="text" role="combobox" autocomplete="off" ' +
+          'spellcheck="false" placeholder="Jump to a page, project, or game…" ' +
+          'aria-expanded="true" aria-controls="' + listId + '" aria-label="Search the site">' +
+      "</div>" +
+      '<ul id="' + listId + '" class="cmdk-list" role="listbox" aria-label="Results"></ul>' +
+      '<div class="cmdk-footer" aria-hidden="true">' +
+        "<span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>" +
+        "<span><kbd>↵</kbd> open</span>" +
+        "<span><kbd>esc</kbd> close</span>" +
+      "</div>";
+    overlay.appendChild(panel);
+    document.body.appendChild(overlay);
+
+    const input = panel.querySelector("#" + inputId);
+    const list = panel.querySelector("#" + listId);
+
+    const status = document.createElement("span");
+    status.className = "sr-only";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+    document.body.appendChild(status);
+
+    let visible = [];
+    let activeIndex = 0;
+    let lastFocused = null;
+    let isOpen = false;
+
+    function matches(item, q) {
+      if (!q) return true;
+      const hay = (item.label + " " + (item.desc || "") + " " + (item.group || "") + " " + (item.keywords || "")).toLowerCase();
+      return q.split(/\s+/).every((part) => hay.includes(part));
+    }
+
+    function render() {
+      const q = input.value.trim().toLowerCase();
+      const results = items.filter((it) => matches(it, q));
+      visible = results;
+      list.innerHTML = "";
+
+      if (!results.length) {
+        const empty = document.createElement("li");
+        empty.className = "cmdk-empty";
+        empty.textContent = "No matches. Try “work”, “python”, or “game”.";
+        list.appendChild(empty);
+        input.removeAttribute("aria-activedescendant");
+        return;
+      }
+
+      let lastGroup = null;
+      results.forEach((it, i) => {
+        if (it.group !== lastGroup) {
+          const gl = document.createElement("li");
+          gl.className = "cmdk-group-label";
+          gl.setAttribute("role", "presentation");
+          gl.textContent = it.group;
+          list.appendChild(gl);
+          lastGroup = it.group;
+        }
+        const li = document.createElement("li");
+        li.className = "cmdk-option";
+        li.id = "cmdk-opt-" + i;
+        li.setAttribute("role", "option");
+        li.setAttribute("aria-selected", "false");
+        li.innerHTML =
+          '<span class="cmdk-option-icon" aria-hidden="true">' + (ICON[it.icon] || ICON.page) + "</span>" +
+          '<span class="cmdk-option-label">' + it.label +
+            (it.desc ? '<span class="cmdk-option-desc">' + it.desc + "</span>" : "") +
+          "</span>" +
+          '<span class="cmdk-option-hint" aria-hidden="true">↵</span>';
+        li.addEventListener("mousemove", () => setActive(i));
+        li.addEventListener("click", () => activate(i));
+        list.appendChild(li);
+      });
+
+      activeIndex = 0;
+      setActive(0);
+    }
+
+    function setActive(i) {
+      if (!visible.length) return;
+      activeIndex = (i + visible.length) % visible.length;
+      const options = list.querySelectorAll(".cmdk-option");
+      options.forEach((el, idx) => {
+        const on = idx === activeIndex;
+        el.classList.toggle("is-active", on);
+        el.setAttribute("aria-selected", on ? "true" : "false");
+        if (on) {
+          input.setAttribute("aria-activedescendant", el.id);
+          el.scrollIntoView({ block: "nearest" });
+        }
+      });
+    }
+
+    function activate(i) {
+      const it = visible[i];
+      if (!it) return;
+      if (it.type === "copy") {
+        const value = it.value;
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(value).then(
+            function () { status.textContent = "Copied " + value + " to the clipboard."; },
+            function () { status.textContent = "Could not copy. Try the Email Zac action."; }
+          );
+        }
+        close();
+        return;
+      }
+      if (it.type === "external") {
+        window.open(it.href, "_blank", "noopener,noreferrer");
+        close();
+        return;
+      }
+      window.location.href = it.href;
+    }
+
+    function open() {
+      if (isOpen) return;
+      isOpen = true;
+      lastFocused = document.activeElement;
+      input.value = "";
+      render();
+      overlay.classList.add("is-open");
+      document.body.classList.add("cmdk-open");
+      trigger.setAttribute("aria-expanded", "true");
+      window.requestAnimationFrame(function () { input.focus(); });
+    }
+
+    function close() {
+      if (!isOpen) return;
+      isOpen = false;
+      overlay.classList.remove("is-open");
+      document.body.classList.remove("cmdk-open");
+      trigger.setAttribute("aria-expanded", "false");
+      if (lastFocused && typeof lastFocused.focus === "function") {
+        lastFocused.focus();
+      } else {
+        trigger.focus();
+      }
+    }
+
+    trigger.addEventListener("click", open);
+
+    overlay.addEventListener("mousedown", function (event) {
+      if (event.target === overlay) close();
+    });
+
+    input.addEventListener("input", render);
+
+    input.addEventListener("keydown", function (event) {
+      switch (event.key) {
+        case "ArrowDown":
+          event.preventDefault();
+          setActive(activeIndex + 1);
+          break;
+        case "ArrowUp":
+          event.preventDefault();
+          setActive(activeIndex - 1);
+          break;
+        case "Home":
+          event.preventDefault();
+          setActive(0);
+          break;
+        case "End":
+          event.preventDefault();
+          setActive(visible.length - 1);
+          break;
+        case "Enter":
+          event.preventDefault();
+          activate(activeIndex);
+          break;
+        case "Escape":
+          event.preventDefault();
+          close();
+          break;
+        case "Tab":
+          event.preventDefault();
+          break;
+        default:
+          break;
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      const key = (event.key || "").toLowerCase();
+      if ((event.metaKey || event.ctrlKey) && key === "k") {
+        event.preventDefault();
+        if (isOpen) { close(); } else { open(); }
+        return;
+      }
+      if (key === "/" && !isOpen) {
+        const t = event.target;
+        const tag = t && t.tagName ? t.tagName.toLowerCase() : "";
+        const typing = tag === "input" || tag === "textarea" || tag === "select" || (t && t.isContentEditable);
+        if (!typing) {
+          event.preventDefault();
+          open();
+        }
+      }
+    });
+  }
+
   initMobileNavigation();
   initSkipLinks();
   initCopyEmailButtons();
@@ -348,4 +625,5 @@
   initSpotlightCards();
   initScrollProgress();
   initBackToTop();
+  initCommandPalette();
 })();
