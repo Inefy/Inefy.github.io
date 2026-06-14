@@ -1,0 +1,14 @@
+{
+  "name": "Zac Batten — Developer Portfolio",
+  "short_name": "Zac Batten",
+  "description": "Practical web tools, internal tools, Python automation, map interfaces, and browser apps by Zac Batten.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0c0f10",
+  "theme_color": "#0c0f10",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

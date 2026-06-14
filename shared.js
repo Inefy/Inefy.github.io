@@ -640,6 +640,262 @@
     });
   }
 
+  function initCardTilt() {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    document.querySelectorAll(".selected-work-card").forEach((card) => {
+      let raf = 0;
+      card.addEventListener("pointerenter", () => card.classList.add("is-tilting"));
+      card.addEventListener("pointermove", (event) => {
+        if (raf) return;
+        const rect = card.getBoundingClientRect();
+        const px = (event.clientX - rect.left) / rect.width;
+        const py = (event.clientY - rect.top) / rect.height;
+        raf = window.requestAnimationFrame(() => {
+          card.style.setProperty("--tilt-rx", ((0.5 - py) * 7).toFixed(2) + "deg");
+          card.style.setProperty("--tilt-ry", ((px - 0.5) * 9).toFixed(2) + "deg");
+          raf = 0;
+        });
+      });
+      card.addEventListener("pointerleave", () => {
+        if (raf) { window.cancelAnimationFrame(raf); raf = 0; }
+        card.classList.remove("is-tilting");
+        card.style.removeProperty("--tilt-rx");
+        card.style.removeProperty("--tilt-ry");
+      });
+    });
+  }
+
+  function initMagneticButtons() {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    document.querySelectorAll(".button.primary, .nav .nav-cta").forEach((btn) => {
+      let raf = 0;
+      btn.addEventListener("pointermove", (event) => {
+        if (raf) return;
+        const rect = btn.getBoundingClientRect();
+        const mx = event.clientX - (rect.left + rect.width / 2);
+        const my = event.clientY - (rect.top + rect.height / 2);
+        raf = window.requestAnimationFrame(() => {
+          btn.style.setProperty("--mag-x", (mx * 0.18).toFixed(1) + "px");
+          btn.style.setProperty("--mag-y", (my * 0.3).toFixed(1) + "px");
+          raf = 0;
+        });
+      });
+      btn.addEventListener("pointerleave", () => {
+        if (raf) { window.cancelAnimationFrame(raf); raf = 0; }
+        btn.style.removeProperty("--mag-x");
+        btn.style.removeProperty("--mag-y");
+      });
+    });
+  }
+
+  function initNavGroups() {
+    const groups = Array.from(document.querySelectorAll("[data-nav-group]"));
+    if (!groups.length) return;
+
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    function closeAll(except) {
+      groups.forEach((group) => {
+        if (group !== except && group.open) group.open = false;
+      });
+    }
+
+    groups.forEach((group) => {
+      const summary = group.querySelector("summary");
+      let hoverTimer = 0;
+
+      // Only one group open at a time.
+      group.addEventListener("toggle", () => {
+        if (group.open) closeAll(group);
+      });
+
+      // Desktop: open on hover intent, close shortly after the pointer leaves
+      // (unless focus is still inside, so keyboard users aren't interrupted).
+      group.addEventListener("pointerenter", () => {
+        if (!finePointer.matches) return;
+        window.clearTimeout(hoverTimer);
+        group.open = true;
+      });
+      group.addEventListener("pointerleave", () => {
+        if (!finePointer.matches) return;
+        window.clearTimeout(hoverTimer);
+        hoverTimer = window.setTimeout(() => {
+          if (!group.contains(document.activeElement)) group.open = false;
+        }, 150);
+      });
+
+      // Choosing a destination closes the menu.
+      group.querySelectorAll(".nav-menu a").forEach((link) => {
+        link.addEventListener("click", () => { group.open = false; });
+      });
+
+      // Escape closes and returns focus to the trigger.
+      group.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && group.open) {
+          group.open = false;
+          if (summary) summary.focus();
+        }
+      });
+    });
+
+    // A click anywhere outside an open group dismisses it.
+    document.addEventListener("click", (event) => {
+      if (event.target.closest("[data-nav-group]")) return;
+      closeAll(null);
+    });
+
+    // Reset open state when crossing the desktop / mobile boundary.
+    if (finePointer.addEventListener) {
+      finePointer.addEventListener("change", () => closeAll(null));
+    }
+  }
+
+  function initActiveNav() {
+    const nav = document.querySelector("#primary-nav");
+    if (!nav) return;
+
+    const current = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
+
+    // Deeper "Work" destinations keep the grouped Work tab marked active.
+    const workPages = new Set([
+      "work.html", "case-studies.html", "case-study-template.html",
+      "traverseops-case-study.html", "traverseops-demo.html",
+      "moviebot-case-study.html", "web-paint-case-study.html",
+      "movie-library.html", "movie-night.html", "interactive-lab.html",
+      "notes.html", "changelog.html", "2048.html", "snake-lab.html",
+      "brick-breaker.html", "asteroid-drift.html", "minefield-sweep.html",
+      "mini-golf.html", "flappy-workbench.html", "paint.html"
+    ]);
+
+    // Exact-match highlight on any nav link, including grouped sub-links.
+    nav.querySelectorAll("a").forEach((link) => {
+      link.removeAttribute("aria-current");
+      const href = (link.getAttribute("href") || "").split("/").pop().toLowerCase();
+      if (href && (href === current || (current === "" && href === "index.html"))) {
+        link.setAttribute("aria-current", "page");
+      }
+    });
+
+    // Light up the grouped Work disclosure for any work-section page.
+    const group = nav.querySelector("[data-nav-group]");
+    if (group) {
+      group.classList.toggle("is-active", workPages.has(current));
+    }
+  }
+
+  function initHoverPrefetch() {
+    if (navigator.connection && navigator.connection.saveData) return;
+
+    const seen = new Set();
+
+    function prefetch(href) {
+      if (seen.has(href)) return;
+      seen.add(href);
+      const link = document.createElement("link");
+      link.rel = "prefetch";
+      link.href = href;
+      document.head.appendChild(link);
+    }
+
+    function onIntent(event) {
+      const anchor = event.target.closest && event.target.closest("a[href]");
+      if (!anchor) return;
+      const raw = anchor.getAttribute("href") || "";
+      if (!raw || raw.charAt(0) === "#" || raw.indexOf("mailto:") === 0 || raw.indexOf("tel:") === 0) return;
+
+      let url;
+      try {
+        url = new URL(raw, window.location.href);
+      } catch (err) {
+        return;
+      }
+      if (url.origin !== window.location.origin) return;
+      if (!/\.html?$/.test(url.pathname)) return;
+      if (url.pathname === window.location.pathname) return;
+      prefetch(url.href);
+    }
+
+    document.addEventListener("pointerover", onIntent, { passive: true });
+    document.addEventListener("focusin", onIntent);
+  }
+
+  function initPageToc() {
+    const main = document.querySelector(".case-template-main");
+    const sidebar = document.querySelector(".case-template-sidebar");
+    if (!main || !sidebar) return;
+
+    const items = [];
+    main.querySelectorAll("section.case-template-section").forEach((sec) => {
+      const h = sec.querySelector("h2[id]");
+      if (h) items.push({ id: h.id, text: h.textContent.trim(), section: sec });
+    });
+    if (items.length < 4) return;
+
+    const nav = document.createElement("nav");
+    nav.className = "page-toc";
+    nav.setAttribute("aria-label", "On this page");
+
+    const title = document.createElement("p");
+    title.className = "page-toc-title";
+    title.textContent = "On this page";
+    nav.appendChild(title);
+
+    const ul = document.createElement("ul");
+    const linkById = new Map();
+    let currentId = null;
+
+    function setActive(id) {
+      if (id === currentId || !linkById.has(id)) return;
+      currentId = id;
+      linkById.forEach((a, key) => {
+        const on = key === id;
+        a.classList.toggle("is-active", on);
+        if (on) {
+          a.setAttribute("aria-current", "true");
+          if (sidebar.scrollHeight > sidebar.clientHeight + 4) {
+            const top = a.offsetTop;
+            const bottom = top + a.offsetHeight;
+            if (top < sidebar.scrollTop || bottom > sidebar.scrollTop + sidebar.clientHeight) {
+              sidebar.scrollTop = Math.max(0, top - sidebar.clientHeight / 2);
+            }
+          }
+        } else {
+          a.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    items.forEach((it) => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = "#" + it.id;
+      a.textContent = it.text;
+      a.addEventListener("click", () => setActive(it.id));
+      li.appendChild(a);
+      ul.appendChild(li);
+      linkById.set(it.id, a);
+    });
+    nav.appendChild(ul);
+    sidebar.insertBefore(nav, sidebar.firstChild);
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((obsEntries) => {
+        const visible = obsEntries.filter((en) => en.isIntersecting);
+        if (!visible.length) return;
+        visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        const h = visible[0].target.querySelector("h2[id]");
+        if (h) setActive(h.id);
+      }, { rootMargin: "-84px 0px -64% 0px", threshold: 0 });
+      items.forEach((it) => observer.observe(it.section));
+    } else {
+      setActive(items[0].id);
+    }
+  }
+
   initMobileNavigation();
   initSkipLinks();
   initCopyEmailButtons();
@@ -649,4 +905,10 @@
   initScrollProgress();
   initBackToTop();
   initCommandPalette();
+  initCardTilt();
+  initMagneticButtons();
+  initNavGroups();
+  initActiveNav();
+  initHoverPrefetch();
+  initPageToc();
 })();

@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-aiLoTOoH++D3okjBBMzlyJ+4N00UhPfZru7Mvw9ox1s='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta name="theme-color" content="#0c0f10">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-edmOU/dEeli7J14ujx+IbS1iiB/fZAvsFopGe830QE8='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Resume for Zac Batten, a frontend, internal-tools, and automation developer with project-backed web, Python, map UI, and Canvas work.">
     <meta name="author" content="Zac Batten">
@@ -13,12 +16,12 @@
     <meta property="og:description" content="Project-backed resume for Zac Batten: frontend tools, internal-tools prototypes, Python automation, MapLibre-style UI, Canvas, and GitHub Pages.">
     <meta property="og:type" content="profile">
     <meta property="og:url" content="https://zacbatten.me/resume.html">
-    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.jpg">
     <meta property="og:image:alt" content="Developer portfolio homepage preview with featured project cards.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Resume / Zac Batten &mdash; Frontend, Internal Tools &amp; Automation Developer">
     <meta name="twitter:description" content="Frontend, internal-tools, Python automation, map UI, Canvas, and GitHub Pages project experience.">
-    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.png">
+    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.jpg">
     <meta name="twitter:image:alt" content="Developer portfolio homepage preview with featured project cards.">
     <script type="application/ld+json">
       {
@@ -56,7 +59,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260612-visual3">
+    <link rel="stylesheet" href="styles.css?v=20260613-elevate1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -72,7 +75,16 @@
         <span class="nav-toggle-text">Menu</span>
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <a href="work.html">Work</a>
+        <details class="nav-group" data-nav-group>
+          <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="nav-menu" role="group" aria-label="Work pages">
+            <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
+            <a href="case-studies.html"><span class="nav-menu-label">Case studies</span><span class="nav-menu-desc">Deep dives on the build</span></a>
+            <a href="interactive-lab.html"><span class="nav-menu-label">Interactive Lab</span><span class="nav-menu-desc">Small playable demos</span></a>
+            <a href="notes.html"><span class="nav-menu-label">Build notes</span><span class="nav-menu-desc">How things were made</span></a>
+            <a href="changelog.html"><span class="nav-menu-label">Changelog</span><span class="nav-menu-desc">Recent site updates</span></a>
+          </div>
+        </details>
         <a href="about.html">About</a>
         <a href="resume.html" aria-current="page">Resume</a>
         <a class="nav-cta" href="contact.html">Contact</a>
@@ -300,6 +312,6 @@
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="shared.js?v=20260612-visual3" defer></script>
+    <script src="shared.js?v=20260613-elevate1" defer></script>
   </body>
 </html>

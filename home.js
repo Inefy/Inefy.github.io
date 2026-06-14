@@ -140,10 +140,105 @@
     counters.forEach((counter) => observer.observe(counter));
   }
 
+  function initTerminalTyping() {
+    const termBody = document.querySelector(".hero-terminal .terminal-body");
+    if (!termBody || reducedMotionQuery.matches) return;
+
+    const original = termBody.innerHTML;
+    const timers = [];
+
+    function restore() {
+      timers.forEach((t) => window.clearTimeout(t));
+      termBody.innerHTML = original;
+    }
+
+    try {
+      const lines = Array.from(termBody.querySelectorAll("p"));
+      if (!lines.length) return;
+
+      const model = lines.map((line) => {
+        const isCmd = line.classList.contains("t-cmd");
+        const isFinalPrompt = !!line.querySelector(".terminal-cursor");
+        let text = "";
+
+        if (isFinalPrompt) {
+          text = "";
+        } else if (isCmd) {
+          text = (line.textContent || "").replace(/^\s*\$\s*/, "");
+          const prompt = line.querySelector(".prompt");
+          line.textContent = "";
+          if (prompt) {
+            line.appendChild(prompt);
+            line.appendChild(document.createTextNode(" "));
+          } else {
+            line.appendChild(document.createTextNode("$ "));
+          }
+        } else {
+          text = line.textContent;
+          line.textContent = "";
+        }
+
+        line.style.visibility = "hidden";
+        return { line, isCmd, isFinalPrompt, text };
+      });
+
+      const cursor = document.createElement("span");
+      cursor.className = "terminal-cursor";
+      cursor.setAttribute("aria-hidden", "true");
+
+      const safety = window.setTimeout(restore, 9000);
+      timers.push(safety);
+
+      let li = 0;
+
+      function typeLine() {
+        if (li >= model.length) {
+          if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+          window.clearTimeout(safety);
+          return;
+        }
+
+        const m = model[li];
+        m.line.style.visibility = "visible";
+
+        if (m.isFinalPrompt) {
+          li += 1;
+          timers.push(window.setTimeout(typeLine, 140));
+          return;
+        }
+
+        if (m.isCmd) {
+          m.line.appendChild(cursor);
+          let ci = 0;
+          (function typeChar() {
+            if (ci < m.text.length) {
+              cursor.insertAdjacentText("beforebegin", m.text.charAt(ci));
+              ci += 1;
+              timers.push(window.setTimeout(typeChar, 26 + Math.random() * 36));
+            } else {
+              if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+              li += 1;
+              timers.push(window.setTimeout(typeLine, 300));
+            }
+          })();
+        } else {
+          m.line.textContent = m.text;
+          li += 1;
+          timers.push(window.setTimeout(typeLine, 240));
+        }
+      }
+
+      typeLine();
+    } catch (err) {
+      restore();
+    }
+  }
+
   syncMotionPreference();
   addMediaListener(reducedMotionQuery, syncMotionPreference);
   addMediaListener(finePointerQuery, syncPointerGlow);
   addMediaListener(desktopPointerQuery, syncPointerGlow);
   initRotatingWord();
   initCountUp();
+  initTerminalTyping();
 })();

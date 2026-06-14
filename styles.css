@@ -1,5 +1,7 @@
 :root {
   color-scheme: dark;
+
+  /* — Ink & surfaces (brand foundation) — */
   --ink: #f8f4e8;
   --muted: #c4bdad;
   --soft: #e2d7c2;
@@ -7,17 +9,68 @@
   --panel: #151a1b;
   --panel-strong: #1d2424;
   --line: rgba(248, 244, 232, 0.16);
-  --ember: #ff6f4f;
-  --gold: #f5c45b;
-  --mint: #6de1a6;
-  --blue: #68b7ff;
-  --violet: #bd92ff;
+
+  /* — Accent system —
+     A cohesive cool-green lead with a warm-amber partner. The former
+     sky-blue, orange-ember, and violet accents are folded into this
+     family so the whole site reads in two harmonized temperatures. */
+  --mint: #6de1a6;          /* primary accent */
+  --mint-rgb: 109, 225, 166;
+  --gold: #f5c45b;          /* warm secondary + focus */
+  --gold-rgb: 245, 196, 91;
+  --blue: #5ad6c0;          /* demoted -> in-family teal */
+  --ember: #f0a55a;         /* demoted -> soft amber, harmonized with gold */
+  --violet: #6de1a6;        /* removed -> folds into mint */
+
+  /* Semantic aliases — prefer these for new rules */
+  --accent: var(--mint);
+  --accent-rgb: var(--mint-rgb);
+  --accent-ink: #07100d;
+  --accent-strong: #8fecbb;
+  --accent-soft: rgba(109, 225, 166, 0.12);
+  --accent-tint: rgba(109, 225, 166, 0.07);
+  --accent-line: rgba(109, 225, 166, 0.24);
+  --accent-glow: rgba(109, 225, 166, 0.55);
+
+  /* — Depth, focus & motion — */
   --shadow: 0 22px 70px rgba(0, 0, 0, 0.36);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.22);
+  --shadow-md: 0 14px 40px rgba(0, 0, 0, 0.30);
+  --shadow-lg: 0 28px 70px rgba(0, 0, 0, 0.40);
   --focus-ring: #f5c45b;
-  --focus-shadow: 0 0 0 6px rgba(245, 196, 91, 0.18);
+  --focus-shadow: 0 0 0 5px rgba(245, 196, 91, 0.16);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* — Radii — */
   --card-radius: 14px;
   --radius-md: 10px;
   --radius-sm: 7px;
+
+  /* — Spacing scale (8px base) — */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --section-pad-y: clamp(52px, 6vw, 96px);
+  --section-pad-x: clamp(18px, 5vw, 76px);
+  --content-max: 1200px;
+
+  /* — Type scale (fluid) — */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.2rem, 1.6vw, 1.45rem);
+  --text-2xl: clamp(1.5rem, 2.4vw, 2rem);
+  --text-3xl: clamp(2rem, 3.4vw, 2.9rem);
+  --text-4xl: clamp(2.8rem, 5.2vw, 5rem);
+
+  /* — Cards — */
   --card-border: rgba(248, 244, 232, 0.13);
   --card-border-strong: rgba(248, 244, 232, 0.18);
   --card-padding: clamp(20px, 3vw, 30px);
@@ -26,7 +79,7 @@
   --card-surface-project: linear-gradient(145deg, rgba(109, 225, 166, 0.08), transparent 48%), rgba(21, 26, 27, 0.9);
   --card-surface-case: linear-gradient(135deg, rgba(248, 244, 232, 0.075), rgba(248, 244, 232, 0.025)), rgba(12, 16, 17, 0.82);
   --card-surface-note: linear-gradient(145deg, rgba(109, 225, 166, 0.08), transparent 48%), rgba(21, 26, 27, 0.9);
-  --card-surface-experiment: linear-gradient(145deg, rgba(104, 183, 255, 0.12), transparent 50%), rgba(21, 26, 27, 0.92);
+  --card-surface-experiment: linear-gradient(145deg, rgba(90, 214, 192, 0.12), transparent 50%), rgba(21, 26, 27, 0.92);
   --card-surface-cta: linear-gradient(135deg, rgba(109, 225, 166, 0.1), transparent 42%), rgba(248, 244, 232, 0.045);
   --card-media-bg: linear-gradient(135deg, rgba(109, 225, 166, 0.16), transparent), rgba(248, 244, 232, 0.04);
   --chip-surface: rgba(248, 244, 232, 0.075);
@@ -50,7 +103,7 @@ body {
   margin: 0;
   background:
     linear-gradient(180deg, rgba(109, 225, 166, 0.08), transparent 30rem),
-    linear-gradient(135deg, rgba(104, 183, 255, 0.08), transparent 34rem),
+    linear-gradient(135deg, rgba(90, 214, 192, 0.08), transparent 34rem),
     var(--paper);
   color: var(--ink);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -60,8 +113,8 @@ body {
 body.pointer-glow-enabled {
   background:
     radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(109, 225, 166, 0.16), transparent 23rem),
-    linear-gradient(135deg, rgba(255, 111, 79, 0.12), transparent 34rem),
-    linear-gradient(225deg, rgba(104, 183, 255, 0.14), transparent 32rem),
+    linear-gradient(135deg, rgba(240, 165, 90, 0.12), transparent 34rem),
+    linear-gradient(225deg, rgba(90, 214, 192, 0.14), transparent 32rem),
     var(--paper);
 }
 
@@ -975,7 +1028,7 @@ h3 {
 
 .metric-band,
 .credibility-strip {
-  --stat-accent: rgba(104, 183, 255, 0.08);
+  --stat-accent: rgba(90, 214, 192, 0.08);
   --stat-bg: rgba(21, 26, 27, 0.9);
   --stat-padding: clamp(22px, 3.6vw, 42px) clamp(18px, 5vw, 76px);
   --stat-value-size: clamp(2rem, 4vw, 3.5rem);
@@ -988,7 +1041,7 @@ h3 {
 }
 
 .credibility-strip {
-  --stat-accent: rgba(104, 183, 255, 0.07);
+  --stat-accent: rgba(90, 214, 192, 0.07);
   --stat-bg: rgba(21, 26, 27, 0.88);
   --stat-padding: clamp(18px, 2.7vw, 30px) clamp(18px, 5vw, 76px);
   --stat-value-size: clamp(1.7rem, 3vw, 2.7rem);
@@ -1305,7 +1358,7 @@ h3 {
   align-items: center;
   padding: clamp(54px, 7vw, 96px) clamp(18px, 5vw, 76px);
   background:
-    linear-gradient(120deg, rgba(104, 183, 255, 0.09), transparent 48%),
+    linear-gradient(120deg, rgba(90, 214, 192, 0.09), transparent 48%),
     rgba(8, 12, 13, 0.82);
   border-bottom: 1px solid var(--line);
 }
@@ -1440,7 +1493,7 @@ h3 {
   align-items: center;
   background:
     radial-gradient(circle at 82% 16%, rgba(109, 225, 166, 0.18), transparent 26rem),
-    linear-gradient(135deg, rgba(104, 183, 255, 0.12), transparent 54%),
+    linear-gradient(135deg, rgba(90, 214, 192, 0.12), transparent 54%),
     #090d0f;
   border-bottom: 1px solid var(--line);
 }
@@ -1825,7 +1878,7 @@ h3 {
   padding: 12px;
   background:
     radial-gradient(circle at 28% 20%, rgba(245, 196, 91, 0.18), transparent 36%),
-    linear-gradient(145deg, rgba(104, 183, 255, 0.14), transparent 52%),
+    linear-gradient(145deg, rgba(90, 214, 192, 0.14), transparent 52%),
     #0b1013;
 }
 
@@ -1902,7 +1955,7 @@ h3 {
 .project-card.featured {
   grid-column: span 2;
   background:
-    radial-gradient(circle at 24% 18%, rgba(255, 111, 79, 0.2), transparent 24rem),
+    radial-gradient(circle at 24% 18%, rgba(240, 165, 90, 0.2), transparent 24rem),
     linear-gradient(145deg, rgba(245, 196, 91, 0.16), transparent 48%),
     var(--panel-strong);
   border-color: rgba(245, 196, 91, 0.36);
@@ -1910,7 +1963,7 @@ h3 {
 
 .muted-card {
   background:
-    linear-gradient(145deg, rgba(189, 146, 255, 0.11), transparent 52%),
+    linear-gradient(145deg, rgba(109, 225, 166, 0.11), transparent 52%),
     rgba(248, 244, 232, 0.055);
 }
 
@@ -2055,7 +2108,7 @@ h3 {
   overflow: hidden;
   align-items: center;
   background:
-    radial-gradient(circle at 18% 18%, rgba(104, 183, 255, 0.18), transparent 24rem),
+    radial-gradient(circle at 18% 18%, rgba(90, 214, 192, 0.18), transparent 24rem),
     linear-gradient(130deg, rgba(109, 225, 166, 0.12), transparent 48%),
     #0a0e0f;
   border-block: 1px solid var(--line);
@@ -2063,7 +2116,7 @@ h3 {
 
 .moviebot-section {
   background:
-    radial-gradient(circle at 80% 18%, rgba(255, 111, 79, 0.2), transparent 24rem),
+    radial-gradient(circle at 80% 18%, rgba(240, 165, 90, 0.2), transparent 24rem),
     linear-gradient(130deg, rgba(245, 196, 91, 0.13), transparent 48%),
     #0b0e0f;
 }
@@ -2071,7 +2124,7 @@ h3 {
 .web-paint-section {
   background:
     radial-gradient(circle at 82% 20%, rgba(109, 225, 166, 0.18), transparent 24rem),
-    linear-gradient(130deg, rgba(104, 183, 255, 0.13), transparent 48%),
+    linear-gradient(130deg, rgba(90, 214, 192, 0.13), transparent 48%),
     #0a0e10;
 }
 
@@ -2283,7 +2336,7 @@ h3 {
   min-height: 236px;
   padding: 26px;
   background:
-    linear-gradient(145deg, rgba(104, 183, 255, 0.1), transparent 52%),
+    linear-gradient(145deg, rgba(90, 214, 192, 0.1), transparent 52%),
     rgba(21, 26, 27, 0.9);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
@@ -2309,7 +2362,7 @@ h3 {
 .traverse-demo-page {
   background:
     radial-gradient(circle at 18% 10%, rgba(109, 225, 166, 0.14), transparent 26rem),
-    radial-gradient(circle at 88% 18%, rgba(104, 183, 255, 0.13), transparent 28rem),
+    radial-gradient(circle at 88% 18%, rgba(90, 214, 192, 0.13), transparent 28rem),
     var(--paper);
 }
 
@@ -2586,7 +2639,7 @@ h3 {
   overflow: hidden;
   background:
     linear-gradient(30deg, rgba(109, 225, 166, 0.16) 0 16%, transparent 16% 100%),
-    linear-gradient(155deg, transparent 0 42%, rgba(104, 183, 255, 0.16) 42% 49%, transparent 49% 100%),
+    linear-gradient(155deg, transparent 0 42%, rgba(90, 214, 192, 0.16) 42% 49%, transparent 49% 100%),
     linear-gradient(rgba(248, 244, 232, 0.07) 1px, transparent 1px),
     linear-gradient(90deg, rgba(248, 244, 232, 0.07) 1px, transparent 1px),
     #101819;
@@ -2837,7 +2890,7 @@ h3 {
   padding: 18px;
   color: var(--ink);
   background:
-    linear-gradient(145deg, rgba(104, 183, 255, 0.11), transparent 54%),
+    linear-gradient(145deg, rgba(90, 214, 192, 0.11), transparent 54%),
     rgba(248, 244, 232, 0.06);
   border: 1px dashed rgba(248, 244, 232, 0.28);
   border-radius: var(--radius-md);
@@ -3096,8 +3149,8 @@ h3 {
 }
 
 .change-type-accessibility {
-  background: rgba(104, 183, 255, 0.16);
-  border-color: rgba(104, 183, 255, 0.32);
+  background: rgba(90, 214, 192, 0.16);
+  border-color: rgba(90, 214, 192, 0.32);
 }
 
 .change-type-design {
@@ -3140,7 +3193,7 @@ h3 {
   min-width: 0;
   padding: 28px;
   background:
-    linear-gradient(145deg, rgba(104, 183, 255, 0.08), transparent 52%),
+    linear-gradient(145deg, rgba(90, 214, 192, 0.08), transparent 52%),
     rgba(21, 26, 27, 0.9);
   border: 1px solid rgba(248, 244, 232, 0.14);
   border-radius: var(--radius-md);
@@ -3359,7 +3412,7 @@ h3 {
 .interactive-lab {
   padding-block: clamp(66px, 8vw, 112px);
   background:
-    linear-gradient(135deg, rgba(104, 183, 255, 0.1), transparent 42%),
+    linear-gradient(135deg, rgba(90, 214, 192, 0.1), transparent 42%),
     linear-gradient(225deg, rgba(245, 196, 91, 0.11), transparent 38%),
     rgba(248, 244, 232, 0.02);
   border-top: 1px solid var(--line);
@@ -3973,7 +4026,7 @@ h3 {
 }
 
 .resume-card {
-  --card-bg: linear-gradient(145deg, rgba(104, 183, 255, 0.08), transparent 52%), rgba(21, 26, 27, 0.9);
+  --card-bg: linear-gradient(145deg, rgba(90, 214, 192, 0.08), transparent 52%), rgba(21, 26, 27, 0.9);
   --card-border-color: rgba(248, 244, 232, 0.14);
   padding: 28px;
   background: var(--card-bg);
@@ -4202,7 +4255,7 @@ h3 {
   padding-top: clamp(58px, 6.8vw, 104px);
   padding-bottom: clamp(62px, 7.4vw, 112px);
   background:
-    radial-gradient(circle at 86% 14%, rgba(104, 183, 255, 0.1), transparent 24rem),
+    radial-gradient(circle at 86% 14%, rgba(90, 214, 192, 0.1), transparent 24rem),
     rgba(8, 12, 13, 0.62);
   border-top: 1px solid rgba(248, 244, 232, 0.08);
 }
@@ -4712,7 +4765,7 @@ h3 {
 .work-thumb-notes {
   background:
     radial-gradient(circle at 18% 24%, rgba(245, 196, 91, 0.26), transparent 7rem),
-    radial-gradient(circle at 78% 18%, rgba(104, 183, 255, 0.26), transparent 8rem),
+    radial-gradient(circle at 78% 18%, rgba(90, 214, 192, 0.26), transparent 8rem),
     linear-gradient(135deg, rgba(109, 225, 166, 0.15), rgba(248, 244, 232, 0.04));
 }
 
@@ -5072,7 +5125,7 @@ h3 {
   text-align: center;
   background:
     radial-gradient(circle at 22% 22%, rgba(245, 196, 91, 0.22), transparent 8rem),
-    radial-gradient(circle at 80% 18%, rgba(104, 183, 255, 0.22), transparent 9rem),
+    radial-gradient(circle at 80% 18%, rgba(90, 214, 192, 0.22), transparent 9rem),
     linear-gradient(135deg, rgba(109, 225, 166, 0.14), rgba(248, 244, 232, 0.04));
   border: 1px solid rgba(248, 244, 232, 0.14);
   border-radius: var(--card-radius);
@@ -5319,7 +5372,7 @@ h3 {
   margin: 0 clamp(18px, 5vw, 76px) clamp(28px, 5vw, 64px);
   padding: clamp(20px, 4vw, 30px);
   background:
-    linear-gradient(135deg, rgba(104, 183, 255, 0.11), transparent 50%),
+    linear-gradient(135deg, rgba(90, 214, 192, 0.11), transparent 50%),
     rgba(248, 244, 232, 0.052);
   border: 1px solid rgba(248, 244, 232, 0.14);
   border-radius: var(--radius-md);
@@ -5645,7 +5698,7 @@ h3 {
 }
 
 .architecture-svg .svg-node-blue {
-  stroke: rgba(104, 183, 255, 0.58);
+  stroke: rgba(90, 214, 192, 0.58);
 }
 
 .architecture-svg .svg-node-gold {
@@ -5661,7 +5714,7 @@ h3 {
 }
 
 .architecture-svg .svg-arrow-blue {
-  stroke: rgba(104, 183, 255, 0.72);
+  stroke: rgba(90, 214, 192, 0.72);
 }
 
 .architecture-svg .svg-arrow-muted {
@@ -5685,7 +5738,7 @@ h3 {
 
 .architecture-svg .svg-note {
   fill: var(--muted);
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 14px;
   line-height: 1.4;
 }
@@ -5926,7 +5979,7 @@ h3 {
   min-height: 160px;
   padding: 14px;
   background:
-    linear-gradient(145deg, rgba(104, 183, 255, 0.09), transparent 52%),
+    linear-gradient(145deg, rgba(90, 214, 192, 0.09), transparent 52%),
     rgba(8, 11, 12, 0.74);
   border: 1px solid rgba(248, 244, 232, 0.13);
   border-radius: var(--radius-md);
@@ -5940,7 +5993,7 @@ h3 {
   width: 12px;
   height: 2px;
   content: "";
-  background: rgba(104, 183, 255, 0.58);
+  background: rgba(90, 214, 192, 0.58);
   transform: translateY(-50%);
 }
 
@@ -6184,15 +6237,15 @@ h3 {
 .stream-body {
   background:
     linear-gradient(135deg, rgba(109, 225, 166, 0.12), transparent 34rem),
-    linear-gradient(225deg, rgba(104, 183, 255, 0.14), transparent 32rem),
+    linear-gradient(225deg, rgba(90, 214, 192, 0.14), transparent 32rem),
     var(--paper);
 }
 
 .stream-body.pointer-glow-enabled {
   background:
-    radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 111, 79, 0.16), transparent 23rem),
+    radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(240, 165, 90, 0.16), transparent 23rem),
     linear-gradient(135deg, rgba(109, 225, 166, 0.12), transparent 34rem),
-    linear-gradient(225deg, rgba(104, 183, 255, 0.14), transparent 32rem),
+    linear-gradient(225deg, rgba(90, 214, 192, 0.14), transparent 32rem),
     var(--paper);
 }
 
@@ -6258,7 +6311,7 @@ h3 {
 .stream-signal-board div {
   padding: 20px;
   background:
-    linear-gradient(135deg, rgba(255, 111, 79, 0.12), transparent 44%),
+    linear-gradient(135deg, rgba(240, 165, 90, 0.12), transparent 44%),
     rgba(8, 11, 12, 0.76);
   backdrop-filter: blur(18px);
 }
@@ -6280,7 +6333,7 @@ h3 {
 
 .stream-embed-section {
   background:
-    linear-gradient(120deg, rgba(104, 183, 255, 0.13), transparent 42%),
+    linear-gradient(120deg, rgba(90, 214, 192, 0.13), transparent 42%),
     #101314;
   border-bottom: 1px solid var(--line);
 }
@@ -6395,7 +6448,7 @@ h3 {
   place-items: center;
   padding: 28px;
   background:
-    linear-gradient(145deg, rgba(255, 111, 79, 0.12), transparent 48%),
+    linear-gradient(145deg, rgba(240, 165, 90, 0.12), transparent 48%),
     rgba(3, 6, 7, 0.96);
 }
 
@@ -6734,7 +6787,7 @@ h3 {
   overflow: hidden;
   background:
     linear-gradient(145deg, rgba(245, 196, 91, 0.16), transparent 48%),
-    radial-gradient(circle at 84% 14%, rgba(255, 111, 79, 0.2), transparent 22rem),
+    radial-gradient(circle at 84% 14%, rgba(240, 165, 90, 0.2), transparent 22rem),
     rgba(3, 6, 7, 0.94);
   border: 1px solid rgba(248, 244, 232, 0.18);
   border-radius: var(--radius-md);
@@ -6804,7 +6857,7 @@ h3 {
   aspect-ratio: 2 / 3;
   overflow: hidden;
   background:
-    linear-gradient(150deg, rgba(104, 183, 255, 0.16), transparent 48%),
+    linear-gradient(150deg, rgba(90, 214, 192, 0.16), transparent 48%),
     rgba(248, 244, 232, 0.06);
   border: 1px solid rgba(248, 244, 232, 0.16);
   border-radius: var(--radius-md);
@@ -6872,7 +6925,7 @@ h3 {
   padding: clamp(14px, 2vw, 18px);
   background:
     linear-gradient(145deg, rgba(245, 196, 91, 0.1), transparent 46%),
-    radial-gradient(circle at 88% 12%, rgba(255, 111, 79, 0.16), transparent 22rem),
+    radial-gradient(circle at 88% 12%, rgba(240, 165, 90, 0.16), transparent 22rem),
     rgba(3, 6, 7, 0.94);
 }
 
@@ -8975,15 +9028,15 @@ h3 {
 
   body.pointer-glow-enabled {
     background:
-      linear-gradient(135deg, rgba(255, 111, 79, 0.12), transparent 34rem),
-      linear-gradient(225deg, rgba(104, 183, 255, 0.14), transparent 32rem),
+      linear-gradient(135deg, rgba(240, 165, 90, 0.12), transparent 34rem),
+      linear-gradient(225deg, rgba(90, 214, 192, 0.14), transparent 32rem),
       var(--paper);
   }
 
   .stream-body.pointer-glow-enabled {
     background:
       linear-gradient(135deg, rgba(109, 225, 166, 0.12), transparent 34rem),
-      linear-gradient(225deg, rgba(104, 183, 255, 0.14), transparent 32rem),
+      linear-gradient(225deg, rgba(90, 214, 192, 0.14), transparent 32rem),
       var(--paper);
   }
 
@@ -9029,8 +9082,8 @@ h3 {
   .stream-body.pointer-glow-enabled,
   .stream-body {
     background:
-      linear-gradient(135deg, rgba(255, 111, 79, 0.08), transparent 34rem),
-      linear-gradient(225deg, rgba(104, 183, 255, 0.09), transparent 32rem),
+      linear-gradient(135deg, rgba(240, 165, 90, 0.08), transparent 34rem),
+      linear-gradient(225deg, rgba(90, 214, 192, 0.09), transparent 32rem),
       var(--paper);
   }
 
@@ -9297,7 +9350,7 @@ h3 {
   bottom: -30%;
   background:
     radial-gradient(circle at 32% 36%, rgba(245, 196, 91, 0.16), transparent 56%),
-    radial-gradient(circle at 68% 62%, rgba(104, 183, 255, 0.18), transparent 60%);
+    radial-gradient(circle at 68% 62%, rgba(90, 214, 192, 0.18), transparent 60%);
   animation: ambient-drift 21s ease-in-out infinite alternate-reverse;
 }
 
@@ -10211,7 +10264,7 @@ body::after {
   display: block;
   background:
     radial-gradient(140% 70% at 50% 0%, rgba(109, 225, 166, 0.05), transparent 58%),
-    radial-gradient(130% 70% at 50% 100%, rgba(104, 183, 255, 0.05), transparent 60%);
+    radial-gradient(130% 70% at 50% 100%, rgba(90, 214, 192, 0.05), transparent 60%);
   mask-image: none;
 }
 
@@ -10290,4 +10343,480 @@ body::after {
   to {
     transform: translate3d(4%, 4%, 0);
   }
+}
+
+/* ================================================================
+   2026-06 platform polish — view transitions, type & numeric flair
+   ================================================================ */
+
+/* Cross-document view transitions: smooth morph between pages.
+   Progressive enhancement — ignored by browsers without support. */
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 300ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Keep the sticky header steady/persistent across navigations */
+  .site-header {
+    view-transition-name: site-header;
+  }
+
+  ::view-transition-group(site-header) {
+    animation-duration: 300ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* Stat numbers: monospaced figures so count-up doesn't jitter width */
+.metric-band strong,
+.credibility-strip strong {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Subtle living sheen on the hero gradient headline */
+@media (prefers-reduced-motion: no-preference) {
+  .gradient-text {
+    background-size: 220% 100%;
+    animation: gradient-pan 9s ease-in-out infinite alternate;
+  }
+
+  @keyframes gradient-pan {
+    from {
+      background-position: 0% 50%;
+    }
+
+    to {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+/* ================================================================
+   2026-06 tactile interactions — card tilt, magnetic CTAs, icons
+   (all gated to fine pointer + motion-on; vars driven by shared.js)
+   ================================================================ */
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  /* 3D pointer-tilt on the featured project cards */
+  .selected-work-grid {
+    perspective: 1100px;
+  }
+
+  .selected-work-card {
+    --tilt-rx: 0deg;
+    --tilt-ry: 0deg;
+  }
+
+  .selected-work-card.is-tilting {
+    transform: translateY(-6px) rotateX(var(--tilt-rx)) rotateY(var(--tilt-ry));
+    transition: transform 120ms ease-out, border-color 220ms ease, box-shadow 220ms ease;
+  }
+
+  /* Magnetic primary CTAs — elastic pull toward the cursor */
+  .button.primary,
+  .nav .nav-cta {
+    --mag-x: 0px;
+    --mag-y: 0px;
+    transform: translate(var(--mag-x), var(--mag-y));
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), background 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+  }
+
+  /* Animated "What I do" icons on hover */
+  .what-card .what-icon {
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), color 260ms ease;
+  }
+
+  .what-card:hover .what-icon {
+    transform: translateY(-2px) scale(1.08) rotate(-3deg);
+    color: var(--gold);
+  }
+}
+
+/* ================================================================
+   2026-06 premium finishes — grain, terminal glow ring, button sheen
+   ================================================================ */
+
+/* Subtle film grain for depth (static, cheap, sits above base content) */
+html::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Houdini-animated angle for the terminal glow ring */
+@property --term-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Animated conic-gradient glow border on the hero terminal card.
+   Wrapped in motion-on so reduced-motion users get the clean card. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-terminal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 1px;
+    border-radius: var(--card-radius);
+    background: conic-gradient(
+      from var(--term-angle),
+      transparent 0 58%,
+      rgba(109, 225, 166, 0.7) 72%,
+      rgba(245, 196, 91, 0.6) 82%,
+      transparent 92%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: term-spin 6s linear infinite;
+  }
+
+  @keyframes term-spin {
+    to {
+      --term-angle: 360deg;
+    }
+  }
+}
+
+/* Sheen sweep on secondary / ghost buttons to match the primary */
+.button.secondary::after,
+.button.ghost::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.16) 50%, transparent 62%);
+  opacity: 0;
+  transform: translateX(-72%);
+  transition: transform 640ms ease, opacity 200ms ease;
+  pointer-events: none;
+}
+
+.button.secondary:hover::after,
+.button.ghost:hover::after {
+  opacity: 1;
+  transform: translateX(72%);
+}
+
+/* ================================================================
+   2026-06 navigation & UX — active state, anchor offset, menu, footer
+   ================================================================ */
+
+/* In-page anchor targets clear the sticky header on jump */
+:target {
+  scroll-margin-top: 92px;
+}
+
+/* Clearer "you are here" active nav item (desktop) */
+@media (min-width: 761px) {
+  .nav a[aria-current="page"] {
+    color: var(--ink);
+    background: rgba(109, 225, 166, 0.09);
+    border-color: rgba(109, 225, 166, 0.24);
+  }
+}
+
+/* Mobile menu: smooth drop-in animation */
+@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+  .site-header.nav-enhanced.nav-open .nav {
+    transform-origin: top center;
+    animation: nav-drop 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @keyframes nav-drop {
+    from {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.98);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Footer links: animated underline on hover/focus for clearer affordance */
+.footer-links a {
+  position: relative;
+}
+
+.footer-links a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.8;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-links a:hover::after,
+.footer-links a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ================================================================
+   2026-06 — Navigation & chrome elevation
+   Appended last so it intentionally wins the cascade. Adds the lean
+   grouped "Work" disclosure menu and a few tasteful chrome touches,
+   built entirely on the existing token system.
+   ================================================================ */
+
+/* --- Header: brand left, actions clustered to the right --- */
+.site-header {
+  gap: clamp(10px, 2vw, 18px);
+  justify-content: flex-start;
+}
+
+.brand {
+  margin-right: auto;
+}
+
+.brand-mark {
+  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+
+.brand:hover .brand-mark,
+.brand:focus-visible .brand-mark {
+  transform: translateY(-1px);
+  box-shadow: 0 0 22px rgba(109, 225, 166, 0.34);
+}
+
+/* --- Grouped "Work" disclosure trigger (visually matches nav links) --- */
+.nav-group {
+  position: relative;
+  display: inline-flex;
+}
+
+.nav-group-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 8px 11px;
+  color: var(--muted);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  list-style: none;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.nav-group-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.nav-group-toggle:hover {
+  color: var(--soft);
+  background: rgba(248, 244, 232, 0.07);
+  border-color: rgba(248, 244, 232, 0.14);
+}
+
+.nav-caret {
+  width: 13px;
+  height: 13px;
+  opacity: 0.66;
+  transition: transform 200ms var(--ease-out);
+}
+
+.nav-group[open] > .nav-group-toggle {
+  color: var(--ink);
+  background: rgba(248, 244, 232, 0.08);
+  border-color: rgba(248, 244, 232, 0.16);
+}
+
+.nav-group[open] .nav-caret {
+  transform: rotate(180deg);
+}
+
+/* Active when viewing any Work-section page */
+.nav-group.is-active > .nav-group-toggle {
+  color: var(--soft);
+}
+
+.nav-group.is-active > .nav-group-toggle::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* --- Dropdown panel --- */
+.nav-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 30;
+  display: grid;
+  gap: 2px;
+  width: max-content;
+  min-width: 268px;
+  max-width: min(80vw, 340px);
+  padding: 7px;
+  background: linear-gradient(180deg, rgba(20, 26, 27, 0.98), rgba(12, 16, 17, 0.99));
+  border: 1px solid rgba(248, 244, 232, 0.16);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+/* invisible hover bridge across the gap beneath the trigger */
+.nav-menu::before {
+  content: "";
+  position: absolute;
+  inset: -12px 0 auto 0;
+  height: 12px;
+}
+
+.nav-menu a {
+  display: grid;
+  gap: 2px;
+  padding: 9px 11px;
+  color: var(--soft);
+  border: 1px solid transparent;
+  border-radius: 9px;
+  line-height: 1.25;
+}
+
+.nav-menu-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.nav-menu-desc {
+  color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.nav-menu a:hover,
+.nav-menu a:focus-visible {
+  color: var(--ink);
+  background: var(--accent-soft);
+  border-color: var(--accent-line);
+}
+
+.nav-menu a:hover .nav-menu-desc,
+.nav-menu a:focus-visible .nav-menu-desc {
+  color: var(--soft);
+}
+
+.nav-menu a[aria-current="page"] {
+  background: rgba(248, 244, 232, 0.06);
+  border-color: rgba(248, 244, 232, 0.14);
+}
+
+.nav-menu a[aria-current="page"] .nav-menu-label {
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nav-group[open] > .nav-menu {
+    animation: nav-menu-in 180ms var(--ease-out);
+  }
+
+  @keyframes nav-menu-in {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+/* --- Mobile: the dropdown becomes an inline, indented sub-list --- */
+@media (max-width: 760px) {
+  .nav-group {
+    display: block;
+    width: 100%;
+  }
+
+  .nav-group-toggle {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-menu {
+    position: static;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    margin: 3px 0 6px;
+    padding: 2px 0 2px 9px;
+    background: none;
+    border: 0;
+    border-left: 2px solid var(--accent-line);
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    animation: none;
+  }
+
+  .nav-menu::before { display: none; }
+
+  .nav-menu a {
+    min-height: 44px;
+    align-content: center;
+  }
+}
+
+/* --- Tasteful, additive chrome touches --- */
+.button.primary {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 14px 34px rgba(245, 196, 91, 0.2);
+}
+
+.button.primary:hover {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34), 0 18px 44px rgba(245, 196, 91, 0.3);
+}
+
+.footer-links a {
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.footer-links a:hover {
+  background: rgba(248, 244, 232, 0.07);
+}
+
+/* --- Unified focus-visible across the interactive chrome --- */
+.nav-group-toggle:focus-visible,
+.nav-menu a:focus-visible,
+.nav a:focus-visible,
+.footer-links a:focus-visible,
+.cmdk-trigger:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+  box-shadow: var(--focus-shadow);
 }
