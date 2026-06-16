@@ -5,10 +5,10 @@
   --paper: #0f1314;
   --panel: #171c1d;
   --line: rgba(255, 247, 232, 0.18);
-  --ember: #ff6f4f;
+  --ember: #f0a55a;
   --gold: #f5c45b;
   --mint: #6de1a6;
-  --blue: #68b7ff;
+  --blue: #5ad6c0;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
 }
 
@@ -58,7 +58,7 @@ a:focus-visible {
   color: var(--ink);
   background:
     linear-gradient(135deg, rgba(109, 225, 166, 0.13), transparent 34rem),
-    linear-gradient(225deg, rgba(104, 183, 255, 0.14), transparent 34rem),
+    linear-gradient(225deg, rgba(90, 214, 192, 0.14), transparent 34rem),
     var(--paper);
 }
 

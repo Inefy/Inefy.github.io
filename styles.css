@@ -10247,7 +10247,7 @@ body.cmdk-open {
 .traverse-section,
 .contact-section,
 .note-strip {
-  padding: clamp(52px, 6vw, 96px) clamp(18px, 5vw, 76px);
+  padding: var(--section-pad-y) var(--section-pad-x);
 }
 
 .section-heading {

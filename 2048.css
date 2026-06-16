@@ -7,7 +7,7 @@
   --line: rgba(214, 241, 229, 0.18);
   --line-bright: rgba(255, 255, 255, 0.3);
   --mint: #6de1a6;
-  --blue: #68b7ff;
+  --blue: #5ad6c0;
   --gold: #f5c45b;
   --pink: #ff7ac3;
   --danger: #ff6f61;
@@ -30,7 +30,7 @@ body {
   overflow-y: auto;
   background:
     radial-gradient(circle at 12% 14%, rgba(109, 225, 166, 0.2), transparent 28rem),
-    radial-gradient(circle at 88% 8%, rgba(104, 183, 255, 0.2), transparent 24rem),
+    radial-gradient(circle at 88% 8%, rgba(90, 214, 192, 0.2), transparent 24rem),
     linear-gradient(145deg, #081013 0%, #101922 46%, #08110e 100%);
   color: var(--ink);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -88,7 +88,7 @@ button:disabled {
   inset: -20% -10%;
   z-index: -3;
   background:
-    linear-gradient(118deg, transparent 0 23%, rgba(109, 225, 166, 0.1) 23% 25%, transparent 25% 48%, rgba(104, 183, 255, 0.09) 48% 50%, transparent 50% 100%),
+    linear-gradient(118deg, transparent 0 23%, rgba(109, 225, 166, 0.1) 23% 25%, transparent 25% 48%, rgba(90, 214, 192, 0.09) 48% 50%, transparent 50% 100%),
     linear-gradient(72deg, transparent 0 34%, rgba(245, 196, 91, 0.08) 34% 35%, transparent 35% 100%);
   opacity: 0.92;
   transform: rotate(-2deg);
@@ -98,7 +98,7 @@ button:disabled {
   inset: auto 12% -14px;
   z-index: -2;
   height: 180px;
-  background: linear-gradient(90deg, transparent, rgba(109, 225, 166, 0.18), rgba(104, 183, 255, 0.18), transparent);
+  background: linear-gradient(90deg, transparent, rgba(109, 225, 166, 0.18), rgba(90, 214, 192, 0.18), transparent);
   filter: blur(34px);
   opacity: 0.72;
 }
@@ -230,10 +230,10 @@ button:disabled {
 .game-nav .nav-cta {
   border-color: rgba(245, 196, 91, 0.52);
   background:
-    linear-gradient(135deg, rgba(245, 196, 91, 0.98), rgba(109, 225, 166, 0.9) 58%, rgba(104, 183, 255, 0.86));
+    linear-gradient(135deg, rgba(245, 196, 91, 0.98), rgba(109, 225, 166, 0.9) 58%, rgba(90, 214, 192, 0.86));
   color: #071013;
   font-weight: 800;
-  box-shadow: 0 12px 32px rgba(104, 183, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  box-shadow: 0 12px 32px rgba(90, 214, 192, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.42);
 }
 
 .game-hud {
@@ -278,7 +278,7 @@ button:disabled {
 .score-chip.current {
   border-color: rgba(109, 225, 166, 0.36);
   background:
-    linear-gradient(145deg, rgba(109, 225, 166, 0.18), rgba(104, 183, 255, 0.06)),
+    linear-gradient(145deg, rgba(109, 225, 166, 0.18), rgba(90, 214, 192, 0.06)),
     rgba(109, 225, 166, 0.08);
 }
 
@@ -378,7 +378,7 @@ button:disabled {
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.025)),
     radial-gradient(circle at 26% 14%, rgba(109, 225, 166, 0.16), transparent 36%),
-    radial-gradient(circle at 82% 80%, rgba(104, 183, 255, 0.14), transparent 36%),
+    radial-gradient(circle at 82% 80%, rgba(90, 214, 192, 0.14), transparent 36%),
     #122025;
   box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -20px 70px rgba(0, 0, 0, 0.28);
   touch-action: none;
@@ -409,7 +409,7 @@ button:disabled {
 }
 
 .merge-board:focus-visible {
-  outline: 3px solid rgba(104, 183, 255, 0.75);
+  outline: 3px solid rgba(90, 214, 192, 0.75);
   outline-offset: 4px;
 }
 
@@ -561,12 +561,12 @@ button:disabled {
 }
 
 .tile[data-value="2048"] {
-  background: linear-gradient(135deg, #f5c45b, #6de1a6 54%, #68b7ff);
+  background: linear-gradient(135deg, #f5c45b, #6de1a6 54%, #5ad6c0);
   box-shadow: 0 18px 42px rgba(245, 196, 91, 0.28), 0 0 34px rgba(109, 225, 166, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
 .tile.tile-super {
-  background: linear-gradient(135deg, #ffffff, #ff7ac3 45%, #68b7ff);
+  background: linear-gradient(135deg, #ffffff, #ff7ac3 45%, #5ad6c0);
 }
 
 .tile.is-new {
@@ -621,7 +621,7 @@ button:disabled {
   position: absolute;
   inset: 0;
   content: "";
-  background: linear-gradient(90deg, rgba(245, 196, 91, 0.16), transparent 32%, rgba(104, 183, 255, 0.12));
+  background: linear-gradient(90deg, rgba(245, 196, 91, 0.16), transparent 32%, rgba(90, 214, 192, 0.12));
   opacity: 0.7;
   pointer-events: none;
 }
@@ -667,7 +667,7 @@ button:disabled {
 }
 
 .menu-tile-stack span:nth-child(4) {
-  background: #68b7ff;
+  background: #5ad6c0;
 }
 
 .menu-card strong {
@@ -692,7 +692,7 @@ button:disabled {
 }
 
 .menu-button {
-  background: linear-gradient(135deg, #f5c45b, #6de1a6 60%, #68b7ff);
+  background: linear-gradient(135deg, #f5c45b, #6de1a6 60%, #5ad6c0);
   color: #081013;
   box-shadow: 0 14px 34px rgba(109, 225, 166, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.42);
 }
@@ -730,9 +730,9 @@ button:disabled {
 
 .touch-pad button:hover,
 .touch-pad button:focus-visible {
-  border-color: rgba(104, 183, 255, 0.74);
-  background: rgba(104, 183, 255, 0.14);
-  box-shadow: 0 0 0 3px rgba(104, 183, 255, 0.12);
+  border-color: rgba(90, 214, 192, 0.74);
+  background: rgba(90, 214, 192, 0.14);
+  box-shadow: 0 0 0 3px rgba(90, 214, 192, 0.12);
   outline: 3px solid #f5c45b;
   outline-offset: 4px;
 }

@@ -6,10 +6,10 @@
   --panel: rgba(14, 21, 22, 0.86);
   --panel-strong: rgba(18, 27, 28, 0.94);
   --line: rgba(255, 247, 232, 0.16);
-  --danger: #ff6f4f;
+  --danger: #f0a55a;
   --gold: #f5c45b;
   --mint: #6de1a6;
-  --blue: #68b7ff;
+  --blue: #5ad6c0;
   --violet: #a78bfa;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
 }
@@ -61,7 +61,7 @@ a:focus-visible {
   color: var(--ink);
   background:
     radial-gradient(circle at 18% 16%, rgba(109, 225, 166, 0.16), transparent 27rem),
-    radial-gradient(circle at 82% 10%, rgba(104, 183, 255, 0.14), transparent 29rem),
+    radial-gradient(circle at 82% 10%, rgba(90, 214, 192, 0.14), transparent 29rem),
     linear-gradient(145deg, #081011, #0c1113 52%, #111018);
 }
 
@@ -273,7 +273,7 @@ a:focus-visible {
 }
 
 .score-chip.pace {
-  border-color: rgba(104, 183, 255, 0.24);
+  border-color: rgba(90, 214, 192, 0.24);
 }
 
 .score-chip span {
@@ -320,7 +320,7 @@ body[data-game-state="paused"] .status-dot {
 
 body[data-game-state="over"] .status-dot {
   background: var(--danger);
-  box-shadow: 0 0 18px rgba(255, 111, 79, 0.62);
+  box-shadow: 0 0 18px rgba(240, 165, 90, 0.62);
 }
 
 body[data-game-state="won"] .status-dot {

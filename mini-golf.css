@@ -10,7 +10,7 @@
   --green: #6de1a6;
   --green-dark: #183d32;
   --cyan: #58d7e5;
-  --blue: #68b7ff;
+  --blue: #5ad6c0;
   --gold: #f5c45b;
   --pink: #ff8fc6;
   --danger: #ff766a;
@@ -36,7 +36,7 @@ body {
   background:
     radial-gradient(circle at 12% 10%, rgba(109, 225, 166, 0.2), transparent 25rem),
     radial-gradient(circle at 92% 10%, rgba(245, 196, 91, 0.18), transparent 24rem),
-    radial-gradient(circle at 58% 110%, rgba(104, 183, 255, 0.16), transparent 30rem),
+    radial-gradient(circle at 58% 110%, rgba(90, 214, 192, 0.16), transparent 30rem),
     linear-gradient(145deg, #071013 0%, #0a171b 48%, #10150f 100%);
   color: var(--text);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -139,7 +139,7 @@ a {
 .game-nav button:focus-visible,
 .touch-bar button:focus-visible,
 .menu-button:focus-visible {
-  outline: 3px solid rgba(104, 183, 255, 0.68);
+  outline: 3px solid rgba(90, 214, 192, 0.68);
   outline-offset: 3px;
 }
 
@@ -347,7 +347,7 @@ a {
 
 body[data-game-state="moving"] .status-dot {
   background: var(--blue);
-  box-shadow: 0 0 0 5px rgba(104, 183, 255, 0.12);
+  box-shadow: 0 0 0 5px rgba(90, 214, 192, 0.12);
 }
 
 body[data-game-state="paused"] .status-dot {
@@ -679,7 +679,7 @@ body[data-surface="water"] .lie-readout strong {
 }
 
 .menu-course-mark span:nth-child(3) {
-  background: linear-gradient(145deg, #a9dcff, #68b7ff);
+  background: linear-gradient(145deg, #a9dcff, #5ad6c0);
 }
 
 .menu-card strong {

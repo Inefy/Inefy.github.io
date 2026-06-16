@@ -7,14 +7,14 @@
   --line-strong: rgba(255, 255, 255, 0.24);
   --text: #f6fbff;
   --muted: #aeb9ca;
-  --blue: #68b7ff;
+  --blue: #5ad6c0;
   --cyan: #58d7e5;
   --gold: #f5c45b;
   --pink: #ff8fc6;
   --red: #ff766a;
   --green: #6de1a6;
   --glass: rgba(255, 255, 255, 0.07);
-  --glow-blue: 0 0 34px rgba(104, 183, 255, 0.24);
+  --glow-blue: 0 0 34px rgba(90, 214, 192, 0.24);
   --glow-pink: 0 0 36px rgba(255, 143, 198, 0.18);
   --shadow: 0 24px 90px rgba(0, 0, 0, 0.48);
 }
@@ -33,7 +33,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   background:
-    linear-gradient(115deg, rgba(104, 183, 255, 0.14), transparent 32%),
+    linear-gradient(115deg, rgba(90, 214, 192, 0.14), transparent 32%),
     linear-gradient(245deg, rgba(255, 143, 198, 0.12), transparent 30%),
     radial-gradient(ellipse at 46% 112%, rgba(245, 196, 91, 0.12), transparent 34rem),
     linear-gradient(145deg, #050810 0%, #07111d 48%, #110b18 100%);
@@ -79,7 +79,7 @@ a {
   inset: -12% auto auto -12%;
   width: 48vw;
   height: 78vh;
-  background: linear-gradient(115deg, rgba(88, 215, 229, 0.16), rgba(104, 183, 255, 0.06), transparent 72%);
+  background: linear-gradient(115deg, rgba(88, 215, 229, 0.16), rgba(90, 214, 192, 0.06), transparent 72%);
   clip-path: polygon(0 0, 74% 0, 100% 100%, 18% 100%);
 }
 
@@ -98,7 +98,7 @@ a {
   pointer-events: none;
   background-image:
     radial-gradient(circle, rgba(255, 255, 255, 0.56) 0 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(104, 183, 255, 0.32) 0 1px, transparent 1.6px),
+    radial-gradient(circle, rgba(90, 214, 192, 0.32) 0 1px, transparent 1.6px),
     linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-position: 0 0, 36px 42px, 0 0, 0 0;
@@ -118,7 +118,7 @@ a {
   border-radius: 8px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 22%),
-    radial-gradient(circle at 12% 0%, rgba(104, 183, 255, 0.13), transparent 40%),
+    radial-gradient(circle at 12% 0%, rgba(90, 214, 192, 0.13), transparent 40%),
     linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)),
     var(--panel);
   box-shadow:
@@ -156,7 +156,7 @@ a {
 .game-nav button:focus-visible,
 .touch-controls button:focus-visible,
 .menu-button:focus-visible {
-  outline: 3px solid rgba(104, 183, 255, 0.68);
+  outline: 3px solid rgba(90, 214, 192, 0.68);
   outline-offset: 3px;
 }
 
@@ -178,7 +178,7 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 8px;
   background: linear-gradient(135deg, var(--blue), var(--cyan) 54%, var(--pink));
-  box-shadow: 0 12px 30px rgba(104, 183, 255, 0.24);
+  box-shadow: 0 12px 30px rgba(90, 214, 192, 0.24);
   color: #041112;
   font-weight: 950;
 }
@@ -256,10 +256,10 @@ a {
 .game-nav a:hover,
 .game-nav button:hover:not(:disabled),
 .touch-controls button:hover:not(:disabled) {
-  border-color: rgba(104, 183, 255, 0.72);
-  background: rgba(104, 183, 255, 0.12);
+  border-color: rgba(90, 214, 192, 0.72);
+  background: rgba(90, 214, 192, 0.12);
   box-shadow:
-    0 12px 30px rgba(104, 183, 255, 0.16),
+    0 12px 30px rgba(90, 214, 192, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
@@ -328,10 +328,10 @@ a {
 }
 
 .stat-chip.current {
-  border-color: rgba(104, 183, 255, 0.44);
+  border-color: rgba(90, 214, 192, 0.44);
   background:
-    radial-gradient(circle at 18% 15%, rgba(104, 183, 255, 0.24), transparent 52%),
-    linear-gradient(145deg, rgba(104, 183, 255, 0.16), rgba(255, 255, 255, 0.035));
+    radial-gradient(circle at 18% 15%, rgba(90, 214, 192, 0.24), transparent 52%),
+    linear-gradient(145deg, rgba(90, 214, 192, 0.16), rgba(255, 255, 255, 0.035));
 }
 
 .score-chip {
@@ -496,10 +496,10 @@ body[data-game-state="over"] .status-dot {
   min-height: 28px;
   display: inline-flex;
   align-items: center;
-  border: 1px solid rgba(104, 183, 255, 0.22);
+  border: 1px solid rgba(90, 214, 192, 0.22);
   border-radius: 999px;
   padding: 0 10px;
-  background: rgba(104, 183, 255, 0.09);
+  background: rgba(90, 214, 192, 0.09);
   color: var(--text);
   font-size: 0.74rem;
   font-weight: 900;
@@ -525,7 +525,7 @@ body[data-game-state="over"] .status-dot {
   border-radius: 8px;
   padding: 10px;
   background:
-    radial-gradient(circle at 20% 0%, rgba(104, 183, 255, 0.11), transparent 48%),
+    radial-gradient(circle at 20% 0%, rgba(90, 214, 192, 0.11), transparent 48%),
     rgba(255, 255, 255, 0.035);
 }
 
@@ -562,8 +562,8 @@ body[data-game-state="over"] .status-dot {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.09), transparent 15%),
     linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
-    repeating-linear-gradient(135deg, rgba(104, 183, 255, 0.045) 0 1px, transparent 1px 56px),
-    radial-gradient(circle at 22% 18%, rgba(104, 183, 255, 0.16), transparent 36%),
+    repeating-linear-gradient(135deg, rgba(90, 214, 192, 0.045) 0 1px, transparent 1px 56px),
+    radial-gradient(circle at 22% 18%, rgba(90, 214, 192, 0.16), transparent 36%),
     radial-gradient(circle at 82% 78%, rgba(255, 143, 198, 0.12), transparent 34%),
     rgba(5, 9, 16, 0.9);
 }
@@ -586,7 +586,7 @@ body[data-game-state="over"] .status-dot {
   inset: auto 16px 12px;
   z-index: 1;
   height: 54px;
-  background: linear-gradient(90deg, transparent, rgba(104, 183, 255, 0.14), rgba(255, 143, 198, 0.12), transparent);
+  background: linear-gradient(90deg, transparent, rgba(90, 214, 192, 0.14), rgba(255, 143, 198, 0.12), transparent);
   filter: blur(20px);
 }
 
@@ -604,8 +604,8 @@ body[data-game-state="over"] .status-dot {
   filter: saturate(1.08) contrast(1.03);
   box-shadow:
     0 24px 66px rgba(0, 0, 0, 0.38),
-    0 0 0 1px rgba(104, 183, 255, 0.16),
-    0 0 44px rgba(104, 183, 255, 0.16),
+    0 0 0 1px rgba(90, 214, 192, 0.16),
+    0 0 44px rgba(90, 214, 192, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   touch-action: none;
 }
@@ -621,9 +621,9 @@ body[data-game-state="over"] .status-dot {
   position: absolute;
   width: 42px;
   height: 42px;
-  border-color: rgba(104, 183, 255, 0.48);
-  color: rgba(104, 183, 255, 0.48);
-  filter: drop-shadow(0 0 12px rgba(104, 183, 255, 0.22));
+  border-color: rgba(90, 214, 192, 0.48);
+  color: rgba(90, 214, 192, 0.48);
+  filter: drop-shadow(0 0 12px rgba(90, 214, 192, 0.22));
 }
 
 .stage-corners span:nth-child(1) {
@@ -663,7 +663,7 @@ body[data-game-state="over"] .status-dot {
   padding: 18px;
   background:
     linear-gradient(135deg, rgba(5, 8, 16, 0.68), rgba(5, 8, 16, 0.28)),
-    repeating-linear-gradient(135deg, rgba(104, 183, 255, 0.05) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(135deg, rgba(90, 214, 192, 0.05) 0 1px, transparent 1px 28px),
     rgba(5, 7, 12, 0.5);
   opacity: 1;
   pointer-events: auto;
@@ -688,7 +688,7 @@ body[data-game-state="over"] .status-dot {
   border-radius: 8px;
   padding: 20px;
   background:
-    radial-gradient(circle at 22% 18%, rgba(104, 183, 255, 0.22), transparent 44%),
+    radial-gradient(circle at 22% 18%, rgba(90, 214, 192, 0.22), transparent 44%),
     radial-gradient(circle at 82% 88%, rgba(255, 143, 198, 0.14), transparent 40%),
     linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04)),
     rgba(10, 16, 28, 0.95);
@@ -706,7 +706,7 @@ body[data-game-state="over"] .status-dot {
   inset: 0;
   content: "";
   background:
-    linear-gradient(90deg, transparent, rgba(104, 183, 255, 0.08), transparent),
+    linear-gradient(90deg, transparent, rgba(90, 214, 192, 0.08), transparent),
     linear-gradient(135deg, rgba(255, 255, 255, 0.09), transparent 42%);
   opacity: 0.72;
   pointer-events: none;
@@ -751,7 +751,7 @@ body[data-game-state="over"] .status-dot {
   height: 46px;
   background: linear-gradient(180deg, #ffffff, var(--blue) 58%, var(--pink));
   clip-path: polygon(50% 0, 100% 100%, 50% 76%, 0 100%);
-  filter: drop-shadow(0 10px 20px rgba(104, 183, 255, 0.28));
+  filter: drop-shadow(0 10px 20px rgba(90, 214, 192, 0.28));
 }
 
 .menu-ship-mark span:nth-child(2),
@@ -761,7 +761,7 @@ body[data-game-state="over"] .status-dot {
   height: 24px;
   border: 2px solid rgba(255, 255, 255, 0.55);
   border-radius: 999px;
-  box-shadow: inset 0 0 18px rgba(104, 183, 255, 0.16);
+  box-shadow: inset 0 0 18px rgba(90, 214, 192, 0.16);
 }
 
 .menu-ship-mark span:nth-child(2) {
