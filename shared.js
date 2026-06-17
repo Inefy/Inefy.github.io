@@ -6,6 +6,28 @@
   const mobileNavQuery = window.matchMedia("(max-width: 760px)");
   let copyEmailAnnouncementTimer = 0;
 
+  const THEME_KEY = "theme";
+  const THEME_COLORS = { dark: "#0c0f10", light: "#f3f0e7" };
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+  function applyTheme(theme) {
+    const next = theme === "light" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    if (themeColorMeta) themeColorMeta.setAttribute("content", THEME_COLORS[next]);
+    return next;
+  }
+
+  function storedTheme() {
+    try {
+      return localStorage.getItem(THEME_KEY);
+    } catch {
+      return null;
+    }
+  }
+
+  // Apply the saved theme as soon as this (deferred) script runs.
+  applyTheme(storedTheme() === "light" ? "light" : "dark");
+
   if (year) {
     year.textContent = new Date().getFullYear();
   }
@@ -896,6 +918,44 @@
     }
   }
 
+  function initThemeToggle() {
+    const header = document.querySelector(".site-header");
+    if (!header) return;
+
+    const SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>';
+    const MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>';
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "theme-toggle";
+    btn.innerHTML =
+      '<span class="theme-toggle-icon theme-toggle-sun" aria-hidden="true">' + SUN + "</span>" +
+      '<span class="theme-toggle-icon theme-toggle-moon" aria-hidden="true">' + MOON + "</span>";
+
+    function syncLabel() {
+      const isLight = document.documentElement.dataset.theme === "light";
+      const label = isLight ? "Switch to dark theme" : "Switch to light theme";
+      btn.setAttribute("aria-label", label);
+      btn.setAttribute("aria-pressed", String(isLight));
+      btn.title = label;
+    }
+
+    btn.addEventListener("click", () => {
+      const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+      applyTheme(next);
+      try {
+        localStorage.setItem(THEME_KEY, next);
+      } catch {
+        /* storage may be unavailable; theme still applies for this session */
+      }
+      syncLabel();
+    });
+
+    syncLabel();
+    const ref = header.querySelector(".nav-toggle") || header.querySelector(".nav");
+    header.insertBefore(btn, ref);
+  }
+
   initMobileNavigation();
   initSkipLinks();
   initCopyEmailButtons();
@@ -905,6 +965,7 @@
   initScrollProgress();
   initBackToTop();
   initCommandPalette();
+  initThemeToggle();
   initCardTilt();
   initMagneticButtons();
   initNavGroups();

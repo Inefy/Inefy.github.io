@@ -91,30 +91,115 @@
         <div class="section-heading">
           <p class="eyebrow">Next step</p>
           <h2 id="contact-details-title">Send enough context to move quickly.</h2>
+          <p>Fill in the quick brief below and it opens your email app with everything filled in &mdash; nothing is sent automatically, and no data leaves your device.</p>
         </div>
 
-        <div class="contact-action-grid">
-          <article class="contact-info-card contact-fit-card">
-            <h3>Best fit</h3>
-            <ul class="contact-fit-list">
-              <li>Frontend/internal tools</li>
-              <li>Python automation</li>
-              <li>Map-based workflows</li>
-              <li>Browser tools / Canvas</li>
-              <li>GitHub Pages prototypes</li>
-            </ul>
-          </article>
+        <div class="contact-layout">
+          <form class="contact-form" data-contact-form data-contact-email="hello@zacbatten.me" novalidate aria-label="Project brief">
+            <div class="form-grid-2">
+              <div class="form-row">
+                <label for="cf-name">Name</label>
+                <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your name">
+              </div>
+              <div class="form-row">
+                <label for="cf-email">Your email <span class="form-optional">(so I can reply)</span></label>
+                <input id="cf-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com">
+              </div>
+            </div>
 
-          <article class="contact-info-card">
-            <h3>What to include</h3>
-            <ul class="contact-checklist">
-              <li>Role or project</li>
-              <li>Timeline</li>
-              <li>Relevant portfolio project</li>
-              <li>Preferred next step</li>
-            </ul>
-          </article>
+            <div class="form-row">
+              <label for="cf-company">Company or context <span class="form-optional">(optional)</span></label>
+              <input id="cf-company" name="company" type="text" autocomplete="organization" placeholder="Team, company, or how you found me">
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-row">
+                <label for="cf-type">Project type</label>
+                <select id="cf-type" name="type">
+                  <option value="frontend">Frontend / internal tools</option>
+                  <option value="automation">Python automation / bots</option>
+                  <option value="maps">Map-based workflow</option>
+                  <option value="canvas">Browser / Canvas tool</option>
+                  <option value="other">Something else</option>
+                  <option value="unsure">Not sure yet</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label for="cf-timeline">Timeline</label>
+                <select id="cf-timeline" name="timeline">
+                  <option value="asap">As soon as possible</option>
+                  <option value="1-3-months">In the next 1&ndash;3 months</option>
+                  <option value="flexible">Flexible / no fixed date</option>
+                  <option value="exploring">Just exploring</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="cf-message">Project details</label>
+              <textarea id="cf-message" name="message" rows="5" placeholder="What are you trying to build, and what does success look like? A relevant project link helps too."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="button primary">Compose email</button>
+              <button type="button" class="button secondary" data-copy-summary>Copy details</button>
+            </div>
+            <p class="form-status" data-form-status role="status" aria-live="polite" aria-atomic="true"></p>
+            <p class="form-note">Prefer to write it yourself? Email <a href="mailto:hello@zacbatten.me">hello@zacbatten.me</a> directly.</p>
+          </form>
+
+          <aside class="contact-sidebar" aria-label="Working details">
+            <article class="contact-info-card contact-availability">
+              <h3><span class="live-dot" aria-hidden="true"></span> Availability</h3>
+              <p>Open to new frontend, internal-tools, and automation work &mdash; contract or full-time.</p>
+              <dl class="contact-facts">
+                <div><dt>Working style</dt><dd>Remote-friendly</dd></div>
+                <div><dt>Based in</dt><dd>Newfoundland, Canada (NT, UTC&minus;3:30)</dd></div>
+                <div><dt>Typical reply</dt><dd>Within 2 business days</dd></div>
+              </dl>
+            </article>
+
+            <article class="contact-info-card contact-fit-card">
+              <h3>Best fit</h3>
+              <ul class="contact-fit-list">
+                <li>Frontend/internal tools</li>
+                <li>Python automation</li>
+                <li>Map-based workflows</li>
+                <li>Browser tools / Canvas</li>
+                <li>GitHub Pages prototypes</li>
+              </ul>
+            </article>
+          </aside>
         </div>
+
+        <section class="contact-faq" aria-labelledby="contact-faq-title">
+          <div class="section-heading">
+            <p class="eyebrow">Good to know</p>
+            <h2 id="contact-faq-title">A few quick answers.</h2>
+          </div>
+          <div class="faq-list">
+            <details class="faq-item" name="contact-faq">
+              <summary>Are you available right now?</summary>
+              <div class="faq-answer"><p>Yes &mdash; I&rsquo;m open to new frontend, internal-tools, and Python-automation work, on either a contract or full-time basis. Send the role, timeline, and the closest project example and I&rsquo;ll reply quickly.</p></div>
+            </details>
+            <details class="faq-item" name="contact-faq">
+              <summary>Do you work remotely?</summary>
+              <div class="faq-answer"><p>Remote-friendly. I&rsquo;m based in Newfoundland, Canada (Newfoundland Time, UTC&minus;3:30), which overlaps a normal North American and European working day.</p></div>
+            </details>
+            <details class="faq-item" name="contact-faq">
+              <summary>What do you build with?</summary>
+              <div class="faq-answer"><p>Vanilla JavaScript, HTML, and CSS for front-end and browser tools; Python for automation and bots; plus Canvas, MapLibre, SQLite, OBS WebSocket, and Playwright depending on the job. Most of this site ships as plain files on GitHub Pages with no build step.</p></div>
+            </details>
+            <details class="faq-item" name="contact-faq">
+              <summary>Can I see source code or references?</summary>
+              <div class="faq-answer"><p>Much of my work is public on <a href="https://github.com/Inefy" rel="noopener noreferrer" target="_blank">GitHub</a>, and the <a href="case-studies.html">case studies</a> walk through how each project was built. References are available on request.</p></div>
+            </details>
+            <details class="faq-item" name="contact-faq">
+              <summary>What happens after I send the brief?</summary>
+              <div class="faq-answer"><p>The form just opens your own email app with the details pre-filled &mdash; there&rsquo;s no server, intake tool, or tracking in between. I read every message and reply to good-fit projects within a couple of business days.</p></div>
+            </details>
+          </div>
+        </section>
 
         <section class="contact-start-projects" aria-labelledby="contact-start-title">
           <div>
@@ -127,15 +212,6 @@
             <a href="web-paint-case-study.html"><span>Canvas state</span> Web Paint</a>
             <a href="resume.html"><span>Experience</span> Resume</a>
           </div>
-        </section>
-
-        <section class="contact-final-cta" aria-labelledby="contact-final-title">
-          <div>
-            <p class="eyebrow">Ready</p>
-            <h3 id="contact-final-title">Email is the direct path.</h3>
-            <p>No form or hidden intake step. Send the details you want to share.</p>
-          </div>
-          <a class="button primary" href="mailto:hello@zacbatten.me">Email Zac</a>
         </section>
       </section>
     </main>
@@ -159,5 +235,6 @@
     </footer>
 
     <script src="shared.js?v=20260613-elevate1" defer></script>
+    <script src="contact.js?v=20260617-contact1" defer></script>
   </body>
 </html>
