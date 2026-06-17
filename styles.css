@@ -3502,6 +3502,14 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+/* Skip rendering work for off-screen lab cards; auto intrinsic size
+   stores each card's real height after first paint to avoid scroll jank.
+   The featured card is above the fold and full-width, so it is excluded. */
+.lab-card:not(.lab-card-featured) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 460px;
+}
+
 .lab-card-featured {
   grid-column: 1 / -1;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.95fr);
@@ -9290,6 +9298,18 @@ h3 {
   body.reveal-enabled main > section.reveal-visible {
     opacity: 1;
     transform: none;
+  }
+
+  /* The home hero is intentionally excluded from the scroll-reveal observer
+     (see initScrollReveal in shared.js), so it never receives .reveal-visible.
+     Without this override it keeps the reveal hidden start-state permanently
+     and renders BLANK for every visitor who does not use reduced motion.
+     Show it immediately (this also improves LCP); the hero's child elements
+     still play their rise-in entrance animation. */
+  body.reveal-enabled main > section.home-hero {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 

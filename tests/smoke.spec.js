@@ -27,7 +27,8 @@ test.describe("static portfolio smoke paths", () => {
     await gotoLocal(page, "/");
     await expect(page.getByRole("heading", { name: /i build practical web tools/i })).toBeVisible();
 
-    await primaryNav(page).getByRole("link", { name: "Work" }).click();
+    await primaryNav(page).locator("[data-nav-group]").hover();
+    await primaryNav(page).getByRole("link", { name: /all work/i }).click();
     await expect(page).toHaveURL(/\/work\.html$/);
     await expect(page.getByRole("heading", { name: /^selected work/i })).toBeVisible();
 

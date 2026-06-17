@@ -2,7 +2,7 @@
 
 Static GitHub Pages portfolio for [zacbatten.me](https://zacbatten.me). It presents Zac Batten as a frontend, internal-tools, and automation developer through working demos, case studies, build notes, and resume/contact paths.
 
-![Homepage preview](inefy-desktop-final.png)
+![Homepage preview](inefy-desktop-final.jpg)
 
 ## Review Path
 
