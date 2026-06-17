@@ -377,10 +377,76 @@
     boardEl.focus({ preventScroll: true });
   }
 
-  function render() {
-    const fragment = document.createDocumentFragment();
+  let tiles = [];
+  let tileSeq = 0;
+  const tileEls = new Map();
+  const SLIDE_MS = 130;
 
+  function prefersReducedMotion() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function makeTile(value, row, col) {
+    tileSeq += 1;
+    return { id: tileSeq, value, row, col };
+  }
+
+  function decorateTile(el, tile) {
+    el.dataset.value = String(tile.value);
+    el.dataset.label = formatNumber(tile.value);
+    el.classList.toggle("large", tile.value >= 1024);
+    el.classList.toggle("xlarge", tile.value >= 16384);
+    el.classList.toggle("tile-super", tile.value > TARGET_TILE);
+  }
+
+  function positionTile(el, tile) {
+    el.className = `tile tile-x-${tile.col} tile-y-${tile.row}`;
+    decorateTile(el, tile);
+  }
+
+  function createTileEl(tile, flag) {
+    const el = document.createElement("div");
+    el.setAttribute("aria-hidden", "true");
+    el.setAttribute("role", "presentation");
+    positionTile(el, tile);
+    if (flag === "new") {
+      el.classList.add("is-new");
+    } else if (flag === "merged") {
+      el.classList.add("is-merged");
+    }
+    tileLayer.appendChild(el);
+    tileEls.set(tile.id, el);
+    return el;
+  }
+
+  function tileGridFromTiles() {
+    const map = Array.from({ length: SIZE }, () => Array(SIZE).fill(null));
+    tiles.forEach((tile) => {
+      map[tile.row][tile.col] = tile;
+    });
+    return map;
+  }
+
+  function rebuildGridFromTiles() {
+    grid = createGrid();
+    tiles.forEach((tile) => {
+      grid[tile.row][tile.col] = tile.value;
+    });
+  }
+
+  function flushOrphanTiles() {
+    tileEls.forEach((el, id) => {
+      if (!tiles.some((tile) => tile.id === id)) {
+        el.remove();
+        tileEls.delete(id);
+      }
+    });
+  }
+
+  function render() {
     tileLayer.textContent = "";
+    tileEls.clear();
+    tiles = [];
 
     for (let row = 0; row < SIZE; row += 1) {
       for (let col = 0; col < SIZE; col += 1) {
@@ -389,39 +455,12 @@
           continue;
         }
 
-        const tile = document.createElement("div");
-        tile.className = `tile tile-x-${col} tile-y-${row}`;
-        tile.dataset.value = String(value);
-        tile.dataset.label = formatNumber(value);
-        tile.setAttribute("aria-hidden", "true");
-        tile.setAttribute("role", "presentation");
-
-        if (value >= 1024) {
-          tile.classList.add("large");
-        }
-
-        if (value >= 16384) {
-          tile.classList.add("xlarge");
-        }
-
-        if (value > TARGET_TILE) {
-          tile.classList.add("tile-super");
-        }
-
-        const key = cellKey(row, col);
-        if (key === newTileKey) {
-          tile.classList.add("is-new");
-        }
-
-        if (mergedKeys.has(key)) {
-          tile.classList.add("is-merged");
-        }
-
-        fragment.appendChild(tile);
+        const tile = makeTile(value, row, col);
+        tiles.push(tile);
+        createTileEl(tile, cellKey(row, col) === newTileKey ? "new" : null);
       }
     }
 
-    tileLayer.appendChild(fragment);
     updateAccessibleBoardState();
   }
 
@@ -626,24 +665,62 @@
       return false;
     }
 
-    const before = cloneGrid(grid);
-    const next = createGrid();
+    flushOrphanTiles();
+
     const previousSnapshot = makeSnapshot();
-    const moveMergedKeys = new Set();
+    const tileGrid = tileGridFromTiles();
+    const survivors = [];
+    const mergedTiles = [];
+    const fadeTiles = [];
+    const mergedKeySet = new Set();
     let gained = 0;
+    let changed = false;
 
     for (let index = 0; index < SIZE; index += 1) {
-      const result = slideLine(readLine(before, direction, index));
-      writeLine(next, direction, index, result.line);
-      gained += result.gained;
+      const lineTiles = [];
+      for (let offset = 0; offset < SIZE; offset += 1) {
+        const cell = positionFor(direction, index, offset);
+        lineTiles.push(tileGrid[cell.row][cell.col]);
+      }
 
-      result.mergedOffsets.forEach((offset) => {
-        const position = positionFor(direction, index, offset);
-        moveMergedKeys.add(cellKey(position.row, position.col));
-      });
+      const compact = lineTiles.filter(Boolean);
+      let writeOffset = 0;
+
+      for (let i = 0; i < compact.length; i += 1) {
+        const tile = compact[i];
+        const neighbor = compact[i + 1];
+        const dest = positionFor(direction, index, writeOffset);
+
+        if (neighbor && neighbor.value === tile.value) {
+          if (tile.row !== dest.row || tile.col !== dest.col) {
+            changed = true;
+          }
+          tile.row = dest.row;
+          tile.col = dest.col;
+          neighbor.row = dest.row;
+          neighbor.col = dest.col;
+          fadeTiles.push(tile, neighbor);
+
+          const merged = makeTile(tile.value * 2, dest.row, dest.col);
+          mergedTiles.push(merged);
+          mergedKeySet.add(cellKey(dest.row, dest.col));
+          gained += merged.value;
+          changed = true;
+          i += 1;
+        } else {
+          if (tile.row !== dest.row || tile.col !== dest.col) {
+            changed = true;
+          }
+          tile.row = dest.row;
+          tile.col = dest.col;
+          survivors.push(tile);
+        }
+
+        writeOffset += 1;
+      }
     }
 
-    if (gridsAreEqual(before, next)) {
+    if (!changed) {
       flashBoard("is-shaking");
       updateHud("No move", {
         announce: true,
@@ -652,14 +729,47 @@
       return false;
     }
 
-    grid = next;
+    survivors.forEach((tile) => {
+      const el = tileEls.get(tile.id);
+      if (el) {
+        positionTile(el, tile);
+      }
+    });
+
+    fadeTiles.forEach((tile) => {
+      const el = tileEls.get(tile.id);
+      if (el) {
+        positionTile(el, tile);
+      }
+    });
+
+    tiles = survivors.concat(mergedTiles);
+    rebuildGridFromTiles();
+    mergedTiles.forEach((tile) => createTileEl(tile, "merged"));
+
+    const removeDelay = prefersReducedMotion() ? 0 : SLIDE_MS;
+    window.setTimeout(() => {
+      fadeTiles.forEach((tile) => {
+        const el = tileEls.get(tile.id);
+        if (el) {
+          el.remove();
+        }
+        tileEls.delete(tile.id);
+      });
+    }, removeDelay);
+
+    const spawn = addRandomTile();
+    if (spawn) {
+      const spawnTile = makeTile(grid[spawn.row][spawn.col], spawn.row, spawn.col);
+      tiles.push(spawnTile);
+      createTileEl(spawnTile, "new");
+    }
+
     score += gained;
     moves += 1;
     lastSnapshot = previousSnapshot;
-    mergedKeys = moveMergedKeys;
-    newTileKey = "";
-    addRandomTile();
-    render();
+    mergedKeys = mergedKeySet;
+
     flashScore(gained);
     evaluateBoard(gained > 0 ? `+${formatNumber(gained)}` : "Moved", {
       announce: true,

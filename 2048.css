@@ -570,12 +570,22 @@ button:disabled {
 }
 
 .tile.is-new {
-  animation: tile-pop 150ms ease-out;
+  animation: tile-pop 160ms ease-out 0.11s backwards;
 }
 
 .tile.is-merged {
-  animation: tile-merge 180ms ease-out;
-  filter: saturate(1.18) brightness(1.05);
+  animation: tile-merge 220ms ease-out 0.11s backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile {
+    transition: none;
+  }
+
+  .tile.is-new,
+  .tile.is-merged {
+    animation: none;
+  }
 }
 
 .game-menu {
@@ -830,12 +840,17 @@ body[data-game-state="over"] .status-dot {
 }
 
 @keyframes tile-merge {
-  0%,
-  100% {
-    transform: scale(1);
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
   }
-  50% {
-    transform: scale(1.08);
+  55% {
+    opacity: 1;
+    transform: scale(1.14);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
