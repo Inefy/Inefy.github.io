@@ -141,18 +141,22 @@
   }
 
   function initTerminalTyping() {
-    const termBody = document.querySelector(".hero-terminal .terminal-body");
-    if (!termBody || reducedMotionQuery.matches) return;
+    const terminal = document.querySelector(".hero-terminal");
+    const termBody = terminal ? terminal.querySelector(".terminal-body") : null;
+    if (!terminal || !termBody) return;
 
     const original = termBody.innerHTML;
-    const timers = [];
+    let timers = [];
 
     function restore() {
       timers.forEach((t) => window.clearTimeout(t));
+      timers = [];
       termBody.innerHTML = original;
     }
 
-    try {
+    function run() {
+      restore();
+      try {
       const lines = Array.from(termBody.querySelectorAll("p"));
       if (!lines.length) return;
 
@@ -229,9 +233,26 @@
       }
 
       typeLine();
-    } catch (err) {
-      restore();
+      } catch (err) {
+        restore();
+      }
     }
+
+    // Small replay control (outside the aria-hidden title bar) so the
+    // typing sequence can be watched again on demand.
+    const replay = document.createElement("button");
+    replay.type = "button";
+    replay.className = "terminal-replay";
+    replay.title = "Replay animation";
+    replay.setAttribute("aria-label", "Replay terminal animation");
+    replay.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>';
+    replay.addEventListener("click", () => {
+      if (reducedMotionQuery.matches) return;
+      run();
+    });
+    terminal.appendChild(replay);
+
+    if (!reducedMotionQuery.matches) run();
   }
 
   syncMotionPreference();

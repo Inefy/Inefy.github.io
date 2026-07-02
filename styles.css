@@ -11184,3 +11184,434 @@ html::after {
   outline-offset: 3px;
   box-shadow: var(--focus-shadow);
 }
+
+/* ================================================================
+   Interaction layer v2 (20260702-interact1)
+   Lightbox, toasts, section anchors, shortcut reference, lab
+   filters, terminal replay, and small tactile touches. Everything
+   here inherits the global prefers-reduced-motion neutralizer.
+   ================================================================ */
+
+/* --- Zoomable media + lightbox --- */
+.lightbox-zoomable {
+  cursor: zoom-in;
+}
+
+.lightbox-zoomable:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 48px);
+  background: rgba(5, 8, 8, 0.88);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 220ms var(--ease-out), visibility 220ms;
+}
+
+.lightbox-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox-figure {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  margin: 0;
+  max-width: min(1280px, 100%);
+  max-height: 100%;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: calc(100vh - 130px);
+  border: 1px solid rgba(248, 244, 232, 0.2);
+  border-radius: var(--radius-md);
+  box-shadow: 0 40px 110px rgba(0, 0, 0, 0.6);
+  transform: scale(0.96);
+  transition: transform 240ms var(--ease-out);
+  cursor: default;
+}
+
+.lightbox-overlay.is-open .lightbox-image {
+  transform: scale(1);
+}
+
+.lightbox-caption {
+  max-width: 70ch;
+  color: rgba(248, 244, 232, 0.78);
+  font-size: var(--text-sm);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(248, 244, 232, 0.25);
+  border-radius: 50%;
+  background: rgba(21, 26, 27, 0.82);
+  color: #f8f4e8;
+  cursor: pointer;
+  transition: background 160ms ease, transform 200ms var(--ease-out);
+}
+
+.lightbox-close:hover {
+  background: rgba(109, 225, 166, 0.22);
+  transform: rotate(90deg);
+}
+
+.lightbox-close:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.lightbox-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* --- Toast feedback --- */
+.toast-region {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 95;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.toast {
+  padding: 10px 18px;
+  border: 1px solid var(--accent-line);
+  border-radius: 999px;
+  background: var(--panel-strong);
+  color: var(--ink);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  translate: 0 8px;
+  transition: opacity 220ms var(--ease-out), translate 220ms var(--ease-out);
+}
+
+.toast.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* --- Copyable section anchors (case studies) --- */
+.heading-anchor {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  vertical-align: middle;
+  opacity: 0;
+  transition: opacity 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.heading-anchor svg {
+  width: 16px;
+  height: 16px;
+}
+
+.has-heading-anchor:hover .heading-anchor {
+  opacity: 1;
+}
+
+.heading-anchor:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.heading-anchor:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .heading-anchor {
+    opacity: 0.55;
+  }
+}
+
+/* --- Keyboard shortcut reference ("?") --- */
+.shortcuts-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 92;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(5, 8, 8, 0.7);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms var(--ease-out), visibility 200ms;
+}
+
+.shortcuts-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.shortcuts-panel {
+  width: min(430px, 100%);
+  padding: 22px;
+  border: 1px solid var(--card-border-strong);
+  border-radius: var(--card-radius);
+  background: var(--panel);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(10px) scale(0.98);
+  transition: transform 220ms var(--ease-out);
+}
+
+.shortcuts-overlay.is-open .shortcuts-panel {
+  transform: none;
+}
+
+.shortcuts-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.shortcuts-head h2 {
+  margin: 0;
+  font-size: var(--text-lg);
+}
+
+.shortcuts-close {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(var(--ink-rgb), 0.16);
+  border-radius: var(--radius-sm);
+  background: rgba(var(--ink-rgb), 0.05);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.shortcuts-close:hover {
+  color: var(--ink);
+  background: rgba(var(--ink-rgb), 0.1);
+}
+
+.shortcuts-close:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.shortcuts-close svg {
+  width: 15px;
+  height: 15px;
+}
+
+.shortcuts-list {
+  display: grid;
+  gap: 11px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.shortcuts-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--soft);
+  font-size: var(--text-sm);
+}
+
+.shortcuts-keys {
+  display: inline-flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.shortcuts-keys kbd {
+  min-width: 26px;
+  padding: 3px 7px;
+  border: 1px solid rgba(var(--ink-rgb), 0.2);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  background: rgba(var(--ink-rgb), 0.06);
+  color: var(--ink);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+/* --- Interactive Lab skill filters --- */
+.lab-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.lab-filter-chip {
+  padding: 8px 16px;
+  border: 1px solid var(--chip-border);
+  border-radius: 999px;
+  background: var(--chip-surface);
+  color: var(--soft);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease, translate 160ms var(--ease-out);
+}
+
+.lab-filter-chip:hover {
+  color: var(--ink);
+  border-color: var(--accent-line);
+  translate: 0 -1px;
+}
+
+.lab-filter-chip[aria-pressed="true"] {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.lab-filter-chip:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.lab-filter-count {
+  margin-left: auto;
+  color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: var(--text-xs);
+}
+
+.lab-card.is-filtered-out {
+  display: none;
+}
+
+@keyframes labCardIn {
+  from {
+    opacity: 0;
+    translate: 0 10px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.archive-lab-grid.is-filtering .lab-card:not(.is-filtered-out) {
+  animation: labCardIn 300ms var(--ease-out) both;
+}
+
+/* --- Hero terminal replay --- */
+.terminal-replay {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity 160ms ease, color 160ms ease, background 160ms ease, transform 320ms var(--ease-out);
+}
+
+.terminal-replay:hover {
+  opacity: 1;
+  color: var(--mint);
+  background: rgba(109, 225, 166, 0.12);
+  transform: rotate(-180deg);
+}
+
+.terminal-replay:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+.terminal-replay svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* --- Smooth FAQ open/close (progressive enhancement) --- */
+.faq-item {
+  interpolate-size: allow-keywords;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .faq-item::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size 280ms var(--ease-out), content-visibility 280ms allow-discrete;
+  }
+
+  .faq-item[open]::details-content {
+    block-size: auto;
+  }
+}
+
+/* --- Small tactile touches --- */
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+.button:active,
+.lab-filter-chip:active,
+.cmdk-trigger:active,
+.theme-toggle:active {
+  translate: 0 1px;
+}
+
+@media print {
+  [data-print-page],
+  .toast-region,
+  .heading-anchor,
+  .terminal-replay,
+  .lab-filter-bar {
+    display: none !important;
+  }
+}

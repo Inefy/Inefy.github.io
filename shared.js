@@ -5,6 +5,7 @@
   const primaryNav = document.querySelector("#primary-nav");
   const mobileNavQuery = window.matchMedia("(max-width: 760px)");
   let copyEmailAnnouncementTimer = 0;
+  let showToast = () => {};
 
   const THEME_KEY = "theme";
   const THEME_COLORS = { dark: "#0c0f10", light: "#f3f0e7" };
@@ -218,9 +219,11 @@
           await copyTextToClipboard(email);
           button.textContent = "Copied email";
           announceCopyEmail(status, `Copied ${email} to the clipboard. You can paste it into your email app.`);
+          showToast(`Copied ${email}`);
         } catch {
           button.textContent = "Copy failed";
           announceCopyEmail(status, `Could not copy ${email}. Use the Email Zac link instead.`);
+          showToast("Could not copy — use the Email link instead");
         }
 
         window.clearTimeout(Number(button.dataset.resetTimer));
@@ -560,8 +563,14 @@
         const value = it.value;
         if (navigator.clipboard && window.isSecureContext) {
           navigator.clipboard.writeText(value).then(
-            function () { status.textContent = "Copied " + value + " to the clipboard."; },
-            function () { status.textContent = "Could not copy. Try the Email Zac action."; }
+            function () {
+              status.textContent = "Copied " + value + " to the clipboard.";
+              showToast("Copied " + value);
+            },
+            function () {
+              status.textContent = "Could not copy. Try the Email Zac action.";
+              showToast("Could not copy — try the Email Zac action");
+            }
           );
         }
         close();
@@ -956,6 +965,385 @@
     header.insertBefore(btn, ref);
   }
 
+  function initToasts() {
+    let container = null;
+
+    showToast = function (message, { duration = 2600 } = {}) {
+      if (!message) return;
+
+      if (!container) {
+        container = document.createElement("div");
+        container.className = "toast-region";
+        container.setAttribute("role", "status");
+        container.setAttribute("aria-live", "polite");
+        document.body.appendChild(container);
+      }
+
+      while (container.children.length >= 3) {
+        container.removeChild(container.firstChild);
+      }
+
+      const toast = document.createElement("div");
+      toast.className = "toast";
+      toast.textContent = message;
+      container.appendChild(toast);
+
+      window.requestAnimationFrame(() => toast.classList.add("is-visible"));
+
+      window.setTimeout(() => {
+        toast.classList.remove("is-visible");
+        window.setTimeout(() => toast.remove(), 260);
+      }, duration);
+    };
+  }
+
+  function initImageLightbox() {
+    const images = Array.from(document.querySelectorAll(
+      ".project-visual img, .lab-card-visual img, .screenshot-gallery__item img, .media-proof__frame img, .case-study-image-frame img"
+    )).filter((img) => !img.closest("a"));
+    if (!images.length) return;
+
+    let overlay = null;
+    let overlayImg = null;
+    let overlayCaption = null;
+    let closeButton = null;
+    let lastFocused = null;
+
+    function isOpen() {
+      return !!overlay && overlay.classList.contains("is-open");
+    }
+
+    function close() {
+      if (!isOpen()) return;
+      overlay.classList.remove("is-open");
+      document.body.classList.remove("lightbox-open");
+      if (lastFocused && typeof lastFocused.focus === "function") {
+        lastFocused.focus();
+      }
+    }
+
+    function build() {
+      if (overlay) return;
+
+      overlay = document.createElement("div");
+      overlay.className = "lightbox-overlay";
+      overlay.setAttribute("role", "dialog");
+      overlay.setAttribute("aria-modal", "true");
+      overlay.setAttribute("aria-label", "Enlarged image");
+      overlay.innerHTML =
+        '<figure class="lightbox-figure">' +
+          '<img class="lightbox-image" alt="">' +
+          '<figcaption class="lightbox-caption"></figcaption>' +
+        "</figure>" +
+        '<button type="button" class="lightbox-close" aria-label="Close enlarged image">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+        "</button>";
+      document.body.appendChild(overlay);
+
+      overlayImg = overlay.querySelector(".lightbox-image");
+      overlayCaption = overlay.querySelector(".lightbox-caption");
+      closeButton = overlay.querySelector(".lightbox-close");
+
+      closeButton.addEventListener("click", close);
+      overlay.addEventListener("mousedown", (event) => {
+        if (event.target === overlay || event.target.classList.contains("lightbox-figure")) close();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (!isOpen()) return;
+        if (event.key === "Escape") {
+          event.preventDefault();
+          close();
+        } else if (event.key === "Tab") {
+          // The close button is the only control inside the dialog.
+          event.preventDefault();
+          closeButton.focus();
+        }
+      });
+    }
+
+    function open(img) {
+      build();
+      lastFocused = document.activeElement;
+      overlayImg.src = img.currentSrc || img.src;
+      overlayImg.alt = img.alt || "";
+      overlayCaption.textContent = img.alt || "";
+      overlayCaption.hidden = !img.alt;
+      overlay.classList.add("is-open");
+      document.body.classList.add("lightbox-open");
+      closeButton.focus();
+    }
+
+    images.forEach((img) => {
+      img.classList.add("lightbox-zoomable");
+      img.setAttribute("tabindex", "0");
+      img.setAttribute("role", "button");
+      img.setAttribute("aria-label", img.alt ? "Enlarge image: " + img.alt : "Enlarge image");
+      img.addEventListener("click", () => open(img));
+      img.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          open(img);
+        }
+      });
+    });
+  }
+
+  function initHeadingAnchors() {
+    const headings = document.querySelectorAll(".case-template-main h2[id]");
+    if (!headings.length) return;
+
+    headings.forEach((heading) => {
+      if (heading.querySelector(".heading-anchor")) return;
+
+      const anchor = document.createElement("a");
+      anchor.className = "heading-anchor";
+      anchor.href = "#" + heading.id;
+      anchor.setAttribute("aria-label", "Copy link to section: " + heading.textContent.trim());
+      anchor.innerHTML =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+          '<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1L11.7 5"/>' +
+          '<path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1L12.3 19"/>' +
+        "</svg>";
+
+      anchor.addEventListener("click", () => {
+        const url = window.location.origin + window.location.pathname + "#" + heading.id;
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(url).then(
+            () => showToast("Section link copied"),
+            () => showToast("Could not copy link")
+          );
+        }
+      });
+
+      heading.classList.add("has-heading-anchor");
+      heading.appendChild(anchor);
+    });
+  }
+
+  function initKeyboardShortcuts() {
+    const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent || "");
+    const modLabel = isMac ? "⌘" : "Ctrl";
+
+    const rows = [
+      { keys: [modLabel + " K", "/"], label: "Open the command menu" },
+      { keys: ["↑", "↓", "↵"], label: "Move through and open results" },
+      { keys: ["T"], label: "Toggle light / dark theme" },
+      { keys: ["?"], label: "Show this shortcut list" },
+      { keys: ["Esc"], label: "Close menus and dialogs" }
+    ];
+
+    let overlay = null;
+    let closeButton = null;
+    let lastFocused = null;
+
+    function isOpen() {
+      return !!overlay && overlay.classList.contains("is-open");
+    }
+
+    function close() {
+      if (!isOpen()) return;
+      overlay.classList.remove("is-open");
+      if (lastFocused && typeof lastFocused.focus === "function") {
+        lastFocused.focus();
+      }
+    }
+
+    function build() {
+      if (overlay) return;
+
+      overlay = document.createElement("div");
+      overlay.className = "shortcuts-overlay";
+
+      const panel = document.createElement("div");
+      panel.className = "shortcuts-panel";
+      panel.setAttribute("role", "dialog");
+      panel.setAttribute("aria-modal", "true");
+      panel.setAttribute("aria-label", "Keyboard shortcuts");
+
+      const list = rows.map((row) =>
+        "<li><span>" + row.label + "</span><span class=\"shortcuts-keys\">" +
+          row.keys.map((k) => "<kbd>" + k + "</kbd>").join("") +
+        "</span></li>"
+      ).join("");
+
+      panel.innerHTML =
+        '<div class="shortcuts-head">' +
+          "<h2>Keyboard shortcuts</h2>" +
+          '<button type="button" class="shortcuts-close" aria-label="Close keyboard shortcuts">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+          "</button>" +
+        "</div>" +
+        '<ul class="shortcuts-list">' + list + "</ul>";
+
+      overlay.appendChild(panel);
+      document.body.appendChild(overlay);
+
+      closeButton = panel.querySelector(".shortcuts-close");
+      closeButton.addEventListener("click", close);
+      overlay.addEventListener("mousedown", (event) => {
+        if (event.target === overlay) close();
+      });
+    }
+
+    function open() {
+      build();
+      lastFocused = document.activeElement;
+      overlay.classList.add("is-open");
+      closeButton.focus();
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+
+      const target = event.target;
+      const tag = target && target.tagName ? target.tagName.toLowerCase() : "";
+      const typing = tag === "input" || tag === "textarea" || tag === "select" || (target && target.isContentEditable);
+      if (typing) return;
+
+      if (event.key === "Escape" && isOpen()) {
+        event.preventDefault();
+        close();
+        return;
+      }
+
+      if (event.key === "?") {
+        event.preventDefault();
+        if (isOpen()) { close(); } else { open(); }
+        return;
+      }
+
+      if ((event.key || "").toLowerCase() === "t" && !isOpen()) {
+        const toggle = document.querySelector(".theme-toggle");
+        if (toggle) {
+          toggle.click();
+          const theme = document.documentElement.dataset.theme === "light" ? "Light" : "Dark";
+          showToast(theme + " theme");
+        }
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Tab" && isOpen()) {
+        // The close button is the only control inside the dialog.
+        event.preventDefault();
+        closeButton.focus();
+      }
+    });
+  }
+
+  function initLabFilters() {
+    const archive = document.querySelector("#lab-archive");
+    const grid = document.querySelector(".archive-lab-grid");
+    if (!archive || !grid) return;
+
+    const cards = Array.from(grid.querySelectorAll(".lab-card")).filter((card) => card.id);
+    if (cards.length < 4) return;
+
+    // Reuse the skill-map cards as the filter taxonomy.
+    const groups = [];
+    document.querySelectorAll(".lab-skill-card").forEach((skill) => {
+      const heading = skill.querySelector("h3");
+      const ids = Array.from(skill.querySelectorAll('a[href^="#"]')).map((a) => a.getAttribute("href").slice(1));
+      if (heading && ids.length) {
+        groups.push({ name: heading.textContent.trim(), ids: new Set(ids) });
+      }
+    });
+    if (!groups.length) return;
+
+    const bar = document.createElement("div");
+    bar.className = "lab-filter-bar";
+    bar.setAttribute("role", "group");
+    bar.setAttribute("aria-label", "Filter experiments by skill");
+
+    const count = document.createElement("span");
+    count.className = "lab-filter-count";
+
+    const status = document.createElement("span");
+    status.className = "sr-only";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+
+    let activeButton = null;
+
+    function apply(group, button) {
+      if (activeButton) activeButton.setAttribute("aria-pressed", "false");
+      activeButton = button;
+      button.setAttribute("aria-pressed", "true");
+
+      let shown = 0;
+      cards.forEach((card) => {
+        const show = !group || group.ids.has(card.id);
+        card.classList.toggle("is-filtered-out", !show);
+        if (show) shown += 1;
+      });
+
+      grid.classList.remove("is-filtering");
+      void grid.offsetWidth; // restart the entrance animation
+      grid.classList.add("is-filtering");
+
+      count.textContent = shown + " of " + cards.length + " shown";
+      status.textContent = "Showing " + shown + " of " + cards.length + " experiments" +
+        (group ? " for " + group.name + "." : ".");
+    }
+
+    function makeButton(label, group) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "lab-filter-chip";
+      button.textContent = label;
+      button.setAttribute("aria-pressed", "false");
+      button.addEventListener("click", () => apply(group, button));
+      return button;
+    }
+
+    const allButton = makeButton("All", null);
+    bar.appendChild(allButton);
+    groups.forEach((group) => bar.appendChild(makeButton(group.name, group)));
+    bar.appendChild(count);
+
+    const headingBlock = archive.querySelector(".section-heading");
+    if (headingBlock) {
+      headingBlock.insertAdjacentElement("afterend", bar);
+    } else {
+      archive.insertAdjacentElement("afterbegin", bar);
+    }
+    document.body.appendChild(status);
+
+    apply(null, allButton);
+  }
+
+  function initPrintButtons() {
+    document.querySelectorAll("[data-print-page]").forEach((button) => {
+      button.addEventListener("click", () => window.print());
+    });
+  }
+
+  function initLocalTime() {
+    const el = document.querySelector("[data-local-time]");
+    if (!el) return;
+
+    let formatter;
+    try {
+      formatter = new Intl.DateTimeFormat("en-CA", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+        timeZone: "America/St_Johns"
+      });
+    } catch {
+      return;
+    }
+
+    function tick() {
+      el.textContent = formatter.format(new Date()) + " NT";
+    }
+
+    tick();
+    window.setInterval(tick, 30000);
+  }
+
+  initToasts();
   initMobileNavigation();
   initSkipLinks();
   initCopyEmailButtons();
@@ -972,4 +1360,10 @@
   initActiveNav();
   initHoverPrefetch();
   initPageToc();
+  initImageLightbox();
+  initHeadingAnchors();
+  initKeyboardShortcuts();
+  initLabFilters();
+  initPrintButtons();
+  initLocalTime();
 })();

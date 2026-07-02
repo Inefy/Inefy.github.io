@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#17112a">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-wcVwnpfAxlNAiOfUhT6/v9wGOH8Q3eMCqHzRIC4V2Wg='; style-src 'self' 'unsafe-inline' 'sha256-p7JCqLp0j/aq172/3ovh0wTEcwSb52c5obYez5/ns2g='; img-src 'self' data:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Play Pocket Legends: Crimson Version, an original monster-catching RPG inspired by classic handheld adventures.">
+<meta name="author" content="Zac Batten">
+<link rel="canonical" href="https://zacbatten.me/pocket-legends.html">
+<title>Pocket Legends: Crimson Version</title>
+<style>
+  :root{ --shell:#6a4fc1; --shell-dark:#523a9e; --gold:#e8b93c; --crimson:#d23b3b; }
+  *{ box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  body{
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    background:radial-gradient(circle at 50% 20%, #2b2140 0%, #17112a 70%);
+    font-family:"Courier New", monospace; color:#cfc4f2; padding:14px; user-select:none;
+  }
+  #shell{
+    background:linear-gradient(160deg, var(--shell) 0%, var(--shell-dark) 100%);
+    border-radius:18px 18px 48px 18px; padding:16px 18px 20px 18px;
+    box-shadow:0 14px 40px rgba(0,0,0,.6), inset 0 2px 0 rgba(255,255,255,.18);
+    width:min(96vw, 460px);
+  }
+  #screenBezel{
+    background:#241d38; border-radius:10px 10px 34px 10px; padding:14px 12px 12px 12px;
+    box-shadow:inset 0 3px 8px rgba(0,0,0,.7);
+  }
+  #bezelTop{ display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+  #led{ width:9px; height:9px; border-radius:50%; background:var(--crimson); box-shadow:0 0 8px var(--crimson); }
+  #bezelTop span{ font-size:9px; letter-spacing:2px; color:#8d80b8; }
+  canvas#gb{
+    display:block; width:100%; aspect-ratio:160/144; background:#000;
+    image-rendering:pixelated; image-rendering:crisp-edges; border-radius:3px;
+  }
+  #brand{ text-align:center; margin:10px 0 6px; font-weight:bold; font-size:13px; letter-spacing:1px; color:var(--gold);
+    text-shadow:0 1px 0 rgba(0,0,0,.5); font-style:italic; }
+  #brand small{ color:#cfc4f2; font-style:normal; font-size:9px; letter-spacing:3px; display:block; }
+  #controls{ display:flex; justify-content:space-between; align-items:center; margin-top:6px; }
+  #dpad{ position:relative; width:108px; height:108px; }
+  .dbtn{ position:absolute; width:36px; height:36px; background:#2c2544; border:0; border-radius:6px;
+    box-shadow:0 3px 0 #171226; color:#8d80b8; font-size:14px; cursor:pointer; }
+  .dbtn:active{ transform:translateY(2px); box-shadow:0 1px 0 #171226; }
+  #d-up{ left:36px; top:0; } #d-down{ left:36px; top:72px; } #d-left{ left:0; top:36px; } #d-right{ left:72px; top:36px; }
+  #d-mid{ position:absolute; left:36px; top:36px; width:36px; height:36px; background:#2c2544; }
+  #ab{ display:flex; gap:14px; align-items:center; transform:rotate(-14deg); }
+  .rbtn{ width:46px; height:46px; border-radius:50%; border:0; background:radial-gradient(circle at 35% 30%, #e05555, #a12626);
+    color:#fff; font-weight:bold; font-family:inherit; font-size:15px; box-shadow:0 4px 0 #6d1717; cursor:pointer; }
+  .rbtn:active{ transform:translateY(2px); box-shadow:0 2px 0 #6d1717; }
+  #startRow{ display:flex; justify-content:center; gap:16px; margin-top:12px; }
+  .sbtn{ width:58px; height:14px; border-radius:8px; border:0; background:#2c2544; box-shadow:0 2px 0 #171226;
+    color:#8d80b8; font-size:8px; font-family:inherit; letter-spacing:1px; cursor:pointer; }
+  .sbtn:active{ transform:translateY(1px); }
+  #help{ margin-top:12px; font-size:11px; color:#8d80b8; text-align:center; line-height:1.6; max-width:460px; }
+  #help b{ color:#cfc4f2; }
+</style>
+</head>
+<body>
+<div id="shell">
+  <div id="screenBezel">
+    <div id="bezelTop"><div id="led"></div><span>POWER &nbsp;·&nbsp; DOT MATRIX WITH STEREO SOUND</span></div>
+    <canvas id="gb" width="160" height="144"></canvas>
+  </div>
+  <div id="brand">Pocket Legends<small>CRIMSON VERSION</small></div>
+  <div id="controls">
+    <div id="dpad">
+      <button class="dbtn" id="d-up" data-k="u">▲</button>
+      <button class="dbtn" id="d-left" data-k="l">◀</button>
+      <div id="d-mid"></div>
+      <button class="dbtn" id="d-right" data-k="r">▶</button>
+      <button class="dbtn" id="d-down" data-k="d">▼</button>
+    </div>
+    <div id="ab">
+      <button class="rbtn" data-k="b">B</button>
+      <button class="rbtn" data-k="a" style="margin-top:-18px">A</button>
+    </div>
+  </div>
+  <div id="startRow">
+    <button class="sbtn" data-k="b">SELECT</button>
+    <button class="sbtn" data-k="s">START</button>
+  </div>
+</div>
+<div id="help">
+  <b>ARROWS / WASD</b> move · <b>Z or SPACE</b> = A (confirm/talk) · <b>X</b> = B (cancel · hold to run) · <b>ENTER</b> = START (menu)
+</div>
+<script>
+"use strict";
+/* ============================================================
+   POCKET LEGENDS: CRIMSON VERSION
+   A complete original monster-catching RPG in the classic
+   Game Boy style. Single file, no dependencies.
+   ============================================================ */
+
+// ------------------------- CORE CONSTANTS -------------------------
+var TS = 16, VW = 160, VH = 144;
+var rnd = Math.random;
+function ri(a, b){ return a + Math.floor(rnd() * (b - a + 1)); } // inclusive
+function fl(x){ return Math.floor(x); }
+function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+
+// ------------------------- TYPES -------------------------
+var TYPE_COLORS = {
+  NORMAL:"#a8a090", FIRE:"#e0662f", WATER:"#3f7fdc", GRASS:"#4faa3f", ELECTRIC:"#e0b32f",
+  ROCK:"#a89052", FLYING:"#8fa8dc", BUG:"#a0b036", POISON:"#9a4fb0", GHOST:"#6a5aa0", PSYCHIC:"#e05a8a"
+};
+// CHART[attacker][defender] = multiplier (missing = 1)
+var CHART = {
+  NORMAL:  { ROCK:.5, GHOST:0 },
+  FIRE:    { GRASS:2, BUG:2, FIRE:.5, WATER:.5, ROCK:.5 },
+  WATER:   { FIRE:2, ROCK:2, WATER:.5, GRASS:.5 },
+  GRASS:   { WATER:2, ROCK:2, FIRE:.5, GRASS:.5, BUG:.5, FLYING:.5, POISON:.5 },
+  ELECTRIC:{ WATER:2, FLYING:2, ELECTRIC:.5, GRASS:.5 },
+  ROCK:    { FIRE:2, FLYING:2, BUG:2 },
+  FLYING:  { GRASS:2, BUG:2, ELECTRIC:.5, ROCK:.5 },
+  BUG:     { GRASS:2, PSYCHIC:2, FIRE:.5, FLYING:.5, GHOST:.5, POISON:.5 },
+  POISON:  { GRASS:2, POISON:.5, ROCK:.5, GHOST:.5 },
+  GHOST:   { GHOST:2, PSYCHIC:2, NORMAL:0 },
+  PSYCHIC: { POISON:2, PSYCHIC:.5 }
+};
+function typeEffect(atk, defTypes){
+  var m = 1;
+  for (var i = 0; i < defTypes.length; i++){
+    var row = CHART[atk];
+    if (row && row[defTypes[i]] !== undefined) m *= row[defTypes[i]];
+  }
+  return m;
+}
+
+// ------------------------- MOVES -------------------------
+// p=power a=accuracy(999=never miss) pp=max pp pri=priority
+// fx: {stat,stage,who} or {status,chance}  crit: high-crit  recoil: fraction
+var MOVES = {
+  tackle:      { n:"TACKLE",       t:"NORMAL",   p:40,  a:100, pp:35 },
+  scratch:     { n:"SCRATCH",      t:"NORMAL",   p:40,  a:100, pp:35 },
+  quickattack: { n:"QUICK ATTACK", t:"NORMAL",   p:40,  a:100, pp:30, pri:1 },
+  slam:        { n:"SLAM",         t:"NORMAL",   p:80,  a:75,  pp:20 },
+  hyperfang:   { n:"HYPER FANG",   t:"NORMAL",   p:80,  a:90,  pp:15 },
+  growl:       { n:"GROWL",        t:"NORMAL",   p:0,   a:100, pp:40, fx:{ stat:"atk", stage:-1, who:"foe" } },
+  leer:        { n:"LEER",         t:"NORMAL",   p:0,   a:100, pp:30, fx:{ stat:"def", stage:-1, who:"foe" } },
+  harden:      { n:"HARDEN",       t:"NORMAL",   p:0,   a:999, pp:30, fx:{ stat:"def", stage:1,  who:"self" } },
+  ember:       { n:"EMBER",        t:"FIRE",     p:40,  a:100, pp:25 },
+  flameburst:  { n:"FLAME BURST",  t:"FIRE",     p:70,  a:100, pp:15 },
+  inferno:     { n:"INFERNO",      t:"FIRE",     p:110, a:85,  pp:5 },
+  watergun:    { n:"WATER GUN",    t:"WATER",    p:40,  a:100, pp:25 },
+  bubblebeam:  { n:"BUBBLE BEAM",  t:"WATER",    p:65,  a:100, pp:20 },
+  tidalwave:   { n:"TIDAL WAVE",   t:"WATER",    p:110, a:85,  pp:5 },
+  vinewhip:    { n:"VINE WHIP",    t:"GRASS",    p:45,  a:100, pp:25 },
+  razorleaf:   { n:"RAZOR LEAF",   t:"GRASS",    p:55,  a:95,  pp:25, crit:1 },
+  leafstorm:   { n:"LEAF STORM",   t:"GRASS",    p:110, a:85,  pp:5 },
+  sleeppowder: { n:"SLEEP POWDER", t:"GRASS",    p:0,   a:75,  pp:15, fx:{ status:"SLP", chance:100 } },
+  thundershock:{ n:"THUNDERSHOCK", t:"ELECTRIC", p:40,  a:100, pp:30, fx:{ status:"PAR", chance:10 } },
+  spark:       { n:"SPARK",        t:"ELECTRIC", p:65,  a:100, pp:20, fx:{ status:"PAR", chance:20 } },
+  voltstrike:  { n:"VOLT STRIKE",  t:"ELECTRIC", p:90,  a:100, pp:15, fx:{ status:"PAR", chance:10 } },
+  rockthrow:   { n:"ROCK THROW",   t:"ROCK",     p:50,  a:90,  pp:15 },
+  rockslide:   { n:"ROCK SLIDE",   t:"ROCK",     p:75,  a:90,  pp:10 },
+  gust:        { n:"GUST",         t:"FLYING",   p:40,  a:100, pp:35 },
+  wingattack:  { n:"WING ATTACK",  t:"FLYING",   p:60,  a:100, pp:25 },
+  aerialace:   { n:"AERIAL ACE",   t:"FLYING",   p:60,  a:999, pp:20 },
+  bugbite:     { n:"BUG BITE",     t:"BUG",      p:60,  a:100, pp:20 },
+  poisonsting: { n:"POISON STING", t:"POISON",   p:15,  a:100, pp:35, fx:{ status:"PSN", chance:30 } },
+  sludge:      { n:"SLUDGE",       t:"POISON",   p:65,  a:100, pp:20, fx:{ status:"PSN", chance:30 } },
+  lick:        { n:"LICK",         t:"GHOST",    p:30,  a:100, pp:30, fx:{ status:"PAR", chance:30 } },
+  shadowbolt:  { n:"SHADOW BOLT",  t:"GHOST",    p:80,  a:100, pp:15 },
+  confusion:   { n:"CONFUSION",    t:"PSYCHIC",  p:50,  a:100, pp:25 },
+  mindblast:   { n:"MIND BLAST",   t:"PSYCHIC",  p:90,  a:100, pp:10 },
+  hypnosis:    { n:"HYPNOSIS",     t:"PSYCHIC",  p:0,   a:60,  pp:20, fx:{ status:"SLP", chance:100 } },
+  struggle:    { n:"STRUGGLE",     t:"NORMAL",   p:50,  a:999, pp:1,  recoil:.25 }
+};
+
+// ------------------------- SPECIES -------------------------
+// base:[hp,atk,def,spd]  catch: catch rate (255 easy, 10 hard)  exp: base exp yield
+// learn:[[level, moveId], ...]  evolve:{at, to}
+var SPECIES = {
+  sproutle: { name:"SPROUTLE", types:["GRASS"], base:[45,49,49,45], catch:120, exp:64,
+    evolve:{ at:16, to:"thornbark" },
+    learn:[[1,"tackle"],[1,"growl"],[5,"vinewhip"],[9,"razorleaf"],[15,"sleeppowder"],[22,"slam"],[30,"leafstorm"]],
+    dex:"A seedling rides its back and blooms as it grows. It loves morning dew." },
+  thornbark: { name:"THORNBARK", types:["GRASS"], base:[62,74,78,58], catch:60, exp:142,
+    learn:[[1,"tackle"],[1,"growl"],[5,"vinewhip"],[9,"razorleaf"],[15,"sleeppowder"],[22,"slam"],[30,"leafstorm"]],
+    dex:"Its bark is harder than iron. Thorns along its spine deter any predator." },
+  embercub: { name:"EMBERCUB", types:["FIRE"], base:[44,54,42,58], catch:120, exp:64,
+    evolve:{ at:16, to:"pyroclaw" },
+    learn:[[1,"scratch"],[1,"leer"],[6,"ember"],[10,"quickattack"],[15,"flameburst"],[22,"slam"],[30,"inferno"]],
+    dex:"A cub with a flame for a tail tuft. It sneezes sparks when startled." },
+  pyroclaw: { name:"PYROCLAW", types:["FIRE"], base:[58,78,55,76], catch:60, exp:142,
+    learn:[[1,"scratch"],[1,"leer"],[6,"ember"],[10,"quickattack"],[15,"flameburst"],[22,"slam"],[30,"inferno"]],
+    dex:"Its claws burn at 800 degrees. It marks territory with scorched stone." },
+  aquafin: { name:"AQUAFIN", types:["WATER"], base:[46,48,56,46], catch:120, exp:64,
+    evolve:{ at:16, to:"tidalisk" },
+    learn:[[1,"tackle"],[1,"growl"],[6,"watergun"],[10,"harden"],[15,"bubblebeam"],[22,"slam"],[30,"tidalwave"]],
+    dex:"Its dorsal fin senses currents. It naps floating on its back." },
+  tidalisk: { name:"TIDALISK", types:["WATER"], base:[64,66,80,56], catch:60, exp:142,
+    learn:[[1,"tackle"],[1,"growl"],[6,"watergun"],[10,"harden"],[15,"bubblebeam"],[22,"slam"],[30,"tidalwave"]],
+    dex:"A single sweep of its tail can turn a river. Sailors consider it lucky." },
+  peckit: { name:"PECKIT", types:["NORMAL","FLYING"], base:[40,45,35,62], catch:200, exp:50,
+    evolve:{ at:18, to:"falkron" },
+    learn:[[1,"tackle"],[4,"gust"],[8,"quickattack"],[13,"wingattack"],[22,"aerialace"]],
+    dex:"A common songbird. It pecks shiny pebbles to line its nest." },
+  falkron: { name:"FALKRON", types:["NORMAL","FLYING"], base:[62,72,50,92], catch:90, exp:124,
+    learn:[[1,"tackle"],[4,"gust"],[8,"quickattack"],[13,"wingattack"],[22,"aerialace"]],
+    dex:"It dives at incredible speed. Its cry echoes across whole valleys." },
+  nibbly: { name:"NIBBLY", types:["NORMAL"], base:[48,52,38,56], catch:220, exp:51,
+    learn:[[1,"tackle"],[3,"growl"],[7,"quickattack"],[12,"hyperfang"],[20,"slam"]],
+    dex:"Its front teeth never stop growing, so it gnaws on everything." },
+  buzzler: { name:"BUZZLER", types:["BUG","POISON"], base:[42,45,42,50], catch:200, exp:49,
+    learn:[[1,"poisonsting"],[6,"bugbite"],[14,"sludge"],[18,"harden"]],
+    dex:"It buzzes in lazy circles. Its sting causes a week of itching." },
+  zapkit: { name:"ZAPKIT", types:["ELECTRIC"], base:[40,50,34,72], catch:180, exp:55,
+    evolve:{ at:20, to:"voltarak" },
+    learn:[[1,"thundershock"],[6,"growl"],[10,"quickattack"],[14,"spark"],[26,"voltstrike"]],
+    dex:"Static crackles in its fur. Petting it is a shocking experience." },
+  voltarak: { name:"VOLTARAK", types:["ELECTRIC"], base:[60,74,54,100], catch:75, exp:138,
+    learn:[[1,"thundershock"],[6,"growl"],[10,"quickattack"],[14,"spark"],[26,"voltstrike"]],
+    dex:"It sprints faster than lightning strikes. Storms follow it around." },
+  pebblit: { name:"PEBBLIT", types:["ROCK"], base:[52,56,84,24], catch:160, exp:58,
+    evolve:{ at:22, to:"boulderox" },
+    learn:[[1,"tackle"],[6,"harden"],[10,"rockthrow"],[16,"leer"],[20,"rockslide"]],
+    dex:"Often mistaken for a rock. Hikers trip over it constantly." },
+  boulderox: { name:"BOULDEROX", types:["ROCK"], base:[82,96,116,32], catch:60, exp:150,
+    learn:[[1,"tackle"],[6,"harden"],[10,"rockthrow"],[16,"leer"],[20,"rockslide"]],
+    dex:"It sleeps for decades disguised as a boulder, then wakes up grumpy." },
+  spooklet: { name:"SPOOKLET", types:["GHOST"], base:[38,52,40,74], catch:130, exp:62,
+    learn:[[1,"lick"],[8,"confusion"],[14,"hypnosis"],[18,"shadowbolt"]],
+    dex:"Born from a forgotten lantern. It giggles in empty hallways." },
+  chronowl: { name:"CHRONOWL", types:["PSYCHIC","FLYING"], base:[92,88,82,96], catch:10, exp:220,
+    learn:[[1,"confusion"],[1,"wingattack"],[1,"hypnosis"],[1,"mindblast"]],
+    dex:"A legendary owl said to perch outside of time itself." }
+};
+var DEX_ORDER = ["sproutle","thornbark","embercub","pyroclaw","aquafin","tidalisk",
+  "peckit","falkron","nibbly","buzzler","zapkit","voltarak","pebblit","boulderox","spooklet","chronowl"];
+
+// ------------------------- ITEMS -------------------------
+var ITEMS = {
+  potion:      { n:"POTION",      price:100, d:"Restores 20 HP." },
+  superpotion: { n:"SUPER POTION",price:350, d:"Restores 50 HP." },
+  fullheal:    { n:"FULL HEAL",   d:"Cures all status problems.", price:250 },
+  revive:      { n:"REVIVE",      price:800, d:"Revives a fainted monster to half HP." },
+  orb:         { n:"CAPTURE ORB", price:150, d:"Throw to catch a wild monster." },
+  greatorb:    { n:"GREAT ORB",   price:400, d:"A better orb. 1.5x catch rate." }
+};
+var ITEM_ORDER = ["potion","superpotion","fullheal","revive","orb","greatorb"];
+var SHOP_STOCK = ["potion","superpotion","fullheal","revive","orb","greatorb"];
+
+// ------------------------- MONSTER SPRITES -------------------------
+// Each is 16 rows of 8 chars (left half); mir() mirrors to 16x16.
+// chars: . transparent | 1 dark | 2 mid | 3 light | 4 accent | k black | w white
+function mir(rows){
+  var out = [];
+  for (var i = 0; i < rows.length; i++){
+    out.push(rows[i] + rows[i].split("").reverse().join(""));
+  }
+  return out;
+}
+var MSPR = {
+  sproutle: { pal:{1:"#1c5c30",2:"#4caf50",3:"#a5e06a",k:"#181020",w:"#f8f8f8"}, g:mir([
+    ".....13.","......11","....1111","...12222","..122222",".1222222",".12kw222",".1222222",
+    "12222222","12222332","12223332","12222222",".1222222",".11..11.","..1...1.","........"]) },
+  thornbark: { pal:{1:"#1a4a28",2:"#3f8f43",3:"#c8a050",k:"#181020",w:"#f8f8f8"}, g:mir([
+    "......1.",".....131","....1331","..113311",".1222222","12222222","12kw2222","12222222",
+    "11222222","12232222","12233322","12233322","12222222",".1222222",".11.111.","..1..1.."]) },
+  embercub: { pal:{1:"#7a2a10",2:"#e8783a",3:"#f8d048",k:"#181020",w:"#f8f8f8"}, g:mir([
+    "..1.....",".131....",".1311111","12222222","12222222","12kw2222","12222222",".1222222",
+    ".1233222","12333222","12233222","12222222","12222222",".122.122",".11..11.","........"]) },
+  pyroclaw: { pal:{1:"#6a1a08",2:"#d8542a",3:"#f8c030",k:"#181020",w:"#f8f8f8"}, g:mir([
+    ".1......","131.1...","1331311.","13333331","12222222","12kw2222","12222222","11222222",
+    ".1222222","12332222","13332222","12232222","12222222","11222222","1k1.1k1.","........"]) },
+  aquafin: { pal:{1:"#173f78",2:"#3f7fdc",3:"#a0d8f0",k:"#181020",w:"#f8f8f8"}, g:mir([
+    "......1.",".....131","....1331","....1111","..122222",".1222222",".12kw222","12222222",
+    "12222222","12222332","12223332",".1222222",".1222222","..112211","...1..1.","........"]) },
+  tidalisk: { pal:{1:"#0f3460",2:"#2f6fc0",3:"#78c8e8",k:"#181020",w:"#f8f8f8"}, g:mir([
+    "....11..","...1331.","..133311",".1222222","12222222","12kw2222","12222222","11332222",
+    "13333222","13333222","11332222","12222222",".1222222",".122.122","..11..11","........"]) },
+  peckit: { pal:{1:"#5a4a38",2:"#b09878",3:"#e8d8c0",4:"#e8a030",k:"#181020",w:"#f8f8f8"}, g:mir([
+    "......11",".....122","....1k22","....1222","...12224","...12224","..122222",".1232222",
+    ".1233222","..123322","...12222","....1122","......11",".....4..","........","........"]) },
+  falkron: { pal:{1:"#3a2a48",2:"#7a5a9a",3:"#c8b8d8",4:"#e8b93c",k:"#181020",w:"#f8f8f8"}, g:mir([
+    ".....111","....1222","...1k322","...12222","..122244","..122244",".1222222",".1232222",
+    "12332222","12333222",".1233322","..123322","...12222","....1122",".....4..","........"]) },
+  nibbly: { pal:{1:"#6a4a2a",2:"#c89858",3:"#f0e0b0",k:"#181020",w:"#f8f8f8"}, g:mir([
+    ".11.....","1331....","13311111","12222222","12kw2222","12222222","122222ww",".1222222",
+    ".1222332","12222332","12222222","12222222",".1222222",".122.122","..11..11","........"]) },
+  buzzler: { pal:{1:"#3a3a10",2:"#a0b036",3:"#e8e8f8",k:"#181020",w:"#f8f8f8"}, g:mir([
+    ".....1..","......1.",".....111","....1k22","3...1222","33.12222","33312222",".3312222",
+    "..122222","..122122",".1222122",".1221222","..122222","...11222",".....111","........"]) },
+  zapkit: { pal:{1:"#7a5a10",2:"#f0c832",3:"#fff890",k:"#181020",w:"#f8f8f8"}, g:mir([
+    ".11....3","1331..33","13311111","12222222","12kw2222","12222222",".1223222","3.123322",
+    "33122332","..122222",".1222222",".1222222",".122.122","..11..11","........","........"]) },
+  voltarak: { pal:{1:"#5a4408",2:"#e8b820",3:"#ffffa0",k:"#181020",w:"#f8f8f8"}, g:mir([
+    "11.....3","131...33","1311.133","12111222","12222222","1kw22222","12222222",".1233222",
+    "31233322","33123322",".1222222","11222222","12222222","1122.122",".11..11.","........"]) },
+  pebblit: { pal:{1:"#4a4038",2:"#8a7a68",3:"#b8a890",k:"#181020",w:"#f8f8f8"}, g:mir([
+    "........","........","....1111","..112222",".1222222",".1232222","12kw2222","12222222",
+    "12223222","12232222",".1222232",".1222222","..112222","....1111","........","........"]) },
+  boulderox: { pal:{1:"#3a3028",2:"#7a6a55",3:"#a89052",k:"#181020",w:"#f8f8f8"}, g:mir([
+    ".11.....","1331....","13311111","11222222","12222222","12kw2222","11222222","12232222",
+    "12322322","12232232","11222222","12222222","11222222","1122.112",".11..11.","........"]) },
+  spooklet: { pal:{1:"#2a2440",2:"#6a5aa0",3:"#9a8ac8",k:"#181020",w:"#f8f8f8"}, g:mir([
+    "....1111","...12222","..122222",".1222222",".12kk222",".12kk222",".1222222","122222kk",
+    "12222222",".1222222",".1223222","..122222","..122122","...1..11","........","........"]) },
+  chronowl: { pal:{1:"#2a2050",2:"#5a4890",3:"#e8b93c",4:"#f8f0d0",k:"#181020",w:"#f8f8f8"}, g:mir([
+    ".1......","131.....","13111111","12222222","12333222","123k3222","12333222","12222224",
+    "12222444","11222444","13222444","13222244","11222224",".1222222","..4...4.","........"]) }
+};
+
+// ------------------------- PEOPLE SPRITES -------------------------
+// 16x16, chars: k outline | h hat/hair | s skin | c shirt | p pants | w white | . none
+var PFRAMES = {
+  down0:[
+    "................",".....hhhhhh.....","....hhhhhhhh....","....hhhhhhhh....",
+    "...kkkkkkkkkk...","....ssssssss....","....skssskss....","....ssssssss....",
+    "...cccccccccc...","..sccccccccccs..","..sccccccccccs..","...cccccccccc...",
+    "....pppppppp....","....pp....pp....","...kkk....kkk...","................"],
+  down1:[
+    "................",".....hhhhhh.....","....hhhhhhhh....","....hhhhhhhh....",
+    "...kkkkkkkkkk...","....ssssssss....","....skssskss....","....ssssssss....",
+    "...cccccccccc...","..sccccccccccs..","..sccccccccccs..","...cccccccccc...",
+    "....pppppppp....","...pp.....pp....","..kkk......kkk..","................"],
+  up0:[
+    "................",".....hhhhhh.....","....hhhhhhhh....","....hhhhhhhh....",
+    "...kkkkkkkkkk...","....hhhhhhhh....","....hhhhhhhh....","....hhhhhhhh....",
+    "...cccccccccc...","..sccccccccccs..","..sccccccccccs..","...cccccccccc...",
+    "....pppppppp....","....pp....pp....","...kkk....kkk...","................"],
+  up1:[
+    "................",".....hhhhhh.....","....hhhhhhhh....","....hhhhhhhh....",
+    "...kkkkkkkkkk...","....hhhhhhhh....","....hhhhhhhh....","....hhhhhhhh....",
+    "...cccccccccc...","..sccccccccccs..","..sccccccccccs..","...cccccccccc...",
+    "....pppppppp....","...pp.....pp....","..kkk......kkk..","................"],
+  left0:[
+    "................",".....hhhhhh.....","....hhhhhhhh....","....hhhhhhhh....",
+    "...kkkkkkkkkk...","....ssssssss....","....skssssss....","....ssssssss....",
+    "...cccccccccc...","...sccccccccc...","...sccccccccc...","...cccccccccc...",
+    "....pppppppp....",".....pppp.......","....kkkk........","................"],
+  left1:[
+    "................",".....hhhhhh.....","....hhhhhhhh....","....hhhhhhhh....",
+    "...kkkkkkkkkk...","....ssssssss....","....skssssss....","....ssssssss....",
+    "...cccccccccc...","...sccccccccc...","...sccccccccc...","...cccccccccc...",
+    "....pppppppp....","....pp...pp.....","...kkk...kkk....","................"]
+};
+var SKIN = "#f0c8a0", OUTL = "#181020";
+var PEOPLE = {
+  player:  { h:"#d23b3b", c:"#d23b3b", p:"#3a5ac8" },
+  rival:   { h:"#3a5ac8", c:"#3a5ac8", p:"#444455" },
+  prof:    { h:"#e8e8e8", c:"#f0f0f0", p:"#7a6a55" },
+  mom:     { h:"#8a5a2a", c:"#e08ab0", p:"#c8c8e8" },
+  kid:     { h:"#4a3a20", c:"#4faa3f", p:"#7a6a55" },
+  oldman:  { h:"#d0d0d0", c:"#8a8aa0", p:"#55506a" },
+  woman:   { h:"#e8c840", c:"#e05a8a", p:"#f0f0f0" },
+  guard:   { h:"#3a3a3a", c:"#7a6a55", p:"#3a3a3a" },
+  healer:  { h:"#e88ab0", c:"#f8f8f8", p:"#e88ab0" },
+  clerk:   { h:"#4a3a20", c:"#3f7fdc", p:"#3a3a3a" },
+  hiker:   { h:"#4a3a20", c:"#a06a2a", p:"#556a3a" },
+  leader:  { h:"#a89052", c:"#e8b93c", p:"#5a4a38" },
+  lass:    { h:"#c87a30", c:"#e05a8a", p:"#3a5ac8" },
+  ace:     { h:"#6a5aa0", c:"#6a5aa0", p:"#2a2440" },
+  champion:{ h:"#e8e8f8", c:"#6a4fc1", p:"#2a2050" }
+};
+
+// Sprite canvas caches (built at boot; guarded for headless runs)
+var monCache = {}, personCache = {}, tileCache = {};
+function makeCanvas(w, h){
+  var c = document.createElement("canvas"); c.width = w; c.height = h; return c;
+}
+function renderGrid(grid, pal){
+  var c = makeCanvas(16, 16), x = c.getContext("2d");
+  for (var r = 0; r < 16; r++){
+    var row = grid[r] || "";
+    for (var col = 0; col < 16; col++){
+      var ch = row[col];
+      if (!ch || ch === ".") continue;
+      x.fillStyle = pal[ch] || "#f0f";
+      x.fillRect(col, r, 1, 1);
+    }
+  }
+  return c;
+}
+function flipCanvas(c){
+  var f = makeCanvas(c.width, c.height), x = f.getContext("2d");
+  x.translate(c.width, 0); x.scale(-1, 1); x.drawImage(c, 0, 0); return f;
+}
+function monSprite(id, flip){
+  var key = id + (flip ? "F" : "");
+  if (!monCache[key]){
+    var s = MSPR[id];
+    var c = renderGrid(s.g, s.pal);
+    monCache[key] = flip ? flipCanvas(c) : c;
+  }
+  return monCache[key];
+}
+function personSprite(who, frame){
+  var key = who + "|" + frame;
+  if (!personCache[key]){
+    var flip = false, fr = frame;
+    if (frame === "right0"){ fr = "left0"; flip = true; }
+    if (frame === "right1"){ fr = "left1"; flip = true; }
+    var p = PEOPLE[who] || PEOPLE.kid;
+    var pal = { k:OUTL, h:p.h, s:SKIN, c:p.c, p:p.p, w:"#f8f8f8" };
+    var c = renderGrid(PFRAMES[fr], pal);
+    personCache[key] = flip ? flipCanvas(c) : c;
+  }
+  return personCache[key];
+}
+
+// ------------------------- TILE ART -------------------------
+function px(x, c, X, Y, w, h){ x.fillStyle = c; x.fillRect(X, Y, w, h); }
+function makeTileArt(fn, frame){
+  var c = makeCanvas(16, 16), x = c.getContext("2d");
+  fn(x, frame); return c;
+}
+function roofTile(base, dark){
+  return function(x){
+    px(x, base, 0, 0, 16, 16);
+    px(x, dark, 0, 3, 16, 1); px(x, dark, 0, 8, 16, 1); px(x, dark, 0, 13, 16, 1);
+    px(x, "rgba(255,255,255,.25)", 0, 0, 16, 2);
+  };
+}
+var TILE_ART = {
+  ".": function(x){ px(x,"#9ccb62",0,0,16,16); px(x,"#8bbd52",3,4,1,1); px(x,"#8bbd52",11,9,1,1); px(x,"#a9d873",7,13,1,1); },
+  ",": function(x){ px(x,"#9ccb62",0,0,16,16); px(x,"#7fb249",2,3,2,1); px(x,"#7fb249",10,6,2,1); px(x,"#7fb249",5,11,2,1); px(x,"#7fb249",12,13,2,1); },
+  "f": function(x, f){ px(x,"#9ccb62",0,0,16,16);
+    var c1 = f ? "#e05a5a" : "#e8b93c", c2 = f ? "#e8b93c" : "#e05a5a";
+    px(x,c1,3,3,2,2); px(x,"#fff",3,3,1,1); px(x,c2,10,9,2,2); px(x,"#fff",10,9,1,1); px(x,"#7fb249",6,12,2,1); },
+  "T": function(x, f){ px(x,"#79b04a",0,0,16,16); px(x,"#528a33",0,0,16,2);
+    for (var i = 0; i < 4; i++){ var o = f ? 1 : 0;
+      px(x,"#3e7226",i*4+o,4,2,4); px(x,"#528a33",i*4+2-o,9,2,4); px(x,"#3e7226",i*4+o,13,2,3); } },
+  "#": function(x){ px(x,"#9ccb62",0,0,16,16); px(x,"#2e6b30",1,0,14,11); px(x,"#3f8f43",2,1,12,7);
+    px(x,"#57a85b",3,2,4,2); px(x,"#57a85b",9,4,3,2); px(x,"#2e6b30",4,6,8,3);
+    px(x,"#6a4a2a",6,11,4,5); px(x,"#4a3018",6,11,1,5); },
+  "W": function(x, f){ px(x,"#4f90e8",0,0,16,16);
+    var o = f ? 4 : 0;
+    px(x,"#78b0f0",(0+o)%16,3,5,1); px(x,"#78b0f0",(9+o)%16,7,5,1);
+    px(x,"#3a70c8",(4+o)%16,11,5,1); px(x,"#78b0f0",(12+o)%16,14,4,1); },
+  "M": function(x){ px(x,"#8a7a68",0,0,16,16); px(x,"#a89682",0,0,16,3); px(x,"#6a5a48",0,13,16,3);
+    px(x,"#6a5a48",4,4,1,5); px(x,"#6a5a48",11,6,1,6); px(x,"#a89682",7,9,2,1); px(x,"#544636",0,15,16,1); },
+  "C": function(x){ px(x,"#565064",0,0,16,16); px(x,"#464056",3,4,2,1); px(x,"#645e74",10,8,2,1); px(x,"#464056",7,13,2,1); },
+  "E": function(x){ px(x,"#8a7a68",0,0,16,16); px(x,"#a89682",0,0,16,2);
+    px(x,"#181020",3,4,10,12); px(x,"#2a2438",4,4,8,2); px(x,"#544636",2,4,1,12); px(x,"#544636",13,4,1,12); },
+  "r": roofTile("#d04848", "#9a2e2e"),
+  "v": roofTile("#7858c8", "#54389e"),
+  "y": roofTile("#d8a828", "#a87c14"),
+  "h": function(x){ px(x,"#e8dcc0",0,0,16,16); px(x,"#c8b890",0,0,16,1); px(x,"#c8b890",0,15,16,1);
+    px(x,"#6a90c8",4,4,8,7); px(x,"#dceffa",5,5,6,2); px(x,"#4a6a98",4,4,8,1); px(x,"#a89268",3,12,10,1); },
+  "D": function(x){ px(x,"#e8dcc0",0,0,16,16); px(x,"#7a5230",2,1,12,15); px(x,"#5a3a1e",3,3,10,13);
+    px(x,"#7a5230",4,4,8,11); px(x,"#e8b93c",11,9,2,2); },
+  "S": function(x){ px(x,"#9ccb62",0,0,16,16); px(x,"#6a4a2a",7,8,2,7); px(x,"#c8a050",2,2,12,7);
+    px(x,"#8a6a35",2,2,12,1); px(x,"#5a4020",4,4,8,1); px(x,"#5a4020",4,6,6,1); },
+  "x": function(x){ px(x,"#8a7660",0,0,16,16); px(x,"#6a5844",0,12,16,4); px(x,"#a08c74",0,0,16,2);
+    px(x,"#6a5844",5,2,1,10); px(x,"#6a5844",11,2,1,10); },
+  "b": function(x){ px(x,"#c8a05a",0,0,16,16); px(x,"#b08a48",0,7,16,1); px(x,"#b08a48",0,15,16,1);
+    px(x,"#b08a48",7,0,1,7); px(x,"#b08a48",3,8,1,7); px(x,"#d8b46e",1,1,1,1); },
+  "m": function(x){ px(x,"#c8a05a",0,0,16,16); px(x,"#b03838",1,1,14,14); px(x,"#d86060",3,3,10,10); px(x,"#e8b93c",6,6,4,4); },
+  "B": function(x){ px(x,"#7a5230",0,0,16,16); px(x,"#5a3a1e",0,0,16,2); px(x,"#5a3a1e",0,14,16,2);
+    px(x,"#d04848",2,3,3,4); px(x,"#3f7fdc",6,3,3,4); px(x,"#4faa3f",10,3,3,4);
+    px(x,"#e8b93c",2,9,3,4); px(x,"#7858c8",6,9,3,4); px(x,"#d04848",10,9,3,4); },
+  "c": function(x){ px(x,"#a87c48",0,0,16,16); px(x,"#d8b46e",0,0,16,5); px(x,"#8a6234",0,5,16,1); px(x,"#96703e",2,8,2,6); px(x,"#96703e",12,8,2,6); },
+  "t": function(x){ px(x,"#c8a05a",0,0,16,16); px(x,"#8a6234",2,2,12,10); px(x,"#a87c48",3,3,10,8); px(x,"#8a6234",3,12,2,3); px(x,"#8a6234",11,12,2,3); },
+  "o": function(x){ px(x,"#c8a05a",0,0,16,16); px(x,"#8a8a9a",4,6,8,9); px(x,"#b8b8c8",4,6,8,2);
+    px(x,"#d23b3b",5,1,6,6); px(x,"#f8f8f8",5,4,6,1); px(x,"#f8f8f8",7,2,2,2); },
+  "A": function(x, f){ px(x,"#565064",0,0,16,16); px(x,"#8a8a9a",2,8,12,8); px(x,"#b8b8c8",2,8,12,2);
+    px(x,"#e8b93c",5,1,6,6); px(x,"#fff8d0",7,2,2,2); if (f) px(x,"#fff8d0",5,1,6,1); }
+};
+var SOLID = { "#":1, W:1, M:1, r:1, v:1, y:1, h:1, x:1, B:1, c:1, t:1, o:1, A:1, S:1 };
+var WARP_TILES = { D:1, E:1, m:1 };
+function tileArt(ch, indoor, frame){
+  var use = ch;
+  if (ch === "." && indoor) use = "b";
+  var key = use + "|" + frame;
+  if (!tileCache[key]) tileCache[key] = makeTileArt(TILE_ART[use] || TILE_ART["."], frame);
+  return tileCache[key];
+}
+
+// ------------------------- MAPS -------------------------
+// Tiles: # tree | . ground | , scuff | f flowers | T tall grass | W water | M rock
+// C cave floor | E cave mouth (warp) | r/v/y roofs | h wall | D door (warp)
+// S sign | x interior wall | m exit mat (warp) | B shelf | c counter | t table
+// o starter pedestal | A altar
+var MAPS = {
+  town: { name:"WILLOWBROOK TOWN", rows:[
+    "#######..#######",
+    "#.....,..,.....#",
+    "#.rrr......rrr.#",
+    "#.hDh......hDh.#",
+    "#..............#",
+    "#.f..vvvvv..f..#",
+    "#....hhDhh.....#",
+    "#..............#",
+    "#.S............#",
+    "#..f.,....,.f..#",
+    "#..............#",
+    "#......ff......#",
+    "#......ff......#",
+    "################"
+  ]},
+  route1: { name:"ROUTE 1", enc:{ rate:.14, lv:[2,4], pool:[["nibbly",40],["peckit",30],["buzzler",20],["zapkit",10]] }, rows:[
+    "#######..#######",
+    "#......,,......#",
+    "#.TTT......TTT.#",
+    "#.TTT..S...TTT.#",
+    "#.TTT......TTT.#",
+    "#......,.......#",
+    "#..f...........#",
+    "#....TTTTTT....#",
+    "#....TTTTTT....#",
+    "#..............#",
+    "#.,....f.....,.#",
+    "#...TTTT..TTT..#",
+    "#...TTTT..TTT..#",
+    "#..............#",
+    "#......,....f..#",
+    "#.TT........TT.#",
+    "#.TT........TT.#",
+    "#..............#",
+    "#......,,......#",
+    "#######..#######"
+  ]},
+  city: { name:"TERRACOTTA CITY", rows:[
+    "####################",
+    "#..................#",
+    "#..yyyyy....rrrrr..#",
+    "#..hhDhh....hhDhh..#",
+    "#..................#",
+    "#.S.....f..........#",
+    "#..rrr.....rrr.....#",
+    "#..hDh.....hDh.....#",
+    "#...................",
+    "#...f..........,...#",
+    "#..................#",
+    "#.......f..........#",
+    "#.....,........,...#",
+    "#..................#",
+    "#.........f........#",
+    "#######..###########"
+  ]},
+  route2: { name:"ROUTE 2", enc:{ rate:.13, lv:[10,13], pool:[["zapkit",30],["peckit",25],["buzzler",20],["nibbly",15],["spooklet",10]] }, rows:[
+    "########################",
+    "#......,........MMMMMMM#",
+    "#.TTTT....TTTT..MMMMMMM#",
+    "#.TTTT....TTTT..MMMMMMM#",
+    "#.TTTT....TTTT..MMMEMMM#",
+    "#..............#....,..#",
+    ".......................#",
+    "#..S..,.....f..#.......#",
+    "#..TTTT...TTTT.#.......#",
+    "#..TTTT...TTTT..MMMMMMM#",
+    "#..TTTT...TTTT..MMMMMMM#",
+    "########################"
+  ]},
+  cave: { name:"MT. EMBER CAVE", indoor:false, floorEnc:true,
+    enc:{ rate:.11, lv:[13,16], pool:[["pebblit",40],["spooklet",30],["zapkit",15],["nibbly",15]] }, rows:[
+    "MMMMMMMMMMMMMMMMMM",
+    "MMMMMMMMMEMMMMMMMM",
+    "MMMCCCCCCCCCCCCMMM",
+    "MMCCCCMMMMMCCCCCMM",
+    "MMCCCMMAMMMCCCCCMM",
+    "MMCCCMMCMMMCCCCCMM",
+    "MMCCCCCCCCCCCCCCMM",
+    "MMCCCCCCMMMMMCCCMM",
+    "MMMCCCCCMMMMMCCCMM",
+    "MMMMCCCCCCCCCCCMMM",
+    "MMMMMCCCCCCCCCMMMM",
+    "MMMMMMMMMCMMMMMMMM",
+    "MMMMMMMMMCMMMMMMMM",
+    "MMMMMMMMMEMMMMMMMM"
+  ]},
+  summit: { name:"EMBER SUMMIT", enc:{ rate:.13, lv:[17,20], pool:[["spooklet",35],["zapkit",25],["pebblit",20],["falkron",20]] }, rows:[
+    "##############",
+    "#............#",
+    "#..TT....TT..#",
+    "#..TT....TT..#",
+    "#.....f......#",
+    "#............#",
+    "#.....,......#",
+    "#..f......f..#",
+    "#............#",
+    "#............#",
+    "#MMMMMEMMMMMM#",
+    "##############"
+  ]},
+  home: { name:"YOUR HOUSE", indoor:true, rows:[
+    "xxxxxxxx","xBB..BBx","x......x","x......x","x......x","x..mm..x","xxxxxxxx"
+  ]},
+  house2: { name:"WILLOWBROOK", indoor:true, rows:[
+    "xxxxxxxx","xBB..BBx","x......x","x......x","x......x","x..mm..x","xxxxxxxx"
+  ]},
+  house3: { name:"TERRACOTTA", indoor:true, rows:[
+    "xxxxxxxx","xBB..BBx","x......x","x......x","x......x","x..mm..x","xxxxxxxx"
+  ]},
+  lab: { name:"WILLOW LAB", indoor:true, rows:[
+    "xxxxxxxxxx","xBBB..BBBx","x........x","x.o.o.o..x","x........x","x........x","x...mm...x","xxxxxxxxxx"
+  ]},
+  center: { name:"HEAL HOUSE", indoor:true, rows:[
+    "xxxxxxxxxx","x.cccccc.x","x........x","x........x","x........x","x...mm...x","xxxxxxxxxx"
+  ]},
+  mart: { name:"TRADE POST", indoor:true, rows:[
+    "xxxxxxxxxx","x.cccccc.x","x........x","x........x","x........x","x...mm...x","xxxxxxxxxx"
+  ]},
+  gym: { name:"TERRACOTTA GYM", indoor:true, rows:[
+    "xxxxxxxxxx","x........x","x.t....t.x","x........x","x.t....t.x","x........x","x........x","x...mm...x","xxxxxxxxxx"
+  ]}
+};
+
+var WARPS = [
+  { m:"town", x:7,  y:0,  to:"route1", tx:7,  ty:18 },
+  { m:"town", x:8,  y:0,  to:"route1", tx:8,  ty:18 },
+  { m:"town", x:3,  y:3,  to:"home",   tx:3,  ty:4 },
+  { m:"town", x:12, y:3,  to:"house2", tx:3,  ty:4 },
+  { m:"town", x:7,  y:6,  to:"lab",    tx:4,  ty:5 },
+  { m:"route1", x:7, y:19, to:"town", tx:7, ty:1 },
+  { m:"route1", x:8, y:19, to:"town", tx:8, ty:1 },
+  { m:"route1", x:7, y:0,  to:"city", tx:7, ty:14 },
+  { m:"route1", x:8, y:0,  to:"city", tx:8, ty:14 },
+  { m:"city", x:7,  y:15, to:"route1", tx:7,  ty:1 },
+  { m:"city", x:8,  y:15, to:"route1", tx:8,  ty:1 },
+  { m:"city", x:19, y:8,  to:"route2", tx:1,  ty:6 },
+  { m:"city", x:5,  y:3,  to:"gym",    tx:4,  ty:6 },
+  { m:"city", x:14, y:3,  to:"house3", tx:3,  ty:4 },
+  { m:"city", x:4,  y:7,  to:"center", tx:4,  ty:4 },
+  { m:"city", x:12, y:7,  to:"mart",   tx:4,  ty:4 },
+  { m:"route2", x:0,  y:6,  to:"city", tx:18, ty:8 },
+  { m:"route2", x:19, y:4,  to:"cave", tx:9,  ty:12 },
+  { m:"cave", x:9, y:13, to:"route2", tx:19, ty:5 },
+  { m:"cave", x:9, y:1,  to:"summit", tx:6,  ty:9 },
+  { m:"summit", x:6, y:10, to:"cave", tx:9, ty:2 },
+  { m:"home",   x:3, y:5, to:"town", tx:3,  ty:4 },
+  { m:"home",   x:4, y:5, to:"town", tx:3,  ty:4 },
+  { m:"house2", x:3, y:5, to:"town", tx:12, ty:4 },
+  { m:"house2", x:4, y:5, to:"town", tx:12, ty:4 },
+  { m:"house3", x:3, y:5, to:"city", tx:14, ty:4 },
+  { m:"house3", x:4, y:5, to:"city", tx:14, ty:4 },
+  { m:"lab",    x:4, y:6, to:"town", tx:7,  ty:7 },
+  { m:"lab",    x:5, y:6, to:"town", tx:7,  ty:7 },
+  { m:"center", x:4, y:5, to:"city", tx:4,  ty:8 },
+  { m:"center", x:5, y:5, to:"city", tx:4,  ty:8 },
+  { m:"mart",   x:4, y:5, to:"city", tx:12, ty:8 },
+  { m:"mart",   x:5, y:5, to:"city", tx:12, ty:8 },
+  { m:"gym",    x:4, y:7, to:"city", tx:5,  ty:4 },
+  { m:"gym",    x:5, y:7, to:"city", tx:5,  ty:4 }
+];
+
+var SIGNS = {
+  "town:2,8":    ["WILLOWBROOK TOWN", "Where every journey begins."],
+  "route1:7,3":  ["ROUTE 1", "North: TERRACOTTA CITY"],
+  "city:2,5":    ["TERRACOTTA CITY", "Home of the ROCK GYM. East: ROUTE 2."],
+  "route2:3,7":  ["ROUTE 2", "East: MT. EMBER. Beware of cave-ins."]
+};
+
+var GROUND_ITEMS = [
+  { id:"g1", m:"route1", x:13, y:6,  item:"orb",         n:2 },
+  { id:"g2", m:"route2", x:12, y:5,  item:"superpotion", n:1 },
+  { id:"g3", m:"cave",   x:3,  y:3,  item:"revive",      n:1 },
+  { id:"g4", m:"cave",   x:15, y:8,  item:"greatorb",    n:2 },
+  { id:"g5", m:"summit", x:2,  y:1,  item:"fullheal",    n:1 }
+];
+
+// ------------------------- TRAINERS -------------------------
+var STARTER_COUNTER = { sproutle:"embercub", embercub:"aquafin", aquafin:"sproutle" };
+var STARTER_EVO = { sproutle:"thornbark", embercub:"pyroclaw", aquafin:"tidalisk" };
+function rivalStarter(){ return STARTER_COUNTER[G.flags.starter || "sproutle"]; }
+var TRAINERS = {
+  kai1: { name:"RIVAL KAI", who:"rival", prize:200, noWhiteout:true,
+    party:function(){ return [[rivalStarter(), 5]]; },
+    winText:"KAI: What?! I picked the stronger one..." },
+  ben: { name:"YOUNGSTER BEN", who:"kid", prize:180,
+    party:function(){ return [["nibbly",4],["peckit",5]]; },
+    intro:["BEN: My NIBBLY chews through anything! Let's battle!"],
+    winText:"BEN: Aww, my monsters...",
+    after:["BEN: The gym guard won't let anyone east without a BADGE."] },
+  mia: { name:"LASS MIA", who:"lass", prize:200,
+    party:function(){ return [["buzzler",6],["nibbly",5]]; },
+    intro:["MIA: My BUZZLER's poison lasts a WEEK. Want a taste?"],
+    winText:"MIA: Eek! Fine, you win!",
+    after:["MIA: Poison wears you down every turn. FULL HEAL cures it."] },
+  rex: { name:"ROCKHOUND REX", who:"hiker", prize:400,
+    party:function(){ return [["pebblit",9],["pebblit",10]]; },
+    intro:["REX: Only the stone-hearted reach MARLOW!"],
+    winText:"REX: Solid... very solid.",
+    after:["REX: MARLOW's BOULDEROX is a wall. Chip it down!"] },
+  marlow: { name:"LEADER MARLOW", who:"leader", prize:2000,
+    party:function(){ return [["pebblit",11],["boulderox",14]]; },
+    intro:["MARLOW: I am MARLOW. My rocks have outlasted a thousand challengers.", "MARLOW: Show me your resolve!"],
+    winText:"MARLOW: Magnificent! The mountain yields to you.",
+    after:["MARLOW: With the TERRA BADGE, the guard will let you onto ROUTE 2."] },
+  cole: { name:"HIKER COLE", who:"hiker", prize:500,
+    party:function(){ return [["pebblit",13],["nibbly",13]]; },
+    intro:["COLE: These slopes are MY turf, kid!"],
+    winText:"COLE: You climb well!",
+    after:["COLE: MT. EMBER's cave is dark and full of ghosts. Bring potions."] },
+  kai2: { name:"RIVAL KAI", who:"rival", prize:800,
+    party:function(){ return [["peckit",14],[STARTER_EVO[rivalStarter()],16]]; },
+    intro:["KAI: You again! Still dragging that starter around?", "KAI: Mine already EVOLVED. Watch this!"],
+    winText:"KAI: Tch... how are you stronger than me?!",
+    after:["KAI: Go on then. But ARIA at the summit is on another level."] },
+  vera: { name:"ACE VERA", who:"ace", prize:900,
+    party:function(){ return [["spooklet",16],["zapkit",16]]; },
+    intro:["VERA: Few make it this deep. Fewer make it back!"],
+    winText:"VERA: Impressive nerve.",
+    after:["VERA: They say a LEGENDARY monster sleeps at the old altar."] },
+  aria: { name:"CHAMPION ARIA", who:"champion", prize:5000,
+    party:function(){ return [["falkron",19],["boulderox",20],[STARTER_EVO[rivalStarter()],22]]; },
+    intro:["ARIA: So you're the one KAI keeps grumbling about.",
+           "ARIA: I am ARIA, CHAMPION of the CRIMSON LEAGUE.",
+           "ARIA: At this summit, legends are made... or broken!"],
+    winText:"ARIA: ...Magnificent. The title is yours.",
+    after:["ARIA: A champion's journey never truly ends.", "ARIA: I heard the old altar in MT. EMBER has begun to glow..."] }
+};
+
+// ------------------------- NPCS -------------------------
+// dir: which way they face. who: palette. talk() runs on interaction.
+var NPCS = [
+  { m:"town", x:10, y:9, dir:"down", who:"kid",
+    talk:function(){ say(["KAI is the professor's grandson.", "He's a show-off, but he trains hard."]); } },
+  { m:"town", x:4, y:10, dir:"down", who:"woman",
+    talk:function(){ say(["Wild monsters hide in tall grass!", "Never walk in without a monster of your own."]); } },
+  { m:"home", x:5, y:2, dir:"down", who:"mom",
+    talk:function(){
+      say(["MOM: Back already? Let me look at you...", "MOM: There. Your team is fully rested!"], function(){
+        healParty(); G.healSpot = { map:"home", x:4, y:3 }; sfx("heal");
+      });
+    } },
+  { m:"house2", x:4, y:2, dir:"down", who:"oldman",
+    talk:function(){ say(["Press ENTER to open the MENU.", "Save often! The world is full of surprises."]); } },
+  { m:"lab", x:7, y:2, dir:"down", who:"prof",
+    talk:function(){
+      if (!G.flags.starter) say(["PROF WILLOW: Welcome! Pick any monster", "from the pedestals. It will be your partner!"]);
+      else if (!G.flags.champion) say(["PROF WILLOW: Head north through TERRACOTTA CITY.", "PROF WILLOW: Beat the GYM, cross MT. EMBER, and challenge the CHAMPION!"]);
+      else say(["PROF WILLOW: CHAMPION! I always believed in you.", "PROF WILLOW: Now... about that glowing altar in the cave..."]);
+    } },
+  { m:"lab", x:5, y:4, dir:"down", who:"rival",
+    hide:function(){ return G.flags.labDone; },
+    talk:function(){
+      if (!G.flags.starter) say(["KAI: Gramps says I have to let YOU pick first.", "KAI: Hurry up already!"]);
+      else pedestalRivalBattle();
+    } },
+  { m:"route1", x:5, y:9, dir:"down", who:"kid", trainer:"ben" },
+  { m:"route1", x:10, y:14, dir:"down", who:"lass", trainer:"mia" },
+  { m:"city", x:18, y:8, dir:"left", who:"guard",
+    at:function(){ return G.flags.badge ? [17,10] : [18,8]; },
+    talk:function(){
+      if (G.flags.badge) say(["GUARD: That TERRA BADGE suits you.", "GUARD: ROUTE 2 is open. Watch for rockslides!"]);
+      else say(["GUARD: Halt! ROUTE 2 is dangerous.", "GUARD: No one passes without the TERRA BADGE from our GYM."]);
+    } },
+  { m:"city", x:10, y:10, dir:"down", who:"woman",
+    talk:function(){ say(["LEADER MARLOW uses ROCK types.", "GRASS and WATER moves crush rocks!"]); } },
+  { m:"city", x:6, y:12, dir:"down", who:"oldman",
+    talk:function(){ say(["MT. EMBER lies east past ROUTE 2.", "They say a LEGENDARY monster sleeps deep inside..."]); } },
+  { m:"house3", x:4, y:2, dir:"down", who:"kid",
+    talk:function(){ say(["Monsters EVOLVE around level 16 to 22!", "Evolution makes them way stronger."]); } },
+  { m:"center", x:4, y:2, dir:"down", who:"healer",
+    talk:function(){
+      say(["NURSE: Welcome to the HEAL HOUSE!", "NURSE: Your monsters are good as new. Come again!"], function(){
+        healParty(); G.healSpot = { map:"center", x:4, y:3 }; sfx("heal");
+      });
+    } },
+  { m:"mart", x:5, y:2, dir:"down", who:"clerk",
+    talk:function(){ openShop(); } },
+  { m:"gym", x:4, y:1, dir:"down", who:"leader", trainer:"marlow" },
+  { m:"gym", x:5, y:3, dir:"down", who:"hiker", trainer:"rex" },
+  { m:"route2", x:8, y:6, dir:"right", who:"hiker", trainer:"cole" },
+  { m:"route2", x:15, y:6, dir:"left", who:"rival", trainer:"kai2",
+    at:function(){ return G.flags.beat_kai2 ? [14,5] : [15,6]; } },
+  { m:"cave", x:13, y:6, dir:"left", who:"ace", trainer:"vera" },
+  { m:"summit", x:6, y:5, dir:"down", who:"champion", trainer:"aria" }
+];
+
+// Non-sprite objects you can examine (pedestals, altar)
+var OBJECTS = [
+  { m:"lab", x:2, y:3, talk:function(){ pedestalTalk("sproutle"); } },
+  { m:"lab", x:4, y:3, talk:function(){ pedestalTalk("embercub"); } },
+  { m:"lab", x:6, y:3, talk:function(){ pedestalTalk("aquafin"); } },
+  { m:"cave", x:7, y:4, talk:function(){ altarTalk(); } }
+];
+
+// ------------------------- MONSTER LOGIC (pure) -------------------------
+function expForLv(l){ return l * l * l; }
+function statsFor(sp, lv){
+  var b = SPECIES[sp].base;
+  return {
+    max: fl(2 * b[0] * lv / 100) + lv + 10,
+    atk: fl(2 * b[1] * lv / 100) + 5,
+    def: fl(2 * b[2] * lv / 100) + 5,
+    spd: fl(2 * b[3] * lv / 100) + 5
+  };
+}
+function movesAt(sp, lv){
+  var out = [], learn = SPECIES[sp].learn;
+  for (var i = 0; i < learn.length; i++){
+    if (learn[i][0] <= lv && out.indexOf(learn[i][1]) < 0) out.push(learn[i][1]);
+  }
+  return out.slice(-4);
+}
+function makeMon(sp, lv){
+  var s = statsFor(sp, lv);
+  var mv = movesAt(sp, lv).map(function(id){ return { id:id, pp:MOVES[id].pp }; });
+  return { sp:sp, lv:lv, exp:expForLv(lv), hp:s.max, max:s.max, atk:s.atk, def:s.def, spd:s.spd,
+           status:null, stages:{ atk:0, def:0 }, moves:mv };
+}
+function recalcMon(m){
+  var dmgTaken = m.max - m.hp;
+  var s = statsFor(m.sp, m.lv);
+  m.max = s.max; m.atk = s.atk; m.def = s.def; m.spd = s.spd;
+  m.hp = clamp(s.max - dmgTaken, 0, s.max);
+}
+function stageMult(st){ return st >= 0 ? (2 + st) / 2 : 2 / (2 - st); }
+function calcDamage(a, d, mv){
+  if (!mv.p) return { dmg:0, eff:1, crit:false };
+  var crit = rnd() < (mv.crit ? 0.125 : 0.0625);
+  var atkStage = crit ? Math.max(0, a.stages.atk) : a.stages.atk;
+  var defStage = crit ? Math.min(0, d.stages.def) : d.stages.def;
+  var atk = a.atk * stageMult(atkStage);
+  var def = Math.max(1, d.def * stageMult(defStage));
+  var eff = typeEffect(mv.t, SPECIES[d.sp].types);
+  var stab = SPECIES[a.sp].types.indexOf(mv.t) >= 0 ? 1.5 : 1;
+  var base = fl(fl(2 * a.lv / 5 + 2) * mv.p * atk / def) / 50 + 2;
+  var dmg = fl(base * stab * eff * (crit ? 2 : 1) * (217 + ri(0, 38)) / 255);
+  if (eff > 0 && dmg < 1) dmg = 1;
+  if (eff === 0) dmg = 0;
+  return { dmg:dmg, eff:eff, crit:crit };
+}
+function catchCheck(mon, ballMult){
+  var st = mon.status === "SLP" ? 2 : (mon.status ? 1.5 : 1);
+  var a = (3 * mon.max - 2 * mon.hp) * SPECIES[mon.sp].catch * ballMult * st / (3 * mon.max);
+  a = Math.min(255, a);
+  var caught = rnd() * 255 < a;
+  var shakes = caught ? 3 : Math.min(2, fl(a / 100 + rnd() * 1.7));
+  return { caught:caught, shakes:shakes };
+}
+function expGain(loser, isTrainer){
+  return Math.max(1, fl(SPECIES[loser.sp].exp * loser.lv / 7 * (isTrainer ? 1.5 : 1)));
+}
+function firstAlive(party){
+  for (var i = 0; i < party.length; i++) if (party[i].hp > 0) return i;
+  return -1;
+}
+
+// ------------------------- GAME STATE -------------------------
+var G = null, D = null, FADE = null, MENU = null, PT = null, BAG = null, SH = null, B = null, EVO = null, CRED = null, TITLE = null;
+var held = {}, just = {};
+var SAVE_KEY = "pocket_legends_crimson_v1";
+function newGame(name){
+  G = { state:"overworld", name:name || "ACE", map:"home", x:4, y:3, facing:"down",
+        mv:null, animT:0, party:[], bag:{ potion:2 }, money:1200,
+        flags:{ taken:{} }, healSpot:{ map:"home", x:4, y:3 }, steps:0, dexSeen:{} };
+}
+function addItem(id, n){ G.bag[id] = (G.bag[id] || 0) + (n || 1); }
+function takeItem(id){ if (G.bag[id]){ G.bag[id]--; if (!G.bag[id]) delete G.bag[id]; } }
+function healParty(){
+  for (var i = 0; i < G.party.length; i++){
+    var m = G.party[i];
+    m.hp = m.max; m.status = null;
+    for (var j = 0; j < m.moves.length; j++) m.moves[j].pp = MOVES[m.moves[j].id].pp;
+  }
+}
+function saveGame(){
+  try {
+    var data = { name:G.name, map:G.map, x:G.x, y:G.y, facing:G.facing, party:G.party,
+                 bag:G.bag, money:G.money, flags:G.flags, healSpot:G.healSpot, dexSeen:G.dexSeen };
+    localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+    return true;
+  } catch (e){ return false; }
+}
+function loadGame(){
+  try {
+    var raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return false;
+    var d = JSON.parse(raw);
+    newGame(d.name);
+    G.map = d.map; G.x = d.x; G.y = d.y; G.facing = d.facing || "down";
+    G.party = d.party || []; G.bag = d.bag || {}; G.money = d.money || 0;
+    G.flags = d.flags || { taken:{} }; if (!G.flags.taken) G.flags.taken = {};
+    G.healSpot = d.healSpot || { map:"home", x:4, y:3 }; G.dexSeen = d.dexSeen || {};
+    for (var i = 0; i < G.party.length; i++){
+      var m = G.party[i];
+      if (!m.stages) m.stages = { atk:0, def:0 };
+      var s = statsFor(m.sp, m.lv);
+      var ratio = m.max ? m.hp / m.max : 1;
+      m.max = s.max; m.atk = s.atk; m.def = s.def; m.spd = s.spd;
+      m.hp = clamp(Math.round(s.max * ratio), 0, s.max);
+    }
+    return true;
+  } catch (e){ return false; }
+}
+function hasSave(){ try { return !!localStorage.getItem(SAVE_KEY); } catch (e){ return false; } }
+
+// ------------------------- MAP HELPERS -------------------------
+function mapW(m){ return MAPS[m].rows[0].length; }
+function mapH(m){ return MAPS[m].rows.length; }
+function tileAt(m, x, y){
+  if (x < 0 || y < 0 || y >= mapH(m) || x >= mapW(m)) return "#";
+  return MAPS[m].rows[y][x];
+}
+function npcPos(n){ return n.at ? n.at() : [n.x, n.y]; }
+function npcAt(m, x, y){
+  for (var i = 0; i < NPCS.length; i++){
+    var n = NPCS[i];
+    if (n.m !== m) continue;
+    if (n.hide && n.hide()) continue;
+    var p = npcPos(n);
+    if (p[0] === x && p[1] === y) return n;
+  }
+  return null;
+}
+function objectAt(m, x, y){
+  for (var i = 0; i < OBJECTS.length; i++){
+    var o = OBJECTS[i];
+    if (o.m === m && o.x === x && o.y === y) return o;
+  }
+  return null;
+}
+function groundItemAt(m, x, y){
+  for (var i = 0; i < GROUND_ITEMS.length; i++){
+    var g = GROUND_ITEMS[i];
+    if (g.m === m && g.x === x && g.y === y && !G.flags.taken[g.id]) return g;
+  }
+  return null;
+}
+function warpAt(m, x, y){
+  for (var i = 0; i < WARPS.length; i++){
+    var w = WARPS[i];
+    if (w.m === m && w.x === x && w.y === y) return w;
+  }
+  return null;
+}
+function passable(m, x, y){
+  var t = tileAt(m, x, y);
+  if (SOLID[t]) return false;
+  if (x < 0 || y < 0 || x >= mapW(m) || y >= mapH(m)) return false;
+  if (npcAt(m, x, y)) return false;
+  if (groundItemAt(m, x, y)) return false;
+  return true;
+}
+var DIRS = { up:[0,-1], down:[0,1], left:[-1,0], right:[1,0] };
+function opposite(d){ return { up:"down", down:"up", left:"right", right:"left" }[d]; }
+
+// ------------------------- DIALOG -------------------------
+function wrapLine(s, w){
+  var words = String(s).split(" "), lines = [], cur = "";
+  for (var i = 0; i < words.length; i++){
+    var t = cur ? cur + " " + words[i] : words[i];
+    if (t.length > w && cur){ lines.push(cur); cur = words[i]; }
+    else cur = t;
+  }
+  if (cur) lines.push(cur);
+  return lines;
+}
+function paginate(lines){
+  var rows = [], pages = [];
+  for (var i = 0; i < lines.length; i++){
+    var wrapped = wrapLine(lines[i], 24);
+    for (var j = 0; j < wrapped.length; j++) rows.push(wrapped[j]);
+    // each source line ends its own page pair
+    while (rows.length){ pages.push(rows.splice(0, 2)); }
+  }
+  return pages.length ? pages : [[""]];
+}
+function say(lines, cb){
+  D = { pages:paginate(lines), pi:0, reveal:0, cb:cb || null, ask:null };
+}
+function ask(prompt, options, cb){
+  D = { pages:paginate([prompt]), pi:0, reveal:0, cb:null, ask:{ options:options, idx:0, cb:cb } };
+}
+function dialogUpdate(){
+  var page = D.pages[D.pi];
+  var total = page.join("").length;
+  if (D.reveal < total){
+    D.reveal += 2;
+    if (just.a || just.b) D.reveal = total;
+    return;
+  }
+  var last = D.pi === D.pages.length - 1;
+  if (D.ask && last){
+    if (just.u){ D.ask.idx = (D.ask.idx + D.ask.options.length - 1) % D.ask.options.length; sfx("move"); }
+    if (just.d){ D.ask.idx = (D.ask.idx + 1) % D.ask.options.length; sfx("move"); }
+    if (just.a){ var a = D.ask, i = a.idx; D = null; sfx("sel"); if (a.cb) a.cb(i); }
+    else if (just.b){ var a2 = D.ask; D = null; sfx("back"); if (a2.cb) a2.cb(-1); }
+    return;
+  }
+  if (just.a || just.b){
+    sfx("sel");
+    if (!last){ D.pi++; D.reveal = 0; }
+    else { var cb = D.cb; D = null; if (cb) cb(); }
+  }
+}
+
+// ------------------------- OVERWORLD -------------------------
+function fadeTo(cb){ FADE = { t:0, phase:0, cb:cb }; }
+function fadeUpdate(){
+  if (!FADE) return false;
+  if (FADE.phase === 0){
+    FADE.t += 0.12;
+    if (FADE.t >= 1){ FADE.t = 1; FADE.phase = 1; if (FADE.cb) FADE.cb(); }
+  } else {
+    FADE.t -= 0.12;
+    if (FADE.t <= 0) FADE = null;
+  }
+  return true;
+}
+function doWarp(w){
+  sfx("door");
+  fadeTo(function(){
+    G.map = w.to; G.x = w.tx; G.y = w.ty; G.mv = null;
+  });
+}
+function tryEncounter(){
+  var map = MAPS[G.map], t = tileAt(G.map, G.x, G.y);
+  if (!map.enc) return;
+  var inGrass = t === "T" || (map.floorEnc && t === "C");
+  if (!inGrass || rnd() >= map.enc.rate) return;
+  var pool = map.enc.pool, roll = rnd() * 100, acc = 0, sp = pool[0][0];
+  for (var i = 0; i < pool.length; i++){ acc += pool[i][1]; if (roll < acc){ sp = pool[i][0]; break; } }
+  var lv = ri(map.enc.lv[0], map.enc.lv[1]);
+  startWildBattle(makeMon(sp, lv));
+}
+function arriveStep(){
+  G.steps++;
+  var w = warpAt(G.map, G.x, G.y);
+  if (w){ doWarp(w); return; }
+  if (G.party.length && firstAlive(G.party) >= 0) tryEncounter();
+}
+function interact(){
+  var d = DIRS[G.facing], tx = G.x + d[0], ty = G.y + d[1];
+  var n = npcAt(G.map, tx, ty);
+  if (n){
+    n._dir = opposite(G.facing);
+    if (n.trainer) trainerTalk(n);
+    else if (n.talk) n.talk();
+    return;
+  }
+  var o = objectAt(G.map, tx, ty);
+  if (o){ o.talk(); return; }
+  var g = groundItemAt(G.map, tx, ty);
+  if (g){
+    G.flags.taken[g.id] = 1; addItem(g.item, g.n); sfx("item");
+    say(["Found " + ITEMS[g.item].n + (g.n > 1 ? " x" + g.n : "") + "!"]);
+    return;
+  }
+  var key = G.map + ":" + tx + "," + ty;
+  if (tileAt(G.map, tx, ty) === "S" && SIGNS[key]) say(SIGNS[key]);
+}
+function owUpdate(){
+  if (fadeUpdate()) return;
+  if (D){ dialogUpdate(); return; }
+  if (MENU){ menuUpdate(); return; }
+  G.animT++;
+  if (G.mv){
+    G.mv.p += held.b ? 4 : 2;
+    if (G.mv.p >= TS){
+      G.x += DIRS[G.facing][0]; G.y += DIRS[G.facing][1];
+      G.mv = null; arriveStep();
+    }
+    return;
+  }
+  if (just.s){ MENU = { idx:0 }; sfx("menu"); return; }
+  if (just.a){ interact(); return; }
+  var dir = held.u ? "up" : held.d ? "down" : held.l ? "left" : held.r ? "right" : null;
+  if (dir){
+    if (G.facing !== dir){ G.facing = dir; G.turnT = 4; return; }
+    if (G.turnT > 0){ G.turnT--; return; }
+    var dd = DIRS[dir], nx = G.x + dd[0], ny = G.y + dd[1];
+    if (passable(G.map, nx, ny)) G.mv = { p:0 };
+    else if (warpAt(G.map, nx, ny) && !SOLID[tileAt(G.map, nx, ny)]) G.mv = { p:0 };
+  }
+}
+
+// ------------------------- START MENU / BAG / PARTY / SHOP -------------------------
+var MENU_ITEMS = ["MONSTERS", "BAG", "SAVE", "EXIT"];
+function menuUpdate(){
+  if (just.u){ MENU.idx = (MENU.idx + MENU_ITEMS.length - 1) % MENU_ITEMS.length; sfx("move"); }
+  if (just.d){ MENU.idx = (MENU.idx + 1) % MENU_ITEMS.length; sfx("move"); }
+  if (just.b || (just.s && !just.a)){ MENU = null; sfx("back"); return; }
+  if (just.a){
+    sfx("sel");
+    var pick = MENU_ITEMS[MENU.idx];
+    if (pick === "MONSTERS"){
+      if (!G.party.length){ MENU = null; say(["You have no monsters yet!"]); return; }
+      MENU = null; PT = { mode:"view", idx:0 }; G.state = "party";
+    } else if (pick === "BAG"){
+      MENU = null; BAG = { idx:0, inBattle:false }; G.state = "bag";
+    } else if (pick === "SAVE"){
+      MENU = null;
+      say(saveGame() ? ["Game saved!"] : ["Save failed! (storage unavailable)"]);
+    } else MENU = null;
+  }
+}
+function bagList(){
+  var out = [];
+  for (var i = 0; i < ITEM_ORDER.length; i++) if (G.bag[ITEM_ORDER[i]]) out.push(ITEM_ORDER[i]);
+  return out;
+}
+function bagUpdate(){
+  var list = bagList();
+  if (!list.length){ if (just.a || just.b){ closeBag(); } return; }
+  BAG.idx = clamp(BAG.idx, 0, list.length - 1);
+  if (just.u){ BAG.idx = (BAG.idx + list.length - 1) % list.length; sfx("move"); }
+  if (just.d){ BAG.idx = (BAG.idx + 1) % list.length; sfx("move"); }
+  if (just.b){ closeBag(); sfx("back"); return; }
+  if (just.a){
+    var id = list[BAG.idx]; sfx("sel");
+    if (BAG.inBattle){ battleUseItem(id); return; }
+    if (id === "orb" || id === "greatorb"){ say(["No wild monster to throw it at!"]); return; }
+    if (!G.party.length){ say(["You have no monsters!"]); return; }
+    PT = { mode:"item", idx:0, item:id, ret:"bag" }; G.state = "party";
+  }
+}
+function closeBag(){ BAG = null; G.state = B ? "battle" : "overworld"; }
+function applyItemTo(mon, id){
+  if (id === "potion" || id === "superpotion"){
+    if (mon.hp <= 0 || mon.hp >= mon.max) return null;
+    var amt = id === "potion" ? 20 : 50;
+    var before = mon.hp;
+    mon.hp = clamp(mon.hp + amt, 0, mon.max);
+    return SPECIES[mon.sp].name + " recovered " + (mon.hp - before) + " HP!";
+  }
+  if (id === "fullheal"){
+    if (!mon.status || mon.hp <= 0) return null;
+    mon.status = null; mon.slp = 0;
+    return SPECIES[mon.sp].name + " is cured!";
+  }
+  if (id === "revive"){
+    if (mon.hp > 0) return null;
+    mon.hp = fl(mon.max / 2); mon.status = null; mon.slp = 0;
+    return SPECIES[mon.sp].name + " came back to its senses!";
+  }
+  return null;
+}
+function partyUpdate(){
+  var n = G.party.length;
+  if (just.u){ PT.idx = (PT.idx + n - 1) % n; sfx("move"); }
+  if (just.d){ PT.idx = (PT.idx + 1) % n; sfx("move"); }
+  if (just.b){
+    if (PT.forced) return; // must send out a new monster
+    sfx("back");
+    if (PT.mode === "item" && PT.ret === "bag"){ G.state = "bag"; PT = null; return; }
+    if (PT.mode === "switch" && PT.ret === "battle"){ G.state = "battle"; PT = null; battleMenuBack(); return; }
+    if (PT.mode === "item" && PT.ret === "battle"){ G.state = "battle"; PT = null; BAG = null; battleMenuBack(); return; }
+    PT = null; G.state = "overworld"; return;
+  }
+  if (just.a){
+    var mon = G.party[PT.idx];
+    if (PT.mode === "view"){
+      if (PT.idx === 0){ sfx("sel"); showMonSummary(mon); return; }
+      var tmp = G.party[0]; G.party[0] = G.party[PT.idx]; G.party[PT.idx] = tmp;
+      PT.idx = 0; sfx("sel");
+    } else if (PT.mode === "item"){
+      var msg = applyItemTo(mon, PT.item);
+      if (!msg){ sfx("back"); return; }
+      takeItem(PT.item); sfx("heal");
+      if (PT.ret === "battle"){ PT = null; BAG = null; G.state = "battle"; battleItemUsed(msg); }
+      else { PT = null; G.state = "overworld"; say([msg]); }
+    } else if (PT.mode === "switch"){
+      if (mon.hp <= 0 || PT.idx === B.pi){ sfx("back"); return; }
+      var pick = PT.idx; PT = null; G.state = "battle"; sfx("sel");
+      battleSwitchTo(pick);
+    }
+  }
+}
+function showMonSummary(mon){
+  var s = SPECIES[mon.sp];
+  var mvs = mon.moves.map(function(m){ return MOVES[m.id].n; }).join(", ");
+  say([s.name + "  Lv" + mon.lv + "  " + s.types.join("/"),
+       "HP " + mon.hp + "/" + mon.max + "  ATK " + mon.atk + "  DEF " + mon.def + "  SPD " + mon.spd,
+       "Moves: " + mvs, s.dex]);
+}
+function openShop(){ SH = { idx:0 }; G.state = "shop"; }
+function shopUpdate(){
+  var n = SHOP_STOCK.length + 1;
+  if (just.u){ SH.idx = (SH.idx + n - 1) % n; sfx("move"); }
+  if (just.d){ SH.idx = (SH.idx + 1) % n; sfx("move"); }
+  if (just.b){ SH = null; G.state = "overworld"; sfx("back"); return; }
+  if (just.a){
+    if (SH.idx === SHOP_STOCK.length){ SH = null; G.state = "overworld"; sfx("back"); return; }
+    var id = SHOP_STOCK[SH.idx], it = ITEMS[id];
+    if (G.money >= it.price){ G.money -= it.price; addItem(id, 1); sfx("item"); }
+    else sfx("back");
+  }
+}
+
+// ------------------------- BATTLE SYSTEM -------------------------
+function qtxt(s){ return { t:"txt", s:s }; }
+function qfn(f){ return { t:"fn", f:f }; }
+function qput(){ for (var i = 0; i < arguments.length; i++) B.q.push(arguments[i]); }
+function qins(){ // insert at the current queue position (fn steps have already advanced qi past themselves)
+  var args = Array.prototype.slice.call(arguments);
+  args.unshift(B.qi, 0);
+  B.q.splice.apply(B.q, args);
+}
+function pmon(){ return G.party[B.pi]; }
+function emon(){ return B.eparty[B.ei]; }
+function mname(m){ return SPECIES[m.sp].name; }
+function effSpd(m){ return m.spd * (m.status === "PAR" ? 0.5 : 1); }
+function resetBattleMon(m){ m.stages = { atk:0, def:0 }; }
+
+function startWildBattle(mon, opts){
+  opts = opts || {};
+  G.dexSeen[mon.sp] = 1;
+  var pi = firstAlive(G.party);
+  if (pi < 0) return;
+  B = { wild:true, legendary:!!opts.legend, trainer:null, trainerId:null, eparty:[mon], ei:0, pi:pi,
+        q:[], qi:0, phase:"q", afterQ:"menu", menuIdx:0, moveIdx:0, runTries:0,
+        evolveQueue:[], over:false, onEnd:opts.onEnd || null, pFlash:0, eFlash:0, introT:20 };
+  resetBattleMon(mon); resetBattleMon(G.party[pi]);
+  G.state = "battle"; sfx("battle");
+  qput(qtxt((opts.legend ? "" : "Wild ") + mname(mon) + " appeared!"), qtxt("Go! " + mname(G.party[pi]) + "!"));
+}
+function startTrainerBattle(id, onEnd){
+  var tr = TRAINERS[id];
+  var pi = firstAlive(G.party);
+  if (pi < 0) return;
+  var ep = tr.party().map(function(p){ var m = makeMon(p[0], p[1]); G.dexSeen[p[0]] = 1; return m; });
+  B = { wild:false, trainer:tr, trainerId:id, eparty:ep, ei:0, pi:pi,
+        q:[], qi:0, phase:"q", afterQ:"menu", menuIdx:0, moveIdx:0, runTries:0,
+        evolveQueue:[], over:false, onEnd:onEnd || null, pFlash:0, eFlash:0, introT:20 };
+  resetBattleMon(ep[0]); resetBattleMon(G.party[pi]);
+  G.state = "battle"; sfx("battle");
+  qput(qtxt(tr.name + " wants to battle!"),
+       qtxt(tr.name + " sent out " + mname(ep[0]) + "!"),
+       qtxt("Go! " + mname(G.party[pi]) + "!"));
+}
+function trainerTalk(n){
+  var id = n.trainer, tr = TRAINERS[id];
+  if (G.flags["beat_" + id]){ say(tr.after || [tr.name + ": Good battle!"]); return; }
+  if (!G.party.length || firstAlive(G.party) < 0){
+    say([tr.name + ": Come back when your team can fight!"]); return;
+  }
+  say(tr.intro || [tr.name + " wants to battle!"], function(){ startTrainerBattle(id, null); });
+}
+
+function enemyPick(em, pm){
+  var usable = [];
+  for (var i = 0; i < em.moves.length; i++) if (em.moves[i].pp > 0) usable.push(em.moves[i].id);
+  if (!usable.length) return "struggle";
+  var best = usable[0], bestScore = -1;
+  for (var j = 0; j < usable.length; j++){
+    var mv = MOVES[usable[j]];
+    var score = mv.p
+      ? mv.p * typeEffect(mv.t, SPECIES[pm.sp].types) * (SPECIES[em.sp].types.indexOf(mv.t) >= 0 ? 1.5 : 1)
+      : 25;
+    if (score > bestScore){ bestScore = score; best = usable[j]; }
+  }
+  return rnd() < 0.7 ? best : usable[ri(0, usable.length - 1)];
+}
+function decPP(m, id){
+  for (var i = 0; i < m.moves.length; i++) if (m.moves[i].id === id){ m.moves[i].pp = Math.max(0, m.moves[i].pp - 1); }
+}
+function hasPP(m){
+  for (var i = 0; i < m.moves.length; i++) if (m.moves[i].pp > 0) return true;
+  return false;
+}
+
+// Executes one side's move immediately; inserts result texts after current step.
+function execMoveNow(user, target, mvId, userIsPlayer){
+  if (B.over || user.hp <= 0 || target.hp <= 0) return;
+  var out = [];
+  if (user.status === "SLP"){
+    user.slp = (user.slp || 1) - 1;
+    if (user.slp > 0){ qins(qtxt(mname(user) + " is fast asleep!")); return; }
+    user.status = null;
+    out.push(qtxt(mname(user) + " woke up!"));
+  }
+  if (user.status === "PAR" && rnd() < 0.25){
+    qins(qtxt(mname(user) + " is fully paralyzed!"));
+    return;
+  }
+  var mv = MOVES[mvId];
+  decPP(user, mvId);
+  out.push(qtxt(mname(user) + " used " + mv.n + "!"));
+  if (mv.a < 999 && rnd() * 100 >= mv.a){
+    out.push(qtxt("The attack missed!"));
+    qins.apply(null, out); return;
+  }
+  if (mv.p){
+    var r = calcDamage(user, target, mv);
+    target.hp = clamp(target.hp - r.dmg, 0, target.max);
+    if (userIsPlayer) B.eFlash = 12; else B.pFlash = 12;
+    sfx(r.eff > 1 ? "hit2" : "hit");
+    if (r.eff === 0) out.push(qtxt("It doesn't affect " + mname(target) + "..."));
+    else {
+      if (r.crit) out.push(qtxt("A critical hit!"));
+      if (r.eff > 1) out.push(qtxt("It's super effective!"));
+      if (r.eff < 1) out.push(qtxt("It's not very effective..."));
+    }
+    if (mv.recoil && r.dmg > 0){
+      user.hp = clamp(user.hp - Math.max(1, fl(r.dmg * mv.recoil)), 0, user.max);
+      out.push(qtxt(mname(user) + " is hurt by recoil!"));
+    }
+  }
+  if (mv.fx && target.hp > 0){
+    var fx = mv.fx;
+    if (fx.stat){
+      var who = fx.who === "self" ? user : target;
+      var cur = who.stages[fx.stat];
+      var next = clamp(cur + fx.stage, -6, 6);
+      if (next === cur) out.push(qtxt("But it failed!"));
+      else {
+        who.stages[fx.stat] = next;
+        out.push(qtxt(mname(who) + "'s " + (fx.stat === "atk" ? "ATTACK" : "DEFENSE") +
+          (fx.stage > 0 ? " rose!" : " fell!")));
+      }
+    } else if (fx.status){
+      if (!target.status && rnd() * 100 < fx.chance){
+        target.status = fx.status;
+        if (fx.status === "SLP") target.slp = ri(1, 3);
+        out.push(qtxt(mname(target) + (fx.status === "SLP" ? " fell asleep!" :
+          fx.status === "PAR" ? " is paralyzed!" : " was poisoned!")));
+      } else if (!mv.p) out.push(qtxt("But it failed!"));
+    }
+  }
+  // faint checks
+  if (target.hp <= 0) out.push(qtxt(mname(target) + " fainted!"), qfn(userIsPlayer ? enemyFainted : playerFainted));
+  if (user.hp <= 0 && target.hp > 0) out.push(qtxt(mname(user) + " fainted!"), qfn(userIsPlayer ? playerFainted : enemyFainted));
+  qins.apply(null, out);
+}
+function endOfTurnNow(){
+  if (B.over) return;
+  var out = [];
+  var sides = [[emon(), enemyFainted], [pmon(), playerFainted]];
+  for (var i = 0; i < sides.length; i++){
+    var m = sides[i][0];
+    if (m.hp > 0 && m.status === "PSN"){
+      m.hp = clamp(m.hp - Math.max(1, fl(m.max / 8)), 0, m.max);
+      out.push(qtxt(mname(m) + " is hurt by poison!"));
+      if (m.hp <= 0) out.push(qtxt(mname(m) + " fainted!"), qfn(sides[i][1]));
+    }
+  }
+  if (out.length) qins.apply(null, out);
+}
+function beginTurn(pAction){
+  B.q = []; B.qi = 0; B.phase = "q"; B.afterQ = "menu";
+  var eMv = enemyPick(emon(), pmon());
+  var playerStep, enemyStep = function(){ execMoveNow(emon(), pmon(), eMv, false); };
+  var pFirst = true;
+  if (pAction.type === "move"){
+    playerStep = function(){ execMoveNow(pmon(), emon(), pAction.mv, true); };
+    var pp = MOVES[pAction.mv].pri || 0, ep = MOVES[eMv].pri || 0;
+    if (pp !== ep) pFirst = pp > ep;
+    else if (effSpd(pmon()) !== effSpd(emon())) pFirst = effSpd(pmon()) > effSpd(emon());
+    else pFirst = rnd() < 0.5;
+    qput(qfn(pFirst ? playerStep : enemyStep), qfn(pFirst ? enemyStep : playerStep), qfn(endOfTurnNow));
+  } else {
+    // item/switch/failed-run already queued their own text; enemy then moves
+    qput(qfn(enemyStep), qfn(endOfTurnNow));
+  }
+}
+
+function enemyFainted(){
+  if (B.over) return;
+  var loser = emon();
+  var mon = pmon();
+  var gain = expGain(loser, !B.wild);
+  var out = [qtxt(mname(mon) + " gained " + gain + " EXP!")];
+  mon.exp += gain;
+  while (mon.lv < 50 && mon.exp >= expForLv(mon.lv + 1)){
+    mon.lv++;
+    var oldMax = mon.max;
+    var s = statsFor(mon.sp, mon.lv);
+    mon.max = s.max; mon.atk = s.atk; mon.def = s.def; mon.spd = s.spd;
+    mon.hp = clamp(mon.hp + (s.max - oldMax), 1, s.max);
+    out.push(qfn(function(){ sfx("level"); }), qtxt(mname(mon) + " grew to level " + mon.lv + "!"));
+    var learn = SPECIES[mon.sp].learn;
+    for (var i = 0; i < learn.length; i++){
+      if (learn[i][0] !== mon.lv) continue;
+      var mvId = learn[i][1], knows = false;
+      for (var j = 0; j < mon.moves.length; j++) if (mon.moves[j].id === mvId) knows = true;
+      if (knows) continue;
+      if (mon.moves.length < 4){
+        mon.moves.push({ id:mvId, pp:MOVES[mvId].pp });
+        out.push(qtxt(mname(mon) + " learned " + MOVES[mvId].n + "!"));
+      } else out.push({ t:"learn", mon:mon, mv:mvId });
+    }
+    var ev = SPECIES[mon.sp].evolve;
+    if (ev && mon.lv >= ev.at){
+      var queued = false;
+      for (var k = 0; k < B.evolveQueue.length; k++) if (B.evolveQueue[k].mon === mon) queued = true;
+      if (!queued) B.evolveQueue.push({ mon:mon, to:ev.to });
+    }
+  }
+  out.push(qfn(nextEnemyOrWin));
+  qins.apply(null, out);
+}
+function nextEnemyOrWin(){
+  if (B.over) return;
+  if (!B.wild){
+    var next = firstAlive(B.eparty);
+    if (next >= 0){
+      B.ei = next; resetBattleMon(emon());
+      qins(qtxt(B.trainer.name + " sent out " + mname(emon()) + "!"));
+      return;
+    }
+  }
+  B.over = true;
+  var out = [];
+  if (!B.wild){
+    G.flags["beat_" + B.trainerId] = 1;
+    G.money += B.trainer.prize;
+    out.push(qtxt(B.trainer.winText || "You won!"),
+             qtxt("You got $" + B.trainer.prize + " for winning!"));
+  } else if (B.legendary){
+    G.flags.legend = 1;
+    out.push(qtxt(mname(emon()) + " vanished in a flash of gold light..."));
+  }
+  out.push(qfn(function(){ battleEnd(true); }));
+  qins.apply(null, out);
+}
+function playerFainted(){
+  if (B.over) return;
+  var next = firstAlive(G.party);
+  if (next >= 0){
+    B.awaitSwitch = true;
+    qins(qfn(function(){
+      G.state = "party"; PT = { mode:"switch", idx:next, ret:"battle", forced:true };
+    }));
+    return;
+  }
+  B.over = true;
+  qins(qtxt("You have no monsters left!"), qtxt("You blacked out!"),
+       qfn(function(){ battleEnd(false); }));
+}
+function battleSwitchTo(pick){
+  var forced = B.awaitSwitch;
+  B.awaitSwitch = false;
+  B.pi = pick; resetBattleMon(pmon());
+  if (forced){
+    qins(qtxt("Go! " + mname(pmon()) + "!"));
+    B.phase = "q";
+  } else {
+    beginTurn({ type:"switch" });
+    B.q.unshift(qtxt("Go! " + mname(pmon()) + "!"));
+  }
+}
+function battleItemUsed(msg){
+  beginTurn({ type:"item" });
+  B.q.unshift(qtxt(msg));
+}
+function battleMenuBack(){ B.phase = "menu"; }
+function battleUseItem(id){
+  if (id === "orb" || id === "greatorb"){
+    if (!B.wild){
+      BAG = null; G.state = "battle";
+      B.q = [qtxt("You can't catch another trainer's monster!")];
+      B.qi = 0; B.phase = "q"; B.afterQ = "menu";
+      return;
+    }
+    if (G.party.length >= 6){
+      BAG = null; G.state = "battle";
+      B.q = [qtxt("Your party is full!")]; B.qi = 0; B.phase = "q"; B.afterQ = "menu";
+      return;
+    }
+    takeItem(id);
+    BAG = null; G.state = "battle";
+    throwOrb(id === "greatorb" ? 1.5 : 1);
+    return;
+  }
+  // healing items: pick a target
+  PT = { mode:"item", idx:0, item:id, ret:"battle" };
+  G.state = "party";
+}
+function throwOrb(mult){
+  B.q = []; B.qi = 0; B.phase = "q"; B.afterQ = "menu";
+  var res = catchCheck(emon(), mult);
+  var out = [qtxt("You threw a " + (mult > 1 ? "GREAT ORB" : "CAPTURE ORB") + "!")];
+  for (var i = 0; i < res.shakes; i++) out.push(qtxt("The orb shakes" + "...".slice(0, (i % 3) + 1)));
+  if (res.caught){
+    B.over = true;
+    var caught = emon();
+    out.push(qfn(function(){ sfx("catch"); }),
+             qtxt("Gotcha! " + mname(caught) + " was caught!"));
+    out.push(qfn(function(){
+      caught.stages = { atk:0, def:0 };
+      G.party.push(caught);
+      G.dexSeen[caught.sp] = 1;
+      if (B.legendary) G.flags.legend = 1;
+      battleEnd(true);
+    }));
+    qput.apply(null, out);
+  } else {
+    out.push(qtxt("Oh no! It broke free!"));
+    qput.apply(null, out);
+    qput(qfn(function(){ execMoveNow(emon(), pmon(), enemyPick(emon(), pmon()), false); }),
+         qfn(endOfTurnNow));
+  }
+}
+function attemptRun(){
+  B.runTries++;
+  B.q = []; B.qi = 0; B.phase = "q"; B.afterQ = "menu";
+  var esc = effSpd(pmon()) >= emon().spd ||
+            ri(0, 255) < (effSpd(pmon()) * 128 / Math.max(1, emon().spd) + 30 * B.runTries) % 256;
+  if (esc){
+    B.over = true;
+    qput(qtxt("Got away safely!"), qfn(function(){ battleEnd(true); }));
+  } else {
+    qput(qtxt("Can't escape!"),
+         qfn(function(){ execMoveNow(emon(), pmon(), enemyPick(emon(), pmon()), false); }),
+         qfn(endOfTurnNow));
+  }
+}
+function battleEnd(won){
+  var trId = B.trainerId, noWhiteout = B.trainer && B.trainer.noWhiteout;
+  var evos = won ? B.evolveQueue : [];
+  var onEnd = B.onEnd;
+  fadeTo(function(){
+    B = null; G.state = "overworld";
+    var finish = function(){
+      if (won){
+        if (trId) afterTrainerWin(trId, onEnd);
+        else if (onEnd) onEnd(true);
+      } else {
+        if (noWhiteout){
+          healParty();
+          if (onEnd) onEnd(false);
+        } else whiteout();
+      }
+    };
+    runEvolutions(evos, finish);
+  });
+}
+function afterTrainerWin(id, onEnd){
+  var done = function(){ if (onEnd) onEnd(true); };
+  if (id === "marlow" && !G.flags.badge){
+    G.flags.badge = 1; sfx("fanfare");
+    say(["MARLOW handed you the TERRA BADGE!",
+         "MARLOW: Show that to the guard east of the city.",
+         "MARLOW: MT. EMBER and the SUMMIT await you."], done);
+  } else if (id === "aria" && !G.flags.champion){
+    G.flags.champion = 1;
+    startCredits();
+  } else if (id === "kai2"){
+    say(["KAI: Fine! Go challenge ARIA at the summit.", "KAI: But don't think this is over!"], done);
+  } else done();
+}
+function whiteout(){
+  G.money = fl(G.money / 2);
+  healParty();
+  G.map = G.healSpot.map; G.x = G.healSpot.x; G.y = G.healSpot.y; G.facing = "down"; G.mv = null;
+  say(["Everything went dark...", "You scurried back to safety, and your team was patched up.", "(You dropped half your money!)"]);
+}
+
+function battleUpdate(){
+  if (fadeUpdate()) return;
+  if (!B) return;
+  if (B.introT > 0){ B.introT--; return; }
+  if (B.pFlash > 0) B.pFlash--;
+  if (B.eFlash > 0) B.eFlash--;
+  if (B.phase === "q"){
+    if (B.qi >= B.q.length){
+      B.q = []; B.qi = 0;
+      B.phase = B.over ? "q" : B.afterQ;
+      if (B.phase === "q") return; // waiting for end fn (shouldn't happen)
+      return;
+    }
+    var item = B.q[B.qi];
+    if (item.t === "fn"){ B.qi++; item.f(); return; }
+    if (item.t === "learn"){
+      if (item.mon.moves.length < 4){
+        item.mon.moves.push({ id:item.mv, pp:MOVES[item.mv].pp });
+        B.q.splice(B.qi + 1, 0, qtxt(mname(item.mon) + " learned " + MOVES[item.mv].n + "!"));
+        B.qi++; return;
+      }
+      B.learn = { mon:item.mon, mv:item.mv, idx:0 };
+      B.phase = "learn"; return;
+    }
+    // txt
+    if (B.reveal === undefined || B.curText !== item.s){ B.curText = item.s; B.reveal = 0; }
+    var total = item.s.length;
+    if (B.reveal < total){
+      B.reveal += 2;
+      if (just.a || just.b) B.reveal = total;
+      return;
+    }
+    if (just.a || just.b){ sfx("sel"); B.qi++; B.curText = null; B.reveal = undefined; }
+    return;
+  }
+  if (B.phase === "menu"){
+    if (just.u || just.d){ B.menuIdx = (B.menuIdx + 2) % 4; sfx("move"); }
+    if (just.l || just.r){ B.menuIdx = B.menuIdx % 2 === 0 ? B.menuIdx + 1 : B.menuIdx - 1; sfx("move"); }
+    if (just.a){
+      sfx("sel");
+      if (B.menuIdx === 0){ // FIGHT
+        if (!hasPP(pmon())){ beginTurn({ type:"move", mv:"struggle" }); return; }
+        B.phase = "moves"; B.moveIdx = 0;
+      } else if (B.menuIdx === 1){ // BAG
+        BAG = { idx:0, inBattle:true }; G.state = "bag";
+      } else if (B.menuIdx === 2){ // MONS
+        PT = { mode:"switch", idx:0, ret:"battle" }; G.state = "party";
+      } else { // RUN
+        if (B.wild) attemptRun();
+        else { B.q = [qtxt("You can't run from a trainer battle!")]; B.qi = 0; B.phase = "q"; B.afterQ = "menu"; }
+      }
+    }
+    return;
+  }
+  if (B.phase === "moves"){
+    var mv = pmon().moves, n = mv.length;
+    if (just.u){ B.moveIdx = (B.moveIdx + n - 1) % n; sfx("move"); }
+    if (just.d){ B.moveIdx = (B.moveIdx + 1) % n; sfx("move"); }
+    if (just.b){ B.phase = "menu"; sfx("back"); return; }
+    if (just.a){
+      var pick = mv[B.moveIdx];
+      if (pick.pp <= 0){ sfx("back"); return; }
+      sfx("sel");
+      beginTurn({ type:"move", mv:pick.id });
+    }
+    return;
+  }
+  if (B.phase === "learn"){
+    var opts = B.learn.mon.moves.length + 1; // 4 moves + give up
+    if (just.u){ B.learn.idx = (B.learn.idx + opts - 1) % opts; sfx("move"); }
+    if (just.d){ B.learn.idx = (B.learn.idx + 1) % opts; sfx("move"); }
+    if (just.a){
+      sfx("sel");
+      var L = B.learn;
+      if (L.idx < L.mon.moves.length){
+        var oldMv = MOVES[L.mon.moves[L.idx].id].n;
+        L.mon.moves[L.idx] = { id:L.mv, pp:MOVES[L.mv].pp };
+        B.q.splice(B.qi + 1, 0, qtxt("1, 2 and... poof!"),
+          qtxt(mname(L.mon) + " forgot " + oldMv + " and learned " + MOVES[L.mv].n + "!"));
+      } else {
+        B.q.splice(B.qi + 1, 0, qtxt(mname(L.mon) + " did not learn " + MOVES[L.mv].n + "."));
+      }
+      B.learn = null; B.phase = "q"; B.qi++;
+    }
+    return;
+  }
+}
+
+// ------------------------- STORY HOOKS -------------------------
+function pedestalTalk(id){
+  if (G.flags.starter){ say(["The pedestal is empty now."]); return; }
+  var s = SPECIES[id];
+  say(["The " + s.types[0] + " monster " + s.name + "!", s.dex], function(){
+    ask("Take " + s.name + "?", ["YES", "NO"], function(i){
+      if (i !== 0) return;
+      G.flags.starter = id;
+      G.party = [makeMon(id, 5)];
+      G.dexSeen[id] = 1;
+      sfx("fanfare");
+      say(["You received " + s.name + "!",
+           "PROF WILLOW: A fine choice! Treat it well and it will never let you down.",
+           "KAI: Then I get the one that BEATS yours! Classic."], function(){
+        pedestalRivalBattle();
+      });
+    });
+  });
+}
+function pedestalRivalBattle(){
+  say(["KAI: Hold it right there!", "KAI: Let's see what your new partner can do!"], function(){
+    startTrainerBattle("kai1", function(won){
+      var lines = won
+        ? ["KAI: What?! But I picked the stronger one...",
+           "PROF WILLOW: Ha! A wonderful first battle, both of you."]
+        : ["KAI: Ha! Too easy. Train harder!",
+           "PROF WILLOW: Chin up. Every champion loses their first battle or two."];
+      lines.push(
+        "PROF WILLOW: Take these. 5 CAPTURE ORBS and 3 POTIONS.",
+        "PROF WILLOW: Weaken a wild monster, then throw an orb to catch it.",
+        "PROF WILLOW: Beat the GYM in TERRACOTTA CITY, cross MT. EMBER...",
+        "PROF WILLOW: ...and challenge CHAMPION ARIA at EMBER SUMMIT!");
+      addItem("orb", 5); addItem("potion", 3);
+      G.flags.labDone = true;
+      say(lines);
+    });
+  });
+}
+function altarTalk(){
+  if (!G.flags.champion){
+    say(["An ancient altar. A gold orb rests on top.", "It is utterly still... as if waiting for something."]);
+    return;
+  }
+  if (G.flags.legend){
+    say(["The altar is silent now."]);
+    return;
+  }
+  say(["The gold orb blazes to life!", "A shape unfolds from inside the light...!"], function(){
+    startWildBattle(makeMon("chronowl", 32), { legend:true });
+  });
+}
+
+//<<CHUNK>>
+</script>
+</body>
+</html>
