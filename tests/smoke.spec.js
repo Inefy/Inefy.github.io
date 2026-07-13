@@ -25,7 +25,7 @@ test.describe("static portfolio smoke paths", () => {
 
   test("homepage loads and primary nav reaches Work, Resume, and Contact", async ({ page }) => {
     await gotoLocal(page, "/");
-    await expect(page.getByRole("heading", { name: /^zac batten\.?$/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /software for people with work to do/i })).toBeVisible();
 
     await primaryNav(page).locator("[data-nav-group]").hover();
     await primaryNav(page).getByRole("link", { name: /all work/i }).click();

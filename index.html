@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0c0f10">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-eJ7xXgAX5LI5pwD4HMW6K8ceAy3U/B5u6vjiOwpWwAg='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-Cb5UhdvptYyO1+BsJ8be70kCH7uRLFOSKedHHEdjrao='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Zac Batten builds practical web tools, internal workflows, Python automation, map interfaces, and browser apps.">
     <meta name="author" content="Zac Batten">
@@ -149,7 +149,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260702-interact1">
-    <link rel="stylesheet" href="refined.css?v=20260713-editorial1">
+    <link rel="stylesheet" href="refined.css?v=20260713-fieldnotes1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -184,33 +184,65 @@
 
     <main id="top" tabindex="-1">
       <section class="hero home-hero" aria-labelledby="hero-title">
-        <picture class="home-hero-media" aria-hidden="true">
-          <source srcset="assets/traverseops-workspace.webp" type="image/webp">
-          <img src="assets/traverseops-workspace.png" alt="" width="1440" height="1100" loading="eager" fetchpriority="high" decoding="async">
-        </picture>
-        <div class="hero-copy">
-          <p class="hero-kicker">Software developer / Newfoundland, Canada</p>
-          <h1 id="hero-title">Zac Batten.</h1>
-          <p class="hero-role">Practical software for operations, automation, and the browser.</p>
-          <p class="hero-text">
-            I design and build clear interfaces for map-based workflows, Python automation,
-            internal tools, and focused browser applications.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#featured-builds">View selected work</a>
-            <a class="button secondary" href="resume.html">Resume</a>
-            <a class="button secondary" href="mailto:hello@zacbatten.me">Email</a>
+        <div class="home-hero-grid">
+          <div class="hero-copy">
+            <div class="hero-kicker-row">
+              <p class="hero-kicker">Zac Batten / Software developer</p>
+              <span aria-hidden="true">NL · CA</span>
+            </div>
+            <h1 id="hero-title">I build software for <em>people with work to do.</em></h1>
+            <p class="hero-role">Clear interfaces, resilient automation, and small tools that earn their place.</p>
+            <p class="hero-text">
+              Based in Newfoundland, I turn dense workflows into practical map tools,
+              Python systems, and focused browser applications.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#featured-builds">See what I’ve built</a>
+              <a class="button secondary" href="about.html">A little about me</a>
+            </div>
+            <div class="hero-status-line">
+              <p class="hero-availability">Available for frontend and internal-tools work</p>
+              <a href="mailto:hello@zacbatten.me">hello@zacbatten.me</a>
+            </div>
           </div>
-          <p class="hero-availability">Available for frontend and internal-tools work</p>
+
+          <aside class="hero-workbench" aria-label="Featured project: TraverseOps">
+            <div class="workbench-topline" aria-hidden="true">
+              <span>On the bench</span>
+              <span>Field note 001</span>
+            </div>
+            <a class="workbench-media" href="traverseops-case-study.html" aria-label="Read the TraverseOps case study">
+              <picture>
+                <source srcset="assets/traverseops-workspace.webp" type="image/webp">
+                <img src="assets/traverseops-workspace.png" alt="TraverseOps map workspace showing sample municipal-style assets and selected asset details" width="1440" height="1100" loading="eager" fetchpriority="high" decoding="async">
+              </picture>
+              <span class="workbench-stamp" aria-hidden="true">Built in NL</span>
+            </a>
+            <div class="workbench-caption">
+              <div>
+                <span>Featured build</span>
+                <strong>TraverseOps</strong>
+              </div>
+              <p>Map-first field operations, made easier to read.</p>
+              <a href="traverseops-case-study.html">Open case study <span aria-hidden="true">↗</span></a>
+            </div>
+          </aside>
+        </div>
+
+        <div class="hero-proof-row" aria-label="Core areas of work">
+          <span><b>01</b> Map-first UI</span>
+          <span><b>02</b> Python automation</span>
+          <span><b>03</b> Canvas &amp; browser tools</span>
+          <span><b>04</b> Keyboard + touch</span>
         </div>
       </section>
 
       <section class="section selected-work-section" id="featured-builds" aria-labelledby="selected-work-title">
         <div class="section-heading">
-          <p class="eyebrow">Selected work</p>
-          <h2 id="selected-work-title">Selected projects.</h2>
+          <p class="eyebrow">Selected work / 01—03</p>
+          <h2 id="selected-work-title">A few things I’ve made useful.</h2>
           <p>
-            A field-operations interface, a production automation system, and a browser drawing tool.
+            Each project starts with a working problem and ends with something you can open, test, or inspect.
           </p>
         </div>
 
@@ -224,8 +256,10 @@
               </picture>
             </figure>
             <div class="project-card-body">
+              <span class="project-index" aria-hidden="true">01 / 03</span>
               <div class="project-meta"><span><i aria-hidden="true"></i> Map UI</span><span>Internal tools</span></div>
               <h3>TraverseOps</h3>
+              <p class="project-hook">Field operations, without the spreadsheet archaeology.</p>
               <p class="project-problem">A map-first field-operations sample for assets, inspections, work orders, imports, and reports.</p>
               <div class="card-actions">
                 <a href="traverseops-case-study.html">Case study</a>
@@ -242,8 +276,10 @@
               </picture>
             </figure>
             <div class="project-card-body">
+              <span class="project-index" aria-hidden="true">02 / 03</span>
               <div class="project-meta"><span><i aria-hidden="true"></i> Automation</span><span>Python / Twitch / OBS</span></div>
               <h3>MovieBot</h3>
+              <p class="project-hook">A chatroom becomes the remote control.</p>
               <p class="project-problem">A Python bot that turns Twitch chat votes into OBS playback for movie nights.</p>
               <div class="card-actions">
                 <a href="moviebot-case-study.html">Case study</a>
@@ -260,8 +296,10 @@
               </picture>
             </figure>
             <div class="project-card-body">
+              <span class="project-index" aria-hidden="true">03 / 03</span>
               <div class="project-meta"><span><i aria-hidden="true"></i> Browser tool</span><span>Canvas app</span></div>
               <h3>Web Paint</h3>
+              <p class="project-hook">A tiny creative tool that takes input seriously.</p>
               <p class="project-problem">A browser drawing tool with Canvas state, undo/redo, import/export, zoom, and mobile controls.</p>
               <div class="card-actions">
                 <a href="web-paint-case-study.html">Case study</a>
@@ -272,63 +310,76 @@
         </div>
       </section>
 
+      <section class="section field-note-section" aria-labelledby="field-note-title">
+        <p class="field-note-label">A note from the workbench</p>
+        <div class="field-note-copy">
+          <h2 id="field-note-title">The best software feels obvious <em>after someone did the hard thinking.</em></h2>
+          <div>
+            <p>
+              I like the awkward middle: the workflow spread across tabs, checklists, and chat commands.
+              That is usually where a calm interface or a small automation can make the biggest difference.
+            </p>
+            <a class="text-link" href="about.html">More about how I work <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
       <section class="section what-section" aria-labelledby="what-title">
         <div class="section-heading">
-          <p class="eyebrow">Capabilities</p>
-          <h2 id="what-title">Frontend systems, automation, and browser tools.</h2>
+          <p class="eyebrow">Working principles</p>
+          <h2 id="what-title">How I like the work to feel.</h2>
+          <p>Technical choices are only useful when they make the experience clearer, steadier, or easier to maintain.</p>
         </div>
         <div class="what-grid">
           <article class="what-card">
-            <span class="what-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-            </span>
-            <h3>Operational interfaces</h3>
-            <p>Map views, imports, reports, and role-aware screens that make dense workflows easier to scan and manage.</p>
+            <span class="principle-number" aria-hidden="true">01</span>
+            <h3>Calm under pressure</h3>
+            <p>Dense maps, imports, and reports should still make the next action easy to spot.</p>
+            <span class="principle-proof">Map UI · workflow design</span>
           </article>
           <article class="what-card">
-            <span class="what-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-            </span>
-            <h3>Python automation</h3>
-            <p>Bots and services for repeated operational work, including authentication, reconnect paths, state, and tests.</p>
+            <span class="principle-number" aria-hidden="true">02</span>
+            <h3>Small enough to understand</h3>
+            <p>I prefer focused systems with readable state, clear failure modes, and no mystery machinery.</p>
+            <span class="principle-proof">Python · browser state</span>
           </article>
           <article class="what-card">
-            <span class="what-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18M3 12h18"/></svg>
-            </span>
-            <h3>Focused browser apps</h3>
-            <p>Canvas tools, searchable catalogs, maps, and experiments built for keyboard, pointer, and touch input.</p>
+            <span class="principle-number" aria-hidden="true">03</span>
+            <h3>Finished past the happy path</h3>
+            <p>Empty states, recovery paths, keyboard use, touch input, and deployment notes are part of the build.</p>
+            <span class="principle-proof">Accessibility · resilient UX</span>
           </article>
         </div>
       </section>
 
       <section class="section browse-more" aria-labelledby="browse-more-title">
         <div class="section-heading">
-          <p class="eyebrow">More detail</p>
-          <h2 id="browse-more-title">Explore the work from a different angle.</h2>
+          <p class="eyebrow">Keep looking</p>
+          <h2 id="browse-more-title">Pick your own path.</h2>
           <p>
-            Read the implementation stories, inspect the smaller experiments, or scan the full project index.
+            Go broad, go deep, or just play with something small.
           </p>
         </div>
         <nav class="browse-more-links" aria-label="Deeper portfolio paths">
-          <a href="work.html">All work</a>
-          <a href="case-studies.html">Case studies</a>
-          <a href="interactive-lab.html">Experiments</a>
-          <a href="notes.html">Build notes</a>
+          <a href="work.html"><span>All work<small>The complete project index</small></span></a>
+          <a href="case-studies.html"><span>Case studies<small>Decisions, tradeoffs, and proof</small></span></a>
+          <a href="interactive-lab.html"><span>Interactive Lab<small>Small things made to be played with</small></span></a>
+          <a href="notes.html"><span>Build notes<small>What changed and why</small></span></a>
         </nav>
       </section>
 
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-panel">
           <div class="contact-panel-copy">
-            <p class="eyebrow">Contact</p>
-            <h2 id="contact-title">Have a project or role in mind?</h2>
+            <p class="eyebrow">Say hello</p>
+            <h2 id="contact-title">Have a useful problem?</h2>
             <p>
-              I am open to frontend, automation, internal-tools, and practical web application work.
+              Tell me where the friction is. I’m open to frontend, automation, internal-tools,
+              and practical web application work.
             </p>
           </div>
           <div class="contact-actions">
-            <a class="button primary" href="mailto:hello@zacbatten.me">Email Zac</a>
+            <a class="button primary" href="mailto:hello@zacbatten.me">Start a conversation</a>
             <button class="button secondary copy-email-button" type="button" data-copy-email="hello@zacbatten.me">Copy email</button>
             <a class="button secondary" href="resume.html">Resume</a>
           </div>
@@ -339,7 +390,7 @@
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer building web tools, automation, and frontend UI.</span>
+        <span>Useful software, built carefully in Newfoundland.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
