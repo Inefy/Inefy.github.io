@@ -149,6 +149,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260702-interact1">
+    <link rel="stylesheet" href="refined.css?v=20260713-editorial1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -183,52 +184,33 @@
 
     <main id="top" tabindex="-1">
       <section class="hero home-hero" aria-labelledby="hero-title">
-        <div class="hero-ambient" aria-hidden="true"></div>
+        <picture class="home-hero-media" aria-hidden="true">
+          <source srcset="assets/traverseops-workspace.webp" type="image/webp">
+          <img src="assets/traverseops-workspace.png" alt="" width="1440" height="1100" loading="eager" fetchpriority="high" decoding="async">
+        </picture>
         <div class="hero-copy">
-          <p class="hero-badge"><span class="live-dot" aria-hidden="true"></span> Available for new work</p>
-          <h1 id="hero-title">I build <span class="gradient-text">practical web&nbsp;tools</span>.</h1>
-          <p class="hero-role"><span class="rotating-word" data-words='["Map-first field-operations UI.","Python bots that run movie nights.","Canvas tools that work on phones.","Internal tools with clear state."]'>Map-first field-operations UI.</span></p>
+          <p class="hero-kicker">Software developer / Newfoundland, Canada</p>
+          <h1 id="hero-title">Zac Batten.</h1>
+          <p class="hero-role">Practical software for operations, automation, and the browser.</p>
           <p class="hero-text">
-            Frontend, internal tools, Python automation, map UI, and browser apps.
-            This site is the short version: what I build, three useful examples, and the fastest way to reach me.
+            I design and build clear interfaces for map-based workflows, Python automation,
+            internal tools, and focused browser applications.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#featured-builds">See the work</a>
+            <a class="button primary" href="#featured-builds">View selected work</a>
             <a class="button secondary" href="resume.html">Resume</a>
             <a class="button secondary" href="mailto:hello@zacbatten.me">Email</a>
           </div>
-        </div>
-
-        <div class="hero-terminal" aria-label="Quick summary, styled as a terminal">
-          <div class="terminal-bar" aria-hidden="true">
-            <span></span><span></span><span></span>
-            <strong>zac@portfolio:~</strong>
-          </div>
-          <div class="terminal-body">
-            <p class="t-cmd"><span class="prompt" aria-hidden="true">$</span> whoami</p>
-            <p class="t-out">Zac Batten &mdash; software developer</p>
-            <p class="t-cmd"><span class="prompt" aria-hidden="true">$</span> ls ./skills</p>
-            <p class="t-out">frontend/&ensp;python/&ensp;automation/&ensp;map-ui/&ensp;canvas/</p>
-            <p class="t-cmd"><span class="prompt" aria-hidden="true">$</span> cat availability.txt</p>
-            <p class="t-out t-mint">open to frontend &amp; internal-tools roles</p>
-            <p class="t-cmd"><span class="prompt" aria-hidden="true">$</span> <span class="terminal-cursor" aria-hidden="true"></span></p>
-          </div>
+          <p class="hero-availability">Available for frontend and internal-tools work</p>
         </div>
       </section>
-
-      <div class="ticker" aria-hidden="true">
-        <div class="ticker-track">
-          <span>JavaScript</span><span>Python</span><span>MapLibre</span><span>Canvas API</span><span>TwitchIO</span><span>OBS WebSocket</span><span>SQLite</span><span>Playwright</span><span>GitHub Pages</span><span>Accessibility</span>
-          <span>JavaScript</span><span>Python</span><span>MapLibre</span><span>Canvas API</span><span>TwitchIO</span><span>OBS WebSocket</span><span>SQLite</span><span>Playwright</span><span>GitHub Pages</span><span>Accessibility</span>
-        </div>
-      </div>
 
       <section class="section selected-work-section" id="featured-builds" aria-labelledby="selected-work-title">
         <div class="section-heading">
           <p class="eyebrow">Selected work</p>
-          <h2 id="selected-work-title">Three examples are enough to start.</h2>
+          <h2 id="selected-work-title">Selected projects.</h2>
           <p>
-            These are the quickest ways to understand the kind of work I do.
+            A field-operations interface, a production automation system, and a browser drawing tool.
           </p>
         </div>
 
@@ -290,49 +272,42 @@
         </div>
       </section>
 
-      <section class="metric-band" aria-label="Portfolio in numbers">
-        <div><strong><span data-count="3">3</span></strong><span>in-depth case studies</span></div>
-        <div><strong><span data-count="7">7</span></strong><span>playable lab experiments</span></div>
-        <div><strong><span data-count="25">25</span></strong><span>hand-built pages on this site</span></div>
-        <div><strong>0</strong><span>frameworks &mdash; vanilla HTML/CSS/JS</span></div>
-      </section>
-
       <section class="section what-section" aria-labelledby="what-title">
         <div class="section-heading">
-          <p class="eyebrow">At a glance</p>
-          <h2 id="what-title">What I do.</h2>
+          <p class="eyebrow">Capabilities</p>
+          <h2 id="what-title">Frontend systems, automation, and browser tools.</h2>
         </div>
         <div class="what-grid">
           <article class="what-card">
             <span class="what-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
             </span>
-            <h3>Web tools</h3>
-            <p>Interfaces that organize real workflows &mdash; asset maps, imports, reports, and role-aware screens &mdash; not just static pages.</p>
+            <h3>Operational interfaces</h3>
+            <p>Map views, imports, reports, and role-aware screens that make dense workflows easier to scan and manage.</p>
           </article>
           <article class="what-card">
             <span class="what-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
             </span>
-            <h3>Automation</h3>
-            <p>Python scripts and bots that handle repeated operational work, with token refresh, reconnect paths, and tests.</p>
+            <h3>Python automation</h3>
+            <p>Bots and services for repeated operational work, including authentication, reconnect paths, state, and tests.</p>
           </article>
           <article class="what-card">
             <span class="what-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18M3 12h18"/></svg>
             </span>
-            <h3>Browser apps</h3>
-            <p>Canvas drawing tools, map interfaces, catalogs, and games &mdash; built with vanilla JavaScript and shipped on GitHub Pages.</p>
+            <h3>Focused browser apps</h3>
+            <p>Canvas tools, searchable catalogs, maps, and experiments built for keyboard, pointer, and touch input.</p>
           </article>
         </div>
       </section>
 
       <section class="section browse-more" aria-labelledby="browse-more-title">
         <div class="section-heading">
-          <p class="eyebrow">Keep browsing</p>
-          <h2 id="browse-more-title">Use the deeper pages when you want detail.</h2>
+          <p class="eyebrow">More detail</p>
+          <h2 id="browse-more-title">Explore the work from a different angle.</h2>
           <p>
-            Work is the main index. Case studies, notes, and experiments are secondary paths.
+            Read the implementation stories, inspect the smaller experiments, or scan the full project index.
           </p>
         </div>
         <nav class="browse-more-links" aria-label="Deeper portfolio paths">
@@ -347,9 +322,9 @@
         <div class="contact-panel">
           <div class="contact-panel-copy">
             <p class="eyebrow">Contact</p>
-            <h2 id="contact-title">Let&rsquo;s build something useful.</h2>
+            <h2 id="contact-title">Have a project or role in mind?</h2>
             <p>
-              I am open to frontend, automation, internal-tools, and practical web app work. Send the role, timeline, and closest project example.
+              I am open to frontend, automation, internal-tools, and practical web application work.
             </p>
           </div>
           <div class="contact-actions">
@@ -379,7 +354,6 @@
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="shared.js?v=20260702-interact1" defer></script>
-    <script src="home.js?v=20260702-interact1" defer></script>
+    <script src="shared.js?v=20260713-editorial1" defer></script>
   </body>
 </html>
