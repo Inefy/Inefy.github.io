@@ -2,6 +2,46 @@ const { test, expect } = require("@playwright/test");
 
 const localHosts = new Set(["127.0.0.1", "localhost", "::1"]);
 
+const responsivePaths = [
+  "/",
+  "/404.html",
+  "/about.html",
+  "/work.html",
+  "/case-studies.html",
+  "/case-study-template.html",
+  "/changelog.html",
+  "/contact.html",
+  "/interactive-lab.html",
+  "/movie-library.html",
+  "/movie-night.html",
+  "/moviebot-case-study.html",
+  "/notes.html",
+  "/resume.html",
+  "/traverseops-case-study.html",
+  "/traverseops-demo.html",
+  "/web-paint-case-study.html",
+  "/paint.html",
+  "/2048.html",
+  "/asteroid-drift.html",
+  "/brick-breaker.html",
+  "/flappy-workbench.html",
+  "/minefield-sweep.html",
+  "/mini-golf.html",
+  "/pocket-legends.html",
+  "/snake-lab.html",
+  "/depositproof-rental-vault/",
+  "/depositproof-rental-vault/support/",
+  "/depositproof-rental-vault/privacy/"
+];
+
+const responsiveViewports = [
+  { width: 320, height: 720 },
+  { width: 768, height: 900 },
+  { width: 1024, height: 800 },
+  { width: 1440, height: 900 },
+  { width: 1920, height: 1080 }
+];
+
 async function gotoLocal(page, path) {
   await page.goto(path, { waitUntil: "domcontentloaded" });
 }
@@ -142,4 +182,19 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByText("Effective date: May 13, 2026")).toBeVisible();
     await expect(page.getByRole("link", { name: "DepositProof Support" })).toHaveAttribute("href", "../support/");
   });
+
+  for (const viewport of responsiveViewports) {
+    test(`public pages avoid viewport overflow at ${viewport.width}px`, async ({ page }) => {
+      await page.setViewportSize(viewport);
+
+      for (const path of responsivePaths) {
+        await gotoLocal(page, path);
+        const overflow = await page.evaluate(
+          () => document.documentElement.scrollWidth - document.documentElement.clientWidth
+        );
+
+        expect(overflow, `${path} overflows the ${viewport.width}px viewport`).toBeLessThanOrEqual(1);
+      }
+    });
+  }
 });

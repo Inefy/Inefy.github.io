@@ -3,7 +3,7 @@
   const siteHeader = document.querySelector(".site-header");
   const navToggle = document.querySelector("[data-nav-toggle]");
   const primaryNav = document.querySelector("#primary-nav");
-  const mobileNavQuery = window.matchMedia("(max-width: 760px)");
+  const mobileNavQuery = window.matchMedia("(max-width: 860px)");
   let copyEmailAnnouncementTimer = 0;
   let showToast = () => {};
 
