@@ -2623,6 +2623,74 @@ textarea {
   }
 }
 
+/* Homepage project cards: one consistent rhythm across every featured build. */
+.selected-work-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.selected-work-card,
+.project-card.selected-work-card {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+#traverseops-feature,
+#moviebot-feature,
+#web-paint-feature {
+  grid-column: auto;
+  display: flex;
+}
+
+.selected-work-card .project-visual,
+.selected-work-section .project-visual,
+#traverseops-feature .project-visual,
+#web-paint-feature .project-visual {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+
+.selected-work-card .project-visual img,
+.selected-work-section .project-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.selected-work-card .project-card-body,
+.selected-work-section .project-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.selected-work-card .card-actions {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+@media (max-width: 1100px) and (min-width: 761px) {
+  .selected-work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #traverseops-feature {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .selected-work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media print {
   .site-header,
   .home-hero-media,
