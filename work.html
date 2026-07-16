@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260702-interact1">
-    <link rel="stylesheet" href="refined.css?v=20260714-cards2">
+    <link rel="stylesheet" href="refined.css?v=20260716-simple3">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -47,7 +47,8 @@
         <span class="nav-toggle-text">Menu</span>
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <details class="nav-group is-active" data-nav-group>
+        <a class="nav-work-link" href="work.html" aria-current="page">Work</a>
+        <details class="nav-group is-active" data-nav-group hidden>
           <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="nav-menu" role="group" aria-label="Work pages">
             <a href="work.html" aria-current="page"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
@@ -70,10 +71,8 @@
         <div class="section-heading">
           <p class="eyebrow">Work</p>
           <h1 id="work-title">Selected work.</h1>
-          <p>
-            A short index of the projects that best explain my frontend, internal-tools, automation, and browser-app work.
-          </p>
-          <nav class="work-jump-nav" aria-label="Work page sections">
+          <p>Three projects that show my web, automation, and browser-app work.</p>
+          <nav class="work-jump-nav" aria-label="Work page sections" hidden>
             <a href="#flagship-case-studies">Projects</a>
             <a href="#supporting-projects">More work</a>
             <a href="#work-next-title">Next step</a>
@@ -81,7 +80,7 @@
         </div>
       </section>
 
-      <section class="quick-answer work-quick-answer" id="start-here" aria-labelledby="start-here-title">
+      <section class="quick-answer work-quick-answer" id="start-here" aria-labelledby="start-here-title" hidden>
         <div>
           <p class="eyebrow">Start here</p>
           <h2 id="start-here-title">Open the closest example.</h2>
@@ -96,8 +95,8 @@
       <section class="section selected-work-section" id="flagship-case-studies" aria-labelledby="flagship-title">
         <div class="section-heading">
           <p class="eyebrow">Projects</p>
-          <h2 id="flagship-title">Three primary examples.</h2>
-          <p>Each one gives a fast read on problem, build type, and proof.</p>
+          <h2 id="flagship-title">Projects.</h2>
+          <p>A field tool, an automation bot, and a drawing app.</p>
         </div>
 
         <div class="selected-work-grid">
@@ -163,11 +162,11 @@
       <span class="section-anchor" id="interactive-experiments"></span>
       <span class="section-anchor" id="site-build-notes"></span>
 
-      <section class="section browse-more" id="supporting-projects" aria-labelledby="supporting-title">
+      <section class="section browse-more" id="supporting-projects" aria-labelledby="supporting-title" hidden>
         <div class="section-heading">
           <p class="eyebrow">More work</p>
-          <h2 id="supporting-title">Useful supporting pages.</h2>
-          <p>These are secondary, but they add context when a project is close to what you need.</p>
+          <h2 id="supporting-title">More projects.</h2>
+          <p>Smaller tools, experiments, and client work.</p>
         </div>
 
         <div class="supporting-work-grid">
@@ -198,11 +197,11 @@
         </div>
       </section>
 
-      <section class="next-step-panel" aria-labelledby="work-next-title">
+      <section class="next-step-panel" aria-labelledby="work-next-title" hidden>
         <div>
           <p class="eyebrow">Next step</p>
-          <h2 id="work-next-title">Need the shortest path?</h2>
-          <p>Use the resume for a compact scan, or email me with the closest project example.</p>
+          <h2 id="work-next-title">Get in touch.</h2>
+          <p>View the resume or send me an email.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="resume.html">Resume</a>

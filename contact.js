@@ -11,35 +11,18 @@
     return el && typeof el.value === "string" ? el.value.trim() : "";
   }
 
-  function labelFor(name) {
-    const el = form.elements.namedItem(name);
-    if (el && el.tagName === "SELECT" && el.selectedOptions.length) {
-      return el.selectedOptions[0].textContent.trim();
-    }
-    return field(name);
-  }
-
   function buildSubject() {
-    const type = labelFor("type");
-    return type && type !== "Not sure yet"
-      ? `Project enquiry — ${type}`
-      : "Project enquiry";
+    return "Project enquiry";
   }
 
   function buildBody() {
     const lines = [];
     const name = field("name");
     const email = field("email");
-    const company = field("company");
-    const type = labelFor("type");
-    const timeline = labelFor("timeline");
     const message = field("message");
 
     if (name) lines.push(`Name: ${name}`);
     if (email) lines.push(`Email: ${email}`);
-    if (company) lines.push(`Company / context: ${company}`);
-    if (type) lines.push(`Project type: ${type}`);
-    if (timeline) lines.push(`Timeline: ${timeline}`);
     if (lines.length) lines.push("");
     lines.push(message || "");
     return lines.join("\n");

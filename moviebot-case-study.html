@@ -79,7 +79,7 @@
     <link rel="preload" as="image" imagesrcset="assets/movie-night-preview.webp" type="image/webp">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260702-interact1">
-    <link rel="stylesheet" href="refined.css?v=20260714-cards2">
+    <link rel="stylesheet" href="refined.css?v=20260716-simple3">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -95,7 +95,8 @@
         <span class="nav-toggle-text">Menu</span>
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <details class="nav-group is-active" data-nav-group>
+        <a class="nav-work-link" href="work.html">Work</a>
+        <details class="nav-group is-active" data-nav-group hidden>
           <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="nav-menu" role="group" aria-label="Work pages">
             <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
@@ -122,15 +123,13 @@
       <section class="hero-ambient-host case-template-hero" aria-labelledby="case-title">
         <div class="hero-ambient" aria-hidden="true"></div>
         <div class="case-template-hero-copy">
-          <p class="eyebrow">Python automation case study</p>
-          <h1 id="case-title">MovieBot / StreamCinema Vote Bot</h1>
-          <p class="case-template-summary">
-            Python/TwitchIO bot for Twitch votes and OBS playback. It scans local movies, resolves ties, refreshes tokens, reconnects, and sends OBS the winner.
-          </p>
+          <p class="eyebrow">Case study</p>
+          <h1 id="case-title">MovieBot</h1>
+          <p class="case-template-summary">A Python bot that lets Twitch viewers vote for a movie and plays the winner in OBS.</p>
           <div class="case-hero-actions">
-            <a class="button primary" href="#obs-flow-title">Jump to architecture</a>
-            <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer" target="_blank">Open GitHub repo</a>
-            <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot/actions/workflows/tests.yml" rel="noopener noreferrer" target="_blank">View CI tests</a>
+            <a class="button primary" href="movie-night.html">Open Movie Night</a>
+            <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer" target="_blank">View source</a>
+            <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot/actions/workflows/tests.yml" rel="noopener noreferrer" target="_blank" hidden>View CI tests</a>
           </div>
           <dl class="case-template-meta" aria-label="Project metadata">
             <div>
@@ -147,7 +146,7 @@
             </div>
             <div>
               <dt>Role</dt>
-              <dd>Solo builder: bot logic, reliability, setup docs, portfolio pages</dd>
+              <dd>Bot logic, integrations, reliability, and setup</dd>
             </div>
             <div>
               <dt>Last updated</dt>
@@ -165,7 +164,33 @@
         </figure>
       </section>
 
-      <section class="case-review-summary" aria-labelledby="moviebot-review-title">
+      <section class="section case-simple-overview" aria-labelledby="moviebot-overview-title">
+        <div class="section-heading">
+          <p class="eyebrow">What I built</p>
+          <h2 id="moviebot-overview-title">Chat controls the movie queue.</h2>
+          <p>Viewers vote in chat. The bot counts the votes and plays the winner.</p>
+        </div>
+        <div class="case-simple-grid">
+          <article>
+            <h3>How it works</h3>
+            <p>The bot scans the movie folder, counts votes, and sends the winner to OBS.</p>
+          </article>
+          <article>
+            <h3>Built with</h3>
+            <p>Python, TwitchIO, OBS WebSocket, and automated tests.</p>
+          </article>
+          <article>
+            <h3>Keeps running</h3>
+            <p>It refreshes login tokens and reconnects when Twitch or OBS drops.</p>
+          </article>
+        </div>
+        <div class="case-simple-actions">
+          <a class="button primary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer" target="_blank">View source</a>
+          <a class="button secondary" href="movie-library.html">Browse movies</a>
+        </div>
+      </section>
+
+      <section class="case-review-summary" aria-labelledby="moviebot-review-title" hidden>
         <div class="case-review-summary__intro">
           <p class="eyebrow">Quick summary</p>
           <h2 id="moviebot-review-title">MovieBot in 30 seconds.</h2>
@@ -198,7 +223,7 @@
         </div>
       </section>
 
-      <section class="demo-checklist" aria-labelledby="moviebot-demo-checklist-title">
+      <section class="demo-checklist" aria-labelledby="moviebot-demo-checklist-title" hidden>
         <div class="demo-checklist__layout">
           <div class="demo-checklist__copy">
             <p class="eyebrow">Try this demo</p>
@@ -219,7 +244,7 @@
         </div>
       </section>
 
-      <section class="media-proof" aria-labelledby="moviebot-media-proof-title">
+      <section class="media-proof" aria-labelledby="moviebot-media-proof-title" hidden>
         <figure class="media-proof__frame">
           <picture>
             <source srcset="assets/movie-library-preview.webp" type="image/webp">
@@ -240,7 +265,7 @@
         </div>
       </section>
 
-      <section class="case-template-links" aria-labelledby="project-links-title">
+      <section class="case-template-links" aria-labelledby="project-links-title" hidden>
         <div>
           <p class="eyebrow">Project links</p>
           <h2 id="project-links-title">Open the repo, room, and queue.</h2>
@@ -258,7 +283,7 @@
         </div>
       </section>
 
-      <section class="case-tldr" aria-labelledby="moviebot-tldr-title">
+      <section class="case-tldr" aria-labelledby="moviebot-tldr-title" hidden>
         <div>
           <p class="eyebrow">TL;DR</p>
           <h2 id="moviebot-tldr-title">MovieBot in 15 seconds.</h2>
@@ -295,7 +320,7 @@
         </dl>
       </section>
 
-      <div class="case-template-layout" id="case-study-content">
+      <div class="case-template-layout" id="case-study-content" hidden>
         <article class="case-template-main">
           <section class="case-template-section" aria-labelledby="summary-title">
             <p class="eyebrow">01 / Summary</p>
@@ -841,7 +866,7 @@ self.voter_data[user] = selected_movie_path</code></pre>
         </aside>
       </div>
 
-      <section class="next-step-panel" aria-labelledby="moviebot-next-title">
+      <section class="next-step-panel" aria-labelledby="moviebot-next-title" hidden>
         <div>
           <p class="eyebrow">Next step</p>
           <h2 id="moviebot-next-title">Review source, then stream pages.</h2>

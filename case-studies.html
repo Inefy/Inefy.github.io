@@ -78,7 +78,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260702-interact1">
-    <link rel="stylesheet" href="refined.css?v=20260714-cards2">
+    <link rel="stylesheet" href="refined.css?v=20260716-simple3">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -94,7 +94,8 @@
         <span class="nav-toggle-text">Menu</span>
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <details class="nav-group is-active" data-nav-group>
+        <a class="nav-work-link" href="work.html">Work</a>
+        <details class="nav-group is-active" data-nav-group hidden>
           <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="nav-menu" role="group" aria-label="Work pages">
             <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
@@ -116,11 +117,9 @@
         <div class="hero-ambient" aria-hidden="true"></div>
         <div class="section-heading">
           <p class="eyebrow">Case studies</p>
-          <h1 id="case-studies-title">Technical depth behind the projects.</h1>
-          <p>
-            Project problems, implementation details, stacks, and tradeoffs.
-          </p>
-          <nav class="work-jump-nav" aria-label="Case study shortcuts">
+          <h1 id="case-studies-title">Case studies.</h1>
+          <p>A clear look at what I built and how each project works.</p>
+          <nav class="work-jump-nav" aria-label="Case study shortcuts" hidden>
             <a href="#traverseops">TraverseOps</a>
             <a href="#moviebot">MovieBot</a>
             <a href="#web-paint">Web Paint</a>
@@ -131,43 +130,43 @@
 
       <section class="section case-study-index" id="case-study-list" aria-labelledby="case-study-list-title">
         <div class="section-heading">
-          <p class="eyebrow">Project writeups</p>
-          <h2 id="case-study-list-title">The quickest route to technical depth.</h2>
+          <p class="eyebrow">Selected projects</p>
+          <h2 id="case-study-list-title">What I built.</h2>
         </div>
 
         <div class="case-study-list">
           <article class="case-study-listing case-study-listing-fallback" id="traverseops">
             <div class="case-study-listing-body">
-              <div class="case-study-listing-header"><span class="work-status">Flagship / public app</span><h3>TraverseOps &mdash; Field Operations Map &amp; Work Orders</h3></div>
-              <p>Field teams need asset state and work orders in one place.</p>
-              <div class="work-links"><a href="traverseops-case-study.html">Full case study</a><a href="traverseops-demo.html">Public app</a></div>
+              <div class="case-study-listing-header"><span class="work-status">Map UI</span><h3>TraverseOps</h3></div>
+              <p>A map-first app for assets, inspections, and work orders.</p>
+              <div class="work-links"><a href="traverseops-case-study.html">Case study</a><a href="traverseops-demo.html">Open app</a></div>
             </div>
           </article>
           <article class="case-study-listing case-study-listing-fallback" id="moviebot">
             <div class="case-study-listing-body">
-              <div class="case-study-listing-header"><span class="work-status">Python automation / public repo</span><h3>MovieBot / StreamCinema Vote Bot &mdash; Twitch Chat Voting + OBS Automation</h3></div>
-          <p>24/7 running open domain movies with crowd voting.</p>
-              <div class="work-links"><a href="moviebot-case-study.html">Full case study</a><a href="movie-night.html">Movie Night</a><a href="movie-library.html">Movie Library</a><a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer" target="_blank">Source</a><a href="https://github.com/Inefy/twitch-movie-bot/actions/workflows/tests.yml" rel="noopener noreferrer" target="_blank">CI tests</a><a href="https://github.com/Inefy/twitch-movie-bot/blob/main/tests/test_bot_logic.py" rel="noopener noreferrer" target="_blank">Pytest file</a></div>
+              <div class="case-study-listing-header"><span class="work-status">Python automation</span><h3>MovieBot</h3></div>
+              <p>A Twitch voting bot that controls movie playback in OBS.</p>
+              <div class="work-links"><a href="moviebot-case-study.html">Case study</a><a href="movie-night.html">Open Movie Night</a><a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer" target="_blank">Source</a></div>
             </div>
           </article>
           <article class="case-study-listing case-study-listing-fallback" id="web-paint">
             <div class="case-study-listing-body">
-              <div class="case-study-listing-header"><span class="work-status">Canvas tool / live page</span><h3>Web Paint &mdash; Browser Canvas Drawing Tool</h3></div>
-              <p>Browser drawing tools need fast input and predictable state.</p>
-              <div class="work-links"><a href="web-paint-case-study.html">Full case study</a><a href="paint.html">Live tool</a><a href="interactive-lab.html">Interactive Lab</a><a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer" target="_blank">Source</a></div>
+              <div class="case-study-listing-header"><span class="work-status">Canvas app</span><h3>Web Paint</h3></div>
+              <p>A responsive drawing tool built with the Canvas API.</p>
+              <div class="work-links"><a href="web-paint-case-study.html">Case study</a><a href="paint.html">Open tool</a><a href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer" target="_blank">Source</a></div>
             </div>
           </article>
           <article class="case-study-listing case-study-listing-fallback" id="movie-library">
             <div class="case-study-listing-body">
-              <div class="case-study-listing-header"><span class="work-status">Companion app / client-side UI</span><h3>Movie Library &mdash; Public-Domain Voting Catalog</h3></div>
-              <p>Viewers need quick browsing and valid vote commands.</p>
-              <div class="work-links"><a href="movie-library.html">Live catalog</a><a href="moviebot-case-study.html">MovieBot case study</a><a href="movie-night.html">Movie Night</a><a href="https://github.com/Inefy/Inefy.github.io/blob/main/movie-library.html" rel="noopener noreferrer" target="_blank">Source</a></div>
+              <div class="case-study-listing-header"><span class="work-status">Catalog UI</span><h3>Movie Library</h3></div>
+              <p>A searchable public-domain movie catalog with copyable vote commands.</p>
+              <div class="work-links"><a href="movie-library.html">Open catalog</a><a href="moviebot-case-study.html">Case study</a></div>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="next-step-panel" aria-labelledby="case-studies-next-title">
+      <section class="next-step-panel" aria-labelledby="case-studies-next-title" hidden>
         <div>
           <p class="eyebrow">Next step</p>
           <h2 id="case-studies-next-title">Want the full index?</h2>

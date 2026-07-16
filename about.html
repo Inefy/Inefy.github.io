@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260702-interact1">
-    <link rel="stylesheet" href="refined.css?v=20260714-cards2">
+    <link rel="stylesheet" href="refined.css?v=20260716-simple3">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -47,7 +47,8 @@
         <span class="nav-toggle-text">Menu</span>
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <details class="nav-group" data-nav-group>
+        <a class="nav-work-link" href="work.html">Work</a>
+        <details class="nav-group" data-nav-group hidden>
           <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="nav-menu" role="group" aria-label="Work pages">
             <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
@@ -76,12 +77,10 @@
         <div class="section-heading">
           <p class="eyebrow">About</p>
           <h1 id="about-page-title">Useful tools, clearly built.</h1>
-          <p>
-            I build frontend tools, Python automation, map-based field screens, and browser experiments that make repeated work easier.
-          </p>
+          <p>I build focused web tools and automation that make repeated work easier.</p>
           <div class="hero-actions">
             <a class="button primary" href="work.html">View selected work</a>
-            <a class="button secondary" href="resume.html">View resume</a>
+            <a class="button secondary" href="resume.html" hidden>View resume</a>
             <a class="button ghost" href="contact.html">Contact</a>
           </div>
         </div>
@@ -90,18 +89,16 @@
       <section class="section about-page-content" aria-labelledby="about-overview-title">
         <div class="section-heading">
           <p class="eyebrow">Overview</p>
-          <h2 id="about-overview-title">What I build.</h2>
+          <h2 id="about-overview-title">What I do.</h2>
         </div>
 
         <div class="about-card-grid">
           <article class="about-card">
-            <h3>Developer focus</h3>
-            <p>
-              Tools, dashboards, maps, GitHub Pages sites, and automations where behavior matters.
-            </p>
+            <h3>Web tools</h3>
+            <p>Clear interfaces for dashboards, maps, browser apps, and internal workflows.</p>
           </article>
 
-          <article class="about-card">
+          <article class="about-card" hidden>
             <h3>What I like building</h3>
             <p>
               Field asset maps, Twitch/OBS automation, movie voting, browser drawing, and small interactive tools.
@@ -109,30 +106,27 @@
           </article>
 
           <article class="about-card">
-            <h3>Current technical focus</h3>
+            <h3>Technology</h3>
             <ul>
-              <li>Python automation with recovery paths</li>
-              <li>Frontend/browser tools with readable state</li>
-              <li>Map-based field interfaces</li>
-              <li>Canvas tools, games, and touch input</li>
-              <li>Case studies with tradeoffs</li>
+              <li>JavaScript, HTML, and CSS</li>
+              <li>Python automation</li>
+              <li>MapLibre and Canvas</li>
+              <li>Playwright testing</li>
             </ul>
           </article>
 
           <article class="about-card">
-            <h3>Project approach</h3>
-            <p>
-              I start with the user path, ship the smallest useful version, then tighten state, empty screens, keyboard paths, mobile layout, deployment notes, and risks.
-            </p>
+            <h3>Approach</h3>
+            <p>Start with the main user path, build the smallest useful version, then refine states, mobile layout, accessibility, and testing.</p>
           </article>
         </div>
       </section>
 
-      <section class="next-step-panel" aria-labelledby="about-next-title">
+      <section class="next-step-panel" aria-labelledby="about-next-title" hidden>
         <div>
           <p class="eyebrow">Next step</p>
-          <h2 id="about-next-title">The projects carry the evidence.</h2>
-          <p>Use Work, Resume, or Contact for the next step.</p>
+          <h2 id="about-next-title">See the work.</h2>
+          <p>View the projects or get in touch.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="work.html">Selected work</a>

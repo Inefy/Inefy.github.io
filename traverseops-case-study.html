@@ -78,7 +78,7 @@
     <link rel="preload" as="image" imagesrcset="assets/traverseops-workspace.webp" type="image/webp">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260702-interact1">
-    <link rel="stylesheet" href="refined.css?v=20260714-cards2">
+    <link rel="stylesheet" href="refined.css?v=20260716-simple3">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -94,7 +94,8 @@
         <span class="nav-toggle-text">Menu</span>
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <details class="nav-group is-active" data-nav-group>
+        <a class="nav-work-link" href="work.html">Work</a>
+        <details class="nav-group is-active" data-nav-group hidden>
           <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="nav-menu" role="group" aria-label="Work pages">
             <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
@@ -121,14 +122,12 @@
       <section class="hero-ambient-host case-template-hero" aria-labelledby="case-title">
         <div class="hero-ambient" aria-hidden="true"></div>
         <div class="case-template-hero-copy">
-          <p class="eyebrow">Flagship case study</p>
+          <p class="eyebrow">Case study</p>
           <h1 id="case-title">TraverseOps</h1>
-          <p class="case-template-summary">
-            Public MapLibre sample app for locating field assets, recording inspections, opening work orders, importing updates, and reporting status from one map-first workflow.
-          </p>
+          <p class="case-template-summary">A map app for tracking field assets, inspections, and repair work.</p>
           <div class="case-hero-actions">
             <a class="button primary" href="traverseops-demo.html">Open public app</a>
-            <a class="button secondary" href="work.html">Back to Work</a>
+            <a class="button secondary" href="work.html">View all work</a>
           </div>
           <dl class="case-template-meta" aria-label="Project metadata">
             <div>
@@ -141,7 +140,7 @@
             </div>
             <div>
               <dt>Role</dt>
-              <dd>Solo builder: product, UI, data model, field flow</dd>
+              <dd>Product, UI, data model, and field workflow</dd>
             </div>
             <div>
               <dt>Last updated</dt>
@@ -159,7 +158,33 @@
         </figure>
       </section>
 
-      <section class="case-review-summary" aria-labelledby="traverseops-review-title">
+      <section class="section case-simple-overview" aria-labelledby="traverseops-overview-title">
+        <div class="section-heading">
+          <p class="eyebrow">What I built</p>
+          <h2 id="traverseops-overview-title">Field work organized around the map.</h2>
+          <p>Select an asset to see its condition, inspections, and open jobs.</p>
+        </div>
+        <div class="case-simple-grid">
+          <article>
+            <h3>How it works</h3>
+            <p>Choose an asset, record an inspection, and create a work order.</p>
+          </article>
+          <article>
+            <h3>Built with</h3>
+            <p>MapLibre, JavaScript, responsive CSS, and sample data.</p>
+          </article>
+          <article>
+            <h3>Demo scope</h3>
+            <p>The public version uses sample records and runs entirely in the browser.</p>
+          </article>
+        </div>
+        <div class="case-simple-actions">
+          <a class="button primary" href="traverseops-demo.html">Open the app</a>
+          <a class="button secondary" href="work.html">View all work</a>
+        </div>
+      </section>
+
+      <section class="case-review-summary" aria-labelledby="traverseops-review-title" hidden>
         <div class="case-review-summary__intro">
           <p class="eyebrow">Quick summary</p>
           <h2 id="traverseops-review-title">TraverseOps in 30 seconds.</h2>
@@ -190,7 +215,7 @@
         </div>
       </section>
 
-      <section class="demo-checklist" aria-labelledby="traverseops-demo-checklist-title">
+      <section class="demo-checklist" aria-labelledby="traverseops-demo-checklist-title" hidden>
         <div class="demo-checklist__layout">
           <div class="demo-checklist__copy">
             <p class="eyebrow">Try this demo</p>
@@ -210,7 +235,7 @@
         </div>
       </section>
 
-      <section class="media-proof" aria-labelledby="traverseops-media-proof-title">
+      <section class="media-proof" aria-labelledby="traverseops-media-proof-title" hidden>
         <figure class="media-proof__frame">
           <picture>
             <source srcset="assets/traverseops-workspace.webp" type="image/webp">
@@ -231,7 +256,7 @@
         </div>
       </section>
 
-      <section class="case-template-links" aria-labelledby="project-links-title">
+      <section class="case-template-links" aria-labelledby="project-links-title" hidden>
         <div>
           <p class="eyebrow">Project links</p>
           <h2 id="project-links-title">Open the app and evidence.</h2>
@@ -246,7 +271,7 @@
         </div>
       </section>
 
-      <section class="case-tldr" aria-labelledby="traverseops-tldr-title">
+      <section class="case-tldr" aria-labelledby="traverseops-tldr-title" hidden>
         <div>
           <p class="eyebrow">TL;DR</p>
           <h2 id="traverseops-tldr-title">TraverseOps in 15 seconds.</h2>
@@ -279,7 +304,7 @@
         </dl>
       </section>
 
-      <div class="case-template-layout" id="case-study-content">
+      <div class="case-template-layout" id="case-study-content" hidden>
         <article class="case-template-main">
           <section class="case-template-section" aria-labelledby="summary-title">
             <p class="eyebrow">01 / Summary</p>
@@ -823,7 +848,7 @@ function visibleAssets() {
         </aside>
       </div>
 
-      <section class="next-step-panel" aria-labelledby="traverseops-next-title">
+      <section class="next-step-panel" aria-labelledby="traverseops-next-title" hidden>
         <div>
           <p class="eyebrow">Next step</p>
           <h2 id="traverseops-next-title">Review the app, then compare.</h2>

@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260702-interact1">
-    <link rel="stylesheet" href="refined.css?v=20260714-cards2">
+    <link rel="stylesheet" href="refined.css?v=20260716-simple3">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -47,7 +47,8 @@
         <span class="nav-toggle-text">Menu</span>
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <details class="nav-group" data-nav-group>
+        <a class="nav-work-link" href="work.html">Work</a>
+        <details class="nav-group" data-nav-group hidden>
           <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="nav-menu" role="group" aria-label="Work pages">
             <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
@@ -76,14 +77,11 @@
         <div class="section-heading">
           <p class="eyebrow">Contact</p>
           <h1 id="contact-page-title">Let&rsquo;s talk.</h1>
-          <p class="contact-hero-subtitle">
-            Tell me what you are building, where it is stuck, or what role you need filled.
-            Email <a href="mailto:hello@zacbatten.me">hello@zacbatten.me</a>.
-          </p>
+          <p class="contact-hero-subtitle">Tell me what you are building or what role you need filled.</p>
           <div class="hero-actions">
             <a class="button primary" href="mailto:hello@zacbatten.me">Email Zac</a>
             <button class="button secondary copy-email-button" type="button" data-copy-email="hello@zacbatten.me">Copy email</button>
-            <a class="button secondary" href="resume.html">Resume</a>
+            <a class="button secondary" href="resume.html" hidden>Resume</a>
           </div>
           <p class="copy-email-feedback" data-copy-email-status role="status" aria-live="polite" aria-atomic="true"></p>
         </div>
@@ -92,8 +90,8 @@
       <section class="section contact-page-content" aria-labelledby="contact-details-title">
         <div class="section-heading">
           <p class="eyebrow">Next step</p>
-          <h2 id="contact-details-title">Send enough context to move quickly.</h2>
-          <p>Fill in the quick brief below and it opens your email app with everything filled in &mdash; nothing is sent automatically, and no data leaves your device.</p>
+          <h2 id="contact-details-title">Send a short brief.</h2>
+          <p>This form opens your email app with the details filled in.</p>
         </div>
 
         <div class="contact-layout">
@@ -109,12 +107,12 @@
               </div>
             </div>
 
-            <div class="form-row">
+            <div class="form-row" hidden>
               <label for="cf-company">Company or context <span class="form-optional">(optional)</span></label>
               <input id="cf-company" name="company" type="text" autocomplete="organization" placeholder="Team, company, or how you found me">
             </div>
 
-            <div class="form-grid-2">
+            <div class="form-grid-2" hidden>
               <div class="form-row">
                 <label for="cf-type">Project type</label>
                 <select id="cf-type" name="type">
@@ -153,16 +151,16 @@
           <aside class="contact-sidebar" aria-label="Working details">
             <article class="contact-info-card contact-availability">
               <h3><span class="live-dot" aria-hidden="true"></span> Availability</h3>
-              <p>Open to new frontend, internal-tools, and automation work &mdash; contract or full-time.</p>
+              <p>Open to frontend, internal-tools, and automation work.</p>
               <dl class="contact-facts">
-                <div><dt>Working style</dt><dd>Remote-friendly</dd></div>
+                <div hidden><dt>Working style</dt><dd>Remote-friendly</dd></div>
                 <div><dt>Based in</dt><dd>Newfoundland, Canada (NT, UTC&minus;3:30)</dd></div>
-                <div><dt>Local time</dt><dd><span data-local-time>UTC&minus;3:30</span></dd></div>
+                <div hidden><dt>Local time</dt><dd><span data-local-time>UTC&minus;3:30</span></dd></div>
                 <div><dt>Typical reply</dt><dd>Within 2 business days</dd></div>
               </dl>
             </article>
 
-            <article class="contact-info-card contact-fit-card">
+            <article class="contact-info-card contact-fit-card" hidden>
               <h3>Best fit</h3>
               <ul class="contact-fit-list">
                 <li>Frontend/internal tools</li>
@@ -175,7 +173,7 @@
           </aside>
         </div>
 
-        <section class="contact-faq" aria-labelledby="contact-faq-title">
+        <section class="contact-faq" aria-labelledby="contact-faq-title" hidden>
           <div class="section-heading">
           <p class="eyebrow">Good to know</p>
             <h2 id="contact-faq-title">Before you email.</h2>
@@ -204,7 +202,7 @@
           </div>
         </section>
 
-        <section class="contact-start-projects" aria-labelledby="contact-start-title">
+        <section class="contact-start-projects" aria-labelledby="contact-start-title" hidden>
           <div>
             <p class="eyebrow">Related work</p>
             <h3 id="contact-start-title">Choose the closest example.</h3>
@@ -238,6 +236,6 @@
     </footer>
 
     <script src="shared.js?v=20260713-responsive1" defer></script>
-    <script src="contact.js?v=20260617-contact1" defer></script>
+    <script src="contact.js?v=20260716-simple2" defer></script>
   </body>
 </html>
