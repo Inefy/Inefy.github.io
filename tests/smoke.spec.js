@@ -82,6 +82,23 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByRole("heading", { name: /let.?s talk/i })).toBeVisible();
   });
 
+  test("homepage hero keeps a readable width on wide screens", async ({ page }) => {
+    await page.setViewportSize({ width: 1920, height: 1080 });
+    await gotoLocal(page, "/");
+
+    const heroLayout = await page.evaluate(() => {
+      const copy = document.querySelector(".home-hero .hero-copy");
+      const heading = document.querySelector(".home-hero h1");
+      return {
+        copyWidth: copy?.getBoundingClientRect().width || 0,
+        headingHeight: heading?.getBoundingClientRect().height || 0,
+      };
+    });
+
+    expect(heroLayout.copyWidth).toBeGreaterThan(700);
+    expect(heroLayout.headingHeight).toBeLessThan(300);
+  });
+
   test("Work page shows the flagship projects", async ({ page }) => {
     await gotoLocal(page, "/work.html");
 

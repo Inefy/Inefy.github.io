@@ -2810,8 +2810,9 @@ textarea {
 
 .home-hero-grid {
   display: block;
+  width: 100%;
   min-height: 0;
-  max-width: var(--content-max);
+  max-width: none;
   padding: clamp(82px, 10vw, 132px) var(--section-pad-x) clamp(72px, 9vw, 112px);
 }
 
