@@ -65,6 +65,25 @@ npm run quality
 - `npm run test:smoke` starts `python -m http.server 8000` through Playwright and checks the highest-value public paths.
 - `.github/workflows/site-quality.yml` runs `npm ci`, JS syntax checks, HTML quality checks, internal link checks, installs Chromium, and runs the Playwright smoke tests on pull requests and pushes to `main`.
 
+## Frontend Architecture
+
+The portfolio uses **one stylesheet**. This is deliberate and worth keeping.
+
+- `site.css` — tokens, layout primitive, shell, and every portfolio-page component. ~44 KB raw / ~9 KB gzipped.
+- `demos.css` — loaded only by `traverseops-demo.html`, `movie-library.html`, and `movie-night.html`, which are sample apps rather than portfolio pages.
+- Game pages are standalone and carry their own CSS (`2048.css`, `paint.css`, and so on). They do not load `site.css` and do not use the site shell.
+
+Rules that keep it small:
+
+- **One layout primitive.** Every full-width band (`.site-header`, `.site-footer`, `main > section`, `main > nav`, `main > div`) gets `padding-inline: var(--pad-x)`, where `--pad-x: max(var(--gutter), calc((100% - var(--measure)) / 2))`. Do not add per-section `max-width` and `margin: auto` — that is what caused four different content alignments on the old homepage.
+- **Three breakpoints only:** 1200px, 900px, 640px. The nav collapse breakpoint (900px) is duplicated in `shared.js` as `mobileNavQuery`; change both together.
+- **One accent colour.** `--accent`. There are no secondary accents and no shadow tokens.
+- **12px type floor.** `--fs-label` is the smallest size used for anything a human reads. Do not shrink labels to fit; cut them.
+- **No override layers.** If a rule needs undoing, edit the rule. Never add a second stylesheet to neutralise the first.
+- Predecessors `styles.css` (236 KB) and `refined.css` (56 KB) were deleted; `refined.css` existed only to suppress `styles.css`.
+
+`shared.js` (~25 KB) handles the theme toggle, mobile nav, nav groups, active-nav marking, copy-email, hover prefetch, page TOC, image lightbox, heading anchors, lab filters, print, and local time. The theme toggle lives in the markup so it cannot shift layout on load; `shared.js` only wires it up.
+
 ## Image Standards
 
 - Prefer `.webp` screenshots with a `.png` fallback when the image is used in a `<picture>` element.
@@ -86,7 +105,8 @@ npm run quality
 - `web-paint-case-study.html`, `paint.html`, `paint.css`, `paint.js` - Canvas case study and browser drawing tool.
 - `interactive-lab.html` plus game/tool files - standalone browser experiments.
 - `resume.html`, `contact.html`, `about.html`, `notes.html`, `changelog.html` - supporting public pages.
-- `shared.js`, `home.js` - shared navigation, copy, and homepage behavior.
+- `site.css` - the single portfolio stylesheet; `demos.css` - sample-app surfaces.
+- `shared.js` - shared navigation, theme, copy, and page behavior.
 - `scripts/` and `tests/` - static QA scripts and Playwright smoke tests.
 - `assets/`, `CNAME`, `robots.txt`, `sitemap.xml` - visual assets, custom domain, and indexing files.
 
@@ -109,6 +129,7 @@ portfolio, github-pages, static-site, frontend, javascript, case-studies, movieb
 
 - This is a static site with no build step. npm is used only for QA tooling.
 - Update project cards directly in `index.html`, `work.html`, and `case-studies.html`; these pages intentionally use static HTML cards for no-JS parity and simpler maintenance.
+- Do not use the `hidden` attribute to retire content. Delete it. A previous pass hid 66 elements across the site, including 97% of every case study, which meant the pages still shipped the markup but nobody could read it.
 - Store future screenshots in `assets/` as optimized `.webp` plus `.png` fallback when useful.
 - Use meaningful alt text, real `width`/`height`, and `loading="lazy"` for below-the-fold images.
 - Keep accessibility claims evidence-based: keyboard checks, visible focus states, reduced motion, status messages, and current Canvas limits.

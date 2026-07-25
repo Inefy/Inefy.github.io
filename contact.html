@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0c0f10">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Contact Zac Batten about frontend, internal-tools, Python automation, map-based workflow, Canvas/browser tool, and GitHub Pages opportunities.">
     <meta name="author" content="Zac Batten">
@@ -29,9 +29,8 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260702-interact1">
-    <link rel="stylesheet" href="refined.css?v=20260716-simple3">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css?v=20260725-rebuild1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -46,9 +45,13 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
         <span class="nav-toggle-text">Menu</span>
       </button>
+      <button class="theme-toggle" type="button" data-theme-toggle
+              aria-label="Switch to light theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>
+      </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <a class="nav-work-link" href="work.html">Work</a>
-        <details class="nav-group" data-nav-group hidden>
+        <details class="nav-group" data-nav-group>
           <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="nav-menu" role="group" aria-label="Work pages">
             <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
@@ -72,8 +75,7 @@
         <span>Contact</span>
       </nav>
 
-      <section class="hero-ambient-host section contact-page-hero" aria-labelledby="contact-page-title">
-        <div class="hero-ambient" aria-hidden="true"></div>
+      <section class="section contact-page-hero" aria-labelledby="contact-page-title">
         <div class="section-heading">
           <p class="eyebrow">Contact</p>
           <h1 id="contact-page-title">Let&rsquo;s talk.</h1>
@@ -81,7 +83,7 @@
           <div class="hero-actions">
             <a class="button primary" href="mailto:hello@zacbatten.me">Email Zac</a>
             <button class="button secondary copy-email-button" type="button" data-copy-email="hello@zacbatten.me">Copy email</button>
-            <a class="button secondary" href="resume.html" hidden>Resume</a>
+            <a class="button secondary" href="resume.html">Resume</a>
           </div>
           <p class="copy-email-feedback" data-copy-email-status role="status" aria-live="polite" aria-atomic="true"></p>
         </div>
@@ -107,12 +109,12 @@
               </div>
             </div>
 
-            <div class="form-row" hidden>
+            <div class="form-row">
               <label for="cf-company">Company or context <span class="form-optional">(optional)</span></label>
               <input id="cf-company" name="company" type="text" autocomplete="organization" placeholder="Team, company, or how you found me">
             </div>
 
-            <div class="form-grid-2" hidden>
+            <div class="form-grid-2">
               <div class="form-row">
                 <label for="cf-type">Project type</label>
                 <select id="cf-type" name="type">
@@ -153,14 +155,14 @@
               <h3><span class="live-dot" aria-hidden="true"></span> Availability</h3>
               <p>Open to frontend, internal-tools, and automation work.</p>
               <dl class="contact-facts">
-                <div hidden><dt>Working style</dt><dd>Remote-friendly</dd></div>
+                <div><dt>Working style</dt><dd>Remote-friendly</dd></div>
                 <div><dt>Based in</dt><dd>Newfoundland, Canada (NT, UTC&minus;3:30)</dd></div>
-                <div hidden><dt>Local time</dt><dd><span data-local-time>UTC&minus;3:30</span></dd></div>
+                <div><dt>Local time</dt><dd><span data-local-time>UTC&minus;3:30</span></dd></div>
                 <div><dt>Typical reply</dt><dd>Within 2 business days</dd></div>
               </dl>
             </article>
 
-            <article class="contact-info-card contact-fit-card" hidden>
+            <article class="contact-info-card contact-fit-card">
               <h3>Best fit</h3>
               <ul class="contact-fit-list">
                 <li>Frontend/internal tools</li>
@@ -173,7 +175,7 @@
           </aside>
         </div>
 
-        <section class="contact-faq" aria-labelledby="contact-faq-title" hidden>
+        <section class="contact-faq" aria-labelledby="contact-faq-title">
           <div class="section-heading">
           <p class="eyebrow">Good to know</p>
             <h2 id="contact-faq-title">Before you email.</h2>
@@ -202,7 +204,7 @@
           </div>
         </section>
 
-        <section class="contact-start-projects" aria-labelledby="contact-start-title" hidden>
+        <section class="contact-start-projects" aria-labelledby="contact-start-title">
           <div>
             <p class="eyebrow">Related work</p>
             <h3 id="contact-start-title">Choose the closest example.</h3>
@@ -220,7 +222,7 @@
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer.</span>
+        <span>Software developer in Newfoundland. Web tools, automation, and frontend UI.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
@@ -235,7 +237,7 @@
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="shared.js?v=20260713-responsive1" defer></script>
-    <script src="contact.js?v=20260716-simple2" defer></script>
+    <script src="shared.js?v=20260725-rebuild1" defer></script>
+    <script src="contact.js?v=20260725-rebuild1" defer></script>
   </body>
 </html>

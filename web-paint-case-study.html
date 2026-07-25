@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0c0f10">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-GkdKX8Uo5qeHUCGueO2o6u988A/XN9xoDZ5SA23OWzM=' 'sha256-eJh8u5z/Bvs0wAzs5VSEQdNM4+STxtZ2gwJROzgoQRs='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-GkdKX8Uo5qeHUCGueO2o6u988A/XN9xoDZ5SA23OWzM='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Web Paint case study by Zac Batten: a browser canvas tool using vanilla JavaScript, Canvas 2D rendering, undo/redo, import/export, and mobile panels.">
     <meta name="author" content="Zac Batten">
@@ -76,9 +76,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" imagesrcset="assets/web-paint-workspace.webp" type="image/webp">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260702-interact1">
-    <link rel="stylesheet" href="refined.css?v=20260716-simple3">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css?v=20260725-rebuild1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -93,9 +92,13 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
         <span class="nav-toggle-text">Menu</span>
       </button>
+      <button class="theme-toggle" type="button" data-theme-toggle
+              aria-label="Switch to light theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>
+      </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <a class="nav-work-link" href="work.html">Work</a>
-        <details class="nav-group is-active" data-nav-group hidden>
+        <details class="nav-group is-active" data-nav-group>
           <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="nav-menu" role="group" aria-label="Work pages">
             <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
@@ -119,8 +122,7 @@
         <span>Web Paint</span>
       </nav>
 
-      <section class="hero-ambient-host case-template-hero" aria-labelledby="case-title">
-        <div class="hero-ambient" aria-hidden="true"></div>
+      <section class="case-template-hero" aria-labelledby="case-title">
         <div class="case-template-hero-copy">
           <p class="eyebrow">Case study</p>
           <h1 id="case-title">Web Paint</h1>
@@ -156,7 +158,7 @@
         <figure class="screenshot-gallery__item case-study-image-frame">
           <picture>
             <source srcset="assets/web-paint-workspace.webp" type="image/webp">
-            <img src="assets/web-paint-workspace.png" alt="Web Paint live page with tool guide, toolbar commands, brush controls, and drawing workspace" width="1280" height="670" loading="eager" fetchpriority="high" decoding="async">
+            <img src="assets/web-paint-workspace.png" alt="Web Paint live page with tool guide, toolbar commands, brush controls, and drawing workspace" width="1072" height="670" loading="eager" fetchpriority="high" decoding="async">
           </picture>
           <figcaption>Live Web Paint: toolbar, brush settings, and drawing workspace.</figcaption>
         </figure>
@@ -188,7 +190,7 @@
         </div>
       </section>
 
-      <section class="case-review-summary" aria-labelledby="web-paint-review-title" hidden>
+      <section class="case-review-summary" aria-labelledby="web-paint-review-title">
         <div class="case-review-summary__intro">
           <p class="eyebrow">Quick summary</p>
           <h2 id="web-paint-review-title">Web Paint in 30 seconds.</h2>
@@ -220,7 +222,7 @@
         </div>
       </section>
 
-      <section class="demo-checklist" aria-labelledby="web-paint-demo-checklist-title" hidden>
+      <section class="demo-checklist" aria-labelledby="web-paint-demo-checklist-title">
         <div class="demo-checklist__layout">
           <div class="demo-checklist__copy">
             <p class="eyebrow">Try this demo</p>
@@ -241,11 +243,11 @@
         </div>
       </section>
 
-      <section class="media-proof" aria-labelledby="web-paint-media-proof-title" hidden>
+      <section class="media-proof" aria-labelledby="web-paint-media-proof-title">
         <figure class="media-proof__frame">
           <picture>
             <source srcset="assets/web-paint-workspace.webp" type="image/webp">
-            <img src="assets/web-paint-workspace.png" alt="Web Paint browser canvas tool showing toolbar commands, brush controls, keyboard and touch guidance, and drawing workspace" width="1280" height="670" loading="lazy" decoding="async">
+            <img src="assets/web-paint-workspace.png" alt="Web Paint browser canvas tool showing toolbar commands, brush controls, keyboard and touch guidance, and drawing workspace" width="1072" height="670" loading="lazy" decoding="async">
           </picture>
           <figcaption>Toolbar state, Canvas workspace, guidance, and local file controls.</figcaption>
         </figure>
@@ -262,7 +264,7 @@
         </div>
       </section>
 
-      <section class="case-template-links" aria-labelledby="project-links-title" hidden>
+      <section class="case-template-links" aria-labelledby="project-links-title">
         <div>
           <p class="eyebrow">Project links</p>
           <h2 id="project-links-title">Open the tool and implementation.</h2>
@@ -277,7 +279,7 @@
         </div>
       </section>
 
-      <section class="case-tldr" aria-labelledby="web-paint-tldr-title" hidden>
+      <section class="case-tldr" aria-labelledby="web-paint-tldr-title">
         <div>
           <p class="eyebrow">TL;DR</p>
           <h2 id="web-paint-tldr-title">Web Paint in 15 seconds.</h2>
@@ -314,7 +316,7 @@
         </dl>
       </section>
 
-      <div class="case-template-layout" id="case-study-content" hidden>
+      <div class="case-template-layout" id="case-study-content">
         <article class="case-template-main">
           <section class="case-template-section" aria-labelledby="summary-title">
             <p class="eyebrow">01 / Project summary</p>
@@ -738,7 +740,7 @@ function restoreHistory(index) {
                 <a class="screenshot-gallery__link" href="assets/web-paint-workspace.png" aria-label="Open full-size Web Paint workspace screenshot">
                   <picture>
                     <source srcset="assets/web-paint-workspace.webp" type="image/webp">
-                    <img src="assets/web-paint-workspace.png" alt="Web Paint screenshot showing project guide, toolbar ribbon, brush controls, keyboard/touch guidance, and drawing workspace" width="1280" height="670" loading="lazy" decoding="async">
+                    <img src="assets/web-paint-workspace.png" alt="Web Paint screenshot showing project guide, toolbar ribbon, brush controls, keyboard/touch guidance, and drawing workspace" width="1072" height="670" loading="lazy" decoding="async">
                   </picture>
                 </a>
                 <figcaption>Real screenshot from the Web Paint tool page.</figcaption>
@@ -773,7 +775,7 @@ function restoreHistory(index) {
         </aside>
       </div>
 
-      <section class="next-step-panel" aria-labelledby="web-paint-next-title" hidden>
+      <section class="next-step-panel" aria-labelledby="web-paint-next-title">
         <div>
           <p class="eyebrow">Next step</p>
           <h2 id="web-paint-next-title">Try the tool, then compare.</h2>
@@ -790,7 +792,7 @@ function restoreHistory(index) {
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer building web tools, automation, and frontend UI.</span>
+        <span>Software developer in Newfoundland. Web tools, automation, and frontend UI.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
@@ -805,6 +807,6 @@ function restoreHistory(index) {
       <p class="footer-note">GitHub Pages site, browser tools, and build notes. <span id="year">2026</span></p>
     </footer>
 
-    <script src="shared.js?v=20260713-responsive1" defer></script>
+    <script src="shared.js?v=20260725-rebuild1" defer></script>
   </body>
 </html>

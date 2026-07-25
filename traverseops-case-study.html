@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0c0f10">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-GzYoRfkfpOgqMWrDpuJsaPPUosPfochBR/6h0zQ37hg=' 'sha256-qnuu8tqCoR/Xw3+V10Xjsmv2SdCzLv9nEFMN2QLmqtk='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-GzYoRfkfpOgqMWrDpuJsaPPUosPfochBR/6h0zQ37hg='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="TraverseOps case study by Zac Batten: a MapLibre field-ops sample app for asset maps, inspections, work orders, imports, reports, and role-aware screens.">
     <meta name="author" content="Zac Batten">
@@ -76,9 +76,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" imagesrcset="assets/traverseops-workspace.webp" type="image/webp">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260702-interact1">
-    <link rel="stylesheet" href="refined.css?v=20260716-simple3">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css?v=20260725-rebuild1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -93,9 +92,13 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
         <span class="nav-toggle-text">Menu</span>
       </button>
+      <button class="theme-toggle" type="button" data-theme-toggle
+              aria-label="Switch to light theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>
+      </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <a class="nav-work-link" href="work.html">Work</a>
-        <details class="nav-group is-active" data-nav-group hidden>
+        <details class="nav-group is-active" data-nav-group>
           <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="nav-menu" role="group" aria-label="Work pages">
             <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
@@ -119,8 +122,7 @@
         <span>TraverseOps</span>
       </nav>
 
-      <section class="hero-ambient-host case-template-hero" aria-labelledby="case-title">
-        <div class="hero-ambient" aria-hidden="true"></div>
+      <section class="case-template-hero" aria-labelledby="case-title">
         <div class="case-template-hero-copy">
           <p class="eyebrow">Case study</p>
           <h1 id="case-title">TraverseOps</h1>
@@ -184,7 +186,7 @@
         </div>
       </section>
 
-      <section class="case-review-summary" aria-labelledby="traverseops-review-title" hidden>
+      <section class="case-review-summary" aria-labelledby="traverseops-review-title">
         <div class="case-review-summary__intro">
           <p class="eyebrow">Quick summary</p>
           <h2 id="traverseops-review-title">TraverseOps in 30 seconds.</h2>
@@ -215,7 +217,7 @@
         </div>
       </section>
 
-      <section class="demo-checklist" aria-labelledby="traverseops-demo-checklist-title" hidden>
+      <section class="demo-checklist" aria-labelledby="traverseops-demo-checklist-title">
         <div class="demo-checklist__layout">
           <div class="demo-checklist__copy">
             <p class="eyebrow">Try this demo</p>
@@ -235,7 +237,7 @@
         </div>
       </section>
 
-      <section class="media-proof" aria-labelledby="traverseops-media-proof-title" hidden>
+      <section class="media-proof" aria-labelledby="traverseops-media-proof-title">
         <figure class="media-proof__frame">
           <picture>
             <source srcset="assets/traverseops-workspace.webp" type="image/webp">
@@ -256,7 +258,7 @@
         </div>
       </section>
 
-      <section class="case-template-links" aria-labelledby="project-links-title" hidden>
+      <section class="case-template-links" aria-labelledby="project-links-title">
         <div>
           <p class="eyebrow">Project links</p>
           <h2 id="project-links-title">Open the app and evidence.</h2>
@@ -271,7 +273,7 @@
         </div>
       </section>
 
-      <section class="case-tldr" aria-labelledby="traverseops-tldr-title" hidden>
+      <section class="case-tldr" aria-labelledby="traverseops-tldr-title">
         <div>
           <p class="eyebrow">TL;DR</p>
           <h2 id="traverseops-tldr-title">TraverseOps in 15 seconds.</h2>
@@ -304,7 +306,7 @@
         </dl>
       </section>
 
-      <div class="case-template-layout" id="case-study-content" hidden>
+      <div class="case-template-layout" id="case-study-content">
         <article class="case-template-main">
           <section class="case-template-section" aria-labelledby="summary-title">
             <p class="eyebrow">01 / Summary</p>
@@ -800,7 +802,7 @@ function visibleAssets() {
                 <a class="screenshot-gallery__link" href="assets/traverseops-imports.png" aria-label="Open full-size TraverseOps import screen screenshot">
                   <picture>
                     <source srcset="assets/traverseops-imports.webp" type="image/webp">
-                    <img src="assets/traverseops-imports.png" alt="TraverseOps import tab showing sample import validation, accepted rows, rejected rows, and staging controls" width="1216" height="505" loading="lazy" decoding="async">
+                    <img src="assets/traverseops-imports.png" alt="TraverseOps import tab showing sample import validation, accepted rows, rejected rows, and staging controls" width="808" height="505" loading="lazy" decoding="async">
                   </picture>
                 </a>
                 <figcaption>Import screen with accepted/rejected sample rows.</figcaption>
@@ -809,7 +811,7 @@ function visibleAssets() {
                 <a class="screenshot-gallery__link" href="assets/traverseops-inspections.png" aria-label="Open full-size TraverseOps inspection screen screenshot">
                   <picture>
                     <source srcset="assets/traverseops-inspections.webp" type="image/webp">
-                    <img src="assets/traverseops-inspections.png" alt="TraverseOps inspection screen showing asset selection, condition notes, checklist items, and recent inspection records" width="1216" height="744" loading="lazy" decoding="async">
+                    <img src="assets/traverseops-inspections.png" alt="TraverseOps inspection screen showing asset selection, condition notes, checklist items, and recent inspection records" width="1190" height="744" loading="lazy" decoding="async">
                   </picture>
                 </a>
                 <figcaption>Inspection form and recent records tied to sample assets.</figcaption>
@@ -818,7 +820,7 @@ function visibleAssets() {
                 <a class="screenshot-gallery__link" href="assets/traverseops-reports.png" aria-label="Open full-size TraverseOps reports screenshot">
                   <picture>
                     <source srcset="assets/traverseops-reports.webp" type="image/webp">
-                    <img src="assets/traverseops-reports.png" alt="TraverseOps reports tab showing sample operational summary cards for assets, inspections, and work orders" width="1216" height="218" loading="lazy" decoding="async">
+                    <img src="assets/traverseops-reports.png" alt="TraverseOps reports tab showing sample operational summary cards for assets, inspections, and work orders" width="349" height="218" loading="lazy" decoding="async">
                   </picture>
                 </a>
                 <figcaption>Reports for sample assets, inspection coverage, and work-order state.</figcaption>
@@ -848,7 +850,7 @@ function visibleAssets() {
         </aside>
       </div>
 
-      <section class="next-step-panel" aria-labelledby="traverseops-next-title" hidden>
+      <section class="next-step-panel" aria-labelledby="traverseops-next-title">
         <div>
           <p class="eyebrow">Next step</p>
           <h2 id="traverseops-next-title">Review the app, then compare.</h2>
@@ -866,7 +868,7 @@ function visibleAssets() {
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer building web tools, automation, and frontend UI.</span>
+        <span>Software developer in Newfoundland. Web tools, automation, and frontend UI.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
@@ -881,6 +883,6 @@ function visibleAssets() {
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="shared.js?v=20260713-responsive1" defer></script>
+    <script src="shared.js?v=20260725-rebuild1" defer></script>
   </body>
 </html>

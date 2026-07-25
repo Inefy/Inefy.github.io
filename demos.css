@@ -1,0 +1,561 @@
+/* ==========================================================================
+   demos.css — surfaces for the three sample apps.
+   Loaded only by traverseops-demo.html, movie-library.html, movie-night.html.
+   Depends on site.css for tokens, shell, buttons, and cards.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Shared demo chrome
+   -------------------------------------------------------------------------- */
+
+.traverse-panel-heading,
+.traverse-architecture-heading,
+.movie-library-tech-heading,
+.movie-control-heading,
+.moviebot-flow-heading,
+.traverse-workspace-header h2 {
+  font-size: 1.125rem;
+}
+
+.embed-action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-top: 0;
+  border-radius: 0 0 var(--radius) var(--radius);
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+
+.dock-label {
+  color: var(--accent);
+}
+
+.demo-checklist--embedded {
+  border-style: dashed;
+}
+
+/* --------------------------------------------------------------------------
+   TraverseOps workspace
+   -------------------------------------------------------------------------- */
+
+.traverse-workspace {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--panel);
+}
+
+.traverse-workspace-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.traverse-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  list-style: none;
+  margin: 0;
+}
+
+.traverse-tabs button,
+.traverse-tabs a {
+  padding: 7px 13px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.traverse-tabs button:hover,
+.traverse-tabs a:hover {
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.traverse-tabs [aria-selected="true"],
+.traverse-tabs .active,
+.traverse-tabs [aria-current="page"] {
+  background: var(--accent-tint);
+  border-color: var(--accent-line);
+  color: var(--accent);
+}
+
+.traverse-map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr) minmax(0, 300px);
+  gap: 1px;
+  background: var(--line);
+}
+
+.traverse-map-filters,
+.traverse-list-panel,
+.traverse-asset-sheet,
+.traverse-map-card,
+.traverse-form-card,
+.traverse-role-card,
+.traverse-import-grid > *,
+.traverse-report-grid > * {
+  background: var(--panel);
+  padding: 16px;
+  min-width: 0;
+}
+
+.traverse-map-filters,
+.traverse-asset-sheet {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  font-size: var(--fs-small);
+}
+
+.traverse-map {
+  position: relative;
+  min-height: 340px;
+  background: var(--media-bg);
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 34px 34px;
+  overflow: hidden;
+}
+
+.traverse-map-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 5px 10px;
+  background: color-mix(in srgb, var(--paper) 85%, transparent);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.traverse-marker {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  border: 2px solid var(--paper);
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  transition: transform 0.15s var(--ease);
+}
+
+.traverse-marker:hover,
+.traverse-marker[aria-pressed="true"] {
+  transform: scale(1.35);
+}
+
+.traverse-marker[aria-pressed="true"] {
+  box-shadow: 0 0 0 4px var(--accent-tint);
+}
+
+.marker-nh-014 { top: 22%; left: 28%; }
+.marker-nh-022 { top: 41%; left: 52%; }
+.marker-nh-031 { top: 63%; left: 34%; }
+.marker-nh-044 { top: 31%; left: 71%; }
+.marker-nh-058 { top: 74%; left: 63%; }
+
+.traverse-card-list,
+.traverse-import-steps,
+.traverse-checklist {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: var(--fs-small);
+}
+
+.traverse-card-list > li {
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.traverse-card-list > li:hover {
+  border-color: var(--accent-line);
+}
+
+.traverse-asset-facts {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.traverse-asset-facts div {
+  display: grid;
+  gap: 2px;
+}
+
+.traverse-asset-facts dt {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.traverse-asset-facts dd {
+  margin: 0;
+  color: var(--soft);
+  font-size: var(--fs-small);
+}
+
+.traverse-empty-state {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  padding: 32px 16px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--muted);
+  font-size: var(--fs-small);
+}
+
+.traverse-status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  padding: 11px 18px;
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+
+.traverse-status-pill {
+  border-color: var(--accent-line);
+  color: var(--accent);
+}
+
+.traverse-upload-drop {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  padding: 30px 18px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--muted);
+  font-size: var(--fs-small);
+}
+
+.traverse-import-grid,
+.traverse-workflow-grid,
+.traverse-report-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+
+.traverse-form-card {
+  display: grid;
+  gap: 12px;
+}
+
+.traverse-submit {
+  justify-self: start;
+}
+
+.traverse-sheet-actions,
+.traverse-sample-actions,
+.traverse-import-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   Movie Library
+   -------------------------------------------------------------------------- */
+
+.movie-library-shell {
+  display: grid;
+  gap: 20px;
+}
+
+.movie-library-toolbar {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.movie-search {
+  display: grid;
+  gap: 6px;
+}
+
+.movie-search-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.filter-button {
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 100px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  border-color: var(--accent-line);
+  color: var(--ink);
+}
+
+.filter-button[aria-pressed="true"],
+.filter-button.active {
+  background: var(--accent-tint);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.movie-list-stats {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.movie-grid,
+.movie-preview-posters {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.movie-card,
+.movie-preview-tile {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-width: 0;
+}
+
+.movie-card:hover,
+.movie-preview-tile:hover {
+  border-color: var(--accent-line);
+}
+
+.movie-card img,
+.movie-preview-tile img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: var(--media-bg);
+}
+
+.movie-card > div,
+.movie-preview-title {
+  display: grid;
+  gap: 5px;
+  padding: 11px 12px;
+  font-size: var(--fs-small);
+}
+
+.movie-card h3,
+.movie-preview-title strong {
+  font-size: 0.9375rem;
+  line-height: 1.3;
+}
+
+.movie-card p,
+.movie-preview-title span {
+  color: var(--muted);
+  font-size: var(--fs-label);
+}
+
+.movie-card code {
+  display: block;
+  padding: 5px 8px;
+  background: var(--panel-strong);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  font-size: var(--fs-label);
+  overflow-wrap: anywhere;
+}
+
+.movie-fallback,
+.movie-results-jump {
+  margin-top: 20px;
+}
+
+.movie-fallback-list {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: var(--fs-small);
+}
+
+.movie-preview-panel,
+.movie-list-preview,
+.movie-control-guide,
+.movie-library-tech-notes,
+.movie-library-system {
+  display: grid;
+  gap: 14px;
+}
+
+.movie-preview-copy {
+  display: grid;
+  gap: 10px;
+  max-width: 60ch;
+}
+
+.movie-library-system-header {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.provider-badge {
+  border-color: var(--accent-line);
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   Movie Night (stream surface)
+   -------------------------------------------------------------------------- */
+
+.stream-hero-copy,
+.stream-hero-text {
+  display: grid;
+  gap: 14px;
+  max-width: 62ch;
+}
+
+.stream-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  gap: 20px;
+  align-items: start;
+}
+
+.stream-player-panel,
+.stream-chat-panel,
+.stream-signal-board {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+}
+
+.stream-signal-board {
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  font-size: var(--fs-small);
+}
+
+.chat-shell iframe {
+  display: block;
+  width: 100%;
+  min-height: 460px;
+  border: 0;
+}
+
+.stream-body,
+.bot-section,
+.stream-embed-section {
+  display: grid;
+  gap: 18px;
+}
+
+.command-list {
+  font-family: var(--font-mono);
+}
+
+.command-list code {
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   Breakpoints
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1200px) {
+  .traverse-map-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+  }
+
+  .traverse-map-filters {
+    grid-column: 1 / -1;
+  }
+
+  .stream-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .traverse-map-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .traverse-map {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 640px) {
+  .movie-grid,
+  .movie-preview-posters {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 128px), 1fr));
+  }
+
+  .traverse-workspace-header,
+  .traverse-status-bar {
+    padding-inline: 14px;
+  }
+}

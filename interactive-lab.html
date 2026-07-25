@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0c0f10">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-N7boI3/D0v38ym/FOhSQIiPj99I5klW71eI7jMWCmV0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Browser mechanics experiments by Zac Batten showing Canvas rendering, keyboard and touch input, grid logic, game loops, LocalStorage, and status UI.">
     <meta name="author" content="Zac Batten">
@@ -29,9 +29,8 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235ad6c0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260702-interact1">
-    <link rel="stylesheet" href="refined.css?v=20260714-cards2">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css?v=20260725-rebuild1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -45,6 +44,11 @@
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
         <span class="nav-toggle-text">Menu</span>
+      </button>
+      <button class="theme-toggle" type="button" data-theme-toggle
+              aria-label="Switch to light theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
         <details class="nav-group is-active" data-nav-group>
@@ -71,8 +75,7 @@
         <span>Interactive Lab</span>
       </nav>
 
-      <section class="hero-ambient-host section lab-hero" aria-labelledby="lab-page-title">
-        <div class="hero-ambient" aria-hidden="true"></div>
+      <section class="section lab-hero" aria-labelledby="lab-page-title">
         <div class="section-heading">
           <p class="eyebrow">Interactive lab</p>
           <h1 id="lab-page-title">Browser mechanics experiments.</h1>
@@ -159,7 +162,7 @@
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/web-paint-workspace.webp" type="image/webp">
-                <img src="assets/web-paint-workspace.png" alt="Web Paint browser tool showing toolbar controls, brush settings, and drawing workspace" loading="lazy" decoding="async" width="1280" height="670">
+                <img src="assets/web-paint-workspace.png" alt="Web Paint browser tool showing toolbar controls, brush settings, and drawing workspace" loading="lazy" decoding="async" width="1072" height="670">
               </picture>
             </figure>
             <span class="lab-card-kicker">Canvas tool</span>
@@ -191,7 +194,7 @@
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/mini-golf-preview.webp" type="image/webp">
-                <img src="assets/mini-golf-preview.png" alt="Mini Golf canvas game start screen with a five-hole course preview and start-round control" loading="lazy" decoding="async" width="1233" height="651">
+                <img src="assets/mini-golf-preview.png" alt="Mini Golf canvas game start screen with a five-hole course preview and start-round control" loading="lazy" decoding="async" width="1042" height="651">
               </picture>
             </figure>
             <span class="lab-card-kicker">Physics game</span>
@@ -222,7 +225,7 @@
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/asteroid-drift-preview.webp" type="image/webp">
-                <img src="assets/asteroid-drift-preview.png" alt="Asteroid Drift canvas game start screen with ship controls and asteroid field preview" loading="lazy" decoding="async" width="1233" height="651">
+                <img src="assets/asteroid-drift-preview.png" alt="Asteroid Drift canvas game start screen with ship controls and asteroid field preview" loading="lazy" decoding="async" width="1042" height="651">
               </picture>
             </figure>
             <span class="lab-card-kicker">Arcade loop</span>
@@ -253,7 +256,7 @@
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/snake-lab-preview.webp" type="image/webp">
-                <img src="assets/snake-lab-preview.png" alt="Snake Lab canvas playfield with start menu and touch direction controls" loading="lazy" decoding="async" width="1040" height="341">
+                <img src="assets/snake-lab-preview.png" alt="Snake Lab canvas playfield with start menu and touch direction controls" loading="lazy" decoding="async" width="546" height="341">
               </picture>
             </figure>
             <span class="lab-card-kicker">Grid game</span>
@@ -284,7 +287,7 @@
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/brick-breaker-preview.webp" type="image/webp">
-                <img src="assets/brick-breaker-preview.png" alt="Brick Breaker canvas playfield with start menu, paddle, ball, and brick layout" loading="lazy" decoding="async" width="1080" height="351">
+                <img src="assets/brick-breaker-preview.png" alt="Brick Breaker canvas playfield with start menu, paddle, ball, and brick layout" loading="lazy" decoding="async" width="562" height="351">
               </picture>
             </figure>
             <span class="lab-card-kicker">Arcade game</span>
@@ -315,7 +318,7 @@
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/2048-preview.webp" type="image/webp">
-                <img src="assets/2048-preview.png" alt="2048 puzzle game start screen with numbered tiles and keyboard/touch controls" loading="lazy" decoding="async" width="561" height="561">
+                <img src="assets/2048-preview.png" alt="2048 puzzle game start screen with numbered tiles and keyboard/touch controls" loading="lazy" decoding="async" width="561" height="351">
               </picture>
             </figure>
             <span class="lab-card-kicker">Puzzle game</span>
@@ -346,7 +349,7 @@
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/minefield-sweep-preview.webp" type="image/webp">
-                <img src="assets/minefield-sweep-preview.png" alt="Minefield Sweep board preview with difficulty controls, start menu, and minefield grid" loading="lazy" decoding="async" width="1121" height="621">
+                <img src="assets/minefield-sweep-preview.png" alt="Minefield Sweep board preview with difficulty controls, start menu, and minefield grid" loading="lazy" decoding="async" width="994" height="621">
               </picture>
             </figure>
             <span class="lab-card-kicker">Logic game</span>
@@ -377,7 +380,7 @@
             <figure class="lab-card-visual">
               <picture>
                 <source srcset="assets/flappy-workbench-preview.webp" type="image/webp">
-                <img src="assets/flappy-workbench-preview.png" alt="Flappy Workbench canvas playfield with start menu, bird, pipe obstacles, and touch controls" loading="lazy" decoding="async" width="1181" height="321">
+                <img src="assets/flappy-workbench-preview.png" alt="Flappy Workbench canvas playfield with start menu, bird, pipe obstacles, and touch controls" loading="lazy" decoding="async" width="514" height="321">
               </picture>
             </figure>
             <span class="lab-card-kicker">Timing game</span>
@@ -403,6 +406,31 @@
               <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/flappy-workbench.js" rel="noopener noreferrer" target="_blank">Source</a>
             </div>
           </article>
+
+          <article class="lab-card" id="pocket-legends-experiment">
+            <span class="lab-card-kicker">Largest build</span>
+            <h3>Pocket Legends</h3>
+            <p>A single-file browser RPG: party state, turn-based combat, inventory, and save/load in one page.</p>
+            <p class="lab-takeaway"><strong>Takeaway:</strong> One file stops scaling long before the code stops working.</p>
+            <dl class="lab-detail-list">
+              <div>
+                <dt>Built</dt>
+                <dd>Turn order, damage resolution, inventory, progression, and persisted saves.</dd>
+              </div>
+              <div>
+                <dt>Controls</dt>
+                <dd>Keyboard and pointer, with a restart path.</dd>
+              </div>
+              <div>
+                <dt>Status</dt>
+                <dd>Archived experiment; the state layer wants splitting out before anything else.</dd>
+              </div>
+            </dl>
+            <div class="lab-actions">
+              <a class="button secondary" href="pocket-legends.html">Open demo</a>
+              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/pocket-legends.html" rel="noopener noreferrer" target="_blank">Source</a>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -423,7 +451,7 @@
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer building web tools, automation, and frontend UI.</span>
+        <span>Software developer in Newfoundland. Web tools, automation, and frontend UI.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
@@ -438,6 +466,6 @@
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="shared.js?v=20260713-responsive1" defer></script>
+    <script src="shared.js?v=20260725-rebuild1" defer></script>
   </body>
 </html>

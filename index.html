@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0c0f10">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-r8QA/cYWyyCx2QljMPWpv6WgzXCmS+JLJEDxLgiXvDk='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-bqq3TwEEZx/WgTuh6Ti0CH6JJF1ViaR2S/wdhNVvyJ0='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Zac Batten builds practical web tools, internal workflows, Python automation, map interfaces, and browser apps.">
     <meta name="author" content="Zac Batten">
@@ -147,9 +147,8 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260702-interact1">
-    <link rel="stylesheet" href="refined.css?v=20260716-simple4">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css?v=20260725-rebuild1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -164,9 +163,13 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
         <span class="nav-toggle-text">Menu</span>
       </button>
+      <button class="theme-toggle" type="button" data-theme-toggle
+              aria-label="Switch to light theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>
+      </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <a class="nav-work-link" href="work.html">Work</a>
-        <details class="nav-group" data-nav-group hidden>
+        <details class="nav-group" data-nav-group>
           <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="nav-menu" role="group" aria-label="Work pages">
             <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
@@ -243,18 +246,16 @@
 
         <div class="selected-work-grid">
           <article class="project-card selected-work-card" id="traverseops-feature" data-tags="automation field web">
-            <span class="card-number" aria-hidden="true">01</span>
             <figure class="card__media project-visual">
               <picture>
                 <source srcset="assets/traverseops-workspace.webp" type="image/webp">
-                <img src="assets/traverseops-workspace.png" alt="TraverseOps map workspace showing sample municipal-style assets and selected asset details" width="1440" height="1100" loading="lazy" decoding="async">
+                <img src="assets/traverseops-workspace.png" alt="TraverseOps map workspace showing sample municipal-style assets and selected asset details" width="1440" height="1100" loading="eager" fetchpriority="high" decoding="async">
               </picture>
             </figure>
             <div class="project-card-body">
-              <span class="project-index" aria-hidden="true">01 / 03</span>
               <div class="project-meta"><span><i aria-hidden="true"></i> Map UI</span><span>Internal tools</span></div>
               <h3>TraverseOps</h3>
-              <p class="project-problem">A map app for managing field assets, inspections, and work orders.</p>
+              <p class="project-problem">Asset records, inspections, and work orders were spread across separate screens. This puts them on one map, so a field crew can go from pin to inspection to work order without losing context. <!-- TODO: add the number that matters. Screens per task before/after? --></p>
               <div class="card-actions">
                 <a href="traverseops-case-study.html">Case study</a>
                 <a href="traverseops-demo.html">Demo</a>
@@ -262,18 +263,16 @@
             </div>
           </article>
           <article class="project-card selected-work-card" id="moviebot-feature" data-tags="automation stream">
-            <span class="card-number" aria-hidden="true">02</span>
             <figure class="card__media project-visual">
               <picture>
                 <source srcset="assets/movie-library-grid.webp" type="image/webp">
-                <img src="assets/movie-library-grid.jpg" alt="Movie Library poster grid showing public-domain films and copyable MovieBot vote commands" width="1584" height="1000" loading="lazy" decoding="async">
+                <img src="assets/movie-library-grid.jpg" alt="Movie Library poster grid showing public-domain films and copyable MovieBot vote commands" width="1280" height="800" loading="eager" decoding="async">
               </picture>
             </figure>
             <div class="project-card-body">
-              <span class="project-index" aria-hidden="true">02 / 03</span>
               <div class="project-meta"><span><i aria-hidden="true"></i> Automation</span><span>Python / Twitch / OBS</span></div>
               <h3>MovieBot</h3>
-              <p class="project-problem">A Python bot that turns Twitch votes into movie playback in OBS.</p>
+              <p class="project-problem">Movie nights opened with fifteen minutes of chat arguing. The bot resolves partial titles, duplicate votes, and ties, refreshes its own OAuth tokens, reconnects after dropped sockets, and tells OBS what to play. <!-- TODO: streams run? films played? votes counted? Any of these beats prose. --></p>
               <div class="card-actions">
                 <a href="moviebot-case-study.html">Case study</a>
                 <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer" target="_blank">Source</a>
@@ -281,18 +280,16 @@
             </div>
           </article>
           <article class="project-card selected-work-card" id="web-paint-feature" data-tags="web">
-            <span class="card-number" aria-hidden="true">03</span>
             <figure class="card__media project-visual">
               <picture>
                 <source srcset="assets/web-paint-workspace.webp" type="image/webp">
-                <img src="assets/web-paint-workspace.png" alt="Web Paint browser tool showing toolbar controls, brush settings, touch guidance, and drawing workspace" width="1280" height="670" loading="lazy" decoding="async">
+                <img src="assets/web-paint-workspace.png" alt="Web Paint browser tool showing toolbar controls, brush settings, touch guidance, and drawing workspace" width="1072" height="670" loading="eager" decoding="async">
               </picture>
             </figure>
             <div class="project-card-body">
-              <span class="project-index" aria-hidden="true">03 / 03</span>
               <div class="project-meta"><span><i aria-hidden="true"></i> Browser tool</span><span>Canvas app</span></div>
               <h3>Web Paint</h3>
-              <p class="project-problem">A browser drawing app with familiar tools, undo, and PNG export.</p>
+              <p class="project-problem">Built to get Canvas state right: undo/redo that survives tool switches, import validation with real size and pixel-count guardrails, and pointer capture that works the same with a mouse, a stylus, or a thumb.</p>
               <div class="card-actions">
                 <a href="web-paint-case-study.html">Case study</a>
                 <a href="paint.html">Live tool</a>
@@ -302,7 +299,7 @@
         </div>
       </section>
 
-      <section class="section field-note-section" aria-labelledby="field-note-title" hidden>
+      <section class="section field-note-section" aria-labelledby="field-note-title">
         <p class="field-note-label">A note from the workbench</p>
         <div class="field-note-copy">
           <h2 id="field-note-title">The best software feels obvious <em>after someone did the hard thinking.</em></h2>
@@ -316,7 +313,7 @@
         </div>
       </section>
 
-      <section class="section what-section" aria-labelledby="what-title" hidden>
+      <section class="section what-section" aria-labelledby="what-title">
         <div class="section-heading">
           <p class="eyebrow">Working principles</p>
           <h2 id="what-title">How I like the work to feel.</h2>
@@ -344,7 +341,7 @@
         </div>
       </section>
 
-      <section class="section browse-more" aria-labelledby="browse-more-title" hidden>
+      <section class="section browse-more" aria-labelledby="browse-more-title">
         <div class="section-heading">
           <p class="eyebrow">Keep looking</p>
           <h2 id="browse-more-title">Pick your own path.</h2>
@@ -370,7 +367,7 @@
           <div class="contact-actions">
             <a class="button primary" href="mailto:hello@zacbatten.me">Email me</a>
             <button class="button secondary copy-email-button" type="button" data-copy-email="hello@zacbatten.me">Copy email</button>
-            <a class="button secondary" href="resume.html" hidden>Resume</a>
+            <a class="button secondary" href="resume.html">Resume</a>
           </div>
         </div>
       </section>
@@ -379,7 +376,7 @@
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer in Newfoundland.</span>
+        <span>Software developer in Newfoundland. Web tools, automation, and frontend UI.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
@@ -394,6 +391,6 @@
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="shared.js?v=20260713-responsive1" defer></script>
+    <script src="shared.js?v=20260725-rebuild1" defer></script>
   </body>
 </html>

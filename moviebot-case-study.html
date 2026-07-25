@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0c0f10">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-8C3zcLF3gMVir+HyQQou6099nxv96eRfDbyq6/eC0xc=' 'sha256-hQBaMgZKOW6aTPDllo9rmBc7QXSUe8Wfnv1PfrLfmdo='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-8C3zcLF3gMVir+HyQQou6099nxv96eRfDbyq6/eC0xc='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="MovieBot case study by Zac Batten: Python automation with TwitchIO commands, Twitch bot vote handling, OAuth refresh, reconnect behavior, and OBS automation.">
     <meta name="author" content="Zac Batten">
@@ -77,9 +77,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" imagesrcset="assets/movie-night-preview.webp" type="image/webp">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260702-interact1">
-    <link rel="stylesheet" href="refined.css?v=20260716-simple3">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css?v=20260725-rebuild1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -94,9 +93,13 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
         <span class="nav-toggle-text">Menu</span>
       </button>
+      <button class="theme-toggle" type="button" data-theme-toggle
+              aria-label="Switch to light theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>
+      </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <a class="nav-work-link" href="work.html">Work</a>
-        <details class="nav-group is-active" data-nav-group hidden>
+        <details class="nav-group is-active" data-nav-group>
           <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="nav-menu" role="group" aria-label="Work pages">
             <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
@@ -120,8 +123,7 @@
         <span>MovieBot</span>
       </nav>
 
-      <section class="hero-ambient-host case-template-hero" aria-labelledby="case-title">
-        <div class="hero-ambient" aria-hidden="true"></div>
+      <section class="case-template-hero" aria-labelledby="case-title">
         <div class="case-template-hero-copy">
           <p class="eyebrow">Case study</p>
           <h1 id="case-title">MovieBot</h1>
@@ -129,7 +131,7 @@
           <div class="case-hero-actions">
             <a class="button primary" href="movie-night.html">Open Movie Night</a>
             <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer" target="_blank">View source</a>
-            <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot/actions/workflows/tests.yml" rel="noopener noreferrer" target="_blank" hidden>View CI tests</a>
+            <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot/actions/workflows/tests.yml" rel="noopener noreferrer" target="_blank">View CI tests</a>
           </div>
           <dl class="case-template-meta" aria-label="Project metadata">
             <div>
@@ -158,7 +160,7 @@
         <figure class="screenshot-gallery__item case-study-image-frame">
           <picture>
             <source srcset="assets/movie-night-preview.webp" type="image/webp">
-            <img src="assets/movie-night-preview.png" alt="Movie Night showcase page with Twitch stream, chat, MovieBot details, and public-domain movie links" width="1200" height="630" loading="eager" fetchpriority="high" decoding="async">
+            <img src="assets/movie-night-preview.png" alt="Movie Night showcase page with Twitch stream, chat, MovieBot details, and public-domain movie links" width="1008" height="630" loading="eager" fetchpriority="high" decoding="async">
           </picture>
           <figcaption>Movie Night page: stream, chat, voting instructions, and bot context.</figcaption>
         </figure>
@@ -190,7 +192,7 @@
         </div>
       </section>
 
-      <section class="case-review-summary" aria-labelledby="moviebot-review-title" hidden>
+      <section class="case-review-summary" aria-labelledby="moviebot-review-title">
         <div class="case-review-summary__intro">
           <p class="eyebrow">Quick summary</p>
           <h2 id="moviebot-review-title">MovieBot in 30 seconds.</h2>
@@ -223,7 +225,7 @@
         </div>
       </section>
 
-      <section class="demo-checklist" aria-labelledby="moviebot-demo-checklist-title" hidden>
+      <section class="demo-checklist" aria-labelledby="moviebot-demo-checklist-title">
         <div class="demo-checklist__layout">
           <div class="demo-checklist__copy">
             <p class="eyebrow">Try this demo</p>
@@ -244,11 +246,11 @@
         </div>
       </section>
 
-      <section class="media-proof" aria-labelledby="moviebot-media-proof-title" hidden>
+      <section class="media-proof" aria-labelledby="moviebot-media-proof-title">
         <figure class="media-proof__frame">
           <picture>
             <source srcset="assets/movie-library-preview.webp" type="image/webp">
-            <img src="assets/movie-library-preview.png" alt="Movie Library page showing a searchable public-domain poster grid and copyable MovieBot vote command buttons" width="1200" height="630" loading="lazy" decoding="async">
+            <img src="assets/movie-library-preview.png" alt="Movie Library page showing a searchable public-domain poster grid and copyable MovieBot vote command buttons" width="1008" height="630" loading="lazy" decoding="async">
           </picture>
           <figcaption>Movie Library: search, select a title, and copy an exact vote command.</figcaption>
         </figure>
@@ -265,7 +267,7 @@
         </div>
       </section>
 
-      <section class="case-template-links" aria-labelledby="project-links-title" hidden>
+      <section class="case-template-links" aria-labelledby="project-links-title">
         <div>
           <p class="eyebrow">Project links</p>
           <h2 id="project-links-title">Open the repo, room, and queue.</h2>
@@ -283,7 +285,7 @@
         </div>
       </section>
 
-      <section class="case-tldr" aria-labelledby="moviebot-tldr-title" hidden>
+      <section class="case-tldr" aria-labelledby="moviebot-tldr-title">
         <div>
           <p class="eyebrow">TL;DR</p>
           <h2 id="moviebot-tldr-title">MovieBot in 15 seconds.</h2>
@@ -320,7 +322,7 @@
         </dl>
       </section>
 
-      <div class="case-template-layout" id="case-study-content" hidden>
+      <div class="case-template-layout" id="case-study-content">
         <article class="case-template-main">
           <section class="case-template-section" aria-labelledby="summary-title">
             <p class="eyebrow">01 / Summary</p>
@@ -824,7 +826,7 @@ self.voter_data[user] = selected_movie_path</code></pre>
                 <a class="screenshot-gallery__link" href="assets/movie-night-preview.png" aria-label="Open full-size Movie Night showcase screenshot">
                   <picture>
                     <source srcset="assets/movie-night-preview.webp" type="image/webp">
-                    <img src="assets/movie-night-preview.png" alt="Movie Night page showing Twitch stream, chat area, MovieBot automation context, and movie library links" width="1200" height="630" loading="lazy" decoding="async">
+                    <img src="assets/movie-night-preview.png" alt="Movie Night page showing Twitch stream, chat area, MovieBot automation context, and movie library links" width="1008" height="630" loading="lazy" decoding="async">
                   </picture>
                 </a>
                 <figcaption>Movie Night page presenting the bot flow.</figcaption>
@@ -833,7 +835,7 @@ self.voter_data[user] = selected_movie_path</code></pre>
                 <a class="screenshot-gallery__link" href="assets/movie-library-preview.png" aria-label="Open full-size Movie Library screenshot">
                   <picture>
                     <source srcset="assets/movie-library-preview.webp" type="image/webp">
-                    <img src="assets/movie-library-preview.png" alt="Movie Library page with searchable public-domain poster grid and MovieBot vote-command buttons" width="1200" height="630" loading="lazy" decoding="async">
+                    <img src="assets/movie-library-preview.png" alt="Movie Library page with searchable public-domain poster grid and MovieBot vote-command buttons" width="1008" height="630" loading="lazy" decoding="async">
                   </picture>
                 </a>
                 <figcaption>Movie Library page for browsing titles before <code>!vote</code>.</figcaption>
@@ -866,7 +868,7 @@ self.voter_data[user] = selected_movie_path</code></pre>
         </aside>
       </div>
 
-      <section class="next-step-panel" aria-labelledby="moviebot-next-title" hidden>
+      <section class="next-step-panel" aria-labelledby="moviebot-next-title">
         <div>
           <p class="eyebrow">Next step</p>
           <h2 id="moviebot-next-title">Review source, then stream pages.</h2>
@@ -884,7 +886,7 @@ self.voter_data[user] = selected_movie_path</code></pre>
     <footer class="site-footer">
       <div class="footer-identity">
         <strong>Zac Batten</strong>
-        <span>Software developer building web tools, automation, and frontend UI.</span>
+        <span>Software developer in Newfoundland. Web tools, automation, and frontend UI.</span>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="mailto:hello@zacbatten.me">Email Zac</a>
@@ -899,6 +901,6 @@ self.voter_data[user] = selected_movie_path</code></pre>
       <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
     </footer>
 
-    <script src="shared.js?v=20260713-responsive1" defer></script>
+    <script src="shared.js?v=20260725-rebuild1" defer></script>
   </body>
 </html>
