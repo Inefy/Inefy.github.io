@@ -6,25 +6,19 @@
     <meta name="theme-color" content="#0c0f10">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="2048 by Zac Batten: a JavaScript puzzle with board transforms, merge rules, random tiles, undo snapshots, saved best score, swipe input, and accessibility labels.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/2048.html">
-    <meta property="og:site_name" content="Zac Batten Portfolio">
+    <meta property="og:site_name" content="Zac Batten">
     <meta property="og:title" content="2048 Puzzle Game / Zac Batten Interactive Lab">
     <meta property="og:description" content="A JavaScript puzzle with board transforms, merge rules, random tiles, undo snapshots, saved best score, swipe input, and accessibility labels.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/2048.html">
-    <meta property="og:image" content="https://zacbatten.me/assets/2048-preview.png">
-    <meta property="og:image:width" content="561">
-    <meta property="og:image:height" content="561">
-    <meta property="og:image:alt" content="2048 puzzle game start screen with numbered tiles and keyboard/touch controls.">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="2048 Puzzle Game / Zac Batten Interactive Lab">
     <meta name="twitter:description" content="JavaScript board transforms, merge rules, random tiles, undo snapshots, saved best score, swipe input, and accessibility labels.">
-    <meta name="twitter:image" content="https://zacbatten.me/assets/2048-preview.png">
-    <meta name="twitter:image:alt" content="2048 puzzle game start screen with numbered tiles and keyboard/touch controls.">
     <title>2048 Puzzle Game / Zac Batten Interactive Lab</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f5c45b'/%3E%3Crect x='12' y='12' width='18' height='18' rx='4' fill='%23070c10'/%3E%3Crect x='34' y='12' width='18' height='18' rx='4' fill='%235ad6c0'/%3E%3Crect x='12' y='34' width='18' height='18' rx='4' fill='%236de1a6'/%3E%3Crect x='34' y='34' width='18' height='18' rx='4' fill='%23ff7ac3'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="2048.css?v=20260616-anim">
@@ -234,7 +228,7 @@
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="merge-next-title">More browser experiments</h2>
-          <p>Compare tile state with the canvas games and main case studies.</p>
+          <p>Compare tile state with the other browser experiments.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>

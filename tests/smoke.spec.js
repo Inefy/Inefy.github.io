@@ -7,19 +7,12 @@ const responsivePaths = [
   "/404.html",
   "/about.html",
   "/work.html",
-  "/case-studies.html",
-  "/case-study-template.html",
-  "/changelog.html",
   "/contact.html",
   "/interactive-lab.html",
   "/movie-library.html",
   "/movie-night.html",
-  "/moviebot-case-study.html",
-  "/notes.html",
   "/resume.html",
-  "/traverseops-case-study.html",
   "/traverseops-demo.html",
-  "/web-paint-case-study.html",
   "/paint.html",
   "/2048.html",
   "/asteroid-drift.html",
@@ -63,23 +56,27 @@ test.describe("static portfolio smoke paths", () => {
     });
   });
 
-  test("homepage loads and primary nav reaches Work, Resume, and Contact", async ({ page }) => {
+  test("homepage loads and primary nav reaches Work, Lab, and Resume", async ({ page }) => {
     await gotoLocal(page, "/");
-    await expect(page.getByRole("heading", { name: /i build useful software/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /i build calm interfaces/i })).toBeVisible();
 
     await primaryNav(page).getByRole("link", { name: "Work" }).click();
     await expect(page).toHaveURL(/\/work\.html$/);
-    await expect(page.getByRole("heading", { name: /^selected work/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Work", exact: true })).toBeVisible();
+
+    await gotoLocal(page, "/");
+    await primaryNav(page).getByRole("link", { name: "Lab" }).click();
+    await expect(page).toHaveURL(/\/interactive-lab\.html$/);
+    await expect(page.getByRole("heading", { name: "Lab", exact: true })).toBeVisible();
 
     await gotoLocal(page, "/");
     await primaryNav(page).getByRole("link", { name: "Resume" }).click();
     await expect(page).toHaveURL(/\/resume\.html$/);
-    await expect(page.getByRole("heading", { name: "Zac Batten" })).toBeVisible();
-
-    await gotoLocal(page, "/");
-    await primaryNav(page).getByRole("link", { name: "Contact" }).click();
-    await expect(page).toHaveURL(/\/contact\.html$/);
-    await expect(page.getByRole("heading", { name: /let.?s talk/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Resume", exact: true })).toBeVisible();
+    await expect(primaryNav(page).getByRole("link", { name: "Email" })).toHaveAttribute(
+      "href",
+      "mailto:hello@zacbatten.me"
+    );
   });
 
   test("homepage hero keeps a readable width on wide screens", async ({ page }) => {
@@ -102,17 +99,17 @@ test.describe("static portfolio smoke paths", () => {
   test("Work page shows the flagship projects", async ({ page }) => {
     await gotoLocal(page, "/work.html");
 
-    const flagship = page.locator("#flagship-case-studies");
-    await expect(flagship).toBeVisible();
-    await expect(flagship).toContainText("TraverseOps");
-    await expect(flagship).toContainText("StreamCinema Vote Bot");
-    await expect(flagship).toContainText("Web Paint");
+    const projects = page.locator(".builds");
+    await expect(projects).toBeVisible();
+    await expect(projects).toContainText("Muni Assets");
+    await expect(projects).toContainText("MovieBot");
+    await expect(projects).toContainText("Web Paint");
   });
 
   test("Resume page exposes contact links", async ({ page }) => {
     await gotoLocal(page, "/resume.html");
 
-    await expect(page.getByRole("heading", { name: "Zac Batten" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Resume", exact: true })).toBeVisible();
     await expect(page.locator('a[href="mailto:hello@zacbatten.me"]').first()).toBeVisible();
     await expect(page.locator('a[href*="github.com/Inefy"]').first()).toBeVisible();
     await expect(page.locator('a[href*="linkedin.com/in/zac-batten"]').first()).toBeVisible();
@@ -123,9 +120,13 @@ test.describe("static portfolio smoke paths", () => {
     await gotoLocal(page, "/movie-library.html");
     await expect(page.getByRole("heading", { name: /public domain movie picks/i })).toBeVisible();
 
+    const movieGrid = page.locator("#movie-grid");
+    await expect(movieGrid).toBeVisible();
+    await expect(movieGrid.locator(".movie-card")).toHaveCount(110);
+    await expect(page.getByRole("link", { name: /show matching results/i })).toHaveCount(0);
+
     await page.getByLabel(/search movies/i).fill("nosferatu");
 
-    const movieGrid = page.locator("#movie-grid");
     await expect(movieGrid.locator(".movie-card")).toHaveCount(1);
     await expect(movieGrid).toContainText("Nosferatu");
     await expect(page.getByRole("button", { name: /copy vote command for nosferatu/i })).toBeVisible();
@@ -154,12 +155,8 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByRole("button", { name: "Redo" })).toBeVisible();
   });
 
-  test("TraverseOps case study links into the public demo and map controls work", async ({ page }) => {
-    await gotoLocal(page, "/traverseops-case-study.html");
-    await expect(page.getByRole("heading", { name: "TraverseOps", exact: true })).toBeVisible();
-
-    await page.getByRole("link", { name: /open public app/i }).first().click();
-    await expect(page).toHaveURL(/\/traverseops-demo\.html$/);
+  test("Muni Assets public demo loads and map controls work", async ({ page }) => {
+    await gotoLocal(page, "/traverseops-demo.html");
     await expect(page.getByRole("heading", { name: /field operations map and work orders/i })).toBeVisible();
 
     await page.getByRole("button", { name: "NH-022" }).click();
@@ -170,14 +167,14 @@ test.describe("static portfolio smoke paths", () => {
     await expect(openWorkFilter).toHaveAttribute("aria-pressed", "true");
   });
 
-  test("Interactive Lab archive loads the browser experiment index", async ({ page }) => {
+  test("Interactive Lab loads the browser experiment index", async ({ page }) => {
     await gotoLocal(page, "/interactive-lab.html");
 
-    await expect(page.getByRole("heading", { name: /browser mechanics experiments/i })).toBeVisible();
-    await expect(page.locator("#lab-skill-map")).toContainText("Canvas rendering");
-    await expect(page.locator("#lab-archive")).toContainText("Web Paint");
-    await expect(page.locator("#lab-archive")).toContainText("Mini Golf");
-    await expect(page.getByRole("link", { name: /live tool/i }).first()).toHaveAttribute("href", "paint.html");
+    await expect(page.getByRole("heading", { name: "Lab", exact: true })).toBeVisible();
+    await expect(page.locator(".demo-grid")).toContainText("Web Paint");
+    await expect(page.locator(".demo-grid")).toContainText("Mini Golf");
+    await expect(page.locator(".demo-grid")).toContainText("Asteroid Drift");
+    await expect(page.getByRole("link", { name: "Web Paint", exact: true })).toHaveAttribute("href", "paint.html");
   });
 
   test("DepositProof support pages expose support, privacy, and contact paths", async ({ page }) => {

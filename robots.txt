@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /case-study-template.html
 Allow: /
 
 Sitemap: https://zacbatten.me/sitemap.xml

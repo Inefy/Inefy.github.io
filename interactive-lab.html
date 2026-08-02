@@ -3,469 +3,178 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0c0f10">
+    <meta name="theme-color" content="#0a0f0d">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Browser mechanics experiments by Zac Batten showing Canvas rendering, keyboard and touch input, grid logic, game loops, LocalStorage, and status UI.">
+    <meta name="description" content="Interactive browser demos by Zac Batten exploring input, state, physics, Canvas, and feedback.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/interactive-lab.html">
-    <meta property="og:site_name" content="Zac Batten Portfolio">
-    <meta property="og:title" content="Interactive Lab / Browser Mechanics Experiments">
-    <meta property="og:description" content="Small browser mechanics experiments showing Canvas rendering, input handling, grid logic, collision loops, LocalStorage, and status UI.">
+    <meta property="og:site_name" content="Zac Batten">
+    <meta property="og:title" content="Lab — Zac Batten">
+    <meta property="og:description" content="Playable studies in input, state, physics, Canvas, and feedback.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/interactive-lab.html">
-    <meta property="og:image" content="https://zacbatten.me/assets/interactive-lab-preview.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Interactive Lab archive with browser tool and game project cards.">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Interactive Lab / Browser Mechanics Experiments">
-    <meta name="twitter:description" content="Canvas rendering, keyboard/touch input, grid logic, collision loops, LocalStorage, and status UI.">
-    <meta name="twitter:image" content="https://zacbatten.me/assets/interactive-lab-preview.png">
-    <meta name="twitter:image:alt" content="Interactive Lab archive with browser tool and game project cards.">
-    <title>Interactive Lab / Browser Mechanics Experiments</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235ad6c0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Lab — Zac Batten">
+    <meta name="twitter:description" content="Playable studies in input, state, physics, Canvas, and feedback.">
+    <title>Lab — Zac Batten</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c3f14f'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%230a0f0d'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site.css?v=20260725-rebuild1">
+    <link rel="stylesheet" href="site.css?v=20260728-portfolio7">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
-      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+      <a class="brand" href="index.html" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
-        <span class="brand-copy">
-          <span>Zac Batten</span>
-          <span class="brand-subtitle">Developer portfolio</span>
-        </span>
+        <span class="brand-copy"><span>Zac Batten</span></span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
         <span class="nav-toggle-text">Menu</span>
       </button>
-      <button class="theme-toggle" type="button" data-theme-toggle
-              aria-label="Switch to light theme">
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html">Work</a>
+        <a href="interactive-lab.html" aria-current="page">Lab</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Resume</a>
+        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="Zac Batten on GitHub" target="_blank">GitHub</a>
+        <a class="nav-cta" href="mailto:hello@zacbatten.me">Email</a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <details class="nav-group is-active" data-nav-group>
-          <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <div class="nav-menu" role="group" aria-label="Work pages">
-            <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
-            <a href="case-studies.html"><span class="nav-menu-label">Case studies</span><span class="nav-menu-desc">Deep dives on the build</span></a>
-            <a href="interactive-lab.html" aria-current="page"><span class="nav-menu-label">Interactive Lab</span><span class="nav-menu-desc">Small playable demos</span></a>
-            <a href="notes.html"><span class="nav-menu-label">Build notes</span><span class="nav-menu-desc">How things were made</span></a>
-            <a href="changelog.html"><span class="nav-menu-label">Changelog</span><span class="nav-menu-desc">Recent site updates</span></a>
-          </div>
-        </details>
-        <a href="about.html">About</a>
-        <a href="resume.html">Resume</a>
-        <a class="nav-cta" href="contact.html">Contact</a>
-        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub" target="_blank">GitHub</a>
-      </nav>
     </header>
 
     <main id="top" class="lab-page" tabindex="-1">
-      <nav class="page-breadcrumb" aria-label="Breadcrumb">
-        <a href="work.html">Back to Work</a>
-        <span aria-hidden="true">/</span>
-        <span>Interactive Lab</span>
-      </nav>
-
-      <section class="section lab-hero" aria-labelledby="lab-page-title">
-        <div class="section-heading">
-          <p class="eyebrow">Interactive lab</p>
-          <h1 id="lab-page-title">Browser mechanics experiments.</h1>
-          <p>
-            Supporting browser experiments for Canvas rendering, keyboard/touch input, grid logic, collision loops, LocalStorage, status, and no-backend UI.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="paint.html">Open Web Paint</a>
-            <a class="button secondary" href="work.html#interactive-experiments">Back to Work</a>
-            <a class="button ghost" href="#lab-archive">Browse all experiments</a>
-          </div>
-        </div>
+      <section class="section page-hero" aria-labelledby="lab-title">
+        <h1 id="lab-title" data-reveal="wipe">Lab</h1>
+        <p class="page-lede" data-reveal data-reveal-delay="1">Playable studies in input, state, physics, and feedback.</p>
       </section>
 
-      <section class="section lab-skill-section" id="lab-skill-map" aria-labelledby="lab-skill-title">
-        <div class="section-heading">
-          <p class="eyebrow">Skill map</p>
-          <h2 id="lab-skill-title">Browse by proof.</h2>
-          <p>Web Paint is the flagship browser tool; games cover focused mechanics.</p>
-        </div>
-
-        <div class="lab-skill-grid">
-          <article class="lab-skill-card">
-            <h3>Canvas rendering</h3>
-            <p>Rendering loops, previews, responsive sizing, and redraw discipline.</p>
-            <ul>
-              <li><a href="#web-paint-experiment">Web Paint</a></li>
-              <li><a href="#asteroid-drift-experiment">Asteroid Drift</a></li>
-              <li><a href="#mini-golf-experiment">Mini Golf</a></li>
-            </ul>
-          </article>
-
-          <article class="lab-skill-card">
-            <h3>Keyboard / touch input</h3>
-            <p>Shared input, touch controls, keyboard paths, and responsive controls.</p>
-            <ul>
-              <li><a href="#web-paint-experiment">Web Paint</a></li>
-              <li><a href="#snake-lab-experiment">Snake Lab</a></li>
-              <li><a href="#minefield-sweep-experiment">Minefield Sweep</a></li>
-            </ul>
-          </article>
-
-          <article class="lab-skill-card">
-            <h3>Grid logic</h3>
-            <p>Board transforms, recursive reveal, roving focus, and deterministic cells.</p>
-            <ul>
-              <li><a href="#minefield-sweep-experiment">Minefield Sweep</a></li>
-              <li><a href="#2048-experiment">2048</a></li>
-              <li><a href="#snake-lab-experiment">Snake Lab</a></li>
-            </ul>
-          </article>
-
-          <article class="lab-skill-card">
-            <h3>Collision / game loop</h3>
-            <p>Entity updates, collisions, physics timing, wave/level state, and HUD updates.</p>
-            <ul>
-              <li><a href="#asteroid-drift-experiment">Asteroid Drift</a></li>
-              <li><a href="#brick-breaker-experiment">Brick Breaker</a></li>
-              <li><a href="#flappy-workbench-experiment">Flappy Workbench</a></li>
-            </ul>
-          </article>
-
-          <article class="lab-skill-card">
-            <h3>Local state</h3>
-            <p>Undo, best scores, saved settings, status messages, and restart flows.</p>
-            <ul>
-              <li><a href="#web-paint-experiment">Web Paint</a></li>
-              <li><a href="#2048-experiment">2048</a></li>
-              <li><a href="#mini-golf-experiment">Mini Golf</a></li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="section interactive-lab lab-archive-section" id="lab-archive" aria-labelledby="lab-archive-title">
-        <div class="section-heading">
-          <p class="eyebrow">Experiment archive</p>
-          <h2 id="lab-archive-title">Small builds, one lesson each.</h2>
-          <p>Each card links to a working page.</p>
-        </div>
-
-        <div class="lab-grid archive-lab-grid">
-          <article class="lab-card lab-card-featured" id="web-paint-experiment">
-            <figure class="lab-card-visual">
+      <section class="section work-section" aria-labelledby="demos-title">
+        <h2 id="demos-title" class="section-label">Browser demos</h2>
+        <div class="demo-grid">
+          <article class="demo-card" data-reveal>
+            <a class="demo-card__shot" href="paint.html" aria-label="Web Paint">
               <picture>
                 <source srcset="assets/web-paint-workspace.webp" type="image/webp">
-                <img src="assets/web-paint-workspace.png" alt="Web Paint browser tool showing toolbar controls, brush settings, and drawing workspace" loading="lazy" decoding="async" width="1072" height="670">
+                <img src="assets/web-paint-workspace.png" alt="Web Paint screenshot" width="1072" height="670" decoding="async" loading="eager" fetchpriority="high">
               </picture>
-            </figure>
-            <span class="lab-card-kicker">Canvas tool</span>
-            <h3>Web Paint</h3>
-            <p>Canvas editor with tools, history, import/export, zoom, and mobile panels.</p>
-            <p class="lab-takeaway"><strong>Takeaway:</strong> Preview pixels stay separate from saved history.</p>
-            <dl class="lab-detail-list">
-              <div>
-                <dt>Built</dt>
-                <dd>Draw tools, previews, validation, PNG export, zoom, and local save.</dd>
-              </div>
-              <div>
-                <dt>Controls</dt>
-                <dd>Mouse, touch, swatches, sliders, toolbar buttons, and files.</dd>
-              </div>
-              <div>
-                <dt>Status</dt>
-                <dd>Prototype; needs smarter history, autosave, shortcuts, and accessibility work.</dd>
-              </div>
-            </dl>
-            <div class="lab-actions">
-              <a class="button secondary" href="paint.html">Live tool</a>
-              <a class="button ghost" href="web-paint-case-study.html">Case study</a>
-              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/paint.js" rel="noopener noreferrer" target="_blank">Source</a>
+            </a>
+            <div class="demo-card__meta">
+              <h3>Web Paint</h3>
+              <span>Canvas</span>
             </div>
           </article>
 
-          <article class="lab-card" id="mini-golf-experiment">
-            <figure class="lab-card-visual">
+          <article class="demo-card" data-reveal data-reveal-delay="1">
+            <a class="demo-card__shot" href="mini-golf.html" aria-label="Mini Golf">
               <picture>
                 <source srcset="assets/mini-golf-preview.webp" type="image/webp">
-                <img src="assets/mini-golf-preview.png" alt="Mini Golf canvas game start screen with a five-hole course preview and start-round control" loading="lazy" decoding="async" width="1042" height="651">
+                <img src="assets/mini-golf-preview.png" alt="Mini Golf screenshot" width="1042" height="651" decoding="async" loading="lazy">
               </picture>
-            </figure>
-            <span class="lab-card-kicker">Physics game</span>
-            <h3>Mini Golf</h3>
-            <p>Canvas mini golf with drag power, collisions, hazards, and scorecards.</p>
-            <p class="lab-takeaway"><strong>Takeaway:</strong> Structured hole data keeps play predictable.</p>
-            <dl class="lab-detail-list">
-              <div>
-                <dt>Built</dt>
-                <dd>Five holes, par, hazards, collisions, scorecards, and best scores.</dd>
-              </div>
-              <div>
-                <dt>Controls</dt>
-                <dd>Drag to aim and set power; release to shoot.</dd>
-              </div>
-              <div>
-                <dt>Status</dt>
-                <dd>Archived; needs physics tests, mobile QA, save controls, and alternatives.</dd>
-              </div>
-            </dl>
-            <div class="lab-actions">
-              <a class="button secondary" href="mini-golf.html">Play demo</a>
-              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/mini-golf.js" rel="noopener noreferrer" target="_blank">Source</a>
+            </a>
+            <div class="demo-card__meta">
+              <h3>Mini Golf</h3>
+              <span>Physics</span>
             </div>
           </article>
 
-          <article class="lab-card" id="asteroid-drift-experiment">
-            <figure class="lab-card-visual">
+          <article class="demo-card" data-reveal data-reveal-delay="2">
+            <a class="demo-card__shot" href="asteroid-drift.html" aria-label="Asteroid Drift">
               <picture>
                 <source srcset="assets/asteroid-drift-preview.webp" type="image/webp">
-                <img src="assets/asteroid-drift-preview.png" alt="Asteroid Drift canvas game start screen with ship controls and asteroid field preview" loading="lazy" decoding="async" width="1042" height="651">
+                <img src="assets/asteroid-drift-preview.png" alt="Asteroid Drift screenshot" width="1042" height="651" decoding="async" loading="lazy">
               </picture>
-            </figure>
-            <span class="lab-card-kicker">Arcade loop</span>
-            <h3>Asteroid Drift</h3>
-            <p>Canvas arcade loop with thrust, shooting, shields, waves, and touch controls.</p>
-            <p class="lab-takeaway"><strong>Takeaway:</strong> Keyboard and touch feed one input model.</p>
-            <dl class="lab-detail-list">
-              <div>
-                <dt>Built</dt>
-                <dd>Ship controls, asteroid waves, collisions, scoring, HUD, and reduced motion.</dd>
-              </div>
-              <div>
-                <dt>Controls</dt>
-                <dd>Keyboard or touch for thrust, turn, shield, fire, and pause.</dd>
-              </div>
-              <div>
-                <dt>Status</dt>
-                <dd>Prototype; needs tuning, profiling, device tests, and better nonvisual status.</dd>
-              </div>
-            </dl>
-            <div class="lab-actions">
-              <a class="button secondary" href="asteroid-drift.html">Play demo</a>
-              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/asteroid-drift.js" rel="noopener noreferrer" target="_blank">Source</a>
+            </a>
+            <div class="demo-card__meta">
+              <h3>Asteroid Drift</h3>
+              <span>Canvas</span>
             </div>
           </article>
 
-          <article class="lab-card" id="snake-lab-experiment">
-            <figure class="lab-card-visual">
-              <picture>
-                <source srcset="assets/snake-lab-preview.webp" type="image/webp">
-                <img src="assets/snake-lab-preview.png" alt="Snake Lab canvas playfield with start menu and touch direction controls" loading="lazy" decoding="async" width="546" height="341">
-              </picture>
-            </figure>
-            <span class="lab-card-kicker">Grid game</span>
-            <h3>Snake Lab</h3>
-            <p>Canvas Snake with buffered input, growth, collisions, pacing, and best scores.</p>
-            <p class="lab-takeaway"><strong>Takeaway:</strong> Turn guards keep controls deterministic.</p>
-            <dl class="lab-detail-list">
-              <div>
-                <dt>Built</dt>
-                <dd>Grid state, food, growth, collisions, pacing, pause, and best scores.</dd>
-              </div>
-              <div>
-                <dt>Controls</dt>
-                <dd>Arrow keys, WASD, swipe controls, pause, restart, and fullscreen.</dd>
-              </div>
-              <div>
-                <dt>Status</dt>
-                <dd>Archived; needs turn tests, save reset, and stronger screen-reader support.</dd>
-              </div>
-            </dl>
-            <div class="lab-actions">
-              <a class="button secondary" href="snake-lab.html">Play demo</a>
-              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/snake-lab.js" rel="noopener noreferrer" target="_blank">Source</a>
-            </div>
-          </article>
-
-          <article class="lab-card" id="brick-breaker-experiment">
-            <figure class="lab-card-visual">
-              <picture>
-                <source srcset="assets/brick-breaker-preview.webp" type="image/webp">
-                <img src="assets/brick-breaker-preview.png" alt="Brick Breaker canvas playfield with start menu, paddle, ball, and brick layout" loading="lazy" decoding="async" width="562" height="351">
-              </picture>
-            </figure>
-            <span class="lab-card-kicker">Arcade game</span>
-            <h3>Brick Breaker</h3>
-            <p>Canvas Brick Breaker with launch state, collisions, levels, and touch controls.</p>
-            <p class="lab-takeaway"><strong>Takeaway:</strong> One loop handles input, motion, and brick removal.</p>
-            <dl class="lab-detail-list">
-              <div>
-                <dt>Built</dt>
-                <dd>Paddle state, launch flow, collisions, lives, scores, and levels.</dd>
-              </div>
-              <div>
-                <dt>Controls</dt>
-                <dd>Keyboard, pointer, touch, restart, pause, and fullscreen.</dd>
-              </div>
-              <div>
-                <dt>Status</dt>
-                <dd>Archived; needs collision tests, performance checks, and nonvisual alternatives.</dd>
-              </div>
-            </dl>
-            <div class="lab-actions">
-              <a class="button secondary" href="brick-breaker.html">Play demo</a>
-              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/brick-breaker.js" rel="noopener noreferrer" target="_blank">Source</a>
-            </div>
-          </article>
-
-          <article class="lab-card" id="2048-experiment">
-            <figure class="lab-card-visual">
-              <picture>
-                <source srcset="assets/2048-preview.webp" type="image/webp">
-                <img src="assets/2048-preview.png" alt="2048 puzzle game start screen with numbered tiles and keyboard/touch controls" loading="lazy" decoding="async" width="561" height="351">
-              </picture>
-            </figure>
-            <span class="lab-card-kicker">Puzzle game</span>
-            <h3>2048</h3>
-            <p>2048 with merge rules, spawns, undo, best score, and row summaries.</p>
-            <p class="lab-takeaway"><strong>Takeaway:</strong> Pure board transforms simplify undo and persistence.</p>
-            <dl class="lab-detail-list">
-              <div>
-                <dt>Built</dt>
-                <dd>Board transforms, spawns, undo, local save, shortcuts, and live status.</dd>
-              </div>
-              <div>
-                <dt>Controls</dt>
-                <dd>Arrow keys, swipe, direction buttons, undo, restart, and fullscreen.</dd>
-              </div>
-              <div>
-                <dt>Status</dt>
-                <dd>Archived; needs merge tests, state migration, and screen-reader checks.</dd>
-              </div>
-            </dl>
-            <div class="lab-actions">
-              <a class="button secondary" href="2048.html">Play demo</a>
-              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/2048.js" rel="noopener noreferrer" target="_blank">Source</a>
-            </div>
-          </article>
-
-          <article class="lab-card" id="minefield-sweep-experiment">
-            <figure class="lab-card-visual">
+          <article class="demo-card" data-reveal data-reveal-delay="3">
+            <a class="demo-card__shot" href="minefield-sweep.html" aria-label="Minefield Sweep">
               <picture>
                 <source srcset="assets/minefield-sweep-preview.webp" type="image/webp">
-                <img src="assets/minefield-sweep-preview.png" alt="Minefield Sweep board preview with difficulty controls, start menu, and minefield grid" loading="lazy" decoding="async" width="994" height="621">
+                <img src="assets/minefield-sweep-preview.png" alt="Minefield Sweep screenshot" width="994" height="621" decoding="async" loading="lazy">
               </picture>
-            </figure>
-            <span class="lab-card-kicker">Logic game</span>
-            <h3>Minefield Sweep</h3>
-            <p>Mine puzzle with delayed mines, recursive reveal, flags, timers, and labels.</p>
-            <p class="lab-takeaway"><strong>Takeaway:</strong> Visual boards still need focus and live status.</p>
-            <dl class="lab-detail-list">
-              <div>
-                <dt>Built</dt>
-                <dd>Safe first reveal, flags, win/loss, timer, roving focus, and labels.</dd>
-              </div>
-              <div>
-                <dt>Controls</dt>
-                <dd>Click/tap to reveal; right-click or flag mode to mark mines.</dd>
-              </div>
-              <div>
-                <dt>Status</dt>
-                <dd>Prototype; needs reveal tests, focus checks, validation, and save controls.</dd>
-              </div>
-            </dl>
-            <div class="lab-actions">
-              <a class="button secondary" href="minefield-sweep.html">Play demo</a>
-              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/minefield-sweep.js" rel="noopener noreferrer" target="_blank">Source</a>
+            </a>
+            <div class="demo-card__meta">
+              <h3>Minefield Sweep</h3>
+              <span>Grid logic</span>
             </div>
           </article>
 
-          <article class="lab-card" id="flappy-workbench-experiment">
-            <figure class="lab-card-visual">
+          <article class="demo-card" data-reveal data-reveal-delay="4">
+            <a class="demo-card__shot" href="2048.html" aria-label="2048">
+              <picture>
+                <source srcset="assets/2048-preview.webp" type="image/webp">
+                <img src="assets/2048-preview.png" alt="2048 screenshot" width="561" height="351" decoding="async" loading="lazy">
+              </picture>
+            </a>
+            <div class="demo-card__meta">
+              <h3>2048</h3>
+              <span>Grid logic</span>
+            </div>
+          </article>
+
+          <article class="demo-card" data-reveal data-reveal-delay="4">
+            <a class="demo-card__shot" href="brick-breaker.html" aria-label="Brick Breaker">
+              <picture>
+                <source srcset="assets/brick-breaker-preview.webp" type="image/webp">
+                <img src="assets/brick-breaker-preview.png" alt="Brick Breaker screenshot" width="562" height="351" decoding="async" loading="lazy">
+              </picture>
+            </a>
+            <div class="demo-card__meta">
+              <h3>Brick Breaker</h3>
+              <span>Collision</span>
+            </div>
+          </article>
+
+          <article class="demo-card" data-reveal data-reveal-delay="4">
+            <a class="demo-card__shot" href="snake-lab.html" aria-label="Snake">
+              <picture>
+                <source srcset="assets/snake-lab-preview.webp" type="image/webp">
+                <img src="assets/snake-lab-preview.png" alt="Snake screenshot" width="546" height="341" decoding="async" loading="lazy">
+              </picture>
+            </a>
+            <div class="demo-card__meta">
+              <h3>Snake</h3>
+              <span>Input</span>
+            </div>
+          </article>
+
+          <article class="demo-card" data-reveal data-reveal-delay="4">
+            <a class="demo-card__shot" href="flappy-workbench.html" aria-label="Flappy Workbench">
               <picture>
                 <source srcset="assets/flappy-workbench-preview.webp" type="image/webp">
-                <img src="assets/flappy-workbench-preview.png" alt="Flappy Workbench canvas playfield with start menu, bird, pipe obstacles, and touch controls" loading="lazy" decoding="async" width="514" height="321">
+                <img src="assets/flappy-workbench-preview.png" alt="Flappy Workbench screenshot" width="514" height="321" decoding="async" loading="lazy">
               </picture>
-            </figure>
-            <span class="lab-card-kicker">Timing game</span>
-            <h3>Flappy Workbench</h3>
-            <p>Flappy-style loop with gravity, gaps, collisions, best score, and mobile input.</p>
-            <p class="lab-takeaway"><strong>Takeaway:</strong> Simple physics still needs pause and restart rules.</p>
-            <dl class="lab-detail-list">
-              <div>
-                <dt>Built</dt>
-                <dd>Gravity, jumps, pipes, collisions, scoring, restart flow, and status.</dd>
-              </div>
-              <div>
-                <dt>Controls</dt>
-                <dd>Click, tap, keyboard, restart, pause, and fullscreen.</dd>
-              </div>
-              <div>
-                <dt>Status</dt>
-                <dd>Archived; needs physics tests, mobile QA, and pause/resume validation.</dd>
-              </div>
-            </dl>
-            <div class="lab-actions">
-              <a class="button secondary" href="flappy-workbench.html">Play demo</a>
-              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/flappy-workbench.js" rel="noopener noreferrer" target="_blank">Source</a>
-            </div>
-          </article>
-
-          <article class="lab-card" id="pocket-legends-experiment">
-            <span class="lab-card-kicker">Largest build</span>
-            <h3>Pocket Legends</h3>
-            <p>A single-file browser RPG: party state, turn-based combat, inventory, and save/load in one page.</p>
-            <p class="lab-takeaway"><strong>Takeaway:</strong> One file stops scaling long before the code stops working.</p>
-            <dl class="lab-detail-list">
-              <div>
-                <dt>Built</dt>
-                <dd>Turn order, damage resolution, inventory, progression, and persisted saves.</dd>
-              </div>
-              <div>
-                <dt>Controls</dt>
-                <dd>Keyboard and pointer, with a restart path.</dd>
-              </div>
-              <div>
-                <dt>Status</dt>
-                <dd>Archived experiment; the state layer wants splitting out before anything else.</dd>
-              </div>
-            </dl>
-            <div class="lab-actions">
-              <a class="button secondary" href="pocket-legends.html">Open demo</a>
-              <a class="button ghost" href="https://github.com/Inefy/Inefy.github.io/blob/main/pocket-legends.html" rel="noopener noreferrer" target="_blank">Source</a>
+            </a>
+            <div class="demo-card__meta">
+              <h3>Flappy Workbench</h3>
+              <span>Timing</span>
             </div>
           </article>
         </div>
-      </section>
 
-      <section class="next-step-panel" aria-labelledby="lab-next-title">
-        <div>
-          <p class="eyebrow">Next step</p>
-          <h2 id="lab-next-title">Connect experiments to case studies.</h2>
-          <p>For broader context, jump to Work, Case Studies, or Resume.</p>
-        </div>
-        <div class="next-step-actions">
-          <a class="button primary" href="work.html">Back to selected work</a>
-          <a class="button secondary" href="case-studies.html">Case studies</a>
-          <a class="button ghost" href="resume.html">Resume</a>
-        </div>
+        <ul class="index-list lab-extra">
+          <li data-reveal><a href="pocket-legends.html"><span>Pocket Legends</span><span>RPG state</span></a></li>
+        </ul>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="footer-identity">
-        <strong>Zac Batten</strong>
-        <span>Software developer in Newfoundland. Web tools, automation, and frontend UI.</span>
-      </div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="mailto:hello@zacbatten.me">Email Zac</a>
-        <a href="work.html">Work</a>
-        <a href="about.html">About</a>
-        <a href="resume.html">Resume</a>
-        <a href="contact.html">Contact</a>
-        <a href="case-studies.html">Case studies</a>
-        <a href="interactive-lab.html" aria-current="page">Interactive Lab</a>
-        <a href="https://github.com/Inefy" rel="noopener noreferrer" target="_blank">GitHub</a>
-      </nav>
-      <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
+      <span>Zac Batten</span>
+      <span class="footer-meta">&copy; <span id="year">2026</span></span>
     </footer>
 
-    <script src="shared.js?v=20260725-rebuild1" defer></script>
+    <script src="shared.js?v=20260725-minimal1" defer></script>
   </body>
 </html>

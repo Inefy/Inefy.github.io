@@ -6,25 +6,19 @@
     <meta name="theme-color" content="#0c0f10">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Minefield Sweep by Zac Batten: a JavaScript grid puzzle with delayed mines, recursive reveal, flag mode, difficulty switching, best times, and accessible cells.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/minefield-sweep.html">
-    <meta property="og:site_name" content="Zac Batten Portfolio">
+    <meta property="og:site_name" content="Zac Batten">
     <meta property="og:title" content="Minefield Sweep JavaScript Game / Zac Batten">
     <meta property="og:description" content="A JavaScript grid puzzle with delayed mines, recursive reveal, flag mode, difficulty switching, best times, and accessible cells.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/minefield-sweep.html">
-    <meta property="og:image" content="https://zacbatten.me/assets/minefield-sweep-preview.png">
-    <meta property="og:image:width" content="1121">
-    <meta property="og:image:height" content="621">
-    <meta property="og:image:alt" content="Minefield Sweep board preview with difficulty controls, start menu, and minefield grid.">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Minefield Sweep JavaScript Game / Zac Batten">
     <meta name="twitter:description" content="JavaScript grid puzzle with delayed mines, recursive reveal, flag mode, difficulty switching, best times, and accessible cells.">
-    <meta name="twitter:image" content="https://zacbatten.me/assets/minefield-sweep-preview.png">
-    <meta name="twitter:image:alt" content="Minefield Sweep board preview with difficulty controls, start menu, and minefield grid.">
     <title>Minefield Sweep JavaScript Game / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2346d6ca'/%3E%3Cpath d='M19 17h26v30H19z' fill='%23070f13'/%3E%3Cpath d='M24 22h16v5H24zm0 10h16v5H24zm0 10h10v5H24z' fill='%23f5c45b'/%3E%3Ccircle cx='46' cy='18' r='7' fill='%23ff6f61'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="minefield-sweep.css">
@@ -224,7 +218,7 @@
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="sweep-next-title">More logic demos</h2>
-          <p>Compare recursive reveal and keyboard grid state with the other demos and main case studies.</p>
+          <p>Compare recursive reveal and keyboard grid state with the other logic demos.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>

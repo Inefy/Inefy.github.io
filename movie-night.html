@@ -3,28 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0c0f10">
+    <meta name="theme-color" content="#0a0f0d">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-6y5eauRP/StQMH+wn4He4Ys24mPA1AU8x65TWtmGbfo='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-/8I//w3tAg8cCM37W5j0Z8kyGtSiPLFBauaYHbkGYB4='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; frame-src https://player.twitch.tv https://www.twitch.tv; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Movie Night page for Zac Batten's StreamCinema system, showing public-domain movie voting, Twitch bot workflow, OBS automation notes, and Movie Library links.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/movie-night.html">
-    <meta property="og:site_name" content="Zac Batten Portfolio">
+    <meta property="og:site_name" content="Zac Batten">
     <meta property="og:title" content="Movie Night Twitch Bot Demo / Zac Batten">
     <meta property="og:description" content="Public-domain movie voting page for Zac Batten's StreamCinema system, with Twitch bot workflow, OBS automation notes, and Movie Library links.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/movie-night.html">
-    <meta property="og:image" content="https://zacbatten.me/assets/movie-night-preview.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Zurra3 Movie Night page preview with stream and movie bot details.">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Movie Night Twitch Bot Demo / Zac Batten">
     <meta name="twitter:description" content="Public-domain movie voting, Twitch bot workflow, OBS automation notes, and Movie Library links.">
-    <meta name="twitter:image" content="https://zacbatten.me/assets/movie-night-preview.png">
-    <meta name="twitter:image:alt" content="Zurra3 Movie Night page preview with stream and movie bot details.">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -61,7 +55,7 @@
             },
             "about": {
               "@type": "SoftwareApplication",
-              "@id": "https://zacbatten.me/moviebot-case-study.html#moviebot",
+              "@id": "https://zacbatten.me/work.html#moviebot",
               "name": "MovieBot / StreamCinema Vote Bot"
             },
             "description": "Public-domain movie voting showcase page for the MovieBot Twitch bot, with Twitch chat workflow, OBS automation notes, and Movie Library links."
@@ -70,54 +64,40 @@
       }
     </script>
     <title>Movie Night Twitch Bot Demo / Zac Batten</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c3f14f'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%230a0f0d'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site.css?v=20260725-rebuild1">
-    <link rel="stylesheet" href="demos.css?v=20260725-rebuild1">
+    <link rel="stylesheet" href="site.css?v=20260728-portfolio7">
+    <link rel="stylesheet" href="demos.css?v=20260725-minimal1">
   </head>
   <body class="stream-body">
     <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
-      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+      <a class="brand" href="index.html" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
-        <span class="brand-copy">
-          <span>Zac Batten</span>
-          <span class="brand-subtitle">Developer portfolio</span>
-        </span>
+        <span class="brand-copy"><span>Zac Batten</span></span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
         <span class="nav-toggle-text">Menu</span>
       </button>
-      <button class="theme-toggle" type="button" data-theme-toggle
-              aria-label="Switch to light theme">
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html">Work</a>
+        <a href="interactive-lab.html">Lab</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Resume</a>
+        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="Zac Batten on GitHub" target="_blank">GitHub</a>
+        <a class="nav-cta" href="mailto:hello@zacbatten.me">Email</a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <details class="nav-group is-active" data-nav-group>
-          <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <div class="nav-menu" role="group" aria-label="Work pages">
-            <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
-            <a href="case-studies.html"><span class="nav-menu-label">Case studies</span><span class="nav-menu-desc">Deep dives on the build</span></a>
-            <a href="interactive-lab.html"><span class="nav-menu-label">Interactive Lab</span><span class="nav-menu-desc">Small playable demos</span></a>
-            <a href="notes.html"><span class="nav-menu-label">Build notes</span><span class="nav-menu-desc">How things were made</span></a>
-            <a href="changelog.html"><span class="nav-menu-label">Changelog</span><span class="nav-menu-desc">Recent site updates</span></a>
-          </div>
-        </details>
-        <a href="about.html">About</a>
-        <a href="resume.html">Resume</a>
-        <a class="nav-cta" href="contact.html">Contact</a>
-        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub" target="_blank">GitHub</a>
-      </nav>
     </header>
 
     <main id="top" class="stream-page" tabindex="-1">
       <nav class="page-breadcrumb" aria-label="Breadcrumb">
         <a href="work.html">Back to Work</a>
-        <span aria-hidden="true">/</span>
-        <a href="moviebot-case-study.html">MovieBot case study</a>
         <span aria-hidden="true">/</span>
         <span>Movie Night</span>
       </nav>
@@ -125,7 +105,7 @@
       <section class="stream-hero" aria-labelledby="stream-title">
         <div class="stream-hero-copy">
           <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span>Live when Zurra3 is online</p>
-          <h1 id="stream-title">Zurra3 Movie Night</h1>
+          <h1 id="stream-title" data-reveal="wipe">Zurra3 Movie Night</h1>
           <p class="stream-hero-text">
             Static stream room with Twitch embeds, chat commands, catalog links, and MovieBot-to-OBS notes.
           </p>
@@ -174,12 +154,12 @@
         <div class="demo-checklist__layout">
           <div class="demo-checklist__copy">
             <p class="eyebrow">Try this demo</p>
-            <h2 id="movie-night-demo-checklist-title">Try this in 2 minutes.</h2>
+            <h2 id="movie-night-demo-checklist-title" data-reveal="wipe">Try this in 2 minutes.</h2>
             <p>Static stream room and workflow notes. MovieBot runs locally with Python, Twitch, and OBS.</p>
             <div class="demo-checklist__actions" aria-label="Movie Night demo actions">
               <a href="#watch">Open stream section</a>
               <a href="movie-library.html">Open Movie Library</a>
-              <a href="moviebot-case-study.html">Read case study</a>
+              <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer" target="_blank">View source</a>
             </div>
           </div>
           <ol class="demo-checklist__steps">
@@ -194,7 +174,7 @@
       <section class="stream-embed-section" id="watch" aria-labelledby="watch-title">
         <div class="section-heading">
           <p class="eyebrow">Stream</p>
-          <h2 id="watch-title">Room, chat, and next vote.</h2>
+          <h2 id="watch-title" data-reveal="wipe">Room, chat, and next vote.</h2>
           <p>
             Watch Zurra3, keep chat visible on wide screens, browse the catalog, copy <code>!vote</code>, and see how Python controls OBS playback.
           </p>
@@ -228,7 +208,7 @@
       <section class="movie-list-section movie-list-preview" id="movies" aria-labelledby="movies-title">
         <div class="movie-list-copy">
           <p class="eyebrow">Movie list</p>
-          <h2 id="movies-title">Public domain movie library.</h2>
+          <h2 id="movies-title" data-reveal="wipe">Public domain movie library.</h2>
           <p>
             The full catalog lives on its own page so this room stays focused. Search posters, copy vote commands, and return to chat.
           </p>
@@ -282,7 +262,7 @@
       <section class="bot-section" id="bot" aria-labelledby="bot-title">
         <div class="section-heading">
           <p class="eyebrow">Bot at work</p>
-          <h2 id="bot-title">How MovieBot runs the night.</h2>
+          <h2 id="bot-title" data-reveal="wipe">How MovieBot runs the night.</h2>
           <p>
             The Python/TwitchIO bot scans local files, listens to chat, resolves votes, refreshes/reconnects, and tells OBS which file to play next.
           </p>
@@ -292,8 +272,8 @@
           <div>
             <span class="note-kicker">What I built</span>
             <h3 id="movie-night-built-title">Stream page and bot explanation.</h3>
-            <ul class="case-template-list">
-              <li>Embedded Twitch player/chat and kept library, source, and case-study paths close.</li>
+            <ul class="detail-list">
+              <li>Embedded Twitch player/chat and kept library and source paths close.</li>
               <li>Added fallback links for blocked Twitch embeds.</li>
               <li>Moved searchable catalog to its own page.</li>
               <li>Explained folder scanning, chat commands, ties, refresh/reconnects, and OBS handoff.</li>
@@ -306,7 +286,7 @@
           <div>
             <span class="note-kicker">Production readiness</span>
             <h3 id="movie-night-readiness-title">Showcase surface, not bot runtime.</h3>
-            <ul class="case-template-list">
+            <ul class="detail-list">
               <li><strong>Solid:</strong> static room, embed fallbacks, library/source links, and bot workflow summary.</li>
               <li><strong>Demo-only:</strong> playback still depends on local Python, OBS, and the operator.</li>
               <li><strong>Needs:</strong> status panels, embed-health messaging, connection state, queue visibility, and Twitch/OBS checks.</li>
@@ -319,7 +299,7 @@
           <div>
             <span class="note-kicker">Testing and QA notes</span>
             <h3 id="movie-night-qa-title">Check embeds and bot flow.</h3>
-            <ul class="case-template-list">
+            <ul class="detail-list">
               <li><strong>Automated:</strong> Python bot has pytest; this page uses manual/browser smoke checks.</li>
               <li><strong>Manual:</strong> verify embeds, fallbacks, links, bot flow, contact paths, and focus.</li>
               <li><strong>Device:</strong> test desktop, tablet, and narrow mobile stream/chat layout.</li>
@@ -333,10 +313,10 @@
           <div>
             <span class="note-kicker">Deployment and run notes</span>
             <h3 id="movie-night-run-title">Static showcase; local bot runtime.</h3>
-            <ul class="case-template-list">
+            <ul class="detail-list">
               <li><strong>Hosted:</strong> GitHub Pages page; Python bot runs on the operator machine.</li>
               <li><strong>Config:</strong> no page secrets or env vars; Twitch channel names are constrained in script.</li>
-              <li><strong>External:</strong> lazy Twitch player/chat embeds plus Library, GitHub, and case-study links.</li>
+              <li><strong>External:</strong> lazy Twitch player/chat embeds plus Library and GitHub links.</li>
               <li><strong>Local:</strong> run <code>python -m http.server 8000</code> and open <code>/movie-night.html</code>.</li>
               <li><strong>Secrets:</strong> OAuth tokens, OBS passwords, media paths, and logs stay only in bot runtime.</li>
             </ul>
@@ -380,36 +360,22 @@
       <section class="next-step-panel" aria-labelledby="movie-night-next-title">
         <div>
           <p class="eyebrow">Next step</p>
-          <h2 id="movie-night-next-title">Browse the queue or source.</h2>
-          <p>Continue to Movie Library, the bot repo, or the case study.</p>
+          <h2 id="movie-night-next-title" data-reveal="wipe">Browse the queue or source.</h2>
+          <p>Continue to the Movie Library or inspect the bot source.</p>
         </div>
         <div class="next-step-actions">
           <a class="button primary" href="movie-library.html">Open movie library</a>
           <a class="button secondary" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer" target="_blank">Read the repo</a>
-          <a class="button ghost" href="moviebot-case-study.html">Back to case study</a>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="footer-identity">
-        <strong>Zac Batten</strong>
-        <span>Software developer in Newfoundland. Web tools, automation, and frontend UI.</span>
-      </div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="mailto:hello@zacbatten.me">Email Zac</a>
-        <a href="work.html">Work</a>
-        <a href="about.html">About</a>
-        <a href="resume.html">Resume</a>
-        <a href="contact.html">Contact</a>
-        <a href="case-studies.html">Case studies</a>
-        <a href="interactive-lab.html">Interactive Lab</a>
-        <a href="https://github.com/Inefy" rel="noopener noreferrer" target="_blank">GitHub</a>
-      </nav>
-      <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
+      <span>Zac Batten</span>
+      <span class="footer-meta">&copy; <span id="year">2026</span></span>
     </footer>
 
-    <script src="shared.js?v=20260725-rebuild1" defer></script>
+    <script src="shared.js?v=20260725-minimal1" defer></script>
     <script src="movie-night.js" defer></script>
   </body>
 </html>

@@ -6,25 +6,19 @@
     <meta name="theme-color" content="#0c0f10">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Snake Lab by Zac Batten: a Canvas/JavaScript grid game with timed movement, buffered keyboard/touch input, food placement, growth, collisions, and best scores.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/snake-lab.html">
-    <meta property="og:site_name" content="Zac Batten Portfolio">
+    <meta property="og:site_name" content="Zac Batten">
     <meta property="og:title" content="Snake Lab Canvas Game / Zac Batten">
     <meta property="og:description" content="A Canvas/JavaScript grid game with timed movement, buffered keyboard/touch input, food placement, growth, collisions, and best scores.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/snake-lab.html">
-    <meta property="og:image" content="https://zacbatten.me/assets/snake-lab-preview.png">
-    <meta property="og:image:width" content="1040">
-    <meta property="og:image:height" content="341">
-    <meta property="og:image:alt" content="Snake Lab canvas playfield with start menu and touch direction controls.">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Snake Lab Canvas Game / Zac Batten">
     <meta name="twitter:description" content="Canvas/JavaScript grid game with timed movement, buffered keyboard/touch input, food placement, growth, collisions, and best scores.">
-    <meta name="twitter:image" content="https://zacbatten.me/assets/snake-lab-preview.png">
-    <meta name="twitter:image:alt" content="Snake Lab canvas playfield with start menu and touch direction controls.">
     <title>Snake Lab Canvas Game / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236de1a6'/%3E%3Cpath d='M16 18h19a13 13 0 0 1 0 26H24v-9h11a4 4 0 0 0 0-8H16z' fill='%230c0f10'/%3E%3Ccircle cx='45' cy='23' r='3' fill='%23f5c45b'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="snake-lab.css">
@@ -213,7 +207,7 @@
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="snake-next-title">More grid-state experiments</h2>
-          <p>Compare buffered grid input with the other demos and main case studies.</p>
+          <p>Compare buffered grid input with the other browser experiments.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>

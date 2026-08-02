@@ -6,24 +6,18 @@
     <meta name="theme-color" content="#0c0f10">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Asteroid Drift by Zac Batten.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/asteroid-drift.html">
-    <meta property="og:site_name" content="Zac Batten Portfolio">
+    <meta property="og:site_name" content="Zac Batten">
     <meta property="og:title" content="Asteroid Drift Canvas Game / Zac Batten">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/asteroid-drift.html">
-    <meta property="og:image" content="https://zacbatten.me/assets/asteroid-drift-preview.png">
-    <meta property="og:image:width" content="1233">
-    <meta property="og:image:height" content="651">
-    <meta property="og:image:alt" content="Asteroid Drift game start screen with ship controls and asteroid field preview.">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Asteroid Drift Canvas Game / Zac Batten">
     <meta name="twitter:description" content="Canvas/JavaScript arcade demo with thrust, shooting, shields, spawning, collision checks, waves, scoring, and touch controls.">
-    <meta name="twitter:image" content="https://zacbatten.me/assets/asteroid-drift-preview.png">
-    <meta name="twitter:image:alt" content="Asteroid Drift canvas game start screen with ship controls and asteroid field preview.">
     <title>Asteroid Drift Canvas Game / Zac Batten</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235ad6c0'/%3E%3Cpath d='M32 9l10 34-10-6-10 6z' fill='%23070f13'/%3E%3Ccircle cx='14' cy='18' r='5' fill='%23f5c45b'/%3E%3Ccircle cx='49' cy='45' r='8' fill='%23ff8fc6'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="asteroid-drift.css">
@@ -321,7 +315,7 @@
         <div>
           <span class="next-step-kicker">Keep exploring</span>
           <h2 id="drift-next-title">More canvas game loops</h2>
-          <p>Compare real-time input and collisions with the other demos and main case studies.</p>
+          <p>Compare real-time input and collisions with the other browser demos.</p>
         </div>
         <div class="next-step-actions">
           <a href="interactive-lab.html">Open Interactive Lab</a>

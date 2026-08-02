@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0c0f10">
+    <meta name="theme-color" content="#0a0f0d">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-aq5cPhAGoORz01FkPwmScRxaxXmuTLXzNY2MBDOriPQ='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://m.media-amazon.com; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
@@ -11,20 +11,14 @@
     <meta name="description" content="Movie Library by Zac Batten: public-domain voting catalog for the MovieBot Twitch bot with search filters, copyable vote commands, lazy posters, and no-JS fallback.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/movie-library.html">
-    <meta property="og:site_name" content="Zac Batten Portfolio">
+    <meta property="og:site_name" content="Zac Batten">
     <meta property="og:title" content="Movie Library Voting Catalog / Zac Batten">
     <meta property="og:description" content="Public-domain voting catalog for the MovieBot Twitch bot, with search filters, copyable vote commands, lazy posters, and no-JavaScript fallback.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/movie-library.html">
-    <meta property="og:image" content="https://zacbatten.me/assets/movie-library-preview.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Public domain movie library preview with poster wall.">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Movie Library Voting Catalog / Zac Batten">
     <meta name="twitter:description" content="Public-domain MovieBot catalog with search filters, copyable vote commands, lazy posters, and no-JavaScript fallback.">
-    <meta name="twitter:image" content="https://zacbatten.me/assets/movie-library-preview.png">
-    <meta name="twitter:image:alt" content="Public domain movie library preview with poster wall.">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -78,278 +72,60 @@
       }
     </script>
     <title>Movie Library Voting Catalog / Zac Batten</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c3f14f'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%230a0f0d'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site.css?v=20260725-rebuild1">
-    <link rel="stylesheet" href="demos.css?v=20260725-rebuild1">
+    <link rel="stylesheet" href="site.css?v=20260728-portfolio7">
+    <link rel="stylesheet" href="demos.css?v=20260725-minimal1">
   </head>
   <body class="stream-body">
     <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
-      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+      <a class="brand" href="index.html" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
-        <span class="brand-copy">
-          <span>Zac Batten</span>
-          <span class="brand-subtitle">Developer portfolio</span>
-        </span>
+        <span class="brand-copy"><span>Zac Batten</span></span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
         <span class="nav-toggle-text">Menu</span>
       </button>
-      <button class="theme-toggle" type="button" data-theme-toggle
-              aria-label="Switch to light theme">
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html">Work</a>
+        <a href="interactive-lab.html">Lab</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Resume</a>
+        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="Zac Batten on GitHub" target="_blank">GitHub</a>
+        <a class="nav-cta" href="mailto:hello@zacbatten.me">Email</a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <details class="nav-group is-active" data-nav-group>
-          <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <div class="nav-menu" role="group" aria-label="Work pages">
-            <a href="work.html"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
-            <a href="case-studies.html"><span class="nav-menu-label">Case studies</span><span class="nav-menu-desc">Deep dives on the build</span></a>
-            <a href="interactive-lab.html"><span class="nav-menu-label">Interactive Lab</span><span class="nav-menu-desc">Small playable demos</span></a>
-            <a href="notes.html"><span class="nav-menu-label">Build notes</span><span class="nav-menu-desc">How things were made</span></a>
-            <a href="changelog.html"><span class="nav-menu-label">Changelog</span><span class="nav-menu-desc">Recent site updates</span></a>
-          </div>
-        </details>
-        <a href="about.html">About</a>
-        <a href="resume.html">Resume</a>
-        <a class="nav-cta" href="contact.html">Contact</a>
-        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub" target="_blank">GitHub</a>
-      </nav>
     </header>
 
-    <main id="top" class="stream-page movie-library-page" tabindex="-1">
-      <nav class="page-breadcrumb" aria-label="Breadcrumb">
-        <a href="work.html">Back to Work</a>
-        <span aria-hidden="true">/</span>
-        <a href="movie-night.html">Movie Night</a>
-        <span aria-hidden="true">/</span>
-        <span>Movie Library</span>
-      </nav>
+    <main id="top" class="movie-library-page" tabindex="-1">
+      <section class="movie-catalog" id="movies" aria-labelledby="movies-title">
+        <header class="movie-catalog-header">
+          <div>
+            <p class="eyebrow">Movie library</p>
+            <h1 id="movies-title">Public domain movie picks.</h1>
+            <p>Browse all 110 titles or search by title, year, runtime, or IMDb rating.</p>
+          </div>
+          <a class="button secondary" href="movie-night.html#watch">Back to Movie Night</a>
+        </header>
 
-      <section class="movie-list-section movie-library-full" id="movies" aria-labelledby="movies-title">
-        <div class="movie-list-copy">
-          <p class="eyebrow">Movie library</p>
-          <h1 id="movies-title">Public domain movie picks.</h1>
-          <p>
-            Search public-domain titles, copy the exact <code>!vote</code> command, and return to Twitch chat with fewer typos.
-          </p>
+        <div class="movie-catalog-controls">
           <label class="movie-search-label" for="movie-search">Search movies</label>
-          <input class="movie-search" id="movie-search" type="search" placeholder="Title, year, runtime, or rating" autocomplete="off" inputmode="search" enterkeyhint="search" autocapitalize="none" spellcheck="false" aria-controls="movie-grid" aria-describedby="movie-search-hint movie-library-keyboard-controls movie-library-touch-controls">
-          <p class="movie-search-hint" id="movie-search-hint">Search title, year, runtime, or rating. Press Enter or jump to results, then copy the vote command.</p>
-          <a class="button secondary movie-results-jump" href="#movie-grid">Show matching results</a>
-          <div class="movie-list-stats">
-            <div>
-              <strong data-movie-count>110</strong>
-              <span>movies</span>
-            </div>
-            <div>
-              <strong>1902-1968</strong>
-              <span>release years</span>
-            </div>
-          </div>
-          <div class="hero-actions">
-            <a class="button primary" href="movie-night.html#watch">Back to stream</a>
-            <a class="button secondary" href="moviebot-case-study.html">MovieBot case study</a>
-            <a class="button ghost" href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer" target="_blank">Bot source</a>
-          </div>
-          <dl class="project-status-list" aria-label="Movie Library project status">
-            <div>
-              <dt>Status</dt>
-              <dd>Live companion catalog</dd>
-            </div>
-            <div>
-              <dt>Last updated</dt>
-              <dd>May 2026</dd>
-            </div>
-          </dl>
-          <section class="demo-checklist demo-checklist--embedded" aria-labelledby="movie-library-demo-checklist-title">
-            <div class="demo-checklist__layout">
-              <div class="demo-checklist__copy">
-                <p class="eyebrow">Try this demo</p>
-                <h2 id="movie-library-demo-checklist-title">Try this in 2 minutes.</h2>
-                <p>Browser-facing MovieBot surface. The Python bot runs separately.</p>
-              </div>
-              <ol class="demo-checklist__steps">
-                <li><div><strong>Search.</strong><span>Try title, year, runtime, or rating.</span></div></li>
-                <li><div><strong>Jump to results.</strong><span>Open the filtered card grid.</span></div></li>
-                <li><div><strong>Copy a vote.</strong><span>Click Copy !vote and watch status confirm it.</span></div></li>
-                <li><div><strong>Follow implementation.</strong><span>Open the case study or source.</span></div></li>
-              </ol>
-              <div class="demo-checklist__actions" aria-label="Movie Library demo actions">
-                <a href="#movie-search">Start at search</a>
-                <a href="#movie-grid">Show movie grid</a>
-                <a href="moviebot-case-study.html">Read case study</a>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <section class="movie-library-system" aria-labelledby="movie-library-system-title">
-          <div class="movie-library-system-header">
-            <p class="eyebrow">MovieBot system surface</p>
-            <h2 id="movie-library-system-title">Voting catalog for MovieBot.</h2>
-            <p>
-              Title/year/runtime/rating filters, copyable <code>!vote</code> buttons, lazy posters, labels, and a no-JavaScript list.
-            </p>
-          </div>
-
-          <div class="movie-library-system-grid">
-            <article>
-              <h3>Technical problem</h3>
-              <p>Viewers need eligible titles and valid <code>!vote</code> commands fast.</p>
-            </article>
-            <article>
-              <h3>Constraints</h3>
-              <p>GitHub Pages page with external posters/IMDb links and no-JS/poster fallbacks.</p>
-            </article>
-            <article>
-              <h3>Approach</h3>
-              <p>Searchable catalog with metadata filters, generated vote commands, clipboard fallback, lazy posters, and <code>noscript</code>.</p>
-            </article>
-            <article>
-              <h3>Tradeoff</h3>
-              <p>GitHub Pages is simple, but data and fallback markup must stay in sync.</p>
-            </article>
-            <article>
-              <h3>Next improvement</h3>
-              <p>Next: generate cards/fallback from one source, add poster health checks, and improve QA.</p>
-            </article>
-          </div>
-
-          <div class="what-built-card">
-            <p class="what-built-label">What I built</p>
-            <ul class="project-bullets">
-              <li>Built search by title, year, runtime, and rating.</li>
-              <li>Implemented copyable <code>!vote</code> commands with labels and feedback.</li>
-              <li>Added lazy poster cards, labeled metadata, and normalized poster URLs.</li>
-              <li>Kept a complete ordered <code>noscript</code> movie list.</li>
-            </ul>
-            <p class="ownership-note">Uses IMDb links, hosted posters, and public-domain metadata; UI/search/copy behavior is custom client-side code.</p>
-          </div>
-
-          <div class="what-built-card">
-            <p class="what-built-label">Production readiness</p>
-            <ul class="project-bullets">
-              <li><strong>Solid:</strong> no-JS fallback, client search, copyable votes, fixed poster dimensions, lazy loading, and labels.</li>
-              <li><strong>Limit:</strong> data lives in page/JS source and posters depend on external URLs.</li>
-              <li><strong>Next:</strong> generate from one source, add poster checks, validate updates, and test clipboard behavior.</li>
-              <li><strong>Privacy:</strong> read-only catalog, no viewer tracking, verified links, sanitized future user data.</li>
-            </ul>
-          </div>
-
-          <div class="what-built-card">
-            <p class="what-built-label">Testing and QA notes</p>
-            <ul class="project-bullets">
-              <li><strong>Automated:</strong> no dedicated catalog tests yet.</li>
-              <li><strong>Manual:</strong> search, reset, copy votes, result counts, card render, and <code>noscript</code> completeness.</li>
-              <li><strong>Browser/device:</strong> mobile search, tap targets, focus, clipboard, textarea fallback, poster loading, and overflow.</li>
-              <li><strong>Edge cases:</strong> empty searches, poster failures, blocked clipboard, missing links, duplicate titles, and no-JS browsing.</li>
-              <li><strong>Limit:</strong> cards and fallback list are not generated from one source yet.</li>
-            </ul>
-          </div>
-
-          <div class="what-built-card">
-            <p class="what-built-label">Deployment and run notes</p>
-            <ul class="project-bullets">
-              <li><strong>Hosted:</strong> GitHub Pages page backed by <code>movie-library.js</code> and fallback markup.</li>
-              <li><strong>Config:</strong> no env vars; metadata lives in JavaScript and fallback HTML.</li>
-              <li><strong>External:</strong> IMDb links and poster URLs; search/copy run in browser.</li>
-              <li><strong>Local:</strong> run <code>python -m http.server 8000</code>, then open <code>/movie-library.html</code>.</li>
-              <li><strong>Security:</strong> no frontend secrets; keep read-only and sanitize any future user data.</li>
-            </ul>
-          </div>
-
-          <div class="movie-library-system-grid">
-            <article>
-              <h3>Voting path</h3>
-              <p>Each card copies <code>!vote Movie Title</code> without retyping long titles.</p>
-            </article>
-            <article>
-              <h3>Public-domain catalog</h3>
-              <p>Data includes title, year, runtime, IMDb rating/link, and poster URL.</p>
-            </article>
-            <article>
-              <h3>No-JS fallback</h3>
-              <p>If JavaScript is disabled, the ordered list remains readable.</p>
-            </article>
-            <article>
-              <h3>Poster performance</h3>
-              <p>Posters use fixed dimensions, async decoding, lazy loading, and fallback styling.</p>
-            </article>
-          </div>
-
-          <div class="movie-library-tech-notes" aria-labelledby="movie-library-tech-title">
-            <div class="movie-library-tech-heading">
-              <p class="eyebrow">Technical notes</p>
-              <h3 id="movie-library-tech-title">Frontend details.</h3>
-            </div>
-            <div class="movie-library-tech-grid">
-              <article>
-                <h4>Search and filtering</h4>
-                <p>Vanilla JS filters by title/year/runtime/rating and updates an <code>aria-live</code> result count.</p>
-              </article>
-              <article>
-                <h4>Vote command copying</h4>
-                <p>Each card stores a generated <code>!vote</code>. Copy uses Clipboard API, textarea fallback, and temporary states.</p>
-              </article>
-              <article>
-                <h4>No-JS fallback</h4>
-                <p><code>noscript</code> keeps the full ordered list when filtering, copy, and posters are unavailable.</p>
-              </article>
-              <article>
-                <h4>Image loading strategy</h4>
-                <p>Poster URLs are normalized, constrained to the expected host, lazy-loaded, dimensioned, and fallback-styled.</p>
-              </article>
-              <article>
-                <h4>Labels and alt text</h4>
-                <p>Search has a label; copy buttons, IMDb links, and poster alt text are title-specific.</p>
-              </article>
-            </div>
-          </div>
-
-          <div class="movie-library-system-actions">
-            <a class="button primary" href="moviebot-case-study.html">Read MovieBot case study</a>
-            <a class="button secondary" href="movie-night.html#watch">Return to Movie Night</a>
-            <a class="button ghost" href="https://www.imdb.com/list/ls544522770/" rel="noopener noreferrer" target="_blank">Source IMDb list</a>
-          </div>
-        </section>
-
-        <div class="movie-library-shell">
-          <section class="movie-control-guide" aria-labelledby="movie-library-controls-title">
-            <div class="movie-control-heading">
-              <p class="eyebrow">Catalog controls</p>
-              <h2 id="movie-library-controls-title">Find a title. Copy the vote.</h2>
-            </div>
-            <div class="movie-control-grid">
-              <article>
-                <h3>Keyboard shortcuts</h3>
-                <ul id="movie-library-keyboard-controls">
-                  <li><kbd>Tab / Shift+Tab</kbd><span>Move through search, Clear, links, and copy buttons.</span></li>
-                  <li><kbd>Type search</kbd><span>Filter by title, year, runtime, or rating.</span></li>
-                  <li><kbd>Enter / Space</kbd><span>Activate focused buttons or links.</span></li>
-                  <li><kbd>Clear</kbd><span>Use the Clear button to reset the catalog search.</span></li>
-                </ul>
-              </article>
-              <article>
-                <h3>Touch controls</h3>
-                <ul id="movie-library-touch-controls">
-                  <li><kbd>Tap search</kbd><span>Open the keyboard and filter the catalog.</span></li>
-                  <li><kbd>Scroll cards</kbd><span>Browse the lazy-loaded poster grid vertically.</span></li>
-                  <li><kbd>Copy !vote</kbd><span>Tap a movie card button to copy its chat command.</span></li>
-                </ul>
-              </article>
-            </div>
-          </section>
-
+          <input class="movie-search" id="movie-search" type="search" placeholder="Title, year, runtime, or rating" autocomplete="off" inputmode="search" enterkeyhint="search" autocapitalize="none" spellcheck="false" aria-controls="movie-grid" aria-describedby="movie-search-hint">
+          <p class="movie-search-hint" id="movie-search-hint">The list updates automatically as you type.</p>
           <div class="movie-library-toolbar">
             <span data-movie-results role="status" aria-live="polite" aria-atomic="true">Showing all 110 movies</span>
             <span class="sr-only" id="movieAnnouncement" role="status" aria-live="polite" aria-atomic="true">Movie Library ready.</span>
             <button class="filter-button" type="button" data-movie-clear aria-label="Clear movie search" aria-controls="movie-search movie-grid">Clear</button>
           </div>
+        </div>
+
+        <div class="movie-library-shell">
           <noscript>
             <div class="movie-fallback">
               <strong>No-JS movie list</strong>
@@ -468,43 +244,17 @@
               </ol>
             </div>
           </noscript>
-          <div class="movie-grid" id="movie-grid" tabindex="-1" aria-describedby="movie-library-keyboard-controls movie-library-touch-controls"></div>
+          <div class="movie-grid" id="movie-grid" tabindex="-1" aria-label="Movie list"></div>
           <script src="movie-library.js" defer></script>
-        </div>
-      </section>
-
-      <section class="next-step-panel" aria-labelledby="movie-library-next-title">
-        <div>
-          <p class="eyebrow">Next step</p>
-          <h2 id="movie-library-next-title">Return to the live room or the bot case study.</h2>
-          <p>Browse titles here, then return to Movie Night or the case study.</p>
-        </div>
-        <div class="next-step-actions">
-          <a class="button primary" href="movie-night.html#watch">Back to stream</a>
-          <a class="button secondary" href="moviebot-case-study.html">MovieBot case study</a>
-          <a class="button ghost" href="work.html">Selected work</a>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="footer-identity">
-        <strong>Zac Batten</strong>
-        <span>Software developer in Newfoundland. Web tools, automation, and frontend UI.</span>
-      </div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="mailto:hello@zacbatten.me">Email Zac</a>
-        <a href="work.html">Work</a>
-        <a href="about.html">About</a>
-        <a href="resume.html">Resume</a>
-        <a href="contact.html">Contact</a>
-        <a href="case-studies.html">Case studies</a>
-        <a href="interactive-lab.html">Interactive Lab</a>
-        <a href="https://github.com/Inefy" rel="noopener noreferrer" target="_blank">GitHub</a>
-      </nav>
-      <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
+      <span>Zac Batten</span>
+      <span class="footer-meta">&copy; <span id="year">2026</span></span>
     </footer>
 
-    <script src="shared.js?v=20260725-rebuild1" defer></script>
+    <script src="shared.js?v=20260725-minimal1" defer></script>
   </body>
 </html>

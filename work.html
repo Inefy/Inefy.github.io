@@ -3,240 +3,157 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0c0f10">
+    <meta name="theme-color" content="#0a0f0d">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Selected work from Zac Batten: TraverseOps, MovieBot, Web Paint, and supporting browser projects.">
+    <meta name="description" content="Selected frontend, internal-tools, Python automation, Canvas, and browser projects by Zac Batten.">
     <meta name="author" content="Zac Batten">
     <link rel="canonical" href="https://zacbatten.me/work.html">
-    <meta property="og:site_name" content="Zac Batten Portfolio">
-    <meta property="og:title" content="Selected Work / Zac Batten">
-    <meta property="og:description" content="A short index of practical web tools, automation, map UI, and browser apps by Zac Batten.">
+    <meta property="og:site_name" content="Zac Batten">
+    <meta property="og:title" content="Work — Zac Batten">
+    <meta property="og:description" content="Useful tools, workflow surfaces, automations, and browser experiments.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacbatten.me/work.html">
-    <meta property="og:image" content="https://zacbatten.me/inefy-desktop-final.jpg">
-    <meta property="og:image:width" content="1440">
-    <meta property="og:image:height" content="900">
-    <meta property="og:image:alt" content="Developer portfolio selected work preview.">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Selected Work / Zac Batten">
-    <meta name="twitter:description" content="TraverseOps, MovieBot, Web Paint, and supporting browser projects.">
-    <meta name="twitter:image" content="https://zacbatten.me/inefy-desktop-final.jpg">
-    <meta name="twitter:image:alt" content="Developer portfolio selected work preview.">
-    <title>Selected Work / Zac Batten</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372d6a0'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%23131514'/%3E%3C/svg%3E">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Work — Zac Batten">
+    <meta name="twitter:description" content="Useful tools, workflow surfaces, automations, and browser experiments.">
+    <title>Work — Zac Batten</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c3f14f'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%230a0f0d'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site.css?v=20260725-rebuild1">
+    <link rel="stylesheet" href="site.css?v=20260728-portfolio7">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
-      <a class="brand" href="index.html#top" aria-label="Zac Batten home">
+      <a class="brand" href="index.html" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
-        <span class="brand-copy">
-          <span>Zac Batten</span>
-          <span class="brand-subtitle">Developer portfolio</span>
-        </span>
+        <span class="brand-copy"><span>Zac Batten</span></span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
         <span class="nav-toggle-text">Menu</span>
       </button>
-      <button class="theme-toggle" type="button" data-theme-toggle
-              aria-label="Switch to light theme">
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="work.html" aria-current="page">Work</a>
+        <a href="interactive-lab.html">Lab</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Resume</a>
+        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="Zac Batten on GitHub" target="_blank">GitHub</a>
+        <a class="nav-cta" href="mailto:hello@zacbatten.me">Email</a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <details class="nav-group is-active" data-nav-group>
-          <summary class="nav-group-toggle"><span>Work</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <div class="nav-menu" role="group" aria-label="Work pages">
-            <a href="work.html" aria-current="page"><span class="nav-menu-label">All work</span><span class="nav-menu-desc">Full project index</span></a>
-            <a href="case-studies.html"><span class="nav-menu-label">Case studies</span><span class="nav-menu-desc">Deep dives on the build</span></a>
-            <a href="interactive-lab.html"><span class="nav-menu-label">Interactive Lab</span><span class="nav-menu-desc">Small playable demos</span></a>
-            <a href="notes.html"><span class="nav-menu-label">Build notes</span><span class="nav-menu-desc">How things were made</span></a>
-            <a href="changelog.html"><span class="nav-menu-label">Changelog</span><span class="nav-menu-desc">Recent site updates</span></a>
-          </div>
-        </details>
-        <a href="about.html">About</a>
-        <a href="resume.html">Resume</a>
-        <a class="nav-cta" href="contact.html">Contact</a>
-        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="View Zac Batten on GitHub" target="_blank">GitHub</a>
-      </nav>
     </header>
 
     <main id="top" class="work-page" tabindex="-1">
-      <section class="section work-hero" aria-labelledby="work-title">
-        <div class="section-heading">
-          <p class="eyebrow">Work</p>
-          <h1 id="work-title">Selected work.</h1>
-          <p>Three projects that show my web, automation, and browser-app work.</p>
-          <nav class="work-jump-nav" aria-label="Work page sections">
-            <a href="#flagship-case-studies">Projects</a>
-            <a href="#supporting-projects">More work</a>
-            <a href="#work-next-title">Next step</a>
-          </nav>
+      <section class="section page-hero" aria-labelledby="work-title">
+        <h1 id="work-title" data-reveal="wipe">Work</h1>
+        <p class="page-lede" data-reveal data-reveal-delay="1">A small portfolio of useful tools, workflow surfaces, and browser experiments.</p>
+        <div class="page-actions" data-reveal data-reveal-delay="2">
+          <a class="button primary" href="mailto:hello@zacbatten.me">Work together <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="interactive-lab.html">Browse experiments</a>
         </div>
       </section>
 
-      <section class="quick-answer work-quick-answer" id="start-here" aria-labelledby="start-here-title">
-        <div>
-          <p class="eyebrow">Start here</p>
-          <h2 id="start-here-title">Open the closest example.</h2>
-        </div>
-        <ul>
-          <li><strong>Internal tools:</strong> TraverseOps shows map-first workflow UI.</li>
-          <li><strong>Automation:</strong> MovieBot shows Python, Twitch chat, OBS, and tests.</li>
-          <li><strong>Browser apps:</strong> Web Paint shows Canvas state and responsive controls.</li>
-        </ul>
-      </section>
+      <section class="section work-section" aria-labelledby="projects-title">
+        <h2 id="projects-title" class="section-label">Projects</h2>
 
-      <section class="section selected-work-section" id="flagship-case-studies" aria-labelledby="flagship-title">
-        <div class="section-heading">
-          <p class="eyebrow">Projects</p>
-          <h2 id="flagship-title">Projects.</h2>
-          <p>A field tool, an automation bot, and a drawing app.</p>
-        </div>
-
-        <div class="selected-work-grid">
-          <article class="project-card selected-work-card" id="traverseops">
-            <figure class="card__media project-visual">
+        <div class="builds">
+          <article class="build" data-reveal>
+            <a class="build__shot" href="traverseops-demo.html" aria-label="Muni Assets interactive mock">
               <picture>
                 <source srcset="assets/traverseops-workspace.webp" type="image/webp">
-                <img src="assets/traverseops-workspace.png" alt="TraverseOps map workspace showing assets and selected asset details" width="1440" height="1100" loading="eager" fetchpriority="high" decoding="async">
+                <img src="assets/traverseops-workspace.png" alt="Muni Assets field workspace: map of St. John's with asset filters and a selected-item panel" width="1280" height="800" decoding="async" loading="eager" fetchpriority="high">
               </picture>
-            </figure>
-            <div class="project-card-body">
-              <div class="project-meta"><span><i aria-hidden="true"></i> Map UI</span><span>Internal tools</span></div>
-              <h3>TraverseOps</h3>
-              <p class="project-problem">Asset records, inspections, and work orders on one map instead of three screens &mdash; plus CSV import, role-aware views, and reports. <!-- TODO: add a number. --></p>
-              <div class="card-actions">
-                <a href="traverseops-case-study.html">Case study</a>
-                <a href="traverseops-demo.html">Demo</a>
+            </a>
+            <div class="build__spec">
+              <h3>Muni Assets</h3>
+              <p>Field operations workspace. Municipal assets, inspections, and work orders on one map.</p>
+              <div class="build__links">
+                <a href="traverseops-demo.html">Interactive mock</a>
               </div>
             </div>
           </article>
 
-          <article class="project-card selected-work-card" id="moviebot">
-            <figure class="card__media project-visual">
+          <article class="build" data-reveal>
+            <a class="build__shot" href="movie-library.html" aria-label="MovieBot voting catalog">
               <picture>
-                <source srcset="assets/movie-night-preview.webp" type="image/webp">
-                <img src="assets/movie-night-preview.png" alt="Movie Night page with Twitch stream, chat panel, and MovieBot notes" width="1008" height="630" loading="eager" decoding="async">
+                <source srcset="assets/movie-library-grid.webp" type="image/webp">
+                <img src="assets/movie-library-grid.jpg" alt="Movie Library poster grid with copyable vote commands" width="1280" height="800" decoding="async" loading="lazy">
               </picture>
-            </figure>
-            <div class="project-card-body">
-              <div class="project-meta"><span><i aria-hidden="true"></i> Automation</span><span>Python / Twitch / OBS</span></div>
-              <h3>MovieBot / StreamCinema Vote Bot</h3>
-              <p class="project-problem">Resolves partial titles, duplicate votes, and ties; refreshes OAuth tokens and reconnects on its own; drives OBS playback. Public repo and pytest suite. <!-- TODO: add a number. --></p>
-              <div class="card-actions">
-                <a href="moviebot-case-study.html">Case study</a>
+            </a>
+            <div class="build__spec">
+              <h3>MovieBot</h3>
+              <p>Twitch chat voting that drives OBS playback.</p>
+              <dl class="spec">
+                <div><dt>Built with</dt><dd>Python, TwitchIO, OBS WebSocket</dd></div>
+              </dl>
+              <div class="build__links">
+                <a href="movie-library.html">Catalog</a>
+                <a href="movie-night.html">Stream page</a>
                 <a href="https://github.com/Inefy/twitch-movie-bot" rel="noopener noreferrer" target="_blank">Source</a>
               </div>
             </div>
           </article>
 
-          <article class="project-card selected-work-card" id="web-paint">
-            <figure class="card__media project-visual">
+          <article class="build" data-reveal>
+            <a class="build__shot" href="paint.html" aria-label="Web Paint drawing tool">
               <picture>
                 <source srcset="assets/web-paint-workspace.webp" type="image/webp">
-                <img src="assets/web-paint-workspace.png" alt="Web Paint browser tool showing toolbar controls and drawing workspace" width="1072" height="670" loading="eager" decoding="async">
+                <img src="assets/web-paint-workspace.png" alt="Web Paint browser tool showing toolbar and drawing workspace" width="1072" height="670" decoding="async" loading="lazy">
               </picture>
-            </figure>
-            <div class="project-card-body">
-              <div class="project-meta"><span><i aria-hidden="true"></i> Canvas</span><span>Browser app</span></div>
+            </a>
+            <div class="build__spec">
               <h3>Web Paint</h3>
-              <p class="project-problem">Undo/redo that survives tool switches, validated import, PNG export, and pointer capture that behaves the same for mouse, stylus, and touch.</p>
-              <div class="card-actions">
-                <a href="web-paint-case-study.html">Case study</a>
+              <p>Browser drawing tool. Brushes, shapes, undo, PNG export.</p>
+              <dl class="spec">
+                <div><dt>Built with</dt><dd>Canvas 2D, JavaScript</dd></div>
+              </dl>
+              <div class="build__links">
                 <a href="paint.html">Live tool</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="build build--text" data-reveal>
+            <div class="build__spec">
+              <h3>Judy Batten Wellness</h3>
+              <p>Client site for a wellness practice.</p>
+              <div class="build__links">
+                <a href="https://judybatten.com/" rel="noopener noreferrer" target="_blank">Live site</a>
               </div>
             </div>
           </article>
         </div>
       </section>
 
-      <span class="section-anchor" id="proof-by-role"></span>
-      <span class="section-anchor" id="project-comparison"></span>
-      <span class="section-anchor" id="site-polish"></span>
-      <span class="section-anchor" id="interactive-experiments"></span>
-      <span class="section-anchor" id="site-build-notes"></span>
-
-      <section class="section browse-more" id="supporting-projects" aria-labelledby="supporting-title">
-        <div class="section-heading">
-          <p class="eyebrow">More work</p>
-          <h2 id="supporting-title">More projects.</h2>
-          <p>Smaller tools, experiments, and client work.</p>
-        </div>
-
-        <div class="supporting-work-grid">
-          <article>
-            <span class="work-status">Client work &middot; live</span>
-            <h3>Judy Batten Wellness</h3>
-            <p>
-              A service site for a working wellness practice &mdash; built so a
-              non-technical owner can point clients at it and not think about it
-              again. Live and in use.
-              <!-- TODO: the strongest thing you can add here is one line from
-                   the client, or one number: enquiries, bookings, anything. -->
-            </p>
-            <a class="text-link" href="https://judybatten.com/" rel="noopener noreferrer" target="_blank">Open site</a>
-          </article>
-          <article>
-            <span>Catalog UI</span>
-            <h3>Movie Library</h3>
-            <p>Searchable public-domain catalog that generates the exact <code>!vote</code> command to paste into chat.</p>
-            <a class="text-link" href="movie-library.html">Open catalog</a>
-          </article>
-          <article>
-            <span>Experiments</span>
-            <h3>Interactive Lab</h3>
-            <p>Game loops, collision, and input handling &mdash; the fastest way to learn how a browser really behaves under load.</p>
-            <a class="text-link" href="interactive-lab.html">Open lab</a>
-          </article>
-          <article>
-            <span>Build notes</span>
-            <h3>Implementation notes</h3>
-            <p>Short notes on Canvas state, maps, automation, metadata, and QA.</p>
-            <a class="text-link" href="notes.html">Read notes</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="next-step-panel" aria-labelledby="work-next-title">
-        <div>
-          <p class="eyebrow">Next step</p>
-          <h2 id="work-next-title">Get in touch.</h2>
-          <p>View the resume or send me an email.</p>
-        </div>
-        <div class="next-step-actions">
-          <a class="button primary" href="resume.html">Resume</a>
-          <a class="button secondary" href="mailto:hello@zacbatten.me">Email Zac</a>
-          <a class="button ghost" href="case-studies.html">Case studies</a>
-        </div>
+      <section class="section work-section" aria-labelledby="experiments-title">
+        <h2 id="experiments-title" class="section-label">Experiments</h2>
+        <ul class="index-list">
+          <li data-reveal><a href="paint.html"><span>Web Paint</span><span>Canvas</span></a></li>
+          <li data-reveal><a href="mini-golf.html"><span>Mini Golf</span><span>Physics</span></a></li>
+          <li data-reveal><a href="asteroid-drift.html"><span>Asteroid Drift</span><span>Canvas</span></a></li>
+          <li data-reveal><a href="minefield-sweep.html"><span>Minefield Sweep</span><span>Grid logic</span></a></li>
+          <li data-reveal><a href="2048.html"><span>2048</span><span>Grid logic</span></a></li>
+          <li data-reveal><a href="brick-breaker.html"><span>Brick Breaker</span><span>Collision</span></a></li>
+          <li data-reveal><a href="snake-lab.html"><span>Snake</span><span>Input</span></a></li>
+          <li data-reveal><a href="flappy-workbench.html"><span>Flappy Workbench</span><span>Timing</span></a></li>
+          <li data-reveal><a href="pocket-legends.html"><span>Pocket Legends</span><span>RPG state</span></a></li>
+        </ul>
+        <p class="work-more"><a class="text-link" href="interactive-lab.html">Interactive Lab</a></p>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="footer-identity">
-        <strong>Zac Batten</strong>
-        <span>Software developer in Newfoundland. Web tools, automation, and frontend UI.</span>
-      </div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="mailto:hello@zacbatten.me">Email Zac</a>
-        <a href="work.html" aria-current="page">Work</a>
-        <a href="about.html">About</a>
-        <a href="resume.html">Resume</a>
-        <a href="contact.html">Contact</a>
-        <a href="case-studies.html">Case studies</a>
-        <a href="interactive-lab.html">Interactive Lab</a>
-        <a href="https://github.com/Inefy" rel="noopener noreferrer" target="_blank">GitHub</a>
-      </nav>
-      <span class="footer-meta">&copy; <span id="year">2026</span> Zac Batten</span>
+      <span>Zac Batten</span>
+      <span class="footer-meta">&copy; <span id="year">2026</span></span>
     </footer>
 
-    <script src="shared.js?v=20260725-rebuild1" defer></script>
+    <script src="shared.js?v=20260725-minimal1" defer></script>
   </body>
 </html>
