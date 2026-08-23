@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0a0f0d">
+    <meta name="theme-color" content="#f7f5f0">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-Jl5sa01opRmiUgX6zJCVXRozGNx5zgSoSJmv8RoOhyw='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
@@ -80,30 +80,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site.css?v=20260728-portfolio7">
+    <link rel="stylesheet" href="site.css?v=20260823-coastal1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Zac Batten home">
         <span class="brand-mark" aria-hidden="true">ZB</span>
-        <span class="brand-copy">
-          <span>Zac Batten</span>
-        </span>
+        <span class="brand-copy"><span>Zac Batten</span></span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
         <span class="nav-toggle-text">Menu</span>
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
         <a href="work.html">Work</a>
-        <a href="interactive-lab.html">Lab</a>
         <a href="about.html">About</a>
-        <a href="resume.html">Resume</a>
-        <a class="nav-utility" href="https://github.com/Inefy" rel="noopener noreferrer" aria-label="Zac Batten on GitHub" target="_blank">GitHub</a>
+        <a href="#skills">Skills</a>
+        <a href="interactive-lab.html">Lab</a>
+        <a href="contact.html">Contact</a>
+        <a class="nav-utility" href="resume.html">Resume</a>
         <a class="nav-cta" href="mailto:hello@zacbatten.me">Email</a>
       </nav>
-      <button class="theme-toggle" type="button" data-theme-toggle
-              aria-label="Switch to light theme">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>
       </button>
@@ -114,144 +112,117 @@
         <canvas class="terrain" data-terrain aria-hidden="true"></canvas>
         <div class="home-hero__grid">
           <div class="hero-copy">
-            <p class="eyebrow" data-reveal><span class="live-dot" aria-hidden="true"></span> Open to frontend, internal-tools &amp; automation work</p>
-            <h1 id="hero-title" data-reveal="wipe">I build calm interfaces for complex work.</h1>
+            <p class="eyebrow location-line" data-reveal><span aria-hidden="true">⌖</span> St. John’s, Newfoundland &amp; Labrador</p>
+            <h1 id="hero-title" data-reveal="wipe">Zac Batten</h1>
+            <p class="hero-tagline" data-reveal data-reveal-delay="1">building <span>useful</span> software<span aria-hidden="true">.</span></p>
             <p class="hero-role" data-reveal data-reveal-delay="1">
-              I’m Zac, a software developer in Newfoundland. I turn messy workflows into clear, useful web tools, automations, and map-based experiences.
+              I’m a software developer from St. John’s. I build clear, reliable tools that solve real problems.
             </p>
             <div class="hero-actions" data-reveal data-reveal-delay="2">
-              <a class="button primary" href="#work">Explore selected work <span aria-hidden="true">↓</span></a>
-              <a class="button secondary" href="mailto:hello@zacbatten.me">Start a conversation <span aria-hidden="true">↗</span></a>
+              <a class="button primary" href="#work">View my work <span aria-hidden="true">→</span></a>
+              <a class="button secondary" href="mailto:hello@zacbatten.me">Say hello <span aria-hidden="true">↗</span></a>
             </div>
-            <div class="hero-links" data-reveal data-reveal-delay="3">
-              <span>Based in <strong>Newfoundland, Canada</strong></span>
-              <a href="mailto:hello@zacbatten.me">hello@zacbatten.me</a>
-            </div>
+            <p class="hero-coordinates" data-reveal data-reveal-delay="3"><span aria-hidden="true">⚓</span> 47.5615° N, 52.7126° W</p>
           </div>
 
-          <aside class="hero-signal" data-reveal data-reveal-delay="2" aria-label="Current focus">
-            <div class="signal-label">Currently building</div>
-            <div class="signal-project">
-              <span class="signal-status"><span class="live-dot" aria-hidden="true"></span> Portfolio + product experiments</span>
-              <strong>Muni Assets</strong>
-              <p>A map-first workspace for municipal assets, inspections, and work orders.</p>
-              <a class="text-link" href="traverseops-demo.html">Open the interactive mock</a>
-            </div>
-            <ul class="signal-tags" aria-label="Core focus areas">
-              <li>Frontend systems</li>
-              <li>Python automation</li>
-              <li>Browser APIs</li>
-            </ul>
+          <aside class="coastal-scene" data-reveal data-reveal-delay="2" aria-label="A stylized Newfoundland coastline and lighthouse">
+            <div class="scene-bird bird-one" aria-hidden="true">⌒</div>
+            <div class="scene-bird bird-two" aria-hidden="true">⌒</div>
+            <div class="scene-bird bird-three" aria-hidden="true">⌒</div>
+            <img class="cape-spear-art" src="assets/cape-spear-lighthouse.png" alt="Line illustration of the Cape Spear lighthouse on its rocky Atlantic headland" width="1536" height="1024" decoding="async" loading="eager" fetchpriority="high">
+            <p class="scene-note"><span aria-hidden="true">↖</span> Cape Spear<br><em>built on the rock.</em></p>
           </aside>
         </div>
-        <a class="hero-scroll" href="#work" data-reveal data-reveal-delay="3"><span aria-hidden="true">↓</span> Scroll to explore</a>
       </section>
 
       <section class="section work-section home-work-section" id="work" aria-labelledby="work-title">
-        <div class="section-heading">
-          <p class="eyebrow">Selected work</p>
-          <h2 id="work-title">Systems, tools, and interfaces built to be used.</h2>
-          <p>Recent projects across internal tools, live workflow surfaces, browser utilities, and playful interaction experiments.</p>
+        <div class="section-heading section-heading--row">
+          <div>
+            <p class="eyebrow">Featured projects <span class="wave-mark" aria-hidden="true">≋</span></p>
+            <h2 id="work-title">Work made for the real world.</h2>
+          </div>
+          <a class="text-link" href="work.html">See all work <span aria-hidden="true">→</span></a>
         </div>
 
         <div class="home-project-grid">
-          <article class="feature-card feature-card--wide" data-reveal>
-            <a class="feature-card__media" href="traverseops-demo.html" aria-label="Muni Assets interactive mock">
-              <picture>
-                <source srcset="assets/traverseops-workspace.webp" type="image/webp">
-                <img src="assets/traverseops-workspace.png" alt="Muni Assets field workspace: map of St. John's with asset filters and a selected-item panel" width="1280" height="800" decoding="async" loading="eager" fetchpriority="high">
-              </picture>
-            </a>
+          <a class="feature-card feature-card--blue" href="traverseops-demo.html" data-reveal aria-label="Explore Muni Assets">
+            <span class="project-mark" aria-hidden="true">⌖</span>
             <div class="feature-card__body">
-              <div class="feature-card__meta"><span>01 / Internal tools</span><span>Interactive prototype</span></div>
+              <div class="feature-card__meta"><span>Field operations</span><span>01</span></div>
               <h3>Muni Assets</h3>
-              <p>Field operations workspace that keeps assets, inspections, and work orders connected on one map.</p>
-              <ul class="tag-list" aria-label="Muni Assets technologies"><li>Map UI</li><li>Workflow design</li><li>Responsive frontend</li></ul>
-              <div class="feature-card__links"><a class="text-link" href="traverseops-demo.html">Explore the mock</a></div>
+              <p>A map-first workspace for municipal assets, inspections, and work orders.</p>
+              <ul class="tag-list" aria-label="Muni Assets technologies"><li>JavaScript</li><li>Map UI</li><li>Playwright</li></ul>
+              <span class="card-action">Open the workspace <span class="project-arrow" aria-hidden="true">→</span></span>
             </div>
-          </article>
+          </a>
 
-          <article class="feature-card" data-reveal data-reveal-delay="1">
-            <a class="feature-card__media" href="movie-library.html" aria-label="MovieBot voting catalog">
-              <picture>
-                <source srcset="assets/movie-library-grid.webp" type="image/webp">
-                <img src="assets/movie-library-grid.jpg" alt="Movie Library poster grid with copyable vote commands" width="1280" height="800" decoding="async" loading="lazy">
-              </picture>
-            </a>
+          <a class="feature-card feature-card--green" href="depositproof-rental-vault/" data-reveal data-reveal-delay="1" aria-label="Explore DepositProof">
+            <span class="project-mark" aria-hidden="true">⬡</span>
             <div class="feature-card__body">
-              <div class="feature-card__meta"><span>02 / Automation</span><span>Python + Twitch</span></div>
-              <h3>MovieBot</h3>
-              <p>Chat voting that selects a film and drives OBS playback for a live movie night.</p>
-              <ul class="tag-list" aria-label="MovieBot technologies"><li>Python</li><li>TwitchIO</li><li>OBS WebSocket</li></ul>
-              <div class="feature-card__links"><a class="text-link" href="movie-library.html">Browse the catalog</a></div>
+              <div class="feature-card__meta"><span>Rental records</span><span>02</span></div>
+              <h3>DepositProof</h3>
+              <p>A private rental vault for keeping move-in evidence organized and easy to find.</p>
+              <ul class="tag-list" aria-label="DepositProof technologies"><li>Product design</li><li>Privacy</li><li>Responsive UI</li></ul>
+              <span class="card-action">View the rental vault <span class="project-arrow" aria-hidden="true">→</span></span>
             </div>
-          </article>
+          </a>
 
-          <article class="feature-card" data-reveal data-reveal-delay="2">
-            <a class="feature-card__media" href="paint.html" aria-label="Web Paint browser drawing tool">
-              <picture>
-                <source srcset="assets/web-paint-workspace.webp" type="image/webp">
-                <img src="assets/web-paint-workspace.png" alt="Web Paint browser tool showing its toolbar and drawing workspace" width="1072" height="670" decoding="async" loading="lazy">
-              </picture>
-            </a>
+          <a class="feature-card feature-card--violet" href="paint.html" data-reveal data-reveal-delay="2" aria-label="Try Web Paint">
+            <span class="project-mark" aria-hidden="true">✎</span>
             <div class="feature-card__body">
-              <div class="feature-card__meta"><span>03 / Browser utility</span><span>Canvas 2D</span></div>
+              <div class="feature-card__meta"><span>Browser utility</span><span>03</span></div>
               <h3>Web Paint</h3>
-              <p>A focused browser drawing tool with real file handling, undo/redo, shapes, and export.</p>
-              <ul class="tag-list" aria-label="Web Paint technologies"><li>Canvas API</li><li>Pointer Events</li><li>Local state</li></ul>
-              <div class="feature-card__links"><a class="text-link" href="paint.html">Try the live tool</a></div>
+              <p>A focused drawing tool with file handling, undo, shapes, and export.</p>
+              <ul class="tag-list" aria-label="Web Paint technologies"><li>Canvas 2D</li><li>Pointer events</li><li>Local state</li></ul>
+              <span class="card-action">Launch the canvas <span class="project-arrow" aria-hidden="true">→</span></span>
             </div>
-          </article>
-
-          <article class="feature-card feature-card--note" data-reveal data-reveal-delay="3">
-            <div class="feature-card__body">
-              <div class="feature-card__meta"><span>04 / Client work</span><span>Live site</span></div>
-              <h3>Judy Batten Wellness</h3>
-              <p>A calm, approachable website for a local wellness practice, shaped around clarity and trust.</p>
-              <div class="feature-card__links"><a class="text-link" href="https://judybatten.com/" rel="noopener noreferrer" target="_blank">Visit the live site</a></div>
-            </div>
-          </article>
-
-          <article class="feature-card feature-card--note feature-card--lab" data-reveal data-reveal-delay="4">
-            <div class="feature-card__body">
-              <div class="feature-card__meta"><span>05 / Experiments</span><span>Playground</span></div>
-              <h3>Interactive Lab</h3>
-              <p>Small games and interface studies for exploring input, state, physics, and feedback in the browser.</p>
-              <div class="feature-card__links"><a class="text-link" href="interactive-lab.html">Enter the lab</a></div>
-            </div>
-          </article>
+          </a>
         </div>
+      </section>
 
-        <p class="work-more" data-reveal><a class="button ghost" href="work.html">See all work <span aria-hidden="true">↗</span></a></p>
+      <section class="section skills-section" id="skills" aria-labelledby="skills-title">
+        <div class="section-heading section-heading--row">
+          <div><p class="eyebrow">Tech stack <span class="wave-mark" aria-hidden="true">≋</span></p><h2 id="skills-title">Tools I reach for.</h2></div>
+          <p>Small, dependable systems over unnecessary complexity.</p>
+        </div>
+        <ul class="tool-list" aria-label="Core technologies">
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-javascript.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>JavaScript</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-python.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Python</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-html5.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>HTML</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-css.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>CSS</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-playwright.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Playwright</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img class="tech-github" src="assets/tech-github.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>GitHub</strong></li>
+        </ul>
       </section>
 
       <section class="section approach-section" aria-labelledby="approach-title">
         <div class="section-heading">
           <p class="eyebrow">How I work</p>
-          <h2 id="approach-title">Practical by default. Curious by design.</h2>
+          <h2 id="approach-title">Practical by default.<br>Curious by design.</h2>
           <p>I care about the small decisions that make a product feel understandable: the first action, the empty state, the recovery path, and the last click.</p>
         </div>
         <div class="capability-grid">
           <article class="capability-card" data-reveal><span class="capability-number">01</span><h3>Make complexity legible</h3><p>Turn dense data and multi-step work into layouts people can scan, trust, and act on.</p></article>
-          <article class="capability-card" data-reveal data-reveal-delay="1"><span class="capability-number">02</span><h3>Build the working surface</h3><p>Ship the interface, the useful interaction, and the resilient states around it—not just the happy-path screenshot.</p></article>
-          <article class="capability-card" data-reveal data-reveal-delay="2"><span class="capability-number">03</span><h3>Leave the system clearer</h3><p>Prefer small, maintainable frontends with explicit content, accessible controls, and honest constraints.</p></article>
+          <article class="capability-card" data-reveal data-reveal-delay="1"><span class="capability-number">02</span><h3>Build the working surface</h3><p>Ship the useful interaction and the resilient states around it—not just the happy path.</p></article>
+          <article class="capability-card" data-reveal data-reveal-delay="2"><span class="capability-number">03</span><h3>Leave things clearer</h3><p>Prefer maintainable frontends with explicit content, accessible controls, and honest constraints.</p></article>
         </div>
       </section>
 
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-panel">
-          <div><p class="eyebrow">Have a workflow to untangle?</p><h2 id="contact-title" data-reveal="wipe">Let’s make it easier to use.</h2></div>
-          <div class="contact-panel__side"><p>Tell me what you’re building, what feels stuck, or what needs a better interface.</p><nav class="contact-links" aria-label="Contact links"><a href="mailto:hello@zacbatten.me">hello@zacbatten.me</a><a href="https://github.com/Inefy" rel="noopener noreferrer" target="_blank">GitHub</a><a href="https://ca.linkedin.com/in/zac-batten" rel="noopener noreferrer" target="_blank">LinkedIn</a><a href="resume.html">Resume</a></nav></div>
+          <div><p class="eyebrow">Let’s connect <span aria-hidden="true">〰</span></p><h2 id="contact-title" data-reveal="wipe">Have something useful in mind?</h2></div>
+          <div class="contact-panel__side"><p>Tell me what you’re building, what feels stuck, or what needs a clearer interface.</p><nav class="contact-links" aria-label="Contact links"><a href="mailto:hello@zacbatten.me">Email</a><a href="https://github.com/Inefy" rel="noopener noreferrer" target="_blank">GitHub</a><a href="https://ca.linkedin.com/in/zac-batten" rel="noopener noreferrer" target="_blank">LinkedIn</a><a href="resume.html">Resume</a></nav></div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span>Zac Batten</span>
-      <span class="footer-meta">&copy; <span id="year">2026</span></span>
+      <span class="footer-brand"><strong>ZB</strong><small>&copy; <span id="year">2026</span> Zac Batten</small></span>
+      <span class="footer-meta">St. John’s, Newfoundland &amp; Labrador</span>
+      <span class="footer-sail" aria-hidden="true">△<br>〰〰</span>
     </footer>
 
-    <script src="shared.js?v=20260725-minimal1" defer></script>
-    <script src="terrain.js?v=20260725-minimal1" defer></script>
+    <script src="shared.js?v=20260823-coastal1" defer></script>
+    <script src="terrain.js?v=20260823-coastal1" defer></script>
   </body>
 </html>

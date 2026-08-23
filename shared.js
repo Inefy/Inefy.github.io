@@ -7,7 +7,7 @@
   const mobileNavQuery = window.matchMedia("(max-width: 900px)");
 
   const THEME_KEY = "theme";
-  const THEME_COLORS = { dark: "#0a0f0d", light: "#f1f2ec" };
+  const THEME_COLORS = { dark: "#09182a", light: "#f8f6f1" };
   const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
   function applyTheme(theme) {
@@ -26,7 +26,7 @@
   }
 
   // Apply the saved theme as soon as this (deferred) script runs.
-  applyTheme(storedTheme() === "light" ? "light" : "dark");
+  applyTheme(storedTheme() === "dark" ? "dark" : "light");
 
   if (year) {
     year.textContent = new Date().getFullYear();

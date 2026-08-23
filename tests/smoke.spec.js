@@ -56,9 +56,9 @@ test.describe("static portfolio smoke paths", () => {
     });
   });
 
-  test("homepage loads and primary nav reaches Work, Lab, and Resume", async ({ page }) => {
+  test("homepage loads and primary nav reaches Work, Lab, and Contact", async ({ page }) => {
     await gotoLocal(page, "/");
-    await expect(page.getByRole("heading", { name: /i build calm interfaces/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Zac Batten", exact: true })).toBeVisible();
 
     await primaryNav(page).getByRole("link", { name: "Work" }).click();
     await expect(page).toHaveURL(/\/work\.html$/);
@@ -70,10 +70,10 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByRole("heading", { name: "Lab", exact: true })).toBeVisible();
 
     await gotoLocal(page, "/");
-    await primaryNav(page).getByRole("link", { name: "Resume" }).click();
-    await expect(page).toHaveURL(/\/resume\.html$/);
-    await expect(page.getByRole("heading", { name: "Resume", exact: true })).toBeVisible();
-    await expect(primaryNav(page).getByRole("link", { name: "Email" })).toHaveAttribute(
+    await primaryNav(page).getByRole("link", { name: "Contact" }).click();
+    await expect(page).toHaveURL(/\/contact\.html$/);
+    await expect(page.getByRole("heading", { name: "Contact", exact: true })).toBeVisible();
+    await expect(primaryNav(page).locator('a[href="mailto:hello@zacbatten.me"]')).toHaveAttribute(
       "href",
       "mailto:hello@zacbatten.me"
     );
@@ -92,7 +92,7 @@ test.describe("static portfolio smoke paths", () => {
       };
     });
 
-    expect(heroLayout.copyWidth).toBeGreaterThan(700);
+    expect(heroLayout.copyWidth).toBeGreaterThan(550);
     expect(heroLayout.headingHeight).toBeLessThan(300);
   });
 
@@ -110,10 +110,10 @@ test.describe("static portfolio smoke paths", () => {
     await gotoLocal(page, "/resume.html");
 
     await expect(page.getByRole("heading", { name: "Resume", exact: true })).toBeVisible();
-    await expect(page.locator('a[href="mailto:hello@zacbatten.me"]').first()).toBeVisible();
-    await expect(page.locator('a[href*="github.com/Inefy"]').first()).toBeVisible();
-    await expect(page.locator('a[href*="linkedin.com/in/zac-batten"]').first()).toBeVisible();
-    await expect(page.locator('a[href="index.html"]').first()).toBeVisible();
+    await expect(page.locator('a[href="mailto:hello@zacbatten.me"]:visible').first()).toBeVisible();
+    await expect(page.locator('a[href*="github.com/Inefy"]:visible').first()).toBeVisible();
+    await expect(page.locator('a[href*="linkedin.com/in/zac-batten"]:visible').first()).toBeVisible();
+    await expect(page.locator('a[href="index.html"]:visible').first()).toBeVisible();
   });
 
   test("Movie Library loads and filters to a copyable vote command", async ({ page }) => {
