@@ -2930,38 +2930,6 @@ main:not(.home-page) {
   opacity: 0.56;
 }
 
-.scene-note {
-  position: absolute;
-  right: 2%;
-  bottom: 86px;
-  z-index: 5;
-  padding-left: 30px;
-  color: var(--soft);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  line-height: 1.6;
-  transform: rotate(-3deg);
-}
-
-.scene-note::before {
-  position: absolute;
-  top: -27px;
-  left: 0;
-  width: 36px;
-  height: 28px;
-  border-top: 1px solid var(--soft);
-  border-left: 1px solid var(--soft);
-  border-radius: 50% 0 0;
-  content: "";
-  transform: rotate(20deg);
-}
-
-.scene-note em {
-  text-decoration: underline;
-  text-decoration-color: var(--amber);
-  text-underline-offset: 5px;
-}
-
 .section,
 .contact-section {
   padding: var(--band-y) clamp(26px, 6.2vw, 92px);
@@ -3747,10 +3715,6 @@ main:not(.home-page) {
     height: 110px;
   }
 
-  .scene-note {
-    bottom: 64px;
-  }
-
   .home-project-grid,
   .demo-grid,
   .tool-list,
@@ -3818,24 +3782,6 @@ main:not(.home-page) {
   object-position: 60% 100%;
   mask-image: radial-gradient(ellipse 78% 88% at 60% 57%, #000 58%, transparent 94%);
   pointer-events: none;
-}
-
-.scene-note {
-  right: 0;
-  bottom: 42px;
-  z-index: 3;
-  padding: 10px 0 10px 14px;
-  border-left: 1px solid var(--line-2);
-  background: color-mix(in srgb, var(--paper) 76%, transparent);
-  backdrop-filter: blur(4px);
-}
-
-.scene-note::before {
-  display: none;
-}
-
-.scene-note > span {
-  color: var(--lime);
 }
 
 .home-project-grid {
@@ -3974,19 +3920,6 @@ main:not(.home-page) {
   object-fit: contain;
 }
 
-.tool-list li .tool-icon--text {
-  color: var(--lime);
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-}
-
-.tool-list li .tool-icon--symbol {
-  font-size: 1.35rem;
-  font-weight: 400;
-}
-
 .tool-list li.tool-list__more {
   justify-content: center;
   border-style: dashed;
@@ -4037,11 +3970,6 @@ main:not(.home-page) {
     width: 130%;
     height: 100%;
     object-position: 57% 100%;
-  }
-
-  .scene-note {
-    right: 4px;
-    bottom: 18px;
   }
 
   .feature-card {
@@ -4188,9 +4116,9 @@ main:not(.home-page) {
 }
 
 .boat-one {
-  --boat-scale: 0.72;
-  bottom: 28px;
-  left: 0;
+  --boat-scale: 0.68;
+  bottom: 92px;
+  left: -2%;
 }
 
 @media (max-width: 640px) {
@@ -4198,5 +4126,8 @@ main:not(.home-page) {
   .bird-two { left: 20%; }
   .bird-three { right: 4%; }
 
-  .boat-one { left: 0; }
+  .boat-one {
+    bottom: 66px;
+    left: -2%;
+  }
 }
