@@ -3254,6 +3254,7 @@ main:not(.home-page) {
 
 .capability-grid {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 14px;
 }
 
@@ -4142,4 +4143,149 @@ main:not(.home-page) {
   .tool-list {
     grid-template-columns: 1fr;
   }
+}
+
+/* Cape Spear sky and water details --------------------------------------- */
+
+.coastal-scene::before {
+  display: none;
+}
+
+.scene-bird {
+  z-index: 2;
+  width: 46px;
+  height: 24px;
+  color: color-mix(in srgb, var(--lime) 82%, var(--ink));
+  font-size: 0;
+  line-height: 0;
+  opacity: 0.86;
+}
+
+.scene-bird::before,
+.scene-bird::after {
+  position: absolute;
+  top: 7px;
+  width: 25px;
+  height: 15px;
+  border-top: 3px solid currentColor;
+  content: "";
+}
+
+.scene-bird::before {
+  right: 50%;
+  border-radius: 72% 26% 0 0;
+  transform: rotate(14deg);
+  transform-origin: 100% 0;
+}
+
+.scene-bird::after {
+  left: 50%;
+  border-radius: 26% 72% 0 0;
+  transform: rotate(-14deg);
+  transform-origin: 0 0;
+}
+
+.bird-one {
+  top: 14%;
+  left: 5%;
+  transform: rotate(-4deg) scale(1.12);
+}
+
+.bird-two {
+  top: 29%;
+  left: 24%;
+  transform: rotate(7deg) scale(0.72);
+}
+
+.bird-three {
+  top: 10%;
+  right: 9%;
+  transform: rotate(4deg) scale(0.62);
+}
+
+.scene-boat {
+  --boat-scale: 1;
+  position: absolute;
+  z-index: 2;
+  width: 48px;
+  height: 43px;
+  color: color-mix(in srgb, var(--lime) 78%, var(--ink));
+  opacity: 0.74;
+  transform: scale(var(--boat-scale));
+  transform-origin: 50% 100%;
+}
+
+.scene-boat::before {
+  position: absolute;
+  right: 2px;
+  bottom: 5px;
+  left: 2px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  border-radius: 0 0 55% 55%;
+  content: "";
+  transform: skewX(-11deg);
+}
+
+.scene-boat::after {
+  position: absolute;
+  bottom: 13px;
+  left: 23px;
+  width: 1.5px;
+  height: 28px;
+  background: currentColor;
+  content: "";
+}
+
+.scene-boat i {
+  position: absolute;
+  bottom: 15px;
+  left: 24px;
+  width: 19px;
+  height: 23px;
+  border: 1.5px solid currentColor;
+  background: color-mix(in srgb, var(--paper) 80%, transparent);
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+.scene-boat i::after {
+  position: absolute;
+  top: 29px;
+  left: -30px;
+  width: 62px;
+  height: 7px;
+  border-top: 1.5px solid currentColor;
+  border-radius: 50%;
+  content: "";
+  opacity: 0.58;
+}
+
+.boat-one {
+  --boat-scale: 0.72;
+  bottom: 46px;
+  left: 3%;
+}
+
+.boat-two {
+  --boat-scale: 0.94;
+  bottom: 23px;
+  left: 25%;
+}
+
+.boat-three {
+  --boat-scale: 0.6;
+  right: 18%;
+  bottom: 34px;
+}
+
+@media (max-width: 640px) {
+  .bird-one { left: 1%; }
+  .bird-two { left: 20%; }
+  .bird-three { right: 4%; }
+
+  .boat-one { left: 1%; }
+  .boat-two { left: 23%; }
+  .boat-three { right: 24%; }
 }
