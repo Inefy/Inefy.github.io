@@ -1802,8 +1802,7 @@ textarea {
 }
 
 .signal-label,
-.feature-card__meta,
-.capability-number {
+.feature-card__meta {
   font-family: var(--font-mono);
   font-size: var(--fs-label);
   font-weight: 700;
@@ -1884,26 +1883,22 @@ textarea {
   font-size: 1.2rem;
 }
 
-.home-work-section,
-.approach-section {
+.home-work-section {
   padding-block: clamp(78px, 8vw, 126px);
 }
 
-.home-work-section .section-heading,
-.approach-section .section-heading {
+.home-work-section .section-heading {
   max-width: 720px;
   margin-bottom: clamp(38px, 5vw, 68px);
 }
 
-.home-work-section .section-heading h2,
-.approach-section .section-heading h2 {
+.home-work-section .section-heading h2 {
   max-width: 17ch;
   font-size: clamp(2.2rem, 1.55rem + 2.7vw, 4.4rem);
   line-height: 1;
 }
 
-.home-work-section .section-heading > p:last-child,
-.approach-section .section-heading > p:last-child {
+.home-work-section .section-heading > p:last-child {
   max-width: 54ch;
   margin-top: 4px;
 }
@@ -2056,35 +2051,6 @@ textarea {
 
 .work-more .button {
   min-height: 44px;
-}
-
-.capability-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.capability-card {
-  display: grid;
-  gap: 18px;
-  min-height: 220px;
-  padding: clamp(22px, 2.5vw, 32px);
-  border-top: 2px solid var(--lime);
-  background: var(--panel);
-}
-
-.capability-number {
-  color: var(--lime);
-}
-
-.capability-card h3 {
-  font-size: clamp(1.25rem, 1.1rem + 0.35vw, 1.6rem);
-}
-
-.capability-card p {
-  align-self: end;
-  color: var(--muted);
-  font-size: var(--fs-small);
 }
 
 .contact-section {
@@ -2308,14 +2274,6 @@ textarea {
 
   .feature-card__meta {
     flex-wrap: wrap;
-  }
-
-  .capability-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .capability-card {
-    min-height: 0;
   }
 
   .demo-card__shot::after {
@@ -2560,17 +2518,22 @@ main:not(.home-page),
 .brand-mark {
   display: grid;
   place-items: center;
-  width: 56px;
-  aspect-ratio: 1;
+  min-width: 64px;
+  height: 44px;
+  padding: 0 15px;
   border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
+  border-radius: 999px;
   background: var(--ink);
   color: var(--paper);
   font-family: var(--font-body);
-  font-size: 1.12rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   box-shadow: 0 4px 12px rgba(11, 35, 66, 0.14);
+}
+
+.brand:hover .brand-mark {
+  transform: translateY(-1px);
 }
 
 .brand-copy {
@@ -2808,6 +2771,15 @@ main:not(.home-page) {
 .button.secondary,
 .button.ghost {
   background: color-mix(in srgb, var(--panel) 88%, transparent);
+}
+
+.button.secondary:hover,
+.button.secondary:focus-visible,
+.button.ghost:hover,
+.button.ghost:focus-visible {
+  border-color: var(--lime);
+  background: var(--lime);
+  color: var(--lime-ink);
 }
 
 .hero-coordinates {
@@ -3204,7 +3176,7 @@ main:not(.home-page) {
 
 .tool-list {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin: 0;
   padding: 0;
@@ -3236,56 +3208,6 @@ main:not(.home-page) {
   color: var(--lime);
   font-family: var(--font-mono);
   font-size: 0.72rem;
-}
-
-.approach-section {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.6fr);
-  align-items: start;
-  gap: clamp(40px, 7vw, 100px);
-  background: color-mix(in srgb, var(--paper) 94%, #dce9f8);
-}
-
-.approach-section .section-heading {
-  position: sticky;
-  top: 118px;
-  margin-bottom: 0;
-}
-
-.capability-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 14px;
-}
-
-.capability-card {
-  display: grid;
-  grid-template-columns: 52px minmax(0, 0.8fr) minmax(0, 1.25fr);
-  align-items: baseline;
-  gap: 20px;
-  min-height: 0;
-  padding: 24px 0;
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  border-radius: 0;
-  background: transparent;
-}
-
-.capability-number {
-  color: var(--lime);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-}
-
-.capability-card h3 {
-  color: var(--ink);
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.capability-card p {
-  color: var(--soft);
-  font-size: 0.88rem;
 }
 
 .contact-panel {
@@ -3750,16 +3672,11 @@ main:not(.home-page) {
     min-height: 330px;
   }
 
-  .approach-section,
   .contact-panel,
   .page-hero,
   .about-layout,
   .build {
     grid-template-columns: 1fr;
-  }
-
-  .approach-section .section-heading {
-    position: static;
   }
 
   .page-hero .page-actions {
@@ -3771,9 +3688,6 @@ main:not(.home-page) {
     aspect-ratio: 16 / 9;
   }
 
-  .capability-card {
-    grid-template-columns: 40px minmax(0, 0.8fr) minmax(0, 1.2fr);
-  }
 }
 
 @media (max-width: 640px) {
@@ -3857,15 +3771,6 @@ main:not(.home-page) {
     text-align: left;
   }
 
-  .capability-card {
-    grid-template-columns: 34px 1fr;
-    gap: 12px;
-  }
-
-  .capability-card p {
-    grid-column: 2;
-  }
-
   .contact-panel {
     padding: 26px 20px;
   }
@@ -3911,15 +3816,8 @@ main:not(.home-page) {
   height: 108%;
   object-fit: contain;
   object-position: 60% 100%;
-  mix-blend-mode: multiply;
   mask-image: radial-gradient(ellipse 78% 88% at 60% 57%, #000 58%, transparent 94%);
   pointer-events: none;
-}
-
-:root[data-theme="dark"] .cape-spear-art {
-  filter: invert(1) grayscale(1) contrast(1.15);
-  mix-blend-mode: screen;
-  opacity: 0.72;
 }
 
 .scene-note {
@@ -4074,6 +3972,33 @@ main:not(.home-page) {
   width: 26px;
   height: 26px;
   object-fit: contain;
+}
+
+.tool-list li .tool-icon--text {
+  color: var(--lime);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.tool-list li .tool-icon--symbol {
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+
+.tool-list li.tool-list__more {
+  justify-content: center;
+  border-style: dashed;
+  background: transparent;
+  color: var(--muted);
+  text-align: center;
+}
+
+.tool-list li.tool-list__more:hover {
+  border-color: var(--line-2);
+  box-shadow: none;
+  transform: none;
 }
 
 .tool-list strong {
@@ -4264,20 +4189,8 @@ main:not(.home-page) {
 
 .boat-one {
   --boat-scale: 0.72;
-  bottom: 46px;
-  left: 3%;
-}
-
-.boat-two {
-  --boat-scale: 0.94;
-  bottom: 23px;
-  left: 25%;
-}
-
-.boat-three {
-  --boat-scale: 0.6;
-  right: 18%;
-  bottom: 34px;
+  bottom: 28px;
+  left: 0;
 }
 
 @media (max-width: 640px) {
@@ -4285,7 +4198,5 @@ main:not(.home-page) {
   .bird-two { left: 20%; }
   .bird-three { right: 4%; }
 
-  .boat-one { left: 1%; }
-  .boat-two { left: 23%; }
-  .boat-three { right: 24%; }
+  .boat-one { left: 0; }
 }

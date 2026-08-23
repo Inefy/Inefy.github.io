@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f7f5f0">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="icon" type="image/png" href="favicon-zac.png">
+    <link rel="apple-touch-icon" href="favicon-zac.png">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-Jl5sa01opRmiUgX6zJCVXRozGNx5zgSoSJmv8RoOhyw='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Zac Batten is a software developer building clear interfaces, internal tools, Python automation, and map-based workflows.">
@@ -76,17 +77,16 @@
       }
     </script>
     <title>Zac Batten — Software Developer</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c3f14f'/%3E%3Cpath d='M17 18h30v8H27v8h17v8H27v4H17z' fill='%230a0f0d'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site.css?v=20260823-coastal1">
+    <link rel="stylesheet" href="site.css?v=20260823-coastal2">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Zac Batten home">
-        <span class="brand-mark" aria-hidden="true">ZB</span>
+        <span class="brand-mark" aria-hidden="true">zac</span>
         <span class="brand-copy"><span>Zac Batten</span></span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
@@ -98,7 +98,7 @@
         <a href="#skills">Skills</a>
         <a href="interactive-lab.html">Lab</a>
         <a href="contact.html">Contact</a>
-        <a class="nav-utility" href="resume.html">Resume</a>
+        <a class="nav-utility" href="assets/Zachary_Batten_Resume.pdf">Resume</a>
         <a class="nav-cta" href="mailto:hello@zacbatten.me">Email</a>
       </nav>
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme">
@@ -120,7 +120,7 @@
             </p>
             <div class="hero-actions" data-reveal data-reveal-delay="2">
               <a class="button primary" href="#work">View my work <span aria-hidden="true">→</span></a>
-              <a class="button secondary" href="mailto:hello@zacbatten.me">Say hello <span aria-hidden="true">↗</span></a>
+              <a class="button secondary" href="#contact">Say hello <span aria-hidden="true">↓</span></a>
             </div>
             <p class="hero-coordinates" data-reveal data-reveal-delay="3"><span aria-hidden="true">⚓</span> 47.5615° N, 52.7126° W</p>
           </div>
@@ -129,10 +129,8 @@
             <span class="scene-bird bird-one" aria-hidden="true"></span>
             <span class="scene-bird bird-two" aria-hidden="true"></span>
             <span class="scene-bird bird-three" aria-hidden="true"></span>
-            <img class="cape-spear-art" src="assets/cape-spear-lighthouse.png" alt="Line illustration of the Cape Spear lighthouse on its rocky Atlantic headland" width="1536" height="1024" decoding="async" loading="eager" fetchpriority="high">
+            <img class="cape-spear-art" src="assets/cape-spear-lighthouse-transparent.png" alt="Line illustration of the Cape Spear lighthouse on its rocky Atlantic headland" width="1536" height="1024" decoding="async" loading="eager" fetchpriority="high">
             <span class="scene-boat boat-one" aria-hidden="true"><i></i></span>
-            <span class="scene-boat boat-two" aria-hidden="true"><i></i></span>
-            <span class="scene-boat boat-three" aria-hidden="true"><i></i></span>
             <p class="scene-note"><span aria-hidden="true">↖</span> Cape Spear<br><em>built on the rock.</em></p>
           </aside>
         </div>
@@ -184,43 +182,32 @@
       </section>
 
       <section class="section skills-section" id="skills" aria-labelledby="skills-title">
-        <div class="section-heading section-heading--row">
-          <div><p class="eyebrow">Tech stack <span class="wave-mark" aria-hidden="true">≋</span></p><h2 id="skills-title">Tools I reach for.</h2></div>
-          <p>Small, dependable systems over unnecessary complexity.</p>
-        </div>
-        <ul class="tool-list" aria-label="Core technologies">
-          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-javascript.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>JavaScript</strong></li>
-          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-python.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Python</strong></li>
-          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-html5.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>HTML</strong></li>
-          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-css.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>CSS</strong></li>
-          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-playwright.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Playwright</strong></li>
-          <li><span class="tool-icon" aria-hidden="true"><img class="tech-github" src="assets/tech-github.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>GitHub</strong></li>
-        </ul>
-      </section>
-
-      <section class="section approach-section" aria-labelledby="approach-title">
         <div class="section-heading">
-          <p class="eyebrow">How I work</p>
-          <h2 id="approach-title">Practical by default.<br>Curious by design.</h2>
-          <p>I care about the small decisions that make a product feel understandable: the first action, the empty state, the recovery path, and the last click.</p>
+          <h2 id="skills-title">Tech stack</h2>
         </div>
-        <div class="capability-grid">
-          <article class="capability-card" data-reveal><span class="capability-number">01</span><h3>Make complexity legible</h3><p>Turn dense data and multi-step work into layouts people can scan, trust, and act on.</p></article>
-          <article class="capability-card" data-reveal data-reveal-delay="1"><span class="capability-number">02</span><h3>Build the working surface</h3><p>Ship the useful interaction and the resilient states around it—not just the happy path.</p></article>
-          <article class="capability-card" data-reveal data-reveal-delay="2"><span class="capability-number">03</span><h3>Leave things clearer</h3><p>Prefer maintainable frontends with explicit content, accessible controls, and honest constraints.</p></article>
-        </div>
+        <ul class="tool-list" aria-label="Technologies used across projects">
+          <li><span class="tool-icon tool-icon--text" aria-hidden="true">TS</span><strong>TypeScript</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-python.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Python</strong></li>
+          <li><span class="tool-icon tool-icon--text tool-icon--symbol" aria-hidden="true">⚛</span><strong>React</strong></li>
+          <li><span class="tool-icon tool-icon--text" aria-hidden="true">RN</span><strong>React Native</strong></li>
+          <li><span class="tool-icon tool-icon--text" aria-hidden="true">PG</span><strong>PostgreSQL + PostGIS</strong></li>
+          <li><span class="tool-icon tool-icon--text" aria-hidden="true">CF</span><strong>Cloudflare Workers</strong></li>
+          <li><span class="tool-icon tool-icon--text" aria-hidden="true">SB</span><strong>Supabase</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-playwright.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Playwright</strong></li>
+          <li class="tool-list__more"><strong>and many many more</strong></li>
+        </ul>
       </section>
 
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-panel">
           <div><p class="eyebrow">Let’s connect <span aria-hidden="true">〰</span></p><h2 id="contact-title" data-reveal="wipe">Have something useful in mind?</h2></div>
-          <div class="contact-panel__side"><p>Tell me what you’re building, what feels stuck, or what needs a clearer interface.</p><nav class="contact-links" aria-label="Contact links"><a href="mailto:hello@zacbatten.me">Email</a><a href="https://github.com/Inefy" rel="noopener noreferrer" target="_blank">GitHub</a><a href="https://ca.linkedin.com/in/zac-batten" rel="noopener noreferrer" target="_blank">LinkedIn</a><a href="resume.html">Resume</a></nav></div>
+          <div class="contact-panel__side"><p>Tell me what you’re building, what feels stuck, or what needs a clearer interface.</p><nav class="contact-links" aria-label="Contact links"><a href="mailto:hello@zacbatten.me">Email</a><a href="https://github.com/Inefy" rel="noopener noreferrer" target="_blank">GitHub</a><a href="https://ca.linkedin.com/in/zac-batten" rel="noopener noreferrer" target="_blank">LinkedIn</a><a href="assets/Zachary_Batten_Resume.pdf">Resume</a></nav></div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span class="footer-brand"><strong>ZB</strong><small>&copy; <span id="year">2026</span> Zac Batten</small></span>
+      <span class="footer-brand"><strong>zac</strong><small>&copy; <span id="year">2026</span> Zac Batten</small></span>
       <span class="footer-meta">St. John’s, Newfoundland &amp; Labrador</span>
       <span class="footer-sail" aria-hidden="true">△<br>〰〰</span>
     </footer>

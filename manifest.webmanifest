@@ -5,18 +5,12 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#0a0f0d",
-  "theme_color": "#0a0f0d",
+  "background_color": "#1463a5",
+  "theme_color": "#1463a5",
   "icons": [
     {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
+      "src": "favicon-zac.png",
+      "sizes": "1254x1254",
       "type": "image/png",
       "purpose": "any maskable"
     }

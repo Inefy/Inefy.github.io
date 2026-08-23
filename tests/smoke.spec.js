@@ -96,6 +96,20 @@ test.describe("static portfolio smoke paths", () => {
     expect(heroLayout.headingHeight).toBeLessThan(300);
   });
 
+  test("homepage Say hello button stays readable and reaches contact", async ({ page }) => {
+    await gotoLocal(page, "/");
+
+    const sayHello = page.getByRole("link", { name: "Say hello" });
+    await expect(sayHello).toHaveAttribute("href", "#contact");
+    await sayHello.hover();
+    await expect(sayHello).toHaveCSS("background-color", "rgb(23, 103, 216)");
+    await expect(sayHello).toHaveCSS("color", "rgb(255, 255, 255)");
+
+    await sayHello.click();
+    await expect(page).toHaveURL(/#contact$/);
+    await expect(page.getByRole("heading", { name: "Have something useful in mind?" })).toBeVisible();
+  });
+
   test("Work page shows the flagship projects", async ({ page }) => {
     await gotoLocal(page, "/work.html");
 
