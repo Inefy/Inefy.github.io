@@ -887,7 +887,7 @@ fullscreenButton.addEventListener("click", async () => {
   }
 });
 closeButton.addEventListener("click", () => {
-  window.location.href = "interactive-lab.html";
+  window.location.href = "work.html";
 });
 undoButton.addEventListener("click", () => {
   if (state.historyIndex <= 0) return;

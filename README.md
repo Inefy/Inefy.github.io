@@ -99,9 +99,10 @@ The site is short on purpose. Name things, don't narrate them.
 - `index.html` - name, selected work, contact.
 - `work.html` - projects and experiments.
 - `traverseops-demo.html` - Muni Assets interactive mock (filename kept so old links resolve).
+- `dwellsmart.html` - DwellSmart real-estate search project page.
 - `movie-night.html`, `movie-library.html`, `movie-library.js` - MovieBot stream surface and voting catalog.
 - `paint.html`, `paint.css`, `paint.js` - browser drawing tool.
-- `interactive-lab.html` plus game/tool files - standalone browser experiments.
+- Game and tool files provide standalone browser experiments linked from the work page.
 - `resume.html`, `contact.html`, `about.html` - supporting public pages.
 - `site.css` - the single portfolio stylesheet; `demos.css` - sample-app surfaces.
 - `shared.js` - navigation, theme, reveal; `terrain.js` - homepage contour field.

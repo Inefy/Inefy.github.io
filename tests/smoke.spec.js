@@ -7,8 +7,8 @@ const responsivePaths = [
   "/404.html",
   "/about.html",
   "/work.html",
+  "/dwellsmart.html",
   "/contact.html",
-  "/interactive-lab.html",
   "/movie-library.html",
   "/movie-night.html",
   "/resume.html",
@@ -56,18 +56,13 @@ test.describe("static portfolio smoke paths", () => {
     });
   });
 
-  test("homepage loads and primary nav reaches Work, Lab, and Contact", async ({ page }) => {
+  test("homepage loads and primary nav reaches Work and Contact", async ({ page }) => {
     await gotoLocal(page, "/");
     await expect(page.getByRole("heading", { name: "Zac Batten", exact: true })).toBeVisible();
 
     await primaryNav(page).getByRole("link", { name: "Work" }).click();
-    await expect(page).toHaveURL(/\/work\.html$/);
+    await expect(page).toHaveURL(/\/work\.html\?v=20260823-zac1$/);
     await expect(page.getByRole("heading", { name: "Work", exact: true })).toBeVisible();
-
-    await gotoLocal(page, "/");
-    await primaryNav(page).getByRole("link", { name: "Lab" }).click();
-    await expect(page).toHaveURL(/\/interactive-lab\.html$/);
-    await expect(page.getByRole("heading", { name: "Lab", exact: true })).toBeVisible();
 
     await gotoLocal(page, "/");
     await primaryNav(page).getByRole("link", { name: "Contact" }).click();
@@ -115,9 +110,12 @@ test.describe("static portfolio smoke paths", () => {
 
     const projects = page.locator(".builds");
     await expect(projects).toBeVisible();
+    await expect(projects).toContainText("DwellSmart");
+    await expect(page.getByRole("link", { name: "Open the DwellSmart project page" })).toHaveAttribute("href", "dwellsmart.html");
     await expect(projects).toContainText("Muni Assets");
     await expect(projects).toContainText("MovieBot");
-    await expect(projects).toContainText("Web Paint");
+    await expect(page.getByText("Web Paint", { exact: true })).toHaveCount(0);
+    await expect(page.getByText("Judy Batten Wellness", { exact: true })).toHaveCount(0);
   });
 
   test("Resume page exposes contact links", async ({ page }) => {
@@ -179,16 +177,6 @@ test.describe("static portfolio smoke paths", () => {
     const openWorkFilter = page.getByRole("button", { name: "Open work" });
     await openWorkFilter.click();
     await expect(openWorkFilter).toHaveAttribute("aria-pressed", "true");
-  });
-
-  test("Interactive Lab loads the browser experiment index", async ({ page }) => {
-    await gotoLocal(page, "/interactive-lab.html");
-
-    await expect(page.getByRole("heading", { name: "Lab", exact: true })).toBeVisible();
-    await expect(page.locator(".demo-grid")).toContainText("Web Paint");
-    await expect(page.locator(".demo-grid")).toContainText("Mini Golf");
-    await expect(page.locator(".demo-grid")).toContainText("Asteroid Drift");
-    await expect(page.getByRole("link", { name: "Web Paint", exact: true })).toHaveAttribute("href", "paint.html");
   });
 
   test("DepositProof support pages expose support, privacy, and contact paths", async ({ page }) => {

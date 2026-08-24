@@ -2803,8 +2803,7 @@ main:not(.home-page) {
   isolation: isolate;
 }
 
-.coastal-scene::before,
-.coastal-scene::after {
+.coastal-scene::before {
   position: absolute;
   content: "";
   pointer-events: none;
@@ -2816,14 +2815,6 @@ main:not(.home-page) {
   border-radius: 50%;
   background: repeating-radial-gradient(ellipse at 65% 48%, transparent 0 28px, var(--terrain-line) 29px 30px);
   opacity: 0.72;
-}
-
-.coastal-scene::after {
-  right: 0;
-  bottom: 47px;
-  left: 2%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--line-2) 14% 88%, transparent);
 }
 
 .cliff {
@@ -3179,38 +3170,120 @@ main:not(.home-page) {
 }
 
 .contact-panel {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-  gap: clamp(40px, 8vw, 120px);
-  padding: clamp(32px, 5vw, 62px);
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.78fr);
+  align-items: center;
+  gap: clamp(42px, 6vw, 86px);
+  width: min(100%, 1180px);
+  min-height: clamp(470px, 38vw, 560px);
+  margin-inline: auto;
+  padding: clamp(46px, 5vw, 70px) clamp(36px, 6vw, 78px) clamp(118px, 10vw, 145px);
+  overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 28px;
   background:
-    radial-gradient(circle at 85% 20%, var(--lime-tint), transparent 32%),
+    radial-gradient(circle at 78% 20%, var(--lime-tint), transparent 34%),
     var(--panel);
+  box-shadow: 0 22px 56px rgba(31, 44, 59, 0.08);
 }
 
 .contact-panel h2 {
-  margin-top: 12px;
-  font-size: clamp(2.6rem, 5vw, 5.25rem);
-  line-height: 0.98;
+  max-width: 10.5ch;
+  margin-top: clamp(30px, 3.5vw, 48px);
+  font-size: clamp(3rem, 4.8vw, 5.2rem);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+}
+
+.contact-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--lime);
+}
+
+.contact-eyebrow::before {
+  width: 30px;
+  height: 2px;
+  content: "";
+  background: currentColor;
 }
 
 .contact-panel__side {
-  align-self: end;
+  align-self: center;
+  display: grid;
+  gap: 34px;
+  max-width: 430px;
   color: var(--soft);
+}
+
+.contact-panel__side > p {
+  max-width: 29ch;
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  line-height: 1.55;
+}
+
+.contact-message {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  min-height: 76px;
+  padding: 18px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: #0b2b50;
+  color: #fff;
+  font-size: clamp(0.94rem, 1.2vw, 1.08rem);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 12px 24px rgba(11, 43, 80, 0.16);
+  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.contact-message:hover {
+  background: #114174;
+  box-shadow: 0 16px 30px rgba(11, 43, 80, 0.22);
+  transform: translateY(-2px);
+}
+
+.contact-message__icon {
+  font-size: 1.35rem;
+  font-weight: 400;
 }
 
 .contact-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 22px;
-  margin-top: 24px;
+  gap: 16px clamp(24px, 3vw, 40px);
+  margin-top: 2px;
 }
 
 .contact-links a {
-  font-size: 0.83rem;
+  padding-bottom: 6px;
+  border-bottom-color: var(--lime-dim);
+  color: var(--ink);
+  font-size: clamp(0.82rem, 1vw, 0.95rem);
   font-weight: 600;
+}
+
+.contact-ocean-art {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.contact-panel__intro,
+.contact-panel__side {
+  position: relative;
+  z-index: 1;
 }
 
 .site-footer {
@@ -3647,6 +3720,32 @@ main:not(.home-page) {
     grid-template-columns: 1fr;
   }
 
+  .contact-panel {
+    align-items: start;
+    gap: 36px;
+    min-height: 620px;
+    padding: 50px 42px 145px;
+  }
+
+  .contact-panel h2 {
+    max-width: 11ch;
+    margin-top: 38px;
+  }
+
+  .contact-panel__side {
+    max-width: 520px;
+  }
+
+  .contact-message {
+    max-width: 430px;
+  }
+
+  .contact-ocean-art {
+    left: auto;
+    width: 1100px;
+    max-width: none;
+  }
+
   .page-hero .page-actions {
     grid-column: auto;
   }
@@ -3736,7 +3835,34 @@ main:not(.home-page) {
   }
 
   .contact-panel {
-    padding: 26px 20px;
+    gap: 30px;
+    min-height: 590px;
+    padding: 34px 24px 118px;
+    border-radius: 20px;
+  }
+
+  .contact-panel h2 {
+    margin-top: 24px;
+    font-size: clamp(2.85rem, 15vw, 4.4rem);
+  }
+
+  .contact-panel__side {
+    gap: 24px;
+  }
+
+  .contact-message {
+    min-height: 68px;
+    gap: 12px;
+    padding: 16px 18px;
+  }
+
+  .contact-links {
+    gap: 14px 24px;
+  }
+
+  .contact-ocean-art {
+    right: -120px;
+    width: 820px;
   }
 
   .site-footer {
@@ -4056,78 +4182,664 @@ main:not(.home-page) {
   transform: rotate(4deg) scale(0.62);
 }
 
-.scene-boat {
-  --boat-scale: 1;
-  position: absolute;
-  z-index: 2;
-  width: 48px;
-  height: 43px;
-  color: color-mix(in srgb, var(--lime) 78%, var(--ink));
-  opacity: 0.74;
-  transform: scale(var(--boat-scale));
-  transform-origin: 50% 100%;
-}
-
-.scene-boat::before {
-  position: absolute;
-  right: 2px;
-  bottom: 5px;
-  left: 2px;
-  height: 9px;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  border-left: 2px solid currentColor;
-  border-radius: 0 0 55% 55%;
-  content: "";
-  transform: skewX(-11deg);
-}
-
-.scene-boat::after {
-  position: absolute;
-  bottom: 13px;
-  left: 23px;
-  width: 1.5px;
-  height: 28px;
-  background: currentColor;
-  content: "";
-}
-
-.scene-boat i {
-  position: absolute;
-  bottom: 15px;
-  left: 24px;
-  width: 19px;
-  height: 23px;
-  border: 1.5px solid currentColor;
-  background: color-mix(in srgb, var(--paper) 80%, transparent);
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
-}
-
-.scene-boat i::after {
-  position: absolute;
-  top: 29px;
-  left: -30px;
-  width: 62px;
-  height: 7px;
-  border-top: 1.5px solid currentColor;
-  border-radius: 50%;
-  content: "";
-  opacity: 0.58;
-}
-
-.boat-one {
-  --boat-scale: 0.68;
-  bottom: 92px;
-  left: -2%;
-}
-
 @media (max-width: 640px) {
   .bird-one { left: 1%; }
   .bird-two { left: 20%; }
   .bird-three { right: 4%; }
+}
 
-  .boat-one {
-    bottom: 66px;
-    left: -2%;
+/* Editorial tech stack --------------------------------------------------- */
+
+.skills-section--coastal {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: clamp(76px, 9vw, 132px);
+  padding-bottom: 0;
+}
+
+.skills-section--coastal::before {
+  position: absolute;
+  top: -210px;
+  right: -170px;
+  z-index: -1;
+  width: min(52vw, 760px);
+  aspect-ratio: 1;
+  border-radius: 47% 53% 60% 40%;
+  background: repeating-radial-gradient(ellipse at 48% 52%, transparent 0 30px, var(--terrain-line) 31px 32px);
+  content: "";
+  opacity: 0.54;
+  transform: rotate(14deg);
+}
+
+.skills-section--coastal .section-heading {
+  margin-bottom: clamp(34px, 4vw, 58px);
+}
+
+.skills-section--coastal .stack-heading-wave {
+  display: block;
+  width: clamp(58px, 5.2vw, 82px);
+  height: auto;
+  margin-bottom: 18px;
+  object-fit: contain;
+}
+
+.skills-section--coastal .section-heading h2 {
+  font-size: clamp(3.7rem, 7vw, 6.7rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.skills-section--coastal .tool-list {
+  position: relative;
+  z-index: 1;
+  gap: clamp(16px, 1.6vw, 24px);
+}
+
+.skills-section--coastal .tool-list li {
+  min-height: clamp(92px, 8vw, 118px);
+  gap: clamp(16px, 1.6vw, 24px);
+  padding: 18px clamp(18px, 2.1vw, 30px);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--panel) 92%, transparent);
+  box-shadow: 0 12px 28px rgba(45, 60, 75, 0.07);
+}
+
+.skills-section--coastal .tool-list li:hover {
+  box-shadow: 0 16px 32px rgba(45, 60, 75, 0.11);
+}
+
+.skills-section--coastal .tool-list li .tool-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  box-shadow: 0 7px 15px rgba(45, 60, 75, 0.09);
+}
+
+.skills-section--coastal .tool-icon img {
+  width: 35px;
+  height: 35px;
+}
+
+.skills-section--coastal .tool-list strong {
+  font-size: clamp(0.92rem, 1.25vw, 1.15rem);
+  font-weight: 600;
+}
+
+.skills-section--coastal .tool-icon--ai {
+  position: relative;
+  color: #7774ea;
+}
+
+.skills-section--coastal .tool-icon--ai i {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: currentColor;
+  clip-path: polygon(50% 0, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0 50%, 37% 37%);
+}
+
+.skills-section--coastal .tool-icon--ai i:nth-child(1) {
+  top: 10px;
+  left: 9px;
+}
+
+.skills-section--coastal .tool-icon--ai i:nth-child(2) {
+  right: 7px;
+  bottom: 8px;
+  width: 16px;
+  height: 16px;
+  opacity: 0.72;
+}
+
+.skills-section--coastal .tool-icon--ai i:nth-child(3) {
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  opacity: 0.52;
+}
+
+.skills-section--coastal .tool-list li.tool-list__more {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px 12px clamp(18px, 2.1vw, 30px);
+  border-color: color-mix(in srgb, var(--lime) 46%, var(--line));
+  background: color-mix(in srgb, var(--lime-tint) 44%, transparent);
+  color: var(--lime);
+  text-align: left;
+}
+
+.skills-section--coastal .tool-list li.tool-list__more strong {
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 1vw, 0.9rem);
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.skills-section--coastal .tool-list li.tool-list__more strong span {
+  display: inline;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  color: currentColor;
+  font: inherit;
+}
+
+.skills-section--coastal .stack-sailboat-art {
+  display: block;
+  flex: 0 0 auto;
+  width: 118px;
+  height: 86px;
+  margin: -9px -8px -9px 0;
+  object-fit: contain;
+}
+
+.stack-waterline {
+  position: relative;
+  z-index: 1;
+  width: 108%;
+  height: 96px;
+  margin-top: clamp(28px, 4vw, 58px);
+  margin-left: -4%;
+}
+
+.stack-buoy-art {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  display: block;
+  width: 104px;
+  height: 140px;
+  object-fit: contain;
+  transform: translateX(-50%) rotate(2deg);
+}
+
+@media (max-width: 900px) {
+  .skills-section--coastal .tool-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skills-section--coastal .tool-list li.tool-list__more {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 620px) {
+  .skills-section--coastal {
+    padding-top: 72px;
+  }
+
+  .skills-section--coastal::before {
+    right: -220px;
+    width: 560px;
+  }
+
+  .skills-section--coastal .section-heading h2 {
+    font-size: clamp(3.4rem, 18vw, 5.1rem);
+  }
+
+  .skills-section--coastal .tool-list {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-section--coastal .tool-list li,
+  .skills-section--coastal .tool-list li.tool-list__more {
+    grid-column: auto;
+    min-height: 84px;
+  }
+
+  .skills-section--coastal .tool-list li.tool-list__more {
+    min-height: 104px;
+  }
+
+  .stack-waterline {
+    height: 84px;
+    margin-top: 24px;
+  }
+}
+
+/* DwellSmart project ----------------------------------------------------- */
+.dwellsmart-shot,
+.dwellsmart-product {
+  --ds-ink: #f6f1e7;
+  --ds-muted: #a9b1b5;
+  --ds-gold: #d7b267;
+  --ds-gold-soft: #f0d99e;
+  --ds-deep: #09141c;
+  --ds-panel: #111f29;
+  --ds-line: rgba(240, 217, 158, 0.22);
+}
+
+.dwellsmart-shot {
+  position: relative;
+  display: grid;
+  align-content: space-between;
+  gap: 24px;
+  min-height: 340px;
+  padding: clamp(22px, 3vw, 38px);
+  overflow: hidden;
+  color: var(--ds-ink);
+  text-decoration: none;
+  background:
+    radial-gradient(circle at 86% 12%, rgba(215, 178, 103, 0.19), transparent 29%),
+    linear-gradient(145deg, #0f1f2a 0%, var(--ds-deep) 72%);
+}
+
+.dwellsmart-shot::after {
+  content: "";
+  position: absolute;
+  right: -12%;
+  bottom: -40%;
+  width: 62%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(215, 178, 103, 0.11);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 38px rgba(215, 178, 103, 0.04),
+    0 0 0 76px rgba(215, 178, 103, 0.025);
+  pointer-events: none;
+}
+
+.dwellsmart-shot__chrome,
+.dwellsmart-product__nav,
+.dwellsmart-product__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.dwellsmart-wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.dwellsmart-wordmark span {
+  color: var(--ds-gold);
+}
+
+.dwellsmart-alpha {
+  padding: 4px 9px;
+  border: 1px solid var(--ds-line);
+  border-radius: 999px;
+  color: var(--ds-gold-soft);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dwellsmart-shot__copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  max-width: 470px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.1vw, 3.9rem);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+}
+
+.dwellsmart-shot__copy em {
+  color: var(--ds-gold);
+  font-weight: 400;
+}
+
+.dwellsmart-search,
+.dwellsmart-query {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 15px 18px;
+  border: 1px solid var(--ds-line);
+  border-radius: 999px;
+  color: var(--ds-muted);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18);
+  font-size: clamp(0.72rem, 1.25vw, 0.94rem);
+}
+
+.dwellsmart-search b,
+.dwellsmart-query b {
+  color: var(--ds-gold);
+  font-size: 1.15em;
+}
+
+.dwellsmart-result-row {
+  position: absolute;
+  right: clamp(20px, 3vw, 36px);
+  bottom: -34px;
+  z-index: 0;
+  display: flex;
+  gap: 9px;
+  width: min(43%, 300px);
+  opacity: 0.46;
+  transform: rotate(-3deg);
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.dwellsmart-result-row i {
+  flex: 1;
+  height: 94px;
+  border: 1px solid var(--ds-line);
+  border-radius: 10px 10px 0 0;
+  background: linear-gradient(150deg, rgba(215, 178, 103, 0.3), rgba(255, 255, 255, 0.04));
+}
+
+.dwellsmart-shot:hover .dwellsmart-result-row {
+  opacity: 0.75;
+  transform: translateY(-6px) rotate(-3deg);
+}
+
+.dwellsmart-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.62fr);
+  align-items: start;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 91% 17%, rgba(215, 178, 103, 0.13), transparent 23%),
+    var(--paper);
+}
+
+.dwellsmart-hero > .eyebrow,
+.dwellsmart-hero > h1,
+.dwellsmart-hero > .page-lede {
+  grid-column: 1;
+}
+
+.dwellsmart-hero > .page-actions {
+  grid-column: 2;
+  grid-row: 2 / span 2;
+  align-self: end;
+  justify-self: end;
+}
+
+.dwellsmart-hero > .dwellsmart-product {
+  grid-column: 1 / -1;
+  margin-top: clamp(20px, 4vw, 54px);
+}
+
+.dwellsmart-product {
+  min-height: 520px;
+  overflow: hidden;
+  border: 1px solid rgba(215, 178, 103, 0.24);
+  border-radius: 18px;
+  color: var(--ds-ink);
+  background:
+    radial-gradient(circle at 83% 12%, rgba(215, 178, 103, 0.17), transparent 24%),
+    var(--ds-deep);
+  box-shadow: 0 34px 70px rgba(7, 18, 26, 0.2);
+}
+
+.dwellsmart-product__bar {
+  padding: 20px clamp(22px, 4vw, 46px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.dwellsmart-product__nav {
+  color: var(--ds-muted);
+  font-size: 0.74rem;
+}
+
+.dwellsmart-product__nav span + span {
+  margin-left: 18px;
+}
+
+.dwellsmart-product__body {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(38px, 6vw, 78px) clamp(24px, 5vw, 72px);
+}
+
+.dwellsmart-product__intro {
+  display: grid;
+  gap: 24px;
+}
+
+.dwellsmart-product__intro p {
+  margin: 0;
+  color: var(--ds-muted);
+  font-size: clamp(0.88rem, 1.25vw, 1.02rem);
+}
+
+.dwellsmart-product__intro h2 {
+  margin: 0;
+  max-width: 650px;
+  color: var(--ds-ink);
+  font-family: var(--font-display);
+  font-size: clamp(2.7rem, 5.5vw, 5.7rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+.dwellsmart-product__intro h2 em {
+  color: var(--ds-gold);
+  font-weight: 400;
+}
+
+.dwellsmart-listings {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.dwellsmart-listing {
+  min-height: 240px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 13px;
+  background:
+    linear-gradient(to bottom, transparent 49%, var(--ds-panel) 50%),
+    linear-gradient(145deg, #8b9d94, #3d5860 48%, #e1cfaa 49%, #8a765b);
+  box-shadow: 0 22px 38px rgba(0, 0, 0, 0.22);
+}
+
+.dwellsmart-listing::after {
+  content: "MLS  •  St. John's";
+  display: block;
+  margin-top: 126px;
+  color: var(--ds-gold-soft);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.05em;
+}
+
+.dwellsmart-listing--one { transform: translateY(20px) rotate(-2deg); }
+.dwellsmart-listing--two { min-height: 278px; }
+.dwellsmart-listing--three { transform: translateY(28px) rotate(2deg); }
+
+.dwellsmart-overview,
+.dwellsmart-data {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(36px, 7vw, 110px);
+  padding-top: clamp(72px, 10vw, 150px);
+  padding-bottom: clamp(72px, 10vw, 150px);
+}
+
+.dwellsmart-overview h2,
+.dwellsmart-capabilities h2,
+.dwellsmart-data h2,
+.dwellsmart-cta h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 6.2rem);
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+}
+
+.dwellsmart-overview__copy {
+  display: grid;
+  gap: 22px;
+  align-content: start;
+}
+
+.dwellsmart-overview__copy > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+  line-height: 1.6;
+}
+
+.dwellsmart-capabilities {
+  padding-top: clamp(70px, 9vw, 130px);
+  padding-bottom: clamp(70px, 9vw, 130px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--panel-soft);
+}
+
+.dwellsmart-capability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: clamp(40px, 6vw, 78px);
+}
+
+.dwellsmart-capability-grid article {
+  min-height: 245px;
+  padding: clamp(24px, 3.5vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  box-shadow: 0 18px 36px rgba(45, 60, 75, 0.06);
+}
+
+.dwellsmart-capability-grid span {
+  color: var(--lime);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.dwellsmart-capability-grid h3 {
+  margin: 58px 0 12px;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
+  line-height: 1;
+}
+
+.dwellsmart-capability-grid p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.dwellsmart-data ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dwellsmart-data li {
+  display: flex;
+  align-items: center;
+  min-height: 72px;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  font-weight: 600;
+}
+
+.dwellsmart-cta {
+  margin-bottom: clamp(54px, 8vw, 100px);
+  padding: clamp(40px, 7vw, 88px);
+  border: 1px solid rgba(215, 178, 103, 0.25);
+  border-radius: 18px;
+  color: #f6f1e7;
+  background:
+    radial-gradient(circle at 87% 15%, rgba(215, 178, 103, 0.18), transparent 30%),
+    #09141c;
+  box-shadow: 0 26px 60px rgba(7, 18, 26, 0.16);
+}
+
+.dwellsmart-cta p {
+  max-width: 620px;
+  margin: 24px 0 34px;
+  color: #a9b1b5;
+  font-size: clamp(1rem, 1.65vw, 1.3rem);
+  line-height: 1.6;
+}
+
+.dwellsmart-cta .btn-primary {
+  color: #09141c;
+  background: var(--ds-gold, #d7b267);
+}
+
+@media (max-width: 900px) {
+  .dwellsmart-hero,
+  .dwellsmart-overview,
+  .dwellsmart-data {
+    grid-template-columns: 1fr;
+  }
+
+  .dwellsmart-hero > .eyebrow,
+  .dwellsmart-hero > h1,
+  .dwellsmart-hero > .page-lede,
+  .dwellsmart-hero > .page-actions,
+  .dwellsmart-hero > .dwellsmart-product {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .dwellsmart-hero > .page-actions {
+    justify-self: start;
+  }
+
+  .dwellsmart-product__body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .dwellsmart-shot {
+    min-height: 310px;
+  }
+
+  .dwellsmart-product {
+    min-height: 0;
+  }
+
+  .dwellsmart-product__nav {
+    display: none;
+  }
+
+  .dwellsmart-product__body {
+    padding: 38px 20px 54px;
+  }
+
+  .dwellsmart-listings {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dwellsmart-listing--three {
+    display: none;
+  }
+
+  .dwellsmart-capability-grid,
+  .dwellsmart-data ul {
+    grid-template-columns: 1fr;
+  }
+
+  .dwellsmart-capability-grid article {
+    min-height: 210px;
+  }
+
+  .dwellsmart-cta {
+    border-radius: 12px;
   }
 }

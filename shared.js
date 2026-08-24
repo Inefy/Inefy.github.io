@@ -174,8 +174,8 @@
 
     // Every page that sits under Work keeps that tab marked.
     const workPages = new Set([
-      "work.html", "traverseops-demo.html", "movie-library.html", "movie-night.html",
-      "interactive-lab.html", "paint.html",
+      "work.html", "dwellsmart.html", "traverseops-demo.html", "movie-library.html", "movie-night.html",
+      "paint.html",
       "2048.html", "snake-lab.html", "brick-breaker.html", "asteroid-drift.html",
       "minefield-sweep.html", "mini-golf.html", "flappy-workbench.html",
       "pocket-legends.html"

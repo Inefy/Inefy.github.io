@@ -80,7 +80,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site.css?v=20260823-coastal2">
+  <link rel="stylesheet" href="site.css?v=20260823-coastal10">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -93,10 +93,9 @@
         <span class="nav-toggle-text">Menu</span>
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-        <a href="work.html">Work</a>
+        <a href="work.html?v=20260823-zac1">Work</a>
         <a href="about.html">About</a>
         <a href="#skills">Skills</a>
-        <a href="interactive-lab.html">Lab</a>
         <a href="contact.html">Contact</a>
         <a class="nav-utility" href="assets/Zachary_Batten_Resume.pdf">Resume</a>
         <a class="nav-cta" href="mailto:hello@zacbatten.me">Email</a>
@@ -130,7 +129,6 @@
             <span class="scene-bird bird-two" aria-hidden="true"></span>
             <span class="scene-bird bird-three" aria-hidden="true"></span>
             <img class="cape-spear-art" src="assets/cape-spear-lighthouse-transparent.png" alt="Line illustration of the Cape Spear lighthouse on its rocky Atlantic headland" width="1536" height="1024" decoding="async" loading="eager" fetchpriority="high">
-            <span class="scene-boat boat-one" aria-hidden="true"><i></i></span>
           </aside>
         </div>
       </section>
@@ -180,27 +178,50 @@
         </div>
       </section>
 
-      <section class="section skills-section" id="skills" aria-labelledby="skills-title">
+      <section class="section skills-section skills-section--coastal" id="skills" aria-labelledby="skills-title">
         <div class="section-heading">
+          <img class="stack-heading-wave" src="assets/stack-heading-wave.png" alt="" width="537" height="55" loading="lazy" decoding="async">
           <h2 id="skills-title">Tech stack</h2>
         </div>
         <ul class="tool-list" aria-label="Technologies used across projects">
           <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-typescript.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>TypeScript</strong></li>
           <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-python.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Python</strong></li>
-          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-react.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>React</strong></li>
-          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-react-native.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>React Native</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-react.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>React / React Native</strong></li>
           <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-postgresql.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>PostgreSQL + PostGIS</strong></li>
-          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-cloudflare-workers.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Cloudflare Workers</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-cloudflare-workers.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Cloudflare</strong></li>
           <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-supabase.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Supabase</strong></li>
           <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-playwright.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Playwright</strong></li>
-          <li class="tool-list__more"><strong>and many many more</strong></li>
+          <li><span class="tool-icon tool-icon--ai" aria-hidden="true"><i></i><i></i><i></i></span><strong>AI / LLM APIs</strong></li>
+          <li class="tool-list__more">
+            <strong><span aria-hidden="true">+</span> whatever gets the job done</strong>
+            <img class="stack-sailboat-art" src="assets/stack-sailboat.png" alt="" width="1448" height="1086" loading="lazy" decoding="async">
+          </li>
         </ul>
+        <div class="stack-waterline" aria-hidden="true">
+          <img class="stack-buoy-art" src="assets/stack-buoy.png" alt="" width="1024" height="1536" loading="lazy" decoding="async">
+        </div>
       </section>
 
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-panel">
-          <div><p class="eyebrow">Let’s connect <span aria-hidden="true">〰</span></p><h2 id="contact-title" data-reveal="wipe">Have something useful in mind?</h2></div>
-          <div class="contact-panel__side"><p>Tell me what you’re building, what feels stuck, or what needs a clearer interface.</p><nav class="contact-links" aria-label="Contact links"><a href="mailto:hello@zacbatten.me">Email</a><a href="https://github.com/Inefy" rel="noopener noreferrer" target="_blank">GitHub</a><a href="https://ca.linkedin.com/in/zac-batten" rel="noopener noreferrer" target="_blank">LinkedIn</a><a href="assets/Zachary_Batten_Resume.pdf">Resume</a></nav></div>
+          <div class="contact-panel__intro">
+            <p class="eyebrow contact-eyebrow">Let’s connect <span aria-hidden="true">〰</span></p>
+            <h2 id="contact-title" data-reveal="wipe">Have something useful in mind?</h2>
+          </div>
+          <div class="contact-panel__side">
+            <p>Tell me what you’re building. I’m always interested in useful problems and interesting ideas.</p>
+            <a class="contact-message" href="mailto:hello@zacbatten.me">
+              <span class="contact-message__icon" aria-hidden="true">✉</span>
+              <span>Send me a message</span>
+              <span aria-hidden="true">→</span>
+            </a>
+            <nav class="contact-links" aria-label="Contact links">
+              <a href="https://github.com/Inefy" rel="noopener noreferrer" target="_blank">GitHub</a>
+              <a href="https://ca.linkedin.com/in/zac-batten" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+              <a href="assets/Zachary_Batten_Resume.pdf">Resume <span aria-hidden="true">↗</span></a>
+            </nav>
+          </div>
+          <img class="contact-ocean-art" src="assets/contact-ocean-art.png" alt="" width="1320" height="166" loading="lazy" decoding="async">
         </div>
       </section>
     </main>
