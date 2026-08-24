@@ -1117,13 +1117,6 @@ button.text-link {
   margin-bottom: clamp(36px, 4vw, 60px);
 }
 
-.about-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px 28px;
-  margin-top: clamp(28px, 3vw, 44px);
-}
-
 .contact-links {
   display: flex;
   flex-wrap: wrap;
@@ -3423,8 +3416,7 @@ main:not(.home-page) {
   color: var(--soft);
 }
 
-.build__links,
-.about-links {
+.build__links {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 22px;
