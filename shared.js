@@ -10,6 +10,28 @@
   const THEME_COLORS = { dark: "#09182a", light: "#f8f6f1" };
   const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
+  const SHARED_NAV_VERSION = "20260824-sharednav2";
+  const SHARED_NAV_ITEMS = [
+    { label: "Work", href: `work.html?v=${SHARED_NAV_VERSION}` },
+    { label: "About", href: `about.html?v=${SHARED_NAV_VERSION}` },
+    { label: "Skills", href: `index.html?v=${SHARED_NAV_VERSION}#skills` },
+    { label: "Contact", href: `index.html?v=${SHARED_NAV_VERSION}#contact` }
+  ];
+
+  function renderSharedNavigation() {
+    if (!primaryNav) return;
+
+    const fragment = document.createDocumentFragment();
+    SHARED_NAV_ITEMS.forEach((item) => {
+      const link = document.createElement("a");
+      link.href = item.href;
+      link.textContent = item.label;
+      fragment.appendChild(link);
+    });
+
+    primaryNav.replaceChildren(fragment);
+  }
+
   function applyTheme(theme) {
     const next = theme === "light" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
@@ -183,9 +205,16 @@
 
     nav.querySelectorAll("a").forEach((link) => {
       link.removeAttribute("aria-current");
-      const href = (link.getAttribute("href") || "").split("/").pop().toLowerCase();
+      let targetUrl;
+      try {
+        targetUrl = new URL(link.getAttribute("href") || "", window.location.href);
+      } catch {
+        return;
+      }
+      const href = targetUrl.pathname.split("/").pop().toLowerCase();
       if (!href) return;
-      if (href === current || (current === "" && href === "index.html")) {
+      const matchingSection = targetUrl.hash && targetUrl.hash === window.location.hash;
+      if ((href === current || (current === "" && href === "index.html")) && (!targetUrl.hash || matchingSection)) {
         link.setAttribute("aria-current", "page");
       } else if (href === "work.html" && workPages.has(current)) {
         link.setAttribute("aria-current", "true");
@@ -324,6 +353,7 @@
     window.setInterval(paint, 30000);
   }
 
+  renderSharedNavigation();
   initMobileNavigation();
   initSkipLinks();
   initHeaderScrollState();

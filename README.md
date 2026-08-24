@@ -103,7 +103,7 @@ The site is short on purpose. Name things, don't narrate them.
 - `movie-night.html`, `movie-library.html`, `movie-library.js` - MovieBot stream surface and voting catalog.
 - `paint.html`, `paint.css`, `paint.js` - browser drawing tool.
 - Game and tool files provide standalone browser experiments linked from the work page.
-- `resume.html`, `contact.html`, `about.html` - supporting public pages.
+- `resume.html`, `about.html` - supporting public pages.
 - `site.css` - the single portfolio stylesheet; `demos.css` - sample-app surfaces.
 - `shared.js` - navigation, theme, reveal; `terrain.js` - homepage contour field.
 - `scripts/` and `tests/` - static QA scripts and Playwright smoke tests.

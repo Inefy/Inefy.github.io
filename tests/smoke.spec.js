@@ -8,7 +8,6 @@ const responsivePaths = [
   "/about.html",
   "/work.html",
   "/dwellsmart.html",
-  "/contact.html",
   "/movie-library.html",
   "/movie-night.html",
   "/resume.html",
@@ -56,19 +55,19 @@ test.describe("static portfolio smoke paths", () => {
     });
   });
 
-  test("homepage loads and primary nav reaches Work and Contact", async ({ page }) => {
+  test("homepage loads and primary nav reaches Work and the homepage contact panel", async ({ page }) => {
     await gotoLocal(page, "/");
     await expect(page.getByRole("heading", { name: "Zac Batten", exact: true })).toBeVisible();
 
     await primaryNav(page).getByRole("link", { name: "Work" }).click();
-    await expect(page).toHaveURL(/\/work\.html\?v=20260823-zac1$/);
+    await expect(page).toHaveURL(/\/work\.html\?v=20260824-sharednav2$/);
     await expect(page.getByRole("heading", { name: "Work", exact: true })).toBeVisible();
 
     await gotoLocal(page, "/");
     await primaryNav(page).getByRole("link", { name: "Contact" }).click();
-    await expect(page).toHaveURL(/\/contact\.html$/);
-    await expect(page.getByRole("heading", { name: "Contact", exact: true })).toBeVisible();
-    await expect(primaryNav(page).locator('a[href="mailto:hello@zacbatten.me"]')).toHaveAttribute(
+    await expect(page).toHaveURL(/\/index\.html\?v=20260824-sharednav2#contact$/);
+    await expect(page.getByRole("heading", { name: "Have something useful in mind?" })).toBeVisible();
+    await expect(page.locator('a[href="mailto:hello@zacbatten.me"]:visible').first()).toHaveAttribute(
       "href",
       "mailto:hello@zacbatten.me"
     );
@@ -130,17 +129,22 @@ test.describe("static portfolio smoke paths", () => {
   });
 
   test("inner pages keep the same primary navigation as Home", async ({ page }) => {
-    await gotoLocal(page, "/about.html");
+    const sharedHeaderPages = [
+      "/",
+      "/work.html",
+      "/about.html",
+      "/dwellsmart.html",
+      "/resume.html",
+      "/movie-library.html",
+      "/movie-night.html",
+      "/traverseops-demo.html",
+      "/404.html"
+    ];
 
-    const nav = primaryNav(page);
-    await expect(nav.getByRole("link", { name: "Work", exact: true })).toBeVisible();
-    await expect(nav.getByRole("link", { name: "About", exact: true })).toBeVisible();
-    await expect(nav.getByRole("link", { name: "Skills", exact: true })).toBeVisible();
-    await expect(nav.getByRole("link", { name: "Contact", exact: true })).toBeVisible();
-
-    await nav.getByRole("link", { name: "Contact", exact: true }).click();
-    await expect(page).toHaveURL(/\/contact\.html$/);
-    await expect(page.getByRole("heading", { name: "Contact", exact: true })).toBeVisible();
+    for (const path of sharedHeaderPages) {
+      await gotoLocal(page, path);
+      await expect(primaryNav(page).getByRole("link")).toHaveText(["Work", "About", "Skills", "Contact"]);
+    }
   });
 
   test("Resume page exposes contact links", async ({ page }) => {
