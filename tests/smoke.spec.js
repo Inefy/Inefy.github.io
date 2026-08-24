@@ -118,6 +118,20 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByText("Judy Batten Wellness", { exact: true })).toHaveCount(0);
   });
 
+  test("inner pages keep the same primary navigation as Home", async ({ page }) => {
+    await gotoLocal(page, "/about.html");
+
+    const nav = primaryNav(page);
+    await expect(nav.getByRole("link", { name: "Work", exact: true })).toBeVisible();
+    await expect(nav.getByRole("link", { name: "About", exact: true })).toBeVisible();
+    await expect(nav.getByRole("link", { name: "Skills", exact: true })).toBeVisible();
+    await expect(nav.getByRole("link", { name: "Contact", exact: true })).toBeVisible();
+
+    await nav.getByRole("link", { name: "Contact", exact: true }).click();
+    await expect(page).toHaveURL(/\/contact\.html$/);
+    await expect(page.getByRole("heading", { name: "Contact", exact: true })).toBeVisible();
+  });
+
   test("Resume page exposes contact links", async ({ page }) => {
     await gotoLocal(page, "/resume.html");
 
