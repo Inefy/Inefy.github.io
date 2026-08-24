@@ -91,6 +91,17 @@ test.describe("static portfolio smoke paths", () => {
     expect(heroLayout.headingHeight).toBeLessThan(300);
   });
 
+  test("homepage features Muni Assets, DwellSmart, and SwarmForge", async ({ page }) => {
+    await gotoLocal(page, "/");
+
+    const projects = page.locator(".home-project-grid");
+    await expect(projects).toContainText("Muni Assets");
+    await expect(projects).toContainText("DwellSmart");
+    await expect(projects).toContainText("SwarmForge");
+    await expect(page.getByRole("link", { name: "Visit DwellSmart" })).toHaveAttribute("href", "https://dwellsmart.ai/");
+    await expect(page.getByRole("link", { name: "View SwarmForge on GitHub" })).toHaveAttribute("href", "https://github.com/Inefy/SwarmForge");
+  });
+
   test("homepage Say hello button stays readable and reaches contact", async ({ page }) => {
     await gotoLocal(page, "/");
 
