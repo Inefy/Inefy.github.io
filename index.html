@@ -7,7 +7,7 @@
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" type="image/png" href="favicon-zac.png">
     <link rel="apple-touch-icon" href="favicon-zac.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-SYhD46yQWX2DeNNQhDxDo/ejhImDo0Wl8mdZUWAk8jE='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-kf7ImU8D7OzBLPVeezcuoFNZEdhdhPWjdAMxejYuifE='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Zac Batten is a software developer building clear interfaces, internal tools, Python automation, and map-based workflows.">
     <meta name="author" content="Zac Batten">
@@ -53,11 +53,11 @@
           },
           {
             "@type": "SoftwareApplication",
-            "@id": "https://zacbatten.me/traverseops-demo.html#muni-assets",
-            "name": "Muni Assets",
+            "@id": "https://traverseops.app/landing.html#traverseops",
+            "name": "TraverseOps",
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "Web browser",
-            "url": "https://zacbatten.me/traverseops-demo.html",
+            "url": "https://traverseops.app/landing.html",
             "image": "https://zacbatten.me/assets/traverseops-workspace.png",
             "author": { "@id": "https://zacbatten.me/#zac-batten" },
             "description": "Field operations workspace for municipal assets, inspections, and work orders."
@@ -80,7 +80,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site.css?v=20260823-projectcards1">
+    <link rel="stylesheet" href="site.css?v=20260824-footer1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -141,21 +141,25 @@
         </div>
 
         <div class="home-project-grid">
-          <a class="home-project-card home-project-card--muni" href="traverseops-demo.html" data-reveal aria-label="Explore Muni Assets">
-            <span class="project-card-art project-card-art--muni" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-            <span class="project-card-icon project-card-icon--muni" aria-hidden="true"><i></i><b></b></span>
+          <a class="home-project-card home-project-card--muni" href="https://traverseops.app/landing.html" rel="noopener noreferrer" target="_blank" data-reveal aria-label="Visit TraverseOps">
+            <span class="project-card-art project-card-art--muni" aria-hidden="true"></span>
+            <span class="project-card-icon project-card-icon--muni" aria-hidden="true">
+              <img src="assets/project-logo-traverseops.png" alt="" width="1254" height="1254" loading="lazy" decoding="async">
+            </span>
             <span class="home-project-card__body">
               <span class="home-project-card__kicker">Municipal operations</span>
-              <h3>Muni Assets</h3>
+              <h3>TraverseOps</h3>
               <p>Offline-capable asset management for inspections, mapping, and public works workflows.</p>
-              <ul class="project-card-tags" aria-label="Muni Assets technologies"><li>React Native</li><li>Map UI</li><li>Supabase</li></ul>
+              <ul class="project-card-tags" aria-label="TraverseOps technologies"><li>React Native</li><li>Map UI</li><li>Supabase</li></ul>
               <span class="home-project-card__action">Explore the platform <span aria-hidden="true">→</span></span>
             </span>
           </a>
 
           <a class="home-project-card home-project-card--dwell" href="https://dwellsmart.ai/" rel="noopener noreferrer" target="_blank" data-reveal data-reveal-delay="1" aria-label="Visit DwellSmart">
-            <span class="project-card-art project-card-art--dwell" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-            <span class="project-card-icon project-card-icon--dwell" aria-hidden="true"><i></i><b></b></span>
+            <span class="project-card-art project-card-art--dwell" aria-hidden="true"></span>
+            <span class="project-card-icon project-card-icon--dwell" aria-hidden="true">
+              <img src="assets/project-logo-dwellsmart.png" alt="" width="1254" height="1254" loading="lazy" decoding="async">
+            </span>
             <span class="home-project-card__body">
               <span class="home-project-card__kicker">Real estate intelligence</span>
               <h3>DwellSmart</h3>
@@ -166,8 +170,10 @@
           </a>
 
           <a class="home-project-card home-project-card--swarm" href="https://github.com/Inefy/SwarmForge" rel="noopener noreferrer" target="_blank" data-reveal data-reveal-delay="2" aria-label="View SwarmForge on GitHub">
-            <span class="project-card-art project-card-art--swarm" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-            <span class="project-card-icon project-card-icon--swarm" aria-hidden="true"><i></i><b></b><em></em></span>
+            <span class="project-card-art project-card-art--swarm" aria-hidden="true"></span>
+            <span class="project-card-icon project-card-icon--swarm" aria-hidden="true">
+              <img src="assets/project-logo-swarmforge.png" alt="" width="1254" height="1254" loading="lazy" decoding="async">
+            </span>
             <span class="home-project-card__body">
               <span class="home-project-card__kicker">Adaptive game AI</span>
               <h3>SwarmForge</h3>
@@ -189,7 +195,7 @@
           <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-python.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Python</strong></li>
           <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-react.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>React / React Native</strong></li>
           <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-postgresql.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>PostgreSQL + PostGIS</strong></li>
-          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-cloudflare-workers.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Cloudflare</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-cloudflare.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Cloudflare</strong></li>
           <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-supabase.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Supabase</strong></li>
           <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-playwright.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Playwright</strong></li>
           <li><span class="tool-icon tool-icon--ai" aria-hidden="true"><i></i><i></i><i></i></span><strong>AI / LLM APIs</strong></li>

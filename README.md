@@ -6,7 +6,7 @@ Static GitHub Pages portfolio for [zacbatten.me](https://zacbatten.me). Minimal 
 
 - [Homepage](https://zacbatten.me) — name, one line, four projects, contact.
 - [Work](https://zacbatten.me/work.html) — projects and experiments.
-- [Muni Assets](https://zacbatten.me/traverseops-demo.html) — field operations mock.
+- [TraverseOps](https://traverseops.app/landing.html) — field operations platform.
 - [Web Paint](https://zacbatten.me/paint.html) — browser drawing tool.
 - [Resume](https://zacbatten.me/resume.html)
 
@@ -14,7 +14,7 @@ Static GitHub Pages portfolio for [zacbatten.me](https://zacbatten.me). Minimal 
 
 - Homepage, Work, About, Resume, Contact, Lab.
 - No share images: `og:image`/`twitter:image` were removed rather than ship a stale screenshot. Add one back only with a current capture.
-- Live apps: Web Paint, Movie Library, Movie Night, plus the Muni Assets mock.
+- Live apps: TraverseOps, Web Paint, Movie Library, and Movie Night.
 - Eight browser demos plus Pocket Legends.
 - Plain files on GitHub Pages, no build step.
 
@@ -98,7 +98,7 @@ The site is short on purpose. Name things, don't narrate them.
 
 - `index.html` - name, selected work, contact.
 - `work.html` - projects and experiments.
-- `traverseops-demo.html` - Muni Assets interactive mock (filename kept so old links resolve).
+- `traverseops-demo.html` - legacy TraverseOps interactive mock (filename kept so old links resolve).
 - `dwellsmart.html` - DwellSmart real-estate search project page.
 - `movie-night.html`, `movie-library.html`, `movie-library.js` - MovieBot stream surface and voting catalog.
 - `paint.html`, `paint.css`, `paint.js` - browser drawing tool.

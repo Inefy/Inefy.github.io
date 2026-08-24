@@ -90,15 +90,20 @@ test.describe("static portfolio smoke paths", () => {
     expect(heroLayout.headingHeight).toBeLessThan(300);
   });
 
-  test("homepage features Muni Assets, DwellSmart, and SwarmForge", async ({ page }) => {
+  test("homepage features TraverseOps, DwellSmart, and SwarmForge", async ({ page }) => {
     await gotoLocal(page, "/");
 
     const projects = page.locator(".home-project-grid");
-    await expect(projects).toContainText("Muni Assets");
+    await expect(projects).toContainText("TraverseOps");
+    await expect(page.getByRole("link", { name: "Visit TraverseOps" })).toHaveAttribute("href", "https://traverseops.app/landing.html");
     await expect(projects).toContainText("DwellSmart");
     await expect(projects).toContainText("SwarmForge");
     await expect(page.getByRole("link", { name: "Visit DwellSmart" })).toHaveAttribute("href", "https://dwellsmart.ai/");
     await expect(page.getByRole("link", { name: "View SwarmForge on GitHub" })).toHaveAttribute("href", "https://github.com/Inefy/SwarmForge");
+    await expect(page.locator(".project-card-icon--muni img")).toHaveAttribute("src", "assets/project-logo-traverseops.png");
+    await expect(page.locator(".project-card-icon--dwell img")).toHaveAttribute("src", "assets/project-logo-dwellsmart.png");
+    await expect(page.locator(".project-card-icon--swarm img")).toHaveAttribute("src", "assets/project-logo-swarmforge.png");
+    await expect(page.getByText("Cloudflare", { exact: true }).locator("xpath=preceding-sibling::span/img")).toHaveAttribute("src", "assets/tech-cloudflare.svg");
   });
 
   test("homepage Say hello button stays readable and reaches contact", async ({ page }) => {
@@ -122,7 +127,7 @@ test.describe("static portfolio smoke paths", () => {
     await expect(projects).toBeVisible();
     await expect(projects).toContainText("DwellSmart");
     await expect(page.getByRole("link", { name: "Open the DwellSmart project page" })).toHaveAttribute("href", "dwellsmart.html");
-    await expect(projects).toContainText("Muni Assets");
+    await expect(projects).toContainText("TraverseOps");
     await expect(projects).toContainText("MovieBot");
     await expect(page.getByText("Web Paint", { exact: true })).toHaveCount(0);
     await expect(page.getByText("Judy Batten Wellness", { exact: true })).toHaveCount(0);
@@ -144,6 +149,11 @@ test.describe("static portfolio smoke paths", () => {
     for (const path of sharedHeaderPages) {
       await gotoLocal(page, path);
       await expect(primaryNav(page).getByRole("link")).toHaveText(["Work", "About", "Skills", "Contact"]);
+      const footer = page.locator(".site-footer");
+      await expect(footer.locator(".footer-brand strong")).toHaveText("zac");
+      await expect(footer).toContainText("Zac Batten");
+      await expect(footer.locator(".footer-meta")).toHaveText("St. John’s, Newfoundland & Labrador");
+      await expect(footer.locator(".footer-sail")).toHaveCount(1);
     }
   });
 
@@ -196,7 +206,7 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByRole("button", { name: "Redo" })).toBeVisible();
   });
 
-  test("Muni Assets public demo loads and map controls work", async ({ page }) => {
+  test("TraverseOps public demo loads and map controls work", async ({ page }) => {
     await gotoLocal(page, "/traverseops-demo.html");
     await expect(page.getByRole("heading", { name: /field operations map and work orders/i })).toBeVisible();
 

@@ -4936,14 +4936,17 @@ main:not(.home-page) {
 .project-card-icon {
   position: relative;
   z-index: 2;
+  display: grid;
+  width: 72px;
+  height: 72px;
+  place-items: center;
+}
+
+.project-card-icon img {
   display: block;
-  width: 68px;
-  height: 68px;
-  border: 1px solid color-mix(in srgb, var(--project-accent) 60%, var(--line));
-  border-radius: 50%;
-  color: var(--project-accent);
-  background: color-mix(in srgb, var(--panel) 78%, transparent);
-  box-shadow: inset 0 0 0 7px color-mix(in srgb, var(--panel) 42%, transparent);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .project-card-icon--muni i {
@@ -5063,6 +5066,11 @@ main:not(.home-page) {
 
 .project-card-icon--swarm::before { left: 13px; transform: rotate(-56deg); }
 .project-card-icon--swarm::after { right: 13px; transform: rotate(56deg); }
+
+.project-card-icon--swarm::before,
+.project-card-icon--swarm::after {
+  content: none;
+}
 
 .home-project-card__body {
   position: relative;
@@ -5312,6 +5320,57 @@ main:not(.home-page) {
 .project-card-art--swarm i:nth-child(5) { right: 29%; bottom: 18%; }
 .project-card-art--swarm i:nth-child(6) { bottom: 25%; left: 20%; }
 .project-card-art--swarm i:nth-child(7) { top: 43%; left: 8%; }
+
+/* Full-card project illustrations. These override the earlier lightweight CSS studies. */
+.project-card-art.project-card-art--muni,
+.project-card-art.project-card-art--dwell,
+.project-card-art.project-card-art--swarm {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  opacity: 0.82;
+  mask-image: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: saturate(0.9);
+}
+
+.project-card-art.project-card-art--muni {
+  background-image: url("assets/project-card-muni-v2.png");
+}
+
+.project-card-art.project-card-art--dwell {
+  background-image: url("assets/project-card-dwell-v2.png");
+}
+
+.project-card-art.project-card-art--swarm {
+  background-image: url("assets/project-card-swarm-v2.png");
+}
+
+.project-card-art.project-card-art--swarm::before {
+  content: none;
+}
+
+:root[data-theme="dark"] .project-card-art.project-card-art--muni,
+:root[data-theme="dark"] .project-card-art.project-card-art--dwell,
+:root[data-theme="dark"] .project-card-art.project-card-art--swarm {
+  opacity: 0.13;
+  filter: saturate(0.65);
+}
+
+.home-project-card:hover .project-card-art,
+.home-project-card:focus-visible .project-card-art {
+  opacity: 0.94;
+  transform: scale(1.025);
+}
+
+:root[data-theme="dark"] .home-project-card:hover .project-card-art,
+:root[data-theme="dark"] .home-project-card:focus-visible .project-card-art {
+  opacity: 0.19;
+}
 
 @media (max-width: 1080px) {
   .home-project-grid {
