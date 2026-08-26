@@ -167,6 +167,43 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.locator('a[href="index.html"]:visible').first()).toBeVisible();
   });
 
+  test("About page presents a full-stack focus", async ({ page }) => {
+    await gotoLocal(page, "/about.html");
+
+    const snapshot = page.locator(".about-snapshot");
+    await expect(snapshot).toContainText(/Full-stack(?: software)? developer/);
+    await expect(snapshot).not.toContainText("Frontend + automation");
+  });
+
+  test("Cape Spear scene keeps the lighthouse in front of the animated coast", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await gotoLocal(page, "/");
+
+    const scene = page.locator(".coastal-scene--animated");
+    await expect(page.locator("[data-scene-motion-toggle]")).toHaveCount(0);
+    await expect(scene.locator(".scene-beacon")).toHaveCount(0);
+    await expect(scene.locator(".scene-water")).toHaveCount(0);
+    await expect(scene.locator(".scene-bird")).toHaveCount(3);
+    const sceneSequence = scene.locator("[data-cape-spear-sequence]");
+    await expect(sceneSequence).toHaveCount(1);
+    await expect(sceneSequence).toHaveAttribute("src", /assets\/cape-spear-animated-frame-000[0-8]\.png/);
+    const birdFrameStyles = await scene.locator(".scene-bird").first().evaluate((bird) => {
+      const frame = getComputedStyle(bird, "::before");
+      return {
+        backgroundImage: frame.backgroundImage,
+        animationName: frame.animationName,
+        animationDuration: frame.animationDuration
+      };
+    });
+    expect(birdFrameStyles.backgroundImage).toContain("cape-spear-bird-flap-frames.png");
+    expect(birdFrameStyles.animationName).toBe("coastal-bird-flap");
+    expect(birdFrameStyles.animationDuration).toBe("0.9s");
+    const initialFrame = await sceneSequence.getAttribute("src");
+    await page.waitForTimeout(1100);
+    await expect.poll(() => sceneSequence.getAttribute("src")).not.toBe(initialFrame);
+    await expect(sceneSequence).toHaveCSS("clip-path", "none");
+  });
+
   test("Movie Library loads and filters to a copyable vote command", async ({ page }) => {
     await gotoLocal(page, "/movie-library.html");
     await expect(page.getByRole("heading", { name: /public domain movie picks/i })).toBeVisible();

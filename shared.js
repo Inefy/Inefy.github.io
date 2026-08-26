@@ -353,6 +353,26 @@
     window.setInterval(paint, 30000);
   }
 
+  function initCapeSpearSequence() {
+    const scene = document.querySelector("[data-cape-spear-sequence]");
+    if (!scene) return;
+
+    const frames = Array.from({ length: 9 }, (_, index) =>
+      `assets/cape-spear-animated-frame-${String(index).padStart(4, "0")}.png`
+    );
+    frames.slice(1).forEach((src) => {
+      const preload = new Image();
+      preload.decoding = "async";
+      preload.src = src;
+    });
+
+    let frame = 0;
+    window.setInterval(() => {
+      frame = (frame + 1) % frames.length;
+      scene.src = frames[frame];
+    }, 420);
+  }
+
   renderSharedNavigation();
   initMobileNavigation();
   initSkipLinks();
@@ -363,4 +383,5 @@
   initPrintButtons();
   initReveal();
   initReadouts();
+  initCapeSpearSequence();
 })();

@@ -3902,6 +3902,14 @@ main:not(.home-page) {
   pointer-events: none;
 }
 
+.cape-spear-art--line {
+  inset: -2% -10% -4% -7%;
+  width: 120%;
+  height: 108%;
+  object-position: 55% 100%;
+  mask-image: none;
+}
+
 .home-project-grid {
   align-items: stretch;
 }
@@ -4124,36 +4132,28 @@ main:not(.home-page) {
 
 .scene-bird {
   z-index: 2;
-  width: 46px;
+  width: 70px;
   height: 24px;
-  color: color-mix(in srgb, var(--lime) 82%, var(--ink));
   font-size: 0;
   line-height: 0;
-  opacity: 0.86;
-}
-
-.scene-bird::before,
-.scene-bird::after {
-  position: absolute;
-  top: 7px;
-  width: 25px;
-  height: 15px;
-  border-top: 3px solid currentColor;
-  content: "";
+  opacity: 0.9;
 }
 
 .scene-bird::before {
-  right: 50%;
-  border-radius: 72% 26% 0 0;
-  transform: rotate(14deg);
-  transform-origin: 100% 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/cape-spear-bird-flap-frames.png");
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
+  background-size: 300% 600%;
+  content: "";
+  animation: coastal-bird-flap 0.9s steps(1, end) infinite;
 }
 
 .scene-bird::after {
-  left: 50%;
-  border-radius: 26% 72% 0 0;
-  transform: rotate(-14deg);
-  transform-origin: 0 0;
+  display: none;
 }
 
 .bird-one {
@@ -4178,6 +4178,110 @@ main:not(.home-page) {
   .bird-one { left: 1%; }
   .bird-two { left: 20%; }
   .bird-three { right: 4%; }
+}
+
+/* Animated Cape Spear atmosphere ----------------------------------------- */
+
+.coastal-scene--animated .cape-spear-art {
+  z-index: 2;
+}
+
+.coastal-scene--animated {
+  isolation: auto;
+}
+
+.cape-spear-art--sequence {
+  inset: auto auto -2% 50%;
+  width: auto;
+  max-width: none;
+  height: 130%;
+  object-fit: fill;
+  object-position: center;
+  transform: translateX(-50%);
+  filter: none;
+  mix-blend-mode: normal;
+  will-change: contents;
+}
+
+.coastal-scene--animated .scene-bird {
+  --bird-angle: 0deg;
+  --bird-scale: 1;
+  --bird-travel: 58px;
+  z-index: 3;
+  animation: coastal-bird-drift 6.5s ease-in-out infinite;
+  transform: rotate(var(--bird-angle)) scale(var(--bird-scale));
+  transform-origin: center;
+  will-change: transform;
+}
+
+.coastal-scene--animated .bird-one {
+  --bird-angle: -4deg;
+  --bird-scale: 1.12;
+  --bird-travel: 76px;
+  animation-duration: 8s;
+}
+
+.coastal-scene--animated .bird-two {
+  --bird-angle: 7deg;
+  --bird-scale: 0.72;
+  --bird-travel: 54px;
+  animation-delay: -3s;
+  animation-duration: 6.5s;
+}
+
+.coastal-scene--animated .bird-three {
+  --bird-angle: 4deg;
+  --bird-scale: 0.62;
+  --bird-travel: -64px;
+  animation-delay: -5s;
+  animation-duration: 9s;
+}
+
+@keyframes coastal-bird-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--bird-angle)) scale(var(--bird-scale)); }
+  52% { transform: translate3d(var(--bird-travel), -16px, 0) rotate(calc(var(--bird-angle) + 3deg)) scale(var(--bird-scale)); }
+}
+
+@keyframes coastal-bird-flap {
+  /* Frame centers follow the artwork's actual, unevenly spaced alpha bounds. */
+  0% { background-position: 50% 1.55%; }
+  16.667% { background-position: 50% 21.31%; }
+  33.333% { background-position: 50% 37.56%; }
+  50% { background-position: 50% 57.25%; }
+  66.667% { background-position: 50% 75.38%; }
+  83.333% { background-position: 50% 97.07%; }
+  100% { background-position: 50% 1.55%; }
+}
+
+:root[data-theme="dark"] .cape-spear-art--sequence {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* The coastal scene is intentionally animated even when the operating system
+   asks other interface motion to settle. It is decorative, non-interactive,
+   and no longer needs a visible playback control. */
+@media (prefers-reduced-motion: reduce) {
+  .coastal-scene--animated .scene-bird,
+  .coastal-scene--animated .scene-bird::before {
+    animation-iteration-count: infinite !important;
+  }
+
+  .coastal-scene--animated .bird-one {
+    animation-duration: 8s !important;
+  }
+
+  .coastal-scene--animated .bird-two {
+    animation-duration: 6.5s !important;
+  }
+
+  .coastal-scene--animated .bird-three {
+    animation-duration: 9s !important;
+  }
+
+  .coastal-scene--animated .scene-bird::before {
+    animation-duration: 0.9s !important;
+  }
+
 }
 
 /* Editorial tech stack --------------------------------------------------- */
