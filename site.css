@@ -2664,23 +2664,6 @@ main:not(.home-page) {
   text-transform: none;
 }
 
-.location-line {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: max-content;
-  max-width: 100%;
-  margin-bottom: 24px;
-  padding-bottom: 7px;
-  border-bottom: 2px wavy var(--lime-dim);
-  color: var(--soft);
-}
-
-.location-line > span {
-  color: var(--ink);
-  font-size: 1.3rem;
-}
-
 .home-hero h1 {
   max-width: none;
   color: var(--ink);
@@ -3782,12 +3765,6 @@ main:not(.home-page) {
 
   .hero-tagline {
     font-size: 1.15rem;
-  }
-
-  .location-line {
-    align-items: flex-start;
-    width: auto;
-    font-size: 0.64rem;
   }
 
   .coastal-scene {
