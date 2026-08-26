@@ -367,10 +367,11 @@
     });
 
     let frame = 0;
+    const frameDuration = 6000 / frames.length;
     window.setInterval(() => {
       frame = (frame + 1) % frames.length;
       scene.src = frames[frame];
-    }, 420);
+    }, frameDuration);
   }
 
   renderSharedNavigation();
