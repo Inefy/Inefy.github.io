@@ -2675,7 +2675,7 @@ main:not(.home-page) {
 }
 
 .hero-tagline {
-  margin-top: 28px;
+  margin-top: 0;
   color: var(--ink);
   font-family: var(--font-mono);
   font-size: clamp(1.25rem, 2.25vw, 2rem);
@@ -3152,9 +3152,9 @@ main:not(.home-page) {
   align-items: center;
   gap: clamp(42px, 6vw, 86px);
   width: min(100%, 1180px);
-  min-height: clamp(470px, 38vw, 560px);
+  min-height: clamp(450px, 34vw, 520px);
   margin-inline: auto;
-  padding: clamp(46px, 5vw, 70px) clamp(36px, 6vw, 78px) clamp(118px, 10vw, 145px);
+  padding: clamp(40px, 4vw, 58px) clamp(36px, 6vw, 78px) clamp(92px, 8vw, 118px);
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 28px;
@@ -3697,14 +3697,14 @@ main:not(.home-page) {
 
   .contact-panel {
     align-items: start;
-    gap: 36px;
-    min-height: 620px;
-    padding: 50px 42px 145px;
+    gap: 28px;
+    min-height: 540px;
+    padding: 42px 42px 110px;
   }
 
   .contact-panel h2 {
     max-width: 11ch;
-    margin-top: 38px;
+    margin-top: 28px;
   }
 
   .contact-panel__side {
@@ -3804,14 +3804,14 @@ main:not(.home-page) {
   }
 
   .contact-panel {
-    gap: 30px;
-    min-height: 590px;
-    padding: 34px 24px 118px;
+    gap: 26px;
+    min-height: 520px;
+    padding: 30px 24px 92px;
     border-radius: 20px;
   }
 
   .contact-panel h2 {
-    margin-top: 24px;
+    margin-top: 20px;
     font-size: clamp(2.85rem, 15vw, 4.4rem);
   }
 
