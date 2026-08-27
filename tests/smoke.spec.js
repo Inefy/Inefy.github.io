@@ -55,17 +55,12 @@ test.describe("static portfolio smoke paths", () => {
     });
   });
 
-  test("homepage loads and primary nav reaches Work and the homepage contact panel", async ({ page }) => {
+  test("homepage loads and its primary nav reaches the contact panel", async ({ page }) => {
     await gotoLocal(page, "/");
     await expect(page.getByRole("heading", { name: "Zac Batten", exact: true })).toBeVisible();
-
-    await primaryNav(page).getByRole("link", { name: "Work" }).click();
-    await expect(page).toHaveURL(/\/work\.html\?v=20260824-sharednav2$/);
-    await expect(page.getByRole("heading", { name: "Work", exact: true })).toBeVisible();
-
-    await gotoLocal(page, "/");
+    await expect(primaryNav(page).getByRole("link")).toHaveText(["Contact"]);
     await primaryNav(page).getByRole("link", { name: "Contact" }).click();
-    await expect(page).toHaveURL(/\/index\.html\?v=20260824-sharednav2#contact$/);
+    await expect(page).toHaveURL(/\/index\.html#contact$/);
     await expect(page.getByRole("heading", { name: "Have something useful in mind?" })).toBeVisible();
     await expect(page.locator('a[href="mailto:hello@zacbatten.me"]:visible').first()).toHaveAttribute(
       "href",
@@ -90,20 +85,13 @@ test.describe("static portfolio smoke paths", () => {
     expect(heroLayout.headingHeight).toBeLessThan(300);
   });
 
-  test("homepage features TraverseOps, DwellSmart, and SwarmForge", async ({ page }) => {
+  test("homepage stays focused on the intro and contact", async ({ page }) => {
     await gotoLocal(page, "/");
 
-    const projects = page.locator(".home-project-grid");
-    await expect(projects).toContainText("TraverseOps");
-    await expect(page.getByRole("link", { name: "Open the TraverseOps project page" })).toHaveAttribute("href", "traverseops.html");
-    await expect(projects).toContainText("DwellSmart");
-    await expect(projects).toContainText("SwarmForge");
-    await expect(page.getByRole("link", { name: "Open the DwellSmart project page" })).toHaveAttribute("href", "dwellsmart.html");
-    await expect(page.getByRole("link", { name: "Open the SwarmForge project page" })).toHaveAttribute("href", "swarmforge.html");
-    await expect(page.locator(".project-card-icon--muni img")).toHaveAttribute("src", "assets/project-logo-traverseops.png");
-    await expect(page.locator(".project-card-icon--dwell img")).toHaveAttribute("src", "assets/project-logo-dwellsmart.png");
-    await expect(page.locator(".project-card-icon--swarm img")).toHaveAttribute("src", "assets/project-logo-swarmforge.png");
-    await expect(page.getByText("Cloudflare", { exact: true }).locator("xpath=preceding-sibling::span/img")).toHaveAttribute("src", "assets/tech-cloudflare.svg");
+    await expect(page.locator(".home-work-section")).toHaveCount(0);
+    await expect(page.locator(".skills-section")).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "View my work" })).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "Have something useful in mind?" })).toBeAttached();
   });
 
   test("homepage Say hello button stays readable and reaches contact", async ({ page }) => {
@@ -112,8 +100,8 @@ test.describe("static portfolio smoke paths", () => {
     const sayHello = page.getByRole("link", { name: "Say hello" });
     await expect(sayHello).toHaveAttribute("href", "#contact");
     await sayHello.hover();
-    await expect(sayHello).toHaveCSS("background-color", "rgb(23, 103, 216)");
-    await expect(sayHello).toHaveCSS("color", "rgb(255, 255, 255)");
+    await expect(sayHello).toHaveCSS("background-color", "rgb(11, 35, 66)");
+    await expect(sayHello).toHaveCSS("color", "rgb(248, 246, 241)");
 
     await sayHello.click();
     await expect(page).toHaveURL(/#contact$/);
@@ -151,7 +139,7 @@ test.describe("static portfolio smoke paths", () => {
 
     for (const path of sharedHeaderPages) {
       await gotoLocal(page, path);
-      await expect(primaryNav(page).getByRole("link")).toHaveText(["Work", "About", "Skills", "Contact"]);
+      await expect(primaryNav(page).getByRole("link")).toHaveText(["Contact"]);
       const footer = page.locator(".site-footer");
       await expect(footer.locator(".footer-brand strong")).toHaveText("zac");
       await expect(footer).toContainText("Zac Batten");

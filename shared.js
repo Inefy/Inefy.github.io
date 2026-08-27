@@ -10,12 +10,8 @@
   const THEME_COLORS = { dark: "#09182a", light: "#f8f6f1" };
   const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
-  const SHARED_NAV_VERSION = "20260824-sharednav2";
   const SHARED_NAV_ITEMS = [
-    { label: "Work", href: `work.html?v=${SHARED_NAV_VERSION}` },
-    { label: "About", href: `about.html?v=${SHARED_NAV_VERSION}` },
-    { label: "Skills", href: `index.html?v=${SHARED_NAV_VERSION}#skills` },
-    { label: "Contact", href: `index.html?v=${SHARED_NAV_VERSION}#contact` }
+    { label: "Contact", href: "index.html#contact" }
   ];
 
   function renderSharedNavigation() {
@@ -194,15 +190,6 @@
 
     const current = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
 
-    // Every page that sits under Work keeps that tab marked.
-    const workPages = new Set([
-      "work.html", "dwellsmart.html", "traverseops-demo.html", "movie-library.html", "movie-night.html",
-      "paint.html",
-      "2048.html", "snake-lab.html", "brick-breaker.html", "asteroid-drift.html",
-      "minefield-sweep.html", "mini-golf.html", "flappy-workbench.html",
-      "pocket-legends.html"
-    ]);
-
     nav.querySelectorAll("a").forEach((link) => {
       link.removeAttribute("aria-current");
       let targetUrl;
@@ -216,8 +203,6 @@
       const matchingSection = targetUrl.hash && targetUrl.hash === window.location.hash;
       if ((href === current || (current === "" && href === "index.html")) && (!targetUrl.hash || matchingSection)) {
         link.setAttribute("aria-current", "page");
-      } else if (href === "work.html" && workPages.has(current)) {
-        link.setAttribute("aria-current", "true");
       }
     });
   }
