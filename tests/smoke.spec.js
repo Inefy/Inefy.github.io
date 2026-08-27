@@ -95,11 +95,11 @@ test.describe("static portfolio smoke paths", () => {
 
     const projects = page.locator(".home-project-grid");
     await expect(projects).toContainText("TraverseOps");
-    await expect(page.getByRole("link", { name: "Visit TraverseOps" })).toHaveAttribute("href", "https://traverseops.app/landing.html");
+    await expect(page.getByRole("link", { name: "Open the TraverseOps project page" })).toHaveAttribute("href", "traverseops.html");
     await expect(projects).toContainText("DwellSmart");
     await expect(projects).toContainText("SwarmForge");
-    await expect(page.getByRole("link", { name: "Visit DwellSmart" })).toHaveAttribute("href", "https://dwellsmart.ai/");
-    await expect(page.getByRole("link", { name: "View SwarmForge on GitHub" })).toHaveAttribute("href", "https://github.com/Inefy/SwarmForge");
+    await expect(page.getByRole("link", { name: "Open the DwellSmart project page" })).toHaveAttribute("href", "dwellsmart.html");
+    await expect(page.getByRole("link", { name: "Open the SwarmForge project page" })).toHaveAttribute("href", "swarmforge.html");
     await expect(page.locator(".project-card-icon--muni img")).toHaveAttribute("src", "assets/project-logo-traverseops.png");
     await expect(page.locator(".project-card-icon--dwell img")).toHaveAttribute("src", "assets/project-logo-dwellsmart.png");
     await expect(page.locator(".project-card-icon--swarm img")).toHaveAttribute("src", "assets/project-logo-swarmforge.png");
@@ -128,6 +128,9 @@ test.describe("static portfolio smoke paths", () => {
     await expect(projects).toContainText("DwellSmart");
     await expect(page.getByRole("link", { name: "Open the DwellSmart project page" })).toHaveAttribute("href", "dwellsmart.html");
     await expect(projects).toContainText("TraverseOps");
+    await expect(page.getByRole("link", { name: "Open the TraverseOps project page" })).toHaveAttribute("href", "traverseops.html");
+    await expect(projects).toContainText("SwarmForge");
+    await expect(page.getByRole("link", { name: "Open the SwarmForge project page" })).toHaveAttribute("href", "swarmforge.html");
     await expect(projects).toContainText("MovieBot");
     await expect(page.getByText("Web Paint", { exact: true })).toHaveCount(0);
     await expect(page.getByText("Judy Batten Wellness", { exact: true })).toHaveCount(0);
