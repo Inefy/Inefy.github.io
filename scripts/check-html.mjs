@@ -250,7 +250,9 @@ const failures = [];
 
 for (const filePath of htmlFiles) {
   const relativePath = toPosixPath(path.relative(rootDir, filePath));
-  const content = fs.readFileSync(filePath, "utf8");
+  // Browsers normalize HTML newlines before applying CSP hashes. Normalizing
+  // here also keeps the check deterministic across Windows and Linux runners.
+  const content = fs.readFileSync(filePath, "utf8").replace(/\r\n?/g, "\n");
 
   checkRequiredHeadMetadata(content, relativePath, failures);
   checkCsp(content, relativePath, failures);
