@@ -38,10 +38,6 @@ async function gotoLocal(page, path) {
   await page.goto(path, { waitUntil: "domcontentloaded" });
 }
 
-function primaryNav(page) {
-  return page.getByRole("navigation", { name: /primary/i });
-}
-
 test.describe("static portfolio smoke paths", () => {
   test.beforeEach(async ({ page }) => {
     await page.route("**/*", async (route) => {
@@ -55,13 +51,12 @@ test.describe("static portfolio smoke paths", () => {
     });
   });
 
-  test("homepage loads and its primary nav reaches the contact panel", async ({ page }) => {
+  test("homepage loads without header navigation and keeps the contact panel", async ({ page }) => {
     await gotoLocal(page, "/");
     await expect(page.getByRole("heading", { name: "Zac Batten", exact: true })).toBeVisible();
-    await expect(primaryNav(page).getByRole("link")).toHaveText(["Contact"]);
-    await primaryNav(page).getByRole("link", { name: "Contact" }).click();
-    await expect(page).toHaveURL(/\/index\.html#contact$/);
-    await expect(page.getByRole("heading", { name: "Have something useful in mind?" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: /primary/i })).toHaveCount(0);
+    await expect(page.locator("[data-nav-toggle]")).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "Have something useful in mind?" })).toBeAttached();
     await expect(page.locator('a[href="mailto:hello@zacbatten.me"]:visible').first()).toHaveAttribute(
       "href",
       "mailto:hello@zacbatten.me"
@@ -124,7 +119,7 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByText("Judy Batten Wellness", { exact: true })).toHaveCount(0);
   });
 
-  test("inner pages keep the same primary navigation as Home", async ({ page }) => {
+  test("shared pages keep the same navigation-free header as Home", async ({ page }) => {
     const sharedHeaderPages = [
       "/",
       "/work.html",
@@ -139,7 +134,8 @@ test.describe("static portfolio smoke paths", () => {
 
     for (const path of sharedHeaderPages) {
       await gotoLocal(page, path);
-      await expect(primaryNav(page).getByRole("link")).toHaveText(["Contact"]);
+      await expect(page.getByRole("navigation", { name: /primary/i })).toHaveCount(0);
+      await expect(page.locator("[data-nav-toggle]")).toHaveCount(0);
       const footer = page.locator(".site-footer");
       await expect(footer.locator(".footer-brand strong")).toHaveText("zac");
       await expect(footer).toContainText("Zac Batten");
