@@ -37,6 +37,12 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://zacbatten.me/photography.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://zacbatten.me/traverseops-demo.html</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>

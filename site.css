@@ -3295,11 +3295,17 @@ main:not(.home-page) {
 }
 
 .footer-sail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   justify-self: end;
-  color: var(--lime);
-  font-family: var(--font-mono);
-  line-height: 0.72;
-  text-align: center;
+  width: 104px;
+  min-height: 58px;
+}
+
+.footer-sail img {
+  width: 100%;
+  height: auto;
 }
 
 /* Interior portfolio pages ------------------------------------------------ */

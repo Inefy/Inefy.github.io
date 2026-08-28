@@ -6,6 +6,7 @@ const responsivePaths = [
   "/",
   "/404.html",
   "/about.html",
+  "/photography.html",
   "/work.html",
   "/dwellsmart.html",
   "/movie-library.html",
@@ -124,6 +125,7 @@ test.describe("static portfolio smoke paths", () => {
       "/",
       "/work.html",
       "/about.html",
+      "/photography.html",
       "/dwellsmart.html",
       "/resume.html",
       "/movie-library.html",
@@ -141,6 +143,7 @@ test.describe("static portfolio smoke paths", () => {
       await expect(footer).toContainText("Zac Batten");
       await expect(footer.locator(".footer-meta")).toHaveText("St. John’s, Newfoundland & Labrador");
       await expect(footer.locator(".footer-sail")).toHaveCount(1);
+      await expect(footer.locator('.footer-sail img[src$="assets/footer-fish.png"]')).toHaveCount(1);
     }
   });
 
@@ -160,6 +163,24 @@ test.describe("static portfolio smoke paths", () => {
     const snapshot = page.locator(".about-snapshot");
     await expect(snapshot).toContainText(/Full-stack(?: software)? developer/);
     await expect(snapshot).not.toContainText("Frontend + automation");
+  });
+
+  test("Photography page shows the Newfoundland and Europe trip collections", async ({ page }) => {
+    await gotoLocal(page, "/photography.html");
+
+    await expect(page.getByRole("heading", { name: "Places worth keeping." })).toBeVisible();
+    await expect(page.locator("[data-photo-gallery] .photo-card")).toHaveCount(45);
+    await expect(page.getByText("No photographs yet.")).toBeHidden();
+    await expect(page.locator("[data-trip-filter]")).toBeVisible();
+    await expect(page.getByRole("button", { name: "Europe" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Newfoundland" })).toBeVisible();
+    await expect(page.locator("[data-photo-count]")).toHaveText("45 photographs");
+    await page.getByRole("button", { name: "Europe" }).click();
+    await expect(page.locator("[data-photo-count]")).toHaveText("33 photographs");
+    await expect(page.locator('.photo-card[data-trip="Europe"]:visible')).toHaveCount(33);
+    await expect(page.locator('.photo-card[data-trip="Newfoundland"]:visible')).toHaveCount(0);
+    await expect(page.getByRole("navigation", { name: /primary/i })).toHaveCount(0);
+    await expect(page.locator("[data-nav-toggle]")).toHaveCount(0);
   });
 
   test("Cape Spear scene keeps the lighthouse in front of the animated coast", async ({ page }) => {
