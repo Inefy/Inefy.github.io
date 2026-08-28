@@ -81,11 +81,16 @@ test.describe("static portfolio smoke paths", () => {
     expect(heroLayout.headingHeight).toBeLessThan(300);
   });
 
-  test("homepage stays focused on the intro and contact", async ({ page }) => {
+  test("homepage shows the projects, tech stack, and contact sections", async ({ page }) => {
     await gotoLocal(page, "/");
 
-    await expect(page.locator(".home-work-section")).toHaveCount(0);
-    await expect(page.locator(".skills-section")).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "Projects", exact: true })).toBeVisible();
+    await expect(page.locator(".home-project-card")).toHaveCount(3);
+    await expect(page.getByRole("link", { name: "Open the TraverseOps project page" })).toHaveAttribute("href", "traverseops.html");
+    await expect(page.getByRole("link", { name: "Open the DwellSmart project page" })).toHaveAttribute("href", "dwellsmart.html");
+    await expect(page.getByRole("link", { name: "Open the SwarmForge project page" })).toHaveAttribute("href", "swarmforge.html");
+    await expect(page.getByRole("heading", { name: "Tech stack", exact: true })).toBeVisible();
+    await expect(page.locator(".skills-section .tool-list > li")).toHaveCount(9);
     await expect(page.getByRole("link", { name: "View my work" })).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "Have something useful in mind?" })).toBeAttached();
   });
@@ -165,24 +170,21 @@ test.describe("static portfolio smoke paths", () => {
     await expect(snapshot).not.toContainText("Frontend + automation");
   });
 
-  test("Photography page shows the Newfoundland, Europe, and Montreal collections", async ({ page }) => {
+  test("Photography page shows three consistent, image-only trip sections", async ({ page }) => {
     await gotoLocal(page, "/photography.html");
 
-    await expect(page.getByRole("heading", { name: "Places worth keeping." })).toBeVisible();
-    await expect(page.locator("[data-photo-gallery] .photo-card")).toHaveCount(54);
-    await expect(page.getByText("No photographs yet.")).toBeHidden();
-    await expect(page.locator("[data-trip-filter]")).toBeVisible();
-    await expect(page.getByRole("button", { name: "Europe" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Montreal" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Newfoundland" })).toBeVisible();
-    await expect(page.locator("[data-photo-count]")).toHaveText("54 photographs");
-    await page.getByRole("button", { name: "Europe" }).click();
-    await expect(page.locator("[data-photo-count]")).toHaveText("33 photographs");
-    await expect(page.locator('.photo-card[data-trip="Europe"]:visible')).toHaveCount(33);
-    await expect(page.locator('.photo-card[data-trip="Newfoundland"]:visible')).toHaveCount(0);
-    await page.getByRole("button", { name: "Montreal" }).click();
-    await expect(page.locator("[data-photo-count]")).toHaveText("9 photographs");
-    await expect(page.locator('.photo-card[data-trip="Montreal"]:visible')).toHaveCount(9);
+    await expect(page.getByRole("link", { name: "Photography" })).toHaveAttribute("aria-current", "page");
+    await expect(page.locator(".photo-trip")).toHaveCount(3);
+    await expect(page.getByRole("heading", { name: "Newfoundland", exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Europe", exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Montreal", exact: true })).toBeVisible();
+    await expect(page.locator(".photo-card")).toHaveCount(54);
+    await expect(page.locator(".photo-card figcaption")).toHaveCount(0);
+    await expect(page.locator(".photo-hero")).toHaveCount(0);
+    const aspectRatios = await page.locator(".photo-card__image").evaluateAll((images) =>
+      [...new Set(images.map((image) => getComputedStyle(image).aspectRatio))]
+    );
+    expect(aspectRatios).toEqual(["4 / 3"]);
     await expect(page.getByRole("navigation", { name: /primary/i })).toHaveCount(0);
     await expect(page.locator("[data-nav-toggle]")).toHaveCount(0);
   });

@@ -24,8 +24,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site.css?v=20260827-case-studies">
-    <link rel="stylesheet" href="photography.css?v=20260828-photography1">
+    <link rel="stylesheet" href="site.css?v=20260828-photography-tab1">
+    <link rel="stylesheet" href="photography.css?v=20260828-sections1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -34,6 +34,7 @@
         <span class="brand-mark" aria-hidden="true">zac</span>
         <span class="brand-copy"><span>Zac Batten</span></span>
       </a>
+      <a class="header-photography" href="photography.html" aria-current="page">Photography</a>
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>
@@ -41,39 +42,8 @@
     </header>
 
     <main id="top" class="photography-page" tabindex="-1">
-      <section class="photo-hero" aria-labelledby="photography-title">
-        <div class="photo-hero__copy">
-          <p class="photo-kicker" data-reveal>Through my lens</p>
-          <h1 id="photography-title" data-reveal>Places worth keeping.</h1>
-          <p class="photo-lede" data-reveal data-reveal-delay="1">A quiet collection of favourite frames from trips near and far.</p>
-        </div>
-        <div class="photo-hero__frames" aria-hidden="true" data-reveal data-reveal-delay="2">
-          <span></span><span></span><span></span>
-        </div>
-      </section>
-
-      <section class="photo-collection" aria-labelledby="collection-title">
-        <div class="photo-collection__heading">
-          <div>
-            <p class="photo-kicker">The collection</p>
-            <h2 id="collection-title">Photographs</h2>
-          </div>
-          <p class="photo-count" data-photo-count aria-live="polite">0 photographs</p>
-        </div>
-
-        <div class="trip-filter" data-trip-filter hidden>
-          <p id="trip-filter-label">Filter by trip</p>
-          <div class="trip-filter__options" role="group" aria-labelledby="trip-filter-label" data-trip-options></div>
-        </div>
-
-        <div class="photo-gallery" data-photo-gallery></div>
-
-        <div class="photo-empty" data-photo-empty>
-          <span class="photo-empty__mark" aria-hidden="true"></span>
-          <h2>No photographs yet.</h2>
-          <p>I’m still choosing what belongs on the wall. Check back after the next roll.</p>
-        </div>
-      </section>
+      <h1 class="sr-only">Photography</h1>
+      <div class="photo-trips" data-photo-trips></div>
     </main>
 
     <footer class="site-footer">
@@ -83,6 +53,6 @@
     </footer>
 
     <script src="shared.js?v=20260827-noheadernav1" defer></script>
-    <script src="photography.js?v=20260828-montreal1" defer></script>
+    <script src="photography.js?v=20260828-sections1" defer></script>
   </body>
 </html>

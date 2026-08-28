@@ -427,36 +427,13 @@
     }
   ];
 
-  const gallery = document.querySelector("[data-photo-gallery]");
-  const empty = document.querySelector("[data-photo-empty]");
-  const filter = document.querySelector("[data-trip-filter]");
-  const options = document.querySelector("[data-trip-options]");
-  const count = document.querySelector("[data-photo-count]");
+  const tripsContainer = document.querySelector("[data-photo-trips]");
 
-  if (!gallery || !empty || !filter || !options || !count) return;
-
-  const trips = [...new Set(photos.map((photo) => photo.trip))].sort((a, b) =>
-    a.localeCompare(b, undefined, { numeric: true })
-  );
-
-  function pluralize(value) {
-    return `${value} photograph${value === 1 ? "" : "s"}`;
-  }
-
-  function makeFilterButton(label, value, active = false) {
-    const button = document.createElement("button");
-    button.className = "trip-filter__button";
-    button.type = "button";
-    button.textContent = label;
-    button.dataset.trip = value;
-    button.setAttribute("aria-pressed", String(active));
-    return button;
-  }
+  if (!tripsContainer) return;
 
   function makePhotoCard(photo) {
     const figure = document.createElement("figure");
-    figure.className = `photo-card photo-card--${photo.orientation === "landscape" ? "landscape" : "portrait"}`;
-    figure.dataset.trip = photo.trip;
+    figure.className = "photo-card";
 
     const image = document.createElement("img");
     image.className = "photo-card__image";
@@ -467,60 +444,27 @@
     image.loading = "lazy";
     image.decoding = "async";
 
-    const caption = document.createElement("figcaption");
-    const title = document.createElement("span");
-    title.className = "photo-card__title";
-    title.textContent = photo.title;
-    const trip = document.createElement("span");
-    trip.className = "photo-card__trip";
-    trip.textContent = photo.trip;
-
-    caption.append(title, trip);
-    figure.append(image, caption);
+    figure.append(image);
     return figure;
   }
 
-  function setActiveTrip(trip) {
-    const activeTrip = trip === "all" || trips.includes(trip) ? trip : "all";
-    let visible = 0;
+  function makeTripSection(trip) {
+    const section = document.createElement("section");
+    section.className = "photo-trip";
+    section.dataset.trip = trip;
 
-    gallery.querySelectorAll(".photo-card").forEach((card) => {
-      const show = activeTrip === "all" || card.dataset.trip === activeTrip;
-      card.hidden = !show;
-      if (show) visible += 1;
-    });
+    const heading = document.createElement("h2");
+    heading.className = "photo-trip__title";
+    heading.textContent = trip;
 
-    options.querySelectorAll("button").forEach((button) => {
-      button.setAttribute("aria-pressed", String(button.dataset.trip === activeTrip));
-    });
+    const grid = document.createElement("div");
+    grid.className = "photo-grid";
+    grid.append(...photos.filter((photo) => photo.trip === trip).map(makePhotoCard));
 
-    count.textContent = pluralize(visible);
-
-    const url = new URL(window.location.href);
-    if (activeTrip === "all") {
-      url.searchParams.delete("trip");
-    } else {
-      url.searchParams.set("trip", activeTrip);
-    }
-    window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    section.append(heading, grid);
+    return section;
   }
 
-  if (!photos.length) {
-    count.textContent = pluralize(0);
-    return;
-  }
-
-  empty.hidden = true;
-  filter.hidden = false;
-  gallery.append(...photos.map(makePhotoCard));
-  options.append(makeFilterButton("All trips", "all", true));
-  trips.forEach((trip) => options.append(makeFilterButton(trip, trip)));
-
-  options.addEventListener("click", (event) => {
-    const button = event.target.closest("button[data-trip]");
-    if (button) setActiveTrip(button.dataset.trip);
-  });
-
-  const initialTrip = new URL(window.location.href).searchParams.get("trip") || "all";
-  setActiveTrip(initialTrip);
+  const tripOrder = ["Newfoundland", "Europe", "Montreal"];
+  tripsContainer.append(...tripOrder.map(makeTripSection));
 })();

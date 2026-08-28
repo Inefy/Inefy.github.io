@@ -80,7 +80,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=20260827-hero-spacing1">
+  <link rel="stylesheet" href="site.css?v=20260828-photography-tab1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -89,6 +89,7 @@
         <span class="brand-mark" aria-hidden="true">zac</span>
         <span class="brand-copy"><span>Zac Batten</span></span>
       </a>
+      <a class="header-photography" href="photography.html">Photography</a>
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 1 1 9.7 3.5a6.5 6.5 0 0 0 10.8 10.8z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.6M12 18.8v2.6M4.7 4.7l1.8 1.8M17.5 17.5l1.8 1.8M2.6 12h2.6M18.8 12h2.6M4.7 19.3l1.8-1.8M17.5 6.5l1.8-1.8"/></svg>
@@ -117,6 +118,82 @@
             <span class="scene-bird bird-three" aria-hidden="true"></span>
             <img class="cape-spear-art cape-spear-art--line cape-spear-art--sequence" src="assets/cape-spear-animated-frame-0000.png" data-cape-spear-sequence alt="Animated blue line illustration of the Cape Spear lighthouse, rocky headland, and Atlantic water" width="1382" height="1138" decoding="sync" loading="eager" fetchpriority="high">
           </aside>
+        </div>
+      </section>
+
+      <section class="section work-section home-work-section" id="work" aria-labelledby="work-title">
+        <div class="section-heading section-heading--row">
+          <div>
+            <h2 id="work-title">Projects</h2>
+          </div>
+        </div>
+
+        <div class="home-project-grid">
+          <a class="home-project-card home-project-card--muni" href="traverseops.html" data-reveal aria-label="Open the TraverseOps project page">
+            <span class="project-card-art project-card-art--muni" aria-hidden="true"></span>
+            <span class="project-card-icon project-card-icon--muni" aria-hidden="true">
+              <img src="assets/project-logo-traverseops.png" alt="" width="1254" height="1254" loading="lazy" decoding="async">
+            </span>
+            <span class="home-project-card__body">
+              <span class="home-project-card__kicker">Municipal operations</span>
+              <h3>TraverseOps</h3>
+              <p>Offline-capable asset management for inspections, mapping, and public works workflows.</p>
+              <ul class="project-card-tags" aria-label="TraverseOps technologies"><li>React Native</li><li>Map UI</li><li>Supabase</li></ul>
+              <span class="home-project-card__action">View the project <span aria-hidden="true">→</span></span>
+            </span>
+          </a>
+
+          <a class="home-project-card home-project-card--dwell" href="dwellsmart.html" data-reveal data-reveal-delay="1" aria-label="Open the DwellSmart project page">
+            <span class="project-card-art project-card-art--dwell" aria-hidden="true"></span>
+            <span class="project-card-icon project-card-icon--dwell" aria-hidden="true">
+              <img src="assets/project-logo-dwellsmart.png" alt="" width="1254" height="1254" loading="lazy" decoding="async">
+            </span>
+            <span class="home-project-card__body">
+              <span class="home-project-card__kicker">Real estate intelligence</span>
+              <h3>DwellSmart</h3>
+              <p>Natural-language home search powered by live MLS listings, local neighbourhood context, and AI property analysis.</p>
+              <ul class="project-card-tags" aria-label="DwellSmart capabilities"><li>AI search</li><li>Live MLS</li><li>Local data</li></ul>
+              <span class="home-project-card__action">View the project <span aria-hidden="true">→</span></span>
+            </span>
+          </a>
+
+          <a class="home-project-card home-project-card--swarm" href="swarmforge.html" data-reveal data-reveal-delay="2" aria-label="Open the SwarmForge project page">
+            <span class="project-card-art project-card-art--swarm" aria-hidden="true"></span>
+            <span class="project-card-icon project-card-icon--swarm" aria-hidden="true">
+              <img src="assets/project-logo-swarmforge.png" alt="" width="1254" height="1254" loading="lazy" decoding="async">
+            </span>
+            <span class="home-project-card__body">
+              <span class="home-project-card__kicker">Adaptive game AI</span>
+              <h3>SwarmForge</h3>
+              <p>Protoss, Terran, and Zerg StarCraft 2 bots that develop strategies, learn opponents, and analyze replays.</p>
+              <ul class="project-card-tags" aria-label="SwarmForge technologies"><li>Python</li><li>Self-play</li><li>Game AI</li></ul>
+              <span class="home-project-card__action">View the project <span aria-hidden="true">→</span></span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section skills-section skills-section--coastal" id="skills" aria-labelledby="skills-title">
+        <div class="section-heading">
+          <img class="stack-heading-wave" src="assets/stack-heading-wave.png" alt="" width="537" height="55" loading="lazy" decoding="async">
+          <h2 id="skills-title">Tech stack</h2>
+        </div>
+        <ul class="tool-list" aria-label="Technologies used across projects">
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-typescript.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>TypeScript</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-python.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Python</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-react.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>React / React Native</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-postgresql.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>PostgreSQL + PostGIS</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-cloudflare.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Cloudflare</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-supabase.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Supabase</strong></li>
+          <li><span class="tool-icon" aria-hidden="true"><img src="assets/tech-playwright.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span><strong>Playwright</strong></li>
+          <li><span class="tool-icon tool-icon--ai" aria-hidden="true"><i></i><i></i><i></i></span><strong>AI / LLM APIs</strong></li>
+          <li class="tool-list__more">
+            <strong><span aria-hidden="true">+</span> whatever gets the job done</strong>
+            <img class="stack-sailboat-art" src="assets/stack-sailboat.png" alt="" width="1448" height="1086" loading="lazy" decoding="async">
+          </li>
+        </ul>
+        <div class="stack-waterline" aria-hidden="true">
+          <img class="stack-buoy-art" src="assets/stack-buoy.png" alt="" width="1024" height="1536" loading="lazy" decoding="async">
         </div>
       </section>
 
