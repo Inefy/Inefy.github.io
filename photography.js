@@ -355,6 +355,75 @@
       title: "Winged guardian",
       trip: "Europe",
       orientation: "landscape"
+    },
+    {
+      src: "assets/photos/montreal/IMG_0021.jpg",
+      alt: "Bicycles suspended overhead in a blue and violet illuminated installation",
+      title: "Blue wheels",
+      trip: "Montreal",
+      orientation: "portrait",
+      width: 947,
+      height: 1262
+    },
+    {
+      src: "assets/photos/montreal/IMG_0264.JPG",
+      alt: "The Montreal Olympic Stadium tower rising above a sunny garden",
+      title: "Olympic lines",
+      trip: "Montreal",
+      orientation: "landscape"
+    },
+    {
+      src: "assets/photos/montreal/IMG_0281.JPG",
+      alt: "A pale pink rose opening among deep green leaves",
+      title: "Garden rose",
+      trip: "Montreal",
+      orientation: "landscape"
+    },
+    {
+      src: "assets/photos/montreal/IMG_0353.JPG",
+      alt: "Giant lily pads floating in a formal garden pond",
+      title: "Lily pond",
+      trip: "Montreal",
+      orientation: "landscape"
+    },
+    {
+      src: "assets/photos/montreal/IMG_0447.JPG",
+      alt: "A crowded Montreal nightspot glowing under deep red neon light",
+      title: "Neon night",
+      trip: "Montreal",
+      orientation: "portrait",
+      width: 947,
+      height: 1262
+    },
+    {
+      src: "assets/photos/montreal/IMG_0459.JPG",
+      alt: "The illuminated altar and vaulted interior of Notre-Dame Basilica",
+      title: "Basilica glow",
+      trip: "Montreal",
+      orientation: "landscape"
+    },
+    {
+      src: "assets/photos/montreal/IMG_0491.JPG",
+      alt: "A curious raccoon peering up from beside a stone path",
+      title: "Curious visitor",
+      trip: "Montreal",
+      orientation: "portrait",
+      width: 947,
+      height: 1262
+    },
+    {
+      src: "assets/photos/montreal/IMG_1609.jpg",
+      alt: "Saint Joseph's Oratory standing above its gardens beneath a textured blue sky",
+      title: "The Oratory",
+      trip: "Montreal",
+      orientation: "landscape"
+    },
+    {
+      src: "assets/photos/montreal/IMG_1656.jpg",
+      alt: "A busy outdoor festival beneath dramatic gold and grey evening clouds",
+      title: "Festival sunset",
+      trip: "Montreal",
+      orientation: "landscape"
     }
   ];
 
