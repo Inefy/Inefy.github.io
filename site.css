@@ -3152,9 +3152,9 @@ main:not(.home-page) {
   align-items: center;
   gap: clamp(42px, 6vw, 86px);
   width: min(100%, 1180px);
-  min-height: clamp(450px, 34vw, 520px);
+  min-height: clamp(380px, 30vw, 440px);
   margin-inline: auto;
-  padding: clamp(40px, 4vw, 58px) clamp(36px, 6vw, 78px) clamp(92px, 8vw, 118px);
+  padding: clamp(32px, 3.5vw, 48px) clamp(32px, 5.5vw, 68px) clamp(78px, 7vw, 100px);
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 28px;
@@ -3166,24 +3166,10 @@ main:not(.home-page) {
 
 .contact-panel h2 {
   max-width: 10.5ch;
-  margin-top: clamp(30px, 3.5vw, 48px);
+  margin-top: 0;
   font-size: clamp(3rem, 4.8vw, 5.2rem);
   line-height: 0.94;
   letter-spacing: -0.055em;
-}
-
-.contact-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: var(--lime);
-}
-
-.contact-eyebrow::before {
-  width: 30px;
-  height: 2px;
-  content: "";
-  background: currentColor;
 }
 
 .contact-panel__side {
@@ -3703,9 +3689,9 @@ main:not(.home-page) {
 
   .contact-panel {
     align-items: start;
-    gap: 28px;
-    min-height: 540px;
-    padding: 42px 42px 110px;
+    gap: 24px;
+    min-height: 460px;
+    padding: 34px 34px 88px;
   }
 
   .contact-panel h2 {
@@ -3810,9 +3796,9 @@ main:not(.home-page) {
   }
 
   .contact-panel {
-    gap: 26px;
-    min-height: 520px;
-    padding: 30px 24px 92px;
+    gap: 22px;
+    min-height: 430px;
+    padding: 28px 24px 78px;
     border-radius: 20px;
   }
 
