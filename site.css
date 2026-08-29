@@ -2740,7 +2740,9 @@ main:not(.home-page) {
 }
 
 .button.primary:hover {
-  color: var(--paper);
+  border-color: var(--lime);
+  background: var(--lime);
+  color: var(--lime-ink);
   box-shadow: 0 14px 24px rgba(11, 35, 66, 0.23);
 }
 

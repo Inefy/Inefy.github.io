@@ -511,7 +511,6 @@
   const tripsContainer = document.querySelector("[data-photo-trips]");
   const lightbox = document.querySelector("[data-photo-lightbox]");
   const lightboxImage = lightbox?.querySelector("[data-photo-lightbox-image]");
-  const lightboxTitle = lightbox?.querySelector("[data-photo-lightbox-title]");
   const lightboxCount = lightbox?.querySelector("[data-photo-lightbox-count]");
   const lightboxViewport = lightbox?.querySelector("[data-photo-lightbox-viewport]");
   const previousButton = lightbox?.querySelector("[data-photo-previous]");
@@ -584,14 +583,13 @@
   }
 
   function showPhoto(photoIndex) {
-    if (!lightboxImage || !lightboxTitle || !lightboxCount) return;
+    if (!lightboxImage || !lightboxCount) return;
     activePhotoIndex = (photoIndex + photos.length) % photos.length;
     const photo = photos[activePhotoIndex];
 
     setZoomed(false);
     lightboxImage.src = photo.src;
     lightboxImage.alt = photo.alt;
-    lightboxTitle.textContent = photo.title || photo.trip;
     lightboxCount.textContent = `${activePhotoIndex + 1} / ${photos.length}`;
   }
 

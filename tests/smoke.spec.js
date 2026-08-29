@@ -57,7 +57,7 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByRole("heading", { name: "Zac Batten", exact: true })).toBeVisible();
     await expect(page.getByRole("navigation", { name: /primary/i })).toHaveCount(0);
     await expect(page.locator("[data-nav-toggle]")).toHaveCount(0);
-    await expect(page.getByRole("heading", { name: "Have something useful in mind?" })).toBeAttached();
+    await expect(page.getByRole("heading", { name: "Have something in mind?" })).toBeAttached();
     await expect(page.locator("[data-contact-open]:visible").first()).toBeVisible();
   });
 
@@ -109,7 +109,7 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByRole("heading", { name: "some of the tech i use", exact: true })).toBeVisible();
     await expect(page.locator(".skills-section .tool-list > li")).toHaveCount(9);
     await expect(page.getByRole("link", { name: "View my work" })).toHaveCount(0);
-    await expect(page.getByRole("heading", { name: "Have something useful in mind?" })).toBeAttached();
+    await expect(page.getByRole("heading", { name: "Have something in mind?" })).toBeAttached();
   });
 
   test("homepage Say hello button stays readable and reaches contact", async ({ page }) => {
@@ -118,12 +118,12 @@ test.describe("static portfolio smoke paths", () => {
     const sayHello = page.getByRole("link", { name: "Say hello" });
     await expect(sayHello).toHaveAttribute("href", "#contact");
     await sayHello.hover();
-    await expect(sayHello).toHaveCSS("background-color", "rgb(11, 35, 66)");
-    await expect(sayHello).toHaveCSS("color", "rgb(248, 246, 241)");
+    await expect(sayHello).toHaveCSS("background-color", "rgb(23, 103, 216)");
+    await expect(sayHello).toHaveCSS("color", "rgb(255, 255, 255)");
 
     await sayHello.click();
     await expect(page).toHaveURL(/#contact$/);
-    await expect(page.getByRole("heading", { name: "Have something useful in mind?" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Have something in mind?" })).toBeVisible();
   });
 
   test("Work page shows the flagship projects", async ({ page }) => {
@@ -214,6 +214,7 @@ test.describe("static portfolio smoke paths", () => {
     const lightbox = page.locator("[data-photo-lightbox]");
     await firstPhoto.click();
     await expect(lightbox).toBeVisible();
+    await expect(lightbox.locator("[data-photo-lightbox-title]")).toHaveCount(0);
     await expect(lightbox.locator("[data-photo-lightbox-count]")).toHaveText("1 / 63");
 
     const lightboxImage = lightbox.locator("[data-photo-lightbox-image]");
