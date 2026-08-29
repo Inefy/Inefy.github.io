@@ -207,6 +207,35 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.locator("[data-nav-toggle]")).toHaveCount(0);
   });
 
+  test("Photography lightbox opens, zooms, navigates, and closes", async ({ page }) => {
+    await gotoLocal(page, "/photography.html");
+
+    const firstPhoto = page.locator(".photo-card__button").first();
+    const lightbox = page.locator("[data-photo-lightbox]");
+    await firstPhoto.click();
+    await expect(lightbox).toBeVisible();
+    await expect(lightbox.locator("[data-photo-lightbox-count]")).toHaveText("1 / 63");
+
+    const lightboxImage = lightbox.locator("[data-photo-lightbox-image]");
+    await expect(lightboxImage).toBeVisible();
+    await expect.poll(() => lightboxImage.evaluate((image) => image.naturalWidth)).toBeGreaterThan(0);
+    const fittedSize = await lightboxImage.boundingBox();
+
+    await lightbox.locator("[data-photo-zoom]").click();
+    await expect(lightbox).toHaveClass(/is-zoomed/);
+    await expect(lightbox.locator("[data-photo-zoom]")).toHaveText("Fit photo");
+    const zoomedSize = await lightboxImage.boundingBox();
+    expect(zoomedSize.width).toBeGreaterThan(fittedSize.width);
+
+    await page.keyboard.press("ArrowRight");
+    await expect(lightbox.locator("[data-photo-lightbox-count]")).toHaveText("2 / 63");
+    await expect(lightbox).not.toHaveClass(/is-zoomed/);
+
+    await page.keyboard.press("Escape");
+    await expect(lightbox).not.toBeVisible();
+    await expect(firstPhoto).toBeFocused();
+  });
+
   test("Cape Spear scene keeps the lighthouse in front of the animated coast", async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await gotoLocal(page, "/");

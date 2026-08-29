@@ -509,12 +509,28 @@
   ];
 
   const tripsContainer = document.querySelector("[data-photo-trips]");
+  const lightbox = document.querySelector("[data-photo-lightbox]");
+  const lightboxImage = lightbox?.querySelector("[data-photo-lightbox-image]");
+  const lightboxTitle = lightbox?.querySelector("[data-photo-lightbox-title]");
+  const lightboxCount = lightbox?.querySelector("[data-photo-lightbox-count]");
+  const lightboxViewport = lightbox?.querySelector("[data-photo-lightbox-viewport]");
+  const previousButton = lightbox?.querySelector("[data-photo-previous]");
+  const nextButton = lightbox?.querySelector("[data-photo-next]");
+  const zoomButton = lightbox?.querySelector("[data-photo-zoom]");
+  const closeButton = lightbox?.querySelector("[data-photo-close]");
+  let activePhotoIndex = 0;
+  let lastPhotoButton = null;
 
   if (!tripsContainer) return;
 
-  function makePhotoCard(photo) {
+  function makePhotoCard(photo, photoIndex) {
     const figure = document.createElement("figure");
     figure.className = "photo-card";
+
+    const button = document.createElement("button");
+    button.className = "photo-card__button";
+    button.type = "button";
+    button.setAttribute("aria-label", `Open ${photo.title || photo.alt}`);
 
     const image = document.createElement("img");
     image.className = "photo-card__image";
@@ -525,7 +541,9 @@
     image.loading = "lazy";
     image.decoding = "async";
 
-    figure.append(image);
+    button.append(image);
+    button.addEventListener("click", () => openLightbox(photoIndex, button));
+    figure.append(button);
     return figure;
   }
 
@@ -540,7 +558,9 @@
 
     const grid = document.createElement("div");
     grid.className = "photo-grid";
-    grid.append(...photos.filter((photo) => photo.trip === trip).map(makePhotoCard));
+    grid.append(...photos.map((photo, index) => ({ photo, index }))
+      .filter(({ photo }) => photo.trip === trip)
+      .map(({ photo, index }) => makePhotoCard(photo, index)));
 
     section.append(heading, grid);
     return section;
@@ -548,4 +568,88 @@
 
   const tripOrder = ["Newfoundland", "Europe", "Montreal"];
   tripsContainer.append(...tripOrder.map(makeTripSection));
+
+  function setZoomed(zoomed) {
+    if (!lightbox || !zoomButton || !lightboxViewport) return;
+    lightbox.classList.toggle("is-zoomed", zoomed);
+    zoomButton.textContent = zoomed ? "Fit photo" : "Zoom in";
+    zoomButton.setAttribute("aria-label", zoomed ? "Fit photo to screen" : "View photo at full size");
+
+    requestAnimationFrame(() => {
+      lightboxViewport.scrollTo({
+        top: zoomed ? (lightboxViewport.scrollHeight - lightboxViewport.clientHeight) / 2 : 0,
+        left: zoomed ? (lightboxViewport.scrollWidth - lightboxViewport.clientWidth) / 2 : 0
+      });
+    });
+  }
+
+  function showPhoto(photoIndex) {
+    if (!lightboxImage || !lightboxTitle || !lightboxCount) return;
+    activePhotoIndex = (photoIndex + photos.length) % photos.length;
+    const photo = photos[activePhotoIndex];
+
+    setZoomed(false);
+    lightboxImage.src = photo.src;
+    lightboxImage.alt = photo.alt;
+    lightboxTitle.textContent = photo.title || photo.trip;
+    lightboxCount.textContent = `${activePhotoIndex + 1} / ${photos.length}`;
+  }
+
+  function openLightbox(photoIndex, opener) {
+    if (!lightbox) return;
+    lastPhotoButton = opener;
+    showPhoto(photoIndex);
+    document.body.classList.add("has-photo-lightbox");
+
+    if (typeof lightbox.showModal === "function") {
+      lightbox.showModal();
+    } else {
+      lightbox.setAttribute("open", "");
+    }
+
+    closeButton?.focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    if (typeof lightbox.close === "function") {
+      lightbox.close();
+    } else {
+      lightbox.removeAttribute("open");
+      document.body.classList.remove("has-photo-lightbox");
+      lastPhotoButton?.focus();
+    }
+  }
+
+  previousButton?.addEventListener("click", () => showPhoto(activePhotoIndex - 1));
+  nextButton?.addEventListener("click", () => showPhoto(activePhotoIndex + 1));
+  closeButton?.addEventListener("click", closeLightbox);
+  zoomButton?.addEventListener("click", () => setZoomed(!lightbox?.classList.contains("is-zoomed")));
+  lightboxImage?.addEventListener("click", () => setZoomed(!lightbox?.classList.contains("is-zoomed")));
+
+  lightbox?.addEventListener("click", (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  lightbox?.addEventListener("close", () => {
+    document.body.classList.remove("has-photo-lightbox");
+    setZoomed(false);
+    lastPhotoButton?.focus();
+  });
+
+  lightbox?.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      showPhoto(activePhotoIndex - 1);
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      showPhoto(activePhotoIndex + 1);
+    } else if (event.key === "+" || event.key === "=") {
+      event.preventDefault();
+      setZoomed(true);
+    } else if (event.key === "-") {
+      event.preventDefault();
+      setZoomed(false);
+    }
+  });
 })();

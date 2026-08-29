@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="site.css?v=20260828-photography-tab1">
-    <link rel="stylesheet" href="photography.css?v=20260828-hover-zoom1">
+    <link rel="stylesheet" href="photography.css?v=20260828-lightbox1">
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to main content</a>
@@ -46,6 +46,28 @@
       <div class="photo-trips" data-photo-trips></div>
     </main>
 
+    <dialog class="photo-lightbox" data-photo-lightbox aria-label="Photo viewer">
+      <div class="photo-lightbox__shell">
+        <div class="photo-lightbox__toolbar">
+          <p class="photo-lightbox__details" aria-live="polite">
+            <strong data-photo-lightbox-title></strong>
+            <span data-photo-lightbox-count></span>
+          </p>
+          <div class="photo-lightbox__actions">
+            <button class="photo-lightbox__control" type="button" data-photo-previous aria-label="Previous photo">&#8592;</button>
+            <button class="photo-lightbox__control photo-lightbox__zoom" type="button" data-photo-zoom aria-label="View photo at full size">Zoom in</button>
+            <button class="photo-lightbox__control" type="button" data-photo-next aria-label="Next photo">&#8594;</button>
+            <button class="photo-lightbox__control photo-lightbox__close" type="button" data-photo-close aria-label="Close photo viewer">&times;</button>
+          </div>
+        </div>
+        <div class="photo-lightbox__viewport" data-photo-lightbox-viewport>
+          <div class="photo-lightbox__canvas">
+            <img class="photo-lightbox__image" data-photo-lightbox-image alt="" width="1682" height="1262" loading="eager" decoding="async" draggable="false">
+          </div>
+        </div>
+      </div>
+    </dialog>
+
     <footer class="site-footer">
       <span class="footer-brand"><strong>zac</strong><small>&copy; <span id="year">2026</span> Zac Batten</small></span>
       <span class="footer-meta">St. John’s, Newfoundland &amp; Labrador</span>
@@ -53,6 +75,6 @@
     </footer>
 
     <script src="shared.js?v=20260827-noheadernav1" defer></script>
-    <script src="photography.js?v=20260828-sections1" defer></script>
+    <script src="photography.js?v=20260828-lightbox1" defer></script>
   </body>
 </html>
