@@ -114,6 +114,10 @@
   margin: 0;
 }
 
+[data-photo-lightbox-title] {
+  display: none !important;
+}
+
 .photo-lightbox__details span {
   flex: 0 0 auto;
   color: rgba(255, 255, 255, 0.68);

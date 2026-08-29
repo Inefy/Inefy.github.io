@@ -3167,11 +3167,20 @@ main:not(.home-page) {
 }
 
 .contact-panel h2 {
-  max-width: 10.5ch;
-  margin-top: 0;
+  max-width: 8.5ch;
+  margin: 0;
   font-size: clamp(3rem, 4.8vw, 5.2rem);
   line-height: 0.94;
   letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.contact-panel__intro {
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  text-align: center;
 }
 
 .contact-panel__side {
@@ -3186,6 +3195,7 @@ main:not(.home-page) {
   max-width: 29ch;
   font-size: clamp(1rem, 1.25vw, 1.2rem);
   line-height: 1.55;
+  text-wrap: balance;
 }
 
 .contact-message {

@@ -110,6 +110,8 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.locator(".skills-section .tool-list > li")).toHaveCount(9);
     await expect(page.getByRole("link", { name: "View my work" })).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "Have something in mind?" })).toBeAttached();
+    await expect(page.locator(".contact-panel__intro")).toHaveCSS("text-align", "center");
+    await expect(page.locator(".contact-panel__side > p")).toHaveText("Reach out for anything you have in mind!");
   });
 
   test("homepage Say hello button stays readable and reaches contact", async ({ page }) => {
@@ -215,6 +217,7 @@ test.describe("static portfolio smoke paths", () => {
     await firstPhoto.click();
     await expect(lightbox).toBeVisible();
     await expect(lightbox.locator("[data-photo-lightbox-title]")).toHaveCount(0);
+    await expect(lightbox.locator(".photo-lightbox__details")).toHaveText("1 / 63");
     await expect(lightbox.locator("[data-photo-lightbox-count]")).toHaveText("1 / 63");
 
     const lightboxImage = lightbox.locator("[data-photo-lightbox-image]");
