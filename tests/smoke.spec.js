@@ -58,10 +58,27 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByRole("navigation", { name: /primary/i })).toHaveCount(0);
     await expect(page.locator("[data-nav-toggle]")).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "Have something useful in mind?" })).toBeAttached();
-    await expect(page.locator('a[href="mailto:hello@zacbatten.me?subject=Project%20inquiry"]:visible').first()).toHaveAttribute(
-      "href",
-      "mailto:hello@zacbatten.me?subject=Project%20inquiry"
-    );
+    await expect(page.locator("[data-contact-open]:visible").first()).toBeVisible();
+  });
+
+  test("homepage contact button opens the Formspree form", async ({ page }) => {
+    await gotoLocal(page, "/");
+
+    const contactButton = page.locator("[data-contact-open]");
+    const dialog = page.locator("[data-contact-dialog]");
+    const form = dialog.locator("form");
+    await expect(dialog).not.toBeVisible();
+
+    await contactButton.click();
+    await expect(dialog).toBeVisible();
+    await expect(form).toHaveAttribute("action", "https://formspree.io/f/mrpggwke");
+    await expect(form).toHaveAttribute("method", "POST");
+    await expect(form.locator("#contact-name")).toHaveAttribute("required", "");
+    await expect(form.locator("#contact-email")).toHaveAttribute("required", "");
+    await expect(form.locator("#contact-message")).toHaveAttribute("required", "");
+
+    await dialog.locator("[data-contact-close]").click();
+    await expect(dialog).not.toBeVisible();
   });
 
   test("homepage hero keeps a readable width on wide screens", async ({ page }) => {

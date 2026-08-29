@@ -141,6 +141,38 @@
     });
   }
 
+  function initContactDialog() {
+    const dialog = document.querySelector("[data-contact-dialog]");
+    const openers = document.querySelectorAll("[data-contact-open]");
+    const closeButton = dialog?.querySelector("[data-contact-close]");
+    if (!dialog || !openers.length || !closeButton) return;
+
+    const closeDialog = () => {
+      if (typeof dialog.close === "function") {
+        dialog.close();
+      } else {
+        dialog.removeAttribute("open");
+      }
+    };
+
+    openers.forEach((opener) => {
+      opener.addEventListener("click", () => {
+        if (typeof dialog.showModal === "function") {
+          dialog.showModal();
+        } else {
+          dialog.setAttribute("open", "");
+        }
+        dialog.querySelector("input:not([type='hidden'])")?.focus();
+      });
+    });
+
+    closeButton.addEventListener("click", closeDialog);
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) closeDialog();
+    });
+    dialog.addEventListener("close", () => openers[0].focus());
+  }
+
   /* ------------------------------------------------------------------------
      Motion layer.
      Budget: at most two moving things per viewport, everything gated on
@@ -228,6 +260,7 @@
   initThemeToggle();
   initHoverPrefetch();
   initPrintButtons();
+  initContactDialog();
   initReveal();
   initReadouts();
   initCapeSpearSequence();

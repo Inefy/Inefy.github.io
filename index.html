@@ -204,11 +204,11 @@
           </div>
           <div class="contact-panel__side">
             <p>Tell me what you’re building. I’m always interested in useful problems and interesting ideas.</p>
-            <a class="contact-message" href="mailto:hello@zacbatten.me?subject=Project%20inquiry">
+            <button class="contact-message" type="button" data-contact-open>
               <span class="contact-message__icon" aria-hidden="true">✉</span>
               <span>wanna chat?</span>
               <span aria-hidden="true">→</span>
-            </a>
+            </button>
             <nav class="contact-links" aria-label="Contact links">
               <a href="https://github.com/Inefy" rel="noopener noreferrer" target="_blank">GitHub</a>
               <a href="https://ca.linkedin.com/in/zac-batten" rel="noopener noreferrer" target="_blank">LinkedIn</a>
@@ -218,6 +218,31 @@
           <img class="contact-ocean-art" src="assets/contact-ocean-art.png" alt="" width="1320" height="166" loading="lazy" decoding="async">
         </div>
       </section>
+
+      <dialog class="contact-dialog" data-contact-dialog aria-label="Contact form">
+        <div class="contact-dialog__shell">
+          <div class="contact-dialog__header">
+            <p class="contact-dialog__eyebrow">Let’s talk</p>
+            <button class="contact-dialog__close" type="button" data-contact-close aria-label="Close contact form">×</button>
+          </div>
+          <form class="contact-form" action="https://formspree.io/f/mrpggwke" method="POST">
+            <input type="hidden" name="_subject" value="New portfolio message">
+            <div class="contact-form__field">
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="contact-form__field">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="contact-form__field">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="5" required></textarea>
+            </div>
+            <button class="button primary contact-form__submit" type="submit">Send message <span aria-hidden="true">↗</span></button>
+          </form>
+        </div>
+      </dialog>
     </main>
 
     <footer class="site-footer">
@@ -226,7 +251,7 @@
       <span class="footer-sail" aria-hidden="true"><img src="assets/footer-fish.png" alt="" width="1672" height="941" loading="lazy" decoding="async"></span>
     </footer>
 
-  <script src="shared.js?v=20260827-noheadernav1" defer></script>
+  <script src="shared.js?v=20260828-contact-form1" defer></script>
     <script src="terrain.js?v=20260823-coastal1" defer></script>
   </body>
 </html>
