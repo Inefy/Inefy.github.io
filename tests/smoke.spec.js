@@ -58,9 +58,9 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByRole("navigation", { name: /primary/i })).toHaveCount(0);
     await expect(page.locator("[data-nav-toggle]")).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "Have something useful in mind?" })).toBeAttached();
-    await expect(page.locator('a[href="mailto:hello@zacbatten.me"]:visible').first()).toHaveAttribute(
+    await expect(page.locator('a[href="mailto:hello@zacbatten.me?subject=Project%20inquiry"]:visible').first()).toHaveAttribute(
       "href",
-      "mailto:hello@zacbatten.me"
+      "mailto:hello@zacbatten.me?subject=Project%20inquiry"
     );
   });
 
@@ -89,7 +89,7 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByRole("link", { name: "Open the TraverseOps project page" })).toHaveAttribute("href", "traverseops.html");
     await expect(page.getByRole("link", { name: "Open the DwellSmart project page" })).toHaveAttribute("href", "dwellsmart.html");
     await expect(page.getByRole("link", { name: "Open the SwarmForge project page" })).toHaveAttribute("href", "swarmforge.html");
-    await expect(page.getByRole("heading", { name: "Tech stack", exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "some of the tech i use", exact: true })).toBeVisible();
     await expect(page.locator(".skills-section .tool-list > li")).toHaveCount(9);
     await expect(page.getByRole("link", { name: "View my work" })).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "Have something useful in mind?" })).toBeAttached();

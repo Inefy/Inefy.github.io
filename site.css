@@ -4304,9 +4304,11 @@ main:not(.home-page) {
 }
 
 .skills-section--coastal .section-heading h2 {
-  font-size: clamp(3.7rem, 7vw, 6.7rem);
+  max-width: none;
+  font-size: clamp(2.25rem, 3.6vw, 4rem);
   line-height: 0.9;
   letter-spacing: -0.05em;
+  white-space: nowrap;
 }
 
 .skills-section--coastal .tool-list {
@@ -4458,7 +4460,7 @@ main:not(.home-page) {
   }
 
   .skills-section--coastal .section-heading h2 {
-    font-size: clamp(3.4rem, 18vw, 5.1rem);
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
   }
 
   .skills-section--coastal .tool-list {
@@ -4938,10 +4940,11 @@ main:not(.home-page) {
 }
 
 .home-work-section .section-heading h2 {
-  max-width: 14ch;
-  font-size: clamp(2.8rem, 4.8vw, 5.25rem);
+  max-width: none;
+  font-size: clamp(2.25rem, 3.6vw, 4rem);
   line-height: 0.9;
   letter-spacing: -0.055em;
+  white-space: nowrap;
 }
 
 .home-work-section .section-heading .text-link {
@@ -5603,7 +5606,7 @@ main:not(.home-page) {
   }
 
   .home-work-section .section-heading h2 {
-    font-size: clamp(2.5rem, 11vw, 4rem);
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
   }
 
   .home-project-grid {
@@ -5641,7 +5644,7 @@ main:not(.home-page) {
 
 .header-photography {
   position: relative;
-  justify-self: center;
+  justify-self: end;
   padding: 9px 2px;
   color: var(--ink);
   font-size: 0.9rem;
