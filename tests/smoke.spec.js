@@ -84,7 +84,7 @@ test.describe("static portfolio smoke paths", () => {
   test("homepage shows the projects, tech stack, and contact sections", async ({ page }) => {
     await gotoLocal(page, "/");
 
-    await expect(page.getByRole("heading", { name: "Projects", exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "some of my projects", exact: true })).toBeVisible();
     await expect(page.locator(".home-project-card")).toHaveCount(3);
     await expect(page.getByRole("link", { name: "Open the TraverseOps project page" })).toHaveAttribute("href", "traverseops.html");
     await expect(page.getByRole("link", { name: "Open the DwellSmart project page" })).toHaveAttribute("href", "dwellsmart.html");

@@ -4938,8 +4938,8 @@ main:not(.home-page) {
 }
 
 .home-work-section .section-heading h2 {
-  max-width: 10ch;
-  font-size: clamp(3.7rem, 6.4vw, 7rem);
+  max-width: 14ch;
+  font-size: clamp(2.8rem, 4.8vw, 5.25rem);
   line-height: 0.9;
   letter-spacing: -0.055em;
 }
@@ -5603,7 +5603,7 @@ main:not(.home-page) {
   }
 
   .home-work-section .section-heading h2 {
-    font-size: clamp(3.2rem, 15vw, 5.1rem);
+    font-size: clamp(2.5rem, 11vw, 4rem);
   }
 
   .home-project-grid {
