@@ -195,7 +195,8 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByRole("heading", { name: "Newfoundland", exact: true })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Europe", exact: true })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Montreal", exact: true })).toBeVisible();
-    await expect(page.locator(".photo-card")).toHaveCount(54);
+    await expect(page.locator(".photo-trip[data-trip='Newfoundland'] .photo-card")).toHaveCount(21);
+    await expect(page.locator(".photo-card")).toHaveCount(63);
     await expect(page.locator(".photo-card figcaption")).toHaveCount(0);
     await expect(page.locator(".photo-hero")).toHaveCount(0);
     const aspectRatios = await page.locator(".photo-card__image").evaluateAll((images) =>

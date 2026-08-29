@@ -126,6 +126,87 @@
       height: 1262
     },
     {
+      src: "assets/photos/newfoundland/mountain-golf-course.png",
+      alt: "A mountain valley and golf course beneath dramatic clouds",
+      title: "Mountain fairway",
+      trip: "Newfoundland",
+      orientation: "landscape",
+      width: 1682,
+      height: 1262
+    },
+    {
+      src: "assets/photos/newfoundland/blueberries-by-the-coast.png",
+      alt: "A container of blueberries held above coastal grass with the ocean beyond",
+      title: "Blueberries by the coast",
+      trip: "Newfoundland",
+      orientation: "landscape",
+      width: 1682,
+      height: 1262
+    },
+    {
+      src: "assets/photos/newfoundland/sunny-shoreline.png",
+      alt: "Sunlight sparkling across a broad bay beside a sandy shoreline",
+      title: "Sunny shoreline",
+      trip: "Newfoundland",
+      orientation: "landscape",
+      width: 1682,
+      height: 1262
+    },
+    {
+      src: "assets/photos/newfoundland/golf-course-by-the-bay.png",
+      alt: "A golf course descending toward a bay beneath layered clouds",
+      title: "Course by the bay",
+      trip: "Newfoundland",
+      orientation: "portrait",
+      width: 947,
+      height: 1262
+    },
+    {
+      src: "assets/photos/newfoundland/into-the-fog.png",
+      alt: "A rocky mountain stream disappearing into a foggy valley",
+      title: "Into the fog",
+      trip: "Newfoundland",
+      orientation: "portrait",
+      width: 947,
+      height: 1262
+    },
+    {
+      src: "assets/photos/newfoundland/misty-outport.png",
+      alt: "A coastal Newfoundland community beneath a misty mountain",
+      title: "Misty outport",
+      trip: "Newfoundland",
+      orientation: "portrait",
+      width: 947,
+      height: 1262
+    },
+    {
+      src: "assets/photos/newfoundland/weathered-field.png",
+      alt: "A weathered shed in a meadow above a foggy coastal town",
+      title: "Weathered field",
+      trip: "Newfoundland",
+      orientation: "portrait",
+      width: 947,
+      height: 1262
+    },
+    {
+      src: "assets/photos/newfoundland/the-trail.png",
+      alt: "Hikers following a grassy trail through a foggy coastal landscape",
+      title: "The trail",
+      trip: "Newfoundland",
+      orientation: "portrait",
+      width: 947,
+      height: 1262
+    },
+    {
+      src: "assets/photos/newfoundland/fogbound-coast.png",
+      alt: "A foggy rocky shoreline framed by spruce trees",
+      title: "Fogbound coast",
+      trip: "Newfoundland",
+      orientation: "portrait",
+      width: 947,
+      height: 1262
+    },
+    {
       src: "assets/photos/europe/IMG_3695.jpg",
       alt: "An ornate palace entrance beyond black iron gates beneath a bright blue sky",
       title: "Beyond the gates",
