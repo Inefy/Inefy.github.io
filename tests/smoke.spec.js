@@ -111,7 +111,7 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.getByRole("link", { name: "View my work" })).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "Have something in mind?" })).toBeAttached();
     await expect(page.locator(".contact-panel__intro")).toHaveCSS("text-align", "center");
-    await expect(page.locator(".contact-panel__side > p")).toHaveText("Reach out for anything you have in mind!");
+    await expect(page.locator(".contact-panel__side > p")).toHaveText("Building something or have an idea to share? Reach out, I'd love to hear from you!");
   });
 
   test("homepage Say hello button stays readable and reaches contact", async ({ page }) => {

@@ -4316,6 +4316,7 @@ main:not(.home-page) {
 .contact-dialog {
   width: min(calc(100% - 32px), 620px);
   max-height: calc(100% - 32px);
+  margin: auto;
   padding: 0;
   border: 1px solid var(--line);
   border-radius: 20px;
