@@ -61,6 +61,15 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.locator("[data-contact-open]:visible").first()).toBeVisible();
   });
 
+  test("homepage header scrolls away with the page", async ({ page }) => {
+    await gotoLocal(page, "/");
+
+    const header = page.locator(".site-header");
+    await expect(header).toHaveCSS("position", "relative");
+    await page.evaluate(() => window.scrollTo(0, 600));
+    await expect.poll(async () => header.evaluate((element) => element.getBoundingClientRect().bottom)).toBeLessThan(0);
+  });
+
   test("homepage contact button opens the Formspree form", async ({ page }) => {
     await gotoLocal(page, "/");
 

@@ -1,6 +1,5 @@
 (() => {
   const year = document.querySelector("#year");
-  const siteHeader = document.querySelector(".site-header");
 
   const THEME_KEY = "theme";
   const THEME_COLORS = { dark: "#09182a", light: "#f8f6f1" };
@@ -49,26 +48,6 @@
         }
       });
     });
-  }
-
-  function initHeaderScrollState() {
-    if (!siteHeader) return;
-
-    let ticking = false;
-
-    function sync() {
-      siteHeader.classList.toggle("is-scrolled", window.scrollY > 14);
-      ticking = false;
-    }
-
-    window.addEventListener("scroll", () => {
-      if (!ticking) {
-        ticking = true;
-        window.requestAnimationFrame(sync);
-      }
-    }, { passive: true });
-
-    sync();
   }
 
   function initHoverPrefetch() {
@@ -256,7 +235,6 @@
   }
 
   initSkipLinks();
-  initHeaderScrollState();
   initThemeToggle();
   initHoverPrefetch();
   initPrintButtons();
