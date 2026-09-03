@@ -66,6 +66,9 @@ test.describe("static portfolio smoke paths", () => {
 
     const header = page.locator(".site-header");
     await expect(header).toHaveCSS("position", "relative");
+    await expect(header).toHaveCSS("background-color", "rgb(11, 35, 66)");
+    await expect(header.locator(".brand-mark")).toHaveCSS("background-color", "rgb(248, 246, 241)");
+    await expect(header.locator(".header-photography")).toHaveCSS("color", "rgb(248, 246, 241)");
     await page.evaluate(() => window.scrollTo(0, 600));
     await expect.poll(async () => header.evaluate((element) => element.getBoundingClientRect().bottom)).toBeLessThan(0);
   });
@@ -105,6 +108,7 @@ test.describe("static portfolio smoke paths", () => {
 
     expect(heroLayout.copyWidth).toBeGreaterThan(550);
     expect(heroLayout.headingHeight).toBeLessThan(300);
+    await expect(page.locator(".hero-tagline span").first()).toHaveCSS("text-decoration-line", "none");
   });
 
   test("homepage shows the projects, tech stack, and contact sections", async ({ page }) => {

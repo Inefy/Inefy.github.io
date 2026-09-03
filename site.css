@@ -2376,6 +2376,10 @@ textarea {
   --amber: #e7a51a;
   --terrain-line: rgba(52, 103, 167, 0.16);
   --terrain-peak: rgba(52, 103, 167, 0.12);
+  --header-bg: #0b2342;
+  --header-ink: #f8f6f1;
+  --header-control-bg: #f8f6f1;
+  --header-control-ink: #0b2342;
   --font-display: Georgia, "Times New Roman", serif;
   --font-body: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
@@ -2408,6 +2412,10 @@ textarea {
   --amber: #f2b84b;
   --terrain-line: rgba(150, 190, 231, 0.15);
   --terrain-peak: rgba(150, 190, 231, 0.1);
+  --header-bg: #09182a;
+  --header-ink: #f2eee4;
+  --header-control-bg: #f2eee4;
+  --header-control-ink: #09182a;
   --shadow-paper: 0 18px 54px rgba(0, 0, 0, 0.32);
 }
 
@@ -2479,6 +2487,8 @@ main:not(.home-page),
   padding: 18px clamp(24px, 4vw, 50px);
   border-top: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 28px 28px 0 0;
+  background: var(--header-bg);
+  color: var(--header-ink);
   box-shadow: 0 -8px 28px rgba(31, 44, 59, 0.04);
   transition: min-height 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
@@ -2497,10 +2507,10 @@ main:not(.home-page),
   min-width: 64px;
   height: 44px;
   padding: 0 15px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid color-mix(in srgb, var(--header-control-ink) 16%, transparent);
   border-radius: 999px;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--header-control-bg);
+  color: var(--header-control-ink);
   font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 600;
@@ -2567,12 +2577,12 @@ main:not(.home-page),
   border: 0;
   border-radius: 50%;
   background: transparent;
-  color: var(--ink);
+  color: var(--header-ink);
   cursor: pointer;
 }
 
 .theme-toggle:hover {
-  background: var(--lime-tint);
+  background: color-mix(in srgb, var(--header-ink) 12%, transparent);
 }
 
 .theme-toggle svg {
@@ -2669,9 +2679,7 @@ main:not(.home-page) {
 
 .hero-tagline span:first-child {
   color: var(--lime);
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.24em;
+  text-decoration: none;
 }
 
 .hero-tagline span:last-child {
@@ -5736,7 +5744,7 @@ main:not(.home-page) {
   position: relative;
   justify-self: end;
   padding: 9px 2px;
-  color: var(--ink);
+  color: var(--header-ink);
   font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
