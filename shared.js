@@ -1,4 +1,8 @@
 (() => {
+  if (window.location.pathname === "/index.html") {
+    window.history.replaceState(null, "", `/${window.location.search}${window.location.hash}`);
+  }
+
   const year = document.querySelector("#year");
 
   const THEME_KEY = "theme";

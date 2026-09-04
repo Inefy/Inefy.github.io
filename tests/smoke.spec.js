@@ -61,6 +61,17 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.locator("[data-contact-open]:visible").first()).toBeVisible();
   });
 
+  test("homepage uses the clean root URL", async ({ page }) => {
+    await gotoLocal(page, "/index.html");
+    await expect(page).toHaveURL("http://127.0.0.1:8000/");
+
+    await gotoLocal(page, "/about.html");
+    const homeLink = page.getByRole("link", { name: "Zac Batten home" });
+    await expect(homeLink).toHaveAttribute("href", "/");
+    await homeLink.click();
+    await expect(page).toHaveURL("http://127.0.0.1:8000/");
+  });
+
   test("homepage header scrolls away with the page", async ({ page }) => {
     await gotoLocal(page, "/");
 
@@ -191,7 +202,7 @@ test.describe("static portfolio smoke paths", () => {
     await expect(page.locator('a[href="mailto:hello@zacbatten.me"]:visible').first()).toBeVisible();
     await expect(page.locator('a[href*="github.com/Inefy"]:visible').first()).toBeVisible();
     await expect(page.locator('a[href*="linkedin.com/in/zac-batten"]:visible').first()).toBeVisible();
-    await expect(page.locator('a[href="index.html"]:visible').first()).toBeVisible();
+    await expect(page.locator('a[href="/"]:visible').first()).toBeVisible();
   });
 
   test("About page presents a full-stack focus", async ({ page }) => {
